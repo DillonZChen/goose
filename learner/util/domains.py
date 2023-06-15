@@ -1,5 +1,5 @@
 import os
-from util.hgn_domain_info import *
+from util.goose_domain_info import *
 from util.htg_domain_info import *
 from util.ipc_domain_info import *
 
@@ -15,7 +15,7 @@ def get_domain_name(domain_file: str):
         return domain
     raise Exception(f"{domain_file} does not have an associated IPC domain")
   if "hgn-benchmarks" in domain_file:
-    for domain in HGN_DOMAINS:
+    for domain in GOOSE_DOMAINS:
       if domain in domain_file:
         return domain
     return "hgn-domain"

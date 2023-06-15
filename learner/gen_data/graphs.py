@@ -5,11 +5,11 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 import time
 import util.ipc_domain_info as ipc_domain_info
 import util.htg_domain_info as htg_domain_info
-import util.hgn_domain_info as hgn_domain_info
+import util.goose_domain_info as goose_domain_info
 from representation import REPRESENTATIONS
 from util.htg_domain_info import get_all_htg_instance_files
 from util.ipc_domain_info import same_domain, GROUNDED_DOMAINS, get_ipc_domain_problem_files
-from util.hgn_domain_info import get_train_hgn_instance_files
+from util.goose_domain_info import get_train_hgn_instance_files
 from gen_data.stats import *
 
 def generate_graph_from_domain_problem_pddl(domain_name: str,
@@ -22,11 +22,8 @@ def generate_graph_from_domain_problem_pddl(domain_name: str,
   del_free = False
 
   parser_for_plan = "powerlifted"
-  # parser_for_plan = params["parser"]
-  # if representation in {"ldg", "ldg-el"}:
-  #   parser_for_plan = "powerlifted"
   plan = optimal_plan_exists(domain_name, domain_pddl, problem_pddl, del_free, parser_for_plan)
-  if plan is None:  # problem did not get solved
+  if plan is None:
     return None
   
   try:
@@ -118,10 +115,10 @@ def get_graph_data(
       if "ipc-" not in domain_name:
         continue
     elif domain == "hgn-pretraining":
-      if domain_name in hgn_domain_info.DOMAINS_NOT_TO_TRAIN or "htg-" in domain_name:
+      if domain_name in goose_domain_info.DOMAINS_NOT_TO_TRAIN or "htg-" in domain_name:
         continue
     elif domain == "hgn-unseen-pretraining":
-      if domain_name in hgn_domain_info.DOMAINS_NOT_TO_TRAIN or "htg-" in domain_name or "hgn-" in domain_name:
+      if domain_name in goose_domain_info.DOMAINS_NOT_TO_TRAIN or "htg-" in domain_name or "hgn-" in domain_name:
         continue
     elif domain == "ipc-only":  # codebase getting bloated
       if "ipc-" not in domain_name:
@@ -216,8 +213,8 @@ def gen_graph_rep(representation: str,
   pbar = tqdm(tasks)
   for domain_name, domain_pddl, problem_pddl in tasks:
     problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
-    if representation in LIFTED_REPRESENTATIONS and domain_name in GROUNDED_DOMAINS:
-      continue
+    # if representation in LIFTED_REPRESENTATIONS and domain_name in GROUNDED_DOMAINS:
+    #   continue
     pbar.set_description(f"Generating {representation} graphs for {domain_name} {problem_name}")
     new_generated += generate_graph_rep_domain(domain_name=domain_name,
                                                 domain_pddl=domain_pddl,

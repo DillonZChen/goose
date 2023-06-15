@@ -1,6 +1,6 @@
 import os
 
-HGN_DOMAINS = {
+GOOSE_DOMAINS = {
     "blocks",
     "ferry",
     "gripper",
@@ -23,17 +23,17 @@ DOMAINS_NOT_TO_TRAIN = {
 def get_domain_instance_pddl_for_domain(domain: str, split: str):
   # assert domain in HTG_DOMAINS
   ret = []
-  dir_of_pddls = f"../hgn-benchmarks/{domain}"
+  dir_of_pddls = f"../benchmarks/goose/{domain}"
   df = f"{dir_of_pddls}/domain.pddl"
   for file in sorted(os.listdir(f'{dir_of_pddls}/{split}')):
     pf = f"{dir_of_pddls}/{split}/{file}"
-    ret.append((f'hgn-{domain}', df, pf))
+    ret.append((f'goose-{domain}', df, pf))
   return ret
 
 
 def get_all_hgn_instance_files():
     ret = []
-    for domain in sorted(HGN_DOMAINS):
+    for domain in sorted(GOOSE_DOMAINS):
         ret += get_domain_instance_pddl_for_domain(domain, "instances")
     # print(f"num hgn train instances: {len(ret)}")
     return ret
@@ -41,7 +41,7 @@ def get_all_hgn_instance_files():
 
 def get_train_hgn_instance_files():
     ret = []
-    for domain in sorted(HGN_DOMAINS):
+    for domain in sorted(GOOSE_DOMAINS):
         ret += get_domain_instance_pddl_for_domain(domain, "train")
     # print(f"num hgn train instances: {len(ret)}")
     return ret
@@ -49,7 +49,7 @@ def get_train_hgn_instance_files():
 
 def get_test_hgn_instance_files():
     ret = []
-    for domain in sorted(HGN_DOMAINS):
+    for domain in sorted(GOOSE_DOMAINS):
         ret += get_domain_instance_pddl_for_domain(domain, "test")
     # print(f"num hgn test instances: {len(ret)}")
     return ret

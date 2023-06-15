@@ -1,7 +1,3 @@
-from collections import OrderedDict
-from enum import Enum
-import torch
-
 from pddl_parser.pddl import Atom, NegatedAtom, Truth
 from representation.base_class import *
 
@@ -18,18 +14,7 @@ class LDG_FEAT_MAP(Enum):
   EFF_NEG = 9
 
 ENC_FEAT_SIZE = len(LDG_FEAT_MAP)
-# OBJ_FEAT_SIZE = 4
 VAR_FEAT_SIZE = 4
-
-# # undirected graph!
-# EDGE_TYPE = OrderedDict({
-#   "neutral": 0,
-#   "ground": 1,
-#   "pre_pos": 2,
-#   "pre_neg": 3,
-#   "eff_pos": 4,
-#   "eff_neg": 5,
-# })
 
 class LiftedDescriptionGraph(Representation, ABC):
   def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
@@ -39,14 +24,18 @@ class LiftedDescriptionGraph(Representation, ABC):
     self.rep_name = "ldg"
     self._FEAT_MAP = LDG_FEAT_MAP
     self.node_dim = ENC_FEAT_SIZE+VAR_FEAT_SIZE
+    self._construct_pe_function()
+    return
+
+  def _construct_pe_function(self):
     self._pe = []
-    for idx in range(1000):  # TODO: find bound from problem
+    for idx in range(1000):  # precompute injective PE 
       torch.manual_seed(idx)
-      rep = 2*torch.rand(VAR_FEAT_SIZE)-1  # [-1,1]
+      rep = 2*torch.rand(VAR_FEAT_SIZE)-1  # U[-1,1]
       rep /= torch.linalg.norm(rep)
       self._pe.append(rep)
-    self._compute_graph_representation()
     return
+
 
   def _feature(self, node_type: LDG_FEAT_MAP):
     ret = torch.zeros(self.node_dim)
@@ -73,11 +62,6 @@ class LiftedDescriptionGraph(Representation, ABC):
     pass
 
   def _compute_graph_representation(self) -> None:
-    """
-    Generates graph representation of a problem for input into the GNN.
-    """
-
-    t = time.time()
 
     G = self._create_graph()
 
@@ -198,17 +182,8 @@ class LiftedDescriptionGraph(Representation, ABC):
       self._node_to_i[node] = i
 
     # convert to PyG
-    self.G = G
-    pyg_G = from_networkx(G)
-    self.x = pyg_G.x
-    self.edge_index = pyg_G.edge_index
+    self._graph_to_representation(G)
 
-    self.num_nodes = len(G.nodes)
-    self.num_edges = len(G.edges)
-
-    self._dump_stats(start_time=t)
-    print(f"largest predicate size: {largest_predicate}")
-    print(f"largest action schema size: {largest_action_schema}")
     return
 
 

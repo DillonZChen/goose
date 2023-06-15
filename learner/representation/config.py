@@ -1,38 +1,49 @@
 CONFIG = {
-  "sdg":
-  {
+  "sdg": {
     "lifted": False,
     "directed": True,
     "edge_labels": False,
   },
-  "sdg-el":
-  {
+  "sdg-el": {
     "lifted": False,
     "directed": False,
     "edge_labels": True,
   },
-  "fdg":
-  {
+  "fdg": {
     "lifted": False,
     "directed": False,
     "edge_labels": False,
   },
-  "fdg-el":
-  {
+  "fdg-el": {
     "lifted": False,
     "directed": False,
     "edge_labels": True,
   },
-  "ldg":
-  {
+  "ldg": {
     "lifted": True,
     "directed": False,
     "edge_labels": False,
   },
-  "ldg-el":
-  {
+  "ldg-el": {
     "lifted": True,
     "directed": False,
     "edge_labels": True,
   },
+  "gdg-el": {
+    "lifted": False,
+    "directed": False,
+    "edge_labels": True,
+  }
+}
+
+
+
+N_EDGE_TYPES = {
+    "sdg": 1,
+    "sdg-el": 3,
+    "fdg": 1,
+    "fdg-el": 3,
+    "ldg": 1,
+    "ldg-el": 6,
+    "gdg-el": 4,
 }

@@ -19,11 +19,8 @@ class EdgeLabeledStripsProblemDescriptionGraph(Representation, ABC):
 
   def _init(self):
     self.rep_name = "sdg-el"
-    self.n_edge_types = 3
     self._FEAT_MAP = EL_STRIPS_PDG_FEAT_MAP
     self.node_dim = len(self._FEAT_MAP)
-    if self.problem is not None:
-      self._compute_graph_representation()
     return
 
 
@@ -82,20 +79,11 @@ class EdgeLabeledStripsProblemDescriptionGraph(Representation, ABC):
 
     # convert to PyG
     self._graph_to_el_representation(G)
-
     self._dump_stats(start_time=t)
-
-    return
-
-  def set_tensor_device(self, device) -> None:
-    self.x = self.x.to(device)
-    for i in range(len(self.edge_indices)):
-      self.edge_indices[i] = self.edge_indices[i].to(device)
     return
 
 
   def get_state_enc(self, state: FrozenSet[Proposition]) -> Tuple[Tensor, Tensor]:
-
     x = self.x.clone()
     for p in state:
       if p not in self._node_to_i:

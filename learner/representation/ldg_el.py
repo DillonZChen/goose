@@ -1,7 +1,4 @@
-from collections import OrderedDict
-from enum import Enum
-import torch
-
+from .ldg import LiftedDescriptionGraph
 from pddl_parser.pddl import Atom, NegatedAtom, Truth
 from representation.base_class import *
 
@@ -27,54 +24,18 @@ EDGE_TYPE = OrderedDict({
   "eff_neg": 5,
 })
 
-class EdgeLabaledLiftedDescriptionGraph(Representation, ABC):
+class EdgeLabaledLiftedDescriptionGraph(LiftedDescriptionGraph, ABC):
   def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
     super().__init__(domain_pddl, problem_pddl)
 
   def _init(self):
     self.rep_name = "ldg-el"
-    self.n_edge_types = 6
     self._FEAT_MAP = LDG_FEAT_MAP
     self.node_dim = ENC_FEAT_SIZE+VAR_FEAT_SIZE
-    self._pe = []
-    for idx in range(1000):  # TODO: find bound from problem
-      torch.manual_seed(idx)
-      rep = 2*torch.rand(VAR_FEAT_SIZE)-1  # [-1,1]
-      rep /= torch.linalg.norm(rep)
-      self._pe.append(rep)
-    self._compute_graph_representation()
+    self._construct_pe_function()
     return
 
-  def _feature(self, node_type: LDG_FEAT_MAP):
-    ret = torch.zeros(self.node_dim)
-    ret[node_type.value] = 1  # faster
-    return ret
-  
-  def _var_feature(self, idx: int):
-    ret = torch.zeros(self.node_dim)
-    ret[-VAR_FEAT_SIZE:] = self._pe[idx]
-    return ret
-
-  def _dump_task_stats(self) -> None:
-    tqdm.write(f"Task stats:")
-    tqdm.write(f"Domain name: {self.problem.domain_name}")
-    tqdm.write(f"Task name: {self.problem.task_name}")
-    tqdm.write(f"n_objects: {len(self.problem.objects)}")
-    tqdm.write(f"n_predicates: {len(self.problem.predicates)}")
-    tqdm.write(f"n_init: {len(self.problem.init)}")
-    n_goals = len(self.problem.goal.parts)
-    if n_goals == 0:
-      n_goals = 1  # see Conjunction class
-    tqdm.write(f"n_goal: {n_goals}")
-    tqdm.write(f"n_actions: {len(self.problem.actions)}")
-    pass
-
   def _compute_graph_representation(self) -> None:
-    """
-    Generates graph representation of a problem for input into the GNN.
-    """
-
-    t = time.time()
 
     G = self._create_graph()
 
@@ -197,9 +158,6 @@ class EdgeLabaledLiftedDescriptionGraph(Representation, ABC):
     # convert to PyG
     self._graph_to_el_representation(G)
 
-    self._dump_stats(start_time=t)
-    print(f"largest predicate size: {largest_predicate}")
-    print(f"largest action schema size: {largest_action_schema}")
     return
 
 

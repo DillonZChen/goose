@@ -9,9 +9,9 @@ class GDG_FEAT_MAP(Enum):
   SCHEMA=5
 
 class GDG_EDGE_TYPES(Enum):
-  PRECONDITION=0
-  ADD_EFFECT=1
-  DEL_EFFECT=2
+  PRE_EDGE=0
+  ADD_EDGE=1
+  DEL_EDGE=2
   PREDICATE=3
 
 
@@ -38,65 +38,57 @@ class GroundedDescriptionGraph(Representation, ABC):
     G = self._create_graph()
 
     grounded = explore(self.problem)
-    propositions = set(str(p) for p in grounded[1])
+    propositions = set(grounded[1])
     actions = grounded[2]
     goals = set(str(p) for p in self.problem.goals)
+    predicates = set()
+    for p in grounded[1]:
+      print(p.predicate)
+    raise ValueError
 
     goal = 0
 
     # nodes
-    for p in propositions:
+    for prop in propositions:
+      p = str(prop)
+      print(p)
       if p in goals:
         goal += 1
-        x_p=self._one_hot_node(self._FEAT_MAP['g'])
+        x_p=self._one_hot_node(GDG_FEAT_MAP.GOAL.value)
       else:
         x_p=self._zero_node()  # will get replaced in state encoding
 
-      G.add_node(p,   x=x_p)
-      G.add_node(p+T, x=self._one_hot_node(self._FEAT_MAP[T]))
-      G.add_node(p+F, x=self._one_hot_node(self._FEAT_MAP[F]))
+      G.add_node(p, x=x_p)
     for a in actions:
-      G.add_node(a,   x=self._one_hot_node(self._FEAT_MAP['a']))
+      print(a)
+      G.add_node(a, x=self._one_hot_node(GDG_FEAT_MAP.ACTION.value))
+    raise ValueError
 
     # edges
-    for p in propositions:
-      G.add_edge(u_of_edge=p,   v_of_edge=p+T)    # p -> p_T
-      G.add_edge(u_of_edge=p,   v_of_edge=p+F)    # p -> p_F
-      G.add_edge(u_of_edge=p+F, v_of_edge=p+T)    # p_F -> p_T  # communicate when node is off
     for a in actions:
       for p in a.precondition:
         prop = str(p)
         # assert prop in G.nodes
-        G.add_edge(u_of_edge=prop+T, v_of_edge=a)    # p_T -> a
+        G.add_edge(u_of_edge=prop, v_of_edge=a, edge_type=GDG_EDGE_TYPES.PRE_EDGE.value)    # p_T -> a
       for p in a.add_effects:
         prop = str(p)
         # assert prop in G.nodes
-        G.add_edge(u_of_edge=a,   v_of_edge=prop+T)  # a -> p_T
+        G.add_edge(u_of_edge=a,   v_of_edge=prop, edge_type=GDG_EDGE_TYPES.ADD_EDGE)  # a -> p_T
       for p in a.del_effects:
         prop = str(p)
         # assert prop in G.nodes
-        G.add_edge(u_of_edge=a,   v_of_edge=prop+F)  # a -> p_F
+        G.add_edge(u_of_edge=a,   v_of_edge=prop, edge_type=GDG_EDGE_TYPES.DEL_EDGE)  # a -> p_F
 
     assert goal == len(goals)
 
-    self.G = G
-    self.num_nodes = len(G.nodes)
-    self.num_edges = len(G.edges)
-
     # map indices to nodes and vice versa
     self._node_to_i = {}
-    self._i_to_node = {}
     for i, node in enumerate(G.nodes):
-      if node not in propositions:
-        continue
       self._node_to_i[node] = i
-      self._i_to_node[i] = node
 
-    pyg_G = from_networkx(G)
-    self.x = pyg_G.x
-    self.edge_index = pyg_G.edge_index
+    # convert to PyG
+    self._graph_to_el_representation(G)
 
-    self.graph_data = Data(x=self.x, edge_index=self.edge_index)
     self._dump_stats(start_time=t)
 
     raise NotImplementedError
@@ -110,10 +102,6 @@ class GroundedDescriptionGraph(Representation, ABC):
     for p in state:
       if p not in self._node_to_i:
         continue
-      # unlike drg, ok to have both [s] and [g] activated
-      # only p nodes are stored in _node_index
-      x[self._node_to_i[p]][self._FEAT_MAP['s']] = 1
+      x[self._node_to_i[p]][GDG_FEAT_MAP.STATE.value] = 1
 
-    raise NotImplementedError
-
-    return x, self.edge_index
+    return x, self.edge_indices

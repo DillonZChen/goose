@@ -1,6 +1,5 @@
-import torch
-
 from representation.base_class import *
+
 
 T = "T"
 F = "F"
@@ -22,7 +21,6 @@ class StripsProblemDescriptionGraph(Representation, ABC):
     self.rep_name = "sdg"
     self._FEAT_MAP = STRIPS_PDG_FEAT_MAP
     self.node_dim = len(self._FEAT_MAP)
-    self._compute_graph_representation()
     return
 
   def _compute_graph_representation(self) -> None:
@@ -30,8 +28,6 @@ class StripsProblemDescriptionGraph(Representation, ABC):
     Generates graph representation of a problem for input into the GNN. Given a state,
     we need to further concatenate binary values to indicate which propositions are set.
     """
-
-    t = time.time()
 
     G = self._create_graph()
 
@@ -77,9 +73,6 @@ class StripsProblemDescriptionGraph(Representation, ABC):
 
     assert goal == len(goals)
 
-    self.G = G
-    self.num_nodes = len(G.nodes)
-    self.num_edges = len(G.edges)
 
     # map indices to nodes and vice versa
     self._node_to_i = {}
@@ -90,12 +83,8 @@ class StripsProblemDescriptionGraph(Representation, ABC):
       self._node_to_i[node] = i
       self._i_to_node[i] = node
 
-    pyg_G = from_networkx(G)
-    self.x = pyg_G.x
-    self.edge_index = pyg_G.edge_index
-
-    self.graph_data = Data(x=self.x, edge_index=self.edge_index)
-    self._dump_stats(start_time=t)
+    # convert to PyG
+    self._graph_to_representation(G)
 
     return
 
@@ -106,8 +95,6 @@ class StripsProblemDescriptionGraph(Representation, ABC):
     for p in state:
       if p not in self._node_to_i:
         continue
-      # unlike drg, ok to have both [s] and [g] activated
-      # only p nodes are stored in _node_index
       x[self._node_to_i[p]][self._FEAT_MAP['s']] = 1
 
     return x, self.edge_index

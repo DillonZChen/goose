@@ -25,12 +25,9 @@ class FdrProblemDescriptionGraph(Representation, ABC):
     self.rep_name = "fdg"
     self._FEAT_MAP = FDR_PDG_FEAT_MAP
     self.node_dim = len(self._FEAT_MAP)
-    self._compute_graph_representation()
     return
 
   def _compute_graph_representation(self) -> None:
-
-    t = time.time()
 
     G = self._create_graph()
 
@@ -87,16 +84,8 @@ class FdrProblemDescriptionGraph(Representation, ABC):
     for fact in self.problem.fact_to_varval:
       self.fact_to_i[fact] = node_to_i[self.problem.fact_to_varval[fact]]
 
-    self.G = G
-    pyg_G = from_networkx(G)
-    self.x = pyg_G.x
-    self.edge_index = pyg_G.edge_index
-
-    self.num_nodes = len(G.nodes)
-    self.num_edges = len(G.edges)
-
-    self.graph_data = Data(x=self.x, edge_index=self.edge_index)
-    self._dump_stats(start_time=t)
+    # convert to PyG
+    self._graph_to_representation(G)
 
     return
 

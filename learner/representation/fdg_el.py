@@ -24,15 +24,11 @@ class EdgeLabeledFdrProblemDescriptionGraph(Representation, ABC):
 
   def _init(self):
     self.rep_name = "fdg-el"
-    self.n_edge_types = 3
     self._FEAT_MAP = EL_FDR_PDG_FEAT_MAP
     self.node_dim = len(self._FEAT_MAP)
-    self._compute_graph_representation()
     return
 
   def _compute_graph_representation(self) -> None:
-
-    t = time.time()
 
     G = self._create_graph()
 
@@ -88,11 +84,6 @@ class EdgeLabeledFdrProblemDescriptionGraph(Representation, ABC):
 
     # convert to PyG
     self._graph_to_el_representation(G)
-
-    self.num_nodes = len(G.nodes)
-    self.num_edges = len(G.edges)
-
-    self._dump_stats(start_time=t)
 
     return
   

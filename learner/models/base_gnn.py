@@ -243,7 +243,6 @@ class BasePredictor(ABC, nn.Module):
   def update_representation(self, domain_pddl: str, problem_pddl: str, args, device):
     self.rep = REPRESENTATIONS[self.rep_type](domain_pddl, problem_pddl)
     self.device = device
-    # self.rep.set_tensor_device(device)
     return
   
   def update_device(self, device):

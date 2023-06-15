@@ -251,11 +251,10 @@ def get_strips_problem(
     """
 
     """ saving causes us problems when using with pybind11 """
-    if parser=="preprocess-h2":  # not actually using prperocess-h2 anymore 
-        problem = FDRProblem(domain_pddl=domain_pddl, problem_pddl=problem_pddl)
-    elif parser=="downward":
-        problem = pddl_parser.open(domain_filename=domain_pddl, task_filename=problem_pddl)
-    else:
-        raise ValueError(parser)
+    problem = pddl_parser.open(domain_filename=domain_pddl, task_filename=problem_pddl)
+    # if parser=="preprocess-h2":  # not actually using prperocess-h2 anymore 
+    #     problem = FDRProblem(domain_pddl=domain_pddl, problem_pddl=problem_pddl)
+    # elif parser=="downward":
+    #     problem = pddl_parser.open(domain_filename=domain_pddl, task_filename=problem_pddl)
 
     return problem
