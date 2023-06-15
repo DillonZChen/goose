@@ -1,0 +1,54 @@
+Bootstrap: docker
+From: nvidia/cuda:11.6.2-runtime-ubuntu20.04 
+
+%post
+    # NVIDIA: create directory and add nvidia driver paths to the environment variables
+    mkdir /nvdriver
+    echo "\n #Nvidia driver paths \n"                          >> /environment
+    echo 'export PATH="/nvdriver:$PATH"'                       >> /environment
+    echo 'export LD_LIBRARY_PATH="/nvdriver:$LD_LIBRARY_PATH"' >> /environment
+
+    # NVIDIA: define CUDA paths
+    echo "\n #Cuda paths \n" >> /environment
+    echo 'export CPATH="/usr/local/cuda/include:$CPATH"'                   >> /environment
+    echo 'export PATH="/usr/local/cuda/bin:$PATH"'                         >> /environment
+    echo 'export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"' >> /environment
+    echo 'export CUDA_HOME="/usr/local/cuda"'                              >> /environment 
+
+    # These first few commands allow us to find the python3-pip package later
+    # on.
+    apt-get update -y
+
+    # Using "noninteractive" mode runs apt-get while ensuring that there are
+    # no user prompts that would cause the `singularity build` command to hang.
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        software-properties-common
+    add-apt-repository universe
+
+    # Downloads the latest package lists (important).
+    apt-get update -y
+
+    # python3-tk is required by matplotlib.
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        python3 \
+        python3-tk \
+        python3-pip \
+        python3-distutils \
+        python3-setuptools
+
+    # cpp packages
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        cmake \
+        build-essential \
+        libboost-all-dev
+
+    # Reduce the size of the image by deleting the package lists we downloaded,
+    # which are useless now.
+    rm -rf /var/lib/apt/lists/*
+
+    # Install Python modules.
+    pip install "pybind11[global]"
+
+    pip install matplotlib networkx config numpy pytest scikit_learn scipy
+    pip install torch==1.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
+    pip install pyg-lib torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric -f https://data.pyg.org/whl/torch-1.13.0+cu116.html

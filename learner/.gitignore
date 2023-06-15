@@ -1,0 +1,11 @@
+lock
+logs*
+*.sas
+plans_*
+*.sh.e*
+*.sh.o*
+.ipynb_checkpoints
+*.log
+trained_models*
+*.sif
+data
