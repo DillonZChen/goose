@@ -156,7 +156,7 @@ class EdgeLabaledLiftedDescriptionGraph(LiftedDescriptionGraph, ABC):
       self._node_to_i[node] = i
 
     # convert to PyG
-    self._graph_to_el_representation(G)
+    self._graph_to_representation(G)
 
     return
 

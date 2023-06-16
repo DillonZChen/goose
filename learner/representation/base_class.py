@@ -39,7 +39,6 @@ class Representation(ABC):
     self.num_nodes = None
     self.num_edges = None
     self.rep_name = None
-    self.state = None
 
     self.problem = get_strips_problem(domain_pddl=self.domain_pddl,
                                       problem_pddl=self.problem_pddl)
@@ -53,6 +52,7 @@ class Representation(ABC):
     self._init()
     self.n_edge_types = N_EDGE_TYPES[self.rep_name]
     self.directed = CONFIG[self.rep_name]["directed"]
+    self.edge_labels = CONFIG[self.rep_name]["edge_labels"]
     t = time.time()
     self._compute_graph_representation()
     self._dump_stats(t)
@@ -89,39 +89,29 @@ class Representation(ABC):
   
   def _graph_to_representation(self, G: nx.Graph) -> None:
     """ Converts networkx graph object into tensors
-        Called at the end of _compute_graph_representation() for graphs without edge labels 
+        Called at the end of _compute_graph_representation()
     """
 
     pyg_G = from_networkx(G)
     self.G = G
     self.x = pyg_G.x
-    self.edge_index = pyg_G.edge_index
+    
+    if not self.edge_labels:
+      self.edge_index = pyg_G.edge_index
+    else:
+      self.edge_indices = [[] for _ in range(self.n_edge_types)]
+      edge_index_T = pyg_G.edge_index.T
+      for i, edge_type in enumerate(pyg_G.edge_type):   # this is slow
+        self.edge_indices[edge_type].append(edge_index_T[i])
+      for i in range(self.n_edge_types):
+        if len(self.edge_indices[i]) > 0:
+          self.edge_indices[i] = torch.vstack(self.edge_indices[i]).long().T
+        else:
+          self.edge_indices[i] = torch.tensor([[], []]).long()
 
     self.num_nodes = len(G.nodes)
     self.num_edges = len(G.edges)
-    pass
-  
-  def _graph_to_el_representation(self, G: nx.Graph) -> None:
-    """ Converts networkx graph object into tensors
-        Called at the end of _compute_graph_representation() for graphs with edge labels 
-    """
-
-    pyg_G = from_networkx(G)
-    self.G = G
-    self.x = pyg_G.x
-
-    edge_index_T = pyg_G.edge_index.T
-    self.edge_indices = [[] for _ in range(self.n_edge_types)]
-    for i, edge_type in enumerate(pyg_G.edge_type):   # this is slow
-      self.edge_indices[edge_type].append(edge_index_T[i])
-    for i in range(self.n_edge_types):
-      if len(self.edge_indices[i]) > 0:
-        self.edge_indices[i] = torch.vstack(self.edge_indices[i]).long().T
-      else:
-        self.edge_indices[i] = torch.tensor([[], []]).long()
-
-    self.num_nodes = len(G.nodes)
-    self.num_edges = len(G.edges)
+    
     return
 
   def update_representation(self, data: Data) -> None:

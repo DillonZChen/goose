@@ -78,7 +78,7 @@ class EdgeLabeledStripsProblemDescriptionGraph(Representation, ABC):
       self._node_to_i[node] = i
 
     # convert to PyG
-    self._graph_to_el_representation(G)
+    self._graph_to_representation(G)
     self._dump_stats(start_time=t)
     return
 

@@ -83,7 +83,7 @@ class EdgeLabeledFdrProblemDescriptionGraph(Representation, ABC):
       self.fact_to_i[fact] = node_to_i[self.problem.fact_to_varval[fact]]
 
     # convert to PyG
-    self._graph_to_el_representation(G)
+    self._graph_to_representation(G)
 
     return
   
