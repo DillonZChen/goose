@@ -67,9 +67,10 @@ def evaluate_adapt(model, device, src_loader, tar_loader, criterion):
 
 
 
-def train(model, device, train_loader, criterion, optimiser, task, fast_train):
+def train(model, device, train_loader, criterion, optimiser, fast_train):
   model.train()
   train_loss = 0
+  task = 'h'
 
   if not fast_train:
     y_true = torch.tensor([])
@@ -113,9 +114,10 @@ def train(model, device, train_loader, criterion, optimiser, task, fast_train):
 
 
 @torch.no_grad()
-def evaluate(model, device, val_loader, criterion, task, fast_train, return_true_preds=False):
+def evaluate(model, device, val_loader, criterion, fast_train, return_true_preds=False):
   if val_loader is None:
     return 0
+  task = 'h'
   
   model.eval()
   val_loss = 0

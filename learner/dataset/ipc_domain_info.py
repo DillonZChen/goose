@@ -1,15 +1,3 @@
-HGN_DOMAINS = {
-  'blocks',
-  'spanner',
-  'ferry',
-  'gripper',
-  'hanoi',
-  'matching-bw',
-  'n-puzzle',
-  'sokoban',
-  'zenotravel',
-}
-
 IPCS = [
   'ipc-1998',
   'ipc-2000',

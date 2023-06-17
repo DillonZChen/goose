@@ -16,7 +16,7 @@ from asg.instantiate import instantiate, explore
 from enum import Enum
 from collections import OrderedDict
 
-from util import get_domain_name, get_problem_name
+from dataset import get_domain_name, get_problem_name
 from planning import get_strips_problem
 from planning import Proposition
 from util.stats import graph_density

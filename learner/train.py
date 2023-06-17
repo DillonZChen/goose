@@ -9,11 +9,11 @@ import configuration
 
 from models import *
 from tqdm.auto import tqdm, trange
+from loss import LOSS
 from util.stats import *
 from util.save_load import *
-from loss import LOSS
 from util import train, evaluate
-from util.dataset import get_loaders_from_args
+from dataset.dataset import get_loaders_from_args
 
 
 def main():
@@ -45,13 +45,12 @@ def main():
     reduction = args.reduction
     patience = args.patience
     epochs = args.epochs
-    task = args.task
     loss_fn = args.loss
     val = args.val
     fast_train = args.fast_train
 
     # init optimiser
-    criterion = LOSS[task][loss_fn]()
+    criterion = LOSS[loss_fn]()
     optimiser = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=args.decay)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser,
                                                            mode='min',
@@ -70,10 +69,10 @@ def main():
       best_epoch = 0
       for e in pbar:
         t = time.time()
-        train_stats = train(model, device, train_loader, criterion, optimiser, task=task, fast_train=fast_train)
+        train_stats = train(model, device, train_loader, criterion, optimiser, fast_train=fast_train)
         train_loss = train_stats['loss']
         if val:
-          val_stats = evaluate(model, device, val_loader, criterion, task=task, fast_train=fast_train)
+          val_stats = evaluate(model, device, val_loader, criterion, fast_train=fast_train)
           val_loss = val_stats['loss']
           scheduler.step(val_loss)
           combined_metric = (train_loss + 2*val_loss)/3
