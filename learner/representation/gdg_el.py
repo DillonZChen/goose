@@ -64,19 +64,29 @@ class GroundedDescriptionGraph(Representation, ABC):
     for a in actions:
       # edges between actions and schema
       schema = a.name.replace("(","").split()[0]
+      assert a in G.nodes
+      assert schema in G.nodes
       G.add_edge(u_of_edge=a, v_of_edge=schema, edge_type=GDG_EDGE_TYPES.PREDICATE.value)
 
       # edges between actions and propositions
       for p in a.precondition:
+        assert str(p) in G.nodes
+        assert a in G.nodes
         G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=GDG_EDGE_TYPES.PRE_EDGE.value)
       for p in a.add_effects:
+        assert str(p) in G.nodes
+        assert a in G.nodes
         G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=GDG_EDGE_TYPES.ADD_EDGE.value)
       for p in a.del_effects:
+        assert str(p) in G.nodes
+        assert a in G.nodes
         G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=GDG_EDGE_TYPES.DEL_EDGE.value)
 
     for prop in propositions:
       # edge between propositions and predicates
       predicate = prop.predicate
+      assert str(prop) in G.nodes
+      assert predicate in G.nodes
       G.add_edge(u_of_edge=str(prop), v_of_edge=predicate, edge_type=GDG_EDGE_TYPES.PREDICATE.value)
 
     # map indices to nodes and vice versa

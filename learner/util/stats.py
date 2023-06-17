@@ -57,7 +57,7 @@ def get_y_stats(dataset):
     ys.append(y)
 
   ys = np.array(ys)
-  os.makedirs("plots/", exist_ok=True)
+  # os.makedirs("plots/", exist_ok=True)
   # plt.hist(ys, bins=round(np.max(ys) + 1),
   #          range=(0, round(np.max(ys) + 1)))
   # plt.xlim(left=0)

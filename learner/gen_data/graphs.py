@@ -159,7 +159,8 @@ def generate_graph_rep_domain(domain_name: str,
 
 
 def gen_graph_rep(representation: str,
-                  regenerate: bool):
+                  regenerate: bool,
+                  domain: str=""):
   """ Generate graph representations from saved optimal plans. """
 
   # TASKS = ["h", "a"]
@@ -178,6 +179,8 @@ def gen_graph_rep(representation: str,
     # if representation in LIFTED_REPRESENTATIONS and domain_name in GROUNDED_DOMAINS:
     #   continue
     pbar.set_description(f"Generating {representation} graphs for {domain_name} {problem_name}")
+    if domain != "" and domain != domain_name:
+      continue
     new_generated += generate_graph_rep_domain(domain_name=domain_name,
                                                 domain_pddl=domain_pddl,
                                                 problem_pddl=problem_pddl,
@@ -191,12 +194,14 @@ def gen_graph_rep(representation: str,
 def main():
   parser = argparse.ArgumentParser()
   parser.add_argument('-r', '--rep', type=str, help="graph representation to generate", choices=REPRESENTATIONS)
+  parser.add_argument('-d', '--domain', type=str, help="domain to generate (useful for debugging)")
   parser.add_argument('--regenerate', action="store_true")
   args = parser.parse_args()
 
   rep = args.rep
   gen_graph_rep(representation=rep,
-                regenerate=args.regenerate)
+                regenerate=args.regenerate,
+                domain=args.domain)
   return
 
 if __name__ == "__main__":
