@@ -57,13 +57,13 @@ def get_y_stats(dataset):
     ys.append(y)
 
   ys = np.array(ys)
-  os.makedirs("plots/", exist_ok=True)
-  plt.hist(ys, bins=round(np.max(ys) + 1),
-           range=(0, round(np.max(ys) + 1)))
-  plt.xlim(left=0)
-  # plt.title('y distribution')
-  plt.savefig('plots/y_distribution.pdf', bbox_inches="tight")
-  plt.clf()
+  # os.makedirs("plots/", exist_ok=True)
+  # plt.hist(ys, bins=round(np.max(ys) + 1),
+  #          range=(0, round(np.max(ys) + 1)))
+  # plt.xlim(left=0)
+  # # plt.title('y distribution')
+  # plt.savefig('plots/y_distribution.pdf', bbox_inches="tight")
+  # plt.clf()
 
   return ys
 
