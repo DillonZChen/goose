@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH --mail-type=END,FAIL # Mail events
+#SBATCH --mail-user=dillon.chen1@gmail.com # Where to send mail
+#SBATCH --ntasks=1 # Run on a single CPU
+#SBATCH --mem=64gb # Job memory request
+#SBATCH --time=120:00:00 # Time limit hrs:min:sec
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+
+pwd; hostname; date; grep MemTotal /proc/meminfo; nvidia-smi; nvidia-smi -L
+echo "--- exec ---"
+srun singularity exec --nv /opt/apps/containers/pygeo-torch113-py3.sif $1
+echo "--- done ---"
+date

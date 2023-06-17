@@ -56,35 +56,13 @@ def print_arguments(args, ignore_params=set()):
         print('{0:20}  {1}'.format(k, v))
 
 
-def save_model_from_dict(model_dict, args, prefix="", save=True):
-    if not save:
-        return
-
+def save_model_from_dict(model_dict, args):
+    if not hasattr(args, "save_file") and args.save_file is not None:
+      return
     print("Saving model...")
     save_dir = 'trained_models'
     os.makedirs(f"{save_dir}/", exist_ok=True)
-    dt = datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")
-    model_file_name = ""
-    params = [
-      f"{args.domain}".replace("-only", "").replace("-", "_")+"-",
-      f"{args.rep}-",
-      f"U{args.heuristic}-",
-      f"C{args.cutoff}-",
-      f"N{args.max_nodes}-",
-      f"{args.model}-",
-      f"L{args.nlayers}-",
-      f"H{args.nhid}-",
-      f"F{args.features}-",
-    ]
-    if args.pretrained is not None:
-        params = ["pretrained+"]+params
-    for param in params:
-        model_file_name += param
-    model_file_name += f"{dt}"
-    if prefix != "":
-        model_file_name = f"{prefix}-{model_file_name}"
-    if hasattr(args, "save_file") and args.save_file is not None:
-        model_file_name = args.save_file.replace(".dt", "")
+    model_file_name = args.save_file.replace(".dt", "")
     path = f'{save_dir}/{model_file_name}.dt'
     torch.save((model_dict, args), path)
     print("Model saved!")
@@ -95,25 +73,6 @@ def save_model_from_dict(model_dict, args, prefix="", save=True):
 
 def save_model(model, args, prefix="", save=True):
     save_model_from_dict(model.model.state_dict(), args, prefix, save)
-    return
-
-
-def save_model_object(path):
-    print("Loading model from params...")
-    if ".dt" not in path:
-        path = path+".dt"
-    if "trained_models" not in path:
-        path = "trained_models/" + path
-    if torch.cuda.is_available():
-        model_state_dict, args = torch.load(path)
-    else:
-        model_state_dict, args = torch.load(path, map_location=torch.device('cpu'))
-    model = GNNS[args.model](params=arg_to_params(args), jit=True)
-    model.load_state_dict_into_gnn(model_state_dict)
-    model.eval()
-    print("Saving model...")
-    model.model.save(path.replace(".dt", ".pt"))
-    print("Saved model!")
     return
 
 

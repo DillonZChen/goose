@@ -5,7 +5,7 @@ import representation
 def create_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('--device', type=int, default=0)
-    parser.add_argument('-d', '--domain', default="hgn-pretraining")
+    parser.add_argument('-d', '--domain', default="goose-pretraining")
     parser.add_argument('--tar-domain', dest="tar_domain", help="target domain for domain adaptation", default=None)
     parser.add_argument('-t', '--task', default='h', choices=["h", "a"], help="predict value or action")
 
@@ -47,8 +47,7 @@ def create_parser():
     parser.add_argument('-s', '--strategy', choices=["init", "random", "entire"], default="entire", help='sample strategies')
     parser.add_argument('--small-train', action="store_true")
 
-    parser.add_argument('--no-save', dest="save_model", action="store_false")
-    parser.add_argument('--save-file', dest="save_file", type=str)
+    parser.add_argument('--save-file', dest="save_file", type=str, default=None)
     parser.add_argument('--pretrained', type=str)
 
     parser.add_argument('--no-tqdm', dest='tqdm', action='store_false')

@@ -27,7 +27,7 @@ plots/
 states
 htg-benchmarks
 ipc-benchmarks
-# hgn-benchmarks
+# goose-benchmarks
 
 lock/
 logs/

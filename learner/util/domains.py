@@ -14,11 +14,11 @@ def get_domain_name(domain_file: str):
       if domain in domain_file:
         return domain
     raise Exception(f"{domain_file} does not have an associated IPC domain")
-  if "hgn-benchmarks" in domain_file:
+  if "goose-benchmarks" in domain_file:
     for domain in GOOSE_DOMAINS:
       if domain in domain_file:
         return domain
-    return "hgn-domain"
+    return "goose-domain"
     # raise Exception(f"{domain_file} does not have an associated HGN domain")
   if "htg-benchmarks" in domain_file:
     for domain in HTG_DOMAINS:

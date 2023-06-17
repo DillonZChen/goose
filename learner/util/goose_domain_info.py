@@ -4,7 +4,7 @@ GOOSE_DOMAINS = {
     "blocks",
     "ferry",
     "gripper",
-    "hanoi",
+    # "hanoi",
     "n-puzzle",
     "sokoban",
     "spanner",

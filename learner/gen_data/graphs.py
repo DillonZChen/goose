@@ -21,17 +21,18 @@ def generate_graph_from_domain_problem_pddl(domain_name: str,
   ret = []
   del_free = False
 
-  parser_for_plan = "powerlifted"
-  plan = optimal_plan_exists(domain_name, domain_pddl, problem_pddl, del_free, parser_for_plan)
+  plan = optimal_plan_exists(domain_name, domain_pddl, problem_pddl, del_free)
   if plan is None:
     return None
   
-  try:
-    rep = REPRESENTATIONS[representation](domain_pddl=domain_pddl,
-                                          problem_pddl=problem_pddl)
-  except AssertionError:
-    print(f"Skipping generation of {representation} for {domain_name}")
-    return None
+  rep = REPRESENTATIONS[representation](domain_pddl=domain_pddl,
+                                        problem_pddl=problem_pddl)
+  # try:
+  #   rep = REPRESENTATIONS[representation](domain_pddl=domain_pddl,
+  #                                         problem_pddl=problem_pddl)
+  # except AssertionError:
+  #   print(f"Skipping generation of {representation} for {domain_name}")
+  #   return None
 
   problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
 
@@ -87,24 +88,16 @@ def get_graph_data(
      representation: str,
      task: str,
      domain: str="all",
-     ipc_only: bool=False,
 ) -> List[Data]:
   """ Get lots of data generated from generate_data """
   print("Loading train data...")
   print("NOTE: the data has been precomputed and saved.")
-  print("Rerun gen_data.py if representation has been updated!")
-  # if domain != "all":
-  #   return get_graph_data_domain_specific(representation=representation,
-  #                                         domain=domain,
-  #                                         task=task,
-  #                                         load_graphs=False)
+  print("Rerun gen_data/graphs.py if representation has been updated!")
   ret = []
   path = get_data_dir_path(representation=representation, task=task)
   print(f"Path to data: {path}")
   for domain_name in tqdm(sorted(list(os.listdir(path)))):
     if ".data" in domain_name:
-      continue
-    if ipc_only and "ipc-" not in domain_name:
       continue
     if domain_name in ipc_domain_info.GENERAL_COST_DOMAINS or domain_name in htg_domain_info.GENERAL_COST_DOMAINS:
       # tqdm.write(f"\t{domain_name} skipped since it does not have unit costs")
@@ -114,53 +107,22 @@ def get_graph_data(
     elif domain == "ipc-only":  # codebase getting bloated
       if "ipc-" not in domain_name:
         continue
-    elif domain == "hgn-pretraining":
+    elif domain == "goose-pretraining":  # ipc + goose
       if domain_name in goose_domain_info.DOMAINS_NOT_TO_TRAIN or "htg-" in domain_name:
         continue
-    elif domain == "hgn-unseen-pretraining":
-      if domain_name in goose_domain_info.DOMAINS_NOT_TO_TRAIN or "htg-" in domain_name or "hgn-" in domain_name:
-        continue
-    elif domain == "ipc-only":  # codebase getting bloated
-      if "ipc-" not in domain_name:
+    elif domain == "goose-unseen-pretraining":  # ipc only
+      if domain_name in goose_domain_info.DOMAINS_NOT_TO_TRAIN or "htg-" in domain_name or "goose-" in domain_name:
         continue
     else:
       if "-only" not in domain and not same_domain(domain, domain_name):
           continue
-      if "hgn-blocks-only" in domain and len(domain) > len("hgn-blocks-only"):
-        if domain_name != "hgn-blocks": continue
       elif "-only" in domain and domain.replace("-only", "")!=domain_name:
           continue
       
     for data in sorted(list(os.listdir(f"{path}/{domain_name}"))):
       next_data = torch.load(f'{path}/{domain_name}/{data}')
-      len_data = len(next_data)
-
-      if "hgn-blocks-only" in domain and len(domain) > len("hgn-blocks-only"):
-        num_tasks = int(re.findall(r'\d+', domain)[0])
-        blocks_config = re.findall(r'\d+', data)
-        blocks_seed = int(blocks_config[-1])
-        if num_tasks < blocks_seed:
-          continue
-
-      # try:
-      #   heuristics = torch.load(f'data/heuristics/{domain_name}/{data}')
-      # except:
-      #   heuristics = {}
-      heuristics = {}
-      for data in next_data:
-        data.heuristics = set()
-        data.state = set()
-      # if len(heuristics) > 0:
-      #   for data in next_data:
-      #     data.heuristics = heuristics[data.y]
       ret+=next_data
-      # if len_data > 0:
-      #   tqdm.write(domain_name, len_data)
-      # else:
-      #   tqdm.write(f"\t{domain_name} has no associated data")
-    # except Exception as e:
-    #   tqdm.write(e)
-    #   continue
+
   print(f"{domain} dataset of size {len(ret)} loaded!")
   return ret
 
@@ -204,7 +166,7 @@ def gen_graph_rep(representation: str,
   TASKS = ["h"]
 
   tasks  = get_ipc_domain_problem_files(del_free=False)
-  tasks += get_all_htg_instance_files(split=True)
+  # tasks += get_all_htg_instance_files(split=True)
   tasks += get_train_hgn_instance_files()
   # tasks = get_train_hgn_instance_files()
   # tasks = get_all_htg_instance_files(split=True)

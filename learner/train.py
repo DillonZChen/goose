@@ -64,75 +64,74 @@ def main():
     # train val pipeline
     print("Training...")
     try:
-        pbar = trange(epochs)
-        best_dict = None
-        best_metric = float('inf')
-        best_epoch = 0
-        for e in pbar:
-            t = time.time()
-            train_stats = train(model, device, train_loader, criterion, optimiser, task=task, fast_train=fast_train)
-            train_loss = train_stats['loss']
-            if val:
-              val_stats = evaluate(model, device, val_loader, criterion, 
-              task=task, fast_train=fast_train)
-              val_loss = val_stats['loss']
-              scheduler.step(val_loss)
-              combined_metric = (train_loss + 2*val_loss)/3
-              if combined_metric < best_metric:
-                best_metric = combined_metric
-                best_dict = model.model.state_dict()
-                best_epoch = e
-              if fast_train:
-                desc = f"epoch {e}, " \
-                      f"train_loss {train_loss:.2f}, " \
-                      f"val_loss {val_loss:.2f}, " \
-                      f"time {time.time() - t:.1f}"
-              else:
-                desc = f"epoch {e}, " \
-                      f"train_f1 {train_stats['f1']:.1f}, " \
-                      f"val_f1 {val_stats['f1']:.1f}, " \
-                      f"train_int {train_stats['interval']}, " \
-                      f"val_int {val_stats['interval']}, " \
-                      f"train_adm {train_stats['admis']:.1f}, " \
-                      f"val_adm {val_stats['admis']:.1f}, " \
-                      f"train_loss {train_loss:.2f}, " \
-                      f"val_loss {val_loss:.2f}, " \
-                      f"time {time.time() - t:.1f}"
-            else:  # no validation set
-              val_interval = float('inf')
-              val_loss = float('inf')
-              scheduler.step(train_loss)
-              desc = f"epoch {e}, " \
-                    f"train_f1 {train_stats['f1']:.1f}, " \
-                    f"train_int {train_stats['interval']}, " \
-                    f"train_adm {train_stats['admis']:.1f}, " \
-                    f"train_loss {train_loss:.2f}, " \
-                    f"time {time.time() - t:.1f}"
-            lr = optimiser.param_groups[0]['lr']
-            if args.tqdm:
-              tqdm.write(desc)
-              pbar.set_description(desc)
-            else:
-              print(desc)
-            if lr < 1e-5:
-                print(f"Early stopping due to small lr: {lr}")
-                break
-            # elif np.abs(train_macro_f1 - 100) < 1e-3 and np.abs(val_macro_f1 - 100) < 1e-3:
-            #     print(f"Early stopping due to almost perfect f1")
-            #     break
-            # elif train_interval == 0 and train_loss < 0.1 and val_interval == 0 and val_loss < 0.1:
-            #     print(f"Early stopping due to perfect interval and low loss")
-            #     break
+      pbar = trange(epochs)
+      best_dict = None
+      best_metric = float('inf')
+      best_epoch = 0
+      for e in pbar:
+        t = time.time()
+        train_stats = train(model, device, train_loader, criterion, optimiser, task=task, fast_train=fast_train)
+        train_loss = train_stats['loss']
+        if val:
+          val_stats = evaluate(model, device, val_loader, criterion, task=task, fast_train=fast_train)
+          val_loss = val_stats['loss']
+          scheduler.step(val_loss)
+          combined_metric = (train_loss + 2*val_loss)/3
+          if combined_metric < best_metric:
+            best_metric = combined_metric
+            best_dict = model.model.state_dict()
+            best_epoch = e
+          if fast_train:
+            desc = f"epoch {e}, " \
+                  f"train_loss {train_loss:.2f}, " \
+                  f"val_loss {val_loss:.2f}, " \
+                  f"time {time.time() - t:.1f}"
+          else:
+            desc = f"epoch {e}, " \
+                  f"train_f1 {train_stats['f1']:.1f}, " \
+                  f"val_f1 {val_stats['f1']:.1f}, " \
+                  f"train_int {train_stats['interval']}, " \
+                  f"val_int {val_stats['interval']}, " \
+                  f"train_adm {train_stats['admis']:.1f}, " \
+                  f"val_adm {val_stats['admis']:.1f}, " \
+                  f"train_loss {train_loss:.2f}, " \
+                  f"val_loss {val_loss:.2f}, " \
+                  f"time {time.time() - t:.1f}"
+        else:  # no validation set
+          val_interval = float('inf')
+          val_loss = float('inf')
+          scheduler.step(train_loss)
+          desc = f"epoch {e}, " \
+                f"train_f1 {train_stats['f1']:.1f}, " \
+                f"train_int {train_stats['interval']}, " \
+                f"train_adm {train_stats['admis']:.1f}, " \
+                f"train_loss {train_loss:.2f}, " \
+                f"time {time.time() - t:.1f}"
+        lr = optimiser.param_groups[0]['lr']
+        if args.tqdm:
+          tqdm.write(desc)
+          pbar.set_description(desc)
+        else:
+          print(desc)
+        if lr < 1e-5:
+            print(f"Early stopping due to small lr: {lr}")
+            break
+        # elif np.abs(train_macro_f1 - 100) < 1e-3 and np.abs(val_macro_f1 - 100) < 1e-3:
+        #     print(f"Early stopping due to almost perfect f1")
+        #     break
+        # elif train_interval == 0 and train_loss < 0.1 and val_interval == 0 and val_loss < 0.1:
+        #     print(f"Early stopping due to perfect interval and low loss")
+        #     break
     except KeyboardInterrupt:
-        print("Early stopping due to keyboard interrupt!")
+      print("Early stopping due to keyboard interrupt!")
 
     # save model parameters
     if best_dict is not None:
       print(f"best_avg_loss {best_metric:.8f} at epoch {best_epoch}")
       args.best_metric = best_metric
-      save_model_from_dict(best_dict, args, save=args.save_model)
+      save_model_from_dict(best_dict, args)
     else:
-      save_model(model, args, save=args.save_model)
+      save_model(model, args)
 
     if len(test_loader.dataset) > 0:
       stats = evaluate(model, device, test_loader, criterion, task=task, fast_train=fast_train)

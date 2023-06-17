@@ -40,18 +40,15 @@ class GroundedDescriptionGraph(Representation, ABC):
     actions = grounded[2]
     goals = set(str(p) for p in self.problem.goals)
     predicates = set()
-    for p in propositions:
-      predicates.add(p.predicate)
+    for prop in propositions:
+      predicates.add(prop.predicate)
     for a in actions:
       predicates.add(a.name.replace("(","").split()[0])
 
-    goal = 0
-
-    # nodes
+    """ nodes """
     for prop in propositions:
       p = str(prop)
       if p in goals:
-        goal += 1
         x_p=self._one_hot_node(GDG_FEAT_MAP.GOAL.value)
       else:
         x_p=self._zero_node()  # will get replaced in state encoding
@@ -63,7 +60,7 @@ class GroundedDescriptionGraph(Representation, ABC):
     for predicate in predicates:
       G.add_node(predicate, x=self._one_hot_node(GDG_FEAT_MAP.PREDICATE.value))
 
-    # edges
+    """ edges """
     for a in actions:
       # edges between actions and schema
       schema = a.name.replace("(","").split()[0]
@@ -81,8 +78,6 @@ class GroundedDescriptionGraph(Representation, ABC):
       # edge between propositions and predicates
       predicate = prop.predicate
       G.add_edge(u_of_edge=str(prop), v_of_edge=predicate, edge_type=GDG_EDGE_TYPES.PREDICATE.value)
-
-    assert goal == len(goals)
 
     # map indices to nodes and vice versa
     self._node_to_i = {}

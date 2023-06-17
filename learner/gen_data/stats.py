@@ -102,48 +102,37 @@ def get_all_instance_files(del_free: bool = False, get_domain_name: bool=False) 
   return ret
 
 
-def optimal_plan_exists(domain_name: str, domain_pddl: str, problem_pddl: str, del_free: bool, parser: str):
-  if parser=="powerlifted":
-    suffix = "states"
-    domain_name = domain_name.replace("htg-", '')
-  else:
-    suffix = "pkl"
+def optimal_plan_exists(domain_name: str, domain_pddl: str, problem_pddl: str, del_free: bool):
+  domain_name = domain_name.replace("htg-", '')
   problem_name = os.path.basename(problem_pddl)
-  del_free_suffix = 'df' if del_free else 'opt'
-  save_dir = f'data/plan_objects/{parser}/{del_free_suffix}/{domain_name}'
-  save_path = f'{save_dir}/{problem_name}.{suffix}'.replace(".pddl", "")
+  save_dir = f'data/plan_objects//{domain_name}'
+  save_path = f'{save_dir}/{problem_name}.states'.replace(".pddl", "")
   if os.path.exists(save_path):  # if plan found, load and return
-    if parser=="powerlifted":
-      data = []
-      lines = open(save_path, 'r').readlines()
-      plan_length = len(lines)-1
-      for i, line in enumerate(lines):
-        if line[0]==";":
-          assert "GOOD" in line
-        else:
-          line = line.replace("\n", "")
-          s = set()
-          for fact in line.split():
-            if "(" not in fact:
-              lime = f"({fact})"
-            else:
-              pred = fact[:fact.index("(")]
-              fact = fact.replace(pred+"(","").replace(")","")
-              args = fact.split(",")[:-1]
-              lime = f"({pred}"
-              for j, arg in enumerate(args):
-                lime+=f" {arg}"
-                if j == len(args)-1:
-                  lime+=")"
-            s.add(lime)
-          y = plan_length - i - 1
-          a = None
-          data.append((s, y, a))
-      return data
-    else:
-      file = open(save_path, 'rb')
-      data = pickle.load(file)
-      file.close()
+    data = []
+    lines = open(save_path, 'r').readlines()
+    plan_length = len(lines)-1
+    for i, line in enumerate(lines):
+      if line[0]==";":
+        assert "GOOD" in line
+      else:
+        line = line.replace("\n", "")
+        s = set()
+        for fact in line.split():
+          if "(" not in fact:
+            lime = f"({fact})"
+          else:
+            pred = fact[:fact.index("(")]
+            fact = fact.replace(pred+"(","").replace(")","")
+            args = fact.split(",")[:-1]
+            lime = f"({pred}"
+            for j, arg in enumerate(args):
+              lime+=f" {arg}"
+              if j == len(args)-1:
+                lime+=")"
+          s.add(lime)
+        y = plan_length - i - 1
+        a = None
+        data.append((s, y, a))
     return data
   else:
     return None
