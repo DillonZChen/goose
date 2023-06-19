@@ -1,8 +1,6 @@
 #!/bin/bash
-#SBATCH --mail-type=END,FAIL # Mail events
-#SBATCH --mail-user=dillon.chen1@gmail.com # Where to send mail
 #SBATCH --ntasks=1 # Run on a single CPU
-#SBATCH --mem=64gb # Job memory request
+#SBATCH --mem=32gb # Job memory request
 #SBATCH --time=120:00:00 # Time limit hrs:min:sec
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1

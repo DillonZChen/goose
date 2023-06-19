@@ -24,7 +24,6 @@ plan
 # logs/
 plots/
 
-states
 htg-benchmarks
 ipc-benchmarks
 # goose-benchmarks

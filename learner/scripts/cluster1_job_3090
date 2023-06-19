@@ -1,12 +1,9 @@
 #!/bin/bash
 #SBATCH --ntasks=1
-#SBATCH --mem=64gb # Job memory request
+#SBATCH --mem=32gb # Job memory request
 #SBATCH --time=120:00:00 # Time limit hrs:min:sec
 #SBATCH --partition=gpu
-#SBATCH --gres=gpu:1
-#SBATCH --account=planopt
-#SBATCH --partition=planopt
-#SBATCH --qos=planopt
+#SBATCH --gres=gpu:3090:1
 
 pwd; hostname; date; lscpu; nvidia-smi; nvidia-smi -L
 echo "--- exec ---"
