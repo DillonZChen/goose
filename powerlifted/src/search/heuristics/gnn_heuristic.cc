@@ -31,7 +31,7 @@ GNNHeuristic::GNNHeuristic(const Task &task,
 
     // Append python module directory to the path
     py::module sys = py::module::import("sys");
-    sys.attr("path").attr("append")(path + "/src/");
+    sys.attr("path").attr("append")(path);
 
     // Force all output being printed to stdout. Otherwise INFO logging from
     // python will be printed to stderr, even if it is not an error.

@@ -1,7 +1,7 @@
 import os
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-from util.goose_domain_info import GOOSE_DOMAINS
+from dataset.goose_domain_info import GOOSE_DOMAINS
 from representation import CONFIG
 import argparse
 
@@ -26,7 +26,7 @@ def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=600):
   description = f"{domain_name}_{os.path.basename(pf).replace('.pddl','')}_{search}_{os.path.basename(m).replace('.dt', '')}"
   output_file = f"lifted/{description}.lifted"
   plan_file = f"plans/{description}.plan"
-  cmd = f"./../powerlifted.py " \
+  cmd = f"./../powerlifted/powerlifted.py --gpu " \
         f"-d {df} " \
         f"-i {pf} " \
         f"-m {m} " \
@@ -34,8 +34,9 @@ def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=600):
         f"-s {search} " \
         f"--time-limit {timeout} " \
         f"--seed {seed} " \
-        f"--translator-output-file {output_file}" \
-        f"--plan {plan_file}"
+        f"--translator-output-file {output_file} " \
+        f"--plan-file {plan_file}"
+  cmd = f"export PLAN_GNN={os.getcwd()} && {cmd}"
   return cmd
 
 
@@ -66,10 +67,11 @@ def main():
         os.makedirs(log_dir, exist_ok=True)
         df = f"../benchmarks/goose/{domain}/domain.pddl"
         val_dir = f"../benchmarks/goose/{domain}/val"
-        for pf in os.listdir(val_dir):
-          log_file = f"{log_dir}/{pf.replace('.pddl', '')}_{model_file}.log"
+        for f in os.listdir(val_dir):
+          log_file = f"{log_dir}/{f.replace('.pddl', '')}_{model_file}.log"
           if not os.path.exists(log_file):
-            cmd = pwl_cmd(domain, df, pf, model_file, "gbbfs", 0)
+            pf = f"{val_dir}/{f}"
+            cmd = pwl_cmd(domain, df, pf, f"trained_models/{model_file}", "gbbfs", 0)
             os.system("date")
             print("validating")
             print(cmd)

@@ -2,7 +2,6 @@
 #SBATCH --ntasks=1
 #SBATCH --mem=64gb # Job memory request
 #SBATCH --time=120:00:00 # Time limit hrs:min:sec
-#SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --account=planopt
 #SBATCH --partition=planopt

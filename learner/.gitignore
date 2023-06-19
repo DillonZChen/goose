@@ -9,3 +9,5 @@ plans_*
 trained_models*
 *.sif
 data
+lifted
+plans
