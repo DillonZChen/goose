@@ -1,5 +1,5 @@
+from planning.translate.pddl import Atom, NegatedAtom, Truth
 from .ldg import LiftedDescriptionGraph
-from pddl_parser.pddl import Atom, NegatedAtom, Truth
 from representation.base_class import *
 
 class LDG_FEAT_MAP(Enum):
@@ -24,7 +24,7 @@ EDGE_TYPE = OrderedDict({
   "eff_neg": 5,
 })
 
-class EdgeLabaledLiftedDescriptionGraph(LiftedDescriptionGraph, ABC):
+class EdgeLabelledLiftedDescriptionGraph(LiftedDescriptionGraph, ABC):
   def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
     super().__init__(domain_pddl, problem_pddl)
 

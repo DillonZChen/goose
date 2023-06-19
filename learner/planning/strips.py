@@ -1,7 +1,7 @@
 import os
 import pickle
 import sys
-import pddl_parser
+import planning
 from abc import ABC, abstractmethod
 from datetime import datetime
 from typing import FrozenSet, List, NamedTuple, TypeVar
@@ -128,24 +128,30 @@ class STRIPSProblem(ABC):
         return [(op, op.apply(state)) for op in self.actions if op.applicable(state)]
 
 
+class Operator():
+    def __init__(self, name, preconditions, add_effects, del_effects):
+        self.name = name
+        self.preconditions = preconditions
+        self.add_effects = add_effects
+        self.del_effects = del_effects
+
+
 class FDRProblem():
     def __init__(self, domain_pddl: str, problem_pddl: str):
 
         dt = datetime.now().strftime("%d_%m_%Y_%H_%M_%S")
-        sas_file = f"LIMEoutput_{dt}_{os.path.basename(problem_pddl)}_{domain_pddl.replace('/', '')}.sas"
-        if os.path.exists("downward/fast-downward.py"):
-          cmd = f"./downward/fast-downward.py --sas-file {sas_file} {domain_pddl} {problem_pddl}"
-          os.popen(cmd).readlines()
-        else:  # hack for running from cpp
-          script= os.path.expandvars(f"${{PLAN_GNN}}/src/downward/fast-downward.py")
-          assert os.path.exists(script)
-          cmd = f"python3 {script} --sas-file {sas_file} {domain_pddl} {problem_pddl}"
-          os.popen(cmd).readlines()
+        sas_file = f"sas_file_output_{dt}_{os.path.basename(problem_pddl)}_{domain_pddl.replace('/', '')}.sas"
+
+        task = planning.translate.pddl_parser.open(domain_filename=domain_pddl, task_filename=problem_pddl)
+        sas_task = planning.translate.pddl_to_sas(task)
+        with open(sas_file, 'w') as output_file:
+            sas_task.output(output_file)
+
         assert os.path.exists(sas_file)
 
         self.name = os.path.basename(problem_pddl).replace(".pddl", "")
         self.actions = set()
-        self.goals = {}
+        self.goal = {}
 
         var_domain = {}
         fact_to_varval = {}
@@ -230,7 +236,7 @@ class FDRProblem():
                     toks = getline().split()
                     var = toks[0]
                     val = toks[1]
-                    self.goals[var] = val
+                    self.goal[var] = val
                 assert "end_goal" in getline()
 
         self.fact_to_varval = fact_to_varval
@@ -242,17 +248,16 @@ class FDRProblem():
 def get_strips_problem(
     domain_pddl: str,
     problem_pddl: str,
+    fdr: bool=False,
 ):
     """
     A factory-ish pattern to abstract the underlying implementation using
     Pyperplan away
     """
 
-    """ saving causes us problems when using with pybind11 """
-    problem = pddl_parser.open(domain_filename=domain_pddl, task_filename=problem_pddl)
-    # if parser=="preprocess-h2":  # not actually using prperocess-h2 anymore 
-    #     problem = FDRProblem(domain_pddl=domain_pddl, problem_pddl=problem_pddl)
-    # elif parser=="downward":
-    #     problem = pddl_parser.open(domain_filename=domain_pddl, task_filename=problem_pddl)
+    if fdr:
+        problem = FDRProblem(domain_pddl=domain_pddl, problem_pddl=problem_pddl)
+    else:
+        problem = planning.translate.pddl_parser.open(domain_filename=domain_pddl, task_filename=problem_pddl)
 
     return problem

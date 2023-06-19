@@ -18,7 +18,7 @@ VV_EDGE=0
 PRE_EDGE=1
 EFF_EDGE=2
 
-class EdgeLabeledFdrProblemDescriptionGraph(Representation, ABC):
+class EdgeLabelledFdrProblemDescriptionGraph(Representation, ABC):
   def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
     super().__init__(domain_pddl, problem_pddl)
 
@@ -33,10 +33,10 @@ class EdgeLabeledFdrProblemDescriptionGraph(Representation, ABC):
     G = self._create_graph()
 
     variables = {}
-    goal = self.problem.goals
+    goal = self.problem.goal
     goals = 0
 
-    for var, val in self.problem.varval_to_fact:  # disgusting sas+ to strips under the hood
+    for var, val in self.problem.varval_to_fact:  # see planning.strips.FDRProblem
       if var not in variables:
         variables[var] = set()
       variables[var].add(val)

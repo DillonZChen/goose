@@ -1,13 +1,11 @@
-from .sdg import StripsProblemDescriptionGraph
-from .sdg_el import EdgeLabeledStripsProblemDescriptionGraph
+from .sdg_el import EdgeLabelledStripsProblemDescriptionGraph
 
-from .fdg import FdrProblemDescriptionGraph
-from .fdg_el import EdgeLabeledFdrProblemDescriptionGraph
+from .fdg_el import EdgeLabelledFdrProblemDescriptionGraph
 
 from .ldg import LiftedDescriptionGraph
-from .ldg_el import EdgeLabaledLiftedDescriptionGraph
+from .ldg_el import EdgeLabelledLiftedDescriptionGraph
 
-from .gdg_el import GroundedDescriptionGraph
+from .gdg_el import EdgeLabelledGroundedDescriptionGraph
 
 from .node_features import add_features
 
@@ -15,15 +13,10 @@ from .config import CONFIG, N_EDGE_TYPES
 
 
 REPRESENTATIONS = {
-  "sdg": StripsProblemDescriptionGraph,
-  "sdg-el": EdgeLabeledStripsProblemDescriptionGraph,
-
-  "fdg": FdrProblemDescriptionGraph,
-  "fdg-el": EdgeLabeledFdrProblemDescriptionGraph,
-
+  "sdg-el": EdgeLabelledStripsProblemDescriptionGraph,
+  "fdg-el": EdgeLabelledFdrProblemDescriptionGraph,
   "ldg": LiftedDescriptionGraph,
-  "ldg-el": EdgeLabaledLiftedDescriptionGraph,
-
-  "gdg-el": GroundedDescriptionGraph,
+  "ldg-el": EdgeLabelledLiftedDescriptionGraph,
+  "gdg-el": EdgeLabelledGroundedDescriptionGraph,
 }
 

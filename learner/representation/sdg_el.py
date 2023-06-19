@@ -13,7 +13,7 @@ ADD_EDGE=1
 DEL_EDGE=2
 
 
-class EdgeLabeledStripsProblemDescriptionGraph(Representation, ABC):
+class EdgeLabelledStripsProblemDescriptionGraph(Representation, ABC):
   def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
     super().__init__(domain_pddl, problem_pddl)
 
@@ -37,7 +37,7 @@ class EdgeLabeledStripsProblemDescriptionGraph(Representation, ABC):
     grounded = explore(self.problem)
     propositions = set(str(p) for p in grounded[1])
     actions = grounded[2]
-    goals = set(str(p) for p in self.problem.goals)
+    goals = set(str(p) for p in self.problem.goal.parts)
 
     goal = 0
 
@@ -56,17 +56,17 @@ class EdgeLabeledStripsProblemDescriptionGraph(Representation, ABC):
     # edges
     for a in actions:
       for p in a.precondition:
-        prop = str(p)
-        # assert prop in G.nodes
-        G.add_edge(u_of_edge=prop, v_of_edge=a, edge_type=PRE_EDGE)    # p_T -> a
+        assert str(p) in G.nodes, f"{str(p)} not in nodes"
+        assert a in G.nodes
+        G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=PRE_EDGE)
       for p in a.add_effects:
-        prop = str(p)
-        # assert prop in G.nodes
-        G.add_edge(u_of_edge=a,   v_of_edge=prop, edge_type=ADD_EDGE)  # a -> p_T
+        assert str(p) in G.nodes, f"{str(p)} not in nodes"
+        assert a in G.nodes
+        G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=ADD_EDGE)
       for p in a.del_effects:
-        prop = str(p)
-        # assert prop in G.nodes
-        G.add_edge(u_of_edge=a,   v_of_edge=prop, edge_type=DEL_EDGE)  # a -> p_F
+        assert str(p) in G.nodes, f"{str(p)} not in nodes"
+        assert a in G.nodes
+        G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=DEL_EDGE)
 
     assert goal == len(goals)
 

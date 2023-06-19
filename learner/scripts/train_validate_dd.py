@@ -24,7 +24,7 @@ def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=600):
   os.makedirs("lifted", exist_ok=True)
   os.makedirs("plan", exist_ok=True)
   description = f"{domain_name}_{os.path.basename(pf).replace('.pddl','')}_{search}_{os.path.basename(m).replace('.dt', '')}"
-  output_file = f"lifted/{description}.lifted"
+  lifted_file = f"lifted/{description}.lifted"
   plan_file = f"plans/{description}.plan"
   cmd = f"./../powerlifted/powerlifted.py --gpu " \
         f"-d {df} " \
@@ -34,10 +34,10 @@ def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=600):
         f"-s {search} " \
         f"--time-limit {timeout} " \
         f"--seed {seed} " \
-        f"--translator-output-file {output_file} " \
+        f"--translator-output-file {lifted_file} " \
         f"--plan-file {plan_file}"
   cmd = f"export PLAN_GNN={os.getcwd()} && {cmd}"
-  return cmd
+  return cmd, lifted_file
 
 
 def main():
@@ -69,13 +69,18 @@ def main():
         val_dir = f"../benchmarks/goose/{domain}/val"
         for f in os.listdir(val_dir):
           log_file = f"{log_dir}/{f.replace('.pddl', '')}_{model_file}.log"
-          if not os.path.exists(log_file):
+          finished_correctly = False
+          if os.path.exists(log_file):
+            log = open(log_file, 'r').read()
+            finished_correctly = "timed out after" in log or "Solution found." in log
+          if not finished_correctly:
             pf = f"{val_dir}/{f}"
-            cmd = pwl_cmd(domain, df, pf, f"trained_models/{model_file}", "gbbfs", 0)
+            cmd,lifted_file = pwl_cmd(domain, df, pf, f"trained_models/{model_file}", "gbbfs", 0)
             os.system("date")
             print("validating")
             print(cmd)
             os.system(f"{cmd} > {log_file}")
+            os.remove(lifted_file)
 
 
 if __name__ == "__main__":

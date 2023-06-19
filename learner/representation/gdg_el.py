@@ -15,7 +15,7 @@ class GDG_EDGE_TYPES(Enum):
   PREDICATE=3
 
 
-class GroundedDescriptionGraph(Representation, ABC):
+class EdgeLabelledGroundedDescriptionGraph(Representation, ABC):
   def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
     super().__init__(domain_pddl, problem_pddl)
 
@@ -38,7 +38,7 @@ class GroundedDescriptionGraph(Representation, ABC):
     grounded = explore(self.problem)
     propositions = set(grounded[1])
     actions = grounded[2]
-    goals = set(str(p) for p in self.problem.goals)
+    goals = set(str(p) for p in self.problem.goal.parts)
     predicates = set()
     for prop in propositions:
       predicates.add(prop.predicate)
@@ -70,15 +70,15 @@ class GroundedDescriptionGraph(Representation, ABC):
 
       # edges between actions and propositions
       for p in a.precondition:
-        assert str(p) in G.nodes
+        assert str(p) in G.nodes, f"{str(p)} not in nodes"
         assert a in G.nodes
         G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=GDG_EDGE_TYPES.PRE_EDGE.value)
       for p in a.add_effects:
-        assert str(p) in G.nodes
+        assert str(p) in G.nodes, f"{str(p)} not in nodes"
         assert a in G.nodes
         G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=GDG_EDGE_TYPES.ADD_EDGE.value)
       for p in a.del_effects:
-        assert str(p) in G.nodes
+        assert str(p) in G.nodes, f"{str(p)} not in nodes"
         assert a in G.nodes
         G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=GDG_EDGE_TYPES.DEL_EDGE.value)
 

@@ -12,7 +12,7 @@ import random
 
 from typing import FrozenSet, List, NamedTuple, TypeVar, Tuple, Dict, Optional, Union
 from torch import Tensor
-from asg.instantiate import instantiate, explore
+from planning.translate.instantiate import instantiate, explore
 from enum import Enum
 from collections import OrderedDict
 
@@ -41,7 +41,8 @@ class Representation(ABC):
     self.rep_name = None
 
     self.problem = get_strips_problem(domain_pddl=self.domain_pddl,
-                                      problem_pddl=self.problem_pddl)
+                                      problem_pddl=self.problem_pddl,
+                                      fdr="FdrProblemDescriptionGraph" in type(self).__name__)
 
     self.x = None
     self.node_dim = None
@@ -80,7 +81,7 @@ class Representation(ABC):
     """
     assert self.rep_name is not None
     self.directed = CONFIG[self.rep_name]["directed"]
-    tqdm.write(f'{self.rep_name} for {self.problem.name} created!')
+    tqdm.write(f'{self.rep_name} created!')
     tqdm.write(f'time taken: {time.time() - start_time:.4f}s')
     tqdm.write(f'num nodes: {self.num_nodes}')
     tqdm.write(f'num edges: {self.num_edges}')

@@ -1,4 +1,4 @@
-from pddl_parser.pddl import Atom, NegatedAtom, Truth
+from planning.translate.pddl import Atom, NegatedAtom, Truth
 from representation.base_class import *
 
 class LDG_FEAT_MAP(Enum):

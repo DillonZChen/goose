@@ -94,13 +94,13 @@ utils::ExitCode GreedyBatchBestFirstSearch<PackedStateT>::search(const Task &tas
 
         if (succs.size() > 0) {
             std::vector<int> heuristics = heuristic.compute_heuristic_batch(succs, task);
-            ////////////////////////////// REMOVE
-            ////////////////////////////// REMOVE
-            ////////////////////////////// REMOVE
-            return utils::ExitCode::SUCCESS; ////////////////////////////// REMOVE
-             ////////////////////////////// REMOVE 
-              ////////////////////////////// REMOVE
-               ////////////////////////////// REMOVE
+            // ////////////////////////////// REMOVE
+            // ////////////////////////////// REMOVE
+            // ////////////////////////////// REMOVE
+            // return utils::ExitCode::SUCCESS; ////////////////////////////// REMOVE
+            //  ////////////////////////////// REMOVE 
+            //   ////////////////////////////// REMOVE
+            //    ////////////////////////////// REMOVE
 
             for (size_t i=0; i < heuristics.size(); i++) {
                 auto& child_node = child_nodes[i];
