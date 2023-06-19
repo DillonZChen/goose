@@ -21,21 +21,21 @@ def arg_to_params(args, in_feat=4, out_feat=1):
     vn = args.vn if hasattr(args, "vn") else False
     rep = args.rep
     model_params = {
-        'model_name': model_name,
-        'in_feat': in_feat,
-        'out_feat': out_feat,
-        'nlayers': nlayers,
-        'share_layers': share_layers,
-        'n_edge_labels': n_edge_labels,
-        'nhid': nhid,
-        'nhid2': nhid2,
-        'drop': drop,
-        'pool': pool,
-        'nheads': nheads,
-        'double': double,
-        'task': task,
-        'rep': rep,
-        'vn': vn,
+      'model_name': model_name,
+      'in_feat': in_feat,
+      'out_feat': out_feat,
+      'nlayers': nlayers,
+      'share_layers': share_layers,
+      'n_edge_labels': n_edge_labels,
+      'nhid': nhid,
+      'nhid2': nhid2,
+      'drop': drop,
+      'pool': pool,
+      'nheads': nheads,
+      'double': double,
+      'task': task,
+      'rep': rep,
+      'vn': vn,
     }
     return model_params
 
@@ -57,7 +57,7 @@ def print_arguments(args, ignore_params=set()):
 
 
 def save_model_from_dict(model_dict, args):
-    if not hasattr(args, "save_file") and args.save_file is not None:
+    if not hasattr(args, "save_file") or args.save_file is None:
       return
     print("Saving model...")
     save_dir = 'trained_models'

@@ -21,7 +21,6 @@ DOMAINS_NOT_TO_TRAIN = {
 
 
 def get_domain_instance_pddl_for_domain(domain: str, split: str):
-  # assert domain in HTG_DOMAINS
   ret = []
   dir_of_pddls = f"../benchmarks/goose/{domain}"
   df = f"{dir_of_pddls}/domain.pddl"
@@ -31,28 +30,25 @@ def get_domain_instance_pddl_for_domain(domain: str, split: str):
   return ret
 
 
-def get_all_hgn_instance_files():
+def get_all_goose_instance_files():
     ret = []
     for domain in sorted(GOOSE_DOMAINS):
         ret += get_domain_instance_pddl_for_domain(domain, "instances")
-    # print(f"num hgn train instances: {len(ret)}")
+    # print(f"num goose train instances: {len(ret)}")
     return ret
 
 
-def get_train_hgn_instance_files():
+def get_train_goose_instance_files():
     ret = []
     for domain in sorted(GOOSE_DOMAINS):
         ret += get_domain_instance_pddl_for_domain(domain, "train")
-    # print(f"num hgn train instances: {len(ret)}")
+    # print(f"num goose train instances: {len(ret)}")
     return ret
 
 
-def get_test_hgn_instance_files():
+def get_test_goose_instance_files():
     ret = []
     for domain in sorted(GOOSE_DOMAINS):
         ret += get_domain_instance_pddl_for_domain(domain, "test")
-    # print(f"num hgn test instances: {len(ret)}")
+    # print(f"num goose test instances: {len(ret)}")
     return ret
-
-# get_train_hgn_instance_files()
-# get_test_hgn_instance_files()

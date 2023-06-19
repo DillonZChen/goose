@@ -1,7 +1,7 @@
 import os
 import sys
 
-from gen_data.graphs import get_graph_data
+from dataset.generate_graphs import get_graph_data
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 

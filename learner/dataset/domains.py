@@ -1,7 +1,7 @@
 import os
-from util.goose_domain_info import *
-from util.htg_domain_info import *
-from util.ipc_domain_info import *
+from dataset.goose_domain_info import *
+from dataset.htg_domain_info import *
+from dataset.ipc_domain_info import *
 
 def get_problem_name(problem_file: str):
   return os.path.basename(problem_file).replace(".pddl", "")

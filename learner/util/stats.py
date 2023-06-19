@@ -68,7 +68,7 @@ def get_y_stats(dataset):
   return ys
 
 
-def get_stats(dataset, task: str, iteration_stats=False, desc=""):
+def get_stats(dataset, iteration_stats=False, desc=""):
   if len(dataset) == 0:
     return
   cnt = {}
@@ -79,12 +79,11 @@ def get_stats(dataset, task: str, iteration_stats=False, desc=""):
   iterations = []
 
   for data in dataset:
-    if task=="h":
-      y = data.y
-      if y not in cnt:
-        cnt[y] = 0
-      cnt[y] += 1
-      max_cost = max(max_cost, round(y))
+    y = data.y
+    if y not in cnt:
+      cnt[y] = 0
+    cnt[y] += 1
+    max_cost = max(max_cost, round(y))
 
     if iteration_stats:
       iterations.append(data.iterations)
@@ -108,15 +107,13 @@ def get_stats(dataset, task: str, iteration_stats=False, desc=""):
 
   # Cost/y distribution
   # print('Cost distribution')
-  if task=="h":
-    ys = get_y_stats(dataset)
+  ys = get_y_stats(dataset)
 
   # Statistics
   print_quartile_desc(desc)
   if iteration_stats:
     print_quartiles("iterations:", iterations)
-  if task=="h":
-    print_quartiles("costs:", ys)
+  print_quartiles("costs:", ys)
   print_quartiles("n_nodes:", graph_nodes)
   print_quartiles("n_edges:", graph_edges)
   print_quartiles("density:", graph_dense, floats=True)

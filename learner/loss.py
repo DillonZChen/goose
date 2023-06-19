@@ -78,15 +78,10 @@ class PenaltyEnhancedMSELoss():
     return loss
 
 LOSS = {
-  "h": {
-    "mse": MSELoss,
-    "wmse": WeightedMSELoss,
-    "pemse": PenaltyEnhancedMSELoss,
-    "mmd": MMD,
-    "coral": DeepCORAL,
-  },
-  "a": {
-    "bce": BCEWithLogitsLoss,
-  }
+  "mse": MSELoss,
+  "wmse": WeightedMSELoss,
+  "pemse": PenaltyEnhancedMSELoss,
+  "mmd": MMD,
+  "coral": DeepCORAL,
 }
 

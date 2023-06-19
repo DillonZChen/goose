@@ -5,10 +5,8 @@ import pddl_parser
 from abc import ABC, abstractmethod
 from datetime import datetime
 from typing import FrozenSet, List, NamedTuple, TypeVar
-
 from tqdm.auto import tqdm
-
-from util import get_domain_name, get_problem_name
+from dataset import get_domain_name, get_problem_name
 
 # Proposition - i.e. fact, atom
 Proposition = TypeVar("Proposition", bound=str)

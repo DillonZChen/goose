@@ -59,7 +59,6 @@ GENERAL_COST_DOMAINS = {
 }
 
 def get_domain_instance_pddl_for_domain(domain: str):
-  # assert domain in HTG_DOMAINS
   ret = []
   for domain_dir in os.listdir("../benchmarks/htg"):
     if domain in domain_dir:
