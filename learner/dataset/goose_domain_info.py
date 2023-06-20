@@ -1,16 +1,17 @@
 import os
 
-GOOSE_DOMAINS = {
+GOOSE_DOMAINS = [
+    "gripper",
+    "n-puzzle",
+    "spanner",
+    "visitsome",
+    "visitall",
     "blocks",
     "ferry",
-    "gripper",
     # "hanoi",
-    "n-puzzle",
     "sokoban",
-    "spanner",
-    "visitall",
-    "visitsome",
-}
+]
+
 
 DOMAINS_NOT_TO_TRAIN = {
   "ipc-1998-gripper-1",
