@@ -27,10 +27,6 @@ class EdgeLabelledGroundedDescriptionGraph(Representation, ABC):
     return
 
   def _compute_graph_representation(self) -> None:
-    """
-    Generates graph representation of a problem for input into the GNN. Given a state,
-    we need to further concatenate binary values to indicate which propositions are set.
-    """
 
     G = self._create_graph()
 
@@ -69,7 +65,7 @@ class EdgeLabelledGroundedDescriptionGraph(Representation, ABC):
       G.add_edge(u_of_edge=a, v_of_edge=schema, edge_type=GDG_EDGE_TYPES.PREDICATE.value)
 
       # edges between actions and propositions
-      for _, p in a.precondition:
+      for p in a.precondition:
         assert str(p) in G.nodes, f"{str(p)} not in nodes"
         assert a in G.nodes
         G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=GDG_EDGE_TYPES.PRE_EDGE.value)

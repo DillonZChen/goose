@@ -97,8 +97,6 @@ def main():
                   f"val_loss {val_loss:.2f}, " \
                   f"time {time.time() - t:.1f}"
         else:  # no validation set
-          val_interval = float('inf')
-          val_loss = float('inf')
           scheduler.step(train_loss)
           desc = f"epoch {e}, " \
                 f"train_f1 {train_stats['f1']:.1f}, " \
@@ -112,15 +110,9 @@ def main():
           pbar.set_description(desc)
         else:
           print(desc)
-        if lr < 1e-5:
+        if lr < 1e-4:
             print(f"Early stopping due to small lr: {lr}")
             break
-        # elif np.abs(train_macro_f1 - 100) < 1e-3 and np.abs(val_macro_f1 - 100) < 1e-3:
-        #     print(f"Early stopping due to almost perfect f1")
-        #     break
-        # elif train_interval == 0 and train_loss < 0.1 and val_interval == 0 and val_loss < 0.1:
-        #     print(f"Early stopping due to perfect interval and low loss")
-        #     break
     except KeyboardInterrupt:
       print("Early stopping due to keyboard interrupt!")
 
@@ -133,7 +125,7 @@ def main():
       save_model(model, args)
 
     if len(test_loader.dataset) > 0:
-      stats = evaluate(model, device, test_loader, criterion, task=task, fast_train=fast_train)
+      stats = evaluate(model, device, test_loader, criterion, fast_train=fast_train)
       print(f"Test results:")
       desc = f"test_f1 {stats['f1']:.1f}, " \
              f"test_adm {stats['admis']:.1f}, " \

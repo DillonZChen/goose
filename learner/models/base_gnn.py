@@ -4,6 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import time
 import torch
+import warnings
 from planning.strips import Proposition
 from representation import REPRESENTATIONS, add_features, CONFIG
 from torch_geometric.nn import (global_add_pool, global_max_pool, global_mean_pool)
@@ -142,8 +143,8 @@ class BaseGNN(ABC, nn.Module):
     x = self.emb(x)
 
     if self.vn:
-      for layer, vn_layer in zip(self.layers, self.vn_layers):  # TODO None case
-        x = layer(x, edge_index) + vn_layer(self.pool(x, batch))[batch]
+      for layer, vn_layer in zip(self.layers, self.vn_layers):
+        x = layer(x, edge_index) + vn_layer(global_mean_pool(x, batch))[batch]
         x = F.relu(x)
     else:
       for layer in self.layers:

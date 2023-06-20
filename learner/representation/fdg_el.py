@@ -41,7 +41,7 @@ class EdgeLabelledFdrProblemDescriptionGraph(Representation, ABC):
         variables[var] = set()
       variables[var].add(val)
 
-    # var val variables nodes and edges
+    """ var val variables nodes and edges """
     for var in variables:
       G.add_node(var, x=self._one_hot_node(self._FEAT_MAP[VAR]))
       for val in variables[var]:
@@ -58,7 +58,7 @@ class EdgeLabelledFdrProblemDescriptionGraph(Representation, ABC):
         G.add_edge(u_of_edge=var, v_of_edge=val_node, edge_type=VV_EDGE)
     assert goals == len(goal)
 
-    # action nodes and edges
+    """ action nodes and edges """
     for action in self.problem.actions:
       action_node = action.name
       G.add_node(action_node, x=self._one_hot_node(self._FEAT_MAP[ACTION]))

@@ -1,5 +1,5 @@
 from .base_gnn import *
-from torch_geometric.nn.conv import RGCNConv, FastRGCNConv#, CuGraphRGCNConv
+from torch_geometric.nn.conv import RGCNConv, FastRGCNConv
 
 
 class ELMPNNLayer(Module):
@@ -20,26 +20,6 @@ class ELMPNNLayer(Module):
       x_out = self.linear(x)
       x_out += self.conv(x, edge_index, edge_type)
       return x_out
-
-# class ELMPNNLayer(Module):
-#     def __init__(self, in_features: int, out_features: int, n_edge_labels: int):
-#       super(ELMPNNLayer, self).__init__()
-#       self.n_edge_labels = n_edge_labels
-#       self.convs = torch.nn.ModuleList()
-#       for _ in range(n_edge_labels):
-#         self.convs.append(LinearMaxConv(in_features, out_features))
-#         # self.convs.append(LinearMaxConv(in_features, out_features).jittable())
-#       self.linear = Linear(in_features, out_features)
-#       self.n_proc = min(self.n_edge_labels, torch.multiprocessing.cpu_count())
-#       return
-    
-#     def forward(self, x: Tensor, list_of_edge_index: List[Tensor]) -> Tensor:
-
-#       x_out = self.linear(x)
-#       for i, conv in enumerate(self.convs):  # bottleneck
-#         x_out += conv(x, list_of_edge_index[i])
-
-#       return x_out
     
 
 """ GNN with different weights for different edge labels """
@@ -58,7 +38,7 @@ class ELMPNN(BaseGNN):
     x = self.emb(x)
     if self.vn:
       for layer, vn_layer in zip(self.layers, self.vn_layers):
-        x = layer(x, list_of_edge_index) + vn_layer(self.pool(x, batch))[batch]
+        x = layer(x, list_of_edge_index) + vn_layer(global_mean_pool(x, batch))[batch]
         x = F.relu(x)
     else:
       for layer in self.layers:

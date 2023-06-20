@@ -16,7 +16,7 @@ def create_parser():
 
     parser.add_argument('--nheads', type=int, default=2)
     parser.add_argument('--share-layers', action='store_true')
-    parser.add_argument('--pool', type=str, default="mean")
+    parser.add_argument('--pool', type=str, default="sum")
     parser.add_argument('--drop', type=float, default=0.0, help="probability of an element to be zeroed")
     parser.add_argument('--double', action='store_true')
     parser.add_argument('--vn', help='virtual node', action='store_true')
