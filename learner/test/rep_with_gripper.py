@@ -2,7 +2,7 @@ import os
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from representation import CONFIG, REPRESENTATIONS
-from dataset.generate_graphs import gen_graph_rep
+from learner.dataset.graphs import gen_graph_rep
 import argparse
 
 VAL_REPEATS = 3
@@ -36,10 +36,14 @@ def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=120):
 def main():
   parser=argparse.ArgumentParser()
   parser.add_argument("rep", type=str, choices=REPRESENTATIONS)
+  parser.add_argument("--graph-only", action='store_true', dest="graph_only")
   args = parser.parse_args()
   rep = args.rep
 
   gen_graph_rep(representation=rep, regenerate=True, domain=f"goose-{DOMAIN}")
+
+  if args.graph_only:
+    return
 
   os.system("rm -rf logs/tests")
 

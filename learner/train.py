@@ -110,7 +110,7 @@ def main():
           pbar.set_description(desc)
         else:
           print(desc)
-        if lr < 1e-4:
+        if lr < 1e-5:
             print(f"Early stopping due to small lr: {lr}")
             break
     except KeyboardInterrupt:

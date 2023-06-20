@@ -39,6 +39,9 @@ def generate_graph_from_domain_problem_pddl(
   problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
 
   for s, y, a in plan:
+    if representation in {"ldg-el"}:
+      s = rep.str_to_state(s)
+
     x, edge_index = rep.get_state_enc(s)
     applicable_action=None  # requires refactoring representation classes
     graph_data = Data(x=x,
@@ -132,7 +135,7 @@ def generate_graph_rep_domain(
 def gen_graph_rep(
   representation: str,
   regenerate: bool,
-  domain: str=""
+  domain: str,
 ) -> None:
   """ Generate graph representations from saved optimal plans. """
 
@@ -150,7 +153,7 @@ def gen_graph_rep(
     pbar.set_description(f"Generating {representation} graphs for {domain_name} {problem_name}")
 
     # in case we only want to generate graphs for one specific domain
-    if domain != "" and domain != domain_name:
+    if domain is not None and domain != domain_name:
       continue
 
     new_generated += generate_graph_rep_domain(domain_name=domain_name,
@@ -213,19 +216,3 @@ def optimal_plan_exists(domain_name: str, domain_pddl: str, problem_pddl: str):
     return data
   else:
     return None
-
-def main():
-  parser = argparse.ArgumentParser()
-  parser.add_argument('-r', '--rep', type=str, help="graph representation to generate", choices=REPRESENTATIONS)
-  parser.add_argument('-d', '--domain', type=str, help="domain to generate (useful for debugging)")
-  parser.add_argument('--regenerate', action="store_true")
-  args = parser.parse_args()
-
-  rep = args.rep
-  gen_graph_rep(representation=rep,
-                regenerate=args.regenerate,
-                domain=args.domain)
-  return
-
-if __name__ == "__main__":
-  main()

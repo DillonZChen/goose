@@ -1,30 +1,28 @@
 from planning.translate.pddl import Atom, NegatedAtom, Truth
-from .ldg import LiftedDescriptionGraph
 from representation.base_class import *
 
 class LDG_FEAT_MAP(Enum):
   P=0   # is predicate
   A=1   # is action
-  G=2   # is goal (grounded)
-  S=3   # is activated (grounded)
-  N=4   # is NegatedAtom
+  G=2   # is positive goal (grounded)
+  N=3   # is negative goal (grounded)
+  S=4   # is activated (grounded)
   O=5   # is object
 
 ENC_FEAT_SIZE = len(LDG_FEAT_MAP)
-# OBJ_FEAT_SIZE = 4
 VAR_FEAT_SIZE = 4
 
 # undirected graph!
 EDGE_TYPE = OrderedDict({
   "neutral": 0,
-  "ground": 1,
+  "ground":  1,
   "pre_pos": 2,
   "pre_neg": 3,
   "eff_pos": 4,
   "eff_neg": 5,
 })
 
-class EdgeLabelledLiftedDescriptionGraph(LiftedDescriptionGraph, ABC):
+class EdgeLabelledLiftedDescriptionGraph(Representation, ABC):
   def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
     super().__init__(domain_pddl, problem_pddl)
 
@@ -34,6 +32,28 @@ class EdgeLabelledLiftedDescriptionGraph(LiftedDescriptionGraph, ABC):
     self.node_dim = ENC_FEAT_SIZE+VAR_FEAT_SIZE
     self._construct_pe_function()
     return
+
+  def _construct_pe_function(self):
+    self._pe = []
+
+    # precompute a seeded randomly generated injective PE function 
+    # TODO read max range from problem
+    for idx in range(60):
+      torch.manual_seed(idx)
+      rep = 2*torch.rand(VAR_FEAT_SIZE)-1  # U[-1,1]
+      rep /= torch.linalg.norm(rep)
+      self._pe.append(rep)
+    return
+
+  def _feature(self, node_type: LDG_FEAT_MAP):
+    ret = torch.zeros(self.node_dim)
+    ret[node_type.value] = 1
+    return ret
+  
+  def _var_feature(self, idx: int):
+    ret = torch.zeros(self.node_dim)
+    ret[-VAR_FEAT_SIZE:] = self._pe[idx]
+    return ret
 
   def _compute_graph_representation(self) -> None:
 
@@ -59,40 +79,41 @@ class EdgeLabelledLiftedDescriptionGraph(LiftedDescriptionGraph, ABC):
         G.add_edge(u_of_edge=pred.name, v_of_edge=obj.name, edge_type=EDGE_TYPE["neutral"])
 
 
-    # goal (state gets dealt with below)
+    # goal (state gets dealt with in get_state_enc)
     if len(self.problem.goal.parts) == 0:
       goals = [self.problem.goal]
     else:
       goals = self.problem.goal.parts
-    for z, fact in enumerate(goals):
+    for fact in goals:
       assert type(fact) in {Atom, NegatedAtom}
 
-      # goal may have NegatedAtoms
+      # may have negative goals
       is_negated = type(fact)==NegatedAtom
-      atom_desc = f"goal-{z}-{int(not is_negated)}"
 
       pred = fact.predicate
       args = fact.args
-      pred_node = (pred, atom_desc)
+      goal_node = (pred, args)
 
-      x = self._feature(LDG_FEAT_MAP.G)
-      if is_negated: x += self._feature(LDG_FEAT_MAP.N)
-      G.add_node(pred_node, x=x)  # add grounded predicate node
+      if is_negated: 
+        x = self._feature(LDG_FEAT_MAP.N)
+      else:
+        x = self._feature(LDG_FEAT_MAP.G)
+      G.add_node(goal_node, x=x)  # add grounded predicate node
 
       for i, arg in enumerate(args):
-        pred_var_node = (pred, f"{atom_desc}-var-{i}")  # pred var node
-        G.add_node(pred_var_node, x=self._var_feature(idx=i))
+        goal_var_node = (goal_node, i)
+        G.add_node(goal_var_node, x=self._var_feature(idx=i))
 
         # connect variable to predicate
-        G.add_edge(u_of_edge=pred_node, v_of_edge=pred_var_node, edge_type=EDGE_TYPE["ground"])
+        G.add_edge(u_of_edge=goal_node, v_of_edge=goal_var_node, edge_type=EDGE_TYPE["ground"])
 
         # connect variable to object
         assert arg in G.nodes()
-        G.add_edge(u_of_edge=pred_var_node, v_of_edge=arg, edge_type=EDGE_TYPE["ground"])
+        G.add_edge(u_of_edge=goal_var_node, v_of_edge=arg, edge_type=EDGE_TYPE["ground"])
 
       # connect grounded fact to predicate
       assert pred in G.nodes()
-      G.add_edge(u_of_edge=pred_node, v_of_edge=pred, edge_type=EDGE_TYPE["ground"])
+      G.add_edge(u_of_edge=goal_node, v_of_edge=pred, edge_type=EDGE_TYPE["ground"])
     # end goal
 
 
@@ -125,12 +146,8 @@ class EdgeLabelledLiftedDescriptionGraph(LiftedDescriptionGraph, ABC):
               G.add_edge(u_of_edge=aux_node, v_of_edge=prec_arg_node, edge_type=EDGE_TYPE[edge_type])
 
               if arg in action_args: 
-                # TODO deal with cases like 
-                # childsnack-contents-parsizeP-chamC
                 action_arg_node = action_args[arg]
                 G.add_edge(u_of_edge=prec_arg_node, v_of_edge=action_arg_node, edge_type=EDGE_TYPE[edge_type])
-              # action_arg_node = action_args[arg]
-              # G.add_edge(u_of_edge=prec_arg_node, v_of_edge=action_arg_node, edge_type=EDGE_TYPE[edge_type])
           else:  # unitary predicate so connect directly to action
               G.add_edge(u_of_edge=aux_node, v_of_edge=action.name, edge_type=EDGE_TYPE[edge_type])
         return
@@ -151,6 +168,7 @@ class EdgeLabelledLiftedDescriptionGraph(LiftedDescriptionGraph, ABC):
     assert largest_action_schema > 0
 
     # map indices to nodes and vice versa
+    # can be optimised by only saving a subset of nodes
     self._node_to_i = {}
     for i, node in enumerate(G.nodes):
       self._node_to_i[node] = i
@@ -160,13 +178,23 @@ class EdgeLabelledLiftedDescriptionGraph(LiftedDescriptionGraph, ABC):
 
     return
 
+  def str_to_state(self, s) -> List[Tuple[str, List[str]]]:
+    state = []
+    for fact in s:
+      fact = fact.replace(")", "").replace("(", "")
+      toks = fact.split()
+      if toks[0] == "=":
+        continue
+      if len(toks) > 1:
+        state.append((toks[0], toks[1:]))
+      else:
+        state.append((toks[0], ()))
+    return state
 
   def get_state_enc(self, state: List[Tuple[str, List[str]]]) -> Tuple[Tensor, Tensor]:
 
     x = self.x.clone()
-    # edge_index = self.edge_index.clone()
     edge_indices = self.edge_indices.copy()
-    # edge_type = self.edge_type.clone()
     i = len(x)
 
     to_add = sum(len(fact[1])+1 for fact in state)
@@ -176,32 +204,40 @@ class EdgeLabelledLiftedDescriptionGraph(LiftedDescriptionGraph, ABC):
     for fact in state:
       pred = fact[0]
       args = fact[1]
-      if pred not in self._node_to_i:
-        continue  # e.g. type predicates
 
-      pred_node_i = i
+      # if pred not in self._node_to_i:
+        # continue  # e.g. type predicates
+
+      node = (pred, tuple(args))
+
+      # activated proposition overlaps with a goal Atom or NegatedAtom
+      if node in self._node_to_i:
+        x[self._node_to_i[node]][LDG_FEAT_MAP.S.value] = 1
+        continue
+      
+      # activated proposition does not overlap with a goal
+      true_node_i = i
       x[i][LDG_FEAT_MAP.S.value] = 1
       i += 1
 
+      # connect fact to predicate
+      append_edge_index.append((true_node_i, self._node_to_i[pred]))
+      append_edge_index.append((self._node_to_i[pred], true_node_i))
+
+      # connect to predicates and objects
       for k, arg in enumerate(args):
-        pred_var_node_i = i
+        true_var_node_i = i
         x[i][-VAR_FEAT_SIZE:] = self._pe[k]
         i += 1
 
         # connect variable to predicate
-        append_edge_index.append((pred_node_i, pred_var_node_i))
-        append_edge_index.append((pred_var_node_i, pred_node_i))
+        append_edge_index.append((true_node_i, true_var_node_i))
+        append_edge_index.append((true_var_node_i, true_node_i))
 
         # connect variable to object
-        append_edge_index.append((pred_var_node_i, self._node_to_i[arg]))
-        append_edge_index.append((self._node_to_i[arg], pred_var_node_i))
+        append_edge_index.append((true_var_node_i, self._node_to_i[arg]))
+        append_edge_index.append((self._node_to_i[arg], true_var_node_i))
 
-      # connect grounded fact to predicate
-      append_edge_index.append((pred_node_i, self._node_to_i[pred]))
-      append_edge_index.append((self._node_to_i[pred], pred_node_i))
-
-    # edge_type = torch.nn.functional.pad(edge_type, (0, len(append_edge_index)), "constant", EDGE_TYPE["ground"])
-    # edge_index = torch.hstack((edge_index, torch.tensor(append_edge_index).T)).long()
     edge_indices[EDGE_TYPE["ground"]] = torch.hstack((edge_indices[EDGE_TYPE["ground"]], 
                                                       torch.tensor(append_edge_index).T)).long()
     

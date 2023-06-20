@@ -1,1 +1,2 @@
-sudo singularity build gpu.sif recipe_gpu.def
+date
+sudo singularity build ../gpu.sif singularity/recipe_gpu.def
