@@ -69,15 +69,15 @@ class EdgeLabelledGroundedDescriptionGraph(Representation, ABC):
       G.add_edge(u_of_edge=a, v_of_edge=schema, edge_type=GDG_EDGE_TYPES.PREDICATE.value)
 
       # edges between actions and propositions
-      for p in a.precondition:
+      for _, p in a.precondition:
         assert str(p) in G.nodes, f"{str(p)} not in nodes"
         assert a in G.nodes
         G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=GDG_EDGE_TYPES.PRE_EDGE.value)
-      for p in a.add_effects:
+      for _, p in a.add_effects:
         assert str(p) in G.nodes, f"{str(p)} not in nodes"
         assert a in G.nodes
         G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=GDG_EDGE_TYPES.ADD_EDGE.value)
-      for p in a.del_effects:
+      for _, p in a.del_effects:
         assert str(p) in G.nodes, f"{str(p)} not in nodes"
         assert a in G.nodes
         G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=GDG_EDGE_TYPES.DEL_EDGE.value)

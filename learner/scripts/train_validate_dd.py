@@ -16,8 +16,8 @@ REPEATS = 1
 VAL_REPEATS = 5
 
 L=8
-H=32
-patience=10
+H=64
+patience=20
 
 
 def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=600):

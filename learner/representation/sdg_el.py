@@ -55,15 +55,15 @@ class EdgeLabelledStripsProblemDescriptionGraph(Representation, ABC):
 
     # edges
     for a in actions:
-      for p in a.precondition:
+      for _, p in a.precondition:
         assert str(p) in G.nodes, f"{str(p)} not in nodes"
         assert a in G.nodes
         G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=PRE_EDGE)
-      for p in a.add_effects:
+      for _, p in a.add_effects:
         assert str(p) in G.nodes, f"{str(p)} not in nodes"
         assert a in G.nodes
         G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=ADD_EDGE)
-      for p in a.del_effects:
+      for _, p in a.del_effects:
         assert str(p) in G.nodes, f"{str(p)} not in nodes"
         assert a in G.nodes
         G.add_edge(u_of_edge=a, v_of_edge=str(p), edge_type=DEL_EDGE)
