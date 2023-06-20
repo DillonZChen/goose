@@ -2,25 +2,18 @@ import os
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from dataset.goose_domain_info import GOOSE_DOMAINS
-from representation import CONFIG
+from representation import REPRESENTATIONS, CONFIG
 import argparse
-
-EXPERIMENT_REPRESENTATIONS = [
-  "gdg-el",
-  "sdg-el",
-  "fdg-el",
-  "ldg-el",
-]
 
 REPEATS = 1
 VAL_REPEATS = 5
 
 L=8
 H=64
-patience=20
+patience=10
 
 
-def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=600):
+def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=120):
   os.makedirs("lifted", exist_ok=True)
   os.makedirs("plan", exist_ok=True)
   description = f"{domain_name}_{os.path.basename(pf).replace('.pddl','')}_{search}_{os.path.basename(m).replace('.dt', '')}"
@@ -42,12 +35,14 @@ def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=600):
 
 def main():
   parser=argparse.ArgumentParser()
-  parser.add_argument("domain", type=str, choices=GOOSE_DOMAINS)
+  parser.add_argument("rep", type=str, choices=REPRESENTATIONS)
   args = parser.parse_args()
-  domain = args.domain
-  for repeat in range(REPEATS):
-    for val_repeat in range(VAL_REPEATS):
-      for rep in EXPERIMENT_REPRESENTATIONS:
+  rep = args.rep
+  os.makedirs("logs", exist_ok=True)
+
+  for domain in GOOSE_DOMAINS:
+    for repeat in range(REPEATS):
+      for val_repeat in range(VAL_REPEATS):
         model = "RGNN" if CONFIG[rep]['edge_labels'] else "MPNN"
         model_file = f"dd_{rep}_{domain}_L{L}_H{H}_p{patience}_v{val_repeat}_r{repeat}"
         
