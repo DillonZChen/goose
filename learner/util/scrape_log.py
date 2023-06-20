@@ -10,7 +10,7 @@ from util.train_eval import evaluate
 from util.stats import get_stats
 from representation.node_features import add_features
 from util.transform import preprocess_data
-from learner.dataset.graphs import get_graph_data
+from dataset.graphs import get_graph_data
 
 
 def scrape_log(file, train_only):

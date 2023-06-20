@@ -6,7 +6,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from util.stats import get_stats
 from torch_geometric.loader import DataLoader
 from sklearn.model_selection import train_test_split
-from learner.dataset.graphs import get_graph_data
+from dataset.graphs import get_graph_data
 from representation.node_features import add_features
 from util.transform import extract_testset_ipc, preprocess_data, sample_strategy
 

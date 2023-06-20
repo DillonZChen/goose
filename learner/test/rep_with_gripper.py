@@ -2,7 +2,7 @@ import os
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from representation import CONFIG, REPRESENTATIONS
-from learner.dataset.graphs import gen_graph_rep
+from dataset.graphs import gen_graph_rep
 import argparse
 
 VAL_REPEATS = 3
