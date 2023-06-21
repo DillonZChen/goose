@@ -17,18 +17,25 @@ class Operator():
 
 
 class FDRProblem():
-  def __init__(self, problem):
+  def __init__(self, domain_pddl, problem_pddl):
     """ Very hacky way to construct an FDR problem object from the downward translator """
 
     dt = datetime.now().strftime("%d_%m_%Y_%H_%M_%S")
     sas_file = f"sas_file_output_{dt}_{random.randint(0, 999999999)}.sas"
 
-    sas_task = planning.translate.pddl_to_sas(problem)
-    with open(sas_file, 'w') as output_file:
-        sas_task.output(output_file)
+    if os.path.exists("planning/downward/fast-downward.py"):
+      cmd = f"./planning/downward/fast-downward.py --translate --sas-file {sas_file} {domain_pddl} {problem_pddl}"
+    else:
+      script= os.path.expandvars(f"${{GOOSE_LEARNER}}/planning/downward/fast-downward.py")
+      assert os.path.exists(script)
+      cmd = f"python3 {script} --translate --sas-file {sas_file} {domain_pddl} {problem_pddl}"
+    
+    # avoid lots of text appearing on console during the translation
+    os.popen(cmd).readlines()
 
     assert os.path.exists(sas_file)
 
+    # construct the FDR problem by reading from sas_file
     self.actions = set()
     self.goal = {}
 
@@ -131,8 +138,9 @@ def get_planning_problem(
     fdr: bool=False,
 ):
 
-    problem = planning.translate.pddl_parser.open(domain_filename=domain_pddl, task_filename=problem_pddl)
     if fdr:
-      problem = FDRProblem(problem)
+      problem = FDRProblem(domain_pddl=domain_pddl, problem_pddl=problem_pddl)
+    else:
+      problem = planning.translate.pddl_parser.open(domain_filename=domain_pddl, task_filename=problem_pddl)
 
     return problem

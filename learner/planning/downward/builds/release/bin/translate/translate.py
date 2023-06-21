@@ -19,19 +19,19 @@ from collections import defaultdict
 from copy import deepcopy
 from itertools import product
 
-import planning.translate.axiom_rules as axiom_rules
-import planning.translate.fact_groups as fact_groups
-import planning.translate.instantiate as instantiate
-import planning.translate.normalize as normalize
-import planning.translate.options as options
-import planning.translate.pddl as pddl
-import planning.translate.pddl_parser as pddl_parser 
-import planning.translate.sas_tasks as sas_tasks
+import axiom_rules
+import fact_groups
+import instantiate
+import normalize
+import options
+import pddl
+import pddl_parser
+import sas_tasks
 import signal
-import planning.translate.simplify as simplify
-import planning.translate.timers as timers
-import planning.translate.tools as tools
-import planning.translate.variable_order as variable_order
+import simplify
+import timers
+import tools
+import variable_order
 
 # TODO: The translator may generate trivial derived variables which are always
 # true, for example if there ia a derived predicate in the input that only
