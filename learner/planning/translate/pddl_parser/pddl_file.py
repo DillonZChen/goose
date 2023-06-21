@@ -1,6 +1,8 @@
 from . import lisp_parser
 from . import parsing_functions
 
+from planning.translate.pddl import Task
+
 file_open = open
 
 
@@ -21,7 +23,7 @@ def parse_pddl_file(type, filename):
                          (type, filename, e))
 
 
-def open(domain_filename=None, task_filename=None):
+def open(domain_filename=None, task_filename=None) -> Task:
     if domain_filename is None or task_filename is None:
         # Importing options triggers parsing the problem and domain file names
         # as arguments from the command line. We don't import unconditionally

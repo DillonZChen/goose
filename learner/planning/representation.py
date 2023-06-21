@@ -3,6 +3,7 @@ import planning
 import random
 from datetime import datetime
 from typing import FrozenSet, TypeVar
+from planning.translate.pddl import Task
 
 Proposition = TypeVar("Proposition", bound=str)
 State = FrozenSet[Proposition]
@@ -21,7 +22,7 @@ class FDRProblem():
     """ Very hacky way to construct an FDR problem object from the downward translator """
 
     dt = datetime.now().strftime("%d_%m_%Y_%H_%M_%S")
-    sas_file = f"sas_file_output_{dt}_{random.randint(0, 999999999)}.sas"
+    sas_file = f"sas_file_output_{dt}_{domain_pddl.replace('/','')}_{problem_pddl.replace('/','')}.sas"
 
     if os.path.exists("planning/downward/fast-downward.py"):
       cmd = f"./planning/downward/fast-downward.py --translate --sas-file {sas_file} {domain_pddl} {problem_pddl}"
@@ -137,10 +138,9 @@ def get_planning_problem(
     problem_pddl: str,
     fdr: bool=False,
 ):
-
     if fdr:
       problem = FDRProblem(domain_pddl=domain_pddl, problem_pddl=problem_pddl)
     else:
-      problem = planning.translate.pddl_parser.open(domain_filename=domain_pddl, task_filename=problem_pddl)
+      problem: Task = planning.translate.pddl_parser.open(domain_filename=domain_pddl, task_filename=problem_pddl)
 
     return problem
