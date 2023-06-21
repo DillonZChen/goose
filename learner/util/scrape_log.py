@@ -13,7 +13,29 @@ from util.transform import preprocess_data
 from dataset.graphs import get_graph_data
 
 
-def scrape_log(file, train_only):
+def scrape_pwl_log(file):
+  stats = {
+    "solved": False,
+    "time": -1,
+    "cost": -1,
+    "expanded": -1,
+    "evaluated": -1,
+  }
+
+  for line in open(file, 'r').readlines():
+    toks = line.split()
+    if len(toks) == 0: continue
+    if "until last jump" in line: continue
+
+    if "Solution found" in line: stats["solved"] = True
+    elif "Total time:" in line: stats["time"] = float(toks[-1])
+    elif "Total plan cost:" in line: stats["cost"] = int(toks[-1])
+    elif "Expanded" == toks[0]: stats["expanded"] = int(toks[1])
+    elif "Evaluated" == toks[0]: stats["evaluated"] = int(toks[1])
+
+  return stats
+
+def scrape_train_log(file, train_only=False):
   stats = {
     "epochs": -1,
     "train_f1": -1,
@@ -69,6 +91,7 @@ def scrape_log(file, train_only):
           stats["val_loss"] =   float(toks[17])
           stats["time"] +=      float(toks[19])
       except:
+          stats["time"] +=      float(toks[-1])
           pass # fast train
 
     if model_time:

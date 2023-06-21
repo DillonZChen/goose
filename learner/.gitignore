@@ -7,6 +7,7 @@ plans_*
 .ipynb_checkpoints
 *.log
 trained_models*
+validated_models*
 *.sif
 data
 lifted
