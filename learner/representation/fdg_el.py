@@ -1,34 +1,27 @@
 from representation.base_class import *
 
-VAR = "var"
-VAL = "val"
-INIT = "init"
-GOAL = "goal"
-ACTION = "action"
 
-EL_FDR_PDG_FEAT_MAP = {
-  VAR: 0,
-  VAL: 1,
-  INIT: 2,
-  GOAL: 3,
-  ACTION: 4,
-}
+class FDG_FEATURES(Enum):
+  VAR=0
+  VAL=1
+  STATE=2
+  GOAL=3
+  ACTION=4
 
-VV_EDGE=0
-PRE_EDGE=1
-EFF_EDGE=2
+class FDG_EDGE_TYPES(Enum):
+  VV_EDGE=0
+  PRE_EDGE=1
+  EFF_EDGE=2
+
 
 class EdgeLabelledFdrProblemDescriptionGraph(Representation, ABC):
   def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
-    super().__init__(domain_pddl, problem_pddl)
+    super().__init__(domain_pddl, problem_pddl, rep_name="fdg-el", node_dim=len(FDG_FEATURES))
 
-  def _init(self):
-    self.rep_name = "fdg-el"
-    self._FEAT_MAP = EL_FDR_PDG_FEAT_MAP
-    self.node_dim = len(self._FEAT_MAP)
-    return
 
   def _compute_graph_representation(self) -> None:
+    """ TODO: reference definition of this graph representation
+    """
 
     G = self._create_graph()
 
@@ -36,43 +29,41 @@ class EdgeLabelledFdrProblemDescriptionGraph(Representation, ABC):
     goal = self.problem.goal
     goals = 0
 
-    for var, val in self.problem.varval_to_fact:  # see planning.strips.FDRProblem
+    for var, val in self.problem.varval_to_fact:  # see planning.representations.FDRProblem
       if var not in variables:
         variables[var] = set()
       variables[var].add(val)
 
     """ var val variables nodes and edges """
     for var in variables:
-      G.add_node(var, x=self._one_hot_node(self._FEAT_MAP[VAR]))
+      G.add_node(var, x=self._one_hot_node(FDG_FEATURES.VAR.value))
       for val in variables[var]:
         val_node = (var, val)
-        val_x = self._one_hot_node(self._FEAT_MAP[VAL])
+        val_x = self._one_hot_node(FDG_FEATURES.VAL.value)
 
         if var in goal and val == goal[var]:
           goals += 1
-          val_x += self._one_hot_node(self._FEAT_MAP[GOAL])
+          val_x += self._one_hot_node(FDG_FEATURES.GOAL.value)
 
         G.add_node(val_node, x=val_x)
-
-        # self.edge_groups[0].append((var, val_node))
-        G.add_edge(u_of_edge=var, v_of_edge=val_node, edge_type=VV_EDGE)
+        G.add_edge(u_of_edge=var, v_of_edge=val_node, edge_type=FDG_EDGE_TYPES.VV_EDGE.value)
     assert goals == len(goal)
 
     """ action nodes and edges """
     for action in self.problem.actions:
       action_node = action.name
-      G.add_node(action_node, x=self._one_hot_node(self._FEAT_MAP[ACTION]))
+      G.add_node(action_node, x=self._one_hot_node(FDG_FEATURES.ACTION.value))
       for var, val in action.preconditions:
         assert val in variables[var]  # and hence should be in G.nodes()
         val_node = (var, val)
         assert val_node in G.nodes()
-        G.add_edge(u_of_edge=action_node, v_of_edge=val_node, edge_type=PRE_EDGE)
+        G.add_edge(u_of_edge=action_node, v_of_edge=val_node, edge_type=FDG_EDGE_TYPES.PRE_EDGE.value)
 
       for var, val in action.add_effects:  # from our compilation, effects are in add only
         assert val in variables[var]
         val_node = (var, val)
         assert val_node in G.nodes()
-        G.add_edge(u_of_edge=action_node, v_of_edge=val_node, edge_type=EFF_EDGE)
+        G.add_edge(u_of_edge=action_node, v_of_edge=val_node, edge_type=FDG_EDGE_TYPES.EFF_EDGE.value)
 
     # map fact to indices
     node_to_i = {}
@@ -89,11 +80,10 @@ class EdgeLabelledFdrProblemDescriptionGraph(Representation, ABC):
   
 
   def get_state_enc(self, state: FrozenSet[Proposition]) -> Tuple[Tensor, Tensor]:
+    
     x = self.x.clone()
     for p in state:
-      if p not in self.problem.fact_to_varval:  
-        # preprocess prunes some unnecessary facts
-        continue
-      x[self.fact_to_i[p]][self._FEAT_MAP[INIT]] = 1
+      if p in self.problem.fact_to_varval:  
+        x[self.fact_to_i[p]][FDG_FEATURES.STATE.value] = 1
 
     return x, self.edge_indices

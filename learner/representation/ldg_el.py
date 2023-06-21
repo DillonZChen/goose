@@ -1,7 +1,7 @@
 from planning.translate.pddl import Atom, NegatedAtom, Truth
 from representation.base_class import *
 
-class LDG_FEAT_MAP(Enum):
+class LDG_FEATURES(Enum):
   P=0   # is predicate
   A=1   # is action
   G=2   # is positive goal (grounded)
@@ -9,7 +9,7 @@ class LDG_FEAT_MAP(Enum):
   S=4   # is activated (grounded)
   O=5   # is object
 
-ENC_FEAT_SIZE = len(LDG_FEAT_MAP)
+ENC_FEAT_SIZE = len(LDG_FEATURES)
 VAR_FEAT_SIZE = 4
 
 # undirected graph!
@@ -22,21 +22,16 @@ EDGE_TYPE = OrderedDict({
   "eff_neg": 5,
 })
 
+
 class EdgeLabelledLiftedDescriptionGraph(Representation, ABC):
-  def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
-    super().__init__(domain_pddl, problem_pddl)
+  def __init__(self, domain_pddl: str, problem_pddl: str):
+    super().__init__(domain_pddl, problem_pddl, rep_name="ldg-el", node_dim=ENC_FEAT_SIZE+VAR_FEAT_SIZE)
 
-  def _init(self):
-    self.rep_name = "ldg-el"
-    self._FEAT_MAP = LDG_FEAT_MAP
-    self.node_dim = ENC_FEAT_SIZE+VAR_FEAT_SIZE
-    self._construct_pe_function()
-    return
 
-  def _construct_pe_function(self):
+  def _construct_pe_function(self) -> None:
+    """ Precompute a seeded randomly generated injective PE function """
     self._pe = []
 
-    # precompute a seeded randomly generated injective PE function 
     # TODO read max range from problem
     for idx in range(60):
       torch.manual_seed(idx)
@@ -44,33 +39,38 @@ class EdgeLabelledLiftedDescriptionGraph(Representation, ABC):
       rep /= torch.linalg.norm(rep)
       self._pe.append(rep)
     return
+  
 
-  def _feature(self, node_type: LDG_FEAT_MAP):
+  def _feature(self, node_type: LDG_FEATURES) -> Tensor:
     ret = torch.zeros(self.node_dim)
     ret[node_type.value] = 1
     return ret
   
-  def _var_feature(self, idx: int):
+
+  def _var_feature(self, idx: int) -> Tensor:
     ret = torch.zeros(self.node_dim)
     ret[-VAR_FEAT_SIZE:] = self._pe[idx]
     return ret
 
+
   def _compute_graph_representation(self) -> None:
+    """ TODO: reference definition of this graph representation
+    """
+  
+    self._construct_pe_function()
 
     G = self._create_graph()
 
-    # states have closed world assumption so never see NegatedAtom in inital state in Task object, but possible to see in goal condition
-
     # objects
     for i, obj in enumerate(self.problem.objects):
-      G.add_node(obj.name, x=self._feature(LDG_FEAT_MAP.O))  # add object node
+      G.add_node(obj.name, x=self._feature(LDG_FEATURES.O))  # add object node
 
 
     # predicates
     largest_predicate = 0
     for pred in self.problem.predicates:
       largest_predicate = max(largest_predicate, len(pred.arguments))
-      G.add_node(pred.name, x=self._feature(LDG_FEAT_MAP.P))  # add predicate node
+      G.add_node(pred.name, x=self._feature(LDG_FEATURES.P))  # add predicate node
 
 
     # fully connected between objects and predicates
@@ -95,9 +95,9 @@ class EdgeLabelledLiftedDescriptionGraph(Representation, ABC):
       goal_node = (pred, args)
 
       if is_negated: 
-        x = self._feature(LDG_FEAT_MAP.N)
+        x = self._feature(LDG_FEATURES.N)
       else:
-        x = self._feature(LDG_FEAT_MAP.G)
+        x = self._feature(LDG_FEATURES.G)
       G.add_node(goal_node, x=x)  # add grounded predicate node
 
       for i, arg in enumerate(args):
@@ -120,7 +120,7 @@ class EdgeLabelledLiftedDescriptionGraph(Representation, ABC):
     # actions
     largest_action_schema = 0
     for action in self.problem.actions:
-      G.add_node(action.name, x=self._feature(LDG_FEAT_MAP.A))
+      G.add_node(action.name, x=self._feature(LDG_FEATURES.A))
       action_args = {}
 
       largest_action_schema = max(largest_action_schema, len(action.parameters))
@@ -178,6 +178,7 @@ class EdgeLabelledLiftedDescriptionGraph(Representation, ABC):
 
     return
 
+
   def str_to_state(self, s) -> List[Tuple[str, List[str]]]:
     state = []
     for fact in s:
@@ -190,6 +191,7 @@ class EdgeLabelledLiftedDescriptionGraph(Representation, ABC):
       else:
         state.append((toks[0], ()))
     return state
+
 
   def get_state_enc(self, state: List[Tuple[str, List[str]]]) -> Tuple[Tensor, Tensor]:
 
@@ -212,12 +214,12 @@ class EdgeLabelledLiftedDescriptionGraph(Representation, ABC):
 
       # activated proposition overlaps with a goal Atom or NegatedAtom
       if node in self._node_to_i:
-        x[self._node_to_i[node]][LDG_FEAT_MAP.S.value] = 1
+        x[self._node_to_i[node]][LDG_FEATURES.S.value] = 1
         continue
       
       # activated proposition does not overlap with a goal
       true_node_i = i
-      x[i][LDG_FEAT_MAP.S.value] = 1
+      x[i][LDG_FEATURES.S.value] = 1
       i += 1
 
       # connect fact to predicate

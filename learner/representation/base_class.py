@@ -10,14 +10,14 @@ import os
 import util
 import random
 
-from typing import FrozenSet, List, NamedTuple, TypeVar, Tuple, Dict, Optional, Union
+from typing import Set, FrozenSet, List, NamedTuple, TypeVar, Tuple, Dict, Optional, Union
 from torch import Tensor
 from planning.translate.instantiate import instantiate, explore
 from enum import Enum
 from collections import OrderedDict
 
 from dataset import get_domain_name, get_problem_name
-from planning import get_strips_problem
+from planning import get_planning_problem
 from planning import Proposition
 from util.stats import graph_density
 from torch_geometric.loader import DataLoader
@@ -32,25 +32,28 @@ from .config import CONFIG, N_EDGE_TYPES
 """ Graph representations """
 
 class Representation(ABC):
-  def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
+  def __init__(self, 
+               domain_pddl: str, 
+               problem_pddl: str, 
+               rep_name: str, 
+               node_dim: int,
+               ) -> None:
     self.domain_pddl = domain_pddl
     self.problem_pddl = problem_pddl
 
+    self.rep_name = rep_name
+    self.node_dim = node_dim
+
     self.num_nodes = None
     self.num_edges = None
-    self.rep_name = None
 
-    self.problem = get_strips_problem(domain_pddl=self.domain_pddl,
+    self.problem = get_planning_problem(domain_pddl=self.domain_pddl,
                                       problem_pddl=self.problem_pddl,
                                       fdr="FdrProblemDescriptionGraph" in type(self).__name__)
 
     self.x = None
-    self.node_dim = None
-    self.edge_dim = None
-    self.edge_type = None
     self.action = {}
 
-    self._init()
     self.n_edge_types = N_EDGE_TYPES[self.rep_name]
     self.directed = CONFIG[self.rep_name]["directed"]
     self.edge_labels = CONFIG[self.rep_name]["edge_labels"]
@@ -118,10 +121,6 @@ class Representation(ABC):
   def update_representation(self, data: Data) -> None:
     self.x = data.x
     return
-
-  @abstractmethod
-  def _init(self) -> None:
-    raise NotImplementedError
 
   @abstractmethod
   def _compute_graph_representation(self) -> None:

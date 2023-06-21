@@ -64,13 +64,12 @@ def main():
     df = f"../benchmarks/goose/{DOMAIN}/domain.pddl"
     val_dir = f"../benchmarks/goose/{DOMAIN}/val"
     for f in os.listdir(val_dir):
-      log_file = f"{log_dir}/{f.replace('.pddl', '')}_{model_file}.log"
       pf = f"{val_dir}/{f}"
       cmd,lifted_file = pwl_cmd(DOMAIN, df, pf, f"trained_models/{model_file}", "gbbfs", 0)
       os.system("date")
       print("validating")
       print(cmd)
-      os.system(f"{cmd} > {log_file}")
+      os.system(cmd)
       os.remove(lifted_file)
 
 

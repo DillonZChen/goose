@@ -5,7 +5,7 @@ import torch.nn.functional as F
 import time
 import torch
 import warnings
-from planning.strips import Proposition
+from planning import Proposition
 from representation import REPRESENTATIONS, add_features, CONFIG
 from torch_geometric.nn import (global_add_pool, global_max_pool, global_mean_pool)
 from abc import ABC, abstractmethod
