@@ -17,7 +17,7 @@ H=64
 patience=10
 
 
-def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=120):
+def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=600):
   os.makedirs("lifted", exist_ok=True)
   os.makedirs("plan", exist_ok=True)
   description = f"{domain_name}_{os.path.basename(pf).replace('.pddl','')}_{search}_{os.path.basename(m).replace('.dt', '')}"
@@ -92,6 +92,18 @@ def main():
       best_solved = 0
       best_expansions = float('inf')
       best_runtimes = float('inf')
+      best_loss = float('inf')
+      best_train_time = float('inf')
+
+      # see if any model solved anything
+      for val_repeat in range(VAL_REPEATS):
+        solved = 0
+        for f in os.listdir(val_dir):
+          val_log_file = f"{val_log_dir}/{f.replace('.pddl', '')}_{model_file}.log"
+          stats = scrape_pwl_log(val_log_file)
+          solved += stats["solved"]
+        best_solved = max(best_solved, solved)
+
       for val_repeat in range(VAL_REPEATS):
         model_file = f"dd_{rep}_{domain}_L{L}_H{H}_p{patience}_v{val_repeat}_r{repeat}"
         solved = 0
@@ -105,21 +117,27 @@ def main():
           runtimes.append(stats["time"])
         expansions = np.median(expansions) 
         runtimes = np.median(runtimes)
-        if solved >= best_solved and expansions < best_expansions:
+        train_stats = scrape_train_log(f"{train_log_dir}/{model_file}.log")
+        avg_loss = train_stats['best_avg_loss']
+        train_time = train_stats['time']
+        # choose best model
+        if (solved==best_solved and best_solved>0 and expansions<best_expansions) or \
+           (solved==best_solved and best_solved==0 and avg_loss<best_loss):
           best_model = model_file
-          best_solved = solved
           best_expansions = expansions
           best_runtimes = runtimes
-      best_model_file = f"dd_{rep}_{domain}_L{L}_H{H}_p{patience}_r{repeat}"
-      train_stats = scrape_train_log(f"{train_log_dir}/{best_model}.log")
+          best_loss = avg_loss
+          best_train_time = train_time
 
+      # log best model stats
+      best_model_file = f"dd_{rep}_{domain}_L{L}_H{H}_p{patience}_r{repeat}"
       with open(f"{selection_log_dir}/{best_model_file}.log", 'w') as f:
         f.write(f"model: {best_model}\n")
         f.write(f"solved: {best_solved} / {len(os.listdir(val_dir))}\n")
         f.write(f"median_expansions: {best_expansions}\n")
         f.write(f"median_runtime: {best_runtimes}\n")
-        f.write(f"avg_loss: {train_stats['best_avg_loss']}\n")
-        f.write(f"train_time: {train_stats['time']}\n")
+        f.write(f"avg_loss: {best_loss}\n")
+        f.write(f"train_time: {best_train_time}\n")
         f.close()
       os.system(f"cp trained_models/{best_model}.dt validated_models/{best_model_file}.dt")
 

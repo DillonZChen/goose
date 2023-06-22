@@ -231,7 +231,7 @@ class BasePredictor(ABC, nn.Module):
     for state in states:
       x, edge_index = self.rep.get_state_enc(state)
       data_list.append(Data(x=x, edge_index=edge_index))
-    loader = DataLoader(dataset=data_list, batch_size=len(data_list))
+    loader = DataLoader(dataset=data_list, batch_size=min(len(data_list), 32))
     data = next(iter(loader)).to(self.device)
     hs = self.model.forward(data.x, data.edge_index, data.batch)
     hs = hs.detach().cpu().numpy()  # annoying error with jit 
