@@ -97,6 +97,7 @@ def main():
 
       # see if any model solved anything
       for val_repeat in range(VAL_REPEATS):
+        model_file = f"dd_{rep}_{domain}_L{L}_H{H}_p{patience}_v{val_repeat}_r{repeat}"
         solved = 0
         for f in os.listdir(val_dir):
           val_log_file = f"{val_log_dir}/{f.replace('.pddl', '')}_{model_file}.log"
