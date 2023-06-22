@@ -20,7 +20,8 @@ enum class TokenType {
     FLOAT,
     BOOLEAN,
     IDENTIFIER,
-    LET
+    LET,
+    PATH,
 };
 
 struct Token {

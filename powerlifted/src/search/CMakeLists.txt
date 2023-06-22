@@ -4,9 +4,6 @@ project(search)
 # 17 does not work for cuda, neither does https://stackoverflow.com/a/61540432/13531424
 set(CMAKE_CXX_STANDARD 14)
 
-# Torch stuff https://github.com/pyg-team/pytorch_geometric/blob/master/examples/cpp/CMakeLists.txt
-# find_package(TorchScatter REQUIRED)
-# find_package(TorchSparse REQUIRED)
 find_package(Python3 COMPONENTS Interpreter Development)
 find_package(pybind11 REQUIRED)
 
@@ -14,7 +11,6 @@ if (CMAKE_CONFIGURATION_TYPES)
     set(CMAKE_CONFIGURATION_TYPES Debug Release)
 endif ()
 
-#find_package(Boost COMPONENTS program_options REQUIRED)
 find_package(Boost REQUIRED)
 if (Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
@@ -135,8 +131,4 @@ add_executable(search
         parallel_hashmap/phmap.h heuristics/gnn_heuristic.cc heuristics/gnn_heuristic.h search_engines/greedy_batch_best_first_search.cc search_engines/greedy_batch_best_first_search.h heuristics/perfect_heuristic.cc search_engines/perfect.h search_engines/perfect.cc search_engines/batch_lazy_search.cc search_engines/batch_lazy_search.h ../ext/cxxopts/cxxopts)
 
 target_link_libraries(search ${Boost_LIBRARIES})
-# target_link_libraries(search "${TORCH_LIBRARIES}")
-# target_link_libraries(search TorchScatter::TorchScatter)
-# target_link_libraries(search TorchSparse::TorchSparse)
-# target_link_libraries(search ${CUDA_cusparse_LIBRARY})
 target_link_libraries(search pybind11::embed)

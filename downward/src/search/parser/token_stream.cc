@@ -100,6 +100,8 @@ string token_type_name(TokenType token_type) {
         return "Identifier";
     case TokenType::LET:
         return "Let";
+    case TokenType::PATH:
+        return "Path";
     default:
         ABORT("Unknown token type.");
     }

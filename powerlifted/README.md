@@ -19,7 +19,7 @@ noting that `/usr/local/include` is the default installation directory for torch
 - Run `./build.py` in the root directory
 
 ## Other environment variables
-- `PLAN_GNN`: path to learning repository 
+- `GOOSE`: path to learning repository 
 
 
 # Powerlifted Planner

@@ -1,4 +1,4 @@
-export PLAN_GNN="${HOME}/honours/honours-code"
+export GOOSE="${HOME}/honours/honours-code"
 
 d=goose-benchmarks/blocks/domain.pddl
 i=goose-benchmarks/blocks/test/blocks12-task01.pddl

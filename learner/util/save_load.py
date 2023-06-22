@@ -83,10 +83,14 @@ def load_model(path, print_args=False, jit=True, ignore_subdir=False):
         path = path+".dt"
     if not ignore_subdir and "trained_models" not in path:
         path = "trained_models/" + path
-    if torch.cuda.is_available():
-        model_state_dict, args = torch.load(path)
-    else:
-        model_state_dict, args = torch.load(path, map_location=torch.device('cpu'))
+    try:
+      if torch.cuda.is_available():
+          model_state_dict, args = torch.load(path)
+      else:
+          model_state_dict, args = torch.load(path, map_location=torch.device('cpu'))
+    except:
+      print(f"Model not found at {path}")
+      exit(-1)
     model = GNNS[args.model](params=arg_to_params(args), jit=jit)
     model.load_state_dict_into_gnn(model_state_dict)
     print("Model loaded!")
