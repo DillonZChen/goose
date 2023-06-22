@@ -17,15 +17,15 @@ GNNHeuristic::GNNHeuristic(const Task &task,
     // }
 
     // Add learning heuristics submodule to the python path
-    auto gnn_path = std::getenv("PLAN_GNN");
+    auto gnn_path = std::getenv("GOOSE");
     if (!gnn_path) {
-        std::cout << "PLAN_GNN environment variable not found. Aborting." << std::endl;
+        std::cout << "GOOSE environment variable not found. Aborting." << std::endl;
         exit(-1);
     }
     std::string path(gnn_path);
-    std::cout << "PLAN_GNN path is " << path << std::endl;
+    std::cout << "GOOSE path is " << path << std::endl;
     if (access(path.c_str(), F_OK) == -1) {
-        std::cout << "PLAN_GNN points to non-existent path. Aborting." << std::endl;
+        std::cout << "GOOSE points to non-existent path. Aborting." << std::endl;
         exit(-1);
     }
 

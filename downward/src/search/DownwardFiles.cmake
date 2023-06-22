@@ -572,6 +572,13 @@ fast_downward_plugin(
 )
 
 fast_downward_plugin(
+    NAME GOOSE_HEURISTIC
+    HELP "The GOOSE heuristic"
+    SOURCES
+        heuristics/goose_heuristic
+)
+
+fast_downward_plugin(
     NAME CORE_TASKS
     HELP "Core task transformations"
     SOURCES

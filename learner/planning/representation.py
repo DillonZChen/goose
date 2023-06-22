@@ -27,7 +27,7 @@ class FDRProblem():
     if os.path.exists("planning/downward/fast-downward.py"):
       cmd = f"./planning/downward/fast-downward.py --translate --sas-file {sas_file} {domain_pddl} {problem_pddl}"
     else:
-      script= os.path.expandvars(f"${{GOOSE_LEARNER}}/planning/downward/fast-downward.py")
+      script= os.path.expandvars(f"${{GOOSE}}/planning/downward/fast-downward.py")
       assert os.path.exists(script)
       cmd = f"python3 {script} --translate --sas-file {sas_file} {domain_pddl} {problem_pddl}"
     

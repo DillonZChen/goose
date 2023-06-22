@@ -164,7 +164,7 @@ Features RawRegistry::collect_features(
         }
 
         for (const ArgumentInfo &arg_info : feature.get_arguments()) {
-            if (arg_info.type == TypeRegistry::NO_TYPE) {
+            if (arg_info.type == TypeRegistry::NO_TYPE and key != "goose") {
                 errors.push_back(
                     "Missing Plugin for type of argument '" + arg_info.key
                     + "' of feature '" + key + "'.");

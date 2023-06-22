@@ -33,7 +33,7 @@ def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=120):
         f"--seed {seed} " \
         f"--translator-output-file {lifted_file} " \
         f"--plan-file {plan_file}"
-  cmd = f"export PLAN_GNN={os.getcwd()} && {cmd}"
+  cmd = f"export GOOSE={os.getcwd()} && {cmd}"
   return cmd, lifted_file
 
 
