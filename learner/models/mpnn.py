@@ -1,14 +1,13 @@
 from .base_gnn import *
 
 class MPNNLayer(Module):
-    def __init__(self, in_features: int, out_features: int):
+    def __init__(self, in_features: int, out_features: int, aggr: str):
       super(MPNNLayer, self).__init__()
-      self.conv = LinearMaxConv(in_features, out_features)
-      # self.conv = LinearMaxConv(in_features, out_features).jittable()
-      self.linear = Linear(in_features, out_features)
+      self.conv = LinearConv(in_features, out_features, aggr=aggr)
+      self.root = Linear(in_features, out_features)
 
     def forward(self, x: Tensor, edge_index: Tensor) -> Tensor:
-      x_out = self.linear(x) + self.conv(x, edge_index)
+      x_out = self.root(x) + self.conv(x, edge_index)
       return x_out
     
 
@@ -16,12 +15,12 @@ class MPNNLayer(Module):
 class MPNN(BaseGNN):
   def __init__(self, params) -> None:
     super().__init__(params)
-    if self.drop > 0:
-      warnings.warn("dropout not implemented for MPNN")
+    if self.share_layers:
+      raise NotImplementedError("sharing layers not implemented for ELGNN")
     return
 
   def create_layer(self):
-    return MPNNLayer(self.nhid, self.nhid)
+    return MPNNLayer(self.nhid, self.nhid, aggr=self.aggr)
   
 
 class MPNNPredictor(BasePredictor):

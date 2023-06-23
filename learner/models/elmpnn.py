@@ -1,36 +1,34 @@
 from .base_gnn import *
-# from torch_geometric.nn.conv import RGCNConv, FastRGCNConv (slow and/or mem inefficient)
+from torch_geometric.nn.conv import RGCNConv, FastRGCNConv  # (slow and/or mem inefficient)
 
 
 class ELMPNNLayer(Module):
-    def __init__(self, in_features: int, out_features: int, n_edge_labels: int):
+    def __init__(self, in_features: int, out_features: int, n_edge_labels: int, aggr: str):
       super(ELMPNNLayer, self).__init__()
       self.convs = torch.nn.ModuleList()
-      self.n_edge_labels = n_edge_labels
       for _ in range(n_edge_labels):
-        self.convs.append(LinearConv(in_features, out_features, "mean").jittable())
-      self.linear = Linear(in_features, out_features)
+        self.convs.append(LinearConv(in_features, out_features, aggr=aggr).jittable())
+      self.root = Linear(in_features, out_features, bias=True)
       return
 
     def forward(self, x: Tensor, list_of_edge_index: List[Tensor]) -> Tensor:
-      x_out = self.linear(x)
+      x_out = self.root(x)
       for i, conv in enumerate(self.convs):  # bottleneck
         x_out += conv(x, list_of_edge_index[i])
       return x_out
-    
 
 """ GNN with different weights for different edge labels """
 class ELMPNN(BaseGNN):
   def __init__(self, params) -> None:
     super().__init__(params)
-    if self.drop > 0:
-      warnings.warn("dropout not implemented for ELGNN")
     if self.vn:
       raise NotImplementedError("vn not implemented for ELGNN")
+    if self.share_layers:
+      raise NotImplementedError("sharing layers not implemented for ELGNN")
     return
 
   def create_layer(self):
-    return ELMPNNLayer(self.nhid, self.nhid, n_edge_labels=self.n_edge_labels)
+    return ELMPNNLayer(self.nhid, self.nhid, n_edge_labels=self.n_edge_labels, aggr=self.aggr)
 
   def node_embedding(self, x: Tensor, list_of_edge_index: List[Tensor], batch: Optional[Tensor]) -> Tensor:
     """ overwrite (same semantics, different typing) for jit """

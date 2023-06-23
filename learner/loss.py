@@ -4,45 +4,6 @@ import torch.nn.functional as F
 from torch import Tensor
 from torch.nn import MSELoss, BCEWithLogitsLoss
 
-class MMD:
-  def __init__(self, weight: float) -> None:
-    self.weight = weight
-    self.mse = MSELoss()
-
-  def forward(self, input: Tensor, target: Tensor, D_s: Tensor, D_t: Tensor):
-    mse = self.mse.forward(input, target)
-
-    m_s = torch.mean(D_s, dim=0)
-    m_t = torch.mean(D_t, dim=0)
-    mmd = torch.linalg.norm(m_s - m_t) ** 2
-    return mse + self.weight * mmd, mse, mmd
-
-class DeepCORAL:
-  def __init__(self, weight: float) -> None:
-    self.weight = weight
-    self.mse = MSELoss()
-
-  @staticmethod
-  def compute_covariance(D):
-      n = D.shape[0]
-
-      col = torch.ones((1, n), device=D.device) @ D
-
-      c = D.T @ D - ((col.T @ col) / n)
-      c /= n - 1
-
-      return c
-
-  def forward(self, input: Tensor, target: Tensor, D_s: Tensor, D_t: Tensor):
-    mse = self.mse.forward(input, target)
-
-    d = D_s.shape[1]
-    C_s = self.compute_covariance(D_s)
-    C_t = self.compute_covariance(D_t)
-    coral = torch.norm(C_s - C_t, p='fro')**2
-    coral /= 4*d*d
-    return mse + self.weight * coral, mse, coral
-
 
 class WeightedMSELoss:
   def __init__(self, weight: float=2) -> None:
@@ -81,7 +42,5 @@ LOSS = {
   "mse": MSELoss,
   "wmse": WeightedMSELoss,
   "pemse": PenaltyEnhancedMSELoss,
-  "mmd": MMD,
-  "coral": DeepCORAL,
 }
 

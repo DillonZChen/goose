@@ -85,7 +85,6 @@ def sample_strategy(
 def preprocess_data(
   model_name: Optional[str],
   data_list: List[Data],
-  heuristic: str,
   small_train: bool,
   n_hi: int,
   c_hi: int,
@@ -102,10 +101,6 @@ def preprocess_data(
       e = sum(edge.shape[1] for edge in edges)
     else:
       e = edges.shape[1]
-    if heuristic != "opt":
-       if heuristic not in data.heuristics:
-          continue
-       data.y = data.heuristics[heuristic]
     y = data.y
 
     if 0 < n_hi < n:  # upper bound on nodes
@@ -120,43 +115,11 @@ def preprocess_data(
     if y < c_lo:  # lower bound on cost
         continue
 
-    # if e == 0:  # no edges
-    #     continue
-    # if e > 25000:
-    #     print(data)
-    #     continue
-
     if n == 0:  # no nodes
         continue
-    
-    # mem = 64 * e * 2 + 32 * data.x.nelement()
-    # mem /= float(1.25e10)
-    # print(mem)
-    
-    # mem = sum(sys.getsizeof(t.storage()) for t in edges) + sys.getsizeof(data.x.storage())
-    # print(mem)
 
     new_data_list.append(data)
   data_list = new_data_list
-
-  # model preprocessing
-  if model_name == "FFNet":
-      data_list = [models.ffnet.transform(data) for data in data_list]
-  elif model_name == "PPGN":
-      print("Transforming data into dense matrices for PPGN.")
-
-      # max_nodes so we can batch (not used)
-      max_nodes = 0
-      for data in data_list:
-          max_nodes = max(max_nodes, data.x.shape[0])
-      print("max nodes:", max_nodes)
-
-      new_data = []
-      for data in tqdm(data_list):
-          x = models.ppgn.preprocess_data_PPGN(x=data.x, edge_index=data.edge_index, max_nodes=max_nodes)
-          new_data.append(Data(x=x, edge_index=None, y=data.y))
-
-      data_list = new_data
 
   if small_train:
       random.seed(123)

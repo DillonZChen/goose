@@ -9,16 +9,13 @@ def arg_to_params(args, in_feat=4, out_feat=1):
     model_name = args.model
     nlayers = args.nlayers
     nhid = args.nhid
-    nhid2 = args.nhid2 if hasattr(args, "nhid2") else None
-    nheads = args.nheads if hasattr(args, "nheads") else 0
-    drop = args.drop if hasattr(args, "drop") else 0
-    in_feat = args.in_feat if hasattr(args, "in_feat") else in_feat
-    n_edge_labels = args.n_edge_labels if hasattr(args, "n_edge_labels") else 0
+    in_feat = args.in_feat
+    n_edge_labels = args.n_edge_labels
     share_layers = args.share_layers
     task = args.task
-    pool = args.pool if hasattr(args, "pool") else "max"
-    double = args.double
-    vn = args.vn if hasattr(args, "vn") else False
+    pool = args.pool
+    aggr = args.aggr
+    vn = args.vn
     rep = args.rep
     model_params = {
       'model_name': model_name,
@@ -28,11 +25,8 @@ def arg_to_params(args, in_feat=4, out_feat=1):
       'share_layers': share_layers,
       'n_edge_labels': n_edge_labels,
       'nhid': nhid,
-      'nhid2': nhid2,
-      'drop': drop,
+      'aggr': aggr,
       'pool': pool,
-      'nheads': nheads,
-      'double': double,
       'task': task,
       'rep': rep,
       'vn': vn,

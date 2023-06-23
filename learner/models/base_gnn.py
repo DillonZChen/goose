@@ -17,8 +17,7 @@ from torch import Tensor
 from typing import Optional, List, FrozenSet
 from torch_geometric.loader import DataLoader
 from torch_geometric.data import Data
-import torch.multiprocessing as mp
-from torch.multiprocessing import Pool, set_start_method, spawn, Process, start_processes
+from torch_geometric.nn.inits import glorot, zeros
 
 
 def construct_mlp(in_features: int, out_features: int, n_hid: int) -> torch.nn.Module:
@@ -35,7 +34,7 @@ class LinearConv(MessagePassing):
 
   def __init__(self, in_features: int, out_features: int, aggr: str) -> None:
       super().__init__(aggr=aggr)
-      self.f = Linear(in_features, out_features)
+      self.f = Linear(in_features, out_features, bias=False)
 
   def forward(self, x: Tensor, edge_index: Tensor) -> Tensor:
       # propagate_type = {'x': Tensor }
@@ -51,11 +50,10 @@ class BaseGNN(ABC, nn.Module):
     self.in_feat = params['in_feat']
     self.out_feat = params['out_feat']
     self.nhid = params['nhid']
-    self.n_edge_labels = params["n_edge_labels"]if "n_edge_labels" in params else 1
+    self.aggr = params["aggr"]
+    self.n_edge_labels = params["n_edge_labels"]
     self.nlayers = params['nlayers']
-    self.drop = params['drop'] if "drop" in params else 0
-    self.share_layers = params['share_layers'] if "share_layers" in params else False
-    self.double = params['double']
+    self.share_layers = params['share_layers']
     self.vn = params['vn']
     self.task = params['task']
     self.rep_type = params['rep']
