@@ -10,6 +10,17 @@ from representation.config import CONFIG
 REPEATS = 1
 VAL_REPEATS = 5
 TIMEOUT = 600
+FAIL_LIMIT = {
+  "gripper": 1,
+  "spanner": 5,
+  "visitall": 5,
+  "visitsome": 5,
+  "blocks": 5,
+  "ferry": 5,
+  "sokoban": 5,
+  "n-puzzle": 5,
+}
+
 
 def sorted_nicely( l ): 
     """ Sort the given iterable in the way that humans expect.""" 

@@ -26,10 +26,12 @@ def main():
   train_log_dir = f"logs/train"
   val_log_dir = f"logs/val"
   selection_log_dir = f"logs/select"
+  test_log_dir = f"logs/test"
   os.makedirs("logs", exist_ok=True)
   os.makedirs(train_log_dir, exist_ok=True)
   os.makedirs(val_log_dir, exist_ok=True)
   os.makedirs(selection_log_dir, exist_ok=True)
+  os.makedirs(test_log_dir, exist_ok=True)
   os.makedirs("validated_models", exist_ok=True)
 
   for domain in GOOSE_DOMAINS:
@@ -41,7 +43,7 @@ def main():
         model = "RGNN" if CONFIG[rep]['edge_labels'] else "MPNN"
         model_file = f"dd_{rep}_{domain}_L{L}_H{H}_p{patience}_v{val_repeat}_r{repeat}"
         
-        # train
+        """ train """
         if not os.path.exists(f"trained_models/{model_file}.dt"):
           train_log_file = f"{train_log_dir}/{model_file}.log"
           cmd = f"python3 train.py --fast-train --no-tqdm -r {rep} -m {model} -d goose-{domain}-only -L {L} -H {H} --patience {patience} --save-file {model_file}"
@@ -50,7 +52,7 @@ def main():
           print(cmd)
           os.system(f"{cmd} > {train_log_file}")
 
-        # validate
+        """ validate """
         df = f"../benchmarks/goose/{domain}/domain.pddl"
         for f in os.listdir(val_dir):
           val_log_file = f"{val_log_dir}/{f.replace('.pddl', '')}_{model_file}.log"
@@ -121,7 +123,50 @@ def main():
         f.write(f"train_time: {best_train_time}\n")
         f.close()
       os.system(f"cp trained_models/{best_model}.dt validated_models/{best_model_file}.dt")
+      ##### end validate code #####
 
+    """ test """
+    failed = 0
+    test_dir = f"../benchmarks/goose/{domain}/test"
+    df = f"../benchmarks/goose/{domain}/domain.pddl"
+    model_file = best_model_file
+
+    # warmup first
+    f = sorted_nicely(os.listdir(test_dir))[0]
+    pf = f"{test_dir}/{f}"
+    cmd,lifted_file = search_cmd(rep, domain, df, pf, f"validated_models/{model_file}", "gbbfs", 0)
+    os.system("date")
+    print(f"warming up with {domain} {rep} {f.replace('.pddl', '')}")
+    print(cmd)
+    os.system(cmd)
+    os.remove(lifted_file)
+
+    for f in sorted_nicely(os.listdir(test_dir)):
+      test_log_file = f"{test_log_dir}/{f.replace('.pddl', '')}_{model_file}.log"
+      finished_correctly = False
+      if os.path.exists(test_log_file):
+        log = open(test_log_file, 'r').read()
+        finished_correctly = "timed out after" in log or "Solution found." in log
+      if not finished_correctly:
+        pf = f"{test_dir}/{f}"
+        cmd,lifted_file = search_cmd(rep, domain, df, pf, f"validated_models/{model_file}", "gbbfs", 0)
+        os.system("date")
+        print(f"testing {domain} {rep} {f.replace('.pddl', '')}")
+        print(cmd)
+        os.system(f"{cmd} > {test_log_file}")
+        os.remove(lifted_file)
+
+      # check if failed or not
+      assert os.path.exists(test_log_file)
+      log = open(test_log_file, 'r').read()
+      solved = "Solution found." in log and "Iteration finished correctly." in log
+      if solved:
+        failed = 0
+      else:
+        failed += 1
+      if failed >= FAIL_LIMIT[domain]:
+        break
+    # end f in [test problems]
   return
 
 
