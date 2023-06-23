@@ -138,6 +138,9 @@ def get_planning_problem(
     problem_pddl: str,
     fdr: bool=False,
 ):
+    # TODO: SLG can be optimised by also translating to FDR
+    # TODO: can further optimise both FLG and SGL with preprocess-h2
+
     if fdr:
       problem = FDRProblem(domain_pddl=domain_pddl, problem_pddl=problem_pddl)
     else:

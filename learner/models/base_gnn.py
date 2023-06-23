@@ -185,7 +185,8 @@ class BasePredictor(ABC, nn.Module):
     return
   
   def lifted_state_input(self) -> bool:
-    return CONFIG[self.rep.rep_name.lower()]["lifted"]
+    lifted = CONFIG[self.rep.rep_name.lower()]["lifted"]
+    return lifted
 
   def dump_model_stats(self) -> None:
     print(f"Model name:", self.model.model_name)

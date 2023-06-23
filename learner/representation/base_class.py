@@ -28,6 +28,8 @@ from abc import ABC, abstractmethod
 from tqdm.auto import tqdm
 from .config import CONFIG, N_EDGE_TYPES
 
+State = List[Proposition]
+
 
 """ Graph representations """
 
@@ -127,5 +129,5 @@ class Representation(ABC):
     raise NotImplementedError
 
   @abstractmethod
-  def get_state_enc(self, state: FrozenSet[Proposition]):
+  def get_state_enc(self, state: State):
     raise NotImplementedError
