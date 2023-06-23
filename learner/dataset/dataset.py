@@ -28,7 +28,7 @@ def get_loaders_from_args(args, adapt=False):
     # num_workers=0 if adapt else 4
     # pin_memory=True
     num_workers = 0
-    pin_memory = False
+    pin_memory = True
     if tar_domain and "-only" not in tar_domain:
        tar_domain = tar_domain + "-only"
 

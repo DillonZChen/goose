@@ -1,4 +1,5 @@
 import torch
+import sys
 from torch.profiler import profile, record_function, ProfilerActivity
 from util import eval_f1_score, eval_admissibility, eval_interval, eval_accuracy
 
@@ -82,6 +83,7 @@ def train(model, device, train_loader, criterion, optimiser, fast_train):
       applicable_action = data.applicable_action.float().to(device)
     y = data.y.float().to(device)
     optimiser.zero_grad(set_to_none=True)
+    # print(data.x.nelement() + 2*sum(e.shape[1] for e in data.edge_index) + data.batch.nelement() + y.nelement())
     out = model.forward(data)
 
     if task == "h":

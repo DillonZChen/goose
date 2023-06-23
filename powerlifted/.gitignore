@@ -57,3 +57,5 @@ plans_opt_1800/
 local_logs_validate/
 
 gpu_run_*.log
+
+*.plan

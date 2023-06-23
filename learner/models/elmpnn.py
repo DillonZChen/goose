@@ -1,24 +1,21 @@
 from .base_gnn import *
-from torch_geometric.nn.conv import RGCNConv, FastRGCNConv
+# from torch_geometric.nn.conv import RGCNConv, FastRGCNConv (slow and/or mem inefficient)
 
 
 class ELMPNNLayer(Module):
     def __init__(self, in_features: int, out_features: int, n_edge_labels: int):
       super(ELMPNNLayer, self).__init__()
-      self.conv = FastRGCNConv(in_features, out_features, num_relations=n_edge_labels).jittable()
+      self.convs = torch.nn.ModuleList()
       self.n_edge_labels = n_edge_labels
+      for _ in range(n_edge_labels):
+        self.convs.append(LinearConv(in_features, out_features, "mean").jittable())
       self.linear = Linear(in_features, out_features)
       return
 
     def forward(self, x: Tensor, list_of_edge_index: List[Tensor]) -> Tensor:
-      edge_index = torch.hstack(list_of_edge_index)
-      edge_type = []
-      for i in range(len(list_of_edge_index)):
-        edge_type.append(i * torch.ones(len(list_of_edge_index[i][0]), dtype=int))
-      edge_type = torch.concat(edge_type).to(torch.device('cuda'))
-
       x_out = self.linear(x)
-      x_out += self.conv(x, edge_index, edge_type)
+      for i, conv in enumerate(self.convs):  # bottleneck
+        x_out += conv(x, list_of_edge_index[i])
       return x_out
     
 
@@ -28,6 +25,8 @@ class ELMPNN(BaseGNN):
     super().__init__(params)
     if self.drop > 0:
       warnings.warn("dropout not implemented for ELGNN")
+    if self.vn:
+      raise NotImplementedError("vn not implemented for ELGNN")
     return
 
   def create_layer(self):
@@ -36,14 +35,9 @@ class ELMPNN(BaseGNN):
   def node_embedding(self, x: Tensor, list_of_edge_index: List[Tensor], batch: Optional[Tensor]) -> Tensor:
     """ overwrite (same semantics, different typing) for jit """
     x = self.emb(x)
-    if self.vn:
-      for layer, vn_layer in zip(self.layers, self.vn_layers):
-        x = layer(x, list_of_edge_index) + vn_layer(global_mean_pool(x, batch))[batch]
-        x = F.relu(x)
-    else:
-      for layer in self.layers:
-        x = layer(x, list_of_edge_index)
-        x = F.relu(x)
+    for layer in self.layers:
+      x = layer(x, list_of_edge_index)
+      x = F.relu(x)
     return x
   
   def graph_embedding(self, x: Tensor, list_of_edge_index: List[Tensor], batch: Optional[Tensor]) -> Tensor:

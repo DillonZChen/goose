@@ -97,7 +97,11 @@ def preprocess_data(
 
   for data in data_list:
     n = data.x.shape[0]
-    # e = data.edge_index.shape[1]
+    edges = data.edge_index
+    if type(edges) == list:  # edge label implementation
+      e = sum(edge.shape[1] for edge in edges)
+    else:
+      e = edges.shape[1]
     if heuristic != "opt":
        if heuristic not in data.heuristics:
           continue
@@ -118,9 +122,19 @@ def preprocess_data(
 
     # if e == 0:  # no edges
     #     continue
+    # if e > 25000:
+    #     print(data)
+    #     continue
 
     if n == 0:  # no nodes
         continue
+    
+    # mem = 64 * e * 2 + 32 * data.x.nelement()
+    # mem /= float(1.25e10)
+    # print(mem)
+    
+    # mem = sum(sys.getsizeof(t.storage()) for t in edges) + sys.getsizeof(data.x.storage())
+    # print(mem)
 
     new_data_list.append(data)
   data_list = new_data_list

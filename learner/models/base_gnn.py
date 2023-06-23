@@ -27,57 +27,20 @@ def construct_mlp(in_features: int, out_features: int, n_hid: int) -> torch.nn.M
     ReLU(),
     Linear(n_hid, out_features),
   )
-
-
-class SingleData:
-    def __init__(self, x, e):
-      self.x = x
-      self.edge_index = e
-      self.batch = None
-      return
-    
-
-class MaxConv(MessagePassing):
-
-  propagate_type = {'x': Tensor }
-
-  def __init__(self) -> None:
-    super().__init__(aggr="max")
-
-  def forward(self, x: Tensor, edge_index: Tensor) -> Tensor:
-      # propagate_type = {'x': Tensor }
-      x = self.propagate(edge_index=edge_index, x=x, size=None)
-      return x
   
 
-class LinearMaxConv(MessagePassing):
+class LinearConv(MessagePassing):
 
   propagate_type = {'x': Tensor }
 
-  def __init__(self, in_features: int, out_features: int) -> None:
-      super().__init__(aggr="max")
+  def __init__(self, in_features: int, out_features: int, aggr: str) -> None:
+      super().__init__(aggr=aggr)
       self.f = Linear(in_features, out_features)
 
   def forward(self, x: Tensor, edge_index: Tensor) -> Tensor:
       # propagate_type = {'x': Tensor }
       x = self.f(x)
       x = self.propagate(edge_index=edge_index, x=x, size=None)
-      return x
-
-
-class LinearSumConv(MessagePassing):
-
-  propagate_type = {'x': Tensor }
-
-  def __init__(self, in_features, out_features):
-      super().__init__(aggr="sum")
-      self.x_shape = None
-      self.f = Linear(in_features, out_features)
-
-  def forward(self, x, edge_index):
-      # propagate_type = {'x': Tensor }
-      x = self.f(x)
-      x = self.propagate(edge_index=edge_index, x=x)
       return x
   
 
