@@ -2,7 +2,6 @@ import os
 
 GOOSE_DOMAINS = [
     "gripper",
-    "n-puzzle",
     "spanner",
     "visitsome",
     "visitall",
@@ -10,6 +9,7 @@ GOOSE_DOMAINS = [
     "ferry",
     # "hanoi",
     "sokoban",
+    "n-puzzle",
 ]
 
 

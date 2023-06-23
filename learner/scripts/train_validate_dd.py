@@ -8,40 +8,20 @@ import numpy as np
 from dataset.goose_domain_info import GOOSE_DOMAINS
 from representation import REPRESENTATIONS, CONFIG
 from util.scrape_log import scrape_pwl_log, scrape_train_log
-
-REPEATS = 1
-VAL_REPEATS = 5
-
-L=8
-H=64
-patience=10
-
-
-def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=600):
-  os.makedirs("lifted", exist_ok=True)
-  os.makedirs("plan", exist_ok=True)
-  description = f"{domain_name}_{os.path.basename(pf).replace('.pddl','')}_{search}_{os.path.basename(m).replace('.dt', '')}"
-  lifted_file = f"lifted/{description}.lifted"
-  plan_file = f"plans/{description}.plan"
-  cmd = f"./../powerlifted/powerlifted.py --gpu " \
-        f"-d {df} " \
-        f"-i {pf} " \
-        f"-m {m} " \
-        f"-e gnn " \
-        f"-s {search} " \
-        f"--time-limit {timeout} " \
-        f"--seed {seed} " \
-        f"--translator-output-file {lifted_file} " \
-        f"--plan-file {plan_file}"
-  cmd = f"export GOOSE={os.getcwd()} && {cmd}"
-  return cmd, lifted_file
+from util.search import *
 
 
 def main():
   parser=argparse.ArgumentParser()
   parser.add_argument("rep", type=str, choices=REPRESENTATIONS)
+  parser.add_argument("-L", type=int, default=16)
+  parser.add_argument("-H", type=int, default=64)
+  parser.add_argument("-p", type=int, default=10)
   args = parser.parse_args()
   rep = args.rep
+  L = args.L
+  H = args.H
+  patience = args.p
 
   train_log_dir = f"logs/train"
   val_log_dir = f"logs/val"
@@ -143,6 +123,7 @@ def main():
       os.system(f"cp trained_models/{best_model}.dt validated_models/{best_model_file}.dt")
 
   return
+
 
 if __name__ == "__main__":
   main()
