@@ -6,7 +6,7 @@ CONFIG="1"
 
 export GOOSE="$HOME/code/goose/learner"
 
-cd tests
+cd test
 
 # by default, reopen_closed=false
-./../fast-downward.py $DOMAIN $INSTANCE --search "eager_greedy([goose(graph=$CONFIG)])"
+./../fast-downward.py $DOMAIN $INSTANCE --search "batch_eager_greedy([goose(graph=$CONFIG)])"

@@ -393,6 +393,15 @@ fast_downward_plugin(
 )
 
 fast_downward_plugin(
+    NAME BATCH_EAGER_SEARCH
+    HELP "Batch eager search algorithm"
+    SOURCES
+        search_engines/batch_eager_search
+    DEPENDS NULL_PRUNING_METHOD ORDERED_SET SUCCESSOR_GENERATOR
+    DEPENDENCY_ONLY
+)
+
+fast_downward_plugin(
     NAME PLUGIN_ASTAR
     HELP "A* search"
     SOURCES
@@ -414,6 +423,14 @@ fast_downward_plugin(
     SOURCES
         search_engines/plugin_eager_greedy
     DEPENDS EAGER_SEARCH SEARCH_COMMON
+)
+
+fast_downward_plugin(
+    NAME PLUGIN_BATCH_EAGER_GREEDY
+    HELP "Batch eager greedy best-first search"
+    SOURCES
+        search_engines/plugin_batch_eager_greedy
+    DEPENDS BATCH_EAGER_SEARCH SEARCH_COMMON
 )
 
 fast_downward_plugin(
