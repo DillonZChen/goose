@@ -29,11 +29,13 @@ def sorted_nicely( l ):
     return sorted(l, key = alphanum_key)
 
 def search_cmd(rep, domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
-  if CONFIG[rep]["lifted"]:
-    search_engine = pwl_cmd
-  else:
-    search_engine = fd_cmd
-  return search_engine(domain_name, df, pf, m, search, seed, timeout)
+  print("TODO bind with fd when implemented")
+  return pwl_cmd(domain_name, df, pf, m, search, seed, timeout)
+  # if CONFIG[rep]["lifted"]:
+  #   search_engine = pwl_cmd
+  # else:
+  #   search_engine = fd_cmd
+  # return search_engine(domain_name, df, pf, m, search, seed, timeout)
 
 def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
   os.makedirs("lifted", exist_ok=True)
