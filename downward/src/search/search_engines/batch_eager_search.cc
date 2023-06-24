@@ -126,17 +126,19 @@ SearchStatus BatchEagerSearch::step() {
         }
     }
 
-    std::vector<int> hs = heuristic->compute_result_batch(succ_states);
-    size_t n_succs = hs.size();
-    statistics.inc_evaluated_states(n_succs);
-    statistics.inc_evaluations(n_succs);
+    size_t n_succs = succ_states.size();
+    if (n_succs>0) {
+      std::vector<int> hs = heuristic->compute_result_batch(succ_states);
+      statistics.inc_evaluated_states(n_succs);
+      statistics.inc_evaluations(n_succs);
 
-    for (size_t i = 0; i < n_succs; i++) {
-      State succ_state = succ_states[i];
-      OperatorProxy op = ops[i];
-      SearchNode succ_node = search_space.get_node(succ_state);
-      succ_node.open(*node, op, get_adjusted_cost(op));
-      open_list->insert(hs[i], succ_state.get_id());
+      for (size_t i = 0; i < n_succs; i++) {
+        State succ_state = succ_states[i];
+        OperatorProxy op = ops[i];
+        SearchNode succ_node = search_space.get_node(succ_state);
+        succ_node.open(*node, op, get_adjusted_cost(op));
+        open_list->insert(hs[i], succ_state.get_id());
+      }
     }
 
     return IN_PROGRESS;

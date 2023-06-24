@@ -107,12 +107,16 @@ void GooseHeuristic::initialise_fact_strings() {
     if (name == "<none of those>") {
       continue;
     } else {
-      if (name.substr(0, 5) != "Atom ") {
+      if (name.substr(0, 5) == "Atom ") {
+        name = name.substr(5);
+      } else if (name.substr(0, 12) == "NegatedAtom ") {
+        continue;
+      } else {
         std::cout << "Substring of downward fact does not start with 'Atom ': "
+                  << "or 'NegatedAtom '"
                   << name << std::endl;
         exit(-1);
       }
-      name = name.substr(5);
     }
 
     // replace all occurrences of '(' and ')' by ' '
