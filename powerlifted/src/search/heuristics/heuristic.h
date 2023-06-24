@@ -32,13 +32,13 @@ public:
      */
     virtual int compute_heuristic(const DBState &s, const Task &task) = 0;
 
-    virtual std::vector<int> compute_heuristic_batch(const std::vector<DBState> &states, const Task &task) {
+    std::vector<int> compute_heuristic_batch(const std::vector<DBState> &states, const Task &task) {
         std::vector<int> ret;
         for (const auto &state: states) {
             ret.push_back(compute_heuristic(state, task));
         }
         return ret;
-    }
+    };
 
     const std::vector<std::vector<GroundAtom>> &get_useful_atoms() const {
         return useful_atoms;

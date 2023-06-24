@@ -33,12 +33,12 @@ def search_cmd(rep, domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
     search_engine = pwl_cmd
   else:
     search_engine = fd_cmd
-  return search_engine(domain_name, df, pf, m, search, seed, timeout)
+  return search_engine(rep, domain_name, df, pf, m, search, seed, timeout)
 
-def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
+def pwl_cmd(rep, domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
   os.makedirs("lifted", exist_ok=True)
-  os.makedirs("plan", exist_ok=True)
-  description = f"{domain_name}_{os.path.basename(pf).replace('.pddl','')}_{search}_{os.path.basename(m).replace('.dt', '')}"
+  os.makedirs("plans", exist_ok=True)
+  description = f"pwl_{domain_name}_{os.path.basename(pf).replace('.pddl','')}_{search}_{os.path.basename(m).replace('.dt', '')}"
   lifted_file = f"lifted/{description}.lifted"
   plan_file = f"plans/{description}.plan"
   cmd = f"./../powerlifted/powerlifted.py --gpu " \
@@ -54,5 +54,33 @@ def pwl_cmd(domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
   cmd = f"export GOOSE={os.getcwd()} && {cmd}"
   return cmd, lifted_file
 
-def fd_cmd(domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
-  raise NotImplementedError
+def fd_cmd(rep, domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
+  os.makedirs("lifted", exist_ok=True)
+  os.makedirs("plans", exist_ok=True)
+  
+  if search == "gbbfs":
+    search = "batch_eager_greedy"
+  else:
+    raise NotImplementedError
+  
+  # 0: slg, 1: flg, 2: llg, 3: glg
+  if rep == "sdg-el":   
+    config = 0
+    config_file = "slg"
+  elif rep == "fdg-el": 
+    config = 1
+    config_file = "flg"
+  else: 
+    raise NotImplementedError
+  
+  description = f"fd_{domain_name}_{os.path.basename(pf).replace('.pddl','')}_{search}_{os.path.basename(m).replace('.dt', '')}"
+  sas_file = f"lifted/{description}.sas_file"
+  plan_file = f"plans/{description}.plan"
+  with open(config_file, 'w') as f:
+    f.write(m+'\n')
+    f.write(df+'\n')
+    f.write(pf+'\n')
+    f.close()
+  cmd = f'./../downward/fast-downward.py --sas-file {sas_file} --plan-file {plan_file} {df} {pf} --search "{search}([goose(graph={config})])"'
+  cmd = f"export GOOSE={os.getcwd()} && {cmd}"
+  return cmd, sas_file

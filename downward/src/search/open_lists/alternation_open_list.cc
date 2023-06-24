@@ -23,6 +23,8 @@ class AlternationOpenList : public OpenList<Entry> {
 protected:
     virtual void do_insertion(EvaluationContext &eval_context,
                               const Entry &entry) override;
+    virtual void do_insertion(int h,
+                              const Entry &entry) override;
 
 public:
     explicit AlternationOpenList(const plugins::Options &opts);
@@ -59,6 +61,14 @@ void AlternationOpenList<Entry>::do_insertion(
     for (const auto &sublist : open_lists)
         sublist->insert(eval_context, entry);
 }
+
+template<class Entry>
+void AlternationOpenList<Entry>::do_insertion(
+    int h, const Entry &entry) {
+    for (const auto &sublist : open_lists)
+        sublist->insert(h, entry);
+}
+
 
 template<class Entry>
 Entry AlternationOpenList<Entry>::remove_min() {

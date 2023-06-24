@@ -72,7 +72,7 @@ def save_model(model, args, prefix="", save=True):
 
 def load_model(path, print_args=False, jit=True, ignore_subdir=False):
     print("Loading model...")
-    assert ".pt" not in path
+    assert ".pt" not in path, f"Found .pt in path {path}"
     if ".dt" not in path:
         path = path+".dt"
     if not ignore_subdir and "trained_models" not in path:

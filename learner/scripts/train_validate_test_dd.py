@@ -62,12 +62,15 @@ def main():
             finished_correctly = "timed out after" in log or "Solution found." in log
           if not finished_correctly:
             pf = f"{val_dir}/{f}"
-            cmd,lifted_file = pwl_cmd(domain, df, pf, f"trained_models/{model_file}", "gbbfs", 0)
+            cmd,intermediate_file = pwl_cmd(domain, df, pf, f"trained_models/{model_file}", "gbbfs", 0)
             os.system("date")
             print("validating")
             print(cmd)
             os.system(f"{cmd} > {val_log_file}")
-            os.remove(lifted_file)
+            try:
+                os.remove(intermediate_file)
+            except OSError:
+                pass
 
       # after running all validation repeats, we pick the best one
       best_model = -1
@@ -134,12 +137,15 @@ def main():
     # warmup first
     f = sorted_nicely(os.listdir(test_dir))[0]
     pf = f"{test_dir}/{f}"
-    cmd,lifted_file = search_cmd(rep, domain, df, pf, f"validated_models/{model_file}", "gbbfs", 0)
+    cmd,intermediate_file = search_cmd(rep, domain, df, pf, f"validated_models/{model_file}", "gbbfs", 0)
     os.system("date")
     print(f"warming up with {domain} {rep} {f.replace('.pddl', '')}")
     print(cmd)
     os.system(cmd)
-    os.remove(lifted_file)
+    try:
+        os.remove(intermediate_file)
+    except OSError:
+        pass
 
     for f in sorted_nicely(os.listdir(test_dir)):
       test_log_file = f"{test_log_dir}/{f.replace('.pddl', '')}_{model_file}.log"
@@ -149,12 +155,16 @@ def main():
         finished_correctly = "timed out after" in log or "Solution found." in log
       if not finished_correctly:
         pf = f"{test_dir}/{f}"
-        cmd,lifted_file = search_cmd(rep, domain, df, pf, f"validated_models/{model_file}", "gbbfs", 0)
+        cmd,intermediate_file = search_cmd(rep, domain, df, pf, f"validated_models/{model_file}", "gbbfs", 0)
         os.system("date")
         print(f"testing {domain} {rep} {f.replace('.pddl', '')}")
         print(cmd)
         os.system(f"{cmd} > {test_log_file}")
-        os.remove(lifted_file)
+        try:
+            os.remove(intermediate_file)
+        except OSError:
+            pass
+
 
       # check if failed or not
       assert os.path.exists(test_log_file)

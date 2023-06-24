@@ -1,0 +1,3 @@
+trained_models/test_blocks_fdg-el_2
+../benchmarks/goose/blocks/domain.pddl
+../benchmarks/goose/blocks/val/blocks11-task02.pddl

@@ -26,6 +26,8 @@ protected:
     virtual void do_insertion(EvaluationContext &eval_context,
                               const Entry &entry) override;
 
+    void do_insertion(int h, const Entry &entry);
+
 public:
     explicit BestFirstOpenList(const plugins::Options &opts);
     BestFirstOpenList(const shared_ptr<Evaluator> &eval, bool preferred_only);
@@ -61,6 +63,14 @@ template<class Entry>
 void BestFirstOpenList<Entry>::do_insertion(
     EvaluationContext &eval_context, const Entry &entry) {
     int key = eval_context.get_evaluator_value(evaluator.get());
+    buckets[key].push_back(entry);
+    ++size;
+}
+
+template<class Entry>
+void BestFirstOpenList<Entry>::do_insertion(
+    int h, const Entry &entry) {
+    int key = h;
     buckets[key].push_back(entry);
     ++size;
 }

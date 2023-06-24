@@ -24,6 +24,9 @@ protected:
     virtual void do_insertion(EvaluationContext &eval_context,
                               const Entry &entry) = 0;
 
+    virtual void do_insertion(int h,
+                              const Entry &entry) = 0;
+
 public:
     explicit OpenList(bool preferred_only = false);
     virtual ~OpenList() = default;
@@ -46,6 +49,8 @@ public:
       do_insertion.
     */
     void insert(EvaluationContext &eval_context, const Entry &entry);
+
+    void insert(int h, const Entry &entry);
 
     /*
       Remove and return the entry that should be expanded next.
@@ -149,6 +154,13 @@ void OpenList<Entry>::insert(
         return;
     if (!is_dead_end(eval_context))
         do_insertion(eval_context, entry);
+}
+
+template<class Entry>
+void OpenList<Entry>::insert(
+    int h, const Entry &entry) {
+    // TODO preferred
+    do_insertion(h, entry);
 }
 
 template<class Entry>

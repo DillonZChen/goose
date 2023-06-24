@@ -24,9 +24,12 @@ class EdgeLabelledStripsProblemDescriptionGraph(Representation, ABC):
     """ Ground the parsed lifted pddl representation and return 
         propositions, actions, positive and negative goals, and predicates.
         Predicates stores predicate names for both propositions and actions.
+
+        This can be potentially optimised by letting the planner send the grounded information here.
     """
 
-    grounded = explore(self.problem)  # grounds the lifted representation
+    # Grounding the lifted representation.
+    grounded = explore(self.problem)
 
     propositions = set(grounded[1])
     actions = grounded[2]

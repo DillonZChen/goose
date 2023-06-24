@@ -63,6 +63,9 @@ protected:
 
     virtual int compute_heuristic(const State &ancestor_state) = 0;
 
+    virtual std::vector<int> compute_heuristic_batch(
+      const std::vector<State> &states) = 0;
+
     /*
       Usage note: Marking the same operator as preferred multiple times
       is OK -- it will only appear once in the list of preferred
@@ -84,6 +87,9 @@ public:
 
     virtual EvaluationResult compute_result(
         EvaluationContext &eval_context) override;
+
+    virtual std::vector<int> compute_result_batch(
+        const std::vector<State> &states) override;
 
     virtual bool does_cache_estimates() const override;
     virtual bool is_estimate_cached(const State &state) const override;

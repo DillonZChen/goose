@@ -44,12 +44,15 @@ def main():
     val_dir = f"../benchmarks/goose/{domain}/val"
     for f in os.listdir(val_dir):
       pf = f"{val_dir}/{f}"
-      cmd,lifted_file = search_cmd(rep, domain, df, pf, f"trained_models/{model_file}", "gbbfs", 0, timeout=60)
+      cmd,intermediate_file = search_cmd(rep, domain, df, pf, f"trained_models/{model_file}", "gbbfs", 0, timeout=60)
       os.system("date")
       print("validating")
       print(cmd)
       os.system(cmd)
-      os.remove(lifted_file)
+      try:
+          os.remove(intermediate_file)
+      except OSError:
+          pass
 
 
 if __name__ == "__main__":

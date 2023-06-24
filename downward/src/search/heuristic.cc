@@ -95,6 +95,11 @@ EvaluationResult Heuristic::compute_result(EvaluationContext &eval_context) {
     return result;
 }
 
+std::vector<int> Heuristic::compute_result_batch(
+        const std::vector<State> &states) {
+    return compute_heuristic_batch(states);
+}
+
 bool Heuristic::does_cache_estimates() const {
     return cache_evaluator_values;
 }

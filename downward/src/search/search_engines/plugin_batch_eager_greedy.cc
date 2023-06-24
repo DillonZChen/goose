@@ -34,6 +34,9 @@ public:
         document_note(
             "Closed nodes",
             "Closed node are not re-opened");
+        document_note(
+            "Preferred operators",
+            "Not implemented yet");
     }
 
     virtual shared_ptr<batch_eager_search::BatchEagerSearch> create_component(const plugins::Options &options, const utils::Context &context) const override {
@@ -41,8 +44,6 @@ public:
         plugins::Options options_copy(options);
         options_copy.set("open", search_common::create_greedy_open_list_factory(options_copy));
         options_copy.set("reopen_closed", false);
-        shared_ptr<Evaluator> evaluator = nullptr;
-        options_copy.set("f_eval", evaluator);
 
         return make_shared<batch_eager_search::BatchEagerSearch>(options_copy);
     }
