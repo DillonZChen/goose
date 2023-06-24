@@ -14,13 +14,15 @@ from util.search import *
 def main():
   parser=argparse.ArgumentParser()
   parser.add_argument("rep", type=str, choices=REPRESENTATIONS)
-  parser.add_argument("-L", type=int, default=16)
-  parser.add_argument("-H", type=int, default=64)
-  parser.add_argument("-p", type=int, default=10)
+  parser.add_argument("-L", type=int)
+  parser.add_argument("-H", type=int)
+  parser.add_argument("-a", type=str)
+  parser.add_argument("-p", type=int)
   args = parser.parse_args()
   rep = args.rep
   L = args.L
   H = args.H
+  aggr = args.a
   patience = args.p
 
   train_log_dir = f"logs/train"
@@ -32,12 +34,12 @@ def main():
     # for each experiment, we have validation repeats
     for val_repeat in range(VAL_REPEATS):
       model = "RGNN" if CONFIG[rep]['edge_labels'] else "MPNN"
-      model_file = f"di_{rep}_L{L}_H{H}_p{patience}_v{val_repeat}_r{repeat}"
+      model_file = f"di_{rep}_L{L}_H{H}_{aggr}_p{patience}_v{val_repeat}_r{repeat}"
       
       # train
       if not os.path.exists(f"trained_models/{model_file}.dt"):
         train_log_file = f"{train_log_dir}/{model_file}.log"
-        cmd = f"python3 train.py --fast-train --no-tqdm -r {rep} -m {model} -d goose-unseen-pretraining -L {L} -H {H} --patience {patience} --save-file {model_file} -n 10000"
+        cmd = f"python3 train.py --fast-train --no-tqdm -r {rep} -m {model} -d goose-unseen-pretraining -L {L} -H {H} --aggr {aggr} --patience {patience} --save-file {model_file} -n 10000"
         os.system("date")
         print("training")
         print(cmd)
