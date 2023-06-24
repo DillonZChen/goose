@@ -13,7 +13,12 @@ from util.transform import preprocess_data
 from dataset.graphs import get_graph_data
 
 
-def scrape_pwl_log(file):
+def search_finished_correctly(f):
+  log = open(f, 'r').read()
+  finished_correctly = "timed out after" in log or "Solution found." in log or "Time limit has been reached." in log
+  return finished_correctly
+
+def scrape_search_log(file):
   stats = {
     "solved": False,
     "time": -1,
@@ -23,15 +28,21 @@ def scrape_pwl_log(file):
   }
 
   for line in open(file, 'r').readlines():
+    line = line.replace(" state(s).", "")
     toks = line.split()
     if len(toks) == 0: continue
     if "until last jump" in line: continue
 
-    if "Solution found" in line: stats["solved"] = True
-    elif "Total time:" in line: stats["time"] = float(toks[-1])
-    elif "Total plan cost:" in line: stats["cost"] = int(toks[-1])
-    elif "Expanded" == toks[0]: stats["expanded"] = int(toks[1])
-    elif "Evaluated" == toks[0]: stats["evaluated"] = int(toks[1])
+    if "Solution found." in line: 
+      stats["solved"] = True
+    elif "Goal found at:" in line or "Actual search time:" in line: 
+      stats["time"] = float(toks[-1].replace("s", ""))
+    elif "Total plan cost:" in line or "Plan cost:" in line: 
+      stats["cost"] = int(toks[-1])
+    elif len(toks)>=2 and "Expanded" == toks[-2]: 
+      stats["expanded"] = int(toks[-1])
+    elif len(toks)>=2 and "Evaluated" == toks[-2]: 
+      stats["evaluated"] = int(toks[-1])
 
   return stats
 

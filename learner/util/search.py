@@ -9,7 +9,7 @@ from representation.config import CONFIG
 
 REPEATS = 1
 VAL_REPEATS = 5
-TIMEOUT = 600
+TIMEOUT = 620  # 10 minute timeout + time to load model etc.
 FAIL_LIMIT = {
   "gripper": 1,
   "spanner": 5,
@@ -23,10 +23,10 @@ FAIL_LIMIT = {
 
 
 def sorted_nicely( l ): 
-    """ Sort the given iterable in the way that humans expect.""" 
-    convert = lambda text: int(text) if text.isdigit() else text 
-    alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key) ] 
-    return sorted(l, key = alphanum_key)
+  """ Sort the given iterable in the way that humans expect.""" 
+  convert = lambda text: int(text) if text.isdigit() else text 
+  alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key) ] 
+  return sorted(l, key = alphanum_key)
 
 def search_cmd(rep, domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
   if CONFIG[rep]["lifted"]:
@@ -81,6 +81,6 @@ def fd_cmd(rep, domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
     f.write(df+'\n')
     f.write(pf+'\n')
     f.close()
-  cmd = f'./../downward/fast-downward.py --sas-file {sas_file} --plan-file {plan_file} {df} {pf} --search "{search}([goose(graph={config})])"'
+  cmd = f'./../downward/fast-downward.py --search-time-limit {timeout} --sas-file {sas_file} --plan-file {plan_file} {df} {pf} --search "{search}([goose(graph={config})])"'
   cmd = f"export GOOSE={os.getcwd()} && {cmd}"
   return cmd, sas_file
