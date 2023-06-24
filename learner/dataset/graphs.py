@@ -70,7 +70,7 @@ def get_graph_data(
   print(f"Path to data: {path}")
 
   ret = []
-  for domain_name in tqdm(sorted(list(os.listdir(path)))):
+  for domain_name in sorted(list(os.listdir(path))):
     if ".data" in domain_name:
       continue
     if domain_name in ipc_domain_info.GENERAL_COST_DOMAINS or domain_name in htg_domain_info.GENERAL_COST_DOMAINS:

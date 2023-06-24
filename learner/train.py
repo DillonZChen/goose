@@ -53,7 +53,10 @@ def main():
     # train val pipeline
     print("Training...")
     try:
-      pbar = trange(epochs)
+      if args.tqdm:
+        pbar = trange(epochs)
+      else:
+        pbar = range(epochs)
       best_dict = None
       best_metric = float('inf')
       best_epoch = 0
