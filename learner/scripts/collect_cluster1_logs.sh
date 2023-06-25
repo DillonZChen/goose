@@ -1,1 +1,1 @@
-scp -r cluster1:~/goose/learner/logs cluster1:~/goose/learner/trained_models cluster1:~/goose/learner/validated_models .
+scp -r cluster1:~/goose/learner/logs .

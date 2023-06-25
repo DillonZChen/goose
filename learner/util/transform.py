@@ -1,8 +1,6 @@
 import os
 import sys
 
-from dataset.graphs import get_graph_data
-
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 import random
@@ -13,6 +11,7 @@ from torch import Tensor
 from typing import Dict, List, Optional, Tuple
 from torch_geometric.data import DataLoader, Data
 from tqdm import tqdm, trange
+from dataset.graphs import get_graph_data
 
 
 def extract_testset_domain(
