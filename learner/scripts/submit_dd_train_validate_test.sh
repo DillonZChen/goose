@@ -2,7 +2,7 @@ REPS="ldg-el fdg-el sdg-el"
 
 L=8
 H=64
-aggr=mean
+aggr=max
 p=10
 
 mkdir -p logs

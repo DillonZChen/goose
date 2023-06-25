@@ -36,6 +36,27 @@ def main():
   os.makedirs(test_log_dir, exist_ok=True)
   os.makedirs("validated_models", exist_ok=True)
 
+
+  # train same model for all domains
+  for repeat in range(REPEATS):
+
+      # for each experiment, we have train and validation repeats
+    for val_repeat in range(VAL_REPEATS):
+      model = "RGNN" if CONFIG[rep]['edge_labels'] else "MPNN"
+      model_file = f"di_{rep}_L{L}_H{H}_{aggr}_p{patience}_v{val_repeat}_r{repeat}"
+      
+      """ train """
+      os.system("date")
+      train_log_file = f"{train_log_dir}/{model_file}.log"
+      if not os.path.exists(f"trained_models/{model_file}.dt"):
+        cmd = f"python3 train.py --fast-train --no-tqdm -r {rep} -m {model} -d goose-unseen-pretraining -L {L} -H {H} --aggr {aggr} --patience {patience} --save-file {model_file} -n 10000"
+        os.system(f"echo training domain independent {rep}, see {train_log_file}")
+        os.system(f"{cmd} > {train_log_file}")
+      else:
+        os.system(f"echo already trained domain independent {rep}, see {train_log_file}")
+        
+
+  # validate and test each domain
   for domain in GOOSE_DOMAINS:
     val_dir = f"../benchmarks/goose/{domain}/val"
     test_dir = f"../benchmarks/goose/{domain}/test"
@@ -43,18 +64,7 @@ def main():
 
       # for each experiment, we have train and validation repeats
       for val_repeat in range(VAL_REPEATS):
-        model = "RGNN" if CONFIG[rep]['edge_labels'] else "MPNN"
-        model_file = f"dd_{rep}_{domain}_L{L}_H{H}_{aggr}_p{patience}_v{val_repeat}_r{repeat}"
-        
-        """ train """
-        os.system("date")
-        train_log_file = f"{train_log_dir}/{model_file}.log"
-        if not os.path.exists(f"trained_models/{model_file}.dt"):
-          cmd = f"python3 train.py --fast-train --no-tqdm -r {rep} -m {model} -d goose-{domain}-only -L {L} -H {H} --aggr {aggr} --patience {patience} --save-file {model_file}"
-          os.system(f"echo training with {domain} {rep}, see {train_log_file}")
-          os.system(f"{cmd} > {train_log_file}")
-        else:
-          os.system(f"echo already trained for {domain} {rep}, see {train_log_file}")
+        model_file = f"di_{rep}_L{L}_H{H}_{aggr}_p{patience}_v{val_repeat}_r{repeat}"
 
         """ validate """
         df = f"../benchmarks/goose/{domain}/domain.pddl"
@@ -86,7 +96,7 @@ def main():
 
       # see if any model solved anything
       for val_repeat in range(VAL_REPEATS):
-        model_file = f"dd_{rep}_{domain}_L{L}_H{H}_{aggr}_p{patience}_v{val_repeat}_r{repeat}"
+        model_file = f"di_{rep}_L{L}_H{H}_{aggr}_p{patience}_v{val_repeat}_r{repeat}"
         solved = 0
         for f in os.listdir(val_dir):
           val_log_file = f"{val_log_dir}/{f.replace('.pddl', '')}_{model_file}.log"
@@ -95,7 +105,7 @@ def main():
         best_solved = max(best_solved, solved)
 
       for val_repeat in range(VAL_REPEATS):
-        model_file = f"dd_{rep}_{domain}_L{L}_H{H}_{aggr}_p{patience}_v{val_repeat}_r{repeat}"
+        model_file = f"di_{rep}_L{L}_H{H}_{aggr}_p{patience}_v{val_repeat}_r{repeat}"
         solved = 0
         expansions = []
         runtimes = []
@@ -121,7 +131,7 @@ def main():
           best_train_time = train_time
 
       # log best model stats
-      best_model_file = f"dd_{rep}_{domain}_L{L}_H{H}_{aggr}_p{patience}_r{repeat}"
+      best_model_file = f"di_{rep}_{domain}_L{L}_H{H}_{aggr}_p{patience}_r{repeat}"
       with open(f"{selection_log_dir}/{best_model_file}.log", 'w') as f:
         f.write(f"model: {best_model}\n")
         f.write(f"solved: {best_solved} / {len(os.listdir(val_dir))}\n")
