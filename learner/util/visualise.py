@@ -13,6 +13,38 @@ from representation import REPRESENTATIONS
 from dataset import GOOSE_DOMAINS
 from util.scrape_log import *
 
+
+def collect_param_test_stats(train_type, Ls, aggrs, H, p, graphs, normalise, domain=None):
+  d = {"aggr":[],"L":[],}
+  for graph in graphs:
+    d[graph] = []
+  log_dir = "logs/test"
+  domains = [domain] if domain != None else GOOSE_DOMAINS
+  for aggr in aggrs:
+    for L in Ls:
+      d["L"].append(L)
+      d["aggr"].append(aggr)
+      for rep in graphs:
+        solved = 0
+        for domain in domains:
+          problems = os.listdir(f"../benchmarks/goose/{domain}/test")
+          for problem_pddl in problems:
+            problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
+            f = f'{log_dir}/{problem_name}_{train_type}_{rep}_{domain}_L{L}_H{H}_{aggr}_p{p}_r0.log'
+            if not os.path.exists(f):
+              continue
+            problem_stats = scrape_search_log(f)
+            solved += int(problem_stats["solved"])
+        
+        if normalise:
+          solved = float(solved) / float(len(problems))
+        d[rep].append(solved)
+
+  df = pd.DataFrame(d)
+
+  return df
+
+
 def collect_val_stats(train_type, L, H, aggr, p):
   # Collect stats from the logs/select directory
   # TODO multiple repeats
@@ -20,6 +52,10 @@ def collect_val_stats(train_type, L, H, aggr, p):
   d = {
     "graph": [],
     "domain": [],
+    "L": [],
+    "H": [],
+    "aggr": [],
+    "patience": [],
     "solved": [],
     "median_expansions": [],
     "median_runtime": [],
@@ -33,6 +69,10 @@ def collect_val_stats(train_type, L, H, aggr, p):
         tmp = {}
         tmp["graph"] = rep
         tmp["domain"] = domain
+        tmp["L"] = L
+        tmp["H"] = H
+        tmp["aggr"] = aggr
+        tmp["patience"] = p
         f = f'{log_dir}/{train_type}_{rep}_{domain}_L{L}_H{H}_{aggr}_p{p}_r0.log'
         for line in open(f, 'r').readlines():
           toks = line.replace(":","").split()
@@ -68,6 +108,10 @@ def collect_test_stats(train_type, L, H, aggr, p):
   d = {
     "graph": [],
     "domain": [],
+    "L": [],
+    "H": [],
+    "aggr": [],
+    "patience": [],
     "solved": [],
     "expanded": [],
     "time": [],
@@ -81,6 +125,10 @@ def collect_test_stats(train_type, L, H, aggr, p):
         tmp = {}
         tmp["graph"] = rep
         tmp["domain"] = domain
+        tmp["L"] = L
+        tmp["H"] = H
+        tmp["aggr"] = aggr
+        tmp["patience"] = p
         f = f'{log_dir}/{problem_name}_{train_type}_{rep}_{domain}_L{L}_H{H}_{aggr}_p{p}_r0.log'
         if not os.path.exists(f):
           continue
@@ -105,7 +153,7 @@ def display_solved_test_stats(train_type, L, H, aggr, p):
   df = collect_test_stats(train_type, L, H, aggr, p)
   for domain in GOOSE_DOMAINS:
     df_domain = df[df.domain==domain]
-    df_rep = df_domain.groupby("graph").sum()
+    df_rep = df_domain.drop(columns=["domain", "L", "H", "aggr", "patience"]).groupby("graph").sum()
     print(domain)
     display(df_rep)
 
