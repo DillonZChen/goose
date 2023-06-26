@@ -18,6 +18,7 @@ def main():
   parser.add_argument("-H", type=int)
   parser.add_argument("-a", type=str)
   parser.add_argument("-p", type=int)
+  parser.add_argument("--train-only", action='store_true', dest="train_only")
   args = parser.parse_args()
   rep = args.rep
   L = args.L
@@ -54,7 +55,9 @@ def main():
         os.system(f"{cmd} > {train_log_file}")
       else:
         os.system(f"echo already trained domain independent {rep}, see {train_log_file}")
-        
+
+  if args.train_only:
+    return
 
   # validate and test each domain
   for domain in GOOSE_DOMAINS:

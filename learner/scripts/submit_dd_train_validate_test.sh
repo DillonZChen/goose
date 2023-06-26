@@ -1,6 +1,6 @@
 REPS="ldg-el fdg-el sdg-el"
 
-L=8
+L=4
 H=64
 aggr=max
 p=10

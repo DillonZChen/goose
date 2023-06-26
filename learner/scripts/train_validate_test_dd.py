@@ -18,6 +18,7 @@ def main():
   parser.add_argument("-H", type=int)
   parser.add_argument("-a", type=str)
   parser.add_argument("-p", type=int)
+  parser.add_argument("--train-only", action='store_true', dest="train_only")
   args = parser.parse_args()
   rep = args.rep
   L = args.L
@@ -36,6 +37,8 @@ def main():
   os.makedirs(test_log_dir, exist_ok=True)
   os.makedirs("validated_models", exist_ok=True)
 
+
+  # train different model for each domain
   for domain in GOOSE_DOMAINS:
     val_dir = f"../benchmarks/goose/{domain}/val"
     test_dir = f"../benchmarks/goose/{domain}/test"
@@ -55,6 +58,14 @@ def main():
           os.system(f"{cmd} > {train_log_file}")
         else:
           os.system(f"echo already trained for {domain} {rep}, see {train_log_file}")
+
+  if args.train_only:
+    return
+
+  for domain in GOOSE_DOMAINS:
+    val_dir = f"../benchmarks/goose/{domain}/val"
+    test_dir = f"../benchmarks/goose/{domain}/test"
+    for repeat in range(REPEATS):
 
         """ validate """
         df = f"../benchmarks/goose/{domain}/domain.pddl"
