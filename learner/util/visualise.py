@@ -158,3 +158,7 @@ def display_solved_test_stats(train_type, L, H, aggr, p):
     display(df_rep)
 
   return
+
+def get_max_of_parameters(df):
+  df = df.drop(columns=["L", "aggr"]).max()
+  return df
