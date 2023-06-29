@@ -101,6 +101,35 @@ def display_val_stats(train_type, L, H, aggr, p):
 
   return
 
+def collect_test_stats_planner(planner):
+  d = {
+    "domain": [],
+    "solved": [],
+    "expanded": [],
+    "time": [],
+    "cost": [],
+  }
+  log_dir = f"logs/{planner}"
+
+  for domain in GOOSE_DOMAINS:
+    for problem_pddl in os.listdir(f"../benchmarks/goose/{domain}/test"):
+      problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
+      tmp = {}
+      tmp["domain"] = domain
+      f = f'{log_dir}/{domain}_{problem_name}_{planner}.log'
+      assert os.path.exists(f)
+      problem_stats = scrape_search_log(f)
+      for k in d:
+        if k in problem_stats:
+          tmp[k] = problem_stats[k]
+      assert len(tmp) == len(d)
+      for k in d:
+        d[k].append(tmp[k])
+
+  df = pd.DataFrame(d)
+  df["solved"] = df["solved"].astype(int)
+  return df
+
 def collect_test_stats(train_type, L, H, aggr, p):
   # Collect stats from the logs/test directory
   # TODO multiple repeats
