@@ -12,13 +12,13 @@ VAL_REPEATS = 5
 TIMEOUT = 620  # 10 minute timeout + time to load model etc.
 FAIL_LIMIT = {
   "gripper": 1,
-  "spanner": 5,
-  "visitall": 5,
-  "visitsome": 5,
-  "blocks": 5,
-  "ferry": 5,
-  "sokoban": 5,
-  "n-puzzle": 5,
+  "spanner": 10,
+  "visitall": 10,
+  "visitsome": 10,
+  "blocks": 10,
+  "ferry": 10,
+  "sokoban": 20,
+  "n-puzzle": 10,
 }
 
 

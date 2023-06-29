@@ -14,18 +14,24 @@ from util.search import *
 def main():
   parser=argparse.ArgumentParser()
   parser.add_argument("rep", type=str, choices=REPRESENTATIONS)
-  parser.add_argument("-L", type=int)
+  # parser.add_argument("-L", type=int)
+  # parser.add_argument("-a", type=str)
   parser.add_argument("-H", type=int)
-  parser.add_argument("-a", type=str)
   parser.add_argument("-p", type=int)
   parser.add_argument("--train-only", action='store_true', dest="train_only")
   args = parser.parse_args()
   rep = args.rep
-  L = args.L
+  # L = args.L
+  # aggr = args.a
   H = args.H
-  aggr = args.a
   patience = args.p
 
+  for L in [4, 8, 12, 16]:
+    for aggr in ["mean", "max"]:
+      run_experiments(rep, L, H, aggr, patience, args.train_only)
+  return
+
+def run_experiments(rep, L, H, aggr, patience, train_only):
   train_log_dir = f"logs/train"
   val_log_dir = f"logs/val"
   selection_log_dir = f"logs/select"
@@ -59,16 +65,19 @@ def main():
         else:
           os.system(f"echo already trained for {domain} {rep}, see {train_log_file}")
 
-  if args.train_only:
+  if train_only:
     return
 
   for domain in GOOSE_DOMAINS:
     val_dir = f"../benchmarks/goose/{domain}/val"
     test_dir = f"../benchmarks/goose/{domain}/test"
     for repeat in range(REPEATS):
-
+      
+      # for each experiment, we have train and validation repeats
+      for val_repeat in range(VAL_REPEATS):
         """ validate """
         df = f"../benchmarks/goose/{domain}/domain.pddl"
+        model_file = f"dd_{rep}_{domain}_L{L}_H{H}_{aggr}_p{patience}_v{val_repeat}_r{repeat}"
         for f in os.listdir(val_dir):
           os.system("date")
           val_log_file = f"{val_log_dir}/{f.replace('.pddl', '')}_{model_file}.log"
