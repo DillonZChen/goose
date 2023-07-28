@@ -7,12 +7,15 @@ import numpy as np
 import plotly.express as px
 import matplotlib.pyplot as plt
 import pandas as pd
+import seaborn as sns
 
 from IPython.display import display, HTML
 from representation import REPRESENTATIONS
 from dataset import GOOSE_DOMAINS
 from util.scrape_log import *
+from pathlib import Path
 
+GOOSE_DOMAINS = sorted(GOOSE_DOMAINS)
 
 def collect_param_test_stats(train_type, Ls, aggrs, H, p, graphs, normalise, domain=None):
   d = {"aggr":[],"L":[],}
@@ -34,10 +37,13 @@ def collect_param_test_stats(train_type, Ls, aggrs, H, p, graphs, normalise, dom
             if not os.path.exists(f):
               continue
             problem_stats = scrape_search_log(f)
-            solved += int(problem_stats["solved"])
         
-        if normalise:
-          solved = float(solved) / float(len(problems))
+            if normalise:
+              solved += float(problem_stats["solved"]) / float(len(problems))
+            else:
+              solved += int(problem_stats["solved"])
+
+
         d[rep].append(solved)
 
   df = pd.DataFrame(d)
@@ -101,9 +107,55 @@ def display_val_stats(train_type, L, H, aggr, p):
 
   return
 
-def collect_test_stats_planner(planner):
+def collect_test_stats_planner_and_graphs(configs, L, aggr, normalise):
   d = {
+    "config": [],
+    "solved": [],
+    "expanded": [],
+    "time": [],
+    "cost": [],
     "domain": [],
+  }
+
+  for domain in GOOSE_DOMAINS:
+    problems = os.listdir(f"../benchmarks/goose/{domain}/test")
+    for problem_pddl in problems:
+      problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
+
+      for config in configs:
+        if "-el" in config:
+          # graph
+          rep, train_type = config.split()
+          log_dir = "logs/test"
+
+          H=64
+          p=10 if train_type=="dd" else 20
+
+          f = f'{log_dir}/{problem_name}_{train_type}_{rep}_{domain}_L{L}_H{H}_{aggr}_p{p}_r0.log'
+          if not os.path.exists(f):
+            continue
+          tmp = scrape_search_log(f)
+        else:
+          # planner
+          log_dir = f"logs/{config}"
+          f = f'{log_dir}/{domain}_{problem_name}_{config}.log'
+          assert os.path.exists(f)
+          tmp = scrape_search_log(f)
+
+        tmp["config"] = config
+        tmp["domain"] = domain
+
+        for key in d:
+          val = tmp[key]
+          if normalise and key=="solved":
+            val = float(val) / float(len(problems))
+          d[key].append(val)
+  df = pd.DataFrame(d)
+  return df
+
+
+def collect_test_stats_planner(planner, normalise, domain=None):
+  d = {
     "solved": [],
     "expanded": [],
     "time": [],
@@ -111,23 +163,30 @@ def collect_test_stats_planner(planner):
   }
   log_dir = f"logs/{planner}"
 
-  for domain in GOOSE_DOMAINS:
-    for problem_pddl in os.listdir(f"../benchmarks/goose/{domain}/test"):
+  if domain is None:
+    domains = GOOSE_DOMAINS
+  else:
+    domains = [domain]
+  for domain in domains:
+    problem_pddls = os.listdir(f"../benchmarks/goose/{domain}/test")
+    for problem_pddl in problem_pddls:
       problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
       tmp = {}
-      tmp["domain"] = domain
       f = f'{log_dir}/{domain}_{problem_name}_{planner}.log'
       assert os.path.exists(f)
       problem_stats = scrape_search_log(f)
       for k in d:
         if k in problem_stats:
           tmp[k] = problem_stats[k]
+          if k=="solved" and normalise:
+            tmp[k] = float(tmp[k])/len(problem_pddls)
       assert len(tmp) == len(d)
       for k in d:
         d[k].append(tmp[k])
 
   df = pd.DataFrame(d)
-  df["solved"] = df["solved"].astype(int)
+  if not normalise:
+    df["solved"] = df["solved"].astype(int)
   return df
 
 def collect_test_stats(train_type, L, H, aggr, p):

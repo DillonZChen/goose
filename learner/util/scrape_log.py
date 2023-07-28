@@ -20,7 +20,7 @@ def search_finished_correctly(f):
 
 def scrape_search_log(file):
   stats = {
-    "solved": False,
+    "solved": 0,
     "time": -1,
     "cost": -1,
     "expanded": -1,
@@ -34,7 +34,7 @@ def scrape_search_log(file):
     if "until last jump" in line: continue
 
     if "Solution found." in line: 
-      stats["solved"] = True
+      stats["solved"] = 1
     elif "Goal found at:" in line or "Actual search time:" in line: 
       stats["time"] = float(toks[-1].replace("s", ""))
     elif "Total plan cost:" in line or "Plan cost:" in line: 
