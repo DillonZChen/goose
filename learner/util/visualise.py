@@ -3,6 +3,7 @@ import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
+import re
 import numpy as np
 import plotly.express as px
 import matplotlib.pyplot as plt
@@ -15,7 +16,50 @@ from dataset import GOOSE_DOMAINS
 from util.scrape_log import *
 from pathlib import Path
 
+CONFIG_TO_TEX = {
+    "blind": r"\blind",
+    "hff": r"\hfftable",
+    "lama-first": r"\lama",
+    "fdg-el dd": r"\flg",
+    "sdg-el dd": r"\slg",
+    "ldg-el dd": r"\llg",
+    "fdg-el di": r"\flg",
+    "sdg-el di": r"\slg",
+    "ldg-el di": r"\llg",
+}
+
+CONFIG_TO_LINE_STYLE = {
+    "blind": "solid",
+    "hff": "solid",
+    "lama-first": "solid",
+    "fdg-el dd": "dashed",
+    "sdg-el dd": "dashed",
+    "ldg-el dd": "dashed",
+    "fdg-el di": "dotted",
+    "sdg-el di": "dotted",
+    "ldg-el di": "dotted",
+}
+
+CONFIG_TO_COLOUR = {
+    "blind": "black",
+    "hff": "orange",
+    "lama-first": "green",
+    "fdg-el dd": "red",
+    "sdg-el dd": "purple",
+    "ldg-el dd": "blue",
+    "fdg-el di": "red",
+    "sdg-el di": "purple",
+    "ldg-el di": "blue",
+}
+
 GOOSE_DOMAINS = sorted(GOOSE_DOMAINS)
+
+
+def sorted_nicely( l ): 
+  """ Sort the given iterable in the way that humans expect.""" 
+  convert = lambda text: int(text) if text.isdigit() else text 
+  alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key) ] 
+  return sorted(l, key = alphanum_key)
 
 def collect_param_test_stats(train_type, Ls, aggrs, H, p, graphs, normalise, domain=None):
   d = {"aggr":[],"L":[],}

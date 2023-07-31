@@ -20,6 +20,7 @@ def search_finished_correctly(f):
 
 def scrape_search_log(file):
   stats = {
+    "first_h": -1,
     "solved": 0,
     "time": -1,
     "cost": -1,
@@ -28,6 +29,7 @@ def scrape_search_log(file):
   }
 
   for line in open(file, 'r').readlines():
+
     line = line.replace(" state(s).", "")
     toks = line.split()
     if len(toks) == 0: continue
@@ -43,6 +45,8 @@ def scrape_search_log(file):
       stats["expanded"] = int(toks[-1])
     elif len(toks)>=2 and "Evaluated" == toks[-2]: 
       stats["evaluated"] = int(toks[-1])
+    elif "Initial heuristic value" in line:
+       stats["first_h"] = int(toks[-1])
 
   return stats
 
