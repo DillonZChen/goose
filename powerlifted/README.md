@@ -1,27 +1,3 @@
-## Linking and building with Pytorch-geometric
-- Download libtorch ***with cxx11 ABI*** from https://pytorch.org/get-started/locally/
-  - make *very* sure to install the correct CUDA version if you are using CUDA 
-  - remember where you installed it i.e. `/absolute/path/to/libtorch`
-- Download c++ [pytorch_sparse](https://github.com/rusty1s/pytorch_sparse/#c-api) and [pytorch_scatter](https://github.com/rusty1s/pytorch_scatter#c-api). You may have to checkout recursively for pytorch_sparse, see [here](https://github.com/rusty1s/pytorch_sparse/issues/256). Then install with commands
-```
-mkdir build
-cd build
-# Add -DWITH_CUDA=on support for CUDA support
-cmake -S ../ -DWITH_CUDA=on -DCMAKE_PREFIX_PATH="/absolute/path/to/libtorch"
-make
-sudo make install
-```
-- Set the environment variable
-```
-export LIBTORCH_PYG_LIBRARIES=/absolute/path/to/libtorch;/usr/local/include/torchscatter;/usr/local/include/torchsparse
-```
-noting that `/usr/local/include` is the default installation directory for torchscatter and torchsparse from above
-- Run `./build.py` in the root directory
-
-## Other environment variables
-- `GOOSE`: path to learning repository 
-
-
 # Powerlifted Planner
 
 Powerlifted is a domain-independent classical planner that uses only lifted
