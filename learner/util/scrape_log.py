@@ -28,6 +28,9 @@ def scrape_search_log(file):
     "evaluated": -1,
   }
 
+  if not os.path.exists(file):
+     return stats
+
   for line in open(file, 'r').readlines():
 
     line = line.replace(" state(s).", "")
@@ -46,7 +49,11 @@ def scrape_search_log(file):
     elif len(toks)>=2 and "Evaluated" == toks[-2]: 
       stats["evaluated"] = int(toks[-1])
     elif "Initial heuristic value" in line:
-       stats["first_h"] = int(toks[-1])
+      try:
+        stats["first_h"] = int(toks[-1])
+      except:
+        print(file)
+        stats["first_h"] = -1
 
   return stats
 

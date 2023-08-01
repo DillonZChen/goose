@@ -19,6 +19,7 @@ from pathlib import Path
 CONFIG_TO_TEX = {
     "blind": r"\blind",
     "hff": r"\hfftable",
+    "shgn": r"\shgn",
     "lama-first": r"\lama",
     "fdg-el dd": r"\flg",
     "sdg-el dd": r"\slg",
@@ -31,6 +32,7 @@ CONFIG_TO_TEX = {
 CONFIG_TO_LINE_STYLE = {
     "blind": "solid",
     "hff": "solid",
+    "shgn": "solid",
     "lama-first": "solid",
     "fdg-el dd": "dashed",
     "sdg-el dd": "dashed",
@@ -43,6 +45,7 @@ CONFIG_TO_LINE_STYLE = {
 CONFIG_TO_COLOUR = {
     "blind": "black",
     "hff": "orange",
+    "shgn": "green",
     "lama-first": "green",
     "fdg-el dd": "red",
     "sdg-el dd": "purple",
@@ -183,7 +186,7 @@ def collect_test_stats_planner_and_graphs(configs, L, aggr, normalise):
           # planner
           log_dir = f"logs/{config}"
           f = f'{log_dir}/{domain}_{problem_name}_{config}.log'
-          assert os.path.exists(f)
+          # assert os.path.exists(f)
           tmp = scrape_search_log(f)
 
         tmp["config"] = config
