@@ -16,6 +16,12 @@ from dataset import GOOSE_DOMAINS
 from util.scrape_log import *
 from pathlib import Path
 
+FIRST = r"\first"
+SECOND = r"\second"
+THIRD = r"\third"
+CELL = r"\normalcell"
+ZERO = r"\zerocell"
+
 CONFIG_TO_TEX = {
     "blind": r"\blind",
     "hff": r"\hfftable",
