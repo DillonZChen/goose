@@ -17,7 +17,7 @@ from dataset.ipc_domain_info import same_domain, GROUNDED_DOMAINS, get_ipc_domai
 from dataset.goose_domain_info import get_train_goose_instance_files
 
 
-""" File for generating and loading graphs. """
+""" File for generating and loading graphs. See scripts/generate_graphs.py """
 
 def generate_graph_from_domain_problem_pddl(
   domain_name: str,
@@ -27,6 +27,9 @@ def generate_graph_from_domain_problem_pddl(
 ) -> None:
   """ Generates a list of graphs corresponding to states in the optimal plan """
   ret = []
+
+  if representation=="ddg-el":
+    return slg_to_dlg(domain_name, domain_pddl, problem_pddl)
 
   plan = optimal_plan_exists(domain_name, domain_pddl, problem_pddl)
   if plan is None:
@@ -54,6 +57,19 @@ def generate_graph_from_domain_problem_pddl(
                       )
     ret.append(graph_data)
   return ret
+
+def slg_to_dlg(domain_name, domain_pddl, problem_pddl):
+  problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
+  f = f"data/graphs/sdg-el/{domain_name}/{problem_name}.data"
+  if not os.path.exists(f):
+    return None
+  graph_data_list = torch.load(f)
+  ret = []
+  for graph in graph_data_list:
+    graph.edge_index = graph.edge_index[:2]
+    ret.append(graph)
+  return ret
+
 
 
 def get_graph_data(

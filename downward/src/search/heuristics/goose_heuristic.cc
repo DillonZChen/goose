@@ -48,8 +48,8 @@ void GooseHeuristic::initialise_model(const plugins::Options &opts) {
   {
   case 0: config_path = "slg"; break;
   case 1: config_path = "flg"; break;
-  case 2: config_path = "llg"; break;
-  case 3: config_path = "glg"; break;
+  case 2: config_path = "dlg"; break;
+  case 3: config_path = "llg"; break;
   default:
       std::cout << "Unknown enum of graph representation" << std::endl;
       exit(-1);

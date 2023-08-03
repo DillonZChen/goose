@@ -63,13 +63,16 @@ def fd_cmd(rep, domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
   else:
     raise NotImplementedError
   
-  # 0: slg, 1: flg, 2: llg, 3: glg
+  # 0: slg, 1: flg, 2: dlg, 3: llg
   if rep == "sdg-el":   
     config = 0
     config_file = "slg"
   elif rep == "fdg-el": 
     config = 1
     config_file = "flg"
+  elif rep == "ddg-el": 
+    config = 2
+    config_file = "dlg"
   else: 
     raise NotImplementedError
   

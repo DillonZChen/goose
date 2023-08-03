@@ -191,7 +191,10 @@ def collect_test_stats_planner_and_graphs(configs, L, aggr, normalise):
         else:
           # planner
           log_dir = f"logs/{config}"
-          f = f'{log_dir}/{domain}_{problem_name}_{config}.log'
+          if config=="shgn":
+            f = f'{log_dir}/{domain}_{problem_name}.log'
+          else:
+            f = f'{log_dir}/{domain}_{problem_name}_{config}.log'
           # assert os.path.exists(f)
           tmp = scrape_search_log(f)
 
