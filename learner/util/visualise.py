@@ -25,8 +25,11 @@ ZERO = r"\zerocell"
 CONFIG_TO_TEX = {
     "blind": r"\blind",
     "hff": r"\hfftable",
+    "hff-pwl": r"\hffpwl",
     "shgn": r"\shgn",
     "lama-first": r"\lama",
+    "ddg-el dd": r"\dlg\dd",
+    "ddg-el di": r"\dlg\di",
     "fdg-el dd": r"\flg",
     "sdg-el dd": r"\slg",
     "ldg-el dd": r"\llg",
@@ -38,7 +41,10 @@ CONFIG_TO_TEX = {
 CONFIG_TO_LINE_STYLE = {
     "blind": "solid",
     "hff": "solid",
+    "hff-pwl": "solid",
     "shgn": "solid",
+    "ddg-el dd": "solid",
+    "ddg-el di": "solid",
     "lama-first": "solid",
     "fdg-el dd": "dashed",
     "sdg-el dd": "dashed",
@@ -51,7 +57,10 @@ CONFIG_TO_LINE_STYLE = {
 CONFIG_TO_COLOUR = {
     "blind": "black",
     "hff": "orange",
+    "hff-pwl": "brown",
     "shgn": "green",
+    "ddg-el dd": "green",
+    "ddg-el di": "olive",
     "lama-first": "green",
     "fdg-el dd": "red",
     "sdg-el dd": "purple",
@@ -185,13 +194,11 @@ def collect_test_stats_planner_and_graphs(configs, L, aggr, normalise):
           p=10 if train_type=="dd" else 20
 
           f = f'{log_dir}/{problem_name}_{train_type}_{rep}_{domain}_L{L}_H{H}_{aggr}_p{p}_r0.log'
-          if not os.path.exists(f):
-            continue
           tmp = scrape_search_log(f)
         else:
           # planner
           log_dir = f"logs/{config}"
-          if config=="shgn":
+          if config in {"shgn", "hff-pwl"}:
             f = f'{log_dir}/{domain}_{problem_name}.log'
           else:
             f = f'{log_dir}/{domain}_{problem_name}_{config}.log'
