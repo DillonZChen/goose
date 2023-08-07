@@ -1,4 +1,9 @@
 CONFIG = {
+  "ddg-el": {
+    "lifted": False,
+    "directed": False,
+    "edge_labels": True,
+  },
   "sdg-el": {
     "lifted": False,
     "directed": False,
@@ -23,6 +28,7 @@ CONFIG = {
 
 
 N_EDGE_TYPES = {
+    "ddg-el": 2,
     "sdg-el": 3,
     "fdg-el": 3,
     "ldg-el": 6,

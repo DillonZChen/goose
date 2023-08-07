@@ -26,8 +26,10 @@ def main():
   H = args.H
   patience = args.p
 
-  for L in [4, 8, 12, 16]:
-    for aggr in ["mean", "max"]:
+  # for L in [4, 8, 12, 16]:
+  #   for aggr in ["mean", "max"]:
+  for L in [4]:
+    for aggr in ["max"]:
       run_experiments(rep, L, H, aggr, patience, args.train_only)
   return
 

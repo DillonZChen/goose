@@ -13,6 +13,11 @@ from util.transform import preprocess_data
 from dataset.graphs import get_graph_data
 
 
+def predict_finished_correctly(f):
+  log = open(f, 'r').read()
+  finished_correctly = "Initial heuristic value" in log
+  return finished_correctly
+
 def search_finished_correctly(f):
   log = open(f, 'r').read()
   finished_correctly = "timed out after" in log or "Solution found." in log or "Time limit has been reached." in log

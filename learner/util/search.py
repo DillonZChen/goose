@@ -73,6 +73,9 @@ def fd_cmd(rep, domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
   elif rep == "ddg-el": 
     config = 2
     config_file = "dlg"
+  elif rep == "ldg-el": 
+    config = 3
+    config_file = "llg"
   else: 
     raise NotImplementedError
   
