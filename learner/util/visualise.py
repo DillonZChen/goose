@@ -38,6 +38,13 @@ CONFIG_TO_TEX = {
     "ldg-el di": r"\llg",
 }
 
+CONFIG_TO_PURE_TEX = {
+    "ddg-el": r"$\textsf{DLG}$",
+    "fdg-el": r"$\textsf{FLG}$",
+    "sdg-el": r"$\textsf{SLG}$",
+    "ldg-el": r"$\textsf{LLG}$",
+}
+
 CONFIG_TO_LINE_STYLE = {
     "blind": "solid",
     "hff": "solid",
