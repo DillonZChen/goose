@@ -1,7 +1,7 @@
 # goose
 
 ## Required packages
-See `requirements.txt`. (Apologies was a bit rushed so not the nicest requirements file). Main packages you need are `torch`, `torch_geometric` and `networkx`. The latest versions should be fine.
+See `requirements.txt`.
 
 ## Constructing training dataset
 Requires access to `plan_objects.zip`. Do the following steps:
