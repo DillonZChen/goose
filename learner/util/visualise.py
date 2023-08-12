@@ -5,10 +5,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 import re
 import numpy as np
-import plotly.express as px
 import matplotlib.pyplot as plt
 import pandas as pd
-import seaborn as sns
 
 from IPython.display import display, HTML
 from representation import REPRESENTATIONS
