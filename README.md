@@ -26,11 +26,13 @@ We use `downward` or `powerlifted` as the search engine which calls code in the 
 sh setup.sh
 ```
 
-Then to run search go into the `learner` directory and execute the `run.py` script, for example:
+Then to run search go into the `learner` directory and execute the `run.py` script with singularity, for example:
 ```
 cd learner
 singularity exec --nv ../gpu.sif python3 run.py ../benchmarks/goose/gripper/domain.pddl ../benchmarks/goose/gripper/test/gripper-n20.pddl -m saved-models/dd_llg_gripper.dt -r llg
 ```
+
+If you do not want to use/have a GPU, you can remove the `--nv` flag. 
 
 Use `-h` for help with arguments or refer to the description below:
 ```
