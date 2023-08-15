@@ -3,8 +3,9 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 import re 
-
 from representation import CONFIG, REPRESENTATIONS
+
+""" Module containing useful methods and configurations for 24-AAAI search experiments. """
 
 
 REPEATS = 1

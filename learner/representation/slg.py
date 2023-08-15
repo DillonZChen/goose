@@ -14,7 +14,7 @@ class SLG_EDGE_TYPES(Enum):
   DEL_EDGE=2
 
 
-""" Extended by GroundedLearningGraph """
+""" Extended by GroundedLearningGraph and DeleteLearningGraph """
 class StripsLearningGraph(Representation, ABC):
   def __init__(self, domain_pddl: str, problem_pddl: str, rep_name: str="slg", node_dim: int=len(SLG_FEATURES)):
     super().__init__(domain_pddl, problem_pddl, rep_name=rep_name, node_dim=node_dim)

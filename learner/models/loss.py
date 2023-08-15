@@ -5,6 +5,7 @@ from torch import Tensor
 from torch.nn import MSELoss, BCEWithLogitsLoss
 
 
+""" Weights loss higher for inadmissible estimates """
 class WeightedMSELoss:
   def __init__(self, weight: float=2) -> None:
     self.weight = weight
@@ -27,6 +28,8 @@ class WeightedMSELoss:
       loss += self.weight*gt_loss
     return loss
 
+
+""" Loss function from Mehdi Samadi, Ariel Felner, and Jonathan Schaeﬀer, AAAI 2008 """
 class PenaltyEnhancedMSELoss():
   def __init__(self, a: float=1, b:float=1) -> None:
     self.a = a

@@ -11,12 +11,12 @@ class MPNNLayer(Module):
       return x_out
     
 
-""" simple MPNN with linear updates """
+""" Simple MPNN with linear updates. Does not support edge labeled graphs. """
 class MPNN(BaseGNN):
   def __init__(self, params) -> None:
     super().__init__(params)
     if self.share_layers:
-      raise NotImplementedError("sharing layers not implemented for ELGNN")
+      raise NotImplementedError("sharing layers not implemented for MPNN")
     return
 
   def create_layer(self):

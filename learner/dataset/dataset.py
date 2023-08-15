@@ -8,7 +8,7 @@ from torch_geometric.loader import DataLoader
 from sklearn.model_selection import train_test_split
 from dataset.graphs import get_graph_data
 from representation.node_features import add_features
-from util.transform import extract_testset_ipc, preprocess_data, sample_strategy
+from dataset.transform import extract_testset_ipc, preprocess_data, sample_strategy
 
 
 def get_loaders_from_args(args):

@@ -3,6 +3,8 @@ import sys
 from torch.profiler import profile, record_function, ProfilerActivity
 from util import eval_f1_score, eval_admissibility, eval_interval, eval_accuracy
 
+""" Train and evaluation methods in training pipeline. """
+
 
 def train(model, device, train_loader, criterion, optimiser, fast_train):
   model.train()

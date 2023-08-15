@@ -15,7 +15,6 @@ from torch import Tensor
 from planning.translate.instantiate import instantiate, explore
 from enum import Enum
 from collections import OrderedDict
-
 from dataset import get_domain_name, get_problem_name
 from planning import get_planning_problem
 from planning import Proposition
@@ -31,8 +30,7 @@ from .config import CONFIG, N_EDGE_TYPES
 State = List[Proposition]
 
 
-""" Graph representations """
-
+""" Base class for graph representations """
 class Representation(ABC):
   def __init__(self, 
                domain_pddl: str, 
@@ -65,10 +63,12 @@ class Representation(ABC):
     return
 
   def _create_graph(self) -> Union[nx.Graph, nx.DiGraph]:
+    """ Initialises a networkx graph """
     self.directed = CONFIG[self.rep_name]["directed"]
     return nx.DiGraph() if self.directed else nx.Graph()
 
   def _one_hot_node(self, index, size=-1) -> Tensor:
+    """ Returns a one hot tensor """
     if size==-1:
       ret = torch.zeros(self.node_dim)
     else:
@@ -77,6 +77,7 @@ class Representation(ABC):
     return ret
 
   def _zero_node(self) -> Tensor:
+    """ Returns a tensor of zeros """
     ret = torch.zeros(self.node_dim)
     return ret
 

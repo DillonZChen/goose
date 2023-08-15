@@ -1,5 +1,5 @@
 from representation.base_class import *
-from planning.translate.pddl import Literal, Atom, NegatedAtom, PropositionalAction
+from representation.slg import StripsLearningGraph
 
 
 class DLG_FEATURES(Enum):
@@ -13,62 +13,9 @@ class DLG_EDGE_TYPES(Enum):
   ADD_EDGE=1
 
 
-class DeleteLearningGraph(Representation, ABC):
+class DeleteLearningGraph(StripsLearningGraph, ABC):
   def __init__(self, domain_pddl: str, problem_pddl: str, rep_name: str="dlg", node_dim: int=len(DLG_FEATURES)):
     super().__init__(domain_pddl, problem_pddl, rep_name=rep_name, node_dim=node_dim)
-  
-
-  def _get_grounded_problem_info(self):
-    """ Ground the parsed lifted pddl representation and return 
-        propositions, actions, positive and negative goals, and predicates.
-        Predicates stores predicate names for both propositions and actions.
-
-        This can be potentially optimised by letting the planner send the grounded information here.
-    """
-
-    # Grounding the lifted representation.
-    grounded = explore(self.problem)
-
-    propositions = set(grounded[1])
-    actions = grounded[2]
-
-    goals = self.problem.goal.parts if len(self.problem.goal.parts) > 0 else [self.problem.goal]
-    positive_goals = set()
-    negative_goals = set()
-    for goal in goals:
-      if type(goal) == Atom:
-        positive_goals.add(goal)
-      elif type(goal) == NegatedAtom:
-        negative_goals.add(goal)
-      else:
-        raise TypeError(goal)
-      
-    predicates = set()
-    for prop in propositions:
-      predicates.add(self._get_predicate_from_proposition(prop))
-    for action in actions:
-      predicates.add(self._get_predicate_from_action(action))
-
-    return propositions, actions, positive_goals, negative_goals, predicates
-  
-
-  def _get_predicate_from_proposition(self, proposition: Proposition) -> str:
-    return proposition.predicate
-  
-  
-  def _get_predicate_from_action(self, action: PropositionalAction) -> str:
-    return action.name.replace("(","").replace(")","").split()[0]
-  
-
-  def _proposition_to_str(self, proposition: Literal) -> str:
-    predicate = proposition.predicate
-    args = proposition.args
-    if len(args) == 0:
-      return f"({predicate})"
-    ret = f"({predicate}"
-    for arg in args: ret += f" {arg}"
-    ret += ")"
-    return ret
   
 
   def _compute_graph_representation(self) -> None:

@@ -5,7 +5,8 @@ import argparse
 from representation import REPRESENTATIONS
 from dataset.graphs import gen_graph_rep
 
-def main():
+
+if __name__ == "__main__":
   parser = argparse.ArgumentParser()
   parser.add_argument('rep', type=str, help="graph representation to generate", choices=REPRESENTATIONS)
   parser.add_argument('-d', '--domain', type=str, help="domain to generate (useful for debugging)")
@@ -19,7 +20,4 @@ def main():
   
   if args.regenerate:
     os.system(f"scp -r data/graphs/{rep}/ cluster1:~/goose/learner/data/graphs")
-  return
-
-if __name__ == "__main__":
-  main()
+    

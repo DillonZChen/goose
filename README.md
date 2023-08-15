@@ -1,4 +1,11 @@
-# goose
+# GOOSE
+
+## Table of contents
+- [GOOSE](#goose)
+  - [Table of contents](#table-of-contents)
+  - [Search evaluation](#search-evaluation)
+  - [Loading the training dataset](#loading-the-training-dataset)
+  - [Domain-dependent training](#domain-dependent-training)
 
 ## Search evaluation
 We use `downward` or `powerlifted` as the search engine which calls code in the `learner` repository for computing heuristics using `pybind11`. To make things simple, we use singularity to contain all our requirements. This ensures you have singularity installed, see [here](https://github.com/apptainer/singularity). Build the singularity container and both Downward and Powerlifted by running in the root repository

@@ -11,7 +11,7 @@ from util.scrape_log import scrape_search_log, scrape_train_log, search_finished
 from util.search import *
 
 
-def main():
+if __name__ == "__main__":
   parser=argparse.ArgumentParser()
   parser.add_argument("rep", type=str, choices=REPRESENTATIONS)
   # parser.add_argument("-L", type=int)
@@ -202,8 +202,3 @@ def run_experiments(rep, L, H, aggr, patience, train_only):
         if failed >= FAIL_LIMIT[domain]:
           break
       # end f in [test problems]
-  return
-
-
-if __name__ == "__main__":
-  main()

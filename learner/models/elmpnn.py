@@ -13,7 +13,7 @@ class ELMPNNLayer(Module):
 
     def forward(self, x: Tensor, list_of_edge_index: List[Tensor]) -> Tensor:
       x_out = self.root(x)
-      for i, conv in enumerate(self.convs):  # bottleneck
+      for i, conv in enumerate(self.convs):  # bottleneck; difficult to parallelise efficiently
         x_out += conv(x, list_of_edge_index[i])
       return x_out
 
@@ -31,7 +31,7 @@ class ELMPNN(BaseGNN):
     return ELMPNNLayer(self.nhid, self.nhid, n_edge_labels=self.n_edge_labels, aggr=self.aggr)
 
   def node_embedding(self, x: Tensor, list_of_edge_index: List[Tensor], batch: Optional[Tensor]) -> Tensor:
-    """ overwrite (same semantics, different typing) for jit """
+    """ overwrite typing (same semantics, different typing) for jit """
     x = self.emb(x)
     for layer in self.layers:
       x = layer(x, list_of_edge_index)
@@ -39,13 +39,13 @@ class ELMPNN(BaseGNN):
     return x
   
   def graph_embedding(self, x: Tensor, list_of_edge_index: List[Tensor], batch: Optional[Tensor]) -> Tensor:
-    """ overwrite (same semantics, different typing) for jit """
+    """ overwrite typing (same semantics, different typing) for jit """
     x = self.node_embedding(x, list_of_edge_index, batch)
     x = self.pool(x, batch)
     return x
 
   def forward(self, x: Tensor, list_of_edge_index: List[Tensor], batch: Optional[Tensor]) -> Tensor:
-    """ overwrite (same semantics, different typing) for jit """
+    """ overwrite typing (same semantics, different typing) for jit """
     x = self.graph_embedding(x, list_of_edge_index, batch)
     x = self.mlp(x)
     x = x.squeeze(1)
@@ -60,7 +60,7 @@ class ELMPNNPredictor(BasePredictor):
   def create_model(self, params):
     self.model = ELMPNN(params)
 
-  def h(self, state: FrozenSet[Proposition]) -> float:
+  def h(self, state: State) -> float:
     x, edge_index = self.rep.get_state_enc(state)
     x = x.to(self.device)
     for i in range(len(edge_index)):
@@ -69,6 +69,6 @@ class ELMPNNPredictor(BasePredictor):
     h = round(h)
     return h
 
-  def predict_action(self, state: FrozenSet[Proposition]):
+  def predict_action(self, state: State):
     raise NotImplementedError
   

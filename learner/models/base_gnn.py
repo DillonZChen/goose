@@ -3,9 +3,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import time
-import torch
 import warnings
-from planning import Proposition
+from planning import Proposition, State
 from representation import REPRESENTATIONS, add_features, CONFIG
 from torch_geometric.nn import (global_add_pool, global_max_pool, global_mean_pool)
 from abc import ABC, abstractmethod
@@ -43,6 +42,12 @@ class LinearConv(MessagePassing):
       return x
   
 
+"""
+An abstract GNN class with everything implemented except the definition of a layer.
+
+The class can be compiled with jit or the new pytorch-2. However, pytorch-geometric
+has yet to provide compiling for GNNs with variable sized graph inputs.
+"""
 class BaseGNN(ABC, nn.Module):
   def __init__(self, params) -> None:
     super().__init__()
@@ -129,8 +134,13 @@ class BaseGNN(ABC, nn.Module):
     return type(self).__name__
 
 
+"""
+A wrapper for a GNN which contains the GNN, additional informations beyond hyperparameters,
+and helpful methods such as I/O and providing an interface for planners to call as a heuristic
+evaluator.
+"""
 class BasePredictor(ABC, nn.Module):
-  def __init__(self, params=None, jit=True) -> None:
+  def __init__(self, params=None, jit=False) -> None:
     super().__init__()
     if params is not None:
       self.model = None
@@ -141,8 +151,8 @@ class BasePredictor(ABC, nn.Module):
       self.device = None
       self.batch = False
       self.create_model(params)
-    # if self.jit:
-    #   self.model = torch.jit.script(self.model)
+    if self.jit:
+      self.model = torch.jit.script(self.model)
     return
   
   def lifted_state_input(self) -> bool:
@@ -162,6 +172,7 @@ class BasePredictor(ABC, nn.Module):
     raise NotImplementedError
   
   def load_state_dict_into_gnn(self, model_state_dict) -> None:
+    """ Load saved weights """
     self.model.load_state_dict(model_state_dict)
 
   def forward(self, data):
@@ -176,11 +187,13 @@ class BasePredictor(ABC, nn.Module):
     return x
   
   def initialise_readout(self):
-    self.model.mlp = construct_mlp(in_features=self.model.nhid, n_hid=self.model.nhid, out_features=self.model.out_feat)
-    # self.model.mlp = torch.jit.script(construct_mlp(in_features=self.model.nhid, n_hid=self.model.nhid, out_features=self.model.out_feat))
+    if self.jit:
+      self.model.mlp = torch.jit.script(construct_mlp(in_features=self.model.nhid, n_hid=self.model.nhid, out_features=self.model.out_feat))
+    else:
+      self.model.mlp = construct_mlp(in_features=self.model.nhid, n_hid=self.model.nhid, out_features=self.model.out_feat)
     return
 
-  def h(self, state: FrozenSet[Proposition]) -> float:
+  def h(self, state: State) -> float:
     x, edge_index = self.rep.get_state_enc(state)
     x = x.to(self.device)
     edge_index = edge_index.to(self.device)
@@ -188,7 +201,7 @@ class BasePredictor(ABC, nn.Module):
     h = round(h)
     return h
 
-  def h_batch(self, states: List[FrozenSet[Proposition]]) -> List[float]:
+  def h_batch(self, states: List[State]) -> List[float]:
     data_list = []
     for state in states:
       x, edge_index = self.rep.get_state_enc(state)
@@ -200,7 +213,8 @@ class BasePredictor(ABC, nn.Module):
     hs = np.rint(hs).astype(int).tolist()
     return hs
 
-  def predict_action(self, state: FrozenSet[Proposition]):
+  def predict_action(self, state: State):
+    """ Use GNN to learn policy or preferred operators """
     raise NotImplementedError
 
   def update_representation(self, domain_pddl: str, problem_pddl: str, args, device):
@@ -229,6 +243,7 @@ class BasePredictor(ABC, nn.Module):
     return
 
   def get_num_parameters(self) -> int:
+    """ Count number of weight parameters """
     # https://stackoverflow.com/a/62764464/13531424
     # e.g. to deal with case of sharing layers
     params = sum(dict((p.data_ptr(), p.numel()) for p in self.parameters() if p.requires_grad).values())

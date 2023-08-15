@@ -1,16 +1,17 @@
 import os
 import time
-
 import torch
 import networkx as nx
 from typing import FrozenSet, List, NamedTuple, TypeVar, Tuple, Dict, Optional
-
 from scipy.sparse.linalg import ArpackError
 from torch_geometric.data import DataLoader, Data
 from torch_geometric.utils.convert import to_networkx, from_networkx
 from torch_geometric.transforms import AddLaplacianEigenvectorPE
 from abc import ABC, abstractmethod
 from tqdm.auto import tqdm
+
+
+""" Module for appending additional node features. Used in thesis but not in 24-AAAI. """
 
 
 RNI_SIZE = [1, 4, 0.5]
@@ -45,16 +46,14 @@ def add_rni(dataset: List[Data], args) -> List[Data]:
 
 
 def add_gde(dataset: List[Data], args) -> List[Data]:
-  raise NotImplementedError
   ret = []
   for data in tqdm(dataset):
     n = data.x.shape[0]
     G = to_networkx(data)
     goal_nodes = set()
     for node in G.nodes:
-      pass
-      # if data.x[node][DRG_FEAT_MAP["g"]] == 1:
-      #   goal_nodes.add(node)
+      # TODO: extract goal nodes
+      raise NotImplementedError
     pe = torch.zeros((n, 1))
     for g in goal_nodes:
       paths = nx.shortest_path_length(G, target=g)

@@ -3,7 +3,8 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 import argparse
 
-def main():
+
+if __name__ == "__main__":
   parser = argparse.ArgumentParser()
   parser.add_argument('rep', type=str, help="graph representation to generate")
   args = parser.parse_args()
@@ -20,10 +21,3 @@ def main():
     os.system(f"rm -rf trained_models/*_{rep}_*")
     os.system(f"rm -rf validated_models/*_{rep}_*")
     print(f"Deleted all files associated with {rep}!")
-  else:
-    pass
-
-  return
-
-if __name__ == "__main__":
-  main()

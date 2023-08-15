@@ -4,6 +4,8 @@ import datetime
 import representation
 from models import *
 
+""" Module for dealing with model saving and loading. """
+
 
 def arg_to_params(args, in_feat=4, out_feat=1):
     model_name = args.model

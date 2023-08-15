@@ -5,6 +5,9 @@ from torch import Tensor
 from sklearn.metrics import f1_score
 from sklearn.metrics import accuracy_score
 
+""" Module containing metrics for inference only. """
+
+
 @torch.no_grad()
 def eval_accuracy(y_pred: Tensor, y_true: Tensor):
   try:

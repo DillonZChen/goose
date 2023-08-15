@@ -23,7 +23,7 @@ class GroundedLearningGraph(StripsLearningGraph, ABC):
 
 
   def _compute_graph_representation(self) -> None:
-    """ TODO: reference definition of this graph representation
+    """ TODO: reference definition of this graph representation (not used in 24-AAAI paper)
     """
 
     G = self._create_graph()

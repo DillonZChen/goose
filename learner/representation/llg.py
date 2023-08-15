@@ -12,7 +12,6 @@ class LLG_FEATURES(Enum):
 ENC_FEAT_SIZE = len(LLG_FEATURES)
 VAR_FEAT_SIZE = 4
 
-# undirected graph!
 EDGE_TYPE = OrderedDict({
   "neutral": 0,
   "ground":  1,
@@ -28,11 +27,11 @@ class LiftedLearningGraph(Representation, ABC):
     super().__init__(domain_pddl, problem_pddl, rep_name="llg", node_dim=ENC_FEAT_SIZE+VAR_FEAT_SIZE)
 
 
-  def _construct_pe_function(self) -> None:
-    """ Precompute a seeded randomly generated injective PE function """
+  def _construct_if(self) -> None:
+    """ Precompute a seeded randomly generated injective index function """
     self._pe = []
 
-    # TODO read max range from problem
+    # TODO read max range from problem and lazily compute 
     for idx in range(60):
       torch.manual_seed(idx)
       rep = 2*torch.rand(VAR_FEAT_SIZE)-1  # U[-1,1]
@@ -57,7 +56,7 @@ class LiftedLearningGraph(Representation, ABC):
     """ TODO: reference definition of this graph representation
     """
   
-    self._construct_pe_function()
+    self._construct_if()
 
     G = self._create_graph()
 
@@ -180,6 +179,7 @@ class LiftedLearningGraph(Representation, ABC):
 
 
   def str_to_state(self, s) -> List[Tuple[str, List[str]]]:
+    """ Used in dataset construction to convert string representation of facts into a (pred, [args]) representation """
     state = []
     for fact in s:
       fact = fact.replace(")", "").replace("(", "")
@@ -194,7 +194,7 @@ class LiftedLearningGraph(Representation, ABC):
 
 
   def get_state_enc(self, state: List[Tuple[str, List[str]]]) -> Tuple[Tensor, Tensor]:
-
+    """ States are represented as a list of (pred, [args]) """
     x = self.x.clone()
     edge_indices = self.edge_indices.copy()
     i = len(x)
@@ -206,9 +206,6 @@ class LiftedLearningGraph(Representation, ABC):
     for fact in state:
       pred = fact[0]
       args = fact[1]
-
-      # if pred not in self._node_to_i:
-        # continue  # e.g. type predicates
 
       node = (pred, tuple(args))
 
