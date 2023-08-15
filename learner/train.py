@@ -9,7 +9,6 @@ import configuration
 
 from models import *
 from tqdm.auto import tqdm, trange
-from loss import LOSS
 from util.stats import *
 from util.save_load import *
 from util import train, evaluate

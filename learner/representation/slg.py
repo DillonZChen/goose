@@ -2,19 +2,21 @@ from representation.base_class import *
 from planning.translate.pddl import Literal, Atom, NegatedAtom, PropositionalAction
 
 
-class DDG_FEATURES(Enum):
+class SLG_FEATURES(Enum):
   ACTION=0
   POSITIVE_GOAL=1
   NEGATIVE_GOAL=2
   STATE=3
 
-class DDG_EDGE_TYPES(Enum):
+class SLG_EDGE_TYPES(Enum):
   PRE_EDGE=0
   ADD_EDGE=1
+  DEL_EDGE=2
 
 
-class DeleteLearningGraph(Representation, ABC):
-  def __init__(self, domain_pddl: str, problem_pddl: str, rep_name: str="ddg-el", node_dim: int=len(DDG_FEATURES)):
+""" Extended by GroundedLearningGraph """
+class StripsLearningGraph(Representation, ABC):
+  def __init__(self, domain_pddl: str, problem_pddl: str, rep_name: str="slg", node_dim: int=len(SLG_FEATURES)):
     super().__init__(domain_pddl, problem_pddl, rep_name=rep_name, node_dim=node_dim)
   
 
@@ -84,16 +86,16 @@ class DeleteLearningGraph(Representation, ABC):
       node_p = self._proposition_to_str(proposition)
       # these features may get updated in state encoding
       if proposition in positive_goals:
-        x_p = self._one_hot_node(DDG_FEATURES.POSITIVE_GOAL.value)
+        x_p = self._one_hot_node(SLG_FEATURES.POSITIVE_GOAL.value)
       elif proposition in negative_goals:
-        x_p = self._one_hot_node(DDG_FEATURES.NEGATIVE_GOAL.value)
+        x_p = self._one_hot_node(SLG_FEATURES.NEGATIVE_GOAL.value)
       else:
         x_p = self._zero_node()
       G.add_node(node_p, x=x_p)
 
     for action in actions:
       node_a = action.name
-      x_a = self._one_hot_node(DDG_FEATURES.ACTION.value)
+      x_a = self._one_hot_node(SLG_FEATURES.ACTION.value)
       G.add_node(node_a, x=x_a)
 
     """ edges """
@@ -103,24 +105,22 @@ class DeleteLearningGraph(Representation, ABC):
         p_node = self._proposition_to_str(proposition)
         assert p_node in G.nodes, f"{p_node} not in nodes"
         assert a_node in G.nodes, f"{a_node} not in nodes"
-        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=DDG_EDGE_TYPES.PRE_EDGE.value)
+        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=SLG_EDGE_TYPES.PRE_EDGE.value)
       for _, proposition in action.add_effects:  # ignoring conditional effects
         p_node = self._proposition_to_str(proposition)
         assert p_node in G.nodes, f"{p_node} not in nodes"
         assert a_node in G.nodes, f"{a_node} not in nodes"
-        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=DDG_EDGE_TYPES.ADD_EDGE.value)
-
-      """ Delete relaxation means ignoring delete edges """
-      # for _, proposition in action.del_effects:  # ignoring conditional effects
-      #   p_node = self._proposition_to_str(proposition)
-      #   assert p_node in G.nodes, f"{p_node} not in nodes"
-      #   assert a_node in G.nodes, f"{a_node} not in nodes"
-      #   G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=SDG_EDGE_TYPES.DEL_EDGE.value)
+        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=SLG_EDGE_TYPES.ADD_EDGE.value)
+      for _, proposition in action.del_effects:  # ignoring conditional effects
+        p_node = self._proposition_to_str(proposition)
+        assert p_node in G.nodes, f"{p_node} not in nodes"
+        assert a_node in G.nodes, f"{a_node} not in nodes"
+        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=SLG_EDGE_TYPES.DEL_EDGE.value)
 
     # map node names to tensor indices; only do this for propositions
     self._node_to_i = {}
     for i, node in enumerate(G.nodes):
-      if G.nodes[node]['x'][DDG_FEATURES.ACTION.value] == 1:
+      if G.nodes[node]['x'][SLG_FEATURES.ACTION.value] == 1:
         continue
       self._node_to_i[node] = i
 
@@ -135,6 +135,6 @@ class DeleteLearningGraph(Representation, ABC):
     x = self.x.clone()  # not time nor memory efficient, but no other way in Python
     for p in state:
       if p in self._node_to_i:
-        x[self._node_to_i[p]][DDG_FEATURES.STATE.value] = 1
+        x[self._node_to_i[p]][SLG_FEATURES.STATE.value] = 1
 
     return x, self.edge_indices

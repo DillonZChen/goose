@@ -41,7 +41,7 @@ public:
 
     int compute_heuristic(const DBState &s, const Task &task) override;
 
-    std::vector<int> compute_heuristic_batch(const std::vector<DBState> &states, const Task &task) override;
+    std::vector<int> compute_heuristic_batch(const std::vector<DBState> &states, const Task &task);
 
 };
 

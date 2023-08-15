@@ -1,7 +1,7 @@
 from planning.translate.pddl import Atom, NegatedAtom, Truth
 from representation.base_class import *
 
-class LDG_FEATURES(Enum):
+class LLG_FEATURES(Enum):
   P=0   # is predicate
   A=1   # is action
   G=2   # is positive goal (grounded)
@@ -9,7 +9,7 @@ class LDG_FEATURES(Enum):
   S=4   # is activated (grounded)
   O=5   # is object
 
-ENC_FEAT_SIZE = len(LDG_FEATURES)
+ENC_FEAT_SIZE = len(LLG_FEATURES)
 VAR_FEAT_SIZE = 4
 
 # undirected graph!
@@ -23,9 +23,9 @@ EDGE_TYPE = OrderedDict({
 })
 
 
-class EdgeLabelledLiftedDescriptionGraph(Representation, ABC):
+class LiftedLearningGraph(Representation, ABC):
   def __init__(self, domain_pddl: str, problem_pddl: str):
-    super().__init__(domain_pddl, problem_pddl, rep_name="ldg-el", node_dim=ENC_FEAT_SIZE+VAR_FEAT_SIZE)
+    super().__init__(domain_pddl, problem_pddl, rep_name="llg", node_dim=ENC_FEAT_SIZE+VAR_FEAT_SIZE)
 
 
   def _construct_pe_function(self) -> None:
@@ -41,7 +41,7 @@ class EdgeLabelledLiftedDescriptionGraph(Representation, ABC):
     return
   
 
-  def _feature(self, node_type: LDG_FEATURES) -> Tensor:
+  def _feature(self, node_type: LLG_FEATURES) -> Tensor:
     ret = torch.zeros(self.node_dim)
     ret[node_type.value] = 1
     return ret
@@ -63,14 +63,14 @@ class EdgeLabelledLiftedDescriptionGraph(Representation, ABC):
 
     # objects
     for i, obj in enumerate(self.problem.objects):
-      G.add_node(obj.name, x=self._feature(LDG_FEATURES.O))  # add object node
+      G.add_node(obj.name, x=self._feature(LLG_FEATURES.O))  # add object node
 
 
     # predicates
     largest_predicate = 0
     for pred in self.problem.predicates:
       largest_predicate = max(largest_predicate, len(pred.arguments))
-      G.add_node(pred.name, x=self._feature(LDG_FEATURES.P))  # add predicate node
+      G.add_node(pred.name, x=self._feature(LLG_FEATURES.P))  # add predicate node
 
 
     # fully connected between objects and predicates
@@ -95,9 +95,9 @@ class EdgeLabelledLiftedDescriptionGraph(Representation, ABC):
       goal_node = (pred, args)
 
       if is_negated: 
-        x = self._feature(LDG_FEATURES.N)
+        x = self._feature(LLG_FEATURES.N)
       else:
-        x = self._feature(LDG_FEATURES.G)
+        x = self._feature(LLG_FEATURES.G)
       G.add_node(goal_node, x=x)  # add grounded predicate node
 
       for i, arg in enumerate(args):
@@ -120,7 +120,7 @@ class EdgeLabelledLiftedDescriptionGraph(Representation, ABC):
     # actions
     largest_action_schema = 0
     for action in self.problem.actions:
-      G.add_node(action.name, x=self._feature(LDG_FEATURES.A))
+      G.add_node(action.name, x=self._feature(LLG_FEATURES.A))
       action_args = {}
 
       largest_action_schema = max(largest_action_schema, len(action.parameters))
@@ -214,12 +214,12 @@ class EdgeLabelledLiftedDescriptionGraph(Representation, ABC):
 
       # activated proposition overlaps with a goal Atom or NegatedAtom
       if node in self._node_to_i:
-        x[self._node_to_i[node]][LDG_FEATURES.S.value] = 1
+        x[self._node_to_i[node]][LLG_FEATURES.S.value] = 1
         continue
       
       # activated proposition does not overlap with a goal
       true_node_i = i
-      x[i][LDG_FEATURES.S.value] = 1
+      x[i][LLG_FEATURES.S.value] = 1
       i += 1
 
       # connect fact to predicate

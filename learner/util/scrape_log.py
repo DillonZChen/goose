@@ -4,7 +4,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 import torch
 from tqdm import trange
 from dataset.dataset import get_loaders_from_args
-from loss import LOSS
+from learner.models.loss import LOSS
 from torch_geometric.loader import DataLoader
 from util.train_eval import evaluate
 from util.stats import get_stats

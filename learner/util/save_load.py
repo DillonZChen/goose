@@ -85,6 +85,9 @@ def load_model(path, print_args=False, jit=True, ignore_subdir=False):
     except:
       print(f"Model not found at {path}")
       exit(-1)
+    # update legacy naming
+    if "dg-el" in args.rep:
+        args.rep = args.rep.replace("dg-el", "lg")
     model = GNNS[args.model](params=arg_to_params(args), jit=jit)
     model.load_state_dict_into_gnn(model_state_dict)
     print("Model loaded!")

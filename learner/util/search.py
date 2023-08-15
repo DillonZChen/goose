@@ -4,7 +4,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 import re 
 
-from representation.config import CONFIG
+from representation import CONFIG, REPRESENTATIONS
 
 
 REPEATS = 1
@@ -28,17 +28,17 @@ def sorted_nicely( l ):
   alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key) ] 
   return sorted(l, key = alphanum_key)
 
-def search_cmd(rep, domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
+def search_cmd(rep, df, pf, m, search, seed, timeout=TIMEOUT):
   if CONFIG[rep]["lifted"]:
     search_engine = pwl_cmd
   else:
     search_engine = fd_cmd
-  return search_engine(rep, domain_name, df, pf, m, search, seed, timeout)
+  return search_engine(rep, df, pf, m, search, seed, timeout)
 
-def pwl_cmd(rep, domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
+def pwl_cmd(rep, df, pf, m, search, seed, timeout=TIMEOUT):
   os.makedirs("lifted", exist_ok=True)
   os.makedirs("plans", exist_ok=True)
-  description = f"pwl_{domain_name}_{os.path.basename(pf).replace('.pddl','')}_{search}_{os.path.basename(m).replace('.dt', '')}"
+  description = f"pwl_{pf.replace('.pddl','').replace('/','-')}_{search}_{os.path.basename(m).replace('.dt', '')}"
   lifted_file = f"lifted/{description}.lifted"
   plan_file = f"plans/{description}.plan"
   cmd = f"./../powerlifted/powerlifted.py --gpu " \
@@ -54,8 +54,8 @@ def pwl_cmd(rep, domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
   cmd = f"export GOOSE={os.getcwd()} && {cmd}"
   return cmd, lifted_file
 
-def fd_cmd(rep, domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
-  os.makedirs("lifted", exist_ok=True)
+def fd_cmd(rep, df, pf, m, search, seed, timeout=TIMEOUT):
+  os.makedirs("sas_files", exist_ok=True)
   os.makedirs("plans", exist_ok=True)
   
   if search == "gbbfs":
@@ -63,24 +63,19 @@ def fd_cmd(rep, domain_name, df, pf, m, search, seed, timeout=TIMEOUT):
   else:
     raise NotImplementedError
   
+  # A hack given that FD FeaturePlugin cannot parse strings
   # 0: slg, 1: flg, 2: dlg, 3: llg
-  if rep == "sdg-el":   
-    config = 0
-    config_file = "slg"
-  elif rep == "fdg-el": 
-    config = 1
-    config_file = "flg"
-  elif rep == "ddg-el": 
-    config = 2
-    config_file = "dlg"
-  elif rep == "ldg-el": 
-    config = 3
-    config_file = "llg"
-  else: 
-    raise NotImplementedError
+  assert rep in REPRESENTATIONS
+  config_file = rep
+  config = {
+    "slg":0,
+    "flg":1,
+    "dlg":2,
+    "llg":3,
+  }[rep]
   
-  description = f"fd_{domain_name}_{os.path.basename(pf).replace('.pddl','')}_{search}_{os.path.basename(m).replace('.dt', '')}"
-  sas_file = f"lifted/{description}.sas_file"
+  description = f"fd_{pf.replace('.pddl','').replace('/','-')}_{search}_{os.path.basename(m).replace('.dt', '')}"
+  sas_file = f"sas_files/{description}.sas_file"
   plan_file = f"plans/{description}.plan"
   with open(config_file, 'w') as f:
     f.write(m+'\n')

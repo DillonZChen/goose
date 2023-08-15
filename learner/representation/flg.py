@@ -1,22 +1,22 @@
 from representation.base_class import *
 
 
-class FDG_FEATURES(Enum):
+class FLG_FEATURES(Enum):
   VAR=0
   VAL=1
   STATE=2
   GOAL=3
   ACTION=4
 
-class FDG_EDGE_TYPES(Enum):
+class FLG_EDGE_TYPES(Enum):
   VV_EDGE=0
   PRE_EDGE=1
   EFF_EDGE=2
 
 
-class EdgeLabelledFdrProblemDescriptionGraph(Representation, ABC):
+class FdrLearningGraph(Representation, ABC):
   def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
-    super().__init__(domain_pddl, problem_pddl, rep_name="fdg-el", node_dim=len(FDG_FEATURES))
+    super().__init__(domain_pddl, problem_pddl, rep_name="flg", node_dim=len(FLG_FEATURES))
 
 
   def _compute_graph_representation(self) -> None:
@@ -36,34 +36,34 @@ class EdgeLabelledFdrProblemDescriptionGraph(Representation, ABC):
 
     """ var val variables nodes and edges """
     for var in variables:
-      G.add_node(var, x=self._one_hot_node(FDG_FEATURES.VAR.value))
+      G.add_node(var, x=self._one_hot_node(FLG_FEATURES.VAR.value))
       for val in variables[var]:
         val_node = (var, val)
-        val_x = self._one_hot_node(FDG_FEATURES.VAL.value)
+        val_x = self._one_hot_node(FLG_FEATURES.VAL.value)
 
         if var in goal and val == goal[var]:
           goals += 1
-          val_x += self._one_hot_node(FDG_FEATURES.GOAL.value)
+          val_x += self._one_hot_node(FLG_FEATURES.GOAL.value)
 
         G.add_node(val_node, x=val_x)
-        G.add_edge(u_of_edge=var, v_of_edge=val_node, edge_type=FDG_EDGE_TYPES.VV_EDGE.value)
+        G.add_edge(u_of_edge=var, v_of_edge=val_node, edge_type=FLG_EDGE_TYPES.VV_EDGE.value)
     assert goals == len(goal)
 
     """ action nodes and edges """
     for action in self.problem.actions:
       action_node = action.name
-      G.add_node(action_node, x=self._one_hot_node(FDG_FEATURES.ACTION.value))
+      G.add_node(action_node, x=self._one_hot_node(FLG_FEATURES.ACTION.value))
       for var, val in action.preconditions:
         assert val in variables[var]  # and hence should be in G.nodes()
         val_node = (var, val)
         assert val_node in G.nodes()
-        G.add_edge(u_of_edge=action_node, v_of_edge=val_node, edge_type=FDG_EDGE_TYPES.PRE_EDGE.value)
+        G.add_edge(u_of_edge=action_node, v_of_edge=val_node, edge_type=FLG_EDGE_TYPES.PRE_EDGE.value)
 
       for var, val in action.add_effects:  # from our compilation, effects are in add only
         assert val in variables[var]
         val_node = (var, val)
         assert val_node in G.nodes()
-        G.add_edge(u_of_edge=action_node, v_of_edge=val_node, edge_type=FDG_EDGE_TYPES.EFF_EDGE.value)
+        G.add_edge(u_of_edge=action_node, v_of_edge=val_node, edge_type=FLG_EDGE_TYPES.EFF_EDGE.value)
 
     # map fact to indices
     node_to_i = {}
@@ -84,6 +84,6 @@ class EdgeLabelledFdrProblemDescriptionGraph(Representation, ABC):
     x = self.x.clone()
     for p in state:
       if p in self.problem.fact_to_varval:  
-        x[self.fact_to_i[p]][FDG_FEATURES.STATE.value] = 1
+        x[self.fact_to_i[p]][FLG_FEATURES.STATE.value] = 1
 
     return x, self.edge_indices

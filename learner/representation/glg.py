@@ -1,8 +1,8 @@
 from representation.base_class import *
-from representation.sdg_el import EdgeLabelledStripsProblemDescriptionGraph
+from representation.slg import StripsLearningGraph
 
 
-class GDG_FEATURES(Enum):
+class GLG_FEATURES(Enum):
   ACTION=0
   POSITIVE_GOAL=1
   NEGATIVE_GOAL=2
@@ -10,16 +10,16 @@ class GDG_FEATURES(Enum):
   PREDICATE=4
   SCHEMA=5
 
-class GDG_EDGE_TYPES(Enum):
+class GLG_EDGE_TYPES(Enum):
   PRE_EDGE=0
   ADD_EDGE=1
   DEL_EDGE=2
   PREDICATE=3
 
 
-class EdgeLabelledGroundedDescriptionGraph(EdgeLabelledStripsProblemDescriptionGraph, ABC):
+class GroundedLearningGraph(StripsLearningGraph, ABC):
   def __init__(self, domain_pddl: str, problem_pddl: str):
-    super().__init__(domain_pddl, problem_pddl, rep_name="gdg-el", node_dim=len(GDG_FEATURES))
+    super().__init__(domain_pddl, problem_pddl, rep_name="glg", node_dim=len(GLG_FEATURES))
 
 
   def _compute_graph_representation(self) -> None:
@@ -35,21 +35,21 @@ class EdgeLabelledGroundedDescriptionGraph(EdgeLabelledStripsProblemDescriptionG
       node_p = self._proposition_to_str(proposition)
       # these features may get updated in state encoding
       if proposition in positive_goals:
-        x_p=self._one_hot_node(GDG_FEATURES.POSITIVE_GOAL.value)
+        x_p=self._one_hot_node(GLG_FEATURES.POSITIVE_GOAL.value)
       elif proposition in negative_goals:
-        x_p=self._one_hot_node(GDG_FEATURES.NEGATIVE_GOAL.value)
+        x_p=self._one_hot_node(GLG_FEATURES.NEGATIVE_GOAL.value)
       else:
         x_p=self._zero_node()
       G.add_node(node_p, x=x_p)
 
     for action in actions:
       node_a = action.name
-      x_a = self._one_hot_node(GDG_FEATURES.ACTION.value)
+      x_a = self._one_hot_node(GLG_FEATURES.ACTION.value)
       G.add_node(node_a, x=x_a)
 
     for predicate in predicates:
       node_pred = predicate
-      x_pred = self._one_hot_node(GDG_FEATURES.PREDICATE.value)
+      x_pred = self._one_hot_node(GLG_FEATURES.PREDICATE.value)
       G.add_node(node_pred, x=x_pred)
 
     """ edges """
@@ -59,24 +59,24 @@ class EdgeLabelledGroundedDescriptionGraph(EdgeLabelledStripsProblemDescriptionG
       s_node = self._get_predicate_from_action(action)
       assert a_node in G.nodes
       assert s_node in G.nodes
-      G.add_edge(u_of_edge=a_node, v_of_edge=s_node, edge_type=GDG_EDGE_TYPES.PREDICATE.value)
+      G.add_edge(u_of_edge=a_node, v_of_edge=s_node, edge_type=GLG_EDGE_TYPES.PREDICATE.value)
 
       # edges between actions and propositions
       for proposition in action.precondition:
         p_node = self._proposition_to_str(proposition)
         assert p_node in G.nodes, f"{p_node} not in nodes"
         assert a_node in G.nodes, f"{a_node} not in nodes"
-        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=GDG_EDGE_TYPES.PRE_EDGE.value)
+        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=GLG_EDGE_TYPES.PRE_EDGE.value)
       for _, proposition in action.add_effects:  # ignoring conditional effects
         p_node = self._proposition_to_str(proposition)
         assert p_node in G.nodes, f"{p_node} not in nodes"
         assert a_node in G.nodes, f"{a_node} not in nodes"
-        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=GDG_EDGE_TYPES.ADD_EDGE.value)
+        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=GLG_EDGE_TYPES.ADD_EDGE.value)
       for _, proposition in action.del_effects:  # ignoring conditional effects
         p_node = self._proposition_to_str(proposition)
         assert p_node in G.nodes, f"{p_node} not in nodes"
         assert a_node in G.nodes, f"{a_node} not in nodes"
-        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=GDG_EDGE_TYPES.DEL_EDGE.value)
+        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=GLG_EDGE_TYPES.DEL_EDGE.value)
 
     for proposition in propositions:
       # edge between propositions and predicates
@@ -84,12 +84,12 @@ class EdgeLabelledGroundedDescriptionGraph(EdgeLabelledStripsProblemDescriptionG
       pred_node = self._get_predicate_from_proposition(proposition)
       assert p_node in G.nodes
       assert pred_node in G.nodes
-      G.add_edge(u_of_edge=p_node, v_of_edge=pred_node, edge_type=GDG_EDGE_TYPES.PREDICATE.value)
+      G.add_edge(u_of_edge=p_node, v_of_edge=pred_node, edge_type=GLG_EDGE_TYPES.PREDICATE.value)
 
     # map node names to tensor indices; only do this for propositions
     self._node_to_i = {}
     for i, node in enumerate(G.nodes):
-      if G.nodes[node]['x'][GDG_FEATURES.ACTION.value] == 1:
+      if G.nodes[node]['x'][GLG_FEATURES.ACTION.value] == 1:
         continue
       self._node_to_i[node] = i
 
@@ -104,6 +104,6 @@ class EdgeLabelledGroundedDescriptionGraph(EdgeLabelledStripsProblemDescriptionG
     x = self.x.clone()  # not time nor memory efficient, but no other way in Python
     for p in state:
       if p in self._node_to_i:
-        x[self._node_to_i[p]][GDG_FEATURES.STATE.value] = 1
+        x[self._node_to_i[p]][GLG_FEATURES.STATE.value] = 1
 
     return x, self.edge_indices
