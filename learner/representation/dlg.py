@@ -8,32 +8,18 @@ class DLG_FEATURES(Enum):
   NEGATIVE_GOAL=2
   STATE=3
 
+
 class DLG_EDGE_TYPES(Enum):
   PRE_EDGE=0
   ADD_EDGE=1
 
 
 class DeleteLearningGraph(StripsLearningGraph, ABC):
-
-  @property
-  def name(self):
-    return "dlg"
-
-  @property
-  def n_node_features(self):
-    return len(DLG_FEATURES)
-
-  @property
-  def n_edge_labels(self):
-    return len(DLG_EDGE_TYPES)
-
-  @property
-  def directed(self):
-    return False
-
-  @property
-  def lifted(self):
-    return False
+  name = "dlg"
+  n_node_features = len(DLG_FEATURES)
+  n_edge_labels = len(DLG_EDGE_TYPES)
+  directed = False
+  lifted = False
 
   def __init__(self, domain_pddl: str, problem_pddl: str):
     super().__init__(domain_pddl, problem_pddl)

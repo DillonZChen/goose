@@ -1,3 +1,5 @@
+""" Main training pipeline script. """
+
 import time
 import torch
 import configuration
@@ -8,8 +10,6 @@ from util.stats import *
 from util.save_load import *
 from util import train, evaluate
 from dataset.dataset import get_loaders_from_args
-
-""" Main training pipeline script. """
 
 
 if __name__ == "__main__":
@@ -23,11 +23,13 @@ if __name__ == "__main__":
 
   # init model
   train_loader, val_loader = get_loaders_from_args(args)
-  args.n_edge_labels = representation.CONFIG[args.rep]["n_edge_labels"]
+  args.n_edge_labels = representation.REPRESENTATIONS[args.rep].n_edge_labels
   args.in_feat = train_loader.dataset[0].x.shape[1]
   model_params = arg_to_params(args)
   model = GNNS[args.model](params=model_params).to(device)
+  print(f"model size (#params): {model.get_num_parameters()}")
 
+  # argument variables
   lr = args.lr
   reduction = args.reduction
   patience = args.patience
@@ -38,13 +40,13 @@ if __name__ == "__main__":
   # init optimiser
   criterion = LOSS[loss_fn]()
   optimiser = torch.optim.Adam(model.parameters(), lr=lr)
-  scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser,
-                                                          mode='min',
-                                                          verbose=True,
-                                                          factor=reduction,
-                                                          patience=patience)
-
-  print(f"model size (#params): {model.get_num_parameters()}")
+  scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+    optimiser,
+    mode='min',
+    verbose=True,
+    factor=reduction,
+    patience=patience
+  )
 
   # train val pipeline
   print("Training...")
@@ -97,8 +99,8 @@ if __name__ == "__main__":
         print(desc)
 
       if lr < 1e-5:
-          print(f"Early stopping due to small lr: {lr}")
-          break
+        print(f"Early stopping due to small lr: {lr}")
+        break
   except KeyboardInterrupt:
     print("Early stopping due to keyboard interrupt!")
 
@@ -107,5 +109,3 @@ if __name__ == "__main__":
     print(f"best_avg_loss {best_metric:.8f} at epoch {best_epoch}")
     args.best_metric = best_metric
     save_model_from_dict(best_dict, args)
-  else:
-    save_model(model, args)

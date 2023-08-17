@@ -1,7 +1,8 @@
+""" Parameters for the GNN. Some features may be deprecated. """
+
 import argparse
 import representation
-
-""" Parameters for the GNN. Note some features are deprecated. """
+import models
 
 
 def create_parser():
@@ -11,7 +12,7 @@ def create_parser():
     parser.add_argument('-t', '--task', default='h', choices=["h", "a"], help="predict value or action")
 
     # model params
-    parser.add_argument('-m', '--model', type=str)
+    parser.add_argument('-m', '--model', type=str, required=True, choices=models.GNNS)
     parser.add_argument('-L', '--nlayers', type=int, default=16)
     parser.add_argument('-H', '--nhid', type=int, default=64)
     parser.add_argument('--share-layers', action='store_true')
@@ -29,21 +30,13 @@ def create_parser():
     parser.add_argument('--epochs', type=int, default=2000)
 
     # data arguments
-    parser.add_argument('-r', '--rep', type=str, choices=representation.REPRESENTATIONS)
+    parser.add_argument('-r', '--rep', type=str, required=True, choices=representation.REPRESENTATIONS)
     parser.add_argument('-n', '--max-nodes', type=int, default=-1, 
                         help="max nodes for generating graphs (-1 means no bound)")
     parser.add_argument('-c', '--cutoff', type=int, default=-1, 
                         help="max cost to learn (-1 means no bound)")
-    parser.add_argument('-s', '--strategy', choices=["init", "random", "entire"], default="entire", 
-                        help='sample strategies')
     parser.add_argument('--small-train', action="store_true", 
                         help="Small train set: useful for debugging.")
-
-    # data feature augmentations (deprecated)
-    parser.add_argument('-f', '--features', type=str, default='none', choices=representation.node_features.NODE_FEAT.keys())
-    parser.add_argument('--rni-size', type=float, choices=representation.node_features.RNI_SIZE)
-    parser.add_argument('--rni-dist', type=str, choices=representation.node_features.RNI_DIST)
-    parser.add_argument('--lpe-k', type=int)
 
     # save file
     parser.add_argument('--save-file', dest="save_file", type=str, default=None)

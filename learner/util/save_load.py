@@ -67,8 +67,8 @@ def save_model_from_dict(model_dict, args):
     return
 
 
-def save_model(model, args, prefix="", save=True):
-    save_model_from_dict(model.model.state_dict(), args, prefix, save)
+def save_model(model, args):
+    save_model_from_dict(model.model.state_dict(), args)
     return
 
 

@@ -1,3 +1,5 @@
+""" File for generating and loading graphs. See scripts/generate_graphs.py """
+
 import os
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
@@ -17,8 +19,6 @@ from dataset.ipc_domain_info import same_domain, GROUNDED_DOMAINS, get_ipc_domai
 from dataset.goose_domain_info import get_train_goose_instance_files
 
 
-""" File for generating and loading graphs. See scripts/generate_graphs.py """
-
 def generate_graph_from_domain_problem_pddl(
   domain_name: str,
   domain_pddl: str,
@@ -28,7 +28,7 @@ def generate_graph_from_domain_problem_pddl(
   """ Generates a list of graphs corresponding to states in the optimal plan """
   ret = []
 
-  if representation=="ddg-el":
+  if representation=="dlg":
     return slg_to_dlg(domain_name, domain_pddl, problem_pddl)
 
   plan = optimal_plan_exists(domain_name, domain_pddl, problem_pddl)
@@ -42,7 +42,7 @@ def generate_graph_from_domain_problem_pddl(
   problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
 
   for s, y, a in plan:
-    if representation in {"ldg-el"}:
+    if REPRESENTATIONS[representation].lifted:
       s = rep.str_to_state(s)
 
     x, edge_index = rep.get_state_enc(s)

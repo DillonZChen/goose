@@ -18,26 +18,11 @@ class GLG_EDGE_TYPES(Enum):
 
 
 class GroundedLearningGraph(StripsLearningGraph, ABC):
-
-  @property
-  def name(self):
-    return "Glg"
-
-  @property
-  def n_node_features(self):
-    return len(GLG_FEATURES)
-
-  @property
-  def n_edge_labels(self):
-    return len(GLG_EDGE_TYPES)
-
-  @property
-  def directed(self):
-    return False
-
-  @property
-  def lifted(self):
-    return False
+  name = "glg"
+  n_node_features = len(GLG_FEATURES)
+  n_edge_labels = len(GLG_EDGE_TYPES)
+  directed = False
+  lifted = False
   
   def __init__(self, domain_pddl: str, problem_pddl: str):
     super().__init__(domain_pddl, problem_pddl)

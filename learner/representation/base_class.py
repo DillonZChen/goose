@@ -33,29 +33,24 @@ State = List[Proposition]
 class Representation(ABC):
 
   @property
-  @abstractmethod
   def name(self):
-    pass
+    raise NotImplementedError
 
   @property
-  @abstractmethod
   def n_node_features(self):
-    pass
+    raise NotImplementedError
 
   @property
-  @abstractmethod
   def n_edge_labels(self):
-    pass
+    raise NotImplementedError
 
   @property
-  @abstractmethod
   def directed(self):
-    pass
+    raise NotImplementedError
 
   @property
-  @abstractmethod
   def lifted(self):
-    pass
+    raise NotImplementedError
 
   def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
     self.domain_pddl = domain_pddl
@@ -97,8 +92,8 @@ class Representation(ABC):
     """ Dump stats for graph construction
         Called after _compute_graph_representation() is completed 
     """
-    assert self.rep_name is not None
-    tqdm.write(f'{self.rep_name} created!')
+    assert self.name is not None
+    tqdm.write(f'{self.name} created!')
     tqdm.write(f'time taken: {time.time() - start_time:.4f}s')
     tqdm.write(f'num nodes: {self.num_nodes}')
     tqdm.write(f'num edges: {self.num_edges}')
@@ -114,15 +109,15 @@ class Representation(ABC):
     self.G = G
     self.x = pyg_G.x
     
-    if self.n_edge_types == 1:
+    if self.n_edge_labels == 1:
       self.edge_index = pyg_G.edge_index
     else:
-      assert self.n_edge_types > 1
-      self.edge_indices = [[] for _ in range(self.n_edge_types)]
+      assert self.n_edge_labels > 1
+      self.edge_indices = [[] for _ in range(self.n_edge_labels)]
       edge_index_T = pyg_G.edge_index.T
       for i, edge_type in enumerate(pyg_G.edge_type):   # this is slow
         self.edge_indices[edge_type].append(edge_index_T[i])
-      for i in range(self.n_edge_types):
+      for i in range(self.n_edge_labels):
         if len(self.edge_indices[i]) > 0:
           self.edge_indices[i] = torch.vstack(self.edge_indices[i]).long().T
         else:

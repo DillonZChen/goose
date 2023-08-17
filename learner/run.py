@@ -1,9 +1,9 @@
+""" Main search driver. """
+
 import argparse
 import os
 from representation import REPRESENTATIONS
 from util.search import search_cmd
-
-""" Main search driver. """
 
 
 if __name__ == "__main__":

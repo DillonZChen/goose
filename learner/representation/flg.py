@@ -8,6 +8,7 @@ class FLG_FEATURES(Enum):
   GOAL=3
   ACTION=4
 
+
 class FLG_EDGE_TYPES(Enum):
   VV_EDGE=0
   PRE_EDGE=1
@@ -15,26 +16,11 @@ class FLG_EDGE_TYPES(Enum):
 
 
 class FdrLearningGraph(Representation, ABC):
-
-  @property
-  def name(self):
-    return "flg"
-
-  @property
-  def n_node_features(self):
-    return len(FLG_FEATURES)
-
-  @property
-  def n_edge_labels(self):
-    return len(FLG_EDGE_TYPES)
-
-  @property
-  def directed(self):
-    return False
-
-  @property
-  def lifted(self):
-    return False
+  name = "flg"
+  n_node_features = len(FLG_FEATURES)
+  n_edge_labels = len(FLG_EDGE_TYPES)
+  directed = False
+  lifted = False
 
   def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
     super().__init__(domain_pddl, problem_pddl)

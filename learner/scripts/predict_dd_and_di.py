@@ -6,8 +6,8 @@ import argparse
 import numpy as np
 
 from dataset.goose_domain_info import GOOSE_DOMAINS
-from representation import REPRESENTATIONS, CONFIG
-from util.scrape_log import scrape_search_log, scrape_train_log, search_finished_correctly, predict_finished_correctly
+from representation import REPRESENTATIONS
+from util.scrape_log import scrape_search_log, scrape_train_log, predict_finished_correctly
 from util.search import *
 
 

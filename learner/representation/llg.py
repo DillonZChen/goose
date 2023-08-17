@@ -9,8 +9,10 @@ class LLG_FEATURES(Enum):
   S=4   # is activated (grounded)
   O=5   # is object
 
+
 ENC_FEAT_SIZE = len(LLG_FEATURES)
 VAR_FEAT_SIZE = 4
+
 
 LLG_EDGE_TYPES = OrderedDict({
   "neutral": 0,
@@ -24,29 +26,14 @@ LLG_EDGE_TYPES = OrderedDict({
 
 
 class LiftedLearningGraph(Representation, ABC):
-
-  @property
-  def name(self):
-    return "llg"
-
-  @property
-  def n_node_features(self):
-    return ENC_FEAT_SIZE+VAR_FEAT_SIZE
-
-  @property
-  def n_edge_labels(self):
-    return len(LLG_EDGE_TYPES)
-
-  @property
-  def directed(self):
-    return False
-
-  @property
-  def lifted(self):
-    return True
+  name = "llg"
+  n_node_features = ENC_FEAT_SIZE+VAR_FEAT_SIZE
+  n_edge_labels = len(LLG_EDGE_TYPES)
+  directed = False
+  lifted = True
   
   def __init__(self, domain_pddl: str, problem_pddl: str):
-    super().__init__(domain_pddl, problem_pddl, rep_name="llg", node_dim=ENC_FEAT_SIZE+VAR_FEAT_SIZE)
+    super().__init__(domain_pddl, problem_pddl)
 
   def _construct_if(self) -> None:
     """ Precompute a seeded randomly generated injective index function """
@@ -61,12 +48,12 @@ class LiftedLearningGraph(Representation, ABC):
     return
 
   def _feature(self, node_type: LLG_FEATURES) -> Tensor:
-    ret = torch.zeros(self.node_dim)
+    ret = torch.zeros(self.n_node_features)
     ret[node_type.value] = 1
     return ret
   
   def _if_feature(self, idx: int) -> Tensor:
-    ret = torch.zeros(self.node_dim)
+    ret = torch.zeros(self.n_node_features)
     ret[-VAR_FEAT_SIZE:] = self._pe[idx]
     return ret
 
