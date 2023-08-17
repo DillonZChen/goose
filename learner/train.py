@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
   # init model
   train_loader, val_loader = get_loaders_from_args(args)
-  args.n_edge_labels = representation.N_EDGE_TYPES[args.rep]
+  args.n_edge_labels = representation.CONFIG[args.rep]["n_edge_labels"]
   args.in_feat = train_loader.dataset[0].x.shape[1]
   model_params = arg_to_params(args)
   model = GNNS[args.model](params=model_params).to(device)

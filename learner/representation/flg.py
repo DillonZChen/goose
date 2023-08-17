@@ -15,9 +15,29 @@ class FLG_EDGE_TYPES(Enum):
 
 
 class FdrLearningGraph(Representation, ABC):
-  def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
-    super().__init__(domain_pddl, problem_pddl, rep_name="flg", node_dim=len(FLG_FEATURES))
 
+  @property
+  def name(self):
+    return "flg"
+
+  @property
+  def n_node_features(self):
+    return len(FLG_FEATURES)
+
+  @property
+  def n_edge_labels(self):
+    return len(FLG_EDGE_TYPES)
+
+  @property
+  def directed(self):
+    return False
+
+  @property
+  def lifted(self):
+    return False
+
+  def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
+    super().__init__(domain_pddl, problem_pddl)
 
   def _compute_graph_representation(self) -> None:
     """ TODO: reference definition of this graph representation
@@ -78,7 +98,6 @@ class FdrLearningGraph(Representation, ABC):
 
     return
   
-
   def get_state_enc(self, state: State) -> Tuple[Tensor, Tensor]:
     
     x = self.x.clone()

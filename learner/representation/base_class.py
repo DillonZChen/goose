@@ -25,38 +25,51 @@ from torch_geometric.utils.convert import to_networkx, from_networkx
 from tqdm import tqdm
 from abc import ABC, abstractmethod
 from tqdm.auto import tqdm
-from .config import CONFIG, N_EDGE_TYPES
 
 State = List[Proposition]
 
 
 """ Base class for graph representations """
 class Representation(ABC):
-  def __init__(self, 
-               domain_pddl: str, 
-               problem_pddl: str, 
-               rep_name: str, 
-               node_dim: int,
-               ) -> None:
+
+  @property
+  @abstractmethod
+  def name(self):
+    pass
+
+  @property
+  @abstractmethod
+  def n_node_features(self):
+    pass
+
+  @property
+  @abstractmethod
+  def n_edge_labels(self):
+    pass
+
+  @property
+  @abstractmethod
+  def directed(self):
+    pass
+
+  @property
+  @abstractmethod
+  def lifted(self):
+    pass
+
+  def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
     self.domain_pddl = domain_pddl
     self.problem_pddl = problem_pddl
-
-    self.rep_name = rep_name
-    self.node_dim = node_dim
 
     self.num_nodes = None
     self.num_edges = None
 
-    self.problem = get_planning_problem(domain_pddl=self.domain_pddl,
-                                      problem_pddl=self.problem_pddl,
-                                      fdr="FdrProblemDescriptionGraph" in type(self).__name__)
+    self.problem = get_planning_problem(
+      domain_pddl=self.domain_pddl,
+      problem_pddl=self.problem_pddl,
+      fdr=self.name=="flg"
+    )
 
-    self.x = None
-    self.action = {}
-
-    self.n_edge_types = N_EDGE_TYPES[self.rep_name]
-    self.directed = CONFIG[self.rep_name]["directed"]
-    self.edge_labels = CONFIG[self.rep_name]["edge_labels"]
     t = time.time()
     self._compute_graph_representation()
     self._dump_stats(t)
@@ -64,13 +77,12 @@ class Representation(ABC):
 
   def _create_graph(self) -> Union[nx.Graph, nx.DiGraph]:
     """ Initialises a networkx graph """
-    self.directed = CONFIG[self.rep_name]["directed"]
     return nx.DiGraph() if self.directed else nx.Graph()
 
   def _one_hot_node(self, index, size=-1) -> Tensor:
     """ Returns a one hot tensor """
     if size==-1:
-      ret = torch.zeros(self.node_dim)
+      ret = torch.zeros(self.n_node_features)
     else:
       ret = torch.zeros(size)
     ret[index] = 1
@@ -78,7 +90,7 @@ class Representation(ABC):
 
   def _zero_node(self) -> Tensor:
     """ Returns a tensor of zeros """
-    ret = torch.zeros(self.node_dim)
+    ret = torch.zeros(self.n_node_features)
     return ret
 
   def _dump_stats(self, start_time) -> None:
@@ -86,7 +98,6 @@ class Representation(ABC):
         Called after _compute_graph_representation() is completed 
     """
     assert self.rep_name is not None
-    self.directed = CONFIG[self.rep_name]["directed"]
     tqdm.write(f'{self.rep_name} created!')
     tqdm.write(f'time taken: {time.time() - start_time:.4f}s')
     tqdm.write(f'num nodes: {self.num_nodes}')
@@ -103,9 +114,10 @@ class Representation(ABC):
     self.G = G
     self.x = pyg_G.x
     
-    if not self.edge_labels:
+    if self.n_edge_types == 1:
       self.edge_index = pyg_G.edge_index
     else:
+      assert self.n_edge_types > 1
       self.edge_indices = [[] for _ in range(self.n_edge_types)]
       edge_index_T = pyg_G.edge_index.T
       for i, edge_type in enumerate(pyg_G.edge_type):   # this is slow
@@ -118,7 +130,6 @@ class Representation(ABC):
 
     self.num_nodes = len(G.nodes)
     self.num_edges = len(G.edges)
-    
     return
 
   def update_representation(self, data: Data) -> None:

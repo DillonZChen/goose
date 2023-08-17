@@ -4,7 +4,6 @@ from .flg import FdrLearningGraph
 from .llg import LiftedLearningGraph
 from .glg import GroundedLearningGraph
 from .node_features import add_features
-from .config import CONFIG, N_EDGE_TYPES
 
 
 REPRESENTATIONS = {

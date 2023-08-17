@@ -72,7 +72,7 @@ def save_model(model, args, prefix="", save=True):
     return
 
 
-def load_model(path, print_args=False, jit=True, ignore_subdir=False):
+def load_model(path, print_args=False, jit=False, ignore_subdir=False):
     print("Loading model...")
     assert ".pt" not in path, f"Found .pt in path {path}"
     if ".dt" not in path:
@@ -111,14 +111,5 @@ def load_model_and_setup(path, domain_file, problem_file):
     # model.add_node_features(args=model_args)
     model.set_zero_grad()
     model.eval()
-    return model
-
-
-def load_model_obj(path):
-    if ".pt" not in path:
-        path = path+".pt"
-    if "trained_models" not in path:
-        path = "trained_models/" + path
-    model = torch.load(path)
     return model
 

@@ -16,9 +16,29 @@ class SLG_EDGE_TYPES(Enum):
 
 """ Extended by GroundedLearningGraph and DeleteLearningGraph """
 class StripsLearningGraph(Representation, ABC):
-  def __init__(self, domain_pddl: str, problem_pddl: str, rep_name: str="slg", node_dim: int=len(SLG_FEATURES)):
-    super().__init__(domain_pddl, problem_pddl, rep_name=rep_name, node_dim=node_dim)
+
+  @property
+  def name(self):
+    return "Slg"
+
+  @property
+  def n_node_features(self):
+    return len(SLG_FEATURES)
+
+  @property
+  def n_edge_labels(self):
+    return len(SLG_EDGE_TYPES)
+
+  @property
+  def directed(self):
+    return False
+
+  @property
+  def lifted(self):
+    return False
   
+  def __init__(self, domain_pddl: str, problem_pddl: str):
+    super().__init__(domain_pddl, problem_pddl)
 
   def _get_grounded_problem_info(self):
     """ Ground the parsed lifted pddl representation and return 
@@ -53,15 +73,12 @@ class StripsLearningGraph(Representation, ABC):
 
     return propositions, actions, positive_goals, negative_goals, predicates
   
-
   def _get_predicate_from_proposition(self, proposition: Proposition) -> str:
     return proposition.predicate
-  
   
   def _get_predicate_from_action(self, action: PropositionalAction) -> str:
     return action.name.replace("(","").replace(")","").split()[0]
   
-
   def _proposition_to_str(self, proposition: Literal) -> str:
     predicate = proposition.predicate
     args = proposition.args
@@ -72,7 +89,6 @@ class StripsLearningGraph(Representation, ABC):
     ret += ")"
     return ret
   
-
   def _compute_graph_representation(self) -> None:
     """ TODO: reference definition of this graph representation
     """
@@ -129,7 +145,6 @@ class StripsLearningGraph(Representation, ABC):
 
     return
   
-
   def get_state_enc(self, state: State) -> Tuple[Tensor, Tensor]:
 
     x = self.x.clone()  # not time nor memory efficient, but no other way in Python

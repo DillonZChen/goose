@@ -14,9 +14,29 @@ class DLG_EDGE_TYPES(Enum):
 
 
 class DeleteLearningGraph(StripsLearningGraph, ABC):
-  def __init__(self, domain_pddl: str, problem_pddl: str, rep_name: str="dlg", node_dim: int=len(DLG_FEATURES)):
-    super().__init__(domain_pddl, problem_pddl, rep_name=rep_name, node_dim=node_dim)
-  
+
+  @property
+  def name(self):
+    return "dlg"
+
+  @property
+  def n_node_features(self):
+    return len(DLG_FEATURES)
+
+  @property
+  def n_edge_labels(self):
+    return len(DLG_EDGE_TYPES)
+
+  @property
+  def directed(self):
+    return False
+
+  @property
+  def lifted(self):
+    return False
+
+  def __init__(self, domain_pddl: str, problem_pddl: str):
+    super().__init__(domain_pddl, problem_pddl)
 
   def _compute_graph_representation(self) -> None:
     """ TODO: reference definition of this graph representation
@@ -75,7 +95,6 @@ class DeleteLearningGraph(StripsLearningGraph, ABC):
     self._graph_to_representation(G)
 
     return
-  
 
   def get_state_enc(self, state: State) -> Tuple[Tensor, Tensor]:
 

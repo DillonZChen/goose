@@ -5,7 +5,7 @@ import torch.nn.functional as F
 import time
 import warnings
 from planning import Proposition, State
-from representation import REPRESENTATIONS, add_features, CONFIG
+from representation import REPRESENTATIONS, add_features
 from torch_geometric.nn import (global_add_pool, global_max_pool, global_mean_pool)
 from abc import ABC, abstractmethod
 from torch_geometric.nn import MessagePassing
@@ -156,8 +156,7 @@ class BasePredictor(ABC, nn.Module):
     return
   
   def lifted_state_input(self) -> bool:
-    lifted = CONFIG[self.rep.rep_name.lower()]["lifted"]
-    return lifted
+    return self.rep.lifted
 
   def dump_model_stats(self) -> None:
     print(f"Model name:", self.model.model_name)
@@ -249,6 +248,14 @@ class BasePredictor(ABC, nn.Module):
     params = sum(dict((p.data_ptr(), p.numel()) for p in self.parameters() if p.requires_grad).values())
     # params = sum(p.numel() for p in self.parameters() if p.requires_grad)
     return params
+  
+  def get_num_zero_parameters(self) -> int:
+    """ Count number of parameters that are zero after training """
+    zero_weights = 0
+    for p in self.parameters():
+      if p.requires_grad:
+        zero_weights += torch.sum(torch.isclose(p.data, torch.zeros_like(p.data)))
+    return zero_weights
 
   def print_num_parameters(self) -> None:
     print(f"number of parameters: {self.get_num_parameters()}")

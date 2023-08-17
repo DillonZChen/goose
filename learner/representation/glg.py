@@ -18,9 +18,29 @@ class GLG_EDGE_TYPES(Enum):
 
 
 class GroundedLearningGraph(StripsLearningGraph, ABC):
-  def __init__(self, domain_pddl: str, problem_pddl: str):
-    super().__init__(domain_pddl, problem_pddl, rep_name="glg", node_dim=len(GLG_FEATURES))
 
+  @property
+  def name(self):
+    return "Glg"
+
+  @property
+  def n_node_features(self):
+    return len(GLG_FEATURES)
+
+  @property
+  def n_edge_labels(self):
+    return len(GLG_EDGE_TYPES)
+
+  @property
+  def directed(self):
+    return False
+
+  @property
+  def lifted(self):
+    return False
+  
+  def __init__(self, domain_pddl: str, problem_pddl: str):
+    super().__init__(domain_pddl, problem_pddl)
 
   def _compute_graph_representation(self) -> None:
     """ TODO: reference definition of this graph representation (not used in 24-AAAI paper)
@@ -97,7 +117,6 @@ class GroundedLearningGraph(StripsLearningGraph, ABC):
     self._graph_to_representation(G)
 
     return
-
 
   def get_state_enc(self, state: State) -> Tuple[Tensor, Tensor]:
 
