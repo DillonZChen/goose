@@ -4,7 +4,6 @@ import os
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
-import argparse
 import torch
 import dataset.ipc_domain_info as ipc_domain_info
 import dataset.htg_domain_info as htg_domain_info
@@ -36,8 +35,8 @@ def generate_graph_from_domain_problem_pddl(
     return None
   
   # see representation package
-  rep = REPRESENTATIONS[representation](domain_pddl=domain_pddl,
-                                        problem_pddl=problem_pddl)
+  rep = REPRESENTATIONS[representation](domain_pddl, problem_pddl)
+  rep.convert_to_pyg()
 
   problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
 
@@ -47,14 +46,15 @@ def generate_graph_from_domain_problem_pddl(
 
     x, edge_index = rep.get_state_enc(s)
     applicable_action=None  # requires refactoring representation classes
-    graph_data = Data(x=x,
-                      edge_index=edge_index,
-                      a=a,
-                      y=y,
-                      domain=domain_name,
-                      problem=problem_name,
-                      applicable_action=applicable_action,
-                      )
+    graph_data = Data(
+      x=x,
+      edge_index=edge_index,
+      a=a,
+      y=y,
+      domain=domain_name,
+      problem=problem_name,
+      applicable_action=applicable_action
+    )
     ret.append(graph_data)
   return ret
 
@@ -69,8 +69,6 @@ def slg_to_dlg(domain_name, domain_pddl, problem_pddl):
     graph.edge_index = graph.edge_index[:2]
     ret.append(graph)
   return ret
-
-
 
 def get_graph_data(
   representation: str,
@@ -147,7 +145,6 @@ def generate_graph_rep_domain(
     return 1
   return 0
 
-
 def gen_graph_rep(
   representation: str,
   regenerate: bool,
@@ -185,7 +182,6 @@ def get_data_dir_path(representation: str) -> str:
   os.makedirs(save_dir, exist_ok=True)
   return save_dir
 
-
 def get_data_path(domain_name: str,
                   domain_pddl: str,
                   problem_pddl: str,
@@ -196,7 +192,6 @@ def get_data_path(domain_name: str,
   save_file = f'{save_dir}/{problem_name}.data'
   os.makedirs(save_dir, exist_ok=True)
   return save_file
-
 
 def optimal_plan_exists(domain_name: str, domain_pddl: str, problem_pddl: str):
   domain_name = domain_name.replace("htg-", '')

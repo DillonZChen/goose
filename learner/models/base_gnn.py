@@ -6,6 +6,7 @@ import time
 import warnings
 from planning import Proposition, State
 from representation import REPRESENTATIONS
+from representation.base_class import Representation
 from torch_geometric.nn import (global_add_pool, global_max_pool, global_mean_pool)
 from abc import ABC, abstractmethod
 from torch_geometric.nn import MessagePassing
@@ -217,17 +218,13 @@ class BasePredictor(ABC, nn.Module):
     raise NotImplementedError
 
   def update_representation(self, domain_pddl: str, problem_pddl: str, args, device):
-    self.rep = REPRESENTATIONS[self.rep_type](domain_pddl, problem_pddl)
+    self.rep : Representation = REPRESENTATIONS[self.rep_type](domain_pddl, problem_pddl)
+    self.rep.convert_to_pyg()
     self.device = device
     return
   
   def update_device(self, device):
     self.device = device
-    return
-
-  def add_node_features(self, args):
-    assert self.rep.graph_data is not None  # won't work for ASG
-    self.rep.update_representation(add_features([self.rep.graph_data], args)[0])
     return
 
   def batch_search(self, batch: bool):

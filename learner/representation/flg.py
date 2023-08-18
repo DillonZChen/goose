@@ -71,16 +71,14 @@ class FdrLearningGraph(Representation, ABC):
         assert val_node in G.nodes()
         G.add_edge(u_of_edge=action_node, v_of_edge=val_node, edge_type=FLG_EDGE_TYPES.EFF_EDGE.value)
 
-    # map fact to indices
+    # map node name to index
     node_to_i = {}
     for i, node in enumerate(G.nodes):
       node_to_i[node] = i
     self.fact_to_i = {}
     for fact in self.problem.fact_to_varval:
       self.fact_to_i[fact] = node_to_i[self.problem.fact_to_varval[fact]]
-
-    # convert to PyG
-    self._graph_to_representation(G)
+    self.G = G
 
     return
   

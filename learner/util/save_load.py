@@ -2,6 +2,9 @@ import os
 import torch
 import datetime
 import representation
+from argparse import Namespace as Args
+from typing import Tuple
+from models.base_gnn import BasePredictor as GNN
 from models import *
 
 """ Module for dealing with model saving and loading. """
@@ -40,14 +43,8 @@ def print_arguments(args, ignore_params=set()):
     if hasattr(args, 'pretrained') and args.pretrained is not None:
         return
     print("Parsed arguments:")
-    if args.task == "a":
-        args.loss = "bce"
     for k, v in vars(args).items():
-        if args.model != "FFNet" and k == "nheads":
-            continue
-        if k in {"d_test", "p_test", "device", "optimal", "z", "save_model", "parser", "directed", "edge_labels", "unseen", "save_file", "no_tqdm", "tqdm", "fast_train"}:
-            continue
-        if k in ignore_params:
+        if k in ignore_params.union({"device", "optimal", "save_model", "save_file", "no_tqdm", "tqdm", "fast_train"}):
             continue
         print('{0:20}  {1}'.format(k, v))
 
@@ -72,7 +69,7 @@ def save_model(model, args):
     return
 
 
-def load_model(path, print_args=False, jit=False, ignore_subdir=False):
+def load_model(path, print_args=False, jit=False, ignore_subdir=False) -> Tuple[GNN, Args]:
     print("Loading model...")
     assert ".pt" not in path, f"Found .pt in path {path}"
     if ".dt" not in path:
@@ -99,7 +96,7 @@ def load_model(path, print_args=False, jit=False, ignore_subdir=False):
     return model, args
 
 
-def load_model_and_setup(path, domain_file, problem_file):
+def load_model_and_setup_gnn(path, domain_file, problem_file):
     model, args = load_model(path, ignore_subdir=True)
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model = model.to(device)
@@ -108,7 +105,6 @@ def load_model_and_setup(path, domain_file, problem_file):
                                 problem_pddl=problem_file,
                                 args=args,
                                 device=device)
-    # model.add_node_features(args=model_args)
     model.set_zero_grad()
     model.eval()
     return model

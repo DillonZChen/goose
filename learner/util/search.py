@@ -3,7 +3,7 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 import re 
-from representation import CONFIG, REPRESENTATIONS
+from representation import REPRESENTATIONS
 
 """ Module containing useful methods and configurations for 24-AAAI search experiments. """
 
@@ -30,7 +30,7 @@ def sorted_nicely( l ):
   return sorted(l, key = alphanum_key)
 
 def search_cmd(rep, df, pf, m, search, seed, timeout=TIMEOUT):
-  if CONFIG[rep]["lifted"]:
+  if REPRESENTATIONS[rep].lifted:
     search_engine = pwl_cmd
   else:
     search_engine = fd_cmd

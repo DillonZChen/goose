@@ -92,15 +92,11 @@ class GroundedLearningGraph(StripsLearningGraph, ABC):
       assert pred_node in G.nodes
       G.add_edge(u_of_edge=p_node, v_of_edge=pred_node, edge_type=GLG_EDGE_TYPES.PREDICATE.value)
 
-    # map node names to tensor indices; only do this for propositions
+    # map node name to index
     self._node_to_i = {}
     for i, node in enumerate(G.nodes):
-      if G.nodes[node]['x'][GLG_FEATURES.ACTION.value] == 1:
-        continue
       self._node_to_i[node] = i
-
-    # convert to PyG
-    self._graph_to_representation(G)
+    self.G = G
 
     return
 

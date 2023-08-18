@@ -119,15 +119,11 @@ class StripsLearningGraph(Representation, ABC):
         assert a_node in G.nodes, f"{a_node} not in nodes"
         G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=SLG_EDGE_TYPES.DEL_EDGE.value)
 
-    # map node names to tensor indices; only do this for propositions
+    # map node name to index
     self._node_to_i = {}
     for i, node in enumerate(G.nodes):
-      if G.nodes[node]['x'][SLG_FEATURES.ACTION.value] == 1:
-        continue
       self._node_to_i[node] = i
-
-    # convert to PyG tensors
-    self._graph_to_representation(G)
+    self.G = G
 
     return
   

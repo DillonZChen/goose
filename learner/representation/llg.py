@@ -171,14 +171,11 @@ class LiftedLearningGraph(Representation, ABC):
     assert largest_predicate > 0
     assert largest_action_schema > 0
 
-    # map indices to nodes and vice versa
-    # can be optimised by only saving a subset of nodes
+    # map node name to index
     self._node_to_i = {}
     for i, node in enumerate(G.nodes):
       self._node_to_i[node] = i
-
-    # convert to PyG
-    self._graph_to_representation(G)
+    self.G = G
 
     return
 

@@ -56,9 +56,6 @@ class Representation(ABC):
     self.domain_pddl = domain_pddl
     self.problem_pddl = problem_pddl
 
-    self.num_nodes = None
-    self.num_edges = None
-
     self.problem = get_planning_problem(
       domain_pddl=self.domain_pddl,
       problem_pddl=self.problem_pddl,
@@ -67,6 +64,8 @@ class Representation(ABC):
 
     t = time.time()
     self._compute_graph_representation()
+    self.num_nodes = len(self.G.nodes)
+    self.num_edges = len(self.G.edges)
     self._dump_stats(t)
     return
 
@@ -89,9 +88,7 @@ class Representation(ABC):
     return ret
 
   def _dump_stats(self, start_time) -> None:
-    """ Dump stats for graph construction
-        Called after _compute_graph_representation() is completed 
-    """
+    """ Dump stats for graph construction """
     assert self.name is not None
     tqdm.write(f'{self.name} created!')
     tqdm.write(f'time taken: {time.time() - start_time:.4f}s')
@@ -100,13 +97,18 @@ class Representation(ABC):
     tqdm.write(f'graph density: {graph_density(self.num_nodes, self.num_edges, directed=self.directed)}')
     return
   
-  def _graph_to_representation(self, G: nx.Graph) -> None:
-    """ Converts networkx graph object into tensors
-        Called at the end of _compute_graph_representation()
+  def convert_to_pyg(self) -> None:
+    """ Converts networkx graph object into pytorch_geometric tensors. 
+
+        The tensors are (x, edge_index or edge_indices)
+        x: torch.tensor(N x F)  # N = num_nodes, F = num_features
+        if n_edge_labels = 1:
+          edge_index: torch.tensor(2 x E)  # E = num_edges
+        else:
+          edge_indices: List[torch.tensor(2 x E_i)]
     """
 
-    pyg_G = from_networkx(G)
-    self.G = G
+    pyg_G = from_networkx(self.G)
     self.x = pyg_G.x
     
     if self.n_edge_labels == 1:
@@ -115,22 +117,15 @@ class Representation(ABC):
       assert self.n_edge_labels > 1
       self.edge_indices = [[] for _ in range(self.n_edge_labels)]
       edge_index_T = pyg_G.edge_index.T
-      for i, edge_type in enumerate(pyg_G.edge_type):   # this is slow
+      for i, edge_type in enumerate(pyg_G.edge_type):
         self.edge_indices[edge_type].append(edge_index_T[i])
       for i in range(self.n_edge_labels):
         if len(self.edge_indices[i]) > 0:
           self.edge_indices[i] = torch.vstack(self.edge_indices[i]).long().T
         else:
           self.edge_indices[i] = torch.tensor([[], []]).long()
-
-    self.num_nodes = len(G.nodes)
-    self.num_edges = len(G.edges)
     return
-
-  def update_representation(self, data: Data) -> None:
-    self.x = data.x
-    return
-
+  
   @abstractmethod
   def _compute_graph_representation(self) -> None:
     raise NotImplementedError

@@ -8,6 +8,7 @@ plans_*
 *.log
 trained_models*
 validated_models*
+saved_models*
 *.sif
 data
 lifted
