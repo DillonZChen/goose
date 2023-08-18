@@ -10,6 +10,7 @@ class GLG_FEATURES(Enum):
   PREDICATE=4
   SCHEMA=5
 
+
 class GLG_EDGE_TYPES(Enum):
   PRE_EDGE=0
   ADD_EDGE=1
