@@ -9,7 +9,6 @@ GOOSE_DOMAINS = [
     "ferry",
     "sokoban",
     "n-puzzle",
-    # "hanoi",
 ]
 
 

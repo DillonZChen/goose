@@ -9,10 +9,12 @@ class LLG_FEATURES(Enum):
   S=4   # is activated (grounded)
   O=5   # is object
 
+
 ENC_FEAT_SIZE = len(LLG_FEATURES)
 VAR_FEAT_SIZE = 4
 
-EDGE_TYPE = OrderedDict({
+
+LLG_EDGE_TYPES = OrderedDict({
   "neutral": 0,
   "ground":  1,
   "pre_pos": 2,
@@ -20,12 +22,18 @@ EDGE_TYPE = OrderedDict({
   "eff_pos": 4,
   "eff_neg": 5,
 })
+  
 
 
 class LiftedLearningGraph(Representation, ABC):
+  name = "llg"
+  n_node_features = ENC_FEAT_SIZE+VAR_FEAT_SIZE
+  n_edge_labels = len(LLG_EDGE_TYPES)
+  directed = False
+  lifted = True
+  
   def __init__(self, domain_pddl: str, problem_pddl: str):
-    super().__init__(domain_pddl, problem_pddl, rep_name="llg", node_dim=ENC_FEAT_SIZE+VAR_FEAT_SIZE)
-
+    super().__init__(domain_pddl, problem_pddl)
 
   def _construct_if(self) -> None:
     """ Precompute a seeded randomly generated injective index function """
@@ -38,19 +46,16 @@ class LiftedLearningGraph(Representation, ABC):
       rep /= torch.linalg.norm(rep)
       self._pe.append(rep)
     return
-  
 
   def _feature(self, node_type: LLG_FEATURES) -> Tensor:
-    ret = torch.zeros(self.node_dim)
+    ret = torch.zeros(self.n_node_features)
     ret[node_type.value] = 1
     return ret
   
-
-  def _var_feature(self, idx: int) -> Tensor:
-    ret = torch.zeros(self.node_dim)
+  def _if_feature(self, idx: int) -> Tensor:
+    ret = torch.zeros(self.n_node_features)
     ret[-VAR_FEAT_SIZE:] = self._pe[idx]
     return ret
-
 
   def _compute_graph_representation(self) -> None:
     """ TODO: reference definition of this graph representation
@@ -75,7 +80,7 @@ class LiftedLearningGraph(Representation, ABC):
     # fully connected between objects and predicates
     for pred in self.problem.predicates:
       for obj in self.problem.objects:
-        G.add_edge(u_of_edge=pred.name, v_of_edge=obj.name, edge_type=EDGE_TYPE["neutral"])
+        G.add_edge(u_of_edge=pred.name, v_of_edge=obj.name, edge_type=LLG_EDGE_TYPES["neutral"])
 
 
     # goal (state gets dealt with in get_state_enc)
@@ -101,18 +106,18 @@ class LiftedLearningGraph(Representation, ABC):
 
       for i, arg in enumerate(args):
         goal_var_node = (goal_node, i)
-        G.add_node(goal_var_node, x=self._var_feature(idx=i))
+        G.add_node(goal_var_node, x=self._if_feature(idx=i))
 
         # connect variable to predicate
-        G.add_edge(u_of_edge=goal_node, v_of_edge=goal_var_node, edge_type=EDGE_TYPE["ground"])
+        G.add_edge(u_of_edge=goal_node, v_of_edge=goal_var_node, edge_type=LLG_EDGE_TYPES["ground"])
 
         # connect variable to object
         assert arg in G.nodes()
-        G.add_edge(u_of_edge=goal_var_node, v_of_edge=arg, edge_type=EDGE_TYPE["ground"])
+        G.add_edge(u_of_edge=goal_var_node, v_of_edge=arg, edge_type=LLG_EDGE_TYPES["ground"])
 
       # connect grounded fact to predicate
       assert pred in G.nodes()
-      G.add_edge(u_of_edge=goal_node, v_of_edge=pred, edge_type=EDGE_TYPE["ground"])
+      G.add_edge(u_of_edge=goal_node, v_of_edge=pred, edge_type=LLG_EDGE_TYPES["ground"])
     # end goal
 
 
@@ -125,9 +130,9 @@ class LiftedLearningGraph(Representation, ABC):
       largest_action_schema = max(largest_action_schema, len(action.parameters))
       for i, arg in enumerate(action.parameters):
         arg_node = (action.name, f"action-var-{i}")  # action var
-        G.add_node(arg_node, x=self._var_feature(idx=i))
+        G.add_node(arg_node, x=self._if_feature(idx=i))
         action_args[arg.name] = arg_node
-        G.add_edge(u_of_edge=action.name, v_of_edge=arg_node, edge_type=EDGE_TYPE["neutral"])
+        G.add_edge(u_of_edge=action.name, v_of_edge=arg_node, edge_type=LLG_EDGE_TYPES["neutral"])
 
       def deal_with_action_prec_or_eff(predicates, edge_type):
         for z, predicate in enumerate(predicates):
@@ -136,19 +141,19 @@ class LiftedLearningGraph(Representation, ABC):
           G.add_node(aux_node, x=self._zero_node())
 
           assert pred in G.nodes()
-          G.add_edge(u_of_edge=pred, v_of_edge=aux_node, edge_type=EDGE_TYPE[edge_type])
+          G.add_edge(u_of_edge=pred, v_of_edge=aux_node, edge_type=LLG_EDGE_TYPES[edge_type])
 
           if len(predicate.args) > 0:
             for j, arg in enumerate(predicate.args):
               prec_arg_node = (arg, f"{edge_type}-aux-{z}-var-{j}")  # aux var
-              G.add_node(prec_arg_node, x=self._var_feature(idx=j))
-              G.add_edge(u_of_edge=aux_node, v_of_edge=prec_arg_node, edge_type=EDGE_TYPE[edge_type])
+              G.add_node(prec_arg_node, x=self._if_feature(idx=j))
+              G.add_edge(u_of_edge=aux_node, v_of_edge=prec_arg_node, edge_type=LLG_EDGE_TYPES[edge_type])
 
               if arg in action_args: 
                 action_arg_node = action_args[arg]
-                G.add_edge(u_of_edge=prec_arg_node, v_of_edge=action_arg_node, edge_type=EDGE_TYPE[edge_type])
+                G.add_edge(u_of_edge=prec_arg_node, v_of_edge=action_arg_node, edge_type=LLG_EDGE_TYPES[edge_type])
           else:  # unitary predicate so connect directly to action
-              G.add_edge(u_of_edge=aux_node, v_of_edge=action.name, edge_type=EDGE_TYPE[edge_type])
+              G.add_edge(u_of_edge=aux_node, v_of_edge=action.name, edge_type=LLG_EDGE_TYPES[edge_type])
         return
 
       pos_pres = [p for p in action.precondition.parts if type(p)==Atom]
@@ -166,17 +171,13 @@ class LiftedLearningGraph(Representation, ABC):
     assert largest_predicate > 0
     assert largest_action_schema > 0
 
-    # map indices to nodes and vice versa
-    # can be optimised by only saving a subset of nodes
+    # map node name to index
     self._node_to_i = {}
     for i, node in enumerate(G.nodes):
       self._node_to_i[node] = i
-
-    # convert to PyG
-    self._graph_to_representation(G)
+    self.G = G
 
     return
-
 
   def str_to_state(self, s) -> List[Tuple[str, List[str]]]:
     """ Used in dataset construction to convert string representation of facts into a (pred, [args]) representation """
@@ -191,7 +192,6 @@ class LiftedLearningGraph(Representation, ABC):
       else:
         state.append((toks[0], ()))
     return state
-
 
   def get_state_enc(self, state: List[Tuple[str, List[str]]]) -> Tuple[Tensor, Tensor]:
     """ States are represented as a list of (pred, [args]) """
@@ -237,7 +237,7 @@ class LiftedLearningGraph(Representation, ABC):
         append_edge_index.append((true_var_node_i, self._node_to_i[arg]))
         append_edge_index.append((self._node_to_i[arg], true_var_node_i))
 
-    edge_indices[EDGE_TYPE["ground"]] = torch.hstack((edge_indices[EDGE_TYPE["ground"]], 
+    edge_indices[LLG_EDGE_TYPES["ground"]] = torch.hstack((edge_indices[LLG_EDGE_TYPES["ground"]], 
                                                       torch.tensor(append_edge_index).T)).long()
     
     return x, edge_indices

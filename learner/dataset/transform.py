@@ -46,40 +46,6 @@ def extract_testset_ipc(
 
 
 
-def sample_strategy(
-  data_list: List[Data],
-  strategy: str,
-) -> List[Data]:
-  random.seed(2929)
-
-  ret = []
-  if strategy == "entire":
-    ret = data_list
-  else:
-    graph = {}
-    for data in data_list:
-      k = (data.domain, data.problem)
-      if k not in graph:
-        graph[k] = []
-      graph[k].append(data)
-
-    if strategy == "init":
-      for k in graph:
-        init_state = sorted(graph[k], key=lambda g: g.y, reverse=True)[0]
-        ret.append(init_state)
-    elif strategy == "random":
-      for k in graph:
-        random_state = random.choice(graph[k])
-        ret.append(random_state)
-    else:
-      raise ValueError(strategy)
-
-  print(f"Train size after {strategy} sample strategy: {len(ret)}")
-
-  return ret
-
-
-
 def preprocess_data(
   model_name: Optional[str],
   data_list: List[Data],

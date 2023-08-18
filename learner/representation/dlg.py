@@ -8,15 +8,21 @@ class DLG_FEATURES(Enum):
   NEGATIVE_GOAL=2
   STATE=3
 
+
 class DLG_EDGE_TYPES(Enum):
   PRE_EDGE=0
   ADD_EDGE=1
 
 
 class DeleteLearningGraph(StripsLearningGraph, ABC):
-  def __init__(self, domain_pddl: str, problem_pddl: str, rep_name: str="dlg", node_dim: int=len(DLG_FEATURES)):
-    super().__init__(domain_pddl, problem_pddl, rep_name=rep_name, node_dim=node_dim)
-  
+  name = "dlg"
+  n_node_features = len(DLG_FEATURES)
+  n_edge_labels = len(DLG_EDGE_TYPES)
+  directed = False
+  lifted = False
+
+  def __init__(self, domain_pddl: str, problem_pddl: str):
+    super().__init__(domain_pddl, problem_pddl)
 
   def _compute_graph_representation(self) -> None:
     """ TODO: reference definition of this graph representation
@@ -64,18 +70,13 @@ class DeleteLearningGraph(StripsLearningGraph, ABC):
       #   assert a_node in G.nodes, f"{a_node} not in nodes"
       #   G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=SDG_EDGE_TYPES.DEL_EDGE.value)
 
-    # map node names to tensor indices; only do this for propositions
+    # map node name to index
     self._node_to_i = {}
     for i, node in enumerate(G.nodes):
-      if G.nodes[node]['x'][DLG_FEATURES.ACTION.value] == 1:
-        continue
       self._node_to_i[node] = i
-
-    # convert to PyG tensors
-    self._graph_to_representation(G)
+    self.G = G
 
     return
-  
 
   def get_state_enc(self, state: State) -> Tuple[Tensor, Tensor]:
 

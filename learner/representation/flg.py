@@ -8,6 +8,7 @@ class FLG_FEATURES(Enum):
   GOAL=3
   ACTION=4
 
+
 class FLG_EDGE_TYPES(Enum):
   VV_EDGE=0
   PRE_EDGE=1
@@ -15,9 +16,14 @@ class FLG_EDGE_TYPES(Enum):
 
 
 class FdrLearningGraph(Representation, ABC):
-  def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
-    super().__init__(domain_pddl, problem_pddl, rep_name="flg", node_dim=len(FLG_FEATURES))
+  name = "flg"
+  n_node_features = len(FLG_FEATURES)
+  n_edge_labels = len(FLG_EDGE_TYPES)
+  directed = False
+  lifted = False
 
+  def __init__(self, domain_pddl: str, problem_pddl: str) -> None:
+    super().__init__(domain_pddl, problem_pddl)
 
   def _compute_graph_representation(self) -> None:
     """ TODO: reference definition of this graph representation
@@ -65,20 +71,17 @@ class FdrLearningGraph(Representation, ABC):
         assert val_node in G.nodes()
         G.add_edge(u_of_edge=action_node, v_of_edge=val_node, edge_type=FLG_EDGE_TYPES.EFF_EDGE.value)
 
-    # map fact to indices
+    # map node name to index
     node_to_i = {}
     for i, node in enumerate(G.nodes):
       node_to_i[node] = i
     self.fact_to_i = {}
     for fact in self.problem.fact_to_varval:
       self.fact_to_i[fact] = node_to_i[self.problem.fact_to_varval[fact]]
-
-    # convert to PyG
-    self._graph_to_representation(G)
+    self.G = G
 
     return
   
-
   def get_state_enc(self, state: State) -> Tuple[Tensor, Tensor]:
     
     x = self.x.clone()

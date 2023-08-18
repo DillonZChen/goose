@@ -10,6 +10,7 @@ class GLG_FEATURES(Enum):
   PREDICATE=4
   SCHEMA=5
 
+
 class GLG_EDGE_TYPES(Enum):
   PRE_EDGE=0
   ADD_EDGE=1
@@ -18,9 +19,14 @@ class GLG_EDGE_TYPES(Enum):
 
 
 class GroundedLearningGraph(StripsLearningGraph, ABC):
+  name = "glg"
+  n_node_features = len(GLG_FEATURES)
+  n_edge_labels = len(GLG_EDGE_TYPES)
+  directed = False
+  lifted = False
+  
   def __init__(self, domain_pddl: str, problem_pddl: str):
-    super().__init__(domain_pddl, problem_pddl, rep_name="glg", node_dim=len(GLG_FEATURES))
-
+    super().__init__(domain_pddl, problem_pddl)
 
   def _compute_graph_representation(self) -> None:
     """ TODO: reference definition of this graph representation (not used in 24-AAAI paper)
@@ -86,18 +92,13 @@ class GroundedLearningGraph(StripsLearningGraph, ABC):
       assert pred_node in G.nodes
       G.add_edge(u_of_edge=p_node, v_of_edge=pred_node, edge_type=GLG_EDGE_TYPES.PREDICATE.value)
 
-    # map node names to tensor indices; only do this for propositions
+    # map node name to index
     self._node_to_i = {}
     for i, node in enumerate(G.nodes):
-      if G.nodes[node]['x'][GLG_FEATURES.ACTION.value] == 1:
-        continue
       self._node_to_i[node] = i
-
-    # convert to PyG
-    self._graph_to_representation(G)
+    self.G = G
 
     return
-
 
   def get_state_enc(self, state: State) -> Tuple[Tensor, Tensor]:
 
