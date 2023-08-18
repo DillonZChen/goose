@@ -50,25 +50,7 @@ def print_quartiles(desc: str, data: np.array, floats: bool = False):
     print(f"{desc:<20} {q1:>10} {q2:>10} {q3:>10} {min(data):>10} {max(data):>10}")
 
 
-def get_y_stats(dataset):
-  ys = []
-  for data in dataset:
-    y = round(data.y)
-    ys.append(y)
-
-  ys = np.array(ys)
-  # os.makedirs("plots/", exist_ok=True)
-  # plt.hist(ys, bins=round(np.max(ys) + 1),
-  #          range=(0, round(np.max(ys) + 1)))
-  # plt.xlim(left=0)
-  # # plt.title('y distribution')
-  # plt.savefig('plots/y_distribution.pdf', bbox_inches="tight")
-  # plt.clf()
-
-  return ys
-
-
-def get_stats(dataset, iteration_stats=False, desc=""):
+def get_stats(dataset, desc=""):
   if len(dataset) == 0:
     return
   cnt = {}
@@ -76,43 +58,34 @@ def get_stats(dataset, iteration_stats=False, desc=""):
   graph_nodes = []
   graph_edges = []
   graph_dense = []
-  iterations = []
+  ys = []
 
   for data in dataset:
-    y = data.y
+    if type(dataset[0]) == tuple:  # CGraphs
+      graph, y = data
+      n_nodes = len(graph.nodes)
+      n_edges = len(graph.edges)
+    else:  # TGraphs
+      y = data.y
+      n_nodes = data.x.shape[0] if data.x is not None else 0
+      try:
+        n_edges = data.edge_index.shape[1]
+      except:
+        n_edges = sum(e.shape[1] for e in data.edge_index)
+      density = graph_density(n_nodes, n_edges, directed=True)
+
     if y not in cnt:
       cnt[y] = 0
     cnt[y] += 1
     max_cost = max(max_cost, round(y))
-
-    if iteration_stats:
-      iterations.append(data.iterations)
-
-    if data.x is None:
-      n_nodes = 0
-    else:
-      n_nodes = data.x.shape[0]
-    try:
-      n_edges = data.edge_index.shape[1]
-    except:
-      # print(data.edge_index)
-      # for a in data.edge_index:
-      #   print(a)
-      n_edges = sum(e.shape[1] for e in data.edge_index)
-
     density = graph_density(n_nodes, n_edges, directed=True)
     graph_nodes.append(n_nodes)
     graph_edges.append(n_edges)
     graph_dense.append(density)
-
-  # Cost/y distribution
-  # print('Cost distribution')
-  ys = get_y_stats(dataset)
+    ys.append(y)
 
   # Statistics
   print_quartile_desc(desc)
-  if iteration_stats:
-    print_quartiles("iterations:", iterations)
   print_quartiles("costs:", ys)
   print_quartiles("n_nodes:", graph_nodes)
   print_quartiles("n_edges:", graph_edges)

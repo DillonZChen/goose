@@ -61,7 +61,7 @@ class ELMPNNPredictor(BasePredictor):
     self.model = ELMPNN(params)
 
   def h(self, state: State) -> float:
-    x, edge_index = self.rep.get_state_enc(state)
+    x, edge_index = self.rep.state_to_tensor(state)
     x = x.to(self.device)
     for i in range(len(edge_index)):
       edge_index[i] = edge_index[i].to(self.device)

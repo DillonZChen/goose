@@ -1,4 +1,4 @@
-""" File for generating and loading graphs. See scripts/generate_graphs.py """
+""" File for generating and loading graphs for GNNs. Used by scripts/generate_graphs_gnn.py """
 
 import os
 import sys
@@ -18,6 +18,8 @@ from dataset.ipc_domain_info import same_domain, GROUNDED_DOMAINS, get_ipc_domai
 from dataset.goose_domain_info import get_train_goose_instance_files
 
 
+_SAVE_DIR = "data/graphs_gnn"
+
 def generate_graph_from_domain_problem_pddl(
   domain_name: str,
   domain_pddl: str,
@@ -26,9 +28,6 @@ def generate_graph_from_domain_problem_pddl(
 ) -> None:
   """ Generates a list of graphs corresponding to states in the optimal plan """
   ret = []
-
-  if representation=="dlg":
-    return slg_to_dlg(domain_name, domain_pddl, problem_pddl)
 
   plan = optimal_plan_exists(domain_name, domain_pddl, problem_pddl)
   if plan is None:
@@ -44,7 +43,7 @@ def generate_graph_from_domain_problem_pddl(
     if REPRESENTATIONS[representation].lifted:
       s = rep.str_to_state(s)
 
-    x, edge_index = rep.get_state_enc(s)
+    x, edge_index = rep.state_to_tensor(s)
     applicable_action=None  # requires refactoring representation classes
     graph_data = Data(
       x=x,
@@ -58,18 +57,6 @@ def generate_graph_from_domain_problem_pddl(
     ret.append(graph_data)
   return ret
 
-def slg_to_dlg(domain_name, domain_pddl, problem_pddl):
-  problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
-  f = f"data/graphs/sdg-el/{domain_name}/{problem_name}.data"
-  if not os.path.exists(f):
-    return None
-  graph_data_list = torch.load(f)
-  ret = []
-  for graph in graph_data_list:
-    graph.edge_index = graph.edge_index[:2]
-    ret.append(graph)
-  return ret
-
 def get_graph_data(
   representation: str,
   domain: str="all",
@@ -78,7 +65,9 @@ def get_graph_data(
 
   print("Loading train data...")
   print("NOTE: the data has been precomputed and saved.")
-  print("Rerun gen_data/graphs.py if representation has been updated!")
+  print("Exec")
+  print("\tpython3 scripts/generate_graphs_gnn.py --regenerate")
+  print("if representation has been updated!")
 
   path = get_data_dir_path(representation=representation)
   print(f"Path to data: {path}")
@@ -95,10 +84,7 @@ def get_graph_data(
     elif domain == "ipc-only":  # codebase getting bloated
       if "ipc-" not in domain_name:
         continue
-    elif domain == "goose-pretraining":  # ipc + goose
-      if domain_name in goose_domain_info.DOMAINS_NOT_TO_TRAIN or "htg-" in domain_name:
-        continue
-    elif domain == "goose-unseen-pretraining":  # ipc only
+    elif domain == "goose-di":  # ipc only
       if domain_name in goose_domain_info.DOMAINS_NOT_TO_TRAIN or "htg-" in domain_name or "goose-" in domain_name:
         continue
     else:
@@ -178,7 +164,7 @@ def gen_graph_rep(
   return
 
 def get_data_dir_path(representation: str) -> str:
-  save_dir = f'data/graphs/{representation}'
+  save_dir = f'{_SAVE_DIR}/{representation}'
   os.makedirs(save_dir, exist_ok=True)
   return save_dir
 

@@ -82,7 +82,7 @@ class FdrLearningGraph(Representation, ABC):
 
     return
   
-  def get_state_enc(self, state: State) -> Tuple[Tensor, Tensor]:
+  def state_to_tensor(self, state: State) -> Tuple[Tensor, Tensor]:
     
     x = self.x.clone()
     for p in state:

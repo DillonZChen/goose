@@ -49,7 +49,7 @@ container as in [Search Evaluation](#search-evaluation). Perform the following s
   ```path_to_goose/learner/data/plan_objects```)
 - run the following while in the  ```learner``` directory:
 ```
-python3 scripts/generate_graphs.py llg
+python3 scripts/generate_graphs_gnn.py llg
 ```
 
 #### Domain-dependent training

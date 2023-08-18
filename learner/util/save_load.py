@@ -4,8 +4,8 @@ import datetime
 import representation
 from argparse import Namespace as Args
 from typing import Tuple
-from models.base_gnn import BasePredictor as GNN
-from models import *
+from gnns.base_gnn import BasePredictor as GNN
+from gnns import *
 
 """ Module for dealing with model saving and loading. """
 

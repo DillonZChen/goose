@@ -78,7 +78,7 @@ class DeleteLearningGraph(StripsLearningGraph, ABC):
 
     return
 
-  def get_state_enc(self, state: State) -> Tuple[Tensor, Tensor]:
+  def state_to_tensor(self, state: State) -> Tuple[Tensor, Tensor]:
 
     x = self.x.clone()  # not time nor memory efficient, but no other way in Python
     for p in state:
