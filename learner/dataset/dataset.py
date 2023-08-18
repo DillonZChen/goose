@@ -3,6 +3,7 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 import random
+import numpy as np
 from util.stats import get_stats
 from torch_geometric.loader import DataLoader
 from sklearn.model_selection import train_test_split
@@ -47,4 +48,7 @@ def get_dataset_from_args_kernels(args):
     dataset = random.sample(dataset, min(len(dataset, 1000)))
   get_stats(dataset=dataset, desc="Whole dataset")
 
-  return dataset
+  graphs = [data[0] for data in dataset]
+  y = np.array([data[1] for data in dataset])
+
+  return graphs, y
