@@ -8,6 +8,11 @@ from sklearn.metrics import accuracy_score
 """ Module containing metrics for inference only. """
 
 
+def f1_macro(y_true: np.array, y_pred: np.array) -> float:
+  y_true = np.rint(y_true).astype(int)
+  y_pred = np.rint(y_pred).astype(int)
+  return f1_score(y_true, y_pred, average='macro')
+
 @torch.no_grad()
 def eval_accuracy(y_pred: Tensor, y_true: Tensor):
   try:

@@ -7,15 +7,19 @@ import kernels
 import numpy as np
 from dataset.dataset import get_dataset_from_args_kernels
 from util.save_load import print_arguments
+from util.metrics import f1_macro
 from sklearn.svm import LinearSVR, SVR
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import f1_score
+from sklearn.model_selection import cross_validate
+from sklearn.metrics import make_scorer, f1_score, mean_squared_error
 
 
 _MODELS = [
   "linear-svr",
   "svr",
 ]
+
+_CV_FOLDS = 5
+_MAX_MODEL_ITER = 1000
 
 def create_parser():
   parser = argparse.ArgumentParser()
@@ -29,6 +33,10 @@ def create_parser():
   
   parser.add_argument('-m', '--model', type=str, default="linear-svr", choices=_MODELS,
                       help="ML model")
+  parser.add_argument('-C', type=float, default=1,
+                      help="regularisation parameter of SVR; strength is inversely proportional to C")
+  parser.add_argument('-e', type=float, default=0.1,
+                      help="epsilon parameter in epsilon insensitive loss function of SVR")
   
   parser.add_argument('-d', '--domain', type=str, default="goose-di",
                       help="domain to train on; defaults to goose-di which is di training")
@@ -48,43 +56,44 @@ if __name__ == "__main__":
   args = parser.parse_args()
   print_arguments(args)
 
+  np.random.seed(args.seed)
+
   graphs, y = get_dataset_from_args_kernels(args)
   kernel = kernels.KERNELS[args.kernel](args.iterations)
   kernel.read_train_data(graphs)
 
-  graphs_train, graphs_val, y_train, y_val = train_test_split(graphs, y, test_size=0.25, random_state=args.seed)
-
-  print(f"Setting up training data...")
+  print(f"Setting up training data and initialising model...")
   model_name = args.model
   t = time.time()
+
+  kwargs = {
+    "epsilon": args.e,
+    "C": args.C,
+    "max_iter": _MAX_MODEL_ITER,
+  }
   if model_name == "linear-svr":
-    model = LinearSVR()
-    X_train = kernel.get_x(graphs_train)
-    X_val = kernel.get_x(graphs_val)
+    model = LinearSVR(**kwargs)
+    X = kernel.get_x(graphs)
   elif model_name == "svr":
-    model = SVR(kernel="precomputed")
-    X_train = kernel.get_k(graphs_train)
-    X_val = kernel.get_k(graphs_val)
+    model = SVR(kernel="precomputed", **kwargs)
+    X = kernel.get_k(graphs)
   else:
     raise NotImplementedError
   print(f"Set up training data in {time.time()-t:.2f}s")
 
-  print(f"Fitting {model_name}...")
-  t = time.time()
-  model.fit(X_train, y_train)
-  print(f"Model fitted in {time.time()-t:.2f}s")
-
-  pred_train = np.rint(model.predict(X_train)).astype(int)
-  pred_val = np.rint(model.predict(X_val)).astype(int)
-
-  print(f"Train model score={model.score(X_train, y_train):.2f}")
-  print(f"Val model score={model.score(X_val, y_val):.2f}")
-
-  print(f"Train f1={f1_score(y_train, pred_train, average='macro'):.2f}")
-  print(f"Val f1={f1_score(y_val, pred_val, average='macro'):.2f}")
-
-  print(np.abs(y_train-pred_train))
-  print(np.abs(y_val-pred_val))
+  print(f"Performing {_CV_FOLDS}-fold cross validation on {model_name}...")
+  scoring = {
+    "mse": make_scorer(mean_squared_error),
+    "f1_macro": make_scorer(f1_macro)
+  }
+  scores = cross_validate(model, X, y, cv=_CV_FOLDS, scoring=scoring, return_train_score=True)
+  print(f"CV completed in {scores['fit_time'].sum()+scores['score_time'].sum():.2f}s")
+  
+  for metric in scoring:
+    train_key = f"train_{metric}"
+    test_key = f"test_{metric}"
+    print(f"train_{metric}: {scores[train_key].mean():.2f} ± {scores[train_key].std():.2f}")
+    print(f"test_{metric}: {scores[test_key].mean():.2f} ± {scores[test_key].std():.2f}")
 
 
 
