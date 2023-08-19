@@ -146,6 +146,8 @@ class Representation(ABC):
         efficiently for each graph representation separately but takes more effort.
     """
 
+    # TODO optimise by converting node string names into ints and storing the map
+
     colours = set()
 
     c_graph = self._create_graph()

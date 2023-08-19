@@ -10,7 +10,7 @@ from util.save_load import print_arguments
 from util.metrics import f1_macro
 from sklearn.svm import LinearSVR, SVR
 from sklearn.model_selection import cross_validate
-from sklearn.metrics import make_scorer, f1_score, mean_squared_error
+from sklearn.metrics import make_scorer, mean_squared_error
 
 
 _MODELS = [
@@ -19,17 +19,21 @@ _MODELS = [
 ]
 
 _CV_FOLDS = 5
-_MAX_MODEL_ITER = 1000
+_MAX_MODEL_ITER = 10000
 
 def create_parser():
   parser = argparse.ArgumentParser()
 
   parser.add_argument('-r', '--rep', type=str, required=True, choices=representation.REPRESENTATIONS,
                       help="graph representation to use")
+  # TODO implement CGraph for SLG
+  
   parser.add_argument('-k', '--kernel', type=str, required=True, choices=kernels.KERNELS,
                       help="graph representation to use")
   parser.add_argument('-l', '--iterations', type=int, default=5,
                       help="number of iterations for kernel algorithms")
+  parser.add_argument('--final-only', dest="all_colours", action="store_false",
+                      help="collects colours from only final iteration of WL kernels")
   
   parser.add_argument('-m', '--model', type=str, default="linear-svr", choices=_MODELS,
                       help="ML model")
@@ -58,8 +62,12 @@ if __name__ == "__main__":
 
   np.random.seed(args.seed)
 
+  print(f"Initialising {args.kernel}...")
   graphs, y = get_dataset_from_args_kernels(args)
-  kernel = kernels.KERNELS[args.kernel](args.iterations)
+  kernel = kernels.KERNELS[args.kernel](
+    iterations=args.iterations,
+    all_colours=args.all_colours,
+  )
   kernel.read_train_data(graphs)
 
   print(f"Setting up training data and initialising model...")

@@ -3,14 +3,25 @@ from .base_kernel import *
 
 
 class WeisfeilerLehmanKernel(Kernel):
-  def __init__(self, iterations: int) -> None:
+  def __init__(self, iterations: int, all_colours: bool) -> None:
     super().__init__()
 
-    # hashes neighbour multisets of colours; also acts as colour to explicit feature index
+    # hashes neighbour multisets of colours; same as self._representation if all_colours
     self._hash = {}
+
+    # option for returning only final WL iteration
+    self._representation = {}
 
     # number of wl iterations
     self.iterations = iterations
+
+    # collect colours from all iterations or only final
+    self.all_colours = all_colours
+
+  def _get_hash_value(self, colour) -> int:
+    if colour not in self._hash:
+      self._hash[colour] = len(self._hash)
+    return self._hash[colour]
 
   def read_train_data(self, graphs: CGraph) -> None:
     """ Read data and precompute the hash function """
@@ -18,29 +29,32 @@ class WeisfeilerLehmanKernel(Kernel):
     t = time.time()
     self._train_data_colours = {}
 
-    # initial run to compute colours and hashmap
+    # compute colours and hashmap from training data
     for G in graphs:
       cur_colours = {}
       histogram = {}
+
+      def store_colour(colour):
+        nonlocal histogram
+        if colour not in self._representation:
+          self._representation[colour] = len(self._representation)
+        if colour not in histogram:
+          histogram[colour] = 0
+        histogram[colour] += 1
 
       # collect initial colours
       for u in G.nodes:
 
         # initial colour is feature of the node
         colour = G.nodes[u]["colour"]
+        cur_colours[u] = self._get_hash_value(colour)
 
-        # check if colour in hash to compress
-        if colour not in self._hash:
-          self._hash[colour] = len(self._hash)
-        cur_colours[u] = self._hash[colour]
-
-        # store histogram throughout all iterations
-        if colour not in histogram:
-          histogram[colour] = 0
-        histogram[colour] += 1
+        # store histogram for all iterations or only last
+        if self.all_colours or self.iterations == 0:
+          store_colour(colour)
 
       # WL iterations
-      for _ in range(self.iterations):
+      for itr in range(self.iterations):
         new_colours = {}
         for u in G.nodes:
 
@@ -52,20 +66,18 @@ class WeisfeilerLehmanKernel(Kernel):
             neighbour_colours.append((colour_node, colour_edge))
           neighbour_colours = sorted(neighbour_colours)
           colour = tuple([cur_colours[u]] + neighbour_colours)
+          new_colours[u] = self._get_hash_value(colour)
 
-          # check if colour in hash to compress
-          if colour not in self._hash:
-            self._hash[colour] = len(self._hash)
-          new_colours[u] = self._hash[colour]
-
-          # store histogram throughout all iterations
-          if colour not in histogram:
-            histogram[colour] = 0
-          histogram[colour] += 1
+          # store histogram for all iterations or only last
+          if self.all_colours or itr == self.iterations - 1:
+            store_colour(colour)
         cur_colours = new_colours
       
-      # store histogram of graph colours over *all* iterations
+      # store histogram of graph colours
       self._train_data_colours[G] = histogram
+
+    if self.all_colours:
+      self._representation = self._hash
 
     t = time.time() - t
     print(f"Initialised WL for {len(graphs)} graphs in {t:.2f}s")
@@ -77,12 +89,12 @@ class WeisfeilerLehmanKernel(Kernel):
         O(nd) time; n x d output 
     """
     n = len(graphs)
-    d = len(self._hash)
+    d = len(self._representation)
     X = np.zeros((n, d))
     for i, G in enumerate(graphs):
       histogram = self._train_data_colours[G]
       for colour in histogram:
-        j = self._hash[colour]
+        j = self._representation[colour]
         X[i][j] = histogram[colour]
     return X
   
