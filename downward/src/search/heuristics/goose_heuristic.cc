@@ -63,6 +63,8 @@ void GooseHeuristic::initialise_model(const plugins::Options &opts) {
   std::string line;
   std::ifstream config_file(config_path);
   int file_line = 0;
+
+  // TODO see https://github.com/aibasel/downward/pull/170
   while (getline(config_file, line)) {
     switch (file_line) {
       case 0:

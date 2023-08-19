@@ -1,4 +1,4 @@
-from representation.base_class import *
+from .base_class import *
 
 
 class FLG_FEATURES(Enum):
@@ -9,7 +9,7 @@ class FLG_FEATURES(Enum):
   ACTION=4
 
 
-class FLG_EDGE_TYPES(Enum):
+class FLG_EDGE_LABELS(Enum):
   VV_EDGE=0
   PRE_EDGE=1
   EFF_EDGE=2
@@ -18,7 +18,7 @@ class FLG_EDGE_TYPES(Enum):
 class FdrLearningGraph(Representation, ABC):
   name = "flg"
   n_node_features = len(FLG_FEATURES)
-  n_edge_labels = len(FLG_EDGE_TYPES)
+  n_edge_labels = len(FLG_EDGE_LABELS)
   directed = False
   lifted = False
 
@@ -52,7 +52,7 @@ class FdrLearningGraph(Representation, ABC):
           val_x += self._one_hot_node(FLG_FEATURES.GOAL.value)
 
         G.add_node(val_node, x=val_x)
-        G.add_edge(u_of_edge=var, v_of_edge=val_node, edge_type=FLG_EDGE_TYPES.VV_EDGE.value)
+        G.add_edge(u_of_edge=var, v_of_edge=val_node, edge_label=FLG_EDGE_LABELS.VV_EDGE.value)
     assert goals == len(goal)
 
     """ action nodes and edges """
@@ -63,13 +63,13 @@ class FdrLearningGraph(Representation, ABC):
         assert val in variables[var]  # and hence should be in G.nodes()
         val_node = (var, val)
         assert val_node in G.nodes()
-        G.add_edge(u_of_edge=action_node, v_of_edge=val_node, edge_type=FLG_EDGE_TYPES.PRE_EDGE.value)
+        G.add_edge(u_of_edge=action_node, v_of_edge=val_node, edge_label=FLG_EDGE_LABELS.PRE_EDGE.value)
 
       for var, val in action.add_effects:  # from our compilation, effects are in add only
         assert val in variables[var]
         val_node = (var, val)
         assert val_node in G.nodes()
-        G.add_edge(u_of_edge=action_node, v_of_edge=val_node, edge_type=FLG_EDGE_TYPES.EFF_EDGE.value)
+        G.add_edge(u_of_edge=action_node, v_of_edge=val_node, edge_label=FLG_EDGE_LABELS.EFF_EDGE.value)
 
     # map node name to index
     node_to_i = {}

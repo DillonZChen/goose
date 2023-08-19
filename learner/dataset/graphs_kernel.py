@@ -15,7 +15,7 @@ from representation import REPRESENTATIONS
 from dataset.htg_domain_info import get_all_htg_instance_files
 from dataset.ipc_domain_info import same_domain, GROUNDED_DOMAINS, get_ipc_domain_problem_files
 from dataset.goose_domain_info import get_train_goose_instance_files
-from representation.base_class import CGraph
+from representation import CGraph
 
 
 _SAVE_DIR = "data/graphs_kernel"

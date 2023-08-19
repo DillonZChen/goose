@@ -1,11 +1,8 @@
 import sys
-import matplotlib.pyplot as plt
 import torch
 import networkx as nx
 import copy
 import time
-import torch.nn.functional as F
-import signal
 import os
 import util
 import random
@@ -133,8 +130,8 @@ class Representation(ABC):
       assert self.n_edge_labels > 1
       self.edge_indices = [[] for _ in range(self.n_edge_labels)]
       edge_index_T = pyg_G.edge_index.T
-      for i, edge_type in enumerate(pyg_G.edge_type):
-        self.edge_indices[edge_type].append(edge_index_T[i])
+      for i, edge_label in enumerate(pyg_G.edge_label):
+        self.edge_indices[edge_label].append(edge_index_T[i])
       for i in range(self.n_edge_labels):
         if len(self.edge_indices[i]) > 0:
           self.edge_indices[i] = torch.vstack(self.edge_indices[i]).long().T
@@ -165,7 +162,7 @@ class Representation(ABC):
       c_graph.add_node(node, colour=colour)
     for edge in self.G.edges:
       u, v = edge
-      c_graph.add_edge(u_of_edge=u, v_of_edge=v, edge_label=self.G.edges[edge])
+      c_graph.add_edge(u_of_edge=u, v_of_edge=v, edge_label=self.G.edges[edge]["edge_label"])
 
     self.c_graph = c_graph
     return

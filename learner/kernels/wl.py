@@ -12,7 +12,7 @@ class WeisfeilerLehmanKernel(Kernel):
     # number of wl iterations
     self.iterations = iterations
 
-  def read_train_data(self, graphs: List[nx.Graph]) -> None:
+  def read_train_data(self, graphs: CGraph) -> None:
     """ Read data and precompute the hash function """
 
     t = time.time()
@@ -25,22 +25,40 @@ class WeisfeilerLehmanKernel(Kernel):
 
       # collect initial colours
       for u in G.nodes:
+
+        # initial colour is feature of the node
         colour = G.nodes[u]["colour"]
+
+        # check if colour in hash to compress
         if colour not in self._hash:
           self._hash[colour] = len(self._hash)
+        cur_colours[u] = self._hash[colour]
+
+        # store histogram throughout all iterations
         if colour not in histogram:
           histogram[colour] = 0
         histogram[colour] += 1
-        cur_colours[u] = self._hash[colour]
 
-      # wl iterations
+      # WL iterations
       for _ in range(self.iterations):
         new_colours = {}
         for u in G.nodes:
-          colour = tuple([cur_colours[u]] + sorted([cur_colours[v] for v in G[u]]))
+
+          # edge label WL variant
+          neighbour_colours = []
+          for v in G[u]:
+            colour_node = cur_colours[v]
+            colour_edge = G.edges[(u,v)]["edge_label"]
+            neighbour_colours.append((colour_node, colour_edge))
+          neighbour_colours = sorted(neighbour_colours)
+          colour = tuple([cur_colours[u]] + neighbour_colours)
+
+          # check if colour in hash to compress
           if colour not in self._hash:
             self._hash[colour] = len(self._hash)
           new_colours[u] = self._hash[colour]
+
+          # store histogram throughout all iterations
           if colour not in histogram:
             histogram[colour] = 0
           histogram[colour] += 1
@@ -54,7 +72,10 @@ class WeisfeilerLehmanKernel(Kernel):
     print(f"Collected {len(self._hash)} colours over {sum(len(G.nodes) for G in graphs)} nodes")
     return
 
-  def get_x(self, graphs: List[nx.Graph]) -> np.array:
+  def get_x(self, graphs: CGraph) -> np.array:
+    """ Explicit feature representation
+        O(nd) time; n x d output 
+    """
     n = len(graphs)
     d = len(self._hash)
     X = np.zeros((n, d))
@@ -65,7 +86,10 @@ class WeisfeilerLehmanKernel(Kernel):
         X[i][j] = histogram[colour]
     return X
   
-  def get_k(self, graphs: List[nx.Graph]) -> np.array:
+  def get_k(self, graphs: CGraph) -> np.array:
+    """ Implicit feature representation
+        O(n^2d) time; n x n output 
+    """
     n = len(graphs)
     K = np.zeros((n, n))
     for i in range(n):
