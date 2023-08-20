@@ -56,9 +56,7 @@ def get_graph_data(
 
   print("Loading train data...")
   print("NOTE: the data has been precomputed and saved.")
-  print("Exec")
-  print("\tpython3 scripts/generate_graphs_kernel.py --regenerate")
-  print("if representation has been updated!")
+  print("Exec 'python3 scripts/generate_graphs_kernel.py --regenerate' if representation has been updated!")
 
   path = get_data_dir_path(representation=representation)
   print(f"Path to data: {path}")
@@ -129,9 +127,9 @@ def gen_graph_rep(
 ) -> None:
   """ Generate graph representations from saved optimal plans. """
 
-  tasks  = get_ipc_domain_problem_files(del_free=False)
+  # tasks  = get_ipc_domain_problem_files(del_free=False)
   # tasks += get_all_htg_instance_files(split=True)
-  tasks += get_train_goose_instance_files()
+  tasks = get_train_goose_instance_files()
 
   new_generated = 0
   pbar = tqdm(tasks)

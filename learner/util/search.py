@@ -64,25 +64,10 @@ def fd_cmd(rep, df, pf, m, search, seed, timeout=TIMEOUT):
   else:
     raise NotImplementedError
   
-  # A hack given that FD FeaturePlugin cannot parse strings
-  # 0: slg, 1: flg, 2: dlg, 3: llg
-  assert rep in REPRESENTATIONS
-  config_file = rep
-  config = {
-    "slg":0,
-    "flg":1,
-    "dlg":2,
-    "llg":3,
-  }[rep]
-  
   description = f"fd_{pf.replace('.pddl','').replace('/','-')}_{search}_{os.path.basename(m).replace('.dt', '')}"
   sas_file = f"sas_files/{description}.sas_file"
   plan_file = f"plans/{description}.plan"
-  with open(config_file, 'w') as f:
-    f.write(m+'\n')
-    f.write(df+'\n')
-    f.write(pf+'\n')
-    f.close()
-  cmd = f'./../downward/fast-downward.py --search-time-limit {timeout} --sas-file {sas_file} --plan-file {plan_file} {df} {pf} --search "{search}([goose(graph={config})])"'
+  cmd = f"./../downward/fast-downward.py --search-time-limit {timeout} --sas-file {sas_file} --plan-file {plan_file} "+\
+        f"{df} {pf} --search '{search}([goose(model_path=\"{m}\", domain_file=\"{df}\", instance_file=\"{pf}\")])'"
   cmd = f"export GOOSE={os.getcwd()} && {cmd}"
   return cmd, sas_file

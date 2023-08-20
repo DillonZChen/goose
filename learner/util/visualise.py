@@ -1,6 +1,8 @@
 import os
 import sys
 
+from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix
+
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 import re
@@ -320,3 +322,20 @@ def display_solved_test_stats(train_type, L, H, aggr, p):
 def get_max_of_parameters(df):
   df = df.drop(columns=["L", "aggr"]).max()
   return df
+
+def get_confusion_matrix(y_true_train, y_pred_train, y_true_test, y_pred_test, cutoff=-1):
+  y_true_train = np.rint(y_true_train).astype(int)
+  y_pred_train = np.rint(y_pred_train).astype(int)
+  y_true_test = np.rint(y_true_test).astype(int)
+  y_pred_test = np.rint(y_pred_test).astype(int)
+  fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(10, 10))
+  if cutoff == -1:
+    cutoff = max(max(y_true_train), max(y_true_test))+1
+  cm_train = confusion_matrix(y_true_train, y_pred_train, normalize="true", labels=list(range(0, cutoff)))
+  cm_test = confusion_matrix(y_true_test, y_pred_test, normalize="true", labels=list(range(0, cutoff)))
+  display_labels = [y if y%10==0 else "" for y in range(cutoff)]
+  for i, cm in enumerate([cm_train, cm_test]):
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=display_labels)
+    disp.plot(include_values=False, xticks_rotation="vertical", ax=ax[i], colorbar=False)
+    disp.im_.set_clim(0, 1)
+  return plt

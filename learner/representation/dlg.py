@@ -38,8 +38,10 @@ class DeleteLearningGraph(StripsLearningGraph, ABC):
       # these features may get updated in state encoding
       if proposition in positive_goals:
         x_p = self._one_hot_node(DLG_FEATURES.POSITIVE_GOAL.value)
+        self._pos_goal_nodes.add(node_p)
       elif proposition in negative_goals:
         x_p = self._one_hot_node(DLG_FEATURES.NEGATIVE_GOAL.value)
+        self._neg_goal_nodes.add(node_p)
       else:
         x_p = self._zero_node()
       G.add_node(node_p, x=x_p)

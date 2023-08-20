@@ -65,9 +65,7 @@ def get_graph_data(
 
   print("Loading train data...")
   print("NOTE: the data has been precomputed and saved.")
-  print("Exec")
-  print("\tpython3 scripts/generate_graphs_gnn.py --regenerate")
-  print("if representation has been updated!")
+  print("Exec 'python3 scripts/generate_graphs_gnn.py --regenerate' if representation has been updated!")
 
   path = get_data_dir_path(representation=representation)
   print(f"Path to data: {path}")

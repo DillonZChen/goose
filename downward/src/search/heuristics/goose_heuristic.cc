@@ -13,10 +13,8 @@ using std::string;
 namespace goose_heuristic {
 GooseHeuristic::GooseHeuristic(const plugins::Options &opts)
     : Heuristic(opts) {
-    
   initialise_model(opts);
   initialise_fact_strings();
-    
 }
 
 void GooseHeuristic::initialise_model(const plugins::Options &opts) {
@@ -42,48 +40,10 @@ void GooseHeuristic::initialise_model(const plugins::Options &opts) {
   // python will be printed to stderr, even if it is not an error.
   sys.attr("stderr") = sys.attr("stdout");
 
-  // A really disgusting hack because FeaturePlugin cannot parse string options
-  std::string config_path;
-  switch (opts.get<int>("graph"))
-  {
-  case 0: config_path = "slg"; break;
-  case 1: config_path = "flg"; break;
-  case 2: config_path = "dlg"; break;
-  case 3: config_path = "llg"; break;
-  default:
-      std::cout << "Unknown enum of graph representation" << std::endl;
-      exit(-1);
-  }
-
-  // Parse paths from file at config_path
-  std::string model_path;
-  std::string domain_file;
-  std::string instance_file;
-
-  std::string line;
-  std::ifstream config_file(config_path);
-  int file_line = 0;
-
-  // TODO see https://github.com/aibasel/downward/pull/170
-  while (getline(config_file, line)) {
-    switch (file_line) {
-      case 0:
-        model_path = line;
-        break;
-      case 1:
-        domain_file = line;
-        break;
-      case 2:
-        instance_file = line;
-        break;
-      default:
-        std::cout << "config file " << config_path 
-                  << " must only have 3 lines" << std::endl;
-        exit(-1);
-    }
-    file_line++;
-  }
-  config_file.close(); 
+  // Read paths
+  std::string model_path = opts.get<string>("model_path");
+  std::string domain_file = opts.get<string>("domain_file");
+  std::string instance_file = opts.get<string>("instance_file");
 
   // Throw everything into Python code
   std::cout << "Trying to load model from file " << model_path << " ...\n";
@@ -189,27 +149,19 @@ public:
         document_title("GOOSE heuristic");
         document_synopsis("TODO");
 
-        add_option<int>(
-            "graph",
-            "0: slg, 1: flg, 2: llg, 3: glg",
-            "-1");
-
-        // add_option does not work with <string>
-
-        // add_option<string>(
-        //     "model_path",
-        //     "path to trained model weights of file type .dt",
-        //     "default_value.dt");
-
-        // add_option<string>(
-        //     "domain_file",
-        //     "Path to the domain file.",
-        //     "default_file.pddl");
-
-        // add_option<string>(
-        //     "instance_file",
-        //     "Path to the instance file.",
-        //     "default_file.pddl");
+        // https://github.com/aibasel/downward/pull/170 for string options
+        add_option<string>(
+            "model_path",
+            "path to trained model weights of file type .dt",
+            "default_value.dt");
+        add_option<string>(
+            "domain_file",
+            "Path to the domain file.",
+            "default_file.pddl");
+        add_option<string>(
+            "instance_file",
+            "Path to the instance file.",
+            "default_file.pddl");
 
         Heuristic::add_options_to_feature(*this);
 

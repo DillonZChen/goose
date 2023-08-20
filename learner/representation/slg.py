@@ -89,8 +89,10 @@ class StripsLearningGraph(Representation, ABC):
       # these features may get updated in state encoding
       if proposition in positive_goals:
         x_p = self._one_hot_node(SLG_FEATURES.POSITIVE_GOAL.value)
+        self._pos_goal_nodes.add(node_p)
       elif proposition in negative_goals:
         x_p = self._one_hot_node(SLG_FEATURES.NEGATIVE_GOAL.value)
+        self._neg_goal_nodes.add(node_p)
       else:
         x_p = self._zero_node()
       G.add_node(node_p, x=x_p)
@@ -135,3 +137,18 @@ class StripsLearningGraph(Representation, ABC):
         x[self._node_to_i[p]][SLG_FEATURES.STATE.value] = 1
 
     return x, self.edge_indices
+
+  def state_to_cgraph(self, state: State) -> CGraph:
+    """ States are represented as a list of (pred, [args]) """
+    c_graph = self.c_graph.copy()
+
+    for p in state:
+
+      # activated proposition overlaps with a goal Atom or NegatedAtom
+      if p in self._pos_goal_nodes:
+        c_graph.nodes[p]['colour'] = c_graph.nodes[p]['colour']+ACTIVATED_POS_GOAL_COLOUR_SUFFIX
+      elif p in self._neg_goal_nodes:
+        c_graph.nodes[p]['colour'] = c_graph.nodes[p]['colour']+ACTIVATED_NEG_GOAL_COLOUR_SUFFIX
+
+    return c_graph
+  

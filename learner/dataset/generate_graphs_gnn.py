@@ -3,7 +3,7 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 import argparse
 from representation import REPRESENTATIONS
-from dataset.graphs_kernel import gen_graph_rep
+from .graphs_gnn import gen_graph_rep
 
 
 if __name__ == "__main__":
