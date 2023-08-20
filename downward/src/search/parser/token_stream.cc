@@ -96,12 +96,12 @@ string token_type_name(TokenType token_type) {
         return "Float";
     case TokenType::BOOLEAN:
         return "Boolean";
+    case TokenType::STRING:
+        return "String";
     case TokenType::IDENTIFIER:
         return "Identifier";
     case TokenType::LET:
         return "Let";
-    case TokenType::PATH:
-        return "Path";
     default:
         ABORT("Unknown token type.");
     }

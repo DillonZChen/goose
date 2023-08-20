@@ -1,4 +1,4 @@
-from representation.base_class import *
+from .base_class import *
 from representation.slg import StripsLearningGraph
 
 
@@ -9,7 +9,7 @@ class DLG_FEATURES(Enum):
   STATE=3
 
 
-class DLG_EDGE_TYPES(Enum):
+class DLG_EDGE_LABELS(Enum):
   PRE_EDGE=0
   ADD_EDGE=1
 
@@ -17,7 +17,7 @@ class DLG_EDGE_TYPES(Enum):
 class DeleteLearningGraph(StripsLearningGraph, ABC):
   name = "dlg"
   n_node_features = len(DLG_FEATURES)
-  n_edge_labels = len(DLG_EDGE_TYPES)
+  n_edge_labels = len(DLG_EDGE_LABELS)
   directed = False
   lifted = False
 
@@ -38,8 +38,10 @@ class DeleteLearningGraph(StripsLearningGraph, ABC):
       # these features may get updated in state encoding
       if proposition in positive_goals:
         x_p = self._one_hot_node(DLG_FEATURES.POSITIVE_GOAL.value)
+        self._pos_goal_nodes.add(node_p)
       elif proposition in negative_goals:
         x_p = self._one_hot_node(DLG_FEATURES.NEGATIVE_GOAL.value)
+        self._neg_goal_nodes.add(node_p)
       else:
         x_p = self._zero_node()
       G.add_node(node_p, x=x_p)
@@ -56,19 +58,19 @@ class DeleteLearningGraph(StripsLearningGraph, ABC):
         p_node = self._proposition_to_str(proposition)
         assert p_node in G.nodes, f"{p_node} not in nodes"
         assert a_node in G.nodes, f"{a_node} not in nodes"
-        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=DLG_EDGE_TYPES.PRE_EDGE.value)
+        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_label=DLG_EDGE_LABELS.PRE_EDGE.value)
       for _, proposition in action.add_effects:  # ignoring conditional effects
         p_node = self._proposition_to_str(proposition)
         assert p_node in G.nodes, f"{p_node} not in nodes"
         assert a_node in G.nodes, f"{a_node} not in nodes"
-        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=DLG_EDGE_TYPES.ADD_EDGE.value)
+        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_label=DLG_EDGE_LABELS.ADD_EDGE.value)
 
       """ Delete relaxation means ignoring delete edges """
       # for _, proposition in action.del_effects:  # ignoring conditional effects
       #   p_node = self._proposition_to_str(proposition)
       #   assert p_node in G.nodes, f"{p_node} not in nodes"
       #   assert a_node in G.nodes, f"{a_node} not in nodes"
-      #   G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=SDG_EDGE_TYPES.DEL_EDGE.value)
+      #   G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_label=SDG_EDGE_LABELS.DEL_EDGE.value)
 
     # map node name to index
     self._node_to_i = {}
@@ -78,7 +80,7 @@ class DeleteLearningGraph(StripsLearningGraph, ABC):
 
     return
 
-  def get_state_enc(self, state: State) -> Tuple[Tensor, Tensor]:
+  def state_to_tensor(self, state: State) -> Tuple[Tensor, Tensor]:
 
     x = self.x.clone()  # not time nor memory efficient, but no other way in Python
     for p in state:

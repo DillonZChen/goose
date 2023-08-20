@@ -1,5 +1,6 @@
+from .base_class import *
 from planning.translate.pddl import Atom, NegatedAtom, Truth
-from representation.base_class import *
+
 
 class LLG_FEATURES(Enum):
   P=0   # is predicate
@@ -13,8 +14,7 @@ class LLG_FEATURES(Enum):
 ENC_FEAT_SIZE = len(LLG_FEATURES)
 VAR_FEAT_SIZE = 4
 
-
-LLG_EDGE_TYPES = OrderedDict({
+LLG_EDGE_LABELS = OrderedDict({
   "neutral": 0,
   "ground":  1,
   "pre_pos": 2,
@@ -22,13 +22,12 @@ LLG_EDGE_TYPES = OrderedDict({
   "eff_pos": 4,
   "eff_neg": 5,
 })
-  
 
 
 class LiftedLearningGraph(Representation, ABC):
   name = "llg"
   n_node_features = ENC_FEAT_SIZE+VAR_FEAT_SIZE
-  n_edge_labels = len(LLG_EDGE_TYPES)
+  n_edge_labels = len(LLG_EDGE_LABELS)
   directed = False
   lifted = True
   
@@ -37,14 +36,18 @@ class LiftedLearningGraph(Representation, ABC):
 
   def _construct_if(self) -> None:
     """ Precompute a seeded randomly generated injective index function """
-    self._pe = []
+    self._if = []
+    image = set()  # check injectiveness
 
     # TODO read max range from problem and lazily compute 
     for idx in range(60):
       torch.manual_seed(idx)
       rep = 2*torch.rand(VAR_FEAT_SIZE)-1  # U[-1,1]
       rep /= torch.linalg.norm(rep)
-      self._pe.append(rep)
+      self._if.append(rep)
+      key = tuple(rep.tolist())
+      assert key not in image
+      image.add(key)
     return
 
   def _feature(self, node_type: LLG_FEATURES) -> Tensor:
@@ -54,7 +57,7 @@ class LiftedLearningGraph(Representation, ABC):
   
   def _if_feature(self, idx: int) -> Tensor:
     ret = torch.zeros(self.n_node_features)
-    ret[-VAR_FEAT_SIZE:] = self._pe[idx]
+    ret[-VAR_FEAT_SIZE:] = self._if[idx]
     return ret
 
   def _compute_graph_representation(self) -> None:
@@ -80,10 +83,10 @@ class LiftedLearningGraph(Representation, ABC):
     # fully connected between objects and predicates
     for pred in self.problem.predicates:
       for obj in self.problem.objects:
-        G.add_edge(u_of_edge=pred.name, v_of_edge=obj.name, edge_type=LLG_EDGE_TYPES["neutral"])
+        G.add_edge(u_of_edge=pred.name, v_of_edge=obj.name, edge_label=LLG_EDGE_LABELS["neutral"])
 
 
-    # goal (state gets dealt with in get_state_enc)
+    # goal (state gets dealt with in state_to_tensor)
     if len(self.problem.goal.parts) == 0:
       goals = [self.problem.goal]
     else:
@@ -100,8 +103,10 @@ class LiftedLearningGraph(Representation, ABC):
 
       if is_negated: 
         x = self._feature(LLG_FEATURES.N)
-      else:
+        self._neg_goal_nodes.add(goal_node)
+      else:          
         x = self._feature(LLG_FEATURES.G)
+        self._pos_goal_nodes.add(goal_node)
       G.add_node(goal_node, x=x)  # add grounded predicate node
 
       for i, arg in enumerate(args):
@@ -109,15 +114,15 @@ class LiftedLearningGraph(Representation, ABC):
         G.add_node(goal_var_node, x=self._if_feature(idx=i))
 
         # connect variable to predicate
-        G.add_edge(u_of_edge=goal_node, v_of_edge=goal_var_node, edge_type=LLG_EDGE_TYPES["ground"])
+        G.add_edge(u_of_edge=goal_node, v_of_edge=goal_var_node, edge_label=LLG_EDGE_LABELS["ground"])
 
         # connect variable to object
         assert arg in G.nodes()
-        G.add_edge(u_of_edge=goal_var_node, v_of_edge=arg, edge_type=LLG_EDGE_TYPES["ground"])
+        G.add_edge(u_of_edge=goal_var_node, v_of_edge=arg, edge_label=LLG_EDGE_LABELS["ground"])
 
       # connect grounded fact to predicate
       assert pred in G.nodes()
-      G.add_edge(u_of_edge=goal_node, v_of_edge=pred, edge_type=LLG_EDGE_TYPES["ground"])
+      G.add_edge(u_of_edge=goal_node, v_of_edge=pred, edge_label=LLG_EDGE_LABELS["ground"])
     # end goal
 
 
@@ -132,28 +137,28 @@ class LiftedLearningGraph(Representation, ABC):
         arg_node = (action.name, f"action-var-{i}")  # action var
         G.add_node(arg_node, x=self._if_feature(idx=i))
         action_args[arg.name] = arg_node
-        G.add_edge(u_of_edge=action.name, v_of_edge=arg_node, edge_type=LLG_EDGE_TYPES["neutral"])
+        G.add_edge(u_of_edge=action.name, v_of_edge=arg_node, edge_label=LLG_EDGE_LABELS["neutral"])
 
-      def deal_with_action_prec_or_eff(predicates, edge_type):
+      def deal_with_action_prec_or_eff(predicates, edge_label):
         for z, predicate in enumerate(predicates):
           pred = predicate.predicate
-          aux_node = (pred, f"{edge_type}-aux-{z}")  # aux node for duplicate preds
+          aux_node = (pred, f"{edge_label}-aux-{z}")  # aux node for duplicate preds
           G.add_node(aux_node, x=self._zero_node())
 
           assert pred in G.nodes()
-          G.add_edge(u_of_edge=pred, v_of_edge=aux_node, edge_type=LLG_EDGE_TYPES[edge_type])
+          G.add_edge(u_of_edge=pred, v_of_edge=aux_node, edge_label=LLG_EDGE_LABELS[edge_label])
 
           if len(predicate.args) > 0:
             for j, arg in enumerate(predicate.args):
-              prec_arg_node = (arg, f"{edge_type}-aux-{z}-var-{j}")  # aux var
+              prec_arg_node = (arg, f"{edge_label}-aux-{z}-var-{j}")  # aux var
               G.add_node(prec_arg_node, x=self._if_feature(idx=j))
-              G.add_edge(u_of_edge=aux_node, v_of_edge=prec_arg_node, edge_type=LLG_EDGE_TYPES[edge_type])
+              G.add_edge(u_of_edge=aux_node, v_of_edge=prec_arg_node, edge_label=LLG_EDGE_LABELS[edge_label])
 
               if arg in action_args: 
                 action_arg_node = action_args[arg]
-                G.add_edge(u_of_edge=prec_arg_node, v_of_edge=action_arg_node, edge_type=LLG_EDGE_TYPES[edge_type])
+                G.add_edge(u_of_edge=prec_arg_node, v_of_edge=action_arg_node, edge_label=LLG_EDGE_LABELS[edge_label])
           else:  # unitary predicate so connect directly to action
-              G.add_edge(u_of_edge=aux_node, v_of_edge=action.name, edge_type=LLG_EDGE_TYPES[edge_type])
+              G.add_edge(u_of_edge=aux_node, v_of_edge=action.name, edge_label=LLG_EDGE_LABELS[edge_label])
         return
 
       pos_pres = [p for p in action.precondition.parts if type(p)==Atom]
@@ -193,7 +198,7 @@ class LiftedLearningGraph(Representation, ABC):
         state.append((toks[0], ()))
     return state
 
-  def get_state_enc(self, state: List[Tuple[str, List[str]]]) -> Tuple[Tensor, Tensor]:
+  def state_to_tensor(self, state: List[Tuple[str, List[str]]]) -> TGraph:
     """ States are represented as a list of (pred, [args]) """
     x = self.x.clone()
     edge_indices = self.edge_indices.copy()
@@ -226,7 +231,7 @@ class LiftedLearningGraph(Representation, ABC):
       # connect to predicates and objects
       for k, arg in enumerate(args):
         true_var_node_i = i
-        x[i][-VAR_FEAT_SIZE:] = self._pe[k]
+        x[i][-VAR_FEAT_SIZE:] = self._if[k]
         i += 1
 
         # connect variable to predicate
@@ -237,8 +242,48 @@ class LiftedLearningGraph(Representation, ABC):
         append_edge_index.append((true_var_node_i, self._node_to_i[arg]))
         append_edge_index.append((self._node_to_i[arg], true_var_node_i))
 
-    edge_indices[LLG_EDGE_TYPES["ground"]] = torch.hstack((edge_indices[LLG_EDGE_TYPES["ground"]], 
+    edge_indices[LLG_EDGE_LABELS["ground"]] = torch.hstack((edge_indices[LLG_EDGE_LABELS["ground"]], 
                                                       torch.tensor(append_edge_index).T)).long()
     
     return x, edge_indices
+  
+  def state_to_cgraph(self, state: List[Tuple[str, List[str]]]) -> CGraph:
+    """ States are represented as a list of (pred, [args]) """
+    c_graph = self.c_graph.copy()
+
+    for fact in state:
+      pred = fact[0]
+      args = fact[1]
+
+      node = (pred, tuple(args))
+
+      # activated proposition overlaps with a goal Atom or NegatedAtom
+      if node in self._pos_goal_nodes:
+        c_graph.nodes[node]['colour'] = c_graph.nodes[node]['colour']+ACTIVATED_POS_GOAL_COLOUR_SUFFIX
+        continue
+      elif node in self._neg_goal_nodes:
+        c_graph.nodes[node]['colour'] = c_graph.nodes[node]['colour']+ACTIVATED_NEG_GOAL_COLOUR_SUFFIX
+        continue
+
+      # else add node and corresponding edges to graph
+      c_graph.add_node(node, colour=ACTIVATED_COLOUR)
+
+      # connect fact to predicate
+      c_graph.add_edge(u_of_edge=node, v_of_edge=pred, edge_label=LLG_EDGE_LABELS["ground"])
+      c_graph.add_edge(v_of_edge=node, u_of_edge=pred, edge_label=LLG_EDGE_LABELS["ground"])
+
+      # connect to predicates and objects
+      for k, arg in enumerate(args):
+        arg_node = (node, f"true-var-{k}")
+        c_graph.add_node(arg_node, colour=str(k)+IF_COLOUR_SUFFIX)
+
+        # connect variable to predicate
+        c_graph.add_edge(u_of_edge=node, v_of_edge=arg_node, edge_label=LLG_EDGE_LABELS["ground"])
+        c_graph.add_edge(v_of_edge=node, u_of_edge=arg_node, edge_label=LLG_EDGE_LABELS["ground"])
+
+        # connect variable to object
+        c_graph.add_edge(u_of_edge=arg_node, v_of_edge=arg, edge_label=LLG_EDGE_LABELS["ground"])
+        c_graph.add_edge(v_of_edge=arg_node, u_of_edge=arg, edge_label=LLG_EDGE_LABELS["ground"])
+
+    return c_graph
   

@@ -1,4 +1,4 @@
-from representation.base_class import *
+from .base_class import *
 from planning.translate.pddl import Literal, Atom, NegatedAtom, PropositionalAction
 
 
@@ -9,7 +9,7 @@ class SLG_FEATURES(Enum):
   STATE=3
 
 
-class SLG_EDGE_TYPES(Enum):
+class SLG_EDGE_LABELS(Enum):
   PRE_EDGE=0
   ADD_EDGE=1
   DEL_EDGE=2
@@ -19,7 +19,7 @@ class SLG_EDGE_TYPES(Enum):
 class StripsLearningGraph(Representation, ABC):
   name = "slg"
   n_node_features = len(SLG_FEATURES)
-  n_edge_labels = len(SLG_EDGE_TYPES)
+  n_edge_labels = len(SLG_EDGE_LABELS)
   directed = False
   lifted = False
   
@@ -89,8 +89,10 @@ class StripsLearningGraph(Representation, ABC):
       # these features may get updated in state encoding
       if proposition in positive_goals:
         x_p = self._one_hot_node(SLG_FEATURES.POSITIVE_GOAL.value)
+        self._pos_goal_nodes.add(node_p)
       elif proposition in negative_goals:
         x_p = self._one_hot_node(SLG_FEATURES.NEGATIVE_GOAL.value)
+        self._neg_goal_nodes.add(node_p)
       else:
         x_p = self._zero_node()
       G.add_node(node_p, x=x_p)
@@ -107,17 +109,17 @@ class StripsLearningGraph(Representation, ABC):
         p_node = self._proposition_to_str(proposition)
         assert p_node in G.nodes, f"{p_node} not in nodes"
         assert a_node in G.nodes, f"{a_node} not in nodes"
-        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=SLG_EDGE_TYPES.PRE_EDGE.value)
+        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_label=SLG_EDGE_LABELS.PRE_EDGE.value)
       for _, proposition in action.add_effects:  # ignoring conditional effects
         p_node = self._proposition_to_str(proposition)
         assert p_node in G.nodes, f"{p_node} not in nodes"
         assert a_node in G.nodes, f"{a_node} not in nodes"
-        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=SLG_EDGE_TYPES.ADD_EDGE.value)
+        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_label=SLG_EDGE_LABELS.ADD_EDGE.value)
       for _, proposition in action.del_effects:  # ignoring conditional effects
         p_node = self._proposition_to_str(proposition)
         assert p_node in G.nodes, f"{p_node} not in nodes"
         assert a_node in G.nodes, f"{a_node} not in nodes"
-        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=SLG_EDGE_TYPES.DEL_EDGE.value)
+        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_label=SLG_EDGE_LABELS.DEL_EDGE.value)
 
     # map node name to index
     self._node_to_i = {}
@@ -127,7 +129,7 @@ class StripsLearningGraph(Representation, ABC):
 
     return
   
-  def get_state_enc(self, state: State) -> Tuple[Tensor, Tensor]:
+  def state_to_tensor(self, state: State) -> Tuple[Tensor, Tensor]:
 
     x = self.x.clone()  # not time nor memory efficient, but no other way in Python
     for p in state:
@@ -135,3 +137,18 @@ class StripsLearningGraph(Representation, ABC):
         x[self._node_to_i[p]][SLG_FEATURES.STATE.value] = 1
 
     return x, self.edge_indices
+
+  def state_to_cgraph(self, state: State) -> CGraph:
+    """ States are represented as a list of (pred, [args]) """
+    c_graph = self.c_graph.copy()
+
+    for p in state:
+
+      # activated proposition overlaps with a goal Atom or NegatedAtom
+      if p in self._pos_goal_nodes:
+        c_graph.nodes[p]['colour'] = c_graph.nodes[p]['colour']+ACTIVATED_POS_GOAL_COLOUR_SUFFIX
+      elif p in self._neg_goal_nodes:
+        c_graph.nodes[p]['colour'] = c_graph.nodes[p]['colour']+ACTIVATED_NEG_GOAL_COLOUR_SUFFIX
+
+    return c_graph
+  

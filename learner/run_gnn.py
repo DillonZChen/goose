@@ -32,4 +32,5 @@ if __name__ == "__main__":
     seed=0,
   ) 
 
+  print(cmd)
   os.system(cmd)

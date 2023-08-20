@@ -1,4 +1,4 @@
-""" File for generating and loading graphs. See scripts/generate_graphs.py """
+""" File for generating and loading graphs for kernels. Used by scripts/generate_graphs_kernel.py """
 
 import os
 import sys
@@ -11,24 +11,24 @@ import dataset.goose_domain_info as goose_domain_info
 
 from tqdm import tqdm, trange
 from typing import Dict, List, Optional, Tuple
-from torch_geometric.data import Data
 from representation import REPRESENTATIONS
 from dataset.htg_domain_info import get_all_htg_instance_files
 from dataset.ipc_domain_info import same_domain, GROUNDED_DOMAINS, get_ipc_domain_problem_files
 from dataset.goose_domain_info import get_train_goose_instance_files
+from representation import CGraph
 
+
+_SAVE_DIR = "data/graphs_kernel"
+Data = Tuple[CGraph, int]
 
 def generate_graph_from_domain_problem_pddl(
   domain_name: str,
   domain_pddl: str,
   problem_pddl: str,
   representation: str,
-) -> None:
+) -> Optional[List[Data]]:
   """ Generates a list of graphs corresponding to states in the optimal plan """
   ret = []
-
-  if representation=="dlg":
-    return slg_to_dlg(domain_name, domain_pddl, problem_pddl)
 
   plan = optimal_plan_exists(domain_name, domain_pddl, problem_pddl)
   if plan is None:
@@ -36,7 +36,7 @@ def generate_graph_from_domain_problem_pddl(
   
   # see representation package
   rep = REPRESENTATIONS[representation](domain_pddl, problem_pddl)
-  rep.convert_to_pyg()
+  rep.convert_to_coloured_graph()
 
   problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
 
@@ -44,30 +44,8 @@ def generate_graph_from_domain_problem_pddl(
     if REPRESENTATIONS[representation].lifted:
       s = rep.str_to_state(s)
 
-    x, edge_index = rep.get_state_enc(s)
-    applicable_action=None  # requires refactoring representation classes
-    graph_data = Data(
-      x=x,
-      edge_index=edge_index,
-      a=a,
-      y=y,
-      domain=domain_name,
-      problem=problem_name,
-      applicable_action=applicable_action
-    )
-    ret.append(graph_data)
-  return ret
-
-def slg_to_dlg(domain_name, domain_pddl, problem_pddl):
-  problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
-  f = f"data/graphs/sdg-el/{domain_name}/{problem_name}.data"
-  if not os.path.exists(f):
-    return None
-  graph_data_list = torch.load(f)
-  ret = []
-  for graph in graph_data_list:
-    graph.edge_index = graph.edge_index[:2]
-    ret.append(graph)
+    graph = rep.state_to_cgraph(s)
+    ret.append((graph, y))
   return ret
 
 def get_graph_data(
@@ -78,7 +56,7 @@ def get_graph_data(
 
   print("Loading train data...")
   print("NOTE: the data has been precomputed and saved.")
-  print("Rerun gen_data/graphs.py if representation has been updated!")
+  print("Exec 'python3 scripts/generate_graphs_kernel.py --regenerate' if representation has been updated!")
 
   path = get_data_dir_path(representation=representation)
   print(f"Path to data: {path}")
@@ -95,10 +73,7 @@ def get_graph_data(
     elif domain == "ipc-only":  # codebase getting bloated
       if "ipc-" not in domain_name:
         continue
-    elif domain == "goose-pretraining":  # ipc + goose
-      if domain_name in goose_domain_info.DOMAINS_NOT_TO_TRAIN or "htg-" in domain_name:
-        continue
-    elif domain == "goose-unseen-pretraining":  # ipc only
+    elif domain == "goose-di":  # ipc only
       if domain_name in goose_domain_info.DOMAINS_NOT_TO_TRAIN or "htg-" in domain_name or "goose-" in domain_name:
         continue
     else:
@@ -152,10 +127,9 @@ def gen_graph_rep(
 ) -> None:
   """ Generate graph representations from saved optimal plans. """
 
-
-  tasks  = get_ipc_domain_problem_files(del_free=False)
+  # tasks  = get_ipc_domain_problem_files(del_free=False)
   # tasks += get_all_htg_instance_files(split=True)
-  tasks += get_train_goose_instance_files()
+  tasks = get_train_goose_instance_files()
 
   new_generated = 0
   pbar = tqdm(tasks)
@@ -178,7 +152,7 @@ def gen_graph_rep(
   return
 
 def get_data_dir_path(representation: str) -> str:
-  save_dir = f'data/graphs/{representation}'
+  save_dir = f'{_SAVE_DIR}/{representation}'
   os.makedirs(save_dir, exist_ok=True)
   return save_dir
 

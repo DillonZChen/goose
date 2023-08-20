@@ -3,25 +3,25 @@
 import time
 import torch
 import argparse
-import models
+import gnns
 import representation
-from models import *
+from gnns import *
 from tqdm.auto import tqdm, trange
 from util.stats import *
 from util.save_load import *
 from util import train, evaluate
-from dataset.dataset import get_loaders_from_args
+from dataset.dataset import get_loaders_from_args_gnn
 
 
 def create_parser():
   parser = argparse.ArgumentParser()
   parser.add_argument('--device', type=int, default=0)
-  parser.add_argument('-d', '--domain', default="goose-pretraining")
+  parser.add_argument('-d', '--domain', default="goose-di")
   parser.add_argument('-t', '--task', default='h', choices=["h", "a"], 
                       help="predict value or action (currently only h is supported)")
 
   # model params
-  parser.add_argument('-m', '--model', type=str, required=True, choices=models.GNNS)
+  parser.add_argument('-m', '--model', type=str, required=True, choices=gnns.GNNS)
   parser.add_argument('-L', '--nlayers', type=int, default=16)
   parser.add_argument('-H', '--nhid', type=int, default=64)
   parser.add_argument('--share-layers', action='store_true')
@@ -72,7 +72,7 @@ if __name__ == "__main__":
   device = torch.device(f'cuda:{args.device}' if torch.cuda.is_available() else 'cpu')
 
   # init model
-  train_loader, val_loader = get_loaders_from_args(args)
+  train_loader, val_loader = get_loaders_from_args_gnn(args)
   args.n_edge_labels = representation.REPRESENTATIONS[args.rep].n_edge_labels
   args.in_feat = train_loader.dataset[0].x.shape[1]
   model_params = arg_to_params(args)

@@ -5,8 +5,7 @@ import torch.nn.functional as F
 import time
 import warnings
 from planning import Proposition, State
-from representation import REPRESENTATIONS
-from representation.base_class import Representation
+from representation import REPRESENTATIONS, Representation
 from torch_geometric.nn import (global_add_pool, global_max_pool, global_mean_pool)
 from abc import ABC, abstractmethod
 from torch_geometric.nn import MessagePassing
@@ -194,7 +193,7 @@ class BasePredictor(ABC, nn.Module):
     return
 
   def h(self, state: State) -> float:
-    x, edge_index = self.rep.get_state_enc(state)
+    x, edge_index = self.rep.state_to_tensor(state)
     x = x.to(self.device)
     edge_index = edge_index.to(self.device)
     h = self.model.forward(x, edge_index, None).item()
@@ -204,7 +203,7 @@ class BasePredictor(ABC, nn.Module):
   def h_batch(self, states: List[State]) -> List[float]:
     data_list = []
     for state in states:
-      x, edge_index = self.rep.get_state_enc(state)
+      x, edge_index = self.rep.state_to_tensor(state)
       data_list.append(Data(x=x, edge_index=edge_index))
     loader = DataLoader(dataset=data_list, batch_size=min(len(data_list), 32))
     data = next(iter(loader)).to(self.device)

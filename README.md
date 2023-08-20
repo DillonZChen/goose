@@ -41,26 +41,31 @@ python3 run_gnn.py <DOMAIN_PDDL> <TASK_PDDL> -m <WEIGHTS_FILE> -r <REPRESENTATIO
 
 ### Training
 #### Loading the training dataset
-Requires access to `plan_objects.zip`. Also requires packages in `requirements.txt` or alternatively use the singularity
-container as in [Search Evaluation](#search-evaluation). Perform the following steps
-- enter the ```learner``` directory
-- create ```data``` directory in the ```learner``` directory
-- unzip ```plan_objects.zip``` and put into ```data``` (there should now be a directory
-  ```path_to_goose/learner/data/plan_objects```)
-- run the following while in the  ```learner``` directory:
+Requires access to `plan_objects.zip`. Also requires packages in `requirements.txt` using for example a virtual environment
+and `pip install -r requirements.txt`, or alternatively use the singularity container as in [Search](#search). Perform the
+following steps
+- enter the `learner` directory
+- create `data` directory in the `learner` directory
+- unzip `plan_objects.zip` and put into `data` (there should now be a directory
+  `path_to_goose/learner/data/plan_objects`)
+- run the following while in the  `learner` directory:
 ```
-python3 scripts/generate_graphs.py llg
+python3 generate_graphs_gnn.py --regenerate <REPRESENTATION>
+```
+for <REPRESENTATION> from `llg, dlg, slg, glg, flg` or generate them all at once with
+```
+sh dataset/generate_all_graphs_gnn.sh
 ```
 
 #### Domain-dependent training
-Requires packages in `requirements.txt` or alternatively use the singularity container as in [Search
-Evaluation](#search-evaluation). To train, go into ```learner``` directory (`cd learner`). Then run 
+Requires packages in `requirements.txt` or alternatively use the singularity container as in [Search](#search). To train, go
+into ```learner``` directory (`cd learner`) and run
 ```
 python3 train_gnn.py -m RGNN -r llg -d goose-<DOMAIN>-only --save-file <SAVE_FILE>
 ```
-where you replace ```<DOMAIN>``` by any domain from ```blocks, ferry, gripper, n-puzzle, sokoban, spanner, visitall,
-visitsome``` and ```<SAVE_FILE>``` is the name of the save file ending in `.dt` for the trained weights of the models which
-would then be located in ```trained_models/<SAVE_FILE>``` after training.
+where you replace `<DOMAIN>` by any domain from `blocks, ferry, gripper, n-puzzle, sokoban, spanner, visitall,
+visitsome` and `<SAVE_FILE>` is the name of the save file ending in `.dt` for the trained weights of the models which
+would then be located in `trained_models/<SAVE_FILE>` after training.
 
 ## Kernels
 ### Search

@@ -1,14 +1,12 @@
 import sys
-import matplotlib.pyplot as plt
 import torch
 import networkx as nx
 import copy
 import time
-import torch.nn.functional as F
-import signal
 import os
 import util
 import random
+import hashlib
 
 from typing import Set, FrozenSet, List, NamedTuple, TypeVar, Tuple, Dict, Optional, Union
 from torch import Tensor
@@ -26,7 +24,20 @@ from tqdm import tqdm
 from abc import ABC, abstractmethod
 from tqdm.auto import tqdm
 
+# state is a list of facts represented as strings
 State = List[Proposition]
+
+# graph representation represented as a tensor for GNNs
+TGraph = Union[Tuple[Tensor, Tensor], Tuple[Tensor, List[Tensor]]]
+
+# graph representation represented as a nx.graph for graph kernels
+CGraph = Union[nx.Graph, nx.DiGraph]
+
+# additional hard coded colours
+ACTIVATED_COLOUR = "-1"
+ACTIVATED_POS_GOAL_COLOUR_SUFFIX = "-pos-node"
+ACTIVATED_NEG_GOAL_COLOUR_SUFFIX = "-neg-node"
+IF_COLOUR_SUFFIX = "-if-index"
 
 
 """ Base class for graph representations """
@@ -63,6 +74,8 @@ class Representation(ABC):
     )
 
     t = time.time()
+    self._pos_goal_nodes = set()
+    self._neg_goal_nodes = set()
     self._compute_graph_representation()
     self.num_nodes = len(self.G.nodes)
     self.num_edges = len(self.G.edges)
@@ -98,7 +111,7 @@ class Representation(ABC):
     return
   
   def convert_to_pyg(self) -> None:
-    """ Converts networkx graph object into pytorch_geometric tensors. 
+    """ Converts nx graph into pytorch_geometric tensors and stores them. 
 
         The tensors are (x, edge_index or edge_indices)
         x: torch.tensor(N x F)  # N = num_nodes, F = num_features
@@ -117,8 +130,8 @@ class Representation(ABC):
       assert self.n_edge_labels > 1
       self.edge_indices = [[] for _ in range(self.n_edge_labels)]
       edge_index_T = pyg_G.edge_index.T
-      for i, edge_type in enumerate(pyg_G.edge_type):
-        self.edge_indices[edge_type].append(edge_index_T[i])
+      for i, edge_label in enumerate(pyg_G.edge_label):
+        self.edge_indices[edge_label].append(edge_index_T[i])
       for i in range(self.n_edge_labels):
         if len(self.edge_indices[i]) > 0:
           self.edge_indices[i] = torch.vstack(self.edge_indices[i]).long().T
@@ -126,10 +139,44 @@ class Representation(ABC):
           self.edge_indices[i] = torch.tensor([[], []]).long()
     return
   
+  def convert_to_coloured_graph(self) -> None:
+    """ Converts nx graph into another nx graph but with colours instead of vector features. 
+
+        Vector features are converted to colours with a hash. This can be hardcoded slightly more
+        efficiently for each graph representation separately but takes more effort.
+    """
+
+    # TODO optimise by converting node string names into ints and storing the map
+
+    colours = set()
+
+    c_graph = self._create_graph()
+    for node in self.G.nodes:
+      feature = self.G.nodes[node]['x'].tolist()
+      feature = str(tuple(feature))
+      if self.name == "llg" and type(node) == tuple and len(node)==2 and \
+        type(node[1]) == str and "var-" in node[1]:
+        index = node[1].split('-')[-1]
+        colour = index+IF_COLOUR_SUFFIX
+      else:
+        colour = hashlib.sha256(feature.encode('utf-8')).hexdigest()
+      colours.add(colour)
+      c_graph.add_node(node, colour=colour)
+    for edge in self.G.edges:
+      u, v = edge
+      c_graph.add_edge(u_of_edge=u, v_of_edge=v, edge_label=self.G.edges[edge]["edge_label"])
+
+    self.c_graph = c_graph
+    return
+  
   @abstractmethod
   def _compute_graph_representation(self) -> None:
     raise NotImplementedError
 
   @abstractmethod
-  def get_state_enc(self, state: State):
+  def state_to_tensor(self, state: State) -> TGraph:
+    raise NotImplementedError
+
+  @abstractmethod
+  def state_to_cgraph(self, state: State) -> CGraph:
     raise NotImplementedError

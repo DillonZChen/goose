@@ -1,5 +1,5 @@
-from representation.base_class import *
-from representation.slg import StripsLearningGraph
+from .base_class import *
+from .slg import StripsLearningGraph
 
 
 class GLG_FEATURES(Enum):
@@ -11,7 +11,7 @@ class GLG_FEATURES(Enum):
   SCHEMA=5
 
 
-class GLG_EDGE_TYPES(Enum):
+class GLG_EDGE_LABELS(Enum):
   PRE_EDGE=0
   ADD_EDGE=1
   DEL_EDGE=2
@@ -21,7 +21,7 @@ class GLG_EDGE_TYPES(Enum):
 class GroundedLearningGraph(StripsLearningGraph, ABC):
   name = "glg"
   n_node_features = len(GLG_FEATURES)
-  n_edge_labels = len(GLG_EDGE_TYPES)
+  n_edge_labels = len(GLG_EDGE_LABELS)
   directed = False
   lifted = False
   
@@ -41,9 +41,11 @@ class GroundedLearningGraph(StripsLearningGraph, ABC):
       node_p = self._proposition_to_str(proposition)
       # these features may get updated in state encoding
       if proposition in positive_goals:
-        x_p=self._one_hot_node(GLG_FEATURES.POSITIVE_GOAL.value)
+        x_p = self._one_hot_node(GLG_FEATURES.POSITIVE_GOAL.value)
+        self._pos_goal_nodes.add(node_p)
       elif proposition in negative_goals:
-        x_p=self._one_hot_node(GLG_FEATURES.NEGATIVE_GOAL.value)
+        x_p = self._one_hot_node(GLG_FEATURES.NEGATIVE_GOAL.value)
+        self._neg_goal_nodes.add(node_p)
       else:
         x_p=self._zero_node()
       G.add_node(node_p, x=x_p)
@@ -65,24 +67,24 @@ class GroundedLearningGraph(StripsLearningGraph, ABC):
       s_node = self._get_predicate_from_action(action)
       assert a_node in G.nodes
       assert s_node in G.nodes
-      G.add_edge(u_of_edge=a_node, v_of_edge=s_node, edge_type=GLG_EDGE_TYPES.PREDICATE.value)
+      G.add_edge(u_of_edge=a_node, v_of_edge=s_node, edge_label=GLG_EDGE_LABELS.PREDICATE.value)
 
       # edges between actions and propositions
       for proposition in action.precondition:
         p_node = self._proposition_to_str(proposition)
         assert p_node in G.nodes, f"{p_node} not in nodes"
         assert a_node in G.nodes, f"{a_node} not in nodes"
-        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=GLG_EDGE_TYPES.PRE_EDGE.value)
+        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_label=GLG_EDGE_LABELS.PRE_EDGE.value)
       for _, proposition in action.add_effects:  # ignoring conditional effects
         p_node = self._proposition_to_str(proposition)
         assert p_node in G.nodes, f"{p_node} not in nodes"
         assert a_node in G.nodes, f"{a_node} not in nodes"
-        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=GLG_EDGE_TYPES.ADD_EDGE.value)
+        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_label=GLG_EDGE_LABELS.ADD_EDGE.value)
       for _, proposition in action.del_effects:  # ignoring conditional effects
         p_node = self._proposition_to_str(proposition)
         assert p_node in G.nodes, f"{p_node} not in nodes"
         assert a_node in G.nodes, f"{a_node} not in nodes"
-        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_type=GLG_EDGE_TYPES.DEL_EDGE.value)
+        G.add_edge(u_of_edge=p_node, v_of_edge=a_node, edge_label=GLG_EDGE_LABELS.DEL_EDGE.value)
 
     for proposition in propositions:
       # edge between propositions and predicates
@@ -90,7 +92,7 @@ class GroundedLearningGraph(StripsLearningGraph, ABC):
       pred_node = self._get_predicate_from_proposition(proposition)
       assert p_node in G.nodes
       assert pred_node in G.nodes
-      G.add_edge(u_of_edge=p_node, v_of_edge=pred_node, edge_type=GLG_EDGE_TYPES.PREDICATE.value)
+      G.add_edge(u_of_edge=p_node, v_of_edge=pred_node, edge_label=GLG_EDGE_LABELS.PREDICATE.value)
 
     # map node name to index
     self._node_to_i = {}
@@ -100,7 +102,7 @@ class GroundedLearningGraph(StripsLearningGraph, ABC):
 
     return
 
-  def get_state_enc(self, state: State) -> Tuple[Tensor, Tensor]:
+  def state_to_tensor(self, state: State) -> Tuple[Tensor, Tensor]:
 
     x = self.x.clone()  # not time nor memory efficient, but no other way in Python
     for p in state:
