@@ -41,8 +41,6 @@ def parse_args():
                       help="graph representation to use")
   parser.add_argument('-l', '--iterations', type=int, default=5,
                       help="number of iterations for kernel algorithms")
-  parser.add_argument('--final-only', dest="all_colours", action="store_false",
-                      help="collects colours from only final iteration of WL kernels")
   
   parser.add_argument('-m', '--model', type=str, default="linear-svr", choices=_MODELS,
                       help="ML model")
@@ -147,8 +145,12 @@ if __name__ == "__main__":
   print(f"Setting up training data and initialising model...")
   t = time.time()
   model = kernels.KernelModelWrapper(args)
-  model.read_train_data(graphs)
-  X = model.get_matrix_representation(graphs)
+  model.train()
+  t = time.time()
+  train_histograms = model.compute_histograms(graphs)
+  print(f"Initialised WL for {len(graphs)} graphs in {time.time() - t:.2f}s")
+  print(f"Collected {model.n_colours_} colours over {sum(len(G.nodes) for G in graphs)} nodes")
+  X = model.get_matrix_representation(graphs, train_histograms)
   print(f"Set up training data in {time.time()-t:.2f}s")
 
   if args.cross_validation:

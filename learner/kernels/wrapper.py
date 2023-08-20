@@ -1,9 +1,10 @@
 import numpy as np
 import kernels
-from planning import Proposition, State
 from sklearn.svm import LinearSVR, SVR
-from typing import List
+from typing import List, Optional, Dict
 from representation import CGraph, Representation, REPRESENTATIONS
+from planning import State
+from kernels.base_kernel import Histogram
 
 
 _MAX_MODEL_ITER = 10000
@@ -15,7 +16,6 @@ class KernelModelWrapper():  # TODO optimise memory
 
     self._kernel = kernels.KERNELS[args.kernel](
       iterations=args.iterations,
-      all_colours=args.all_colours,
     )
 
     self._rep_type = args.rep
@@ -32,6 +32,23 @@ class KernelModelWrapper():  # TODO optimise memory
       self._model = SVR(kernel="precomputed", **kwargs)
     else:
       raise NotImplementedError
+
+    self._train = True
+    
+  def train(self) -> None:
+    self._kernel.train()
+  
+  def eval(self) -> None:
+    self._kernel.eval()
+    
+  def fit(self, X, y) -> None:
+    self._model.fit(X, y)
+    
+  def predict(self, X) -> np.array:
+    return self._model.predict(X)
+    
+  def get_learning_model(self):
+    return self._model
   
   def lifted_state_input(self) -> bool:
     return self._representation.lifted
@@ -41,30 +58,33 @@ class KernelModelWrapper():  # TODO optimise memory
     self._representation.convert_to_coloured_graph()
     return
     
-  def fit(self, X, y) -> None:
-    self._model.fit(X, y)
-    
-  def get_learning_model(self):
-    return self._model
-    
-  def read_train_data(self, graphs: CGraph) -> None:
-    self._kernel.read_train_data(graphs)
+  def compute_histograms(self, graphs: CGraph) -> None:
+    return self._kernel.compute_histograms(graphs)
 
-  def get_matrix_representation(self, graphs: CGraph) -> np.array:
+  def get_matrix_representation(
+    self, 
+    graphs: CGraph, 
+    histograms: Optional[Dict[CGraph, Histogram]]
+  ) -> np.array:
     if self._model_name == "linear-svr":
-      return self._kernel.get_x(graphs)
+      return self._kernel.get_x(graphs, histograms)
     elif self._model_name == "svr":
-      return self._kernel.get_k(graphs)
+      return self._kernel.get_k(graphs, histograms)
     else:
       raise ValueError(self._model_name)
 
   def h(self, state: State) -> float:
-    # TODO
-    raise NotImplementedError
-    return 0
+    h = self.h_batch([state])[0]
+    return h
 
   def h_batch(self, states: List[State]) -> List[float]:
-    # TODO
-    raise NotImplementedError
-    return [0 for _ in states]
+    graphs = [self._representation.state_to_cgraph(state) for state in states]
+    X = self._kernel.get_x(graphs)
+    y = self.predict(X)
+    hs = np.rint(y).astype(int).tolist()
+    return hs
+  
+  @property
+  def n_colours_(self) -> int:
+    return self._kernel.n_colours_
   
