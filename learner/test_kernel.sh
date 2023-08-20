@@ -1,0 +1,1 @@
+singularity exec ../gpu.sif python3 run.py ../benchmarks/goose/visitall/domain.pddl ../benchmarks/goose/visitall/test/n20-s0.pddl kernel -m trained_models/llg_visitall_wl_0.joblib

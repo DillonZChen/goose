@@ -41,21 +41,31 @@ void GooseHeuristic::initialise_model(const plugins::Options &opts) {
   sys.attr("stderr") = sys.attr("stdout");
 
   // Read paths
+  std::string model_type = opts.get<string>("model_type");
   std::string model_path = opts.get<string>("model_path");
   std::string domain_file = opts.get<string>("domain_file");
   std::string instance_file = opts.get<string>("instance_file");
 
-  // Throw everything into Python code
+  // Throw everything into Python code depending on model type
   std::cout << "Trying to load model from file " << model_path << " ...\n";
   py::module util_module = py::module::import("util.save_load");
-  model = util_module.attr("load_model_and_setup_gnn")(model_path, 
-                                                   domain_file, instance_file);
-  std::cout << "Loaded model!" << std::endl;
-  model.attr("dump_model_stats")();
-
-  // Not implemented for lifted graph representations
-  if (model.attr("lifted_state_input")().cast<bool>()) {
-    std::cout << "Lifted representation not supported for goose-downward\n";
+  if (model_type == "gnn") {
+    model = util_module.attr("load_gnn_model_and_setup")(
+      model_path, 
+      domain_file, 
+      instance_file
+    );
+    std::cout << "Loaded model!" << std::endl;
+    model.attr("dump_model_stats")();
+  } else if (model_type == "kernel") {
+    model = util_module.attr("load_kernel_model_and_setup")(
+      model_path, 
+      domain_file, 
+      instance_file
+    );
+    std::cout << "Loaded model!" << std::endl;
+  } else {
+    std::cout << "Model type " << model_type <<" not supported\n";
     exit(-1);
   }
 }
@@ -151,17 +161,21 @@ public:
 
         // https://github.com/aibasel/downward/pull/170 for string options
         add_option<string>(
+            "model_type",
+            "gnn or kernel",
+            "default_value");
+        add_option<string>(
             "model_path",
-            "path to trained model weights of file type .dt",
-            "default_value.dt");
+            "path to trained model or model weights",
+            "default_value");
         add_option<string>(
             "domain_file",
             "Path to the domain file.",
-            "default_file.pddl");
+            "default_file");
         add_option<string>(
             "instance_file",
             "Path to the instance file.",
-            "default_file.pddl");
+            "default_file");
 
         Heuristic::add_options_to_feature(*this);
 

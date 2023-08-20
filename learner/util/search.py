@@ -29,14 +29,14 @@ def sorted_nicely( l ):
   alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key) ] 
   return sorted(l, key = alphanum_key)
 
-def search_cmd(rep, df, pf, m, search, seed, timeout=TIMEOUT):
-  if REPRESENTATIONS[rep].lifted:
-    search_engine = pwl_cmd
-  else:
-    search_engine = fd_cmd
-  return search_engine(rep, df, pf, m, search, seed, timeout)
+def search_cmd(df, pf, m, model_type, planner, search, seed, timeout=TIMEOUT):
+  search_engine = {
+    "pwl": pwl_cmd,
+    "fd": fd_cmd,
+  }[planner]
+  return search_engine(df, pf, model_type, m, search, seed, timeout)
 
-def pwl_cmd(rep, df, pf, m, search, seed, timeout=TIMEOUT):
+def pwl_cmd(df, pf, model_type, m, search, seed, timeout=TIMEOUT):
   os.makedirs("lifted", exist_ok=True)
   os.makedirs("plans", exist_ok=True)
   description = f"pwl_{pf.replace('.pddl','').replace('/','-')}_{search}_{os.path.basename(m).replace('.dt', '')}"
@@ -55,7 +55,7 @@ def pwl_cmd(rep, df, pf, m, search, seed, timeout=TIMEOUT):
   cmd = f"export GOOSE={os.getcwd()} && {cmd}"
   return cmd, lifted_file
 
-def fd_cmd(rep, df, pf, m, search, seed, timeout=TIMEOUT):
+def fd_cmd(df, pf, model_type, m, search, seed, timeout=TIMEOUT):
   os.makedirs("sas_files", exist_ok=True)
   os.makedirs("plans", exist_ok=True)
   
@@ -68,6 +68,10 @@ def fd_cmd(rep, df, pf, m, search, seed, timeout=TIMEOUT):
   sas_file = f"sas_files/{description}.sas_file"
   plan_file = f"plans/{description}.plan"
   cmd = f"./../downward/fast-downward.py --search-time-limit {timeout} --sas-file {sas_file} --plan-file {plan_file} "+\
-        f"{df} {pf} --search '{search}([goose(model_path=\"{m}\", domain_file=\"{df}\", instance_file=\"{pf}\")])'"
+        f"{df} {pf} --search '{search}([goose(model_path=\"{m}\", "+\
+                                            f"model_type=\"{model_type}\", "+\
+                                            f"domain_file=\"{df}\", "+\
+                                            f"instance_file=\"{pf}\""+\
+                                            f")])'"
   cmd = f"export GOOSE={os.getcwd()} && {cmd}"
   return cmd, sas_file

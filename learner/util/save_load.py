@@ -2,12 +2,11 @@
 import os
 import torch
 import joblib
-import datetime
-import representation
 from argparse import Namespace as Args
 from typing import Tuple
 from gnns.base_gnn import BasePredictor as GNN
 from gnns import *
+from kernels import KernelModelWrapper
 
 
 _TRAINED_MODELS_SAVE_DIR = "trained_models"
@@ -53,7 +52,7 @@ def print_arguments(args, ignore_params=set()):
       print('{0:20}  {1}'.format(k, v))
 
 
-def save_model_from_dict(model_dict, args):
+def save_gnn_model_from_dict(model_dict, args):
   if not hasattr(args, "save_file") or args.save_file is None:
     return
   print("Saving model...")
@@ -66,12 +65,12 @@ def save_model_from_dict(model_dict, args):
   return
 
 
-def save_model(model, args):
-  save_model_from_dict(model.model.state_dict(), args)
+def save_gnn_model(model, args):
+  save_gnn_model_from_dict(model.model.state_dict(), args)
   return
 
 
-def save_sklearn_model(model, args):
+def save_kernel_model(model: KernelModelWrapper, args):
   if not hasattr(args, "save_file") or args.save_file is None:
     return
   print("Saving model...")
@@ -84,14 +83,7 @@ def save_sklearn_model(model, args):
   return
 
 
-def load_sklearn_model(path, ignore_subdir=False):
-  if not ignore_subdir and _TRAINED_MODELS_SAVE_DIR not in path:
-      path = _TRAINED_MODELS_SAVE_DIR + "/" + path
-  model, args = joblib.load(path)
-  return model, args
-
-
-def load_model(path, print_args=False, jit=False, ignore_subdir=False) -> Tuple[GNN, Args]:
+def load_gnn_model(path, print_args=False, jit=False, ignore_subdir=False) -> Tuple[GNN, Args]:
   print("Loading model...")
   assert ".pt" not in path, f"Found .pt in path {path}"
   if ".dt" not in path:
@@ -118,8 +110,17 @@ def load_model(path, print_args=False, jit=False, ignore_subdir=False) -> Tuple[
   return model, args
 
 
-def load_model_and_setup_gnn(path, domain_file, problem_file):
-  model, args = load_model(path, ignore_subdir=True)
+def load_kernel_model(path, ignore_subdir=False):
+  if ".joblib" not in path:
+      path = path+".joblib"
+  if not ignore_subdir and _TRAINED_MODELS_SAVE_DIR not in path:
+      path = _TRAINED_MODELS_SAVE_DIR + "/" + path
+  model, args = joblib.load(path)
+  return model, args
+
+
+def load_gnn_model_and_setup(path, domain_file, problem_file):
+  model, args = load_gnn_model(path, ignore_subdir=True)
   device = "cuda" if torch.cuda.is_available() else "cpu"
   model = model.to(device)
   model.batch_search(True)
@@ -129,5 +130,11 @@ def load_model_and_setup_gnn(path, domain_file, problem_file):
                               device=device)
   model.set_zero_grad()
   model.eval()
+  return model
+
+
+def load_kernel_model_and_setup(path, domain_file, problem_file):
+  model, args = load_kernel_model(path, ignore_subdir=True)
+  model.update_representation(domain_pddl=domain_file, problem_pddl=problem_file)
   return model
   
