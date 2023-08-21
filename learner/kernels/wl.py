@@ -73,10 +73,6 @@ class WeisfeilerLehmanKernel(Kernel):
       # store histogram of graph colours
       histograms[G] = histogram
 
-    # clear hash cache during inference
-    if not self._train:
-      self._tmp_hash = {}
-
     return histograms
 
   def get_x(
