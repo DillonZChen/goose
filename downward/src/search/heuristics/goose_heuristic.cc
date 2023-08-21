@@ -69,7 +69,7 @@ void GooseHeuristic::initialise_model(const plugins::Options &opts) {
     exit(-1);
   }
 
-  lifted_goose = model.attr("lifted_state_input").cast<bool>();
+  lifted_goose = model.attr("lifted_state_input")().cast<bool>();
 }
 
 void GooseHeuristic::initialise_grounded_facts() {
