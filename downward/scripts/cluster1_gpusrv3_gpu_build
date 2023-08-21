@@ -9,4 +9,4 @@
 
 pwd; hostname; date; nvidia-smi; nvidia-smi -L
 rm -rf builds/
-singularity exec ../gpu.sif python3 build.py
+singularity exec ../goose.sif python3 build.py

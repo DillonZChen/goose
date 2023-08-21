@@ -1,6 +1,6 @@
-FILE="gpu.sif"
+FILE="goose.sif"
 if [ ! -f "$FILE" ]; then
-    sh singularity/build_singularity_gpu.sh
+    sh singularity/build_singularity_container.sh
 fi
 
 conda deactivate

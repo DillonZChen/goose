@@ -27,7 +27,7 @@ sh setup.sh
 Then to run search go into the `learner` directory and execute the `run_gnn.py` script with singularity, for example:
 ```
 cd learner
-singularity exec --nv ../gpu.sif python3 run_gnn.py ../benchmarks/goose/gripper/domain.pddl ../benchmarks/goose/gripper/test/gripper-n20.pddl -m saved_models/dd_llg_gripper.dt -r llg
+singularity exec --nv ../goose.sif python3 run_gnn.py ../benchmarks/goose/gripper/domain.pddl ../benchmarks/goose/gripper/test/gripper-n20.pddl -m saved_models/dd_llg_gripper.dt -r llg
 ```
 
 The second command can also be called by running `test_gnn.sh`
@@ -50,18 +50,18 @@ following steps
   `path_to_goose/learner/data/plan_objects`)
 - run the following while in the  `learner` directory:
 ```
-python3 generate_graphs_gnn.py --regenerate <REPRESENTATION>
+python3 scripts_gnn/generate_graphs_gnn.py --regenerate <REPRESENTATION>
 ```
-for <REPRESENTATION> from `llg, dlg, slg, glg, flg` or generate them all at once with
+for `<REPRESENTATION>` from `llg, dlg, slg, glg, flg` or generate them all at once with
 ```
-sh dataset/generate_all_graphs_gnn.sh
+sh scripts_gnn/generate_all_graphs_gnn.sh
 ```
 
 #### Domain-dependent training
 Requires packages in `requirements.txt` or alternatively use the singularity container as in [Search](#search). To train, go
 into ```learner``` directory (`cd learner`) and run
 ```
-python3 train_gnn.py -m RGNN -r llg -d goose-<DOMAIN>-only --save-file <SAVE_FILE>
+python3 train_gnn.py -m RGNN -r <REPRESENTATION> -d goose-<DOMAIN>-only --save-file <SAVE_FILE>
 ```
 where you replace `<DOMAIN>` by any domain from `blocks, ferry, gripper, n-puzzle, sokoban, spanner, visitall,
 visitsome` and `<SAVE_FILE>` is the name of the save file ending in `.dt` for the trained weights of the models which

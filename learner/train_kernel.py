@@ -3,16 +3,16 @@
 import os
 import time
 import argparse
+import numpy as np
 import representation
 import kernels
-import numpy as np
-from dataset.dataset import get_dataset_from_args_kernels
-from util.save_load import print_arguments, save_sklearn_model
-from util.metrics import f1_macro
-from util.visualise import get_confusion_matrix
 from sklearn.svm import LinearSVR, SVR
 from sklearn.model_selection import cross_validate
 from sklearn.metrics import make_scorer, mean_squared_error
+from dataset.dataset import get_dataset_from_args_kernels
+from util.save_load import print_arguments, save_kernel_model
+from util.metrics import f1_macro
+from util.visualise import get_confusion_matrix
 
 import warnings
 warnings.filterwarnings('ignore') 
@@ -24,7 +24,6 @@ _MODELS = [
 ]
 
 _CV_FOLDS = 5
-_MAX_MODEL_ITER = 10000
 _PLOT_DIR = "plots"
 _SCORING = {
   "mse": make_scorer(mean_squared_error),
@@ -42,8 +41,6 @@ def parse_args():
                       help="graph representation to use")
   parser.add_argument('-l', '--iterations', type=int, default=5,
                       help="number of iterations for kernel algorithms")
-  parser.add_argument('--final-only', dest="all_colours", action="store_false",
-                      help="collects colours from only final iteration of WL kernels")
   
   parser.add_argument('-m', '--model', type=str, default="linear-svr", choices=_MODELS,
                       help="ML model")
@@ -70,20 +67,20 @@ def parse_args():
   return parser.parse_args()
 
 def perform_training(X, y, model, args):
-  print(f"Training on entire {args.domain} for {model_name}...")
+  print(f"Training on entire {args.domain} for {args.model}...")
   t = time.time()
   model.fit(X, y)
   print(f"Model training completed in {time.time()-t:.2f}s")
   for metric in _SCORING:
-    print(f"train_{metric}: {_SCORING[metric](model, X, y):.2f}")
-  save_sklearn_model(model, args)
+    print(f"train_{metric}: {_SCORING[metric](model.get_learning_model(), X, y):.2f}")
+  save_kernel_model(model, args)
   return
 
 def perform_cross_validation(X, y, model, args):
-  print(f"Performing {_CV_FOLDS}-fold cross validation on {model_name}...")
+  print(f"Performing {_CV_FOLDS}-fold cross validation on {args.model}...")
   t = time.time()
   scores = cross_validate(
-    model, X, y, 
+    model.get_learning_model(), X, y, 
     cv=_CV_FOLDS, scoring=_SCORING, return_train_score=True, n_jobs=-1,
     return_estimator=args.visualise, return_indices=args.visualise,
   )
@@ -100,7 +97,7 @@ def perform_cross_validation(X, y, model, args):
         Performs some redundant computations
     """
 
-    if model_name == "svr":  # kernel matrix case
+    if args.model == "svr":  # kernel matrix case
       raise NotImplementedError
     
     print("Saving visualisation...")
@@ -137,38 +134,23 @@ def perform_cross_validation(X, y, model, args):
     print(f"Visualisation saved at {file_name}")
   return
 
-
 if __name__ == "__main__":
   args = parse_args()
   print_arguments(args)
 
   np.random.seed(args.seed)
 
-  print(f"Initialising {args.kernel}...")
   graphs, y = get_dataset_from_args_kernels(args)
-  kernel = kernels.KERNELS[args.kernel](
-    iterations=args.iterations,
-    all_colours=args.all_colours,
-  )
-  kernel.read_train_data(graphs)
 
   print(f"Setting up training data and initialising model...")
-  model_name = args.model
   t = time.time()
-
-  kwargs = {
-    "epsilon": args.e,
-    "C": args.C,
-    "max_iter": _MAX_MODEL_ITER,
-  }
-  if model_name == "linear-svr":
-    model = LinearSVR(dual="auto", **kwargs)
-    X = kernel.get_x(graphs)
-  elif model_name == "svr":
-    model = SVR(kernel="precomputed", **kwargs)
-    X = kernel.get_k(graphs)
-  else:
-    raise NotImplementedError
+  model = kernels.KernelModelWrapper(args)
+  model.train()
+  t = time.time()
+  train_histograms = model.compute_histograms(graphs)
+  print(f"Initialised WL for {len(graphs)} graphs in {time.time() - t:.2f}s")
+  print(f"Collected {model.n_colours_} colours over {sum(len(G.nodes) for G in graphs)} nodes")
+  X = model.get_matrix_representation(graphs, train_histograms)
   print(f"Set up training data in {time.time()-t:.2f}s")
 
   if args.cross_validation:

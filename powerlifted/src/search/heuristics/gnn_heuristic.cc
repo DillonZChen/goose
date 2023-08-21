@@ -40,7 +40,7 @@ GNNHeuristic::GNNHeuristic(const Task &task,
 
     std::cout << "Trying to load model from file " << model_path << " ..." << std::endl;
     py::module util_module = py::module::import("util.save_load");
-    model = util_module.attr("load_model_and_setup_gnn")(model_path, domain_file, instance_file);
+    model = util_module.attr("load_gnn_model_and_setup")(model_path, domain_file, instance_file);
     std::cout << "Loaded model!" << std::endl;
     model.attr("dump_model_stats")();
     lifted_state_input = model.attr("lifted_state_input")().cast<bool>();

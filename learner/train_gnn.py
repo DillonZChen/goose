@@ -158,4 +158,4 @@ if __name__ == "__main__":
   if best_dict is not None:
     print(f"best_avg_loss {best_metric:.8f} at epoch {best_epoch}")
     args.best_metric = best_metric
-    save_model_from_dict(best_dict, args)
+    save_gnn_model_from_dict(best_dict, args)
