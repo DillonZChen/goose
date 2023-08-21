@@ -15,7 +15,9 @@ namespace goose_heuristic {
 class GooseHeuristic : public Heuristic {
 
   void initialise_model(const plugins::Options &opts);
-  void initialise_fact_strings();
+  void initialise_grounded_facts();
+  void initialise_lifted_facts();
+  void initialise_facts();
 
   // Required for pybind. Once this goes out of scope python interaction is no
   // longer possible.
@@ -30,10 +32,17 @@ class GooseHeuristic : public Heuristic {
   pybind11::object model;
 
   // Dictionary that maps FD proposition strings to (pred o_1 ... o_n) 
-  // proposition strings. We only want to do this translation once, 
+  // proposition strings in the case of grounded GOOSE, or (pred, args) tuples. 
+  // We only want to do this translation once, 
   // hence we store it here. This could be ignored if we change the format of
   // propositions in GOOSE.
-  std::map<FactPair, std::string> fact_to_goose_string;
+  std::map<FactPair, std::string> fact_to_grounded_goose_input;
+  std::map<
+    FactPair, 
+    std::pair<std::string, std::vector<std::string>>
+  > fact_to_lifted_goose_input;
+
+  bool lifted_goose;
 
   pybind11::list list_to_goose_state(const State &ancestor_state);
 
