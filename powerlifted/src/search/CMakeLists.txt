@@ -128,7 +128,7 @@ add_executable(search
         heuristics/add_heuristic.h heuristics/utils.h heuristics/utils.cc
         datalog/transformations/remove_equivalent_rules.h datalog/transformations/connected_components.h
         datalog/transformations/variable_projection.h datalog/transformations/variable_renaming.h heuristics/hmax_heuristic.cc heuristics/hmax_heuristic.h
-        parallel_hashmap/phmap.h heuristics/gnn_heuristic.cc heuristics/gnn_heuristic.h search_engines/greedy_batch_best_first_search.cc search_engines/greedy_batch_best_first_search.h heuristics/perfect_heuristic.cc search_engines/perfect.h search_engines/perfect.cc search_engines/batch_lazy_search.cc search_engines/batch_lazy_search.h ../ext/cxxopts/cxxopts)
+        parallel_hashmap/phmap.h heuristics/goose_heuristic.cc heuristics/goose_heuristic.h search_engines/greedy_batch_best_first_search.cc search_engines/greedy_batch_best_first_search.h heuristics/perfect_heuristic.cc search_engines/perfect.h search_engines/perfect.cc search_engines/batch_lazy_search.cc search_engines/batch_lazy_search.h ../ext/cxxopts/cxxopts)
 
 target_link_libraries(search ${Boost_LIBRARIES})
 target_link_libraries(search pybind11::embed)

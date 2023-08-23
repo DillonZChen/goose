@@ -54,6 +54,8 @@ void BatchEagerSearch::initialize() {
 
     statistics.inc_evaluated_states();
 
+    best_h = heuristic->compute_result_batch({initial_state})[0];
+
     if (open_list->is_dead_end(eval_context)) {
         log << "Initial state is a dead end." << endl;
     } else {
@@ -61,11 +63,10 @@ void BatchEagerSearch::initialize() {
             statistics.print_checkpoint_line(0);
         SearchNode node = search_space.get_node(initial_state);
         node.open_initial();
+        node.set_h(best_h);
 
         open_list->insert(eval_context, initial_state.get_id());
     }
-
-    print_initial_evaluator_values(eval_context);
 }
 
 void BatchEagerSearch::print_statistics() const {
@@ -99,6 +100,17 @@ SearchStatus BatchEagerSearch::step() {
     if (check_goal_and_set_plan(s))
         return SOLVED;
 
+    int h = node->get_h();
+    if (h < best_h) {
+        best_h = h;
+        cout << "New heuristic value expanded: h=" << h
+              << " [expansions: " << statistics.get_expanded()
+              << ", evaluations: " << statistics.get_evaluations()
+              << ", generations: " << statistics.get_generated()
+              // << ", time: " << get_wall_time() - timer_start
+              << "]" << '\n';
+    }
+
     vector<OperatorID> applicable_ops;
     successor_generator.generate_applicable_ops(s, applicable_ops);
 
@@ -106,7 +118,7 @@ SearchStatus BatchEagerSearch::step() {
     std::vector<OperatorProxy> ops;
     for (OperatorID op_id : applicable_ops) {
         OperatorProxy op = task_proxy.get_operators()[op_id];
-        if ((node->get_real_g() + op.get_cost()) >= bound)
+        if ((node->get_g() + op.get_cost()) >= bound)
             continue;
 
         State succ_state = state_registry.get_successor_state(s, op);
@@ -136,7 +148,7 @@ SearchStatus BatchEagerSearch::step() {
         State succ_state = succ_states[i];
         OperatorProxy op = ops[i];
         SearchNode succ_node = search_space.get_node(succ_state);
-        succ_node.open(*node, op, get_adjusted_cost(op));
+        succ_node.open(*node, op, hs[i]);
         open_list->insert(hs[i], succ_state.get_id());
       }
     }
