@@ -46,7 +46,7 @@ def pwl_cmd(df, pf, model_type, m, search, seed, timeout=TIMEOUT):
         f"-d {df} " \
         f"-i {pf} " \
         f"-m {m} " \
-        f"-e gnn " \
+        f"-e {model_type} " \
         f"-s {search} " \
         f"--time-limit {timeout} " \
         f"--seed {seed} " \

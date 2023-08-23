@@ -26,6 +26,10 @@ public:
             callback(eval, result);
         }
     }
+
+    EvaluationResults get_eval_results() const {
+      return eval_results;
+    }
 };
 
 #endif

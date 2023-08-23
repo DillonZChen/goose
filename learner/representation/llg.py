@@ -212,6 +212,9 @@ class LiftedLearningGraph(Representation, ABC):
       pred = fact[0]
       args = fact[1]
 
+      if len(pred)==0:
+        continue
+
       node = (pred, tuple(args))
 
       # activated proposition overlaps with a goal Atom or NegatedAtom
@@ -254,6 +257,9 @@ class LiftedLearningGraph(Representation, ABC):
     for fact in state:
       pred = fact[0]
       args = fact[1]
+
+      if len(pred)==0:
+        continue
 
       node = (pred, tuple(args))
 

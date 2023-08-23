@@ -1,4 +1,3 @@
-import time
 from typing import Optional, Dict
 from .base_kernel import *
 
@@ -9,9 +8,6 @@ class WeisfeilerLehmanKernel(Kernel):
 
     # hashes neighbour multisets of colours
     self._hash = {}
-
-    # temporary hash function for inference
-    self._tmp_hash = {}
 
     # number of wl iterations
     self.iterations = iterations
@@ -25,8 +21,7 @@ class WeisfeilerLehmanKernel(Kernel):
       if colour in self._hash:
         return self._hash[colour]
       else:
-        self._tmp_hash[colour]=-len(self._tmp_hash)
-        return self._tmp_hash[colour]
+        return -1
   
   def compute_histograms(self, graphs: List[CGraph]) -> Dict[CGraph, Histogram]:
     """ Read graphs and return histogram. 
@@ -76,10 +71,6 @@ class WeisfeilerLehmanKernel(Kernel):
       
       # store histogram of graph colours
       histograms[G] = histogram
-
-    # clear hash cache during inference
-    if not self._train:
-      self._tmp_hash = {}
 
     return histograms
 

@@ -53,8 +53,6 @@ protected:
   
 public:
   explicit GooseHeuristic(const plugins::Options &opts);
-
-  // TODO compute_heuristic_batch
 };
 
 } // namespace goose_heuristic

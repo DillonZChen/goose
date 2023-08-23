@@ -206,11 +206,14 @@ class BasePredictor(ABC, nn.Module):
       x, edge_index = self.rep.state_to_tensor(state)
       data_list.append(Data(x=x, edge_index=edge_index))
     loader = DataLoader(dataset=data_list, batch_size=min(len(data_list), 32))
-    data = next(iter(loader)).to(self.device)
-    hs = self.model.forward(data.x, data.edge_index, data.batch)
-    hs = hs.detach().cpu().numpy()  # annoying error with jit 
-    hs = np.rint(hs).astype(int).tolist()
-    return hs
+    hs_all = []
+    for data in loader:
+      data = data.to(self.device)
+      hs = self.model.forward(data.x, data.edge_index, data.batch)
+      hs = hs.detach().cpu().numpy()  # annoying error with jit 
+      hs_all.append(hs)
+    hs_all = np.rint(np.concatenate(hs_all)).astype(int).tolist()
+    return hs_all
 
   def predict_action(self, state: State):
     """ Use GNN to learn policy or preferred operators """
