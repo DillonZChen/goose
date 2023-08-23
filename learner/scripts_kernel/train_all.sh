@@ -6,7 +6,7 @@ for l in 0 1 2 3 4
 do
   for k in wl
   do
-    for r in llg slg dlg glg 
+    for r in llg slg
     do
       for d in gripper spanner visitall visitsome blocks ferry sokoban n-puzzle
       do 

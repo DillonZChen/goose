@@ -9,8 +9,10 @@ from gnns import *
 from kernels import KernelModelWrapper
 
 
-_TRAINED_MODELS_SAVE_DIR = "trained_models"
-os.makedirs(_TRAINED_MODELS_SAVE_DIR, exist_ok=True)
+_TRAINED_GNNS_SAVE_DIR = "trained_models_gnn"
+_TRAINED_KERNELS_SAVE_DIR = "trained_models_kernel"
+os.makedirs(_TRAINED_GNNS_SAVE_DIR, exist_ok=True)
+os.makedirs(_TRAINED_KERNELS_SAVE_DIR, exist_ok=True)
 
 
 def arg_to_params(args, in_feat=4, out_feat=1):
@@ -57,7 +59,7 @@ def save_gnn_model_from_dict(model_dict, args):
     return
   print("Saving model...")
   model_file_name = args.save_file.replace(".dt", "")
-  path = f'{_TRAINED_MODELS_SAVE_DIR}/{model_file_name}.dt'
+  path = f'{_TRAINED_GNNS_SAVE_DIR}/{model_file_name}.dt'
   torch.save((model_dict, args), path)
   print("Model saved!")
   print("Model parameter file:")
@@ -75,7 +77,7 @@ def save_kernel_model(model: KernelModelWrapper, args):
     return
   print("Saving model...")
   model_file_name = args.save_file.replace(".joblib", "")
-  path = f'{_TRAINED_MODELS_SAVE_DIR}/{model_file_name}.joblib'
+  path = f'{_TRAINED_GNNS_SAVE_DIR}/{model_file_name}.joblib'
   joblib.dump((model, args), path)
   print("Model saved!")
   print("Model parameter file:")
@@ -88,8 +90,8 @@ def load_gnn_model(path, print_args=False, jit=False, ignore_subdir=False) -> Tu
   assert ".pt" not in path, f"Found .pt in path {path}"
   if ".dt" not in path:
       path = path+".dt"
-  if not ignore_subdir and _TRAINED_MODELS_SAVE_DIR not in path:
-      path = _TRAINED_MODELS_SAVE_DIR + "/" + path
+  if not ignore_subdir and _TRAINED_GNNS_SAVE_DIR not in path:
+      path = _TRAINED_GNNS_SAVE_DIR + "/" + path
   try:
     if torch.cuda.is_available():
         model_state_dict, args = torch.load(path)
@@ -113,8 +115,8 @@ def load_gnn_model(path, print_args=False, jit=False, ignore_subdir=False) -> Tu
 def load_kernel_model(path, ignore_subdir=False):
   if ".joblib" not in path:
       path = path+".joblib"
-  if not ignore_subdir and _TRAINED_MODELS_SAVE_DIR not in path:
-      path = _TRAINED_MODELS_SAVE_DIR + "/" + path
+  if not ignore_subdir and _TRAINED_KERNELS_SAVE_DIR not in path:
+      path = _TRAINED_KERNELS_SAVE_DIR + "/" + path
   model, args = joblib.load(path)
   return model, args
 
