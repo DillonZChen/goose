@@ -1,13 +1,13 @@
 FILE="goose.sif"
 if [ ! -f "$FILE" ]; then
-    sh singularity/build_singularity_container.sh
+   sh singularity/build_singularity_container.sh
 fi
 
 conda deactivate
 
 cd downward
 rm -rf builds
-sh scripts/build_fd_gpu.sh
+sh scripts/build_fd.sh
 cd ..
 
 cd powerlifted

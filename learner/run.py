@@ -22,6 +22,10 @@ if __name__ == "__main__":
                       help="search algorithm")
   parser.add_argument("--timeout", "-t", type=int, default=600,
                       help="timeout in seconds")
+  parser.add_argument("--aux-file", type=str, default=None,
+                      help="path of auxilary file such as *.sas or *.lifted")
+  parser.add_argument("--plan-file", type=str, default=None,
+                      help="path of *.plan file")
   args = parser.parse_args()
 
   cmd, intermediate_file = search_cmd(
@@ -33,6 +37,8 @@ if __name__ == "__main__":
     search=args.search,
     timeout=args.timeout,
     seed=0,
+    aux_file=args.aux_file,
+    plan_file=args.plan_file,
   ) 
 
   print(cmd)
