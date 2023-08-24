@@ -144,11 +144,13 @@ class Representation(ABC):
 
         Vector features are converted to colours with a hash. This can be hardcoded slightly more
         efficiently for each graph representation separately but takes more effort.
+
+        Slightly optimised by converting node string names into ints and storing the map
     """
 
-    # TODO optimise by converting node string names into ints and storing the map
-
     colours = set()
+
+    self._name_to_node = {}
 
     c_graph = self._create_graph()
     for node in self.G.nodes:
@@ -161,9 +163,17 @@ class Representation(ABC):
       else:
         colour = hashlib.sha256(feature.encode('utf-8')).hexdigest()
       colours.add(colour)
-      c_graph.add_node(node, colour=colour)
+
+      assert node not in c_graph.nodes
+      idx = len(self._name_to_node)
+      self._name_to_node[node] = idx
+      c_graph.add_node(idx, colour=colour)
     for edge in self.G.edges:
       u, v = edge
+      u = self._name_to_node[u]
+      v = self._name_to_node[v]
+      assert u in c_graph.nodes
+      assert v in c_graph.nodes
       c_graph.add_edge(u_of_edge=u, v_of_edge=v, edge_label=self.G.edges[edge]["edge_label"])
 
     self.c_graph = c_graph

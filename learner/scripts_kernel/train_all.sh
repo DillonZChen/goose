@@ -2,7 +2,8 @@ LOG_DIR=logs/train_kernel
 
 mkdir -p $LOG_DIR
 
-for l in 0 1 2 3 4
+for l in 1 3 5
+# for l in 0 1 2 3 4 5
 do
   for k in wl
   do

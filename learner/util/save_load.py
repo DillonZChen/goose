@@ -77,7 +77,7 @@ def save_kernel_model(model: KernelModelWrapper, args):
     return
   print("Saving model...")
   model_file_name = args.save_file.replace(".joblib", "")
-  path = f'{_TRAINED_GNNS_SAVE_DIR}/{model_file_name}.joblib'
+  path = f'{_TRAINED_KERNELS_SAVE_DIR}/{model_file_name}.joblib'
   joblib.dump((model, args), path)
   print("Model saved!")
   print("Model parameter file:")

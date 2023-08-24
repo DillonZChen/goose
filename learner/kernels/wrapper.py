@@ -83,6 +83,37 @@ class KernelModelWrapper():  # TODO optimise memory
     y = self.predict(X)
     hs = np.rint(y).astype(int).tolist()
     return hs
+
+    # if len(states)==0:
+    #   graphs = [self._representation.state_to_cgraph(state) for state in states]
+    #   X = self._kernel.get_x(graphs)
+    #   y = self.predict(X)
+    #   hs = np.rint(y).astype(int).tolist()
+    #   return hs
+    # import time 
+    # rep = 0
+    # x = 0
+    # pred = 0
+    # for _ in range(100):
+    #   t = time.time()
+    #   graphs = [self._representation.state_to_cgraph(state) for state in states]
+    #   rep += time.time() - t
+
+    #   t = time.time()
+    #   X = self._kernel.get_x(graphs)
+    #   x += time.time() - t
+
+    #   t = time.time()
+    #   y = self.predict(X)
+    #   pred += time.time() - t
+
+    #   hs = np.rint(y).astype(int).tolist()
+
+    # print(" rep:", rep)
+    # print("   x:", x)
+    # print("pred:", pred)
+    # assert 0
+    # return hs
   
   @property
   def n_colours_(self) -> int:

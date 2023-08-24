@@ -253,6 +253,7 @@ class LiftedLearningGraph(Representation, ABC):
   def state_to_cgraph(self, state: List[Tuple[str, List[str]]]) -> CGraph:
     """ States are represented as a list of (pred, [args]) """
     c_graph = self.c_graph.copy()
+    new_idx = len(self._name_to_node)
 
     for fact in state:
       pred = fact[0]
@@ -265,22 +266,31 @@ class LiftedLearningGraph(Representation, ABC):
 
       # activated proposition overlaps with a goal Atom or NegatedAtom
       if node in self._pos_goal_nodes:
-        c_graph.nodes[node]['colour'] = c_graph.nodes[node]['colour']+ACTIVATED_POS_GOAL_COLOUR_SUFFIX
+        idx = self._name_to_node[node]
+        c_graph.nodes[idx]['colour'] = c_graph.nodes[idx]['colour']+ACTIVATED_POS_GOAL_COLOUR_SUFFIX
         continue
       elif node in self._neg_goal_nodes:
-        c_graph.nodes[node]['colour'] = c_graph.nodes[node]['colour']+ACTIVATED_NEG_GOAL_COLOUR_SUFFIX
+        idx = self._name_to_node[node]
+        c_graph.nodes[idx]['colour'] = c_graph.nodes[idx]['colour']+ACTIVATED_NEG_GOAL_COLOUR_SUFFIX
         continue
+
+      new_idx += 1
+      node = new_idx
 
       # else add node and corresponding edges to graph
       c_graph.add_node(node, colour=ACTIVATED_COLOUR)
 
       # connect fact to predicate
-      c_graph.add_edge(u_of_edge=node, v_of_edge=pred, edge_label=LLG_EDGE_LABELS["ground"])
-      c_graph.add_edge(v_of_edge=node, u_of_edge=pred, edge_label=LLG_EDGE_LABELS["ground"])
+      c_graph.add_edge(u_of_edge=node, v_of_edge=self._name_to_node[pred], edge_label=LLG_EDGE_LABELS["ground"])
+      c_graph.add_edge(v_of_edge=node, u_of_edge=self._name_to_node[pred], edge_label=LLG_EDGE_LABELS["ground"])
 
       # connect to predicates and objects
       for k, arg in enumerate(args):
-        arg_node = (node, f"true-var-{k}")
+        # arg_node = (node, f"true-var-{k}")
+
+        new_idx += 1
+        arg_node = new_idx
+
         c_graph.add_node(arg_node, colour=str(k)+IF_COLOUR_SUFFIX)
 
         # connect variable to predicate
@@ -288,8 +298,8 @@ class LiftedLearningGraph(Representation, ABC):
         c_graph.add_edge(v_of_edge=node, u_of_edge=arg_node, edge_label=LLG_EDGE_LABELS["ground"])
 
         # connect variable to object
-        c_graph.add_edge(u_of_edge=arg_node, v_of_edge=arg, edge_label=LLG_EDGE_LABELS["ground"])
-        c_graph.add_edge(v_of_edge=arg_node, u_of_edge=arg, edge_label=LLG_EDGE_LABELS["ground"])
+        c_graph.add_edge(u_of_edge=arg_node, v_of_edge=self._name_to_node[arg], edge_label=LLG_EDGE_LABELS["ground"])
+        c_graph.add_edge(v_of_edge=arg_node, u_of_edge=self._name_to_node[arg], edge_label=LLG_EDGE_LABELS["ground"])
 
     return c_graph
   

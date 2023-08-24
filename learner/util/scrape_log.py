@@ -35,7 +35,7 @@ def scrape_search_log(file):
 
     if "Solution found." in line: 
       stats["solved"] = 1
-    elif "Goal found at:" in line or "Actual search time:" in line: 
+    elif "Goal found at:" in line or "Search time:" in line: 
       stats["time"] = float(toks[-1].replace("s", ""))
     elif "Total plan cost:" in line or "Plan cost:" in line: 
       stats["cost"] = int(toks[-1])
@@ -43,7 +43,7 @@ def scrape_search_log(file):
       stats["expanded"] = int(toks[-1])
     elif len(toks)>=2 and "Evaluated" == toks[-2]: 
       stats["evaluated"] = int(toks[-1])
-    elif "Initial heuristic value" in line:
+    elif ("New best heuristic value" in line or "Initial heuristic value" in line) and stats["first_h"]==-1:
       try:
         stats["first_h"] = int(toks[-1])
       except:
