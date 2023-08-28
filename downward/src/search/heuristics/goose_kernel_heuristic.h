@@ -46,15 +46,17 @@ class GooseKernelHeuristic : public Heuristic {
   // destructor of this class will lead to a segmentation fault.
   pybind11::scoped_interpreter guard;
 
-  // Python object which computes the heuristic
-  pybind11::object model;
+  // map facts to a better data structure for heuristic computation
+  std::map<FactPair, std::pair<std::string, std::vector<std::string>>> fact_to_lifted_input;
 
-  std::map<
-    FactPair, 
-    std::pair<std::string, std::vector<std::string>>
-  > fact_to_lifted_goose_input;
+  // 1. convert state to CGraph
+  CGraph state_to_graph(const State &state);
 
-  pybind11::list list_to_goose_state(const State &ancestor_state);
+  // 2. perform WL on CGraph
+  std::vector<int> wl_feature(const CGraph &graph);
+
+  // 3. make a prediction with explicit feature
+  int predict(const std::vector<int> &feature);
 
  protected:
   int compute_heuristic(const State &ancestor_state) override;
@@ -66,6 +68,9 @@ class GooseKernelHeuristic : public Heuristic {
  private:
   CGraph graph_;
   std::map<std::string, int> hash_;
+  std::vector<double> weights_;
+  double bias_;
+  int feature_size_;
 };
 
 }  // namespace goose_kernel_heuristic

@@ -58,6 +58,12 @@ class KernelModelWrapper():  # TODO optimise memory
     self._representation.convert_to_coloured_graph()
     return
   
+  def get_weights(self):
+    return self._model.coef_
+  
+  def get_bias(self):
+    return self._model.intercept_
+  
   def write_representation_to_file(self) -> None:
     self._representation.write_to_file()
     return

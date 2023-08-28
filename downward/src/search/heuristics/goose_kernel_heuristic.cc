@@ -99,16 +99,20 @@ void GooseKernelHeuristic::initialise_model(const plugins::Options &opts) {
   // Throw everything into Python code
   std::cout << "Trying to load model from file " << model_path << " ...\n";
   py::module util_module = py::module::import("util.save_load");
-  model = util_module.attr("load_kernel_model_and_setup")(model_path, domain_file, instance_file);
+  pybind11::object model = util_module.attr("load_kernel_model_and_setup")(model_path, domain_file, instance_file);
 
   if (!model.attr("lifted_state_input")().cast<bool>()) {
-    std::cout << "Grounded optimised kernel not implemented." << std::endl;
+    std::cout << "Grounded optimised kernel not implemented. "
+              << "This optimisation is only for LLG." << std::endl;
     exit(-1);
   }
 
   std::string graph_file_path = model.attr("get_graph_file_path")().cast<std::string>();
   graph_ = CGraph(graph_file_path);
   hash_ = model.attr("get_hash")().cast<std::map<std::string, int>>();
+  weights_ = model.attr("get_weights")().cast<std::vector<double>>();
+  bias_ = model.attr("get_bias")().cast<double>();
+  feature_size_ = static_cast<int>(weights_.size());
 }
 
 void GooseKernelHeuristic::initialise_facts() {
@@ -161,7 +165,7 @@ void GooseKernelHeuristic::initialise_facts() {
     }
     std::pair<std::string, std::vector<std::string>> lifted_fact(pred, args); 
 
-    fact_to_lifted_goose_input.insert({fact.get_pair(), lifted_fact});
+    fact_to_lifted_input.insert({fact.get_pair(), lifted_fact});
 
     #ifndef NDEBUG
       std::cout << name << " ";
@@ -173,27 +177,38 @@ void GooseKernelHeuristic::initialise_facts() {
   #endif
 }
 
-py::list GooseKernelHeuristic::list_to_goose_state(const State &ancestor_state) {
-  State state = convert_ancestor_state(ancestor_state);
+CGraph GooseKernelHeuristic::state_to_graph(const State &state) {
+  CGraph graph;
+  // TODO(DCZ)
+  return graph;
+}
 
-  py::list goose_state;
-    for (FactProxy fact : state) {
-      goose_state.append(fact_to_lifted_goose_input[fact.get_pair()]);
-    }
-  return goose_state;
+std::vector<int> GooseKernelHeuristic::wl_feature(const CGraph &graph) {
+  std::vector<int> feature;
+  // TODO(DCZ)
+  return feature;
+}
+
+int GooseKernelHeuristic::predict(const std::vector<int> &feature) {
+  double ret = bias_;
+  for (int i = 0; i < feature_size_; i++) {
+    ret += feature[i] * weights_[i];
+  }
+  return static_cast<int>(round(ret));
 }
 
 int GooseKernelHeuristic::compute_heuristic(const State &ancestor_state) {
-  // Convert state into Python object and feed into Goose.
-  py::list goose_state = list_to_goose_state(ancestor_state);
-  int h = model.attr("h")(goose_state).cast<int>();
+  State state = convert_ancestor_state(ancestor_state);
+  CGraph graph = state_to_graph(state);
+  std::vector<int> feature = wl_feature(graph);
+  double h = predict(feature);
   return h;
 }
 
 std::vector<int> GooseKernelHeuristic::compute_heuristic_batch(const std::vector<State> &ancestor_states) {
   std::vector<int> ret;
   for (auto state : ancestor_states) {
-    ret.push_back(0);
+    ret.push_back(compute_heuristic(state));
   }
   return ret;
 }
