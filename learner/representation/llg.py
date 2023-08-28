@@ -291,7 +291,7 @@ class LiftedLearningGraph(Representation, ABC):
         new_idx += 1
         arg_node = new_idx
 
-        c_graph.add_node(arg_node, colour=str(k)+IF_COLOUR_SUFFIX)
+        c_graph.add_node(arg_node, colour=-k)
 
         # connect variable to predicate
         c_graph.add_edge(u_of_edge=node, v_of_edge=arg_node, edge_label=LLG_EDGE_LABELS["ground"])

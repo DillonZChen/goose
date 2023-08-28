@@ -53,10 +53,20 @@ class KernelModelWrapper():  # TODO optimise memory
   def lifted_state_input(self) -> bool:
     return self._representation.lifted
     
-  def update_representation(self, domain_pddl: str, problem_pddl: str):
+  def update_representation(self, domain_pddl: str, problem_pddl: str) -> None:
     self._representation : Representation = REPRESENTATIONS[self._rep_type](domain_pddl, problem_pddl)
     self._representation.convert_to_coloured_graph()
     return
+  
+  def write_representation_to_file(self) -> None:
+    self._representation.write_to_file()
+    return
+  
+  def get_graph_file_path(self) -> str:
+    return self._representation.get_graph_file_path()
+  
+  def get_hash(self) -> map:
+    return self._kernel.get_hash()
     
   def compute_histograms(self, graphs: CGraph) -> None:
     return self._kernel.compute_histograms(graphs)

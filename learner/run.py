@@ -12,7 +12,7 @@ if __name__ == "__main__":
                       help="path to domain pddl file")
   parser.add_argument("task_pddl", type=str,
                       help="path to task pddl file")
-  parser.add_argument("model_type", type=str, choices=["gnn", "kernel"],
+  parser.add_argument("model_type", type=str, choices=["gnn", "kernel", "kernel-opt"],
                       help="learning model")
   parser.add_argument("--model_path", "-m", required=True, type=str,
                       help="path to saved model weights")

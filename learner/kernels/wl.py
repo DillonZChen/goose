@@ -7,7 +7,7 @@ class WeisfeilerLehmanKernel(Kernel):
     super().__init__()
 
     # hashes neighbour multisets of colours
-    self._hash = {}
+    self._hash : Dict[str, int] = {}
 
     # number of wl iterations
     self.iterations = iterations
@@ -22,6 +22,16 @@ class WeisfeilerLehmanKernel(Kernel):
         return self._hash[colour]
       else:
         return -1
+
+  def get_hash(self) -> Dict[str, int]:
+    """ Return hash dictionary with compact keys for cpp """
+    ret = {}
+    for k in self._hash:
+      key = str(k)
+      for symbol in [")", "(", " "]:
+        key = key.replace(symbol, " ")
+      ret[key] = self._hash[k]
+    return ret
   
   def compute_histograms(self, graphs: List[CGraph]) -> Dict[CGraph, Histogram]:
     """ Read graphs and return histogram. 

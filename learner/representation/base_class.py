@@ -37,7 +37,6 @@ CGraph = Union[nx.Graph, nx.DiGraph]
 ACTIVATED_COLOUR = "-1"
 ACTIVATED_POS_GOAL_COLOUR_SUFFIX = "-pos-node"
 ACTIVATED_NEG_GOAL_COLOUR_SUFFIX = "-neg-node"
-IF_COLOUR_SUFFIX = "-if-index"
 
 
 """ Base class for graph representations """
@@ -151,6 +150,7 @@ class Representation(ABC):
     colours = set()
 
     self._name_to_node = {}
+    self._node_to_name = {}
 
     c_graph = self._create_graph()
     for node in self.G.nodes:
@@ -159,7 +159,7 @@ class Representation(ABC):
       if self.name == "llg" and type(node) == tuple and len(node)==2 and \
         type(node[1]) == str and "var-" in node[1]:
         index = node[1].split('-')[-1]
-        colour = index+IF_COLOUR_SUFFIX
+        colour = -int(index)  # colour of IF is negative of index
       else:
         colour = hashlib.sha256(feature.encode('utf-8')).hexdigest()
       colours.add(colour)
@@ -167,6 +167,7 @@ class Representation(ABC):
       assert node not in c_graph.nodes
       idx = len(self._name_to_node)
       self._name_to_node[node] = idx
+      self._node_to_name[idx] = node
       c_graph.add_node(idx, colour=colour)
     for edge in self.G.edges:
       u, v = edge
@@ -178,6 +179,36 @@ class Representation(ABC):
 
     self.c_graph = c_graph
     return
+  
+  def write_to_file(self) -> None:
+    from datetime import datetime
+    df = self.domain_pddl
+    pf = self.problem_pddl
+    t = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+    file_path = "_".join(["graph", df, pf, t])
+    file_path = file_path.replace("/","-").replace(".pddl","").replace(".","")
+    file_path = file_path + ".graph"
+
+    f = open(file_path, 'w')
+
+    # line number = node
+    # <node_name> <node_colour> [<neighbour_node> <edge_label>]
+    G = self.c_graph
+    f.write(f"{len(G.nodes)} nodes\n")
+    for u in G.nodes:
+      node_name = str(self._node_to_name[u]).replace(' ', '')
+      f.write(f"{node_name} {G.nodes[u]['colour']} ")
+      for v in G[u]:
+        f.write(f"{v} {G[u][v]['edge_label']} ")
+      f.write("\n")
+
+    f.close()
+
+    self._graph_file_path = file_path
+    return
+  
+  def get_graph_file_path(self) -> str:
+    return self._graph_file_path
   
   @abstractmethod
   def _compute_graph_representation(self) -> None:

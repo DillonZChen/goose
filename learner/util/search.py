@@ -76,11 +76,18 @@ def fd_cmd(df, pf, model_type, m, search, seed, timeout=TIMEOUT, aux_file=None, 
     os.makedirs("plans", exist_ok=True)
     plan_file = f"plans/{description}.plan"
 
-  cmd = f"./../downward/fast-downward.py --search-time-limit {timeout} --sas-file {aux_file} --plan-file {plan_file} "+\
-        f"{df} {pf} --search '{search}([goose(model_path=\"{m}\", "+\
-                                            f"model_type=\"{model_type}\", "+\
-                                            f"domain_file=\"{df}\", "+\
-                                            f"instance_file=\"{pf}\""+\
-                                            f")])'"
+  if model_type == "kernel-opt":
+    cmd = f"./../downward/fast-downward.py --search-time-limit {timeout} --sas-file {aux_file} --plan-file {plan_file} "+\
+          f"{df} {pf} --search '{search}([kernel(model_path=\"{m}\", "+\
+                                               f"domain_file=\"{df}\", "+\
+                                               f"instance_file=\"{pf}\""+\
+                                               f")])'"
+  else:
+    cmd = f"./../downward/fast-downward.py --search-time-limit {timeout} --sas-file {aux_file} --plan-file {plan_file} "+\
+          f"{df} {pf} --search '{search}([goose(model_path=\"{m}\", "+\
+                                              f"model_type=\"{model_type}\", "+\
+                                              f"domain_file=\"{df}\", "+\
+                                              f"instance_file=\"{pf}\""+\
+                                              f")])'"
   cmd = f"export GOOSE={os.getcwd()} && {cmd}"
   return cmd, aux_file

@@ -138,6 +138,7 @@ def load_gnn_model_and_setup(path, domain_file, problem_file):
 def load_kernel_model_and_setup(path, domain_file, problem_file):
   model, args = load_kernel_model(path, ignore_subdir=True)
   model.update_representation(domain_pddl=domain_file, problem_pddl=problem_file)
+  model.write_representation_to_file()
   model.eval()
   return model
   

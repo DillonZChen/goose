@@ -1,0 +1,73 @@
+#ifndef GOOSE_KERNEL_HEURISTIC_H
+#define GOOSE_KERNEL_HEURISTIC_H
+
+#include <pybind11/embed.h>
+#include <pybind11/stl.h>
+#include <pybind11/stl_bind.h>
+#include <pybind11/pybind11.h>
+
+#include <map>
+#include <vector>
+#include <utility>
+#include <string>
+#include <fstream>
+
+#include "../heuristic.h"
+
+
+namespace goose_kernel_heuristic {
+
+class CGraph {
+ public: 
+  CGraph();
+  explicit CGraph(const std::string path);
+
+ private:
+  // represent edge labeled graph by linked list
+  std::vector<std::vector<std::pair<int, int>>> edges_;
+
+  // map node names to node index
+  std::map<std::string, int> node_index_;
+
+  // map node index to colour
+  std::vector<std::string> colour_;
+};
+
+class GooseKernelHeuristic : public Heuristic {
+  void initialise_model(const plugins::Options &opts);
+  void initialise_facts();
+
+  // Required for pybind. Once this goes out of scope python interaction is no
+  // longer possible.
+  //
+  // IMPORTANT: since member variables are destroyed in reverse order of
+  // construction it is important that the scoped_interpreter_guard is listed as
+  // first member variable (therefore destroyed last), otherwise calling the
+  // destructor of this class will lead to a segmentation fault.
+  pybind11::scoped_interpreter guard;
+
+  // Python object which computes the heuristic
+  pybind11::object model;
+
+  std::map<
+    FactPair, 
+    std::pair<std::string, std::vector<std::string>>
+  > fact_to_lifted_goose_input;
+
+  pybind11::list list_to_goose_state(const State &ancestor_state);
+
+ protected:
+  int compute_heuristic(const State &ancestor_state) override;
+  std::vector<int> compute_heuristic_batch(const std::vector<State> &ancestor_states) override;
+  
+ public:
+  explicit GooseKernelHeuristic(const plugins::Options &opts);
+
+ private:
+  CGraph graph_;
+  std::map<std::string, int> hash_;
+};
+
+}  // namespace goose_kernel_heuristic
+
+#endif  // GOOSE_KERNEL_HEURISTIC_H
