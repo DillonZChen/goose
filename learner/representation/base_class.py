@@ -6,7 +6,6 @@ import time
 import os
 import util
 import random
-import hashlib
 
 from typing import Set, FrozenSet, List, NamedTuple, TypeVar, Tuple, Dict, Optional, Union
 from torch import Tensor
@@ -34,9 +33,9 @@ TGraph = Union[Tuple[Tensor, Tensor], Tuple[Tensor, List[Tensor]]]
 CGraph = Union[nx.Graph, nx.DiGraph]
 
 # additional hard coded colours
-ACTIVATED_COLOUR = "-1"
-ACTIVATED_POS_GOAL_COLOUR_SUFFIX = "-pos-node"
-ACTIVATED_NEG_GOAL_COLOUR_SUFFIX = "-neg-node"
+ACTIVATED_COLOUR = 1
+ACTIVATED_POS_GOAL_COLOUR = 2
+ACTIVATED_NEG_GOAL_COLOUR = 3
 
 
 """ Base class for graph representations """
@@ -147,7 +146,12 @@ class Representation(ABC):
         Slightly optimised by converting node string names into ints and storing the map
     """
 
-    colours = set()
+    colours = {
+      0: 0,
+      ACTIVATED_COLOUR: 1,
+      ACTIVATED_POS_GOAL_COLOUR: 2,
+      ACTIVATED_NEG_GOAL_COLOUR: 3,
+    }
 
     self._name_to_node = {}
     self._node_to_name = {}
@@ -160,9 +164,11 @@ class Representation(ABC):
         type(node[1]) == str and "var-" in node[1]:
         index = node[1].split('-')[-1]
         colour = -int(index)  # colour of IF is negative of index
+      elif feature not in colours:
+        colour = len(colours)
+        colours[feature] = colour
       else:
-        colour = hashlib.sha256(feature.encode('utf-8')).hexdigest()
-      colours.add(colour)
+        colour = colours[feature]
 
       assert node not in c_graph.nodes
       idx = len(self._name_to_node)
@@ -196,11 +202,27 @@ class Representation(ABC):
     G = self.c_graph
     f.write(f"{len(G.nodes)} nodes\n")
     for u in G.nodes:
-      node_name = str(self._node_to_name[u]).replace(' ', '')
+      node_name = str(self._node_to_name[u])
+      for symbol in [' ', '\'', ')', '(']:
+        node_name = node_name.replace(symbol, '')
       f.write(f"{node_name} {G.nodes[u]['colour']} ")
       for v in G[u]:
         f.write(f"{v} {G[u][v]['edge_label']} ")
       f.write("\n")
+
+    f.write(f"{len(self._pos_goal_nodes)} pos goals\n")
+    for node_name in self._pos_goal_nodes:
+      node_name = str(node_name)
+      for symbol in [' ', '\'', ')', '(']:
+        node_name = node_name.replace(symbol, '')
+      f.write(node_name+"\n")
+
+    f.write(f"{len(self._neg_goal_nodes)} neg goals\n")
+    for node_name in self._neg_goal_nodes:
+      node_name = str(node_name)
+      for symbol in [' ', '\'', ')', '(']:
+        node_name = node_name.replace(symbol, '')
+      f.write(node_name+"\n")
 
     f.close()
 

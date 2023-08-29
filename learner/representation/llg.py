@@ -267,11 +267,11 @@ class LiftedLearningGraph(Representation, ABC):
       # activated proposition overlaps with a goal Atom or NegatedAtom
       if node in self._pos_goal_nodes:
         idx = self._name_to_node[node]
-        c_graph.nodes[idx]['colour'] = c_graph.nodes[idx]['colour']+ACTIVATED_POS_GOAL_COLOUR_SUFFIX
+        c_graph.nodes[idx]['colour'] = ACTIVATED_POS_GOAL_COLOUR
         continue
       elif node in self._neg_goal_nodes:
         idx = self._name_to_node[node]
-        c_graph.nodes[idx]['colour'] = c_graph.nodes[idx]['colour']+ACTIVATED_NEG_GOAL_COLOUR_SUFFIX
+        c_graph.nodes[idx]['colour'] = ACTIVATED_NEG_GOAL_COLOUR
         continue
 
       new_idx += 1

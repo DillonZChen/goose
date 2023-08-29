@@ -29,7 +29,7 @@ class WeisfeilerLehmanKernel(Kernel):
     for k in self._hash:
       key = str(k)
       for symbol in [")", "(", " "]:
-        key = key.replace(symbol, " ")
+        key = key.replace(symbol, "")
       ret[key] = self._hash[k]
     return ret
   

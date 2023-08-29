@@ -7,6 +7,7 @@
 #include <pybind11/pybind11.h>
 
 #include <map>
+#include <set>
 #include <vector>
 #include <utility>
 #include <string>
@@ -17,10 +18,45 @@
 
 namespace goose_kernel_heuristic {
 
-class CGraph {
+class CGraph {  // LLG
  public: 
   CGraph();
-  explicit CGraph(const std::string path);
+
+  // construct graph from file
+  explicit CGraph(const std::string &path);
+
+  // construct graph from edges and colours;
+  CGraph(const std::vector<std::vector<std::pair<int, int>>> &edges, const std::vector<int> &colour);
+
+  size_t n_nodes() {
+    return node_index_.size();
+  }
+
+  bool is_pos_goal_node(const std::string &node_name) {
+    return pos_goal_nodes_.count(node_name);
+  }
+
+  bool is_neg_goal_node(const std::string &node_name) {
+    return neg_goal_nodes_.count(node_name);
+  }
+
+  int get_node_index(const std::string &node_name) {
+    return node_index_[node_name];
+  }
+
+  std::vector<std::vector<std::pair<int, int>>> get_edges() {
+    return edges_;
+  }
+
+  std::vector<int> get_colours() {
+    return colour_;
+  }
+
+  // hard code colours
+  static const int TRUE_ = 1;
+  static const int TRUE_POS_GOAL_ = 2;
+  static const int TRUE_NEG_GOAL_ = 3;
+  static const int GROUND_EDGE_LABEL_ = 1;
 
  private:
   // represent edge labeled graph by linked list
@@ -30,7 +66,11 @@ class CGraph {
   std::map<std::string, int> node_index_;
 
   // map node index to colour
-  std::vector<std::string> colour_;
+  std::vector<int> colour_;
+
+  // positive and negative goal nodes
+  std::set<std::string> pos_goal_nodes_;
+  std::set<std::string> neg_goal_nodes_;
 };
 
 class GooseKernelHeuristic : public Heuristic {
@@ -48,6 +88,8 @@ class GooseKernelHeuristic : public Heuristic {
 
   // map facts to a better data structure for heuristic computation
   std::map<FactPair, std::pair<std::string, std::vector<std::string>>> fact_to_lifted_input;
+
+  /* Heuristic computation consists of three steps */
 
   // 1. convert state to CGraph
   CGraph state_to_graph(const State &state);

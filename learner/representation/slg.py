@@ -148,9 +148,9 @@ class StripsLearningGraph(Representation, ABC):
 
       # activated proposition overlaps with a goal Atom or NegatedAtom or by itself
       if p in self._pos_goal_nodes:
-        c_graph.nodes[node]['colour'] = c_graph.nodes[node]['colour']+ACTIVATED_POS_GOAL_COLOUR_SUFFIX
+        c_graph.nodes[node]['colour'] = c_graph.nodes[node]['colour']+ACTIVATED_POS_GOAL_COLOUR
       elif p in self._neg_goal_nodes:
-        c_graph.nodes[node]['colour'] = c_graph.nodes[node]['colour']+ACTIVATED_NEG_GOAL_COLOUR_SUFFIX
+        c_graph.nodes[node]['colour'] = c_graph.nodes[node]['colour']+ACTIVATED_NEG_GOAL_COLOUR
       else:
         c_graph.nodes[node]['colour'] = c_graph.nodes[node]['colour']+ACTIVATED_COLOUR
 
