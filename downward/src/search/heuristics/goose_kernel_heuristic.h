@@ -28,8 +28,12 @@ class CGraph {  // LLG
   // construct graph from edges and colours;
   CGraph(const std::vector<std::vector<std::pair<int, int>>> &edges, const std::vector<int> &colour);
 
+  int colour(const int node) {
+    return colour_[node];
+  }
+
   size_t n_nodes() {
-    return node_index_.size();
+    return edges_.size();
   }
 
   bool is_pos_goal_node(const std::string &node_name) {
@@ -52,14 +56,26 @@ class CGraph {  // LLG
     return colour_;
   }
 
+  void dump() {
+    for (size_t u = 0; u < edges_.size(); u++) {
+      std::cout<<u<<" "<<colour_[u];
+      for (auto edge : edges_[u]) {
+        std::cout<<" "<<edge.first<<" "<<edge.second;
+      }
+      std::cout<<std::endl;
+    }
+  }
+
   // hard code colours
-  static const int TRUE_ = 1;
+  static const int TRUE_FACT_ = 1;
   static const int TRUE_POS_GOAL_ = 2;
   static const int TRUE_NEG_GOAL_ = 3;
   static const int GROUND_EDGE_LABEL_ = 1;
 
  private:
   // represent edge labeled graph by linked list
+  // edges_[u] = [{v_1, e_1}, ..., {v_m, e_m}]
+  // u points to nodes v_1 to v_m with edge labels e_1 to e_m respectively
   std::vector<std::vector<std::pair<int, int>>> edges_;
 
   // map node names to node index
@@ -95,7 +111,7 @@ class GooseKernelHeuristic : public Heuristic {
   CGraph state_to_graph(const State &state);
 
   // 2. perform WL on CGraph
-  std::vector<int> wl_feature(const CGraph &graph);
+  std::vector<int> wl_feature(CGraph &graph);
 
   // 3. make a prediction with explicit feature
   int predict(const std::vector<int> &feature);
@@ -113,6 +129,7 @@ class GooseKernelHeuristic : public Heuristic {
   std::vector<double> weights_;
   double bias_;
   int feature_size_;
+  size_t iterations_;
 };
 
 }  // namespace goose_kernel_heuristic

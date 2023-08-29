@@ -12,9 +12,9 @@ struct SearchNodeInfo {
 
     unsigned int status : 2;
     int g : 30;
+    int h;
     StateID parent_state_id;
     OperatorID creating_operator;
-    int h;
 
     SearchNodeInfo()
         : status(NEW), g(-1), h(0), parent_state_id(StateID::no_state),

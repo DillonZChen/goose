@@ -59,6 +59,7 @@ class WeisfeilerLehmanKernel(Kernel):
         # initial colour is feature of the node
         colour = G.nodes[u]["colour"]
         cur_colours[u] = self._get_hash_value(colour)
+        # assert colour in self._hash and colour>=0, colour
         store_colour(colour)
 
       # WL iterations
@@ -140,3 +141,4 @@ class WeisfeilerLehmanKernel(Kernel):
   @property
   def n_colours_(self) -> int:
     return len(self._hash)
+  

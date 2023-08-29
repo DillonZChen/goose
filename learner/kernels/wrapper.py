@@ -58,6 +58,9 @@ class KernelModelWrapper():  # TODO optimise memory
     self._representation.convert_to_coloured_graph()
     return
   
+  def get_iterations(self) -> int:
+    return self._kernel.iterations
+
   def get_weights(self):
     return self._model.coef_
   
@@ -95,6 +98,7 @@ class KernelModelWrapper():  # TODO optimise memory
 
   def h_batch(self, states: List[State]) -> List[float]:
     graphs = [self._representation.state_to_cgraph(state) for state in states]
+
     X = self._kernel.get_x(graphs)
     y = self.predict(X)
     hs = np.rint(y).astype(int).tolist()

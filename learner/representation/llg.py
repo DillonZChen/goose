@@ -268,13 +268,13 @@ class LiftedLearningGraph(Representation, ABC):
       if node in self._pos_goal_nodes:
         idx = self._name_to_node[node]
         c_graph.nodes[idx]['colour'] = ACTIVATED_POS_GOAL_COLOUR
+        # print(node, idx)
         continue
       elif node in self._neg_goal_nodes:
         idx = self._name_to_node[node]
         c_graph.nodes[idx]['colour'] = ACTIVATED_NEG_GOAL_COLOUR
         continue
 
-      new_idx += 1
       node = new_idx
 
       # else add node and corresponding edges to graph
@@ -300,6 +300,8 @@ class LiftedLearningGraph(Representation, ABC):
         # connect variable to object
         c_graph.add_edge(u_of_edge=arg_node, v_of_edge=self._name_to_node[arg], edge_label=LLG_EDGE_LABELS["ground"])
         c_graph.add_edge(v_of_edge=arg_node, u_of_edge=self._name_to_node[arg], edge_label=LLG_EDGE_LABELS["ground"])
+        
+      new_idx += 1
 
     return c_graph
   
