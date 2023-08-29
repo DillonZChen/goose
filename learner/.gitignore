@@ -1,19 +1,22 @@
 lock
 logs*
-*.sas
 plans_*
-*.sh.e*
-*.sh.o*
 .ipynb_checkpoints
-*.log
 trained_models*
 validated_models*
 saved_models*
-*.sif
 data
 lifted
 plans
 plots
+
+*.sh.e*
+*.sh.o*
+*.log
+*.out
+*.sas
+*.sif
+*.graph
 
 slg
 flg
@@ -22,5 +25,3 @@ dlg
 
 sas_files
 plans
-
-*.graph

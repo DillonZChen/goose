@@ -9,4 +9,6 @@ r=llg
 
 m=trained_models_kernel/${r}_gripper_wl_${i}.joblib
 
-singularity exec ../goose.sif python3 run.py $df $pf kernel -m $m
+singularity exec ../goose.sif python3 run.py $df $pf kernel-opt -m $m --profile
+
+kcachegrind callgrind.out

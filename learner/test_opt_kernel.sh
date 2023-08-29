@@ -1,5 +1,5 @@
 df=../benchmarks/goose/gripper/domain.pddl
-pf=../benchmarks/goose/gripper/test/gripper-n30.pddl
+pf=../benchmarks/goose/gripper/test/gripper-n40.pddl
 
 p=fd
 # p=pwl
