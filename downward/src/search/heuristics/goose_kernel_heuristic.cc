@@ -152,6 +152,7 @@ void GooseKernelHeuristic::initialise_model(const plugins::Options &opts) {
   }
 
   // collect data from saved python model
+  // TODO(DZC) do not use pybind so valgrind can work
   std::string graph_file_path = model.attr("get_graph_file_path")().cast<std::string>();
   graph_ = CGraph(graph_file_path);
   hash_ = model.attr("get_hash")().cast<std::map<std::string, int>>();
