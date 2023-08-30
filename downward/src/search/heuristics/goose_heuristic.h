@@ -46,12 +46,12 @@ class GooseHeuristic : public Heuristic {
 
   pybind11::list list_to_goose_state(const State &ancestor_state);
 
-protected:
+ protected:
   virtual int compute_heuristic(const State &ancestor_state) override;
   virtual std::vector<int> compute_heuristic_batch(
     const std::vector<State> &ancestor_states) override;
   
-public:
+ public:
   explicit GooseHeuristic(const plugins::Options &opts);
 };
 

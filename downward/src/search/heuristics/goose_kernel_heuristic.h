@@ -28,19 +28,19 @@ class CGraph {  // LLG
   // construct graph from edges and colours;
   CGraph(const std::vector<std::vector<std::pair<int, int>>> &edges, const std::vector<int> &colour);
 
-  int colour(const int node) {
+  int colour(const int node) const {
     return colour_[node];
   }
 
-  size_t n_nodes() {
+  size_t n_nodes() const {
     return edges_.size();
   }
 
-  bool is_pos_goal_node(const std::string &node_name) {
+  bool is_pos_goal_node(const std::string &node_name) const {
     return pos_goal_nodes_.count(node_name);
   }
 
-  bool is_neg_goal_node(const std::string &node_name) {
+  bool is_neg_goal_node(const std::string &node_name) const {
     return neg_goal_nodes_.count(node_name);
   }
 
@@ -48,21 +48,21 @@ class CGraph {  // LLG
     return node_index_[node_name];
   }
 
-  std::vector<std::vector<std::pair<int, int>>> get_edges() {
+  const std::vector<std::vector<std::pair<int, int>>> get_edges() const {
     return edges_;
   }
 
-  std::vector<int> get_colours() {
+  std::vector<int> get_colours() const {
     return colour_;
   }
 
   void dump() {
     for (size_t u = 0; u < edges_.size(); u++) {
-      std::cout<<u<<" "<<colour_[u];
+      std::cout << u << " " << colour_[u];
       for (auto edge : edges_[u]) {
-        std::cout<<" "<<edge.first<<" "<<edge.second;
+        std::cout << " " << edge.first << " " << edge.second;
       }
-      std::cout<<std::endl;
+      std::cout  <<  std::endl;
     }
   }
 
@@ -111,7 +111,7 @@ class GooseKernelHeuristic : public Heuristic {
   CGraph state_to_graph(const State &state);
 
   // 2. perform WL on CGraph
-  std::vector<int> wl_feature(CGraph &graph);
+  std::vector<int> wl_feature(const CGraph &graph);
 
   // 3. make a prediction with explicit feature
   int predict(const std::vector<int> &feature);

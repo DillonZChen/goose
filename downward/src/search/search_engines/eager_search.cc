@@ -1,4 +1,4 @@
-#include "batch_eager_search.h"
+#include "eager_search.h"
 
 #include "../evaluation_context.h"
 #include "../evaluator.h"
@@ -19,8 +19,8 @@
 
 using namespace std;
 
-namespace batch_eager_search {
-BatchEagerSearch::BatchEagerSearch(const plugins::Options &opts)
+namespace eager_search {
+EagerSearch::EagerSearch(const plugins::Options &opts)
     : SearchEngine(opts),
       reopen_closed_nodes(opts.get<bool>("reopen_closed")),
       open_list(opts.get<shared_ptr<OpenListFactory>>("open")->
@@ -29,7 +29,7 @@ BatchEagerSearch::BatchEagerSearch(const plugins::Options &opts)
     heuristic = evals[0];
 }
 
-void BatchEagerSearch::initialize() {
+void EagerSearch::initialize() {
     log << "Conducting best first search"
         << (reopen_closed_nodes ? " with" : " without")
         << " reopening closed nodes, (real) bound = " << bound
@@ -54,7 +54,7 @@ void BatchEagerSearch::initialize() {
 
     statistics.inc_evaluated_states();
 
-    best_h = heuristic->compute_result_batch({initial_state})[0];
+    best_h = heuristic->compute_result_single(initial_state);
 
     if (open_list->is_dead_end(eval_context)) {
         log << "Initial state is a dead end." << endl;
@@ -69,12 +69,12 @@ void BatchEagerSearch::initialize() {
     }
 }
 
-void BatchEagerSearch::print_statistics() const {
+void EagerSearch::print_statistics() const {
     statistics.print_detailed_statistics();
     search_space.print_statistics();
 }
 
-SearchStatus BatchEagerSearch::step() {
+SearchStatus EagerSearch::step() {
     tl::optional<SearchNode> node;
 
     // Get first node in queue that is not closed
@@ -114,12 +114,10 @@ SearchStatus BatchEagerSearch::step() {
     vector<OperatorID> applicable_ops;
     successor_generator.generate_applicable_ops(s, applicable_ops);
 
-    std::vector<State> succ_states;
-    std::vector<OperatorProxy> ops;
     for (OperatorID op_id : applicable_ops) {
         OperatorProxy op = task_proxy.get_operators()[op_id];
         if ((node->get_g() + op.get_cost()) >= bound)
-            continue;
+          continue;
 
         State succ_state = state_registry.get_successor_state(s, op);
         statistics.inc_generated();
@@ -133,36 +131,24 @@ SearchStatus BatchEagerSearch::step() {
         if (succ_node.is_new()) {
             // We have not seen this state before.
             // Evaluate and create a new node.
-            succ_states.push_back(succ_state);
-            ops.push_back(op);
+            h = heuristic->compute_result_single(succ_state);
+            statistics.inc_evaluated_states();
+            statistics.inc_evaluations();
+            succ_node.open(*node, op, h);
+            open_list->insert(h, succ_state.get_id());
         }
-    }
-
-    size_t n_succs = succ_states.size();
-    if (n_succs>0) {
-      std::vector<int> hs = heuristic->compute_result_batch(succ_states);
-      statistics.inc_evaluated_states(n_succs);
-      statistics.inc_evaluations(n_succs);
-
-      for (size_t i = 0; i < n_succs; i++) {
-        State succ_state = succ_states[i];
-        OperatorProxy op = ops[i];
-        SearchNode succ_node = search_space.get_node(succ_state);
-        succ_node.open(*node, op, hs[i]);
-        open_list->insert(hs[i], succ_state.get_id());
-      }
     }
 
     return IN_PROGRESS;
 }
 
-void BatchEagerSearch::reward_progress() {
+void EagerSearch::reward_progress() {
     // Boost the "preferred operator" open lists somewhat whenever
     // one of the heuristics finds a state with a new best h value.
     open_list->boost_preferred();
 }
 
-void BatchEagerSearch::dump_search_space() const {
+void EagerSearch::dump_search_space() const {
     search_space.dump(task_proxy);
 }
 

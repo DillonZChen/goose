@@ -288,11 +288,11 @@ CGraph GooseKernelHeuristic::state_to_graph(const State &state) {
   return {edges, colours};
 }
 
-std::vector<int> GooseKernelHeuristic::wl_feature(CGraph &graph) {
+std::vector<int> GooseKernelHeuristic::wl_feature(const CGraph &graph) {
   // feature to return is a histogram of colours seen during training
   std::vector<int> feature(feature_size_, 0);
 
-  size_t n_nodes = graph.n_nodes();
+  const size_t n_nodes = graph.n_nodes();
 
   // role of colours_0 and colours_1 is switched every iteration for storing old and new colours
   std::vector<int> colours_0(n_nodes);
@@ -302,7 +302,7 @@ std::vector<int> GooseKernelHeuristic::wl_feature(CGraph &graph) {
   // determine size of neighbour colours from the start
   std::vector<std::vector<std::pair<int, int>>> neighbours = edges;
 
-  int col;
+  int col = -1;
   std::string new_colour;
 
   // collect initial colours
@@ -319,15 +319,10 @@ std::vector<int> GooseKernelHeuristic::wl_feature(CGraph &graph) {
     // we just switch the roles of colours_0 and colours_1 every loop
     if (itr % 2 == 0) {
       for (size_t u = 0; u < n_nodes; u++) {
-        col = colours_0[u];
-
         // we ignore colours we have not seen during training
-        if (col == -1) {
+        if (colours_0[u] == -1) {
           goto end_of_loop0;
         }
-
-        // this will be added to with sorted neighbour colours
-        new_colour = std::to_string(col);
 
         // collect colours from neighbours and sort
         for (size_t i = 0; i < edges[u].size(); i++) {
@@ -339,7 +334,8 @@ std::vector<int> GooseKernelHeuristic::wl_feature(CGraph &graph) {
         }
         sort(neighbours[u].begin(), neighbours[u].end());
 
-        // add sorted neighbours into sorted colour key
+        // add current colour and sorted neighbours into sorted colour key
+        new_colour = std::to_string(colours_0[u]);
         for (const auto &ne_pair : neighbours[u]) {
           new_colour += "," + std::to_string(ne_pair.first) + "," + std::to_string(ne_pair.second);
         }
@@ -356,15 +352,10 @@ end_of_loop0:
       }
     } else {
       for (size_t u = 0; u < n_nodes; u++) {
-        col = colours_1[u];
-
         // we ignore colours we have not seen during training
-        if (col == -1) {
+        if (colours_1[u] == -1) {
           goto end_of_loop1;
         }
-
-        // this will be added to with sorted neighbour colours
-        new_colour = std::to_string(col);
 
         // collect colours from neighbours and sort
         for (size_t i = 0; i < edges[u].size(); i++) {
@@ -376,7 +367,8 @@ end_of_loop0:
         }
         sort(neighbours[u].begin(), neighbours[u].end());
 
-        // add sorted neighbours into sorted colour key
+        // add current colour and sorted neighbours into sorted colour key
+        new_colour = std::to_string(colours_1[u]);
         for (const auto &ne_pair : neighbours[u]) {
           new_colour += "," + std::to_string(ne_pair.first) + "," + std::to_string(ne_pair.second);
         }

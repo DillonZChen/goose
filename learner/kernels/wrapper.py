@@ -93,7 +93,7 @@ class KernelModelWrapper():
       f.close()
 
     zero_weights = np.count_nonzero(weights==0)
-    print(f"{zero_weights}/{len(weights)} are zero")
+    print(f"{zero_weights}/{len(weights)} = {zero_weights/len(weights):.2f}% are zero")
 
     self._model_data_path = file_path
     pass

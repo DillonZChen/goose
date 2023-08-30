@@ -64,6 +64,8 @@ def pwl_cmd(df, pf, model_type, m, search, seed, profile, timeout=TIMEOUT, aux_f
 def fd_cmd(df, pf, model_type, m, search, seed, profile, timeout=TIMEOUT, aux_file=None, plan_file=None):
   if search == "gbbfs":
     search = "batch_eager_greedy"
+  elif search == "gbfs":
+    search = "eager_greedy"
   else:
     raise NotImplementedError
 
