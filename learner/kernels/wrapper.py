@@ -13,6 +13,7 @@ MODELS = [
   "svr",
   "ridge",
   "lasso",
+  "linear-regression",
 ]
 
 _MAX_MODEL_ITER = 10000
@@ -33,10 +34,11 @@ class KernelModelWrapper():
       "max_iter": _MAX_MODEL_ITER,
     }
     self._model = {
-      "linear-svr": LinearSVR(dual="auto", epsilon=args.e, C=args.C, **kwargs),
-      "svr": SVR(kernel="precomputed", epsilon=args.e, C=args.C, **kwargs),
-      "ridge": Ridge(alpha=args.a, **kwargs),
-      "lasso": Lasso(alpha=args.a, **kwargs),
+      "linear-svr": LinearSVR(dual="auto", epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
+      "svr": SVR(kernel="precomputed", epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
+      "ridge": Ridge(alpha=args.a, max_iter=_MAX_MODEL_ITER),
+      "lasso": Lasso(alpha=args.a, max_iter=_MAX_MODEL_ITER),
+      "linear-regression": LinearRegression(),
     }[self._model_name]
 
     self._train = True
@@ -95,9 +97,6 @@ class KernelModelWrapper():
 
     zero_weights = np.count_nonzero(weights==0)
     print(f"{zero_weights}/{len(weights)} = {zero_weights/len(weights):.2f} are zero")
-
-    print(sorted([model_hash[k] for k in model_hash], reverse=True))
-    breakpoint()
 
     # prune zero weights
     new_weights = []
