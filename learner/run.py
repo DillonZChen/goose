@@ -26,6 +26,8 @@ if __name__ == "__main__":
                       help="path of auxilary file such as *.sas or *.lifted")
   parser.add_argument("--plan-file", type=str, default=None,
                       help="path of *.plan file")
+  parser.add_argument("--profile", action='store_true',
+                      help="profile with valgrind")
   args = parser.parse_args()
 
   cmd, intermediate_file = search_cmd(
@@ -39,6 +41,7 @@ if __name__ == "__main__":
     seed=0,
     aux_file=args.aux_file,
     plan_file=args.plan_file,
+    profile=args.profile,
   )
 
   print(cmd)

@@ -103,7 +103,8 @@ CGraph::CGraph(const std::string &path) {
   remove(char_array);
 }
 
-CGraph::CGraph(const std::vector<std::vector<std::pair<int, int>>> &edges, const std::vector<int> &colour) : edges_(edges), colour_(colour) 
+CGraph::CGraph(const std::vector<std::vector<std::pair<int, int>>> &edges, 
+  const std::vector<int> &colour) : edges_(edges), colour_(colour) 
 { }
 
 GooseKernelHeuristic::GooseKernelHeuristic(const plugins::Options &opts)
@@ -113,53 +114,57 @@ GooseKernelHeuristic::GooseKernelHeuristic(const plugins::Options &opts)
 }
 
 void GooseKernelHeuristic::initialise_model(const plugins::Options &opts) {
-  // Add GOOSE submodule to the python path
-  auto gnn_path = std::getenv("GOOSE");
-  if (!gnn_path) {
-    std::cout << "GOOSE env variable not found. Aborting." << std::endl;
-    exit(-1);
+  std::string model_data_path = opts.get<string>("model_data");
+  std::string graph_data_path = opts.get<string>("graph_data");
+
+  std::cout << "Trying to load model data from files...\n";
+
+  // load graph data
+  graph_ = CGraph(graph_data_path);
+
+  // load model data
+  std::string line;
+  std::vector<std::string> toks;
+  std::ifstream infile(model_data_path);
+  int hash_cnt = 0, hash_size = 0, weight_cnt = 0, weight_size = 0;
+
+  while (std::getline(infile, line)) {
+    toks = tokenise(line);
+    if (line.find("hash size") != std::string::npos) {
+      hash_size = stoi(toks[0]);
+      hash_cnt = 0;
+      continue;
+    } else if (line.find("weights size") != std::string::npos) {
+      weight_size = stoi(toks[0]);
+      weight_cnt = 0;
+      continue;
+    } else if (line.find("bias") != std::string::npos) {
+      bias_ = stod(line);
+      continue;
+    } else if (line.find("iterations") != std::string::npos) {
+      iterations_ = stoi(line);
+      continue;
+    } 
+
+    if (hash_cnt < hash_size) {
+      hash_[toks[0]] = stoi(toks[1]);
+      hash_cnt++;
+      continue;
+    }
+
+    if (weight_cnt < weight_size) {
+      weights_.push_back(stod(line));
+      weight_cnt++;
+      continue;
+    }
   }
-  std::string path(gnn_path);
-  std::cout << "GOOSE path is " << path << std::endl;
-  if (access(path.c_str(), F_OK) == -1) {
-    std::cout << "GOOSE points to non-existent path. Aborting." << std::endl;
-    exit(-1);
-  }
 
-  // Append python module directory to the path
-  py::module sys = py::module::import("sys");
-  sys.attr("path").attr("append")(path);
+  // remove file
+  char* char_array = new char[model_data_path.length() + 1];
+  strcpy(char_array, model_data_path.c_str());
+  remove(char_array);
 
-  // Force all output being printed to stdout. Otherwise INFO logging from
-  // python will be printed to stderr, even if it is not an error.
-  sys.attr("stderr") = sys.attr("stdout");
-
-  // Read paths
-  std::string model_path = opts.get<string>("model_path");
-  std::string domain_file = opts.get<string>("domain_file");
-  std::string instance_file = opts.get<string>("instance_file");
-
-  // Throw everything into Python code
-  std::cout << "Trying to load model from file " << model_path << " ...\n";
-  py::module util_module = py::module::import("util.save_load");
-  pybind11::object model = util_module.attr("load_kernel_model_and_setup")(model_path, domain_file, instance_file);
-  
-  // only supports LLG WL kernel
-  if (!model.attr("lifted_state_input")().cast<bool>()) {
-    std::cout << "Grounded optimised kernel not implemented. "
-              << "This optimisation is only for LLG." << std::endl;
-    exit(-1);
-  }
-
-  // collect data from saved python model
-  // TODO(DZC) do not use pybind so valgrind can work
-  std::string graph_file_path = model.attr("get_graph_file_path")().cast<std::string>();
-  graph_ = CGraph(graph_file_path);
-  hash_ = model.attr("get_hash")().cast<std::map<std::string, int>>();
-  weights_ = model.attr("get_weights")().cast<std::vector<double>>();
-  bias_ = model.attr("get_bias")().cast<double>();
   feature_size_ = static_cast<int>(weights_.size());
-  iterations_ = model.attr("get_iterations")().cast<size_t>();
 }
 
 void GooseKernelHeuristic::initialise_facts() {
@@ -297,58 +302,98 @@ std::vector<int> GooseKernelHeuristic::wl_feature(CGraph &graph) {
   std::vector<int> feature(feature_size_, 0);
 
   size_t n_nodes = graph.n_nodes();
-  std::vector<int> cur_colours(n_nodes);
+
+  // role of colours_0 and colours_1 is switched every iteration for storing old and new colours
+  std::vector<int> colours_0(n_nodes);
+  std::vector<int> colours_1(n_nodes);
   std::vector<std::vector<std::pair<int, int>>> edges = graph.get_edges();
-  int col;  // 0 <= col < feature_size_
+
+  // determine size of neighbour colours from the start
+  std::vector<std::vector<std::pair<int, int>>> neighbours = edges;
+
+  int col;
+  std::string new_colour;
 
   // collect initial colours
   for (size_t u = 0; u < n_nodes; u++) {
     // initial colours always in hash and hash value always within size
     col = hash_[std::to_string(graph.colour(u))];
     feature[col]++;
-    cur_colours[u] = col;
+    colours_0[u] = col;
   }
 
   // main WL algorithm loop
   for (size_t itr = 0; itr < iterations_; itr++) {
-    std::vector<int> new_colours(n_nodes);
-    for (size_t u = 0; u < n_nodes; u++) {
-      col = cur_colours[u];
 
-      // we ignore colours we have not seen during training
-      if (col==-1) {
-        new_colours[u] = -1;
-        continue;
+    // instead of assigning colours_0 = colours_1 at the end of every loop
+    // we just switch the roles of colours_0 and colours_1 every loop
+    if (itr % 2 == 0) {
+      for (size_t u = 0; u < n_nodes; u++) {
+        col = colours_0[u];
+
+        // we ignore colours we have not seen during training
+        if (col==-1) {
+          colours_1[u] = -1;
+          continue;
+        }
+
+        // this will be added to with sorted neighbour colours
+        new_colour = std::to_string(col);
+
+        // collect colours from neighbours and sort
+        for (size_t i = 0; i < edges[u].size(); i++) {
+          neighbours[u][i] = std::make_pair(colours_0[edges[u][i].first], edges[u][i].second);
+        }
+        sort(neighbours[u].begin(), neighbours[u].end());
+
+        // add sorted neighbours into sorted colour key
+        for (const auto &ne_pair : neighbours[u]) {
+          new_colour += "," + std::to_string(ne_pair.first) + "," + std::to_string(ne_pair.second);
+        }
+
+        // hash seen colours
+        if (hash_.count(new_colour)) {
+          col = hash_[new_colour];
+          feature[col]++;
+        } else {
+          col = -1;
+        }
+        colours_1[u] = col;
       }
+    } else {
+      for (size_t u = 0; u < n_nodes; u++) {
+        col = colours_1[u];
 
-      // this will be added to with sorted neighbour colours
-      std::string new_colour = std::to_string(col);
+        // we ignore colours we have not seen during training
+        if (col==-1) {
+          colours_0[u] = -1;
+          continue;
+        }
 
-      // collect colours from neighbours and sort
-      std::vector<std::pair<int, int>> neighbours;
-      for (const auto &ne_pair : edges[u]) {
-        col = cur_colours[ne_pair.first];
-        neighbours.push_back(std::make_pair(col, ne_pair.second));
+        // this will be added to with sorted neighbour colours
+        new_colour = std::to_string(col);
+
+        // collect colours from neighbours and sort
+        for (size_t i = 0; i < edges[u].size(); i++) {
+          neighbours[u][i] = std::make_pair(colours_1[edges[u][i].first], edges[u][i].second);
+        }
+        sort(neighbours[u].begin(), neighbours[u].end());
+
+        // add sorted neighbours into sorted colour key
+        for (const auto &ne_pair : neighbours[u]) {
+          new_colour += "," + std::to_string(ne_pair.first) + "," + std::to_string(ne_pair.second);
+        }
+
+        // hash seen colours
+        if (hash_.count(new_colour)) {
+          col = hash_[new_colour];
+          feature[col]++;
+        } else {
+          col = -1;
+        }
+        colours_0[u] = col;
       }
-      sort(neighbours.begin(), neighbours.end());
-
-      // add sorted neighbours into sorted colour key
-      for (const auto &ne_pair : neighbours) {
-        new_colour += "," + std::to_string(ne_pair.first) + "," + std::to_string(ne_pair.second);
-      }
-
-      // hash seen colours
-      if (hash_.count(new_colour)) {
-        col = hash_[new_colour];
-        feature[col]++;
-      } else {
-        col = -1;
-      }
-      new_colours[u] = col;
     }
-
-    // can be optimised by not assigning but switching between the two instead...
-    cur_colours = new_colours;
   }
 
   return feature;
@@ -388,17 +433,13 @@ class GooseKernelHeuristicFeature : public plugins::TypedFeature<Evaluator, Goos
 
     // https://github.com/aibasel/downward/pull/170 for string options
     add_option<string>(
-        "model_path",
-        "path to trained model or model weights",
+        "model_data",
+        "path to trained model data in the form of a .txt file",
         "default_value");
     add_option<string>(
-        "domain_file",
-        "Path to the domain file.",
-        "default_file");
-    add_option<string>(
-        "instance_file",
-        "Path to the instance file.",
-        "default_file");
+        "graph_data",
+        "path to trained model graph representation data",
+        "default_value");
 
     Heuristic::add_options_to_feature(*this);
 

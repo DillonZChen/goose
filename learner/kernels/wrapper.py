@@ -9,7 +9,7 @@ from kernels.base_kernel import Histogram
 
 _MAX_MODEL_ITER = 10000
 
-class KernelModelWrapper():  # TODO optimise memory
+class KernelModelWrapper():
   def __init__(self, args) -> None:
     super().__init__()
     self._model_name = args.model
@@ -67,6 +67,40 @@ class KernelModelWrapper():  # TODO optimise memory
   def get_bias(self):
     return self._model.intercept_
   
+  def write_model_data(self) -> None:
+    from datetime import datetime
+    df = self._representation.domain_pddl
+    pf = self._representation.problem_pddl
+    t = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+    file_path = "_".join(["graph", df, pf, t])
+    file_path = file_path.replace("/","-").replace(".pddl","").replace(".","")
+    file_path = file_path + ".model"
+
+    model_hash = self.get_hash()
+    weights = self.get_weights()
+    bias = self.get_bias()
+    iterations = self.get_iterations()
+
+    with open(file_path, 'w') as f:
+      f.write(f"{len(model_hash)} hash size\n")
+      for k in model_hash:
+        f.write(f"{k} {model_hash[k]}\n")
+      f.write(f"{len(weights)} weights size\n")
+      for weight in weights:
+        f.write(str(weight) + '\n')
+      f.write(f"{bias[0]} bias\n")
+      f.write(f"{iterations} iterations\n")
+      f.close()
+
+    zero_weights = np.count_nonzero(weights==0)
+    print(f"{zero_weights}/{len(weights)} are zero")
+
+    self._model_data_path = file_path
+    pass
+
+  def get_model_data_path(self) -> str:
+    return self._model_data_path
+  
   def write_representation_to_file(self) -> None:
     self._representation.write_to_file()
     return
@@ -74,7 +108,7 @@ class KernelModelWrapper():  # TODO optimise memory
   def get_graph_file_path(self) -> str:
     return self._representation.get_graph_file_path()
   
-  def get_hash(self) -> map:
+  def get_hash(self) -> Dict[str, int]:
     return self._kernel.get_hash()
     
   def compute_histograms(self, graphs: CGraph) -> None:

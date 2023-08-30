@@ -1,5 +1,5 @@
 df=../benchmarks/goose/gripper/domain.pddl
-pf=../benchmarks/goose/gripper/test/gripper-n40.pddl
+pf=../benchmarks/goose/gripper/test/gripper-n100.pddl
 
 p=fd
 # p=pwl
@@ -9,4 +9,5 @@ r=llg
 
 m=trained_models_kernel/${r}_gripper_wl_${i}.joblib
 
-singularity exec ../goose.sif python3 run.py $df $pf kernel-opt -m $m
+# singularity exec ../goose.sif python3 run.py $df $pf kernel-opt -m $m
+python3 run.py $df $pf kernel-opt -m $m
