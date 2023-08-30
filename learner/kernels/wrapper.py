@@ -72,8 +72,13 @@ class KernelModelWrapper():
   def get_weights(self):
     return self._model.coef_
   
-  def get_bias(self):
-    return self._model.intercept_
+  def get_bias(self) -> float:
+    bias = self._model.intercept_
+    if type(bias) == float:
+      return bias
+    if type(bias) == np.float64:
+      return float(bias)
+    return float(bias[0])  # linear-svr returns array
   
   def get_num_weights(self):
     return len(self.get_weights())
@@ -126,7 +131,7 @@ class KernelModelWrapper():
       f.write(f"{len(weights)} weights size\n")
       for weight in weights:
         f.write(str(weight) + '\n')
-      f.write(f"{bias[0]} bias\n")
+      f.write(f"{bias} bias\n")
       f.write(f"{iterations} iterations\n")
       f.close()
 
