@@ -7,6 +7,7 @@
 #include <string>
 #include <regex>
 #include <cstdio>
+#include <algorithm>
 
 #include "../plugins/plugin.h"
 #include "../task_utils/task_properties.h"
@@ -218,15 +219,7 @@ void GooseKernelHeuristic::initialise_facts() {
     std::pair<std::string, std::vector<std::string>> lifted_fact(pred, args); 
 
     fact_to_lifted_input.insert({fact.get_pair(), lifted_fact});
-
-    #ifndef NDEBUG
-      std::cout << name << " ";
-    #endif
   }
-
-  #ifndef NDEBUG
-    std::cout << std::endl;
-  #endif
 }
 
 CGraph GooseKernelHeuristic::state_to_graph(const State &state) {
@@ -253,7 +246,6 @@ CGraph GooseKernelHeuristic::state_to_graph(const State &state) {
 
     if (graph_.is_pos_goal_node(node_name)) {
       colours[graph_.get_node_index(node_name)] = graph_.TRUE_POS_GOAL_;
-      // std::cout<<node_name<<" "<<graph_.get_node_index(node_name)<<std::endl;
       continue;
     }
     if (graph_.is_neg_goal_node(node_name)) {
@@ -264,7 +256,6 @@ CGraph GooseKernelHeuristic::state_to_graph(const State &state) {
     // add new node
     cur_node_fact = new_idx;
     colours.push_back(1);
-    // colours.push_back(graph_.TRUE_FACT_);  // this causes issues when linking?
     std::vector<std::pair<int, int>> new_edges_fact;
     edges.push_back(new_edges_fact);
 
@@ -324,7 +315,6 @@ std::vector<int> GooseKernelHeuristic::wl_feature(CGraph &graph) {
 
   // main WL algorithm loop
   for (size_t itr = 0; itr < iterations_; itr++) {
-
     // instead of assigning colours_0 = colours_1 at the end of every loop
     // we just switch the roles of colours_0 and colours_1 every loop
     if (itr % 2 == 0) {
@@ -332,9 +322,8 @@ std::vector<int> GooseKernelHeuristic::wl_feature(CGraph &graph) {
         col = colours_0[u];
 
         // we ignore colours we have not seen during training
-        if (col==-1) {
-          colours_1[u] = -1;
-          continue;
+        if (col == -1) {
+          goto end_of_loop0;
         }
 
         // this will be added to with sorted neighbour colours
@@ -342,7 +331,11 @@ std::vector<int> GooseKernelHeuristic::wl_feature(CGraph &graph) {
 
         // collect colours from neighbours and sort
         for (size_t i = 0; i < edges[u].size(); i++) {
-          neighbours[u][i] = std::make_pair(colours_0[edges[u][i].first], edges[u][i].second);
+          col = colours_0[edges[u][i].first];
+          if (col == -1) {
+            goto end_of_loop0;
+          }
+          neighbours[u][i] = std::make_pair(col, edges[u][i].second);
         }
         sort(neighbours[u].begin(), neighbours[u].end());
 
@@ -358,6 +351,7 @@ std::vector<int> GooseKernelHeuristic::wl_feature(CGraph &graph) {
         } else {
           col = -1;
         }
+end_of_loop0:
         colours_1[u] = col;
       }
     } else {
@@ -365,9 +359,8 @@ std::vector<int> GooseKernelHeuristic::wl_feature(CGraph &graph) {
         col = colours_1[u];
 
         // we ignore colours we have not seen during training
-        if (col==-1) {
-          colours_0[u] = -1;
-          continue;
+        if (col == -1) {
+          goto end_of_loop1;
         }
 
         // this will be added to with sorted neighbour colours
@@ -375,7 +368,11 @@ std::vector<int> GooseKernelHeuristic::wl_feature(CGraph &graph) {
 
         // collect colours from neighbours and sort
         for (size_t i = 0; i < edges[u].size(); i++) {
-          neighbours[u][i] = std::make_pair(colours_1[edges[u][i].first], edges[u][i].second);
+          col = colours_1[edges[u][i].first];
+          if (col == -1) {
+            goto end_of_loop1;
+          }
+          neighbours[u][i] = std::make_pair(col, edges[u][i].second);
         }
         sort(neighbours[u].begin(), neighbours[u].end());
 
@@ -391,6 +388,7 @@ std::vector<int> GooseKernelHeuristic::wl_feature(CGraph &graph) {
         } else {
           col = -1;
         }
+end_of_loop1:
         colours_0[u] = col;
       }
     }
