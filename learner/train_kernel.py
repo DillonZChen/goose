@@ -8,6 +8,7 @@ import representation
 import kernels
 from sklearn.model_selection import cross_validate
 from sklearn.metrics import make_scorer, mean_squared_error
+from kernels.wrapper import MODELS
 from dataset.dataset import get_dataset_from_args_kernels
 from util.save_load import print_arguments, save_kernel_model
 from util.metrics import f1_macro
@@ -15,13 +16,6 @@ from util.visualise import get_confusion_matrix
 
 import warnings
 warnings.filterwarnings('ignore') 
-
-
-_MODELS = [
-  "linear-svr",
-  "svr",
-  "lasso",
-]
 
 _CV_FOLDS = 5
 _PLOT_DIR = "plots"
@@ -42,8 +36,10 @@ def parse_args():
   parser.add_argument('-l', '--iterations', type=int, default=5,
                       help="number of iterations for kernel algorithms")
   
-  parser.add_argument('-m', '--model', type=str, default="linear-svr", choices=_MODELS,
+  parser.add_argument('-m', '--model', type=str, default="linear-svr", choices=MODELS,
                       help="ML model")
+  parser.add_argument('-a', type=float, default=1,
+                      help="L1 and L2 regularisation parameter of linear regression; strength is proportional to a")
   parser.add_argument('-C', type=float, default=1,
                       help="regularisation parameter of SVR; strength is inversely proportional to C")
   parser.add_argument('-e', type=float, default=0.1,

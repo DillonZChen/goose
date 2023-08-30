@@ -1,12 +1,19 @@
 import numpy as np
 import kernels
-from sklearn.linear_model import Lasso
+from sklearn.linear_model import Lasso, Ridge, LinearRegression
 from sklearn.svm import LinearSVR, SVR
 from typing import List, Optional, Dict
 from representation import CGraph, Representation, REPRESENTATIONS
 from planning import State
 from kernels.base_kernel import Histogram
 
+
+MODELS = [
+  "linear-svr",
+  "svr",
+  "ridge",
+  "lasso",
+]
 
 _MAX_MODEL_ITER = 10000
 
@@ -25,14 +32,12 @@ class KernelModelWrapper():
     kwargs = {
       "max_iter": _MAX_MODEL_ITER,
     }
-    if self._model_name == "linear-svr":
-      self._model = LinearSVR(dual="auto", epsilon=args.e, C=args.C, **kwargs)
-    elif self._model_name == "svr":
-      self._model = SVR(kernel="precomputed", epsilon=args.e, C=args.C, **kwargs)
-    elif self._model_name == "lasso":
-      self._model = Lasso(**kwargs)
-    else:
-      raise NotImplementedError
+    self._model = {
+      "linear-svr": LinearSVR(dual="auto", epsilon=args.e, C=args.C, **kwargs),
+      "svr": SVR(kernel="precomputed", epsilon=args.e, C=args.C, **kwargs),
+      "ridge": Ridge(alpha=args.a, **kwargs),
+      "lasso": Lasso(alpha=args.a, **kwargs),
+    }[self._model_name]
 
     self._train = True
     
@@ -91,6 +96,9 @@ class KernelModelWrapper():
     zero_weights = np.count_nonzero(weights==0)
     print(f"{zero_weights}/{len(weights)} = {zero_weights/len(weights):.2f} are zero")
 
+    print(sorted([model_hash[k] for k in model_hash], reverse=True))
+    breakpoint()
+
     # prune zero weights
     new_weights = []
     new_model_hash = {}
@@ -98,8 +106,8 @@ class KernelModelWrapper():
     reverse_hash = {model_hash[k]: k for k in model_hash}
 
     for colour, weight in enumerate(weights):
-      if abs(weight) < 0.05:  # TODO make this a parameter
-      # if abs(weight) == 0:
+      # if abs(weight) <= 0.05:  # TODO make this a parameter
+      if abs(weight) == 0:
         continue
 
       new_weights.append(weight)
@@ -147,12 +155,10 @@ class KernelModelWrapper():
     graphs: CGraph, 
     histograms: Optional[Dict[CGraph, Histogram]]
   ) -> np.array:
-    if self._model_name in {"linear-svr", "lasso"}:
-      return self._kernel.get_x(graphs, histograms)
-    elif self._model_name == "svr":
+    if self._model_name == "svr":
       return self._kernel.get_k(graphs, histograms)
     else:
-      raise ValueError(self._model_name)
+      return self._kernel.get_x(graphs, histograms)
 
   def h(self, state: State) -> float:
     h = self.h_batch([state])[0]
@@ -160,42 +166,10 @@ class KernelModelWrapper():
 
   def h_batch(self, states: List[State]) -> List[float]:
     graphs = [self._representation.state_to_cgraph(state) for state in states]
-
     X = self._kernel.get_x(graphs)
     y = self.predict(X)
     hs = np.rint(y).astype(int).tolist()
     return hs
-
-    # if len(states)==0:
-    #   graphs = [self._representation.state_to_cgraph(state) for state in states]
-    #   X = self._kernel.get_x(graphs)
-    #   y = self.predict(X)
-    #   hs = np.rint(y).astype(int).tolist()
-    #   return hs
-    # import time 
-    # rep = 0
-    # x = 0
-    # pred = 0
-    # for _ in range(100):
-    #   t = time.time()
-    #   graphs = [self._representation.state_to_cgraph(state) for state in states]
-    #   rep += time.time() - t
-
-    #   t = time.time()
-    #   X = self._kernel.get_x(graphs)
-    #   x += time.time() - t
-
-    #   t = time.time()
-    #   y = self.predict(X)
-    #   pred += time.time() - t
-
-    #   hs = np.rint(y).astype(int).tolist()
-
-    # print(" rep:", rep)
-    # print("   x:", x)
-    # print("pred:", pred)
-    # assert 0
-    # return hs
   
   @property
   def n_colours_(self) -> int:
