@@ -81,6 +81,30 @@ class KernelModelWrapper():
     bias = self.get_bias()
     iterations = self.get_iterations()
 
+    zero_weights = np.count_nonzero(weights==0)
+    print(f"{zero_weights}/{len(weights)} = {zero_weights/len(weights):.2f}% are zero")
+
+    # prune zero weights
+    new_weights = []
+    new_model_hash = {}
+
+    reverse_hash = {model_hash[k]: k for k in model_hash}
+
+    for colour, weight in enumerate(weights):
+      if abs(weight) < 0.05:
+      # if abs(weight) == 0:
+        continue
+
+      new_weights.append(weight)
+
+      key = reverse_hash[colour]
+      val = model_hash[key]
+      new_model_hash[key] = val
+
+    model_hash = new_model_hash
+    weight = new_weights
+
+    # write data
     with open(file_path, 'w') as f:
       f.write(f"{len(model_hash)} hash size\n")
       for k in model_hash:
@@ -91,9 +115,6 @@ class KernelModelWrapper():
       f.write(f"{bias[0]} bias\n")
       f.write(f"{iterations} iterations\n")
       f.close()
-
-    zero_weights = np.count_nonzero(weights==0)
-    print(f"{zero_weights}/{len(weights)} = {zero_weights/len(weights):.2f}% are zero")
 
     self._model_data_path = file_path
     pass
