@@ -1,12 +1,14 @@
-l=1
 k=wl
 d=gripper
 
-for r in llg
+for m in linear-svr lasso
 do
-  for l in 1 3 5
+  for r in llg
   do
-    echo $r $k $l $d
-    python3 train_kernel.py -k $k -l $l -r $r -d $d --save-file ${r}_${d}_${k}_${l}
+    for l in 1 3 5
+    do
+      echo python3 train_kernel.py -k $k -l $l -r $r -d $d -m $m --save-file ${m}_${r}_${d}_${k}_${l}
+      python3 train_kernel.py -k $k -l $l -r $r -d $d -m $m --save-file ${m}_${r}_${d}_${k}_${l}
+    done
   done
 done

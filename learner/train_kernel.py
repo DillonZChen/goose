@@ -6,7 +6,6 @@ import argparse
 import numpy as np
 import representation
 import kernels
-from sklearn.svm import LinearSVR, SVR
 from sklearn.model_selection import cross_validate
 from sklearn.metrics import make_scorer, mean_squared_error
 from dataset.dataset import get_dataset_from_args_kernels
@@ -21,6 +20,7 @@ warnings.filterwarnings('ignore')
 _MODELS = [
   "linear-svr",
   "svr",
+  "lasso",
 ]
 
 _CV_FOLDS = 5
@@ -73,6 +73,8 @@ def perform_training(X, y, model, args):
   print(f"Model training completed in {time.time()-t:.2f}s")
   for metric in _SCORING:
     print(f"train_{metric}: {_SCORING[metric](model.get_learning_model(), X, y):.2f}")
+  print(f"zero_weights: {model.get_num_zero_weights()}/{model.get_num_weights()} = " + \
+        f"{model.get_num_zero_weights()/model.get_num_weights():.2f}")
   save_kernel_model(model, args)
   return
 

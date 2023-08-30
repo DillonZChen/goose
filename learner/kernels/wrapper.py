@@ -1,5 +1,6 @@
 import numpy as np
 import kernels
+from sklearn.linear_model import Lasso
 from sklearn.svm import LinearSVR, SVR
 from typing import List, Optional, Dict
 from representation import CGraph, Representation, REPRESENTATIONS
@@ -22,14 +23,14 @@ class KernelModelWrapper():
     self._representation = None
 
     kwargs = {
-      "epsilon": args.e,
-      "C": args.C,
       "max_iter": _MAX_MODEL_ITER,
     }
     if self._model_name == "linear-svr":
-      self._model = LinearSVR(dual="auto", **kwargs)
+      self._model = LinearSVR(dual="auto", epsilon=args.e, C=args.C, **kwargs)
     elif self._model_name == "svr":
-      self._model = SVR(kernel="precomputed", **kwargs)
+      self._model = SVR(kernel="precomputed", epsilon=args.e, C=args.C, **kwargs)
+    elif self._model_name == "lasso":
+      self._model = Lasso(**kwargs)
     else:
       raise NotImplementedError
 
@@ -67,6 +68,12 @@ class KernelModelWrapper():
   def get_bias(self):
     return self._model.intercept_
   
+  def get_num_weights(self):
+    return len(self.get_weights())
+  
+  def get_num_zero_weights(self):
+    return np.count_nonzero(self.get_weights()==0)
+  
   def write_model_data(self) -> None:
     from datetime import datetime
     df = self._representation.domain_pddl
@@ -82,7 +89,7 @@ class KernelModelWrapper():
     iterations = self.get_iterations()
 
     zero_weights = np.count_nonzero(weights==0)
-    print(f"{zero_weights}/{len(weights)} = {zero_weights/len(weights):.2f}% are zero")
+    print(f"{zero_weights}/{len(weights)} = {zero_weights/len(weights):.2f} are zero")
 
     # prune zero weights
     new_weights = []
@@ -91,7 +98,7 @@ class KernelModelWrapper():
     reverse_hash = {model_hash[k]: k for k in model_hash}
 
     for colour, weight in enumerate(weights):
-      if abs(weight) < 0.05:
+      if abs(weight) < 0.05:  # TODO make this a parameter
       # if abs(weight) == 0:
         continue
 
@@ -140,7 +147,7 @@ class KernelModelWrapper():
     graphs: CGraph, 
     histograms: Optional[Dict[CGraph, Histogram]]
   ) -> np.array:
-    if self._model_name == "linear-svr":
+    if self._model_name in {"linear-svr", "lasso"}:
       return self._kernel.get_x(graphs, histograms)
     elif self._model_name == "svr":
       return self._kernel.get_k(graphs, histograms)
