@@ -79,19 +79,13 @@ void Perfect::write_state_to_file(const State& s, std::ofstream &plan_file) {
     if (str.find(str2) != std::string::npos) {
       str.replace(str.find(str2),std::string(str2).length(),",)");
     }
+    str2 = " ";
+    if (str.find(str2) != std::string::npos) {
+      str.replace(str.find(str2),std::string(str2).length(),"");
+    }
     plan_file << str << " ";
   }
   plan_file << endl;
-}
-
-std::vector<std::string> tokenise(const string str) {
-  std::istringstream iss(str);
-  std::string s;
-  std::vector<std::string> ret;
-  while (std::getline(iss, s, ' ')) {
-    ret.push_back(s);
-  }
-  return ret;
 }
 
 inline bool is_goal_state(TaskProxy task, const State &state) {

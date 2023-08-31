@@ -1,5 +1,5 @@
 k=wl
-d=gripper
+d=goose-gripper
 r=llg
 
 for m in linear-svr lasso ridge linear-regression

@@ -44,8 +44,8 @@ if __name__ == "__main__":
     state_file = f"{state_dir}/{os.path.basename(pf).replace('.pddl', '')}.states"
     state_file2 = f"{state_dir2}/{os.path.basename(pf).replace('.pddl', '')}.states"
 
-    cmd = f"export PLAN_PATH={plan} && singularity exec ../goose.sif ./../powerlifted/powerlifted.py --gpu -d {df} -i {pf} -s perfect --plan-file {state_file2}"
-    log = os.popen(cmd).readlines()
+    # cmd = f"export PLAN_PATH={plan} && singularity exec ../goose.sif ./../powerlifted/powerlifted.py --gpu -d {df} -i {pf} -s perfect --plan-file {state_file2}"
+    # log = os.popen(cmd).readlines()
     
     cmd = f"export PLAN_INPUT_PATH={plan} && export STATES_OUTPUT_PATH={state_file} && " + \
           f"./../downward/fast-downward.py {df} {pf} --search 'perfect([kernel(model_data=\"a\", graph_data=\"a\")])'"

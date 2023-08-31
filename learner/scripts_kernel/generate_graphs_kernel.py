@@ -17,4 +17,3 @@ if __name__ == "__main__":
   gen_graph_rep(representation=rep,
                 regenerate=args.regenerate,
                 domain=args.domain)
-    

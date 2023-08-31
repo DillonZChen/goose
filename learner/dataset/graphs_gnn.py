@@ -16,6 +16,7 @@ from representation import REPRESENTATIONS
 from dataset.htg_domain_info import get_all_htg_instance_files
 from dataset.ipc_domain_info import same_domain, GROUNDED_DOMAINS, get_ipc_domain_problem_files
 from dataset.goose_domain_info import get_train_goose_instance_files
+from dataset.ipc2023_learning_domain_info import get_train_ipc2023_learning_instance_files
 
 
 _SAVE_DIR = "data/graphs_gnn"
@@ -65,35 +66,16 @@ def get_graph_data(
 
   print("Loading train data...")
   print("NOTE: the data has been precomputed and saved.")
-  print("Exec 'python3 scripts/generate_graphs_gnn.py --regenerate' if representation has been updated!")
+  print("Exec 'python3 scripts_graphs/generate_graphs_gnn.py --regenerate' if representation has been updated!")
 
   path = get_data_dir_path(representation=representation)
   print(f"Path to data: {path}")
 
   ret = []
-  for domain_name in sorted(list(os.listdir(path))):
-    if ".data" in domain_name:
-      continue
-    if domain_name in ipc_domain_info.GENERAL_COST_DOMAINS or domain_name in htg_domain_info.GENERAL_COST_DOMAINS:
-      # tqdm.write(f"\t{domain_name} skipped since it does not have unit costs")
-      continue
-    if domain == "all":
-      pass  # accept everything
-    elif domain == "ipc-only":  # codebase getting bloated
-      if "ipc-" not in domain_name:
-        continue
-    elif domain == "goose-di":  # ipc only
-      if domain_name in goose_domain_info.DOMAINS_NOT_TO_TRAIN or "htg-" in domain_name or "goose-" in domain_name:
-        continue
-    else:
-      if "-only" not in domain and not same_domain(domain, domain_name):
-          continue
-      elif "-only" in domain and domain.replace("-only", "")!=domain_name:
-          continue
       
-    for data in sorted(list(os.listdir(f"{path}/{domain_name}"))):
-      next_data = torch.load(f'{path}/{domain_name}/{data}')
-      ret+=next_data
+  for data in sorted(list(os.listdir(f"{path}/{domain}"))):
+    next_data = torch.load(f'{path}/{domain}/{data}')
+    ret+=next_data
 
   print(f"{domain} dataset of size {len(ret)} loaded!")
   return ret
@@ -140,6 +122,7 @@ def gen_graph_rep(
   tasks  = get_ipc_domain_problem_files(del_free=False)
   # tasks += get_all_htg_instance_files(split=True)
   tasks += get_train_goose_instance_files()
+  tasks += get_train_ipc2023_learning_instance_files()
 
   new_generated = 0
   pbar = tqdm(tasks)
