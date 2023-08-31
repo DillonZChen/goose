@@ -17,6 +17,7 @@ plots
 *.sas
 *.sif
 *.graph
+*.states
 
 slg
 flg

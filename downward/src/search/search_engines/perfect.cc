@@ -13,6 +13,7 @@
 #include <cassert>
 #include <cstdlib>
 #include <memory>
+#include <map>
 #include <optional.hh>
 #include <set>
 #include <typeinfo>
@@ -73,15 +74,17 @@ void Perfect::write_state_to_file(const State& s, std::ofstream &plan_file) {
     std::string str = fact_to_string[fact.get_pair()];
     std::string str2 = "()";
     if (str.find(str2) != std::string::npos) {
-      str.replace(str.find(str2),std::string(str2).length(),"");
+      str.replace(str.find(str2), std::string(str2).length(), "");
     }
     str2 = ")";
     if (str.find(str2) != std::string::npos) {
-      str.replace(str.find(str2),std::string(str2).length(),",)");
+      str.replace(str.find(str2), std::string(str2).length(), ",)");
     }
-    str2 = " ";
-    if (str.find(str2) != std::string::npos) {
-      str.replace(str.find(str2),std::string(str2).length(),"");
+    for (size_t i = 0; i < str.length(); i++) {
+      str2 = " ";
+      if (str.find(str2) != std::string::npos) {
+        str.replace(str.find(str2), std::string(str2).length(), "");
+      }
     }
     plan_file << str << " ";
   }
@@ -97,46 +100,36 @@ inline bool is_goal_state(TaskProxy task, const State &state) {
 }
 
 SearchStatus Perfect::step() {
-  
   State s = state_registry.get_initial_state();
   std::ofstream output_file(std::getenv("STATES_OUTPUT_PATH"));
   write_state_to_file(s, output_file);
 
-  string line;
+  std::map<std::string, size_t> name_to_op_id;
+  for (size_t op_id = 0; op_id < task_proxy.get_operators().size(); op_id++) {
+    OperatorProxy op = task_proxy.get_operators()[op_id];
+    name_to_op_id[op.get_name()] = op_id;
+    std::cout << op.get_name() << std::endl;
+  }
+
+  std::string line;
   ifstream file(std::getenv("PLAN_INPUT_PATH"));
   if (file.is_open()) {
-      while ( getline (file,line) ) {
+      while (getline(file, line)) {
           if (line[0] == ';') {  // finished parsing
               break;
           }
 
           line = line.substr(1, line.size()-2);
-          std::cout << line << std::endl;
 
-          // Vector of string to save tokens
-          std::vector<string> toks;
-          stringstream check1(line);
-          string intermediate;
-          // Tokenizing w.r.t. space ' '
-          while(getline(check1, intermediate, ' ')) {
-              toks.push_back(intermediate);
-          }
-
-          vector<OperatorID> applicable_ops;
-          successor_generator.generate_applicable_ops(s, applicable_ops);
-
-          for (OperatorID op_id : applicable_ops) {
-            OperatorProxy op = task_proxy.get_operators()[op_id];
-            if (op.get_name() == line) {
+          if (name_to_op_id.count(line)) {
+              size_t op_id = name_to_op_id[line];
+              OperatorProxy op = task_proxy.get_operators()[op_id];
               s = state_registry.get_successor_state(s, op);
               write_state_to_file(s, output_file);
-              goto skip;
-            }
+          } else {
+            std::cout << "invalid plan because cannot find action " << line << std::endl;
+            return FAILED;
           }
-
-          std::cout << "invalid plan because cannot find action schema " << toks[0] << std::endl;
-          return FAILED;
-          skip:;
       }
 
       file.close();
@@ -150,7 +143,6 @@ SearchStatus Perfect::step() {
   }
   output_file << "; GOOD";
   return SOLVED;
-  
 }
 
 void Perfect::dump_search_space() const {

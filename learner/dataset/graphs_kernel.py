@@ -109,10 +109,12 @@ def gen_graph_rep(
 ) -> None:
   """ Generate graph representations from saved optimal plans. """
 
-  # tasks  = get_ipc_domain_problem_files(del_free=False)
-  # tasks += get_all_htg_instance_files(split=True)
   tasks = get_train_goose_instance_files()
   tasks += get_train_ipc2023_learning_instance_files()
+
+  # // TODO remove
+  tasks = get_train_ipc2023_learning_instance_files()
+  # // TODO remove
 
   new_generated = 0
   pbar = tqdm(tasks)
@@ -155,13 +157,16 @@ def optimal_plan_exists(domain_name: str, domain_pddl: str, problem_pddl: str):
   problem_name = os.path.basename(problem_pddl)
   save_dir = f'data/plan_objects/{domain_name}'
   save_path = f'{save_dir}/{problem_name}.states'.replace(".pddl", "")
+  good = 0
   if os.path.exists(save_path):  # if plan found, load and return
     data = []
     lines = open(save_path, 'r').readlines()
     plan_length = len(lines)-1
     for i, line in enumerate(lines):
+      print(line)
       if line[0]==";":
         assert "GOOD" in line
+        good = True
       else:
         line = line.replace("\n", "")
         s = set()
@@ -181,6 +186,11 @@ def optimal_plan_exists(domain_name: str, domain_pddl: str, problem_pddl: str):
         y = plan_length - i - 1
         a = None
         data.append((s, y, a))
+    if not good:
+      print(f"plan was not good for {save_path}")
+      # data/plan_objects/ipc2023-learning-childsnack/p26.states
+      # os.system(f"touch {domain_name}_{problem_name}.states")
+      return None
     return data
   else:
     return None
