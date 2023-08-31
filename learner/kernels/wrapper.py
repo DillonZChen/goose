@@ -9,11 +9,14 @@ from kernels.base_kernel import Histogram
 
 
 MODELS = [
+  "linear-regression",
   "linear-svr",
-  "svr",
   "ridge",
   "lasso",
-  "linear-regression",
+
+  "rbf-svr",
+  "quadratic",
+  "cubic",
 ]
 
 _MAX_MODEL_ITER = 10000
@@ -34,11 +37,14 @@ class KernelModelWrapper():
       "max_iter": _MAX_MODEL_ITER,
     }
     self._model = {
-      "linear-svr": LinearSVR(dual="auto", epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
-      "svr": SVR(kernel="precomputed", epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
-      "ridge": Ridge(alpha=args.a, max_iter=_MAX_MODEL_ITER),
-      "lasso": Lasso(alpha=args.a, max_iter=_MAX_MODEL_ITER),
       "linear-regression": LinearRegression(),
+      "linear-svr": LinearSVR(dual="auto", epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
+      "lasso": Lasso(alpha=args.a, max_iter=_MAX_MODEL_ITER),
+      "ridge": Ridge(alpha=args.a, max_iter=_MAX_MODEL_ITER),
+
+      "rbf-svr": SVR(kernel="rbf", epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
+      "quadratic": SVR(kernel="poly", degree=2, epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
+      "cubic": SVR(kernel="poly", degree=3, epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
     }[self._model_name]
 
     self._train = True

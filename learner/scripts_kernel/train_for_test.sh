@@ -2,11 +2,14 @@ k=wl
 d=goose-gripper
 r=llg
 
-for m in linear-svr lasso ridge linear-regression
+for d in goose-gripper goose-spanner
 do
-  for l in 3
+  for m in linear-regression linear-svr lasso ridge rbf-svr quadratic cubic
   do
-    echo python3 train_kernel.py -k $k -l $l -r $r -d $d -m $m --save-file ${m}_${r}_${d}_${k}_${l}
-    python3 train_kernel.py -k $k -l $l -r $r -d $d -m $m --save-file ${m}_${r}_${d}_${k}_${l}
+    for l in 1 3
+    do
+      echo python3 train_kernel.py -k $k -l $l -r $r -d $d -m $m --save-file ${m}_${r}_${d}_${k}_${l}
+      python3 train_kernel.py -k $k -l $l -r $r -d $d -m $m --save-file ${m}_${r}_${d}_${k}_${l}
+    done
   done
 done
