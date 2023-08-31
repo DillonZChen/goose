@@ -395,6 +395,23 @@ fast_downward_plugin(
 )
 
 fast_downward_plugin(
+    NAME PLUGIN_PERFECT
+    HELP "plan to states"
+    SOURCES
+        search_engines/plugin_perfect
+    DEPENDS PERFECT SEARCH_COMMON
+)
+
+fast_downward_plugin(
+    NAME PERFECT
+    HELP "plan to states"
+    SOURCES
+        search_engines/perfect
+    DEPENDS ORDERED_SET SUCCESSOR_GENERATOR
+    DEPENDENCY_ONLY
+)
+
+fast_downward_plugin(
     NAME GOOSE_HEURISTIC
     HELP "The GOOSE heuristic"
     SOURCES

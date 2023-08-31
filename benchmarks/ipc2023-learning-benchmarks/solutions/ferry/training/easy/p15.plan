@@ -1,0 +1,5 @@
+(sail loc3 loc4)
+(board car1 loc4)
+(sail loc4 loc5)
+(debark car1 loc5)
+; cost = 4 (unit cost)

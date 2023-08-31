@@ -1,0 +1,7 @@
+(move_down robot1 tile_2_1 tile_1_1)
+(paint_up robot1 tile_2_1 tile_1_1 black)
+(change_color robot1 black white)
+(move_down robot1 tile_1_1 tile_0_1)
+(paint_up robot1 tile_1_1 tile_0_1 white)
+(change_color robot1 white black)
+; cost = 6 (unit cost)
