@@ -1,2 +1,2 @@
 rm -rf builds/
-singularity exec ../goose.sif python3 build.py
+singularity exec /scratch/sv11/dc6693/goose.sif python3 build.py
