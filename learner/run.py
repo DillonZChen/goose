@@ -2,7 +2,6 @@
 
 import argparse
 import os
-from representation import REPRESENTATIONS
 from util.search import search_cmd
 
 

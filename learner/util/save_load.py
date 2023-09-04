@@ -1,19 +1,11 @@
 """ Module for dealing with model saving and loading. """
 import os
-import torch
 import joblib
-from argparse import Namespace as Args
-from typing import Tuple
-from gnns.base_gnn import BasePredictor as GNN
-from gnns import *
-from kernels import KernelModelWrapper
 
 
 _TRAINED_GNNS_SAVE_DIR = "trained_models_gnn"
 _TRAINED_KERNELS_SAVE_DIR = "trained_models_kernel"
-os.makedirs(_TRAINED_GNNS_SAVE_DIR, exist_ok=True)
-os.makedirs(_TRAINED_KERNELS_SAVE_DIR, exist_ok=True)
-
+   
 
 def arg_to_params(args, in_feat=4, out_feat=1):
   model_name = args.model
@@ -55,10 +47,12 @@ def print_arguments(args, ignore_params=set()):
 
 
 def save_gnn_model_from_dict(model_dict, args):
+  import torch
   if not hasattr(args, "save_file") or args.save_file is None:
     return
   print("Saving model...")
   model_file_name = args.save_file.replace(".dt", "")
+  os.makedirs(_TRAINED_GNNS_SAVE_DIR, exist_ok=True)
   path = f'{_TRAINED_GNNS_SAVE_DIR}/{model_file_name}.dt'
   torch.save((model_dict, args), path)
   print("Model saved!")
@@ -72,11 +66,12 @@ def save_gnn_model(model, args):
   return
 
 
-def save_kernel_model(model: KernelModelWrapper, args):
+def save_kernel_model(model, args):
   if not hasattr(args, "save_file") or args.save_file is None:
     return
   print("Saving model...")
   model_file_name = args.save_file.replace(".joblib", "")
+  os.makedirs(_TRAINED_KERNELS_SAVE_DIR, exist_ok=True)
   path = f'{_TRAINED_KERNELS_SAVE_DIR}/{model_file_name}.joblib'
   joblib.dump((model, args), path)
   print("Model saved!")
@@ -85,7 +80,10 @@ def save_kernel_model(model: KernelModelWrapper, args):
   return
 
 
-def load_gnn_model(path, print_args=False, jit=False, ignore_subdir=False) -> Tuple[GNN, Args]:
+def load_gnn_model(path, print_args=False, jit=False, ignore_subdir=False):
+  # returns (GNN, Args)
+  import torch
+  from gnns import GNNS
   print("Loading model...")
   assert ".pt" not in path, f"Found .pt in path {path}"
   if ".dt" not in path:
@@ -122,6 +120,7 @@ def load_kernel_model(path, ignore_subdir=False):
 
 
 def load_gnn_model_and_setup(path, domain_file, problem_file):
+  import torch
   model, args = load_gnn_model(path, ignore_subdir=True)
   device = "cuda" if torch.cuda.is_available() else "cpu"
   model = model.to(device)
@@ -135,7 +134,7 @@ def load_gnn_model_and_setup(path, domain_file, problem_file):
   return model
 
 
-def load_kernel_model_and_setup(path, domain_file, problem_file) -> KernelModelWrapper:
+def load_kernel_model_and_setup(path, domain_file, problem_file):
   model, args = load_kernel_model(path, ignore_subdir=True)
   model.update_representation(domain_pddl=domain_file, problem_pddl=problem_file)
   # model.write_representation_to_file()

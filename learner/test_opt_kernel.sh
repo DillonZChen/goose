@@ -10,4 +10,5 @@ m=linear-svr
 
 model=trained_models_kernel/${m}_${r}_gripper_wl_${i}.joblib
 
+# singularity exec ../goose.sif python3 run.py $df $pf kernel-opt -m $model -s gbfs
 python3 run.py $df $pf kernel-opt -m $model -s gbfs
