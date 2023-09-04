@@ -64,6 +64,13 @@ def get_test_ipc2023_learning_instance_files():
         ret[domain].append((df, pf))
   return ret
 
+def get_best_bound(domain, difficulty, problem_name):
+  f = f"../benchmarks/ipc2023-learning-benchmarks/solutions/{domain}/testing/{difficulty}/{problem_name}.plan"
+  lines = open(f, 'r').readlines()
+  plan_cost = len(lines) - 1
+  assert ";" in lines[-1], f"{lines[-1]} {f}"
+  return plan_cost
+
 if __name__ == "__main__":
   ret = get_test_ipc2023_learning_instance_files()
   for domain in sorted(IPC2023_LEARNING_DOMAINS):
