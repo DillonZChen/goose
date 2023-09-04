@@ -15,10 +15,6 @@ from collections import OrderedDict
 from dataset import get_domain_name, get_problem_name
 from planning import get_planning_problem
 from planning import Proposition
-from util.stats import graph_density
-from torch_geometric.loader import DataLoader
-from torch_geometric.data import Data
-from torch_geometric.utils.convert import to_networkx, from_networkx
 from tqdm import tqdm
 from abc import ABC, abstractmethod
 from tqdm.auto import tqdm
@@ -101,6 +97,7 @@ class Representation(ABC):
   def _dump_stats(self, start_time) -> None:
     """ Dump stats for graph construction """
     assert self.name is not None
+    from util.stats import graph_density
     tqdm.write(f'{self.name} created!')
     tqdm.write(f'time taken: {time.time() - start_time:.4f}s')
     tqdm.write(f'num nodes: {self.num_nodes}')
@@ -118,7 +115,7 @@ class Representation(ABC):
         else:
           edge_indices: List[torch.tensor(2 x E_i)]
     """
-
+    from torch_geometric.utils.convert import from_networkx
     pyg_G = from_networkx(self.G)
     self.x = pyg_G.x
     

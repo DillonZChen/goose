@@ -1,6 +1,5 @@
 import os
 import re 
-from representation import REPRESENTATIONS
 from util.save_load import load_kernel_model_and_setup
 
 """ Module containing useful methods and configurations for 24-AAAI search experiments. """
