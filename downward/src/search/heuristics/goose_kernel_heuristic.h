@@ -16,6 +16,8 @@
 #include "../heuristic.h"
 
 
+// TODO use array instead of vector when length is fixed
+
 namespace goose_kernel_heuristic {
 
 class CGraph {  // LLG
