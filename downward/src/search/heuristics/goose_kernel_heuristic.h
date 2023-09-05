@@ -17,6 +17,7 @@
 
 
 // TODO use array instead of vector when length is fixed
+// use .at for const maps
 
 namespace goose_kernel_heuristic {
 
