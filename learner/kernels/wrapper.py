@@ -48,6 +48,7 @@ class KernelModelWrapper():
     }[self._model_name]
 
     self._train = True
+    self._indices = None
     
   def train(self) -> None:
     self._kernel.train()
@@ -74,9 +75,22 @@ class KernelModelWrapper():
   
   def get_iterations(self) -> int:
     return self._kernel.iterations
+  
+  def get_weight_indices(self):
+    """ Boolean array that is the size of self._model.coef_ """
+    if self._indices is not None:
+      return self._indices
+    return np.ones_like(self.get_weights())
+  
+  def set_weight_indices(self, indices):
+    self._indices = indices
+    return
 
   def get_weights(self):
-    return self._model.coef_
+    weights = self._model.coef_
+    if self._indices is not None:
+      weights = weights[self._indices]
+    return weights
   
   def get_bias(self) -> float:
     bias = self._model.intercept_
@@ -102,6 +116,7 @@ class KernelModelWrapper():
     file_path = file_path + ".model"
 
     model_hash = self.get_hash()
+    indices = self.get_weight_indices()
     weights = self.get_weights()
     bias = self.get_bias()
     iterations = self.get_iterations()
@@ -116,8 +131,7 @@ class KernelModelWrapper():
     reverse_hash = {model_hash[k]: k for k in model_hash}
 
     for colour, weight in enumerate(weights):
-      # if abs(weight) <= 0.05:  # TODO make this a parameter
-      if abs(weight) == 0:
+      if abs(weight) == 0 or indices[colour] == 0:
         continue
 
       new_weights.append(weight)
