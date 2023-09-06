@@ -120,6 +120,9 @@ if __name__ == "__main__":
     indices = (np.abs(weights) > cutoff)
     model.set_weight_indices(indices)
 
-  print(f"zero_weights: {model.get_num_zero_weights()}/{model.get_num_weights()} = " + \
-        f"{model.get_num_zero_weights()/model.get_num_weights():.2f}")
   save_kernel_model(model, args)
+  try:
+    print(f"zero_weights: {model.get_num_zero_weights()}/{model.get_num_weights()} = " + \
+          f"{model.get_num_zero_weights()/model.get_num_weights():.2f}")
+  except Exception as e:
+    pass

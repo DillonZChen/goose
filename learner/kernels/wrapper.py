@@ -15,8 +15,8 @@ MODELS = [
   "lasso",
 
   "rbf-svr",
-  "quadratic",
-  "cubic",
+  "quadratic-svr",
+  "cubic-svr",
 ]
 
 _MAX_MODEL_ITER = 10000
@@ -43,8 +43,8 @@ class KernelModelWrapper():
       "ridge": Ridge(alpha=args.a, max_iter=_MAX_MODEL_ITER),
 
       "rbf-svr": SVR(kernel="rbf", epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
-      "quadratic": SVR(kernel="poly", degree=2, epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
-      "cubic": SVR(kernel="poly", degree=3, epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
+      "quadratic-svr": SVR(kernel="poly", degree=2, epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
+      "cubic-svr": SVR(kernel="poly", degree=3, epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
     }[self._model_name]
 
     self._train = True
