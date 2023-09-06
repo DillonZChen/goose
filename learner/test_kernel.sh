@@ -10,4 +10,4 @@ r=llg
 
 m=trained_models_kernel/${l}_${r}_gripper_wl_${i}.joblib
 
-singularity exec --nv ../goose.sif python3 run.py $df $pf kernel -m $m
+python3 run.py $df $pf kernel -m $m

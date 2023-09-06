@@ -15,9 +15,13 @@ IPC2023_LEARNING_DOMAINS = [  # 90 test instances each
   "transport",
 ]
 
-def get_train_ipc2023_learning_instance_files():
+def get_train_ipc2023_learning_instance_files(domain=None):
   ret = []
-  for domain in sorted(IPC2023_LEARNING_DOMAINS):
+  if domain is None:
+    domains = sorted(IPC2023_LEARNING_DOMAINS)
+  else:
+    domains = [domain]
+  for domain in domains:
     domain_dir = f"../benchmarks/ipc2023-learning-benchmarks/{domain}"
     df = f"{domain_dir}/domain.pddl"
     for file in sorted(os.listdir(f'{domain_dir}/training/easy')):
@@ -26,11 +30,14 @@ def get_train_ipc2023_learning_instance_files():
   # print(f"num goose train instances: {len(ret)}")
   return ret
 
+def get_plan_file_from_train_instance(domain, pf):
+  return f"../benchmarks/ipc2023-learning-benchmarks/solutions/{domain.replace('ipc2023-learning-', '')}/training/easy/{os.path.basename(pf).replace('.pddl', '')}.plan"
+
 def plans_to_states():
-  # converts plans into states
+  # converts training plans into states
   for domain, df, pf in tqdm(get_train_ipc2023_learning_instance_files()):
 
-    plan = f"../benchmarks/ipc2023-learning-benchmarks/solutions/{domain.replace('ipc2023-learning-', '')}/training/easy/{os.path.basename(pf).replace('.pddl', '')}.plan"
+    plan = get_plan_file_from_train_instance(domain, pf)
     
     state_dir = f"data/plan_objects/{domain}"
     state_dir2 = f"data/plan_objects_check/{domain}"
@@ -52,6 +59,15 @@ def plans_to_states():
     # breakpoint()
   return
 
+def get_number_of_ipc2023_training_data():
+  ret = {}
+  for domain in sorted(IPC2023_LEARNING_DOMAINS):
+    states = 0
+    for _, _, pf in get_train_ipc2023_learning_instance_files(domain):
+      states += get_plan_length(get_plan_file_from_train_instance(domain, pf))
+    ret[domain] = states
+  return ret
+
 def get_test_ipc2023_learning_instance_files():
   ret = {}
   for domain in sorted(IPC2023_LEARNING_DOMAINS):
@@ -64,12 +80,16 @@ def get_test_ipc2023_learning_instance_files():
         ret[domain].append((df, pf))
   return ret
 
+def get_plan_length(plan_file):
+  lines = open(plan_file, 'r').readlines()
+  plan_cost = len(lines) - 1
+  assert ";" in lines[-1], f"{lines[-1]} {plan_file}"
+  return plan_cost
+  
+
 def get_best_bound(domain, difficulty, problem_name):
   f = f"../benchmarks/ipc2023-learning-benchmarks/solutions/{domain}/testing/{difficulty}/{problem_name}.plan"
-  lines = open(f, 'r').readlines()
-  plan_cost = len(lines) - 1
-  assert ";" in lines[-1], f"{lines[-1]} {f}"
-  return plan_cost
+  return get_plan_length(f)
 
 if __name__ == "__main__":
   ret = get_test_ipc2023_learning_instance_files()

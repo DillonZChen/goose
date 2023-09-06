@@ -1,16 +1,13 @@
 df=../benchmarks/goose/gripper/domain.pddl
-pf=../benchmarks/goose/gripper/test/gripper-n100.pddl
+pf=../benchmarks/goose/gripper/test/gripper-n40.pddl
 
 p=fd
 # p=pwl
 
+l=linear-svr
 i=3
 r=llg
-m=linear-svr
 
-model=trained_models_kernel/${m}_${r}_gripper_wl_${i}.joblib
+m=trained_models_kernel/${l}_${r}_gripper_wl_${i}.joblib
 
-# singularity exec /scratch/sv11/dc6693/goose.sif python3 run.py $df $pf kernel-opt -m $model -s gbfs
-python3 run.py $df $pf kernel-opt -m $model -s gbfs
-
-echo Did you compile without singularity container?
+python3 run.py $df $pf kernel-opt -m $m -s gbfs

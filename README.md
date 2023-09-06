@@ -3,17 +3,23 @@
 ## Table of contents
 - [**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation](#goose-graphs-optimised-for-search-evaluation)
   - [Table of contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
   - [GNNs](#gnns)
-    - [Search](#search)
+    - [Search (singularity method)](#search-singularity-method)
     - [Training](#training)
       - [Loading the training dataset](#loading-the-training-dataset)
       - [Domain-dependent training](#domain-dependent-training)
   - [Kernels](#kernels)
-    - [Search](#search-1)
+    - [Search](#search)
     - [Training](#training-1)
 
+## Prerequisites
+You can either use `singularity` or a virtual environment to manage packages. ***TODO*** write this part up
+
+*In either case, you should make sure that you build `downward` or `powerlifted` with your choice of package manager, otherwise you will get runtime errors stating that packages are not found due to using different pybind11 setups.*
+
 ## GNNs
-### Search
+### Search (singularity method)
 For all commands here, make sure ***not*** to have any python virtual environment activated (e.g. with Anaconda)
 
 We use `downward` or `powerlifted` as the search engine which calls code in the `learner` repository for computing heuristics

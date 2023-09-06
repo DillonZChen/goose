@@ -78,7 +78,7 @@ class KernelModelWrapper():
   
   def get_weight_indices(self):
     """ Boolean array that is the size of self._model.coef_ """
-    if self._indices is not None:
+    if hasattr(self, "_indices") and self._indices is not None:
       return self._indices
     return np.ones_like(self.get_weights())
   
@@ -88,7 +88,7 @@ class KernelModelWrapper():
 
   def get_weights(self):
     weights = self._model.coef_
-    if self._indices is not None:
+    if hasattr(self, "_indices") and self._indices is not None:
       weights = weights[self._indices]
     return weights
   
