@@ -79,6 +79,11 @@ def main():
     with open(lock_file, 'w') as f:
       pass
 
+    if "-svr" in model_file and "linear-svr" not in model_file:
+      ml_model = "kernel"
+    else:
+      ml_model = "linear-regression"
+
     cmd = f'qsub -o {log_file} -j oe -v '+\
           f'DOM_PATH="{df}",'+\
           f'INS_PATH="{pf}",'+\
@@ -86,7 +91,8 @@ def main():
           f'TIMEOUT="{_TIMEOUT}",'+\
           f'AUX_FILE="{aux_file}",'+\
           f'PLAN_FILE="{plan_file}",'+\
-          f'LOCK_FILE="{lock_file}" '+\
+          f'LOCK_FILE="{lock_file}",'+\
+          f'ML_MODEL="{ml_model}" '+\
           f'scripts_pbs/kernel_job.sh'
     os.system(cmd)
     submitted += 1
