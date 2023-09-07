@@ -27,7 +27,7 @@ _DIFFICULTIES = [
   # "hard",
 ]
 
-_LEARNING_MODELS = ["linear-regression", "linear-svr", "ridge", "lasso"]
+_LEARNING_MODELS = ["linear-regression", "linear-svr", "ridge", "lasso", "rbf-svr", "quadratic-svr", "cubic-svr"]
 _REPRESENTATIONS = ["llg"]
 _ITERS = [1]
 _KERNELS = ["wl"]
@@ -37,6 +37,10 @@ _TIMEOUT=1800
 _LOG_DIR = "logs_kernel/test_ipc2023"
 _LOCK_DIR = "lock"
 _AUX_DIR = "/scratch/sv11/dc6693/aux"
+
+os.makedirs(_LOG_DIR, exist_ok=True)
+os.makedirs(_LOCK_DIR, exist_ok=True)
+os.makedirs(_AUX_DIR, exist_ok=True)
     
 def main():
   parser = argparse.ArgumentParser()
@@ -53,17 +57,10 @@ def main():
     nonlocal skipped
     nonlocal submitted
     nonlocal e
-
-    if submitted >= e:
-      to_go += 1
-      return
     
     problem = os.path.basename(pf).replace(".pddl", "")
 
     # check whether to skip
-    os.makedirs(_LOG_DIR, exist_ok=True)
-    os.makedirs(_LOCK_DIR, exist_ok=True)
-    os.makedirs(_AUX_DIR, exist_ok=True)
     desc = f'{domain}_{difficulty}_{problem}_{model_file.replace("/", "-")}'
     log_file = f'{_LOG_DIR}/{desc}.log'
     lock_file = f'{_LOCK_DIR}/{desc}.lock'
@@ -72,6 +69,10 @@ def main():
 
     if os.path.exists(log_file) or os.path.exists(plan_file) or os.path.exists(lock_file):
       skipped += 1
+      return
+
+    if submitted >= e:
+      to_go += 1
       return
 
     # submit
