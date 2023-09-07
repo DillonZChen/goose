@@ -52,10 +52,10 @@ void GooseLinearRegression::initialise_model(const plugins::Options &opts) {
       weight_cnt = 0;
       continue;
     } else if (line.find("bias") != std::string::npos) {
-      bias_ = stod(line);
+      bias_ = stod(toks[0]);
       continue;
     } else if (line.find("iterations") != std::string::npos) {
-      iterations_ = stoi(line);
+      iterations_ = stoi(toks[0]);
       continue;
     } 
 
@@ -334,11 +334,11 @@ class GooseLinearRegressionFeature : public plugins::TypedFeature<Evaluator, Goo
     document_synopsis("TODO");
 
     // https://github.com/aibasel/downward/pull/170 for string options
-    add_option<string>(
+    add_option<std::string>(
         "model_data",
-        "path to trained model data in the form of a .txt file",
+        "path to trained model data in the form of a .model file",
         "default_value");
-    add_option<string>(
+    add_option<std::string>(
         "graph_data",
         "path to trained model graph representation data",
         "default_value");

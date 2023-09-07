@@ -18,7 +18,6 @@ GooseHeuristic::GooseHeuristic(const plugins::Options &opts)
 }
 
 void GooseHeuristic::initialise_model(const plugins::Options &opts) {
-
   // Add GOOSE submodule to the python path
   auto gnn_path = std::getenv("GOOSE");
   if (!gnn_path) {
@@ -202,8 +201,7 @@ py::list GooseHeuristic::list_to_goose_state(const State &ancestor_state) {
     for (FactProxy fact : state) {
       goose_state.append(fact_to_lifted_goose_input[fact.get_pair()]);
     }
-  }
-  else {
+  } else {
     for (FactProxy fact : state) {
       goose_state.append(fact_to_grounded_goose_input[fact.get_pair()]);
     }
@@ -220,8 +218,8 @@ int GooseHeuristic::compute_heuristic(const State &ancestor_state) {
 
 std::vector<int> GooseHeuristic::compute_heuristic_batch(const std::vector<State> &ancestor_states) {
   py::list py_states;
-  for (const auto& state: ancestor_states) {
-      py_states.append(list_to_goose_state(state));
+  for (const auto& state : ancestor_states) {
+    py_states.append(list_to_goose_state(state));
   }
   py::object heuristics = model.attr("h_batch")(py_states);
   std::vector<int> ret = heuristics.cast<std::vector<int>>();

@@ -1,7 +1,7 @@
 d=miconic
 
 df=../benchmarks/ipc2023-learning-benchmarks/${d}/domain.pddl
-pf=../benchmarks/ipc2023-learning-benchmarks/${d}/testing/easy/p10.pddl
+pf=../benchmarks/ipc2023-learning-benchmarks/${d}/testing/easy/p30.pddl
 
 p=fd
 # p=pwl

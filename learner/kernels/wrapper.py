@@ -2,7 +2,7 @@ import numpy as np
 import kernels
 from sklearn.linear_model import Lasso, Ridge, LinearRegression
 from sklearn.svm import LinearSVR, SVR
-from typing import List, Optional, Dict
+from typing import Iterable, List, Optional, Dict
 from representation import CGraph, Representation, REPRESENTATIONS
 from planning import State
 from kernels.base_kernel import Histogram
@@ -106,7 +106,7 @@ class KernelModelWrapper():
   def get_num_zero_weights(self):
     return np.count_nonzero(self.get_weights()==0)
   
-  def write_model_data(self) -> None:
+  def write_model_data(self, write_weights=True) -> None:
     from datetime import datetime
     df = self._representation.domain_pddl
     pf = self._representation.problem_pddl
@@ -116,44 +116,47 @@ class KernelModelWrapper():
     file_path = file_path + ".model"
 
     model_hash = self.get_hash()
-    indices = self.get_weight_indices()
-    weights = self.get_weights()
-    bias = self.get_bias()
     iterations = self.get_iterations()
 
-    zero_weights = np.count_nonzero(weights==0)
-    print(f"{zero_weights}/{len(weights)} = {zero_weights/len(weights):.2f} are zero")
+    if write_weights:
+      indices = self.get_weight_indices()
+      weights = self.get_weights()
+      bias = self.get_bias()
 
-    # prune zero weights
-    new_weights = []
-    new_model_hash = {}
+      zero_weights = np.count_nonzero(weights==0)
+      print(f"{zero_weights}/{len(weights)} = {zero_weights/len(weights):.2f} are zero")
 
-    reverse_hash = {model_hash[k]: k for k in model_hash}
+      # prune zero weights
+      new_weights = []
+      new_model_hash = {}
 
-    for colour, weight in enumerate(weights):
-      if abs(weight) == 0 or indices[colour] == 0:
-        continue
+      reverse_hash = {model_hash[k]: k for k in model_hash}
 
-      new_weights.append(weight)
+      for colour, weight in enumerate(weights):
+        if abs(weight) == 0 or indices[colour] == 0:
+          continue
 
-      key = reverse_hash[colour]
-      val = model_hash[key]
-      new_model_hash[key] = val
+        new_weights.append(weight)
 
-    model_hash = new_model_hash
-    weight = new_weights
+        key = reverse_hash[colour]
+        val = model_hash[key]
+        new_model_hash[key] = val
+
+      model_hash = new_model_hash
+      weight = new_weights
 
     # write data
     with open(file_path, 'w') as f:
+      f.write(f"{iterations} iterations\n")
       f.write(f"{len(model_hash)} hash size\n")
       for k in model_hash:
         f.write(f"{k} {model_hash[k]}\n")
-      f.write(f"{len(weights)} weights size\n")
-      for weight in weights:
-        f.write(str(weight) + '\n')
-      f.write(f"{bias} bias\n")
-      f.write(f"{iterations} iterations\n")
-      f.close()
+
+      if write_weights:
+        f.write(f"{len(weights)} weights size\n")
+        for weight in weights:
+          f.write(str(weight) + '\n')
+        f.write(f"{bias} bias\n")
 
     self._model_data_path = file_path
     pass
@@ -167,6 +170,11 @@ class KernelModelWrapper():
   
   def get_graph_file_path(self) -> str:
     return self._representation.get_graph_file_path()
+  
+  def clear_graph(self) -> None:
+    """ Save memory for planner by deleting represntation once collected """
+    self._representation = None
+    return
   
   def get_hash(self) -> Dict[str, int]:
     return self._kernel.get_hash()
@@ -194,6 +202,11 @@ class KernelModelWrapper():
     y = self.predict(X)
     hs = np.rint(y).astype(int).tolist()
     return hs
+  
+  def svr_predict(self, x: Iterable[float]) -> float:
+    """ predict for single row x """
+    y = self.predict([x])
+    return y
   
   @property
   def n_colours_(self) -> int:

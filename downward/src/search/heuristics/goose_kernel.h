@@ -1,6 +1,11 @@
 #ifndef GOOSE_KERNEL_H
 #define GOOSE_KERNEL_H
 
+#include <pybind11/embed.h>
+#include <pybind11/stl.h>
+#include <pybind11/stl_bind.h>
+#include <pybind11/pybind11.h>
+
 #include <map>
 #include <set>
 #include <vector>
@@ -21,6 +26,18 @@ namespace goose_kernel {
 class GooseKernel : public Heuristic {
   void initialise_model(const plugins::Options &opts);
   void initialise_facts();
+
+  // Required for pybind. Once this goes out of scope python interaction is no
+  // longer possible.
+  //
+  // IMPORTANT: since member variables are destroyed in reverse order of
+  // construction it is important that the scoped_interpreter_guard is listed as
+  // first member variable (therefore destroyed last), otherwise calling the
+  // destructor of this class will lead to a segmentation fault.
+  pybind11::scoped_interpreter guard;
+
+  // Python object which computes the heuristic
+  pybind11::object model;
 
   // map facts to a better data structure for heuristic computation
   std::map<FactPair, std::pair<std::string, std::vector<std::string>>> fact_to_lifted_input;
@@ -46,8 +63,6 @@ class GooseKernel : public Heuristic {
  private:
   CGraph graph_;
   std::map<std::string, int> hash_;
-  std::vector<double> weights_;
-  double bias_;
   int feature_size_;
   size_t iterations_;
 };

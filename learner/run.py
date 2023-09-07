@@ -15,7 +15,7 @@ if __name__ == "__main__":
     help="path to task pddl file")
   parser.add_argument(
     "model_type", type=str, 
-    choices=["gnn", "kernel", "linear-regression-opt", "kernel_opt"],
+    choices=["gnn", "kernel", "linear-regression-opt", "kernel-opt"],
     help="learning model")
   parser.add_argument(
     "--model_path", "-m", required=True, type=str,
