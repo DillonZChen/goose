@@ -7,7 +7,8 @@ from itertools import product
 ~> 30 minute + 8GB job = 2 SU
 """
 
-# 900 problems
+# 900 all problems / 300 per difficulty
+# 1.8 KSU all problems / 0.6 KSU per difficulty
 _DOMAINS = [
   "blocksworld",
   "childsnack",
