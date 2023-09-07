@@ -422,7 +422,7 @@ fast_downward_plugin(
     NAME GOOSE_KERNEL_HEURISTIC
     HELP "GOOSE optimised kernel heuristic"
     SOURCES
-        heuristics/goose_kernel_heuristic
+        heuristics/goose_linear_regression
 )
 
 fast_downward_plugin(
