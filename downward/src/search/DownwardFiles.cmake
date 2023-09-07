@@ -412,6 +412,13 @@ fast_downward_plugin(
 )
 
 fast_downward_plugin(
+    NAME COLOURED_GRAPH
+    HELP "Coloured graph representation of planning tasks"
+    SOURCES
+        goose/coloured_graph
+)
+
+fast_downward_plugin(
     NAME GOOSE_HEURISTIC
     HELP "The GOOSE heuristic"
     SOURCES
@@ -419,10 +426,17 @@ fast_downward_plugin(
 )
 
 fast_downward_plugin(
+    NAME GOOSE_LINEAR_REGRESSION_HEURISTIC
+    HELP "GOOSE optimised linear regression heuristic"
+    SOURCES
+        heuristics/goose_linear_regression
+)
+
+fast_downward_plugin(
     NAME GOOSE_KERNEL_HEURISTIC
     HELP "GOOSE optimised kernel heuristic"
     SOURCES
-        heuristics/goose_linear_regression
+        heuristics/goose_kernel_regression
 )
 
 fast_downward_plugin(
