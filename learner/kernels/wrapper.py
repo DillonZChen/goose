@@ -27,8 +27,11 @@ class KernelModelWrapper():
     self._model_name = args.model
 
     self._kernel = kernels.KERNELS[args.kernel](
-      iterations=args.iterations,
+      iterations=args.iterations, prune=args.prune
     )
+
+    self._iterations = args.iterations
+    self._prune = args.prune
 
     self._rep_type = args.rep
     self._representation = None
@@ -38,18 +41,18 @@ class KernelModelWrapper():
     }
     self._model = {
       "linear-regression": LinearRegression(),
-      "linear-svr": LinearSVR(dual="auto", epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
-      "lasso": Lasso(alpha=args.a, max_iter=_MAX_MODEL_ITER),
-      "ridge": Ridge(alpha=args.a, max_iter=_MAX_MODEL_ITER),
+      "linear-svr": LinearSVR(dual="auto", epsilon=args.e, C=args.C, **kwargs),
+      "lasso": Lasso(alpha=args.a, **kwargs),
+      "ridge": Ridge(alpha=args.a, **kwargs),
 
-      "rbf-svr": SVR(kernel="rbf", epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
-      "quadratic-svr": SVR(kernel="poly", degree=2, epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
-      "cubic-svr": SVR(kernel="poly", degree=3, epsilon=args.e, C=args.C, max_iter=_MAX_MODEL_ITER),
+      "rbf-svr": SVR(kernel="rbf", epsilon=args.e, C=args.C, **kwargs),
+      "quadratic-svr": SVR(kernel="poly", degree=2, epsilon=args.e, C=args.C, **kwargs),
+      "cubic-svr": SVR(kernel="poly", degree=3, epsilon=args.e, C=args.C, **kwargs),
     }[self._model_name]
 
     self._train = True
     self._indices = None
-    
+
   def train(self) -> None:
     self._kernel.train()
   
@@ -179,9 +182,9 @@ class KernelModelWrapper():
   def get_hash(self) -> Dict[str, int]:
     return self._kernel.get_hash()
     
-  def compute_histograms(self, graphs: CGraph) -> None:
+  def compute_histograms(self, graphs: CGraph):
     return self._kernel.compute_histograms(graphs)
-
+  
   def get_matrix_representation(
     self, 
     graphs: CGraph, 

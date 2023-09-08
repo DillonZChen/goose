@@ -56,8 +56,7 @@ def save_gnn_model_from_dict(model_dict, args):
   path = f'{_TRAINED_GNNS_SAVE_DIR}/{model_file_name}.dt'
   torch.save((model_dict, args), path)
   print("Model saved!")
-  print("Model parameter file:")
-  print(model_file_name)
+  print("Model parameter file:", model_file_name)
   return
 
 
@@ -75,8 +74,7 @@ def save_kernel_model(model, args):
   path = f'{_TRAINED_KERNELS_SAVE_DIR}/{model_file_name}.joblib'
   joblib.dump((model, args), path)
   print("Model saved!")
-  print("Model parameter file:")
-  print(model_file_name)
+  print("Model parameter file:", model_file_name)
   return
 
 

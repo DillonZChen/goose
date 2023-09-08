@@ -35,6 +35,8 @@ def parse_args():
                       help="graph representation to use")
   parser.add_argument('-l', '--iterations', type=int, default=5,
                       help="number of iterations for kernel algorithms")
+  parser.add_argument('-p', '--prune', type=int, default=0,
+                      help="discard colours with total train count <= prune")
   
   parser.add_argument('-m', '--model', type=str, default="linear-svr", choices=MODELS,
                       help="ML model")

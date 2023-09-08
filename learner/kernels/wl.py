@@ -3,14 +3,20 @@ from .base_kernel import *
 
 
 class WeisfeilerLehmanKernel(Kernel):
-  def __init__(self, iterations: int) -> None:
+  def __init__(self, iterations: int, prune: int) -> None:
     super().__init__()
 
     # hashes neighbour multisets of colours
     self._hash : Dict[str, int] = {}
 
+    # prune if self._train_histogram[col] <= count
+    self._prune = prune
+
     # number of wl iterations
     self.iterations = iterations
+
+    # see self._prune_hash
+    self._train_histogram = None
 
   def _get_hash_value(self, colour) -> int:
     if self._train:
@@ -22,6 +28,45 @@ class WeisfeilerLehmanKernel(Kernel):
         return self._hash[colour]
       else:
         return -1
+      
+  def _prune_hash(self, histograms):
+    inverse_hash = {self._hash[col]:col for col in self._hash}
+
+    # get histogram over all train graphs
+    train_histogram = {}
+    for G, histogram in histograms.items():
+      for col_hash, cnt in histogram.items():
+        col = inverse_hash[col_hash]
+        if col not in train_histogram:
+          train_histogram[col] = 0
+        train_histogram[col] += cnt
+
+    # prune hash
+    new_hash = {}
+    old_colour_hash_to_new_hash = {}
+    for col, old_col_hash in self._hash.items():
+      if train_histogram[col] <= self._prune:
+        del train_histogram[col]
+        continue
+      new_col_hash = len(new_hash)
+      new_hash[col] = new_col_hash
+      old_colour_hash_to_new_hash[old_col_hash] = new_col_hash
+    self._hash = new_hash
+
+    # prune from train set
+    ret_histograms = {}
+    for G, histogram in histograms.items():
+      new_histogram = {}
+      for old_col_hash, cnt in histogram.items():
+        if old_col_hash not in old_colour_hash_to_new_hash:
+          continue  # total count too small
+        new_histogram[old_colour_hash_to_new_hash[old_col_hash]] = cnt
+      ret_histograms[G] = new_histogram
+
+    self._train_histogram = train_histogram
+
+    return ret_histograms
+
 
   def get_hash(self) -> Dict[str, int]:
     """ Return hash dictionary with compact keys for cpp """
@@ -83,6 +128,9 @@ class WeisfeilerLehmanKernel(Kernel):
       # store histogram of graph colours
       histograms[G] = histogram
 
+    if self._train:
+      histograms = self._prune_hash(histograms)
+
     return histograms
 
   def get_x(
@@ -138,6 +186,10 @@ class WeisfeilerLehmanKernel(Kernel):
 
     return K
   
+  def eval(self):
+    super().eval()
+    self._train_histogram = None
+
   @property
   def n_colours_(self) -> int:
     return len(self._hash)
