@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH --ntasks=1
+#SBATCH --mem=64gb # Job memory request
+#SBATCH --time=120:00:00 # Time limit hrs:min:sec
+#SBATCH --account=planopt
+#SBATCH --partition=planopt
+#SBATCH --qos=planopt
+
+pwd; hostname; date; grep MemTotal /proc/meminfo; 
+echo "--- exec ---"
+srun singularity exec ../gpu.sif $1
+echo "--- done ---"
+date

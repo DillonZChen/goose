@@ -12,7 +12,6 @@ from kernels.wrapper import MODELS
 from dataset.dataset import get_dataset_from_args_kernels
 from util.save_load import print_arguments, save_kernel_model
 from util.metrics import f1_macro
-from util.visualise import get_confusion_matrix
 
 import warnings
 warnings.filterwarnings('ignore') 

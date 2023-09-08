@@ -5,16 +5,22 @@ mkdir -p $LOG_DIR
 k=wl
 r=llg
 
-
-for l in 1 3 5
+for l in 0 1 2 3 4 5 6 7 8 9
 do
-  for d in ipc2023-learning-blocksworld ipc2023-learning-childsnack ipc2023-learning-ferry ipc2023-learning-floortile ipc2023-learning-miconic ipc2023-learning-rovers ipc2023-learning-satellite ipc2023-learning-sokoban ipc2023-learning-spanner ipc2023-learning-transport
+  for pp in 0 1 2 3 4 5 6 7 8 9
   do 
-    # for m in linear-svr lasso ridge linear-regression
-    for m in rbf-svr quadratic-svr cubic-svr
-    do
-      echo python3 train_kernel.py -k $k -l $l -r $r -d $d -m $m --save-file ${m}_${r}_${d}_${k}_${l}
-      python3 train_kernel.py -k $k -l $l -r $r -d $d -m $m --save-file ${m}_${r}_${d}_${k}_${l} > $LOG_DIR/${m}_${r}_${d}_${k}_${l}.log
+    p=$((${l}*${pp}))
+    for d in ipc2023-learning-blocksworld ipc2023-learning-childsnack ipc2023-learning-ferry ipc2023-learning-floortile ipc2023-learning-miconic ipc2023-learning-rovers ipc2023-learning-satellite ipc2023-learning-sokoban ipc2023-learning-spanner ipc2023-learning-transport
+    do 
+      for m in linear-svr lasso ridge
+      # for m in rbf-svr quadratic-svr cubic-svr
+      do
+        SAVE_FILE=${m}_${r}_${d}_${k}_${l}_${p}
+        if [ ! -f "trained_models_kernel/${SAVE_FILE}.joblib" ]; then
+          echo python3 train_kernel.py -k $k -l $l -r $r -d $d -m $m -p $p --save-file ${SAVE_FILE} '>' $LOG_DIR/${SAVE_FILE}.log
+               python3 train_kernel.py -k $k -l $l -r $r -d $d -m $m -p $p --save-file ${SAVE_FILE}  >  $LOG_DIR/${SAVE_FILE}.log
+        fi
+      done
     done
   done
 done
