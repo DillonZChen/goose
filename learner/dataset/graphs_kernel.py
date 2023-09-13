@@ -113,7 +113,7 @@ def gen_graph_rep(
   tasks += get_train_ipc2023_learning_instance_files()
 
   # // TODO remove
-  tasks = get_train_ipc2023_learning_instance_files()
+  # tasks = get_train_ipc2023_learning_instance_files()
   # // TODO remove
 
   new_generated = 0
@@ -163,7 +163,6 @@ def optimal_plan_exists(domain_name: str, domain_pddl: str, problem_pddl: str):
     lines = open(save_path, 'r').readlines()
     plan_length = len(lines)-1
     for i, line in enumerate(lines):
-      print(line)
       if line[0]==";":
         assert "GOOD" in line
         good = True

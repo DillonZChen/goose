@@ -19,6 +19,8 @@ class WeisfeilerLehmanKernel(Kernel):
     self._train_histogram = None
 
   def _get_hash_value(self, colour) -> int:
+    if isinstance(colour, tuple) and len(colour) == 1:
+      colour = colour[0]
     if self._train:
       if colour not in self._hash:
         self._hash[colour] = len(self._hash)

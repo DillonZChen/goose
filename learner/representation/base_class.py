@@ -29,9 +29,9 @@ TGraph = Union[Tuple[Tensor, Tensor], Tuple[Tensor, List[Tensor]]]
 CGraph = Union[nx.Graph, nx.DiGraph]
 
 # additional hard coded colours
-ACTIVATED_COLOUR = 1
-ACTIVATED_POS_GOAL_COLOUR = 2
-ACTIVATED_NEG_GOAL_COLOUR = 3
+ACTIVATED_COLOUR = 0
+ACTIVATED_POS_GOAL_COLOUR = 1
+ACTIVATED_NEG_GOAL_COLOUR = 2
 
 
 """ Base class for graph representations """
@@ -144,10 +144,9 @@ class Representation(ABC):
     """
 
     colours = {
-      0: 0,
-      ACTIVATED_COLOUR: 1,
-      ACTIVATED_POS_GOAL_COLOUR: 2,
-      ACTIVATED_NEG_GOAL_COLOUR: 3,
+      ACTIVATED_COLOUR: 0,
+      ACTIVATED_POS_GOAL_COLOUR: 1,
+      ACTIVATED_NEG_GOAL_COLOUR: 2,
     }
 
     self._name_to_node = {}
@@ -222,7 +221,7 @@ class Representation(ABC):
       f.write(node_name+"\n")
 
     f.close()
-
+    # breakpoint()
     self._graph_file_path = file_path
     return
   

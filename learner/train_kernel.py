@@ -87,6 +87,11 @@ if __name__ == "__main__":
   model.fit(X, y)
   print(f"Model training completed in {time.time()-t:.2f}s")
   y_pred = model.predict(X)
+
+  # print(y_pred)
+  # print(list(X[0].astype(int)))
+  # breakpoint()
+
   for metric in _SCORING:
     score = _SCORING[metric](model.get_learning_model(), X, y)
     print(f"train_{metric}: {score:.2f}")

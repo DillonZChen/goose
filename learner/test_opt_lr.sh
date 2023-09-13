@@ -1,5 +1,6 @@
 df=../benchmarks/goose/gripper/domain.pddl
 pf=../benchmarks/goose/gripper/test/gripper-n100.pddl
+# pf=../benchmarks/goose/gripper/train/gripper-n10.pddl
 
 p=fd
 # p=pwl
@@ -9,5 +10,10 @@ i=1
 r=llg
 
 m=trained_models_kernel/${l}_${r}_gripper_wl_${i}.joblib
+
+# df=../benchmarks/ipc2023-learning-benchmarks/blocksworld/domain.pddl
+# pf=../benchmarks/ipc2023-learning-benchmarks/blocksworld/training/easy/p99.pddl
+# p=fd
+# m=trained_models_kernel/linear-svr_llg_ipc2023-learning-blocksworld_wl_1_0.joblib
 
 python3 run.py $df $pf linear-regression-opt -m $m -s gbfs

@@ -162,6 +162,7 @@ class KernelModelWrapper():
         f.write(f"{bias} bias\n")
 
     self._model_data_path = file_path
+    breakpoint()
     pass
 
   def get_model_data_path(self) -> str:
