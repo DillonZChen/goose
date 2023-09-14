@@ -3,7 +3,7 @@ LOG_DIR=logs/train_kernel
 mkdir -p $LOG_DIR
 
 k=wl
-r=llg
+r=llg2
 
 for l in 1
 do
