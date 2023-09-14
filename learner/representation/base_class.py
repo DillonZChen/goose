@@ -28,11 +28,6 @@ TGraph = Union[Tuple[Tensor, Tensor], Tuple[Tensor, List[Tensor]]]
 # graph representation represented as a nx.graph for graph kernels
 CGraph = Union[nx.Graph, nx.DiGraph]
 
-# additional hard coded colours
-ACTIVATED_COLOUR = 0
-ACTIVATED_POS_GOAL_COLOUR = 1
-ACTIVATED_NEG_GOAL_COLOUR = 2
-
 
 """ Base class for graph representations """
 class Representation(ABC):
@@ -143,11 +138,7 @@ class Representation(ABC):
         Slightly optimised by converting node string names into ints and storing the map
     """
 
-    colours = {
-      ACTIVATED_COLOUR: 0,
-      ACTIVATED_POS_GOAL_COLOUR: 1,
-      ACTIVATED_NEG_GOAL_COLOUR: 2,
-    }
+    colours = self._get_to_coloured_graphs_init_colours()
 
     self._name_to_node = {}
     self._node_to_name = {}

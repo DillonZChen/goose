@@ -12,9 +12,14 @@ class LLG_FEATURES(Enum):
 
 ENC_FEAT_SIZE = len(LLG_FEATURES)
 
+# additional hard coded colours
+ACTIVATED_COLOUR = 0
+ACTIVATED_POS_GOAL_COLOUR = 1
+ACTIVATED_NEG_GOAL_COLOUR = 2
+
 
 class LiftedLearningGraph2(Representation, ABC):
-  name = "llg"
+  name = "llg2"
   n_node_features = ENC_FEAT_SIZE
   n_edge_labels = float("inf")  # unbounded because of var size
   directed = False
@@ -27,6 +32,13 @@ class LiftedLearningGraph2(Representation, ABC):
     ret = torch.zeros(self.n_node_features)
     ret[node_type.value] = 1
     return ret
+  
+  def _get_to_coloured_graphs_init_colours(self):
+    return {
+      ACTIVATED_COLOUR: ACTIVATED_COLOUR,
+      ACTIVATED_POS_GOAL_COLOUR: ACTIVATED_POS_GOAL_COLOUR,
+      ACTIVATED_NEG_GOAL_COLOUR: ACTIVATED_NEG_GOAL_COLOUR,
+    }
 
   def _compute_graph_representation(self) -> None:
     """ TODO: reference definition of this graph representation

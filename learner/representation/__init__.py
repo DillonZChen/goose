@@ -11,8 +11,8 @@ REPRESENTATIONS = {
   "slg": StripsLearningGraph,
   "dlg": DeleteLearningGraph,
   "flg": FdrLearningGraph,
-  "llg": LiftedLearningGraph2,
-  "llg-old": LiftedLearningGraph,
+  "llg2": LiftedLearningGraph2,
+  "llg": LiftedLearningGraph,
   "glg": GroundedLearningGraph,
 }
 

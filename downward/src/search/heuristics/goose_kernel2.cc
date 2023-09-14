@@ -1,4 +1,4 @@
-#include "goose_linear_regression.h"
+#include "goose_kernel.h"
 
 #include <iostream>
 #include <fstream>
@@ -12,30 +12,57 @@
 #include "../plugins/plugin.h"
 #include "../task_utils/task_properties.h"
 
-using std::string;
+namespace goose_kernel {
 
-namespace goose_linear_regression {
-  
-GooseLinearRegression::GooseLinearRegression(const plugins::Options &opts)
-    : Heuristic(opts) {
+GooseKernel::GooseKernel(const plugins::Options &opts) : Heuristic(opts)
+{
   initialise_model(opts);
   initialise_facts();
 }
 
-void GooseLinearRegression::initialise_model(const plugins::Options &opts) {
-  std::string model_data_path = opts.get<string>("model_data");
-  std::string graph_data_path = opts.get<string>("graph_data");
+void GooseKernel::initialise_model(const plugins::Options &opts) {
+  // Add GOOSE submodule to the python path
+  auto gnn_path = std::getenv("GOOSE");
+  if (!gnn_path) {
+      std::cout << "GOOSE env variable not found. Aborting." << std::endl;
+      exit(-1);
+  }
+  std::string path(gnn_path);
+  std::cout << "GOOSE path is " << path << std::endl;
+  if (access(path.c_str(), F_OK) == -1) {
+      std::cout << "GOOSE points to non-existent path. Aborting." << std::endl;
+      exit(-1);
+  }
 
-  std::cout << "Trying to load model data from files...\n";
+  // Append python module directory to the path
+  pybind11::module sys = pybind11::module::import("sys");
+  sys.attr("path").attr("append")(path);
 
-  // load graph data
+  // Force all output being printed to stdout. Otherwise INFO logging from
+  // python will be printed to stderr, even if it is not an error.
+  sys.attr("stderr") = sys.attr("stdout");
+
+  std::string model_path = opts.get<std::string>("model_data");
+  std::string domain_file = opts.get<std::string>("domain_file");
+  std::string instance_file = opts.get<std::string>("instance_file");
+  std::cout << "Trying to load model from file " << model_path << " ...\n";
+  pybind11::module util_module = pybind11::module::import("util.save_load");
+  model = util_module.attr("load_kernel_model_and_setup")(
+    model_path, domain_file, instance_file
+  );
+  std::cout << "Loaded model!" << std::endl;
+
+  // use I/O similar to goose_linear_regression to get graph representation and WL data
+  model.attr("write_model_data")(0);
+  model.attr("write_representation_to_file")();
+  std::string model_data_path = model.attr("get_model_data_path")().cast<std::string>();
+  std::string graph_data_path = model.attr("get_graph_file_path")().cast<std::string>();
   graph_ = CGraph(graph_data_path);
 
-  // load model data
+  // load WL hash data
   std::string line;
   std::ifstream infile(model_data_path);
-  int hash_cnt = 0, hash_size = 0, weight_cnt = 0, weight_size = 0;
-
+  int hash_cnt = 0, hash_size = 0;
   while (std::getline(infile, line)) {
     std::vector<std::string> toks;
     std::istringstream iss(line);
@@ -46,13 +73,7 @@ void GooseLinearRegression::initialise_model(const plugins::Options &opts) {
     if (line.find("hash size") != std::string::npos) {
       hash_size = stoi(toks[0]);
       hash_cnt = 0;
-      continue;
-    } else if (line.find("weights size") != std::string::npos) {
-      weight_size = stoi(toks[0]);
-      weight_cnt = 0;
-      continue;
-    } else if (line.find("bias") != std::string::npos) {
-      bias_ = stod(toks[0]);
+      feature_size_ = hash_size;
       continue;
     } else if (line.find("iterations") != std::string::npos) {
       iterations_ = stoi(toks[0]);
@@ -64,12 +85,6 @@ void GooseLinearRegression::initialise_model(const plugins::Options &opts) {
       hash_cnt++;
       continue;
     }
-
-    if (weight_cnt < weight_size) {
-      weights_.push_back(stod(line));
-      weight_cnt++;
-      continue;
-    }
   }
 
   // remove file
@@ -77,13 +92,13 @@ void GooseLinearRegression::initialise_model(const plugins::Options &opts) {
   strcpy(char_array, model_data_path.c_str());
   remove(char_array);
 
-  feature_size_ = static_cast<int>(weights_.size());
+  std::cout << "Model initialised!" << std::endl;
 }
 
-void GooseLinearRegression::initialise_facts() {
+void GooseKernel::initialise_facts() {
   FactsProxy facts(*task);
   for (FactProxy fact : facts) {
-    string name = fact.get_name();
+    std::string name = fact.get_name();
 
     // Convert from FDR var-val pairs back to propositions
     if (name == "<none of those>") {
@@ -134,10 +149,10 @@ void GooseLinearRegression::initialise_facts() {
   }
 }
 
-CGraph GooseLinearRegression::state_to_graph(const State &state) {
+CGraph GooseKernel::state_to_graph(const State &state) {
   std::vector<std::vector<std::pair<int, int>>> edges = graph_.get_edges();
   std::vector<int> colours = graph_.get_colours();
-  int cur_node_fact, cur_node_arg;
+  int cur_node_fact;
   int new_idx = graph_.n_nodes();
 
   std::pair<std::string, std::vector<std::string>> pred_args;
@@ -167,7 +182,8 @@ CGraph GooseLinearRegression::state_to_graph(const State &state) {
 
     // add new node
     cur_node_fact = new_idx;
-    colours.push_back(1);
+    new_idx++;
+    colours.push_back(0);  // TRUE_FACT
     std::vector<std::pair<int, int>> new_edges_fact;
     edges.push_back(new_edges_fact);
 
@@ -177,30 +193,17 @@ CGraph GooseLinearRegression::state_to_graph(const State &state) {
     edges[pred_node].push_back(std::make_pair(cur_node_fact, graph_.GROUND_EDGE_LABEL_));
 
     for (size_t k = 0; k < args.size(); k++) {
-      new_idx++;
-      cur_node_arg = new_idx;
-      colours.push_back(-static_cast<int>(k));
-
-      std::vector<std::pair<int, int>> new_edges_arg;
-      edges.push_back(new_edges_arg);
-
-      // connect variable to predicate
-      edges[cur_node_fact].push_back(std::make_pair(cur_node_arg, graph_.GROUND_EDGE_LABEL_));
-      edges[cur_node_arg].push_back(std::make_pair(cur_node_fact, graph_.GROUND_EDGE_LABEL_));
-
-      // connect variable to object
+      // connect fact to object
       int object_node = graph_.get_node_index(args[k]);
-      edges[object_node].push_back(std::make_pair(cur_node_arg, graph_.GROUND_EDGE_LABEL_));
-      edges[cur_node_arg].push_back(std::make_pair(object_node, graph_.GROUND_EDGE_LABEL_));
+      edges[object_node].push_back(std::make_pair(cur_node_fact, k));
+      edges[cur_node_fact].push_back(std::make_pair(object_node, k));
     }
-
-    new_idx++;
   }
 
   return {edges, colours};
 }
 
-std::vector<int> GooseLinearRegression::wl_feature(const CGraph &graph) {
+std::vector<int> GooseKernel::wl_feature(const CGraph &graph) {
   // feature to return is a histogram of colours seen during training
   std::vector<int> feature(feature_size_, 0);
 
@@ -301,25 +304,24 @@ end_of_loop1:
   return feature;
 }
 
-int GooseLinearRegression::predict(const std::vector<int> &feature) {
-  double ret = bias_;
-  for (int i = 0; i < feature_size_; i++) {
-    ret += feature[i] * weights_[i];
-  }
-  return static_cast<int>(round(ret));
+int GooseKernel::predict(const std::vector<int> &feature)
+{
+  // py::list py_feature;
+  int h = model.attr("svr_predict")(feature).cast<int>();
+  return h;
 }
 
-int GooseLinearRegression::compute_heuristic(const State &ancestor_state) {
+int GooseKernel::compute_heuristic(const State &ancestor_state) {
   // step 1.
   CGraph graph = state_to_graph(ancestor_state);
   // step 2.
   std::vector<int> feature = wl_feature(graph);
   // step 3.
-  double h = predict(feature);
+  int h = predict(feature);
   return h;
 }
 
-std::vector<int> GooseLinearRegression::compute_heuristic_batch(const std::vector<State> &ancestor_states) {
+std::vector<int> GooseKernel::compute_heuristic_batch(const std::vector<State> &ancestor_states) {
   std::vector<int> ret;
   for (auto state : ancestor_states) {
     ret.push_back(compute_heuristic(state));
@@ -327,21 +329,25 @@ std::vector<int> GooseLinearRegression::compute_heuristic_batch(const std::vecto
   return ret;
 }
 
-class GooseLinearRegressionFeature : public plugins::TypedFeature<Evaluator, GooseLinearRegression> {
+class GooseKernelFeature : public plugins::TypedFeature<Evaluator, GooseKernel> {
  public:
-  GooseLinearRegressionFeature() : TypedFeature("linear_regression") {
-    document_title("GOOSE optimised WL linear regression heuristic");
+  GooseKernelFeature() : TypedFeature("kernel") {
+    document_title("GOOSE optimised WL kernel heuristic");
     document_synopsis("TODO");
 
     // https://github.com/aibasel/downward/pull/170 for string options
     add_option<std::string>(
-        "model_data",
-        "path to trained model data in the form of a .model file",
-        "default_value");
+      "model_data",
+      "path to trained model data in the form of a .joblib file",
+      "default_value");
     add_option<std::string>(
-        "graph_data",
-        "path to trained model graph representation data",
-        "default_value");
+      "domain_file",
+      "Path to the domain file.",
+      "default_file");
+    add_option<std::string>(
+      "instance_file",
+      "Path to the instance file.",
+      "default_file");
 
     Heuristic::add_options_to_feature(*this);
 
@@ -356,6 +362,6 @@ class GooseLinearRegressionFeature : public plugins::TypedFeature<Evaluator, Goo
   }
 };
 
-static plugins::FeaturePlugin<GooseLinearRegressionFeature> _plugin;
+static plugins::FeaturePlugin<GooseKernelFeature> _plugin;
 
-}  // namespace goose_linear_regression
+}  // namespace goose_kernel

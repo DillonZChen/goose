@@ -23,6 +23,11 @@ LLG_EDGE_LABELS = OrderedDict({
   "eff_neg": 5,
 })
 
+# additional hard coded colours
+ACTIVATED_COLOUR = 1
+ACTIVATED_POS_GOAL_COLOUR = 2
+ACTIVATED_NEG_GOAL_COLOUR = 3
+
 
 class LiftedLearningGraph(Representation, ABC):
   name = "llg"
@@ -49,6 +54,14 @@ class LiftedLearningGraph(Representation, ABC):
       assert key not in image
       image.add(key)
     return
+  
+  def _get_to_coloured_graphs_init_colours(self):
+    return {
+      0: 0,
+      ACTIVATED_COLOUR: ACTIVATED_COLOUR,
+      ACTIVATED_POS_GOAL_COLOUR: ACTIVATED_POS_GOAL_COLOUR,
+      ACTIVATED_NEG_GOAL_COLOUR: ACTIVATED_NEG_GOAL_COLOUR,
+    }
 
   def _feature(self, node_type: LLG_FEATURES) -> Tensor:
     ret = torch.zeros(self.n_node_features)
