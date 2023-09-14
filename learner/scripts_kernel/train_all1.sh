@@ -10,7 +10,7 @@ do
   for pp in 0
   do 
     p=$((${l}*${pp}))
-    for d in ipc2023-learning-blocksworld ipc2023-learning-childsnack ipc2023-learning-ferry ipc2023-learning-floortile ipc2023-learning-miconic ipc2023-learning-rovers ipc2023-learning-satellite ipc2023-learning-sokoban ipc2023-learning-spanner ipc2023-learning-transport
+    for d in ipc2023-learning-ferry ipc2023-learning-blocksworld ipc2023-learning-childsnack ipc2023-learning-floortile ipc2023-learning-miconic ipc2023-learning-rovers ipc2023-learning-satellite ipc2023-learning-sokoban ipc2023-learning-spanner ipc2023-learning-transport
     do 
       for m in linear-svr lasso ridge rbf-svr quadratic-svr cubic-svr
       do

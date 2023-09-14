@@ -137,7 +137,7 @@ void GooseLinearRegression::initialise_facts() {
 CGraph GooseLinearRegression::state_to_graph(const State &state) {
   std::vector<std::vector<std::pair<int, int>>> edges = graph_.get_edges();
   std::vector<int> colours = graph_.get_colours();
-  int cur_node_fact, cur_node_arg;
+  int cur_node_fact;
   int new_idx = graph_.n_nodes();
 
   std::pair<std::string, std::vector<std::string>> pred_args;
@@ -167,7 +167,8 @@ CGraph GooseLinearRegression::state_to_graph(const State &state) {
 
     // add new node
     cur_node_fact = new_idx;
-    colours.push_back(1);
+    new_idx++;
+    colours.push_back(0);  // TRUE_FACT
     std::vector<std::pair<int, int>> new_edges_fact;
     edges.push_back(new_edges_fact);
 
@@ -177,24 +178,11 @@ CGraph GooseLinearRegression::state_to_graph(const State &state) {
     edges[pred_node].push_back(std::make_pair(cur_node_fact, graph_.GROUND_EDGE_LABEL_));
 
     for (size_t k = 0; k < args.size(); k++) {
-      new_idx++;
-      cur_node_arg = new_idx;
-      colours.push_back(-static_cast<int>(k));
-
-      std::vector<std::pair<int, int>> new_edges_arg;
-      edges.push_back(new_edges_arg);
-
-      // connect variable to predicate
-      edges[cur_node_fact].push_back(std::make_pair(cur_node_arg, graph_.GROUND_EDGE_LABEL_));
-      edges[cur_node_arg].push_back(std::make_pair(cur_node_fact, graph_.GROUND_EDGE_LABEL_));
-
-      // connect variable to object
+      // connect fact to object
       int object_node = graph_.get_node_index(args[k]);
-      edges[object_node].push_back(std::make_pair(cur_node_arg, graph_.GROUND_EDGE_LABEL_));
-      edges[cur_node_arg].push_back(std::make_pair(object_node, graph_.GROUND_EDGE_LABEL_));
+      edges[object_node].push_back(std::make_pair(cur_node_fact, k));
+      edges[cur_node_fact].push_back(std::make_pair(object_node, k));
     }
-
-    new_idx++;
   }
 
   return {edges, colours};
@@ -302,6 +290,11 @@ end_of_loop1:
 }
 
 int GooseLinearRegression::predict(const std::vector<int> &feature) {
+
+  // for (auto const f: feature) {
+  //   std::cout<<f<<", ";
+  // }std::cout<<std::endl; abort();
+
   double ret = bias_;
   for (int i = 0; i < feature_size_; i++) {
     ret += feature[i] * weights_[i];
@@ -359,3 +352,4 @@ class GooseLinearRegressionFeature : public plugins::TypedFeature<Evaluator, Goo
 static plugins::FeaturePlugin<GooseLinearRegressionFeature> _plugin;
 
 }  // namespace goose_linear_regression
+

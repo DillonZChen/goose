@@ -93,10 +93,10 @@ class LiftedLearningGraph(Representation, ABC):
       G.add_node(pred.name, x=self._feature(LLG_FEATURES.P))  # add predicate node
 
 
-    # fully connected between objects and predicates
-    for pred in self.problem.predicates:
-      for obj in self.problem.objects:
-        G.add_edge(u_of_edge=pred.name, v_of_edge=obj.name, edge_label=LLG_EDGE_LABELS["neutral"])
+    # # fully connected between objects and predicates
+    # for pred in self.problem.predicates:
+    #   for obj in self.problem.objects:
+    #     G.add_edge(u_of_edge=pred.name, v_of_edge=obj.name, edge_label=LLG_EDGE_LABELS["neutral"])
 
 
     # goal (state gets dealt with in state_to_tensor)

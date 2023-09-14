@@ -58,11 +58,17 @@ class CGraph {  // mainly assumes GOOSE LLG
     }
   }
 
+  // // hard code colours
+  // static const int TRUE_FACT_ = 1;
+  // static const int TRUE_POS_GOAL_ = 2;
+  // static const int TRUE_NEG_GOAL_ = 3;
+  // static const int GROUND_EDGE_LABEL_ = 1;
+
   // hard code colours
-  static const int TRUE_FACT_ = 1;
-  static const int TRUE_POS_GOAL_ = 2;
-  static const int TRUE_NEG_GOAL_ = 3;
-  static const int GROUND_EDGE_LABEL_ = 1;
+  static const int TRUE_FACT_ = 0;
+  static const int TRUE_POS_GOAL_ = 1;
+  static const int TRUE_NEG_GOAL_ = 2;
+  static const int GROUND_EDGE_LABEL_ = -1;
 
  private:
   // represent edge labeled graph by linked list
