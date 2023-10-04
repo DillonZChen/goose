@@ -1,4 +1,4 @@
-python3 scripts_kernel/generate_graphs_kernel.py llg2 --regenerate -d goose-gripper
+python3 scripts_kernel/generate_graphs_kernel.py lig --regenerate -d goose-gripper
 
 df=../benchmarks/goose/gripper/domain.pddl
 pf=../benchmarks/goose/gripper/test/gripper-n100.pddl
@@ -9,7 +9,7 @@ p=fd
 
 l=linear-svr
 i=1
-r=llg2
+r=lig
 
 mm=${l}_${r}_gripper_wl_${i}
 m=trained_models_kernel/${mm}.joblib

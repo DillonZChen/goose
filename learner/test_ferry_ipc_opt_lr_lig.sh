@@ -1,4 +1,4 @@
-r=llg2
+r=lig
 
 m=linear-svr_${r}_ipc2023-learning-ferry_wl_1_0
 

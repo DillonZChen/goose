@@ -18,8 +18,11 @@ ACTIVATED_POS_GOAL_COLOUR = 1
 ACTIVATED_NEG_GOAL_COLOUR = 2
 
 
-class LiftedLearningGraph2(Representation, ABC):
-  name = "llg2"
+""" LIG from GenPlan23 submission """
+
+
+class LiftedInstanceGraph(Representation, ABC):
+  name = "lig"
   n_node_features = ENC_FEAT_SIZE
   n_edge_labels = float("inf")  # unbounded because of var size
   directed = False

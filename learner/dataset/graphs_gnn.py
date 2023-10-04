@@ -119,10 +119,12 @@ def gen_graph_rep(
   """ Generate graph representations from saved optimal plans. """
 
 
-  tasks  = get_ipc_domain_problem_files(del_free=False)
-  # tasks += get_all_htg_instance_files(split=True)
-  tasks += get_train_goose_instance_files()
-  tasks += get_train_ipc2023_learning_instance_files()
+  # tasks  = get_ipc_domain_problem_files(del_free=False)
+  # # tasks += get_all_htg_instance_files(split=True)
+  # tasks += get_train_goose_instance_files()
+  # tasks += get_train_ipc2023_learning_instance_files()
+
+  tasks = get_train_ipc2023_learning_instance_files()
 
   new_generated = 0
   pbar = tqdm(tasks)

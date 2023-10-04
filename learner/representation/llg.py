@@ -29,6 +29,9 @@ ACTIVATED_POS_GOAL_COLOUR = 2
 ACTIVATED_NEG_GOAL_COLOUR = 3
 
 
+""" LLG from AAAI23 submission """
+
+
 class LiftedLearningGraph(Representation, ABC):
   name = "llg"
   n_node_features = ENC_FEAT_SIZE+VAR_FEAT_SIZE

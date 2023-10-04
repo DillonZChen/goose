@@ -3,7 +3,7 @@ from .slg import StripsLearningGraph
 from .dlg import DeleteLearningGraph
 from .flg import FdrLearningGraph
 from .llg import LiftedLearningGraph
-from .llg2 import LiftedLearningGraph2
+from .lig import LiftedInstanceGraph
 from .glg import GroundedLearningGraph
 
 
@@ -12,7 +12,7 @@ REPRESENTATIONS = {
   "dlg": DeleteLearningGraph,
   "flg": FdrLearningGraph,
   "llg": LiftedLearningGraph,
-  "llg2": LiftedLearningGraph2,
+  "lig": LiftedInstanceGraph,
   "glg": GroundedLearningGraph,
 }
 

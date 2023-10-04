@@ -22,10 +22,10 @@ def create_parser():
 
   # model params
   parser.add_argument('-m', '--model', type=str, required=True, choices=gnns.GNNS)
-  parser.add_argument('-L', '--nlayers', type=int, default=16)
+  parser.add_argument('-L', '--nlayers', type=int, default=4)
   parser.add_argument('-H', '--nhid', type=int, default=64)
   parser.add_argument('--share-layers', action='store_true')
-  parser.add_argument('--aggr', type=str, default="mean")
+  parser.add_argument('--aggr', type=str, default="max", choices=["mean", "max"])
   parser.add_argument('--pool', type=str, default="sum")
   parser.add_argument('--drop', type=float, default=0.0, 
                       help="probability of an element to be zeroed")
