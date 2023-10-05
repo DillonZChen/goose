@@ -1,4 +1,5 @@
 import os
+import re
 from tqdm import tqdm
 
 
@@ -15,16 +16,22 @@ IPC2023_LEARNING_DOMAINS = [  # 90 test instances each
   "transport",
 ]
 
+def sorted_nicely( l ): 
+  """ Sort the given iterable in the way that humans expect.""" 
+  convert = lambda text: int(text) if text.isdigit() else text 
+  alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key) ] 
+  return sorted(l, key = alphanum_key)
+
 def get_train_ipc2023_learning_instance_files(domain=None):
   ret = []
   if domain is None:
-    domains = sorted(IPC2023_LEARNING_DOMAINS)
+    domains = sorted_nicely(IPC2023_LEARNING_DOMAINS)
   else:
     domains = [domain]
   for domain in domains:
     domain_dir = f"../benchmarks/ipc2023-learning-benchmarks/{domain}"
     df = f"{domain_dir}/domain.pddl"
-    for file in sorted(os.listdir(f'{domain_dir}/training/easy')):
+    for file in sorted_nicely(os.listdir(f'{domain_dir}/training/easy')):
       pf = f"{domain_dir}/training/easy/{file}"
       ret.append((f'ipc2023-learning-{domain}', df, pf))
   # print(f"num goose train instances: {len(ret)}")
@@ -61,7 +68,7 @@ def plans_to_states():
 
 def get_number_of_ipc2023_training_data():
   ret = {}
-  for domain in sorted(IPC2023_LEARNING_DOMAINS):
+  for domain in sorted_nicely(IPC2023_LEARNING_DOMAINS):
     states = 0
     for _, _, pf in get_train_ipc2023_learning_instance_files(domain):
       states += get_plan_length(get_plan_file_from_train_instance(domain, pf))
@@ -70,12 +77,12 @@ def get_number_of_ipc2023_training_data():
 
 def get_test_ipc2023_learning_instance_files():
   ret = {}
-  for domain in sorted(IPC2023_LEARNING_DOMAINS):
+  for domain in sorted_nicely(IPC2023_LEARNING_DOMAINS):
     ret[domain] = []
     domain_dir = f"../benchmarks/ipc2023-learning-benchmarks/{domain}"
     df = f"{domain_dir}/domain.pddl"
     for difficulty in ["easy", "medium", "hard"]:
-      for file in sorted(os.listdir(f'{domain_dir}/testing/{difficulty}')):
+      for file in sorted_nicely(os.listdir(f'{domain_dir}/testing/{difficulty}')):
         pf = f"{domain_dir}/testing/{difficulty}/{file}"
         ret[domain].append((df, pf))
   return ret
@@ -93,6 +100,6 @@ def get_best_bound(domain, difficulty, problem_name):
 
 if __name__ == "__main__":
   ret = get_test_ipc2023_learning_instance_files()
-  for domain in sorted(IPC2023_LEARNING_DOMAINS):
+  for domain in sorted_nicely(IPC2023_LEARNING_DOMAINS):
     print(domain, len(ret[domain]))
   pass
