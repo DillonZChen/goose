@@ -18,7 +18,7 @@ if __name__ == "__main__":
     choices=["gnn", "kernel", "linear-regression-opt", "kernel-opt"],
     help="learning model")
   parser.add_argument(
-    "--model_path", "-m", required=True, type=str,
+    "--model-path", "-m", required=True, type=str,
     help="path to saved model weights")
   parser.add_argument(
     "--planner", "-p", type=str, default="fd", choices=["fd", "pwl"],
