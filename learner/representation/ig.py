@@ -152,13 +152,21 @@ class InstanceGraph(Representation, ABC):
 
             # connect fact to predicate
             assert self._name_to_node[pred] in c_graph.nodes
-            c_graph.add_edge(u_of_edge=node, v_of_edge=self._name_to_node[pred], edge_label=-1)
-            c_graph.add_edge(v_of_edge=node, u_of_edge=self._name_to_node[pred], edge_label=-1)
+            c_graph.add_edge(
+                u_of_edge=node, v_of_edge=self._name_to_node[pred], edge_label=-1
+            )
+            c_graph.add_edge(
+                v_of_edge=node, u_of_edge=self._name_to_node[pred], edge_label=-1
+            )
 
             for k, obj in enumerate(args):
                 # connect fact to object
                 assert self._name_to_node[obj] in c_graph.nodes
-                c_graph.add_edge(u_of_edge=node, v_of_edge=self._name_to_node[obj], edge_label=k)
-                c_graph.add_edge(v_of_edge=node, u_of_edge=self._name_to_node[obj], edge_label=k)
+                c_graph.add_edge(
+                    u_of_edge=node, v_of_edge=self._name_to_node[obj], edge_label=k
+                )
+                c_graph.add_edge(
+                    v_of_edge=node, u_of_edge=self._name_to_node[obj], edge_label=k
+                )
 
         return c_graph

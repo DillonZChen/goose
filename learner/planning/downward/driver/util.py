@@ -29,7 +29,7 @@ def find_domain_filename(task_filename):
     domain_basenames = [
         "domain.pddl",
         basename_root + "-domain" + ext,
-        basename[:3] + "-domain.pddl", # for airport
+        basename[:3] + "-domain.pddl",  # for airport
         "domain_" + basename,
         "domain-" + basename,
     ]
@@ -40,4 +40,5 @@ def find_domain_filename(task_filename):
             return domain_filename
 
     returncodes.exit_with_driver_input_error(
-        "Error: Could not find domain file using automatic naming rules.")
+        "Error: Could not find domain file using automatic naming rules."
+    )

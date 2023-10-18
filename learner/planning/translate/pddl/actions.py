@@ -9,10 +9,15 @@ from .pddl_types import TypedObject
 
 
 class Action:
-    def __init__(self, name: str, parameters: List[TypedObject],
-            num_external_parameters: int,
-            precondition: Condition, effects: List[Effect],
-            cost: Optional[Increase]):
+    def __init__(
+        self,
+        name: str,
+        parameters: List[TypedObject],
+        num_external_parameters: int,
+        precondition: Condition,
+        effects: List[Effect],
+        cost: Optional[Increase],
+    ):
         assert 0 <= num_external_parameters <= len(parameters)
         self.name = name
         self.parameters = parameters
@@ -25,7 +30,7 @@ class Action:
         self.precondition = precondition
         self.effects = effects
         self.cost = cost
-        self.uniquify_variables() # TODO: uniquify variables in cost?
+        self.uniquify_variables()  # TODO: uniquify variables in cost?
 
     def __repr__(self):
         return "<Action %r at %#x>" % (self.name, id(self))
@@ -55,9 +60,13 @@ class Action:
             relaxed_eff = eff.relaxed()
             if relaxed_eff:
                 new_effects.append(relaxed_eff)
-        return Action(self.name, self.parameters, self.num_external_parameters,
-                      self.precondition.relaxed().simplified(),
-                      new_effects)
+        return Action(
+            self.name,
+            self.parameters,
+            self.num_external_parameters,
+            self.precondition.relaxed().simplified(),
+            new_effects,
+        )
 
     def untyped(self):
         # We do not actually remove the types from the parameter lists,
@@ -66,12 +75,21 @@ class Action:
         result = copy.copy(self)
         parameter_atoms = [par.to_untyped_strips() for par in self.parameters]
         new_precondition = self.precondition.untyped()
-        result.precondition = conditions.Conjunction(parameter_atoms + [new_precondition])
+        result.precondition = conditions.Conjunction(
+            parameter_atoms + [new_precondition]
+        )
         result.effects = [eff.untyped() for eff in self.effects]
         return result
 
-    def instantiate(self, var_mapping, init_facts, init_assignments,
-                    fluent_facts, objects_by_type, metric):
+    def instantiate(
+        self,
+        var_mapping,
+        init_facts,
+        init_assignments,
+        fluent_facts,
+        objects_by_type,
+        metric,
+    ):
         """Return a PropositionalAction which corresponds to the instantiation of
         this action with the arguments in var_mapping. Only fluent parts of the
         conditions (those in fluent_facts) are included. init_facts are evaluated
@@ -79,27 +97,34 @@ class Action:
         Precondition and effect conditions must be normalized for this to work.
         Returns None if var_mapping does not correspond to a valid instantiation
         (because it has impossible preconditions or an empty effect list.)"""
-        arg_list = [var_mapping[par.name]
-                    for par in self.parameters[:self.num_external_parameters]]
+        arg_list = [
+            var_mapping[par.name]
+            for par in self.parameters[: self.num_external_parameters]
+        ]
         name = "(%s %s)" % (self.name, " ".join(arg_list))
 
         precondition = []
         try:
-            self.precondition.instantiate(var_mapping, init_facts,
-                                          fluent_facts, precondition)
+            self.precondition.instantiate(
+                var_mapping, init_facts, fluent_facts, precondition
+            )
         except conditions.Impossible:
             return None
         effects = []
         for eff in self.effects:
-            eff.instantiate(var_mapping, init_facts, fluent_facts,
-                            objects_by_type, effects)
+            eff.instantiate(
+                var_mapping, init_facts, fluent_facts, objects_by_type, effects
+            )
         if effects:
             if metric:
                 if self.cost is None:
                     cost = 0
                 else:
-                    cost = int(self.cost.instantiate(
-                        var_mapping, init_assignments).expression.value)
+                    cost = int(
+                        self.cost.instantiate(
+                            var_mapping, init_assignments
+                        ).expression.value
+                    )
             else:
                 cost = 1
             return PropositionalAction(name, precondition, effects, cost)
@@ -108,8 +133,13 @@ class Action:
 
 
 class PropositionalAction:
-    def __init__(self, name: str, precondition: List[Literal], effects:
-            List[Tuple[List[Literal], Literal]], cost: int):
+    def __init__(
+        self,
+        name: str,
+        precondition: List[Literal],
+        effects: List[Tuple[List[Literal], Literal]],
+        cost: int,
+    ):
         self.name = name
         self.precondition = precondition
         self.add_effects = []

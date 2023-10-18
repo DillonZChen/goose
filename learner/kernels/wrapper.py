@@ -28,7 +28,9 @@ class KernelModelWrapper:
         super().__init__()
         self._model_name = args.model
 
-        self._kernel = kernels.KERNELS[args.kernel](iterations=args.iterations, prune=args.prune)
+        self._kernel = kernels.KERNELS[args.kernel](
+            iterations=args.iterations, prune=args.prune
+        )
 
         self._iterations = args.iterations
         self._prune = args.prune
@@ -45,8 +47,12 @@ class KernelModelWrapper:
             "lasso": Lasso(alpha=args.a, **kwargs),
             "ridge": Ridge(alpha=args.a, **kwargs),
             "rbf-svr": SVR(kernel="rbf", epsilon=args.e, C=args.C, **kwargs),
-            "quadratic-svr": SVR(kernel="poly", degree=2, epsilon=args.e, C=args.C, **kwargs),
-            "cubic-svr": SVR(kernel="poly", degree=3, epsilon=args.e, C=args.C, **kwargs),
+            "quadratic-svr": SVR(
+                kernel="poly", degree=2, epsilon=args.e, C=args.C, **kwargs
+            ),
+            "cubic-svr": SVR(
+                kernel="poly", degree=3, epsilon=args.e, C=args.C, **kwargs
+            ),
             "mlp": MLPRegressor(
                 hidden_layer_sizes=(64,),
                 batch_size=16,
@@ -136,7 +142,9 @@ class KernelModelWrapper:
             bias = self.get_bias()
 
             zero_weights = np.count_nonzero(weights == 0)
-            print(f"{zero_weights}/{len(weights)} = {zero_weights/len(weights):.2f} are zero")
+            print(
+                f"{zero_weights}/{len(weights)} = {zero_weights/len(weights):.2f} are zero"
+            )
 
             # prune zero weights
             new_weights = []

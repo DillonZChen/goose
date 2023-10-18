@@ -82,260 +82,293 @@ CONFIG_TO_COLOUR = {
 GOOSE_DOMAINS = sorted(GOOSE_DOMAINS)
 
 
-def sorted_nicely( l ): 
-  """ Sort the given iterable in the way that humans expect.""" 
-  convert = lambda text: int(text) if text.isdigit() else text 
-  alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key) ] 
-  return sorted(l, key = alphanum_key)
-
-def collect_param_test_stats(train_type, Ls, aggrs, H, p, graphs, normalise, domain=None):
-  d = {"aggr":[],"L":[],}
-  for graph in graphs:
-    d[graph] = []
-  log_dir = "logs/test"
-  domains = [domain] if domain != None else GOOSE_DOMAINS
-  for aggr in aggrs:
-    for L in Ls:
-      d["L"].append(L)
-      d["aggr"].append(aggr)
-      for rep in graphs:
-        solved = 0
-        for domain in domains:
-          problems = os.listdir(f"../benchmarks/goose/{domain}/test")
-          for problem_pddl in problems:
-            problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
-            f = f'{log_dir}/{problem_name}_{train_type}_{rep}_{domain}_L{L}_H{H}_{aggr}_p{p}_r0.log'
-            if not os.path.exists(f):
-              continue
-            problem_stats = scrape_search_log(f)
-        
-            if normalise:
-              solved += float(problem_stats["solved"]) / float(len(problems))
-            else:
-              solved += int(problem_stats["solved"])
+def sorted_nicely(l):
+    """Sort the given iterable in the way that humans expect."""
+    convert = lambda text: int(text) if text.isdigit() else text
+    alphanum_key = lambda key: [convert(c) for c in re.split("([0-9]+)", key)]
+    return sorted(l, key=alphanum_key)
 
 
-        d[rep].append(solved)
+def collect_param_test_stats(
+    train_type, Ls, aggrs, H, p, graphs, normalise, domain=None
+):
+    d = {
+        "aggr": [],
+        "L": [],
+    }
+    for graph in graphs:
+        d[graph] = []
+    log_dir = "logs/test"
+    domains = [domain] if domain != None else GOOSE_DOMAINS
+    for aggr in aggrs:
+        for L in Ls:
+            d["L"].append(L)
+            d["aggr"].append(aggr)
+            for rep in graphs:
+                solved = 0
+                for domain in domains:
+                    problems = os.listdir(f"../benchmarks/goose/{domain}/test")
+                    for problem_pddl in problems:
+                        problem_name = os.path.basename(problem_pddl).replace(
+                            ".pddl", ""
+                        )
+                        f = f"{log_dir}/{problem_name}_{train_type}_{rep}_{domain}_L{L}_H{H}_{aggr}_p{p}_r0.log"
+                        if not os.path.exists(f):
+                            continue
+                        problem_stats = scrape_search_log(f)
 
-  df = pd.DataFrame(d)
+                        if normalise:
+                            solved += float(problem_stats["solved"]) / float(
+                                len(problems)
+                            )
+                        else:
+                            solved += int(problem_stats["solved"])
 
-  return df
+                d[rep].append(solved)
+
+    df = pd.DataFrame(d)
+
+    return df
 
 
 def collect_val_stats(train_type, L, H, aggr, p):
-  # Collect stats from the logs/select directory
-  # TODO multiple repeats
+    # Collect stats from the logs/select directory
+    # TODO multiple repeats
 
-  d = {
-    "graph": [],
-    "domain": [],
-    "L": [],
-    "H": [],
-    "aggr": [],
-    "patience": [],
-    "solved": [],
-    "median_expansions": [],
-    "median_runtime": [],
-    "avg_loss": [],
-    "train_time": [],
-  }
-  log_dir = "logs/select"
-  for rep in REPRESENTATIONS:
-    for domain in GOOSE_DOMAINS:
-      try:
-        tmp = {}
-        tmp["graph"] = rep
-        tmp["domain"] = domain
-        tmp["L"] = L
-        tmp["H"] = H
-        tmp["aggr"] = aggr
-        tmp["patience"] = p
-        f = f'{log_dir}/{train_type}_{rep}_{domain}_L{L}_H{H}_{aggr}_p{p}_r0.log'
-        for line in open(f, 'r').readlines():
-          toks = line.replace(":","").split()
-          for key in d:
-            if key==toks[0]:
-              val = int(float(toks[1])) if key in key in {"solved", "median_expansions"} else float(toks[1])
-              tmp[key] = val
-              break
-        for key in d:
-          d[key].append(tmp[key])
-      except:
-        pass
+    d = {
+        "graph": [],
+        "domain": [],
+        "L": [],
+        "H": [],
+        "aggr": [],
+        "patience": [],
+        "solved": [],
+        "median_expansions": [],
+        "median_runtime": [],
+        "avg_loss": [],
+        "train_time": [],
+    }
+    log_dir = "logs/select"
+    for rep in REPRESENTATIONS:
+        for domain in GOOSE_DOMAINS:
+            try:
+                tmp = {}
+                tmp["graph"] = rep
+                tmp["domain"] = domain
+                tmp["L"] = L
+                tmp["H"] = H
+                tmp["aggr"] = aggr
+                tmp["patience"] = p
+                f = f"{log_dir}/{train_type}_{rep}_{domain}_L{L}_H{H}_{aggr}_p{p}_r0.log"
+                for line in open(f, "r").readlines():
+                    toks = line.replace(":", "").split()
+                    for key in d:
+                        if key == toks[0]:
+                            val = (
+                                int(float(toks[1]))
+                                if key in key in {"solved", "median_expansions"}
+                                else float(toks[1])
+                            )
+                            tmp[key] = val
+                            break
+                for key in d:
+                    d[key].append(tmp[key])
+            except:
+                pass
 
-  df = pd.DataFrame(d)
+    df = pd.DataFrame(d)
 
-  return df
+    return df
+
 
 def display_val_stats(train_type, L, H, aggr, p):
-  # Display stats from the logs/select directory
-  # TODO multiple repeats
+    # Display stats from the logs/select directory
+    # TODO multiple repeats
 
-  df = collect_val_stats(train_type, L, H, aggr, p)
-  for domain in GOOSE_DOMAINS:
-    df_domain = df[df.domain==domain]
-    display(df_domain)
+    df = collect_val_stats(train_type, L, H, aggr, p)
+    for domain in GOOSE_DOMAINS:
+        df_domain = df[df.domain == domain]
+        display(df_domain)
 
-  return
+    return
+
 
 def collect_test_stats_planner_and_graphs(configs, L, aggr, normalise):
-  d = {
-    "config": [],
-    "solved": [],
-    "expanded": [],
-    "time": [],
-    "cost": [],
-    "domain": [],
-  }
+    d = {
+        "config": [],
+        "solved": [],
+        "expanded": [],
+        "time": [],
+        "cost": [],
+        "domain": [],
+    }
 
-  for domain in GOOSE_DOMAINS:
-    problems = os.listdir(f"../benchmarks/goose/{domain}/test")
-    for problem_pddl in problems:
-      problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
+    for domain in GOOSE_DOMAINS:
+        problems = os.listdir(f"../benchmarks/goose/{domain}/test")
+        for problem_pddl in problems:
+            problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
 
-      for config in configs:
-        if "-el" in config:
-          # graph
-          rep, train_type = config.split()
-          log_dir = "logs/test"
+            for config in configs:
+                if "-el" in config:
+                    # graph
+                    rep, train_type = config.split()
+                    log_dir = "logs/test"
 
-          H=64
-          p=10 if train_type=="dd" else 20
+                    H = 64
+                    p = 10 if train_type == "dd" else 20
 
-          f = f'{log_dir}/{problem_name}_{train_type}_{rep}_{domain}_L{L}_H{H}_{aggr}_p{p}_r0.log'
-          tmp = scrape_search_log(f)
-        else:
-          # planner
-          log_dir = f"logs/{config}"
-          if config in {"shgn", "hff-pwl"}:
-            f = f'{log_dir}/{domain}_{problem_name}.log'
-          else:
-            f = f'{log_dir}/{domain}_{problem_name}_{config}.log'
-          # assert os.path.exists(f)
-          tmp = scrape_search_log(f)
+                    f = f"{log_dir}/{problem_name}_{train_type}_{rep}_{domain}_L{L}_H{H}_{aggr}_p{p}_r0.log"
+                    tmp = scrape_search_log(f)
+                else:
+                    # planner
+                    log_dir = f"logs/{config}"
+                    if config in {"shgn", "hff-pwl"}:
+                        f = f"{log_dir}/{domain}_{problem_name}.log"
+                    else:
+                        f = f"{log_dir}/{domain}_{problem_name}_{config}.log"
+                    # assert os.path.exists(f)
+                    tmp = scrape_search_log(f)
 
-        tmp["config"] = config
-        tmp["domain"] = domain
+                tmp["config"] = config
+                tmp["domain"] = domain
 
-        for key in d:
-          val = tmp[key]
-          if normalise and key=="solved":
-            val = float(val) / float(len(problems))
-          d[key].append(val)
-  df = pd.DataFrame(d)
-  return df
+                for key in d:
+                    val = tmp[key]
+                    if normalise and key == "solved":
+                        val = float(val) / float(len(problems))
+                    d[key].append(val)
+    df = pd.DataFrame(d)
+    return df
 
 
 def collect_test_stats_planner(planner, normalise, domain=None):
-  d = {
-    "solved": [],
-    "expanded": [],
-    "time": [],
-    "cost": [],
-  }
-  log_dir = f"logs/{planner}"
+    d = {
+        "solved": [],
+        "expanded": [],
+        "time": [],
+        "cost": [],
+    }
+    log_dir = f"logs/{planner}"
 
-  if domain is None:
-    domains = GOOSE_DOMAINS
-  else:
-    domains = [domain]
-  for domain in domains:
-    problem_pddls = os.listdir(f"../benchmarks/goose/{domain}/test")
-    for problem_pddl in problem_pddls:
-      problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
-      tmp = {}
-      f = f'{log_dir}/{domain}_{problem_name}_{planner}.log'
-      assert os.path.exists(f)
-      problem_stats = scrape_search_log(f)
-      for k in d:
-        if k in problem_stats:
-          tmp[k] = problem_stats[k]
-          if k=="solved" and normalise:
-            tmp[k] = float(tmp[k])/len(problem_pddls)
-      assert len(tmp) == len(d)
-      for k in d:
-        d[k].append(tmp[k])
+    if domain is None:
+        domains = GOOSE_DOMAINS
+    else:
+        domains = [domain]
+    for domain in domains:
+        problem_pddls = os.listdir(f"../benchmarks/goose/{domain}/test")
+        for problem_pddl in problem_pddls:
+            problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
+            tmp = {}
+            f = f"{log_dir}/{domain}_{problem_name}_{planner}.log"
+            assert os.path.exists(f)
+            problem_stats = scrape_search_log(f)
+            for k in d:
+                if k in problem_stats:
+                    tmp[k] = problem_stats[k]
+                    if k == "solved" and normalise:
+                        tmp[k] = float(tmp[k]) / len(problem_pddls)
+            assert len(tmp) == len(d)
+            for k in d:
+                d[k].append(tmp[k])
 
-  df = pd.DataFrame(d)
-  if not normalise:
-    df["solved"] = df["solved"].astype(int)
-  return df
+    df = pd.DataFrame(d)
+    if not normalise:
+        df["solved"] = df["solved"].astype(int)
+    return df
+
 
 def collect_test_stats(train_type, L, H, aggr, p):
-  # Collect stats from the logs/test directory
-  # TODO multiple repeats
+    # Collect stats from the logs/test directory
+    # TODO multiple repeats
 
-  d = {
-    "graph": [],
-    "domain": [],
-    "L": [],
-    "H": [],
-    "aggr": [],
-    "patience": [],
-    "solved": [],
-    "expanded": [],
-    "time": [],
-    "cost": [],
-  }
-  log_dir = "logs/test"
-  for rep in REPRESENTATIONS:
-    for domain in GOOSE_DOMAINS:
-      for problem_pddl in os.listdir(f"../benchmarks/goose/{domain}/test"):
-        problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
-        tmp = {}
-        tmp["graph"] = rep
-        tmp["domain"] = domain
-        tmp["L"] = L
-        tmp["H"] = H
-        tmp["aggr"] = aggr
-        tmp["patience"] = p
-        f = f'{log_dir}/{problem_name}_{train_type}_{rep}_{domain}_L{L}_H{H}_{aggr}_p{p}_r0.log'
-        if not os.path.exists(f):
-          continue
-        problem_stats = scrape_search_log(f)
-        for k in d:
-          if k in problem_stats:
-            tmp[k] = problem_stats[k]
-        if len(tmp) != len(d):
-          continue
-        for k in d:
-          d[k].append(tmp[k])
+    d = {
+        "graph": [],
+        "domain": [],
+        "L": [],
+        "H": [],
+        "aggr": [],
+        "patience": [],
+        "solved": [],
+        "expanded": [],
+        "time": [],
+        "cost": [],
+    }
+    log_dir = "logs/test"
+    for rep in REPRESENTATIONS:
+        for domain in GOOSE_DOMAINS:
+            for problem_pddl in os.listdir(f"../benchmarks/goose/{domain}/test"):
+                problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
+                tmp = {}
+                tmp["graph"] = rep
+                tmp["domain"] = domain
+                tmp["L"] = L
+                tmp["H"] = H
+                tmp["aggr"] = aggr
+                tmp["patience"] = p
+                f = f"{log_dir}/{problem_name}_{train_type}_{rep}_{domain}_L{L}_H{H}_{aggr}_p{p}_r0.log"
+                if not os.path.exists(f):
+                    continue
+                problem_stats = scrape_search_log(f)
+                for k in d:
+                    if k in problem_stats:
+                        tmp[k] = problem_stats[k]
+                if len(tmp) != len(d):
+                    continue
+                for k in d:
+                    d[k].append(tmp[k])
 
-  df = pd.DataFrame(d)
-  df["solved"] = df["solved"].astype(int)
+    df = pd.DataFrame(d)
+    df["solved"] = df["solved"].astype(int)
 
-  return df
+    return df
+
 
 def display_solved_test_stats(train_type, L, H, aggr, p):
-  # Display solved stats from the logs/test directory
-  # TODO multiple repeats
+    # Display solved stats from the logs/test directory
+    # TODO multiple repeats
 
-  df = collect_test_stats(train_type, L, H, aggr, p)
-  for domain in GOOSE_DOMAINS:
-    df_domain = df[df.domain==domain]
-    df_rep = df_domain.drop(columns=["domain", "L", "H", "aggr", "patience"]).groupby("graph").sum()
-    print(domain)
-    display(df_rep)
+    df = collect_test_stats(train_type, L, H, aggr, p)
+    for domain in GOOSE_DOMAINS:
+        df_domain = df[df.domain == domain]
+        df_rep = (
+            df_domain.drop(columns=["domain", "L", "H", "aggr", "patience"])
+            .groupby("graph")
+            .sum()
+        )
+        print(domain)
+        display(df_rep)
 
-  return
+    return
+
 
 def get_max_of_parameters(df):
-  df = df.drop(columns=["L", "aggr"]).max()
-  return df
+    df = df.drop(columns=["L", "aggr"]).max()
+    return df
 
-def get_confusion_matrix(y_true_train, y_pred_train, y_true_test, y_pred_test, cutoff=-1):
-  y_true_train = np.rint(y_true_train).astype(int)
-  y_pred_train = np.rint(y_pred_train).astype(int)
-  y_true_test = np.rint(y_true_test).astype(int)
-  y_pred_test = np.rint(y_pred_test).astype(int)
-  fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(10, 10))
-  if cutoff == -1:
-    cutoff = max(max(y_true_train), max(y_true_test))+1
-  cm_train = confusion_matrix(y_true_train, y_pred_train, normalize="true", labels=list(range(0, cutoff)))
-  cm_test = confusion_matrix(y_true_test, y_pred_test, normalize="true", labels=list(range(0, cutoff)))
-  display_labels = [y if y%10==0 else "" for y in range(cutoff)]
-  for i, cm in enumerate([cm_train, cm_test]):
-    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=display_labels)
-    disp.plot(include_values=False, xticks_rotation="vertical", ax=ax[i], colorbar=False)
-    disp.im_.set_clim(0, 1)
-  return plt
+
+def get_confusion_matrix(
+    y_true_train, y_pred_train, y_true_test, y_pred_test, cutoff=-1
+):
+    y_true_train = np.rint(y_true_train).astype(int)
+    y_pred_train = np.rint(y_pred_train).astype(int)
+    y_true_test = np.rint(y_true_test).astype(int)
+    y_pred_test = np.rint(y_pred_test).astype(int)
+    fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(10, 10))
+    if cutoff == -1:
+        cutoff = max(max(y_true_train), max(y_true_test)) + 1
+    cm_train = confusion_matrix(
+        y_true_train, y_pred_train, normalize="true", labels=list(range(0, cutoff))
+    )
+    cm_test = confusion_matrix(
+        y_true_test, y_pred_test, normalize="true", labels=list(range(0, cutoff))
+    )
+    display_labels = [y if y % 10 == 0 else "" for y in range(cutoff)]
+    for i, cm in enumerate([cm_train, cm_test]):
+        disp = ConfusionMatrixDisplay(
+            confusion_matrix=cm, display_labels=display_labels
+        )
+        disp.plot(
+            include_values=False, xticks_rotation="vertical", ax=ax[i], colorbar=False
+        )
+        disp.im_.set_clim(0, 1)
+    return plt

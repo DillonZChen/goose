@@ -51,11 +51,10 @@ def adapt_args(args, search_cost_type, heuristic_cost_type, plan_manager):
             if "bound=BOUND" not in search:
                 returncodes.exit_with_driver_critical_error(
                     "Satisficing portfolios need the string "
-                    "\"bound=BOUND\" in each search configuration. "
-                    "See the FDSS portfolios for examples.")
-            for name, value in [
-                    ("BOUND", g_bound),
-                    ("S_COST_TYPE", search_cost_type)]:
+                    '"bound=BOUND" in each search configuration. '
+                    "See the FDSS portfolios for examples."
+                )
+            for name, value in [("BOUND", g_bound), ("S_COST_TYPE", search_cost_type)]:
                 search = search.replace(name, str(value))
             search = adapt_heuristic_cost_type(search, heuristic_cost_type)
             args[index + 1] = search
@@ -63,14 +62,19 @@ def adapt_args(args, search_cost_type, heuristic_cost_type, plan_manager):
 
 
 def run_search(executable, args, sas_file, plan_manager, time, memory):
-    complete_args = [executable] + args + [
-        "--internal-plan-file", plan_manager.get_plan_prefix()]
+    complete_args = (
+        [executable] + args + ["--internal-plan-file", plan_manager.get_plan_prefix()]
+    )
     print("args: %s" % complete_args)
 
     try:
         exitcode = call.check_call(
-            "search", complete_args, stdin=sas_file,
-            time_limit=time, memory_limit=memory)
+            "search",
+            complete_args,
+            stdin=sas_file,
+            time_limit=time,
+            memory_limit=memory,
+        )
     except subprocess.CalledProcessError as err:
         exitcode = err.returncode
     print("exitcode: %d" % exitcode)
@@ -83,13 +87,27 @@ def compute_run_time(timeout, configs, pos):
     print("remaining time: {}".format(remaining_time))
     relative_time = configs[pos][0]
     remaining_relative_time = sum(config[0] for config in configs[pos:])
-    print("config {}: relative time {}, remaining {}".format(
-          pos, relative_time, remaining_relative_time))
-    return limits.round_time_limit(remaining_time * relative_time / remaining_relative_time)
+    print(
+        "config {}: relative time {}, remaining {}".format(
+            pos, relative_time, remaining_relative_time
+        )
+    )
+    return limits.round_time_limit(
+        remaining_time * relative_time / remaining_relative_time
+    )
 
 
-def run_sat_config(configs, pos, search_cost_type, heuristic_cost_type,
-                   executable, sas_file, plan_manager, timeout, memory):
+def run_sat_config(
+    configs,
+    pos,
+    search_cost_type,
+    heuristic_cost_type,
+    executable,
+    sas_file,
+    plan_manager,
+    timeout,
+    memory,
+):
     run_time = compute_run_time(timeout, configs, pos)
     if run_time <= 0:
         return None
@@ -97,16 +115,27 @@ def run_sat_config(configs, pos, search_cost_type, heuristic_cost_type,
     args = list(args_template)
     adapt_args(args, search_cost_type, heuristic_cost_type, plan_manager)
     if not plan_manager.abort_portfolio_after_first_plan():
-        args.extend([
-            "--internal-previous-portfolio-plans",
-            str(plan_manager.get_plan_counter())])
+        args.extend(
+            [
+                "--internal-previous-portfolio-plans",
+                str(plan_manager.get_plan_counter()),
+            ]
+        )
     result = run_search(executable, args, sas_file, plan_manager, run_time, memory)
     plan_manager.process_new_plans()
     return result
 
 
-def run_sat(configs, executable, sas_file, plan_manager, final_config,
-            final_config_builder, timeout, memory):
+def run_sat(
+    configs,
+    executable,
+    sas_file,
+    plan_manager,
+    final_config,
+    final_config_builder,
+    timeout,
+    memory,
+):
     # If the configuration contains S_COST_TYPE or H_COST_TRANSFORM and the task
     # has non-unit costs, we start by treating all costs as one. When we find
     # a solution, we rerun the successful config with real costs.
@@ -117,8 +146,16 @@ def run_sat(configs, executable, sas_file, plan_manager, final_config,
         configs_next_round = []
         for pos, (relative_time, args) in enumerate(configs):
             exitcode = run_sat_config(
-                configs, pos, search_cost_type, heuristic_cost_type,
-                executable, sas_file, plan_manager, timeout, memory)
+                configs,
+                pos,
+                search_cost_type,
+                heuristic_cost_type,
+                executable,
+                sas_file,
+                plan_manager,
+                timeout,
+                memory,
+            )
             if exitcode is None:
                 return
 
@@ -130,15 +167,26 @@ def run_sat(configs, executable, sas_file, plan_manager, final_config,
                 if plan_manager.abort_portfolio_after_first_plan():
                     return
                 configs_next_round.append((relative_time, args))
-                if (not changed_cost_types and can_change_cost_type(args) and
-                    plan_manager.get_problem_type() == "general cost"):
+                if (
+                    not changed_cost_types
+                    and can_change_cost_type(args)
+                    and plan_manager.get_problem_type() == "general cost"
+                ):
                     print("Switch to real costs and repeat last run.")
                     changed_cost_types = True
                     search_cost_type = "normal"
                     heuristic_cost_type = "plusone"
                     exitcode = run_sat_config(
-                        configs, pos, search_cost_type, heuristic_cost_type,
-                        executable, sas_file, plan_manager, timeout, memory)
+                        configs,
+                        pos,
+                        search_cost_type,
+                        heuristic_cost_type,
+                        executable,
+                        sas_file,
+                        plan_manager,
+                        timeout,
+                        memory,
+                    )
                     if exitcode is None:
                         return
 
@@ -159,9 +207,16 @@ def run_sat(configs, executable, sas_file, plan_manager, final_config,
     if final_config:
         print("Abort portfolio and run final config.")
         exitcode = run_sat_config(
-            [(1, final_config)], 0, search_cost_type,
-            heuristic_cost_type, executable, sas_file, plan_manager,
-            timeout, memory)
+            [(1, final_config)],
+            0,
+            search_cost_type,
+            heuristic_cost_type,
+            executable,
+            sas_file,
+            plan_manager,
+            timeout,
+            memory,
+        )
         if exitcode is not None:
             yield exitcode
 
@@ -171,8 +226,9 @@ def run_opt(configs, executable, sas_file, plan_manager, timeout, memory):
         run_time = compute_run_time(timeout, configs, pos)
         if run_time <= 0:
             return
-        exitcode = run_search(executable, args, sas_file, plan_manager,
-                              run_time, memory)
+        exitcode = run_search(
+            executable, args, sas_file, plan_manager, run_time, memory
+        )
         yield exitcode
 
         if exitcode in [returncodes.SUCCESS, returncodes.SEARCH_UNSOLVABLE]:
@@ -193,7 +249,8 @@ def get_portfolio_attributes(portfolio):
             returncodes.exit_with_driver_critical_error(
                 "The portfolio %s could not be loaded. Maybe it still "
                 "uses the old portfolio syntax? See the FDSS portfolios "
-                "for examples using the new syntax." % portfolio)
+                "for examples using the new syntax." % portfolio
+            )
     if "CONFIGS" not in attributes:
         returncodes.exit_with_driver_critical_error("portfolios must define CONFIGS")
     if "OPTIMAL" not in attributes:
@@ -216,7 +273,8 @@ def run(portfolio, executable, sas_file, plan_manager, time, memory):
     if "TIMEOUT" in attributes:
         returncodes.exit_with_driver_input_error(
             "The TIMEOUT attribute in portfolios has been removed. "
-            "Please pass a time limit to fast-downward.py.")
+            "Please pass a time limit to fast-downward.py."
+        )
 
     if time is None:
         if sys.platform == "win32":
@@ -224,15 +282,24 @@ def run(portfolio, executable, sas_file, plan_manager, time, memory):
         else:
             returncodes.exit_with_driver_input_error(
                 "Portfolios need a time limit. Please pass --search-time-limit "
-                "or --overall-time-limit to fast-downward.py.")
+                "or --overall-time-limit to fast-downward.py."
+            )
 
     timeout = util.get_elapsed_time() + time
 
     if optimal:
         exitcodes = run_opt(
-            configs, executable, sas_file, plan_manager, timeout, memory)
+            configs, executable, sas_file, plan_manager, timeout, memory
+        )
     else:
         exitcodes = run_sat(
-            configs, executable, sas_file, plan_manager, final_config,
-            final_config_builder, timeout, memory)
+            configs,
+            executable,
+            sas_file,
+            plan_manager,
+            final_config,
+            final_config_builder,
+            timeout,
+            memory,
+        )
     return returncodes.generate_portfolio_exitcode(list(exitcodes))

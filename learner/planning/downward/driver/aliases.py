@@ -49,7 +49,8 @@ eager(alt([tiebreaking([sum([g(),weight(hAdd,10)]),hAdd]),
            tiebreaking([sum([g(),weight(hgc,10)]),hgc],pref_only=true)],
           boost=500),
       preferred=[hcea,hgc],reopen_closed=true,cost_type=normal)
-],repeat_last=true,continue_on_fail=true))))))"""]
+],repeat_last=true,continue_on_fail=true))))))""",
+]
 
 ALIASES["seq-sat-fd-autotune-2"] = [
     "--search",
@@ -89,7 +90,9 @@ lazy(alt([single(sum([g(),weight(hff,2)])),
           single(sum([g(),weight(hgc,2)]),pref_only=true)],
          boost=1000),
      preferred=[hcea,hgc],reopen_closed=true,cost_type=one)
-],repeat_last=true,continue_on_fail=true)))))"""]
+],repeat_last=true,continue_on_fail=true)))))""",
+]
+
 
 def _get_lama(pref):
     return [
@@ -121,7 +124,9 @@ def _get_lama(pref):
         ],repeat_last=true,continue_on_fail=true)))))""",
         # Append --always to be on the safe side if we want to append
         # additional options later.
-        "--always"]
+        "--always",
+    ]
+
 
 ALIASES["seq-sat-lama-2011"] = _get_lama(pref="true")
 ALIASES["lama"] = _get_lama(pref="false")
@@ -131,15 +136,16 @@ ALIASES["lama-first"] = [
     "let(hlm, landmark_sum(lm_factory=lm_reasonable_orders_hps(lm_rhw()),transform=adapt_costs(one),pref=false),"
     "let(hff, ff(transform=adapt_costs(one)),"
     """lazy_greedy([hff,hlm],preferred=[hff,hlm],
-                               cost_type=one,reopen_closed=false)))"""]
+                               cost_type=one,reopen_closed=false)))""",
+]
 
 ALIASES["seq-opt-bjolp"] = [
     "--search",
     "let(lmc, landmark_cost_partitioning(lm_merged([lm_rhw(),lm_hm(m=1)])),"
-    "astar(lmc,lazy_evaluator=lmc))"]
+    "astar(lmc,lazy_evaluator=lmc))",
+]
 
-ALIASES["seq-opt-lmcut"] = [
-    "--search", "astar(lmcut())"]
+ALIASES["seq-opt-lmcut"] = ["--search", "astar(lmcut())"]
 
 
 PORTFOLIOS = {}
@@ -167,8 +173,9 @@ def set_options_for_alias(alias_name, args):
     assert not args.portfolio
 
     if alias_name in ALIASES:
-        args.search_options = [x.replace(" ", "").replace("\n", "")
-                               for x in ALIASES[alias_name]]
+        args.search_options = [
+            x.replace(" ", "").replace("\n", "") for x in ALIASES[alias_name]
+        ]
     elif alias_name in PORTFOLIOS:
         args.portfolio = PORTFOLIOS[alias_name]
     else:
