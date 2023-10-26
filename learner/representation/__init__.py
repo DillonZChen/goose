@@ -8,11 +8,10 @@ from .glg import GroundedLearningGraph
 
 
 REPRESENTATIONS = {
-  "slg": StripsLearningGraph,
-  "dlg": DeleteLearningGraph,
-  "flg": FdrLearningGraph,
-  "llg": LiftedLearningGraph,
-  "ig": InstanceGraph,
-  "glg": GroundedLearningGraph,
+    "slg": StripsLearningGraph,
+    "dlg": DeleteLearningGraph,
+    "flg": FdrLearningGraph,
+    "llg": LiftedLearningGraph,
+    "ig": InstanceGraph,
+    "glg": GroundedLearningGraph,
 }
-

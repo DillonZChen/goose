@@ -10,14 +10,23 @@ from .functions import Function
 from .pddl_types import Type, TypedObject
 from .predicates import Predicate
 
+
 class Task:
-    def __init__(self, domain_name: str, task_name: str,
-                 requirements: "Requirements",
-                 types: List[Type], objects: List[TypedObject], predicates:
-                 List[Predicate], functions: List[Function],
-                 init: List[Union[Atom, Assign]], goal: Condition,
-                 actions: List[Action], axioms: List[Axiom],
-                 use_metric: bool) -> None:
+    def __init__(
+        self,
+        domain_name: str,
+        task_name: str,
+        requirements: "Requirements",
+        types: List[Type],
+        objects: List[TypedObject],
+        predicates: List[Predicate],
+        functions: List[Function],
+        init: List[Union[Atom, Assign]],
+        goal: Condition,
+        actions: List[Action],
+        axioms: List[Axiom],
+        use_metric: bool,
+    ) -> None:
         self.domain_name = domain_name
         self.task_name = task_name
         self.requirements = requirements
@@ -41,8 +50,10 @@ class Task:
         return axiom
 
     def dump(self):
-        print("Problem %s: %s [%s]" % (
-            self.domain_name, self.task_name, self.requirements))
+        print(
+            "Problem %s: %s [%s]"
+            % (self.domain_name, self.task_name, self.requirements)
+        )
         print("Types:")
         for type in self.types:
             print("  %s" % type)
@@ -68,15 +79,26 @@ class Task:
             for axiom in self.axioms:
                 axiom.dump()
 
+
 class Requirements:
     def __init__(self, requirements: List[str]):
         self.requirements = requirements
         for req in requirements:
             assert req in (
-              ":strips", ":adl", ":typing", ":negation", ":equality",
-              ":negative-preconditions", ":disjunctive-preconditions",
-              ":existential-preconditions", ":universal-preconditions",
-              ":quantified-preconditions", ":conditional-effects",
-              ":derived-predicates", ":action-costs"), req
+                ":strips",
+                ":adl",
+                ":typing",
+                ":negation",
+                ":equality",
+                ":negative-preconditions",
+                ":disjunctive-preconditions",
+                ":existential-preconditions",
+                ":universal-preconditions",
+                ":quantified-preconditions",
+                ":conditional-effects",
+                ":derived-predicates",
+                ":action-costs",
+            ), req
+
     def __str__(self):
         return ", ".join(self.requirements)
