@@ -23,20 +23,23 @@ _DOMAINS = [
 ]
 _DIFFICULTIES = [
   "easy",
-  # "medium",
-  # "hard",
+  "medium",
+  "hard",
 ]
 
-_LEARNING_MODELS = ["linear-regression", "linear-svr", "ridge", "lasso", "rbf-svr", "quadratic-svr", "cubic-svr"]
-_REPRESENTATIONS = ["llg"]
+# _LEARNING_MODELS = ["linear-svr", "ridge", "lasso", "rbf-svr", "quadratic-svr", "cubic-svr"]
+# _REPRESENTATIONS = ["llg2"]
+_LEARNING_MODELS = ["mlp"]
+_REPRESENTATIONS = ["ig"]
 _ITERS = [1]
 _KERNELS = ["wl"]
 
-_TIMEOUT=1800
+_TIMEOUT = 3600  # inaccurate fd timer, rely on pbs script for timing out
 
 _LOG_DIR = "logs_kernel/test_ipc2023"
 _LOCK_DIR = "lock"
 _AUX_DIR = "/scratch/sv11/dc6693/aux"
+_MODEL_DIR = "/scratch/sv11/dc6693/trained_models_kernel"
 
 os.makedirs(_LOG_DIR, exist_ok=True)
 os.makedirs(_LOCK_DIR, exist_ok=True)
@@ -79,7 +82,7 @@ def main():
     with open(lock_file, 'w') as f:
       pass
 
-    if "-svr" in model_file and "linear-svr" not in model_file:
+    if ("-svr" in model_file and "linear-svr" not in model_file) or "mlp" in model_file:
       ml_model = "kernel"
     else:
       ml_model = "linear-regression"
@@ -102,7 +105,7 @@ def main():
 
   for config in CONFIGS:
     learning_model, rep, iters, domain, kernel, difficulty = config
-    model_file = f"trained_models_kernel/{learning_model}_{rep}_ipc2023-learning-{domain}_wl_{iters}.joblib"
+    model_file = f"{_MODEL_DIR}/{learning_model}_{rep}_ipc2023-learning-{domain}_wl_{iters}_0.joblib"
     df = f"../benchmarks/ipc2023-learning-benchmarks/{domain}/domain.pddl"
     problem_dir = f"../benchmarks/ipc2023-learning-benchmarks/{domain}/testing/{difficulty}"
     for file in sorted(os.listdir(problem_dir)):
