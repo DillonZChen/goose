@@ -1,0 +1,7 @@
+(unstack b1 b2)
+(putdown b1)
+(unstack b3 b4)
+(stack b3 b2)
+(pickup b1)
+(stack b1 b4)
+; cost = 6 (unit cost)
