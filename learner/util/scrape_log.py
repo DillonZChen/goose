@@ -32,33 +32,50 @@ def scrape_search_log(file):
     if not os.path.exists(file):
         return stats
 
-    for line in open(file, "r").readlines():
-        line = line.replace(" state(s).", "")
-        toks = line.split()
-        if len(toks) == 0:
-            continue
-        if "until last jump" in line:
-            continue
+    if "goose_fd" not in file:
+        for line in open(file, "r").readlines():
+            line = line.replace(" state(s).", "")
+            toks = line.split()
+            if len(toks) == 0:
+                continue
+            if "until last jump" in line:
+                continue
 
-        if "Solution found." in line:
-            stats["solved"] = 1
-        elif "Goal found at:" in line or "Search time:" in line:
-            stats["time"] = float(toks[-1].replace("s", ""))
-        elif "Total plan cost:" in line or "Plan cost:" in line:
-            stats["cost"] = int(toks[-1])
-        elif len(toks) >= 2 and "Expanded" == toks[-2]:
-            stats["expanded"] = int(toks[-1])
-        elif len(toks) >= 2 and "Evaluated" == toks[-2]:
-            stats["evaluated"] = int(toks[-1])
-        elif (
-            "New best heuristic value" in line or "Initial heuristic value" in line
-        ) and stats["first_h"] == -1:
-            try:
+            if "Solution found." in line:
+                stats["solved"] = 1
+            elif "Goal found at:" in line or "Search time:" in line:
+                stats["time"] = float(toks[-1].replace("s", ""))
+            elif "Total plan cost:" in line or "Plan cost:" in line:
+                stats["cost"] = int(toks[-1])
+            elif len(toks) >= 2 and "Expanded" == toks[-2]:
+                stats["expanded"] = int(toks[-1])
+            elif len(toks) >= 2 and "Evaluated" == toks[-2]:
+                stats["evaluated"] = int(toks[-1])
+            elif (
+                "New best heuristic value" in line or "Initial heuristic value" in line
+            ) and stats["first_h"] == -1:
+                try:
+                    stats["first_h"] = int(toks[-1])
+                except:
+                    print(file)
+                    stats["first_h"] = -1
+    else:
+        for line in open(file, "r").readlines():
+            toks = line.split()
+            if len(toks) == 0:
+                continue
+            if "Solution found!" in line:
+                stats["solved"] = 1
+            elif "Plan length:" in line:
+                stats["cost"] = int(toks[-2])
+            elif "] Expanded" in line:
+                stats["expanded"] = int(toks[-2])
+            elif "Total time:" in line:
+                stats["time"] = float(toks[-1].replace("s", ""))
+            elif "Initial heuristic value" in line:
                 stats["first_h"] = int(toks[-1])
-            except:
-                print(file)
-                stats["first_h"] = -1
-
+    if stats["time"] > 1800:
+        stats["solved"] = 0
     return stats
 
 

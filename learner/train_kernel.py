@@ -9,7 +9,7 @@ import kernels
 from sklearn.model_selection import cross_validate
 from sklearn.metrics import make_scorer, mean_squared_error
 from kernels.wrapper import MODELS
-from dataset.dataset import get_dataset_from_args_kernels
+from dataset.graphs_kernel import get_dataset_from_args
 from util.save_load import print_arguments, save_kernel_model
 from util.metrics import f1_macro
 
@@ -24,6 +24,9 @@ _SCORING = {"mse": make_scorer(mean_squared_error), "f1_macro": make_scorer(f1_m
 
 def parse_args():
     parser = argparse.ArgumentParser()
+    parser.add_argument("domain_pddl", help="path to domain pddl")
+    parser.add_argument("tasks_dir", help="path to training task directory")
+    parser.add_argument("plans_dir", help="path to training plan directory")
 
     parser.add_argument(
         "-r",
@@ -88,6 +91,7 @@ def parse_args():
     )
 
     parser.add_argument("-s", "--seed", type=int, default=0, help="random seed")
+    parser.add_argument("--planner", default="fd", choices=["fd", "pwl"])
 
     parser.add_argument(
         "-c", "--compactify", action="store_true", help="compactify weights"
@@ -111,7 +115,7 @@ if __name__ == "__main__":
 
     np.random.seed(args.seed)
 
-    graphs, y = get_dataset_from_args_kernels(args)
+    graphs, y = get_dataset_from_args(args)
 
     print(f"Setting up training data and initialising model...")
     t = time.time()
