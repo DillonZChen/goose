@@ -7,6 +7,7 @@
 #PBS -l mem=8GB
 #PBS -l jobfs=20GB
 #PBS -l wd
+#PBS -M dongbang4204@gmail.com
 
 module load python3
 source /scratch/sv11/dc6693/goose_env/bin/activate

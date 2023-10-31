@@ -10,35 +10,35 @@ from itertools import product
 # 900 all problems / 300 per difficulty
 # 1.8 KSU all problems / 0.6 KSU per difficulty
 _DOMAINS = [
-    "blocksworld",
-    "childsnack",
+    # "blocksworld",
+    # "childsnack",
     "ferry",
-    "floortile",
-    "miconic",
-    "rovers",
-    "satellite",
-    "sokoban",
-    "spanner",
-    "transport",
+    # "floortile",
+    # "miconic",
+    # "rovers",
+    # "satellite",
+    # "sokoban",
+    # "spanner",
+    # "transport",
 ]
 _DIFFICULTIES = [
-  "easy",
-  "medium",
+#   "easy",
+#   "medium",
   "hard",
 ]
 
-# _LEARNING_MODELS = ["linear-svr", "ridge", "lasso", "rbf-svr", "quadratic-svr", "cubic-svr"]
+_LEARNING_MODELS = ["linear-svr", "ridge", "lasso", "rbf-svr", "quadratic-svr", "cubic-svr", "mlp"]
 # _REPRESENTATIONS = ["llg2"]
-_LEARNING_MODELS = ["mlp"]
+# _LEARNING_MODELS = []
 _REPRESENTATIONS = ["ig"]
 _ITERS = [1]
 _KERNELS = ["wl"]
 
-_TIMEOUT = 3600  # inaccurate fd timer, rely on pbs script for timing out
+_TIMEOUT = 360000  # inaccurate fd timer, rely on pbs script for timing out
 
-_LOG_DIR = "logs_kernel/test_ipc2023"
+_LOG_DIR = "logs_kernel/opt_ipc2023_test"
 _LOCK_DIR = "lock"
-_AUX_DIR = "/scratch/sv11/dc6693/aux"
+_AUX_DIR = "/scratch/sv11/dc6693/goose-kernels/aux"
 _MODEL_DIR = "/scratch/sv11/dc6693/trained_models_kernel"
 
 os.makedirs(_LOG_DIR, exist_ok=True)
@@ -83,15 +83,19 @@ def main():
             to_go += 1
             return
 
-    if ("-svr" in model_file and "linear-svr" not in model_file) or "mlp" in model_file:
-      ml_model = "kernel"
-    else:
-      ml_model = "linear-regression"
-
-        if "-svr" in model_file and "linear-svr" not in model_file:
+        if ("-svr" in model_file and "linear-svr" not in model_file) or "mlp" in model_file:
             ml_model = "kernel"
         else:
             ml_model = "linear-regression"
+
+            if "-svr" in model_file and "linear-svr" not in model_file:
+                ml_model = "kernel"
+            else:
+                ml_model = "linear-regression"
+
+        # submit
+        with open(lock_file, "w") as f:
+            pass
 
         cmd = (
             f"qsub -o {log_file} -j oe -v "
@@ -122,7 +126,8 @@ def main():
 
     for config in CONFIGS:
         learning_model, rep, iters, domain, kernel, difficulty = config
-        model_file = f"trained_models_kernel/{learning_model}_{rep}_ipc2023-learning-{domain}_wl_{iters}.joblib"
+        model_file = f"{_MODEL_DIR}/opt_{learning_model}_{rep}_{domain}_wl_{iters}_0.joblib"
+        assert os.path.exists(model_file), model_file
         df = f"../benchmarks/ipc2023-learning-benchmarks/{domain}/domain.pddl"
         problem_dir = (
             f"../benchmarks/ipc2023-learning-benchmarks/{domain}/testing/{difficulty}"
@@ -133,18 +138,6 @@ def main():
     print("submitted:", submitted)
     print("skipped:", skipped)
     print("to_go:", to_go)
-
-  for config in CONFIGS:
-    learning_model, rep, iters, domain, kernel, difficulty = config
-    model_file = f"{_MODEL_DIR}/{learning_model}_{rep}_ipc2023-learning-{domain}_wl_{iters}_0.joblib"
-    df = f"../benchmarks/ipc2023-learning-benchmarks/{domain}/domain.pddl"
-    problem_dir = f"../benchmarks/ipc2023-learning-benchmarks/{domain}/testing/{difficulty}"
-    for file in sorted(os.listdir(problem_dir)):
-      pf = f"{problem_dir}/{file}"
-      submit(domain, df, pf, difficulty, model_file)
-  print("submitted:", submitted)    
-  print("skipped:", skipped)    
-  print("to_go:", to_go)
 
 if __name__ == "__main__":
     main()
