@@ -91,6 +91,9 @@ public:
     virtual std::vector<int> compute_result_batch(
         const std::vector<State> &states) override;
 
+    virtual int compute_result_single(
+        const State &state) override;
+
     virtual bool does_cache_estimates() const override;
     virtual bool is_estimate_cached(const State &state) const override;
     virtual int get_cached_estimate(const State &state) const override;

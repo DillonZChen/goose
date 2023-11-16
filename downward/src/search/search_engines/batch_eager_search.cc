@@ -103,12 +103,12 @@ SearchStatus BatchEagerSearch::step() {
     int h = node->get_h();
     if (h < best_h) {
         best_h = h;
-        cout << "New heuristic value expanded: h=" << h
-              << " [expansions: " << statistics.get_expanded()
-              << ", evaluations: " << statistics.get_evaluations()
-              << ", generations: " << statistics.get_generated()
-              // << ", time: " << get_wall_time() - timer_start
-              << "]" << '\n';
+        log << "New heuristic value expanded: h=" << h
+            << " [expansions: " << statistics.get_expanded()
+            << ", evaluations: " << statistics.get_evaluations()
+            << ", generations: " << statistics.get_generated()
+            // << ", time: " << get_wall_time() - timer_start
+            << "]" << '\n';
     }
 
     vector<OperatorID> applicable_ops;

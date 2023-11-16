@@ -60,6 +60,7 @@ utils::ExitCode PerfectSearch<PackedStateT>::search(const Task &task,
 
 
             line = line.substr(1, line.size()-2);
+            std::cout << line << std::endl;
 
             // Vector of string to save tokens
             std::vector<string> toks;

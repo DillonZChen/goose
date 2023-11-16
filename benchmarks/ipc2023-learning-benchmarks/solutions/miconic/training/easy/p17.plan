@@ -1,0 +1,5 @@
+(down f4 f1)
+(board f1 p1)
+(up f1 f2)
+(depart f2 p1)
+; cost = 4 (unit cost)

@@ -6,8 +6,13 @@ from .pddl_types import TypedObject
 
 
 class Axiom:
-    def __init__(self, name: str, parameters: List[TypedObject],
-                 num_external_parameters: int, condition: Condition):
+    def __init__(
+        self,
+        name: str,
+        parameters: List[TypedObject],
+        num_external_parameters: int,
+        condition: Condition,
+    ):
         # For an explanation of num_external_parameters, see the
         # related Action class. Note that num_external_parameters
         # always equals the arity of the derived predicate.
@@ -19,7 +24,7 @@ class Axiom:
         self.uniquify_variables()
 
     def dump(self):
-        args = map(str, self.parameters[:self.num_external_parameters])
+        args = map(str, self.parameters[: self.num_external_parameters])
         print("Axiom %s(%s)" % (self.name, ", ".join(args)))
         self.condition.dump()
 
@@ -31,7 +36,8 @@ class Axiom:
         # The comments for Action.instantiate apply accordingly.
         arg_list = [self.name] + [
             var_mapping[par.name]
-            for par in self.parameters[:self.num_external_parameters]]
+            for par in self.parameters[: self.num_external_parameters]
+        ]
         name = "(%s)" % " ".join(arg_list)
 
         condition = []
@@ -40,8 +46,10 @@ class Axiom:
         except conditions.Impossible:
             return None
 
-        effect_args = [var_mapping.get(arg.name, arg.name)
-                       for arg in self.parameters[:self.num_external_parameters]]
+        effect_args = [
+            var_mapping.get(arg.name, arg.name)
+            for arg in self.parameters[: self.num_external_parameters]
+        ]
         effect = conditions.Atom(self.name, effect_args)
         return PropositionalAxiom(name, condition, effect)
 
@@ -57,7 +65,7 @@ class PropositionalAxiom:
 
     def dump(self):
         if self.effect.negated:
-            print("not", end=' ')
+            print("not", end=" ")
         print(self.name)
         for fact in self.condition:
             print("PRE: %s" % fact)
@@ -77,5 +85,8 @@ class PropositionalAxiom:
         return self.key == other.key
 
     def __repr__(self):
-        return '<PropositionalAxiom %s %s -> %s>' % (
-            self.name, self.condition, self.effect)
+        return "<PropositionalAxiom %s %s -> %s>" % (
+            self.name,
+            self.condition,
+            self.effect,
+        )

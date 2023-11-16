@@ -1,0 +1,6 @@
+(walk shed location1 bob)
+(walk location1 location2 bob)
+(pickup_spanner location2 spanner1 bob)
+(walk location2 gate bob)
+(tighten_nut gate spanner1 bob nut1)
+; cost = 5 (unit cost)

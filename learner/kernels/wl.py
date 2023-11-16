@@ -3,130 +3,188 @@ from .base_kernel import *
 
 
 class WeisfeilerLehmanKernel(Kernel):
-  def __init__(self, iterations: int) -> None:
-    super().__init__()
+    def __init__(self, iterations: int, prune: int) -> None:
+        super().__init__()
 
-    # hashes neighbour multisets of colours
-    self._hash = {}
+        # hashes neighbour multisets of colours
+        self._hash: Dict[str, int] = {}
 
-    # number of wl iterations
-    self.iterations = iterations
+        # prune if self._train_histogram[col] <= count
+        self._prune = prune
 
-  def _get_hash_value(self, colour) -> int:
-    if self._train:
-      if colour not in self._hash:
-        self._hash[colour] = len(self._hash)
-      return self._hash[colour]
-    else:
-      if colour in self._hash:
-        return self._hash[colour]
-      else:
-        return -1
-  
-  def compute_histograms(self, graphs: List[CGraph]) -> Dict[CGraph, Histogram]:
-    """ Read graphs and return histogram. 
-    
+        # number of wl iterations
+        self.iterations = iterations
+
+        # see self._prune_hash
+        self._train_histogram = None
+
+    def _get_hash_value(self, colour) -> int:
+        if isinstance(colour, tuple) and len(colour) == 1:
+            colour = colour[0]
+        if self._train:
+            if colour not in self._hash:
+                self._hash[colour] = len(self._hash)
+            return self._hash[colour]
+        else:
+            if colour in self._hash:
+                return self._hash[colour]
+            else:
+                return -1
+
+    def _prune_hash(self, histograms):
+        inverse_hash = {self._hash[col]: col for col in self._hash}
+
+        # get histogram over all train graphs
+        train_histogram = {}
+        for G, histogram in histograms.items():
+            for col_hash, cnt in histogram.items():
+                col = inverse_hash[col_hash]
+                if col not in train_histogram:
+                    train_histogram[col] = 0
+                train_histogram[col] += cnt
+
+        # prune hash
+        new_hash = {}
+        old_colour_hash_to_new_hash = {}
+        for col, old_col_hash in self._hash.items():
+            if train_histogram[col] <= self._prune:
+                del train_histogram[col]
+                continue
+            new_col_hash = len(new_hash)
+            new_hash[col] = new_col_hash
+            old_colour_hash_to_new_hash[old_col_hash] = new_col_hash
+        self._hash = new_hash
+
+        # prune from train set
+        ret_histograms = {}
+        for G, histogram in histograms.items():
+            new_histogram = {}
+            for old_col_hash, cnt in histogram.items():
+                if old_col_hash not in old_colour_hash_to_new_hash:
+                    continue  # total count too small
+                new_histogram[old_colour_hash_to_new_hash[old_col_hash]] = cnt
+            ret_histograms[G] = new_histogram
+
+        self._train_histogram = train_histogram
+
+        return ret_histograms
+
+    def get_hash(self) -> Dict[str, int]:
+        """Return hash dictionary with compact keys for cpp"""
+        ret = {}
+        for k in self._hash:
+            key = str(k)
+            for symbol in [")", "(", " "]:
+                key = key.replace(symbol, "")
+            ret[key] = self._hash[k]
+        return ret
+
+    def compute_histograms(self, graphs: List[CGraph]) -> Dict[CGraph, Histogram]:
+        """Read graphs and return histogram.
+
         self._train value determines if new colours are stored or not
-    """
+        """
 
-    histograms = {}
+        histograms = {}
 
-    # compute colours and hashmap from training data
-    for G in graphs:
-      cur_colours = {}
-      histogram = {}
+        # compute colours and hashmap from training data
+        for G in graphs:
+            cur_colours = {}
+            histogram = {}
 
-      def store_colour(colour):
-        nonlocal histogram
-        colour_hash = self._get_hash_value(colour)
-        if colour_hash not in histogram:
-          histogram[colour_hash] = 0
-        histogram[colour_hash] += 1
+            def store_colour(colour):
+                nonlocal histogram
+                colour_hash = self._get_hash_value(colour)
+                if colour_hash not in histogram:
+                    histogram[colour_hash] = 0
+                histogram[colour_hash] += 1
 
-      # collect initial colours
-      for u in G.nodes:
+            # collect initial colours
+            for u in G.nodes:
+                # initial colour is feature of the node
+                colour = G.nodes[u]["colour"]
+                cur_colours[u] = self._get_hash_value(colour)
+                # assert colour in self._hash and colour>=0, colour
+                store_colour(colour)
 
-        # initial colour is feature of the node
-        colour = G.nodes[u]["colour"]
-        cur_colours[u] = self._get_hash_value(colour)
-        store_colour(colour)
+            # WL iterations
+            for itr in range(self.iterations):
+                new_colours = {}
+                for u in G.nodes:
+                    # edge label WL variant
+                    neighbour_colours = []
+                    for v in G[u]:
+                        colour_node = cur_colours[v]
+                        colour_edge = G.edges[(u, v)]["edge_label"]
+                        neighbour_colours.append((colour_node, colour_edge))
+                    neighbour_colours = sorted(neighbour_colours)
+                    colour = tuple([cur_colours[u]] + neighbour_colours)
+                    new_colours[u] = self._get_hash_value(colour)
+                    store_colour(colour)
 
-      # WL iterations
-      for itr in range(self.iterations):
-        new_colours = {}
-        for u in G.nodes:
+                cur_colours = new_colours
 
-          # edge label WL variant
-          neighbour_colours = []
-          for v in G[u]:
-            colour_node = cur_colours[v]
-            colour_edge = G.edges[(u,v)]["edge_label"]
-            neighbour_colours.append((colour_node, colour_edge))
-          neighbour_colours = sorted(neighbour_colours)
-          colour = tuple([cur_colours[u]] + neighbour_colours)
-          new_colours[u] = self._get_hash_value(colour)
-          store_colour(colour)
+            # store histogram of graph colours
+            histograms[G] = histogram
 
-        cur_colours = new_colours
-      
-      # store histogram of graph colours
-      histograms[G] = histogram
+        if self._train:
+            histograms = self._prune_hash(histograms)
 
-    return histograms
+        return histograms
 
-  def get_x(
-    self, 
-    graphs: CGraph, 
-    histograms: Optional[Dict[CGraph, Histogram]]=None
-  ) -> np.array:
-    """ Explicit feature representation
-        O(nd) time; n x d output 
-    """
+    def get_x(
+        self, graphs: CGraph, histograms: Optional[Dict[CGraph, Histogram]] = None
+    ) -> np.array:
+        """Explicit feature representation
+        O(nd) time; n x d output
+        """
 
-    n = len(graphs)
-    d = len(self._hash)
-    X = np.zeros((n, d))
+        n = len(graphs)
+        d = len(self._hash)
+        X = np.zeros((n, d))
 
-    if histograms is None:
-      histograms = self.compute_histograms(graphs)
-    else:
-      histograms = histograms
+        if histograms is None:
+            histograms = self.compute_histograms(graphs)
+        else:
+            histograms = histograms
 
-    for i, G in enumerate(graphs):
-      histogram = histograms[G]
-      for j in histogram:
-        if 0 <= j and j < d:
-          X[i][j] = histogram[j]
+        for i, G in enumerate(graphs):
+            histogram = histograms[G]
+            for j in histogram:
+                if 0 <= j and j < d:
+                    X[i][j] = histogram[j]
 
-    return X
-  
-  def get_k(
-    self, 
-    graphs: CGraph,
-    histograms: Dict[CGraph, Histogram]
-  ) -> np.array:
-    """ Implicit feature representation
-        O(n^2d) time; n x n output 
-    """
+        return X
 
-    n = len(graphs)
-    K = np.zeros((n, n))
-    for i in range(n):
-      for j in range(i, n):
-        k = 0
+    def get_k(self, graphs: CGraph, histograms: Dict[CGraph, Histogram]) -> np.array:
+        """Implicit feature representation
+        O(n^2d) time; n x n output
+        """
 
-        histogram_i = histograms[graphs[i]]
-        histogram_j = histograms[graphs[j]]
+        n = len(graphs)
+        K = np.zeros((n, n))
+        for i in range(n):
+            for j in range(i, n):
+                k = 0
 
-        common_colours = set(histogram_i.keys()).intersection(set(histogram_j.keys()))
-        for c in common_colours:
-          k += histogram_i[c] * histogram_j[c]
+                histogram_i = histograms[graphs[i]]
+                histogram_j = histograms[graphs[j]]
 
-        K[i][j] = k
-        K[j][i] = k
+                common_colours = set(histogram_i.keys()).intersection(
+                    set(histogram_j.keys())
+                )
+                for c in common_colours:
+                    k += histogram_i[c] * histogram_j[c]
 
-    return K
-  
-  @property
-  def n_colours_(self) -> int:
-    return len(self._hash)
+                K[i][j] = k
+                K[j][i] = k
+
+        return K
+
+    def eval(self):
+        super().eval()
+        self._train_histogram = None
+
+    @property
+    def n_colours_(self) -> int:
+        return len(self._hash)

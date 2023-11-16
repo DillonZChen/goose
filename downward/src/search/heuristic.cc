@@ -100,6 +100,10 @@ std::vector<int> Heuristic::compute_result_batch(
     return compute_heuristic_batch(states);
 }
 
+int Heuristic::compute_result_single(const State &state) {
+    return compute_heuristic(state);
+}
+
 bool Heuristic::does_cache_estimates() const {
     return cache_evaluator_values;
 }

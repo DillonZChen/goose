@@ -3,17 +3,23 @@
 ## Table of contents
 - [**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation](#goose-graphs-optimised-for-search-evaluation)
   - [Table of contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
   - [GNNs](#gnns)
-    - [Search](#search)
+    - [Search (singularity method)](#search-singularity-method)
     - [Training](#training)
       - [Loading the training dataset](#loading-the-training-dataset)
       - [Domain-dependent training](#domain-dependent-training)
   - [Kernels](#kernels)
-    - [Search](#search-1)
+    - [Search](#search)
     - [Training](#training-1)
 
+## Prerequisites
+You can either use `singularity` or a virtual environment to manage packages. ***TODO*** write this part up
+
+*In either case, you should make sure that you build `downward` or `powerlifted` with your choice of package manager, otherwise you will get runtime errors stating that packages are not found due to using different pybind11 setups.*
+
 ## GNNs
-### Search
+### Search (singularity method)
 For all commands here, make sure ***not*** to have any python virtual environment activated (e.g. with Anaconda)
 
 We use `downward` or `powerlifted` as the search engine which calls code in the `learner` repository for computing heuristics
@@ -61,7 +67,7 @@ sh scripts_gnn/generate_all_graphs_gnn.sh
 Requires packages in `requirements.txt` or alternatively use the singularity container as in [Search](#search). To train, go
 into ```learner``` directory (`cd learner`) and run
 ```
-python3 train_gnn.py -m RGNN -r <REPRESENTATION> -d goose-<DOMAIN>-only --save-file <SAVE_FILE>
+python3 train_gnn.py -m RGNN -r <REPRESENTATION> -d goose-<DOMAIN> --save-file <SAVE_FILE>
 ```
 where you replace `<DOMAIN>` by any domain from `blocks, ferry, gripper, n-puzzle, sokoban, spanner, visitall,
 visitsome` and `<SAVE_FILE>` is the name of the save file ending in `.dt` for the trained weights of the models which
