@@ -1,4 +1,4 @@
-SLURM_SCRIPT=slurm/cluster1_job_gpusrv3
+SLURM_SCRIPT=slurm/cluster1_job_gpusrv5_a6000
 
 rep=llg
 
