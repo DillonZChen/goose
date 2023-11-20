@@ -17,10 +17,6 @@ def parse_options():
                                      description='Build Power Lifted planner.')
     parser.add_argument('-d', '--debug',
                         action="store_true", help="Build in debug mode.")
-    parser.add_argument('--cpu',
-                        action="store_true", help="Build with cpu image.")
-    parser.add_argument('--gpu',
-                        action="store_true", help="Build with gpu image.")
     parser.add_argument('--cxx-compiler',
                         default='default', help="Path to CXX compiler used by CMake.")
     return parser.parse_args()
@@ -28,10 +24,6 @@ def parse_options():
 def get_build_dir(options):
     if options.debug:
         return os.path.join(PROJECT_ROOT, 'builds', 'debug')
-    elif options.cpu:
-        return os.path.join(PROJECT_ROOT, 'builds', 'cpu_release')
-    elif options.gpu:
-        return os.path.join(PROJECT_ROOT, 'builds', 'gpu_release')
     else:
         return os.path.join(PROJECT_ROOT, 'builds', 'release')
 

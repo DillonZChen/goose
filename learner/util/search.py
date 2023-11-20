@@ -55,7 +55,7 @@ def pwl_cmd(df, pf, m, search, timeout=TIMEOUT):
     lifted_file = f"{_AUX_DIR}/{description}.lifted"
     plan_file = f"{_PLAN_DIR}/{description}.plan"
     cmd = (
-        f"./../planners/powerlifted/powerlifted.py --gpu "
+        f"./../planners/powerlifted/powerlifted.py "
         f"-d {df} "
         f"-i {pf} "
         f"-m {m} "

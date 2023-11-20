@@ -95,10 +95,6 @@ def main():
 
     if options.debug:
       build_type ='debug'
-    elif options.cpu:
-      build_type ='cpu_release'
-    elif options.gpu:
-      build_type ='gpu_release'
     else:
       build_type ='release'
 
