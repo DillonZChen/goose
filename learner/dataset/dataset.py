@@ -81,11 +81,12 @@ def get_plan_info(domain_pddl, problem_pddl, plan_file, args):
     ret = []
     for i, state in enumerate(states):
         if i == len(actions):
-            continue  # ignore the goal state, annoying for learning useful schema
-        action = actions[i]
-        schema = action.replace("(", "").split()[0]
-        ret.append((state, schema_cnt.copy()))
-        schema_cnt[schema] -= 1
+            ret.append((state, {0:0}))
+        else:
+            action = actions[i]
+            schema = action.replace("(", "").split()[0]
+            ret.append((state, schema_cnt.copy()))
+            schema_cnt[schema] -= 1
     return ret
 
 

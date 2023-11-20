@@ -1,0 +1,7 @@
+(move loc-x5-y4 loc-x4-y4)
+(move loc-x4-y4 loc-x3-y4)
+(move loc-x3-y4 loc-x2-y4)
+(move loc-x2-y4 loc-x2-y3)
+(move loc-x2-y3 loc-x2-y2)
+(move loc-x2-y2 loc-x2-y1)
+; cost = 6 (unit cost)

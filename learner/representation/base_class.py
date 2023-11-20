@@ -79,7 +79,7 @@ class Representation(ABC):
     self._compute_graph_representation()
     self.num_nodes = len(self.G.nodes)
     self.num_edges = len(self.G.edges)
-    self._dump_stats(t)
+    # self._dump_stats(t)
     return
 
   def _create_graph(self) -> Union[nx.Graph, nx.DiGraph]:

@@ -1,0 +1,8 @@
+Problems generated using John Slaney's Blocksworld Script
+http://users.cecs.anu.edu.au/~jks/cgi-bin/bwstates/bwcgi
+
+python gen_problems.py <problems_dir>
+will parse the large PDDL dump the script gives and separate
+it into each file
+
+All problems with 4 blocks or more are guaranteed to be unique here.

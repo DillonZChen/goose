@@ -4,13 +4,8 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 import random
-import torch
-import gnns
-from torch import Tensor
 from typing import Dict, List, Optional, Tuple
 from torch_geometric.data import DataLoader, Data
-from tqdm import tqdm, trange
-from dataset.graphs_gnn import get_graph_data
 
 
 def extract_testset_domain(

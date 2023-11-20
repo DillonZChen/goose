@@ -3,9 +3,9 @@
 import time
 import torch
 import argparse
-import gnns
 import representation
-from gnns import *
+from model.loss import BCELoss, MSELoss
+from model.gnn import Model
 from util.stats import *
 from util.save_load import *
 from util import train, evaluate
@@ -18,7 +18,6 @@ def parse_args():
     parser.add_argument("domain", choices=["ipc"] + GOOSE_DOMAINS)
 
     # model params
-    parser.add_argument("-m", "--model", default="RGNN")
     parser.add_argument("-L", "--nlayers", type=int, default=4)
     parser.add_argument("-H", "--nhid", type=int, default=64)
     parser.add_argument(
@@ -98,7 +97,7 @@ if __name__ == "__main__":
     args.n_edge_labels = representation.REPRESENTATIONS[args.rep].n_edge_labels
     args.in_feat = train_loader.dataset[0].x.shape[1]
     model_params = arg_to_params(args)
-    model = GNNS[args.model](params=model_params).to(device)
+    model = Model(params=model_params).to(device)
     print(f"model size (#params): {model.get_num_parameters()}")
 
     # argument variables
@@ -106,11 +105,9 @@ if __name__ == "__main__":
     reduction = args.reduction
     patience = args.patience
     epochs = args.epochs
-    loss_fn = args.loss
-    fast_train = args.fast_train
 
     # init optimiser
-    criterion = LOSS[loss_fn]()
+    criterion = MSELoss()
     optimiser = torch.optim.Adam(model.parameters(), lr=lr)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
         optimiser, mode="min", verbose=True, factor=reduction, patience=patience
@@ -126,10 +123,10 @@ if __name__ == "__main__":
             t = time.time()
 
             train_stats = train(
-                model, device, train_loader, criterion, optimiser, fast_train=fast_train
+                model, device, train_loader, criterion, optimiser
             )
             train_loss = train_stats["loss"]
-            val_stats = evaluate(model, device, val_loader, criterion, fast_train=fast_train)
+            val_stats = evaluate(model, device, val_loader, criterion)
             val_loss = val_stats["loss"]
             scheduler.step(val_loss)
 

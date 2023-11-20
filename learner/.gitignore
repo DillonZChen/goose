@@ -10,10 +10,10 @@ trained_models*
 validated_models*
 saved_models*
 *.sif
-data
-lifted
-plans
-plots
+data/
+lifted/
+plans/
+plots/
 
 slg
 flg

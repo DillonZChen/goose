@@ -211,6 +211,8 @@ class LiftedLearningGraph(Representation, ABC):
     for fact in state:
       pred = fact[0]
       args = fact[1]
+      if len(pred) == 0:
+        continue  # somehow we get ("", []) facts???
 
       node = (pred, tuple(args))
 
