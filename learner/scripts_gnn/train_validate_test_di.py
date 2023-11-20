@@ -61,8 +61,8 @@ if __name__ == "__main__":
 
   # validate and test each domain
   for domain in GOOSE_DOMAINS:
-    val_dir = f"../benchmarks/goose/{domain}/val"
-    test_dir = f"../benchmarks/goose/{domain}/test"
+    val_dir = f"../dataset/goose/{domain}/val"
+    test_dir = f"../dataset/goose/{domain}/test"
     for repeat in range(REPEATS):
 
       # for each experiment, we have train and validation repeats
@@ -70,7 +70,7 @@ if __name__ == "__main__":
         model_file = f"di_{rep}_L{L}_H{H}_{aggr}_p{patience}_v{val_repeat}_r{repeat}"
 
         """ validate """
-        df = f"../benchmarks/goose/{domain}/domain.pddl"
+        df = f"../dataset/goose/{domain}/domain.pddl"
         for f in os.listdir(val_dir):
           os.system("date")
           val_log_file = f"{val_log_dir}/{f.replace('.pddl', '')}_{model_file}.log"
@@ -148,7 +148,7 @@ if __name__ == "__main__":
 
       """ test """
       failed = 0
-      df = f"../benchmarks/goose/{domain}/domain.pddl"
+      df = f"../dataset/goose/{domain}/domain.pddl"
       model_file = best_model_file
 
       # warmup first

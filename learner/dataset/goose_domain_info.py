@@ -22,7 +22,7 @@ DOMAINS_NOT_TO_TRAIN = {
 
 def get_domain_instance_pddl_for_domain(domain: str, split: str):
   ret = []
-  dir_of_pddls = f"../benchmarks/goose/{domain}"
+  dir_of_pddls = f"../dataset/goose/{domain}"
   df = f"{dir_of_pddls}/domain.pddl"
   for file in sorted(os.listdir(f'{dir_of_pddls}/{split}')):
     pf = f"{dir_of_pddls}/{split}/{file}"

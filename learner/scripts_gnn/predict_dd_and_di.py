@@ -38,8 +38,8 @@ if __name__ == "__main__":
 
     # validate and test each domain
     for domain in GOOSE_DOMAINS:
-      val_dir = f"../benchmarks/goose/{domain}/val"
-      test_dir = f"../benchmarks/goose/{domain}/test"
+      val_dir = f"../dataset/goose/{domain}/val"
+      test_dir = f"../dataset/goose/{domain}/test"
       for repeat in range(REPEATS):
 
         # after running all validation repeats, we pick the best one
@@ -102,7 +102,7 @@ if __name__ == "__main__":
 
         """ test """
         failed = 0
-        df = f"../benchmarks/goose/{domain}/domain.pddl"
+        df = f"../dataset/goose/{domain}/domain.pddl"
         model_file = best_model_file
 
         # warmup first

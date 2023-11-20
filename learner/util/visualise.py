@@ -101,7 +101,7 @@ def collect_param_test_stats(train_type, Ls, aggrs, H, p, graphs, normalise, dom
       for rep in graphs:
         solved = 0
         for domain in domains:
-          problems = os.listdir(f"../benchmarks/goose/{domain}/test")
+          problems = os.listdir(f"../dataset/goose/{domain}/test")
           for problem_pddl in problems:
             problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
             f = f'{log_dir}/{problem_name}_{train_type}_{rep}_{domain}_L{L}_H{H}_{aggr}_p{p}_r0.log'
@@ -189,7 +189,7 @@ def collect_test_stats_planner_and_graphs(configs, L, aggr, normalise):
   }
 
   for domain in GOOSE_DOMAINS:
-    problems = os.listdir(f"../benchmarks/goose/{domain}/test")
+    problems = os.listdir(f"../dataset/goose/{domain}/test")
     for problem_pddl in problems:
       problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
 
@@ -240,7 +240,7 @@ def collect_test_stats_planner(planner, normalise, domain=None):
   else:
     domains = [domain]
   for domain in domains:
-    problem_pddls = os.listdir(f"../benchmarks/goose/{domain}/test")
+    problem_pddls = os.listdir(f"../dataset/goose/{domain}/test")
     for problem_pddl in problem_pddls:
       problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
       tmp = {}
@@ -280,7 +280,7 @@ def collect_test_stats(train_type, L, H, aggr, p):
   log_dir = "logs/test"
   for rep in REPRESENTATIONS:
     for domain in GOOSE_DOMAINS:
-      for problem_pddl in os.listdir(f"../benchmarks/goose/{domain}/test"):
+      for problem_pddl in os.listdir(f"../dataset/goose/{domain}/test"):
         problem_name = os.path.basename(problem_pddl).replace(".pddl", "")
         tmp = {}
         tmp["graph"] = rep

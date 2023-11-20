@@ -48,8 +48,8 @@ def run_experiments(rep, L, H, aggr, patience, train_only):
 
   # train different model for each domain
   for domain in GOOSE_DOMAINS:
-    val_dir = f"../benchmarks/goose/{domain}/val"
-    test_dir = f"../benchmarks/goose/{domain}/test"
+    val_dir = f"../dataset/goose/{domain}/val"
+    test_dir = f"../dataset/goose/{domain}/test"
     for repeat in range(REPEATS):
 
       # for each experiment, we have train and validation repeats
@@ -71,14 +71,14 @@ def run_experiments(rep, L, H, aggr, patience, train_only):
     return
 
   for domain in GOOSE_DOMAINS:
-    val_dir = f"../benchmarks/goose/{domain}/val"
-    test_dir = f"../benchmarks/goose/{domain}/test"
+    val_dir = f"../dataset/goose/{domain}/val"
+    test_dir = f"../dataset/goose/{domain}/test"
     for repeat in range(REPEATS):
       
       # for each experiment, we have train and validation repeats
       for val_repeat in range(VAL_REPEATS):
         """ validate """
-        df = f"../benchmarks/goose/{domain}/domain.pddl"
+        df = f"../dataset/goose/{domain}/domain.pddl"
         model_file = f"dd_{rep}_{domain}_L{L}_H{H}_{aggr}_p{patience}_v{val_repeat}_r{repeat}"
         for f in os.listdir(val_dir):
           os.system("date")
@@ -157,7 +157,7 @@ def run_experiments(rep, L, H, aggr, patience, train_only):
 
       """ test """
       failed = 0
-      df = f"../benchmarks/goose/{domain}/domain.pddl"
+      df = f"../dataset/goose/{domain}/domain.pddl"
       model_file = best_model_file
 
       # warmup first

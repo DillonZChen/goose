@@ -1,3 +1,0 @@
-(pick-up b3)
-(stack b3 b1)
-; cost = 2 (unit cost)

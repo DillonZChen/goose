@@ -1,4 +1,0 @@
-(pick ball1 rooma left)
-(move rooma roomb)
-(drop ball1 roomb left)
-; cost = 3 (unit cost)

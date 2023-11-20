@@ -336,7 +336,7 @@ def get_ipc_domain_problem_files(del_free: bool=False):
   import os
   import re
   for ipc in IPCS:
-    dir_path = f'../benchmarks/ipc/{ipc}/domains'
+    dir_path = f'../dataset/ipc/{ipc}/domains'
     for domain_name in os.listdir(dir_path):
       if 'README' in domain_name:
         continue
