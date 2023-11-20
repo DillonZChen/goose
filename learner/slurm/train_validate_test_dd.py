@@ -61,7 +61,7 @@ if __name__ == "__main__":
     ###############################################################################################
 
     """ train """
-    for val_repeat in VAL_REPEATS:
+    for val_repeat in range(VAL_REPEATS):
         os.system("date")
 
         desc = get_model_desc(rep, domain, L, H, aggr, patience, val_repeat)
@@ -70,7 +70,7 @@ if __name__ == "__main__":
         train_log_file = f"{_LOG_DIR_TRAIN}/{desc}.log"
 
         if not os.path.exists(model_file):
-            cmd = f"python3 train.py {domain} -r {rep} -L {L} -H {H} --aggr {aggr} --patience {patience} --save-file {model_file}"
+            cmd = f"python3 train_gnn.py {domain} -r {rep} -L {L} -H {H} --aggr {aggr} --patience {patience} --save-file {model_file}"
             os.system(f"echo training with {domain} {rep}, see {train_log_file}")
             os.system(f"{cmd} > {train_log_file}")
         else:
@@ -78,7 +78,7 @@ if __name__ == "__main__":
     ###############################################################################################
 
     """validate"""
-    for val_repeat in VAL_REPEATS:
+    for val_repeat in range(VAL_REPEATS):
         desc = get_model_desc(rep, domain, L, H, aggr, patience, val_repeat)
         model_file = f"{_TRAINED_MODEL_DIR}/{desc}.dt"
 

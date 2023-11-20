@@ -59,7 +59,7 @@ protected:
     // Use task_proxy to access task information.
     TaskProxy task_proxy;
 
-    enum {DEAD_END = -1, NO_VALUE = -2};
+    enum {DEAD_END = -2147483648+1, NO_VALUE = -2147483648+2};
 
     virtual int compute_heuristic(const State &ancestor_state) = 0;
 

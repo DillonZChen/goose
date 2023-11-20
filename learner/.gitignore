@@ -15,6 +15,12 @@ lifted/
 plans/
 plots/
 
+aux_dir/
+test.dt
+
+aaai24_*/
+all_trained_models/
+
 slg
 flg
 llg

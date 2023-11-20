@@ -204,12 +204,6 @@ GooseHeuristic::compute_heuristic_batch(const std::vector<State> &ancestor_state
   }
   py::object heuristics = model.attr("h_batch")(py_states);
   std::vector<int> ret = heuristics.cast<std::vector<int>>();
-  for (size_t i = 0; i < ret.size(); i++) {
-    if (task_properties::is_goal_state(task_proxy, ancestor_states[i]))
-      ret[i] = 0;
-    else
-      ret[i] = std::max(1, ret[i]);
-  }
   return ret;
 }
 

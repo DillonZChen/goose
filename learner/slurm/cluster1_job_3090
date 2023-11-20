@@ -3,6 +3,7 @@
 #SBATCH --mem=32gb # Job memory request
 #SBATCH --time=120:00:00 # Time limit hrs:min:sec
 #SBATCH --partition=gpu
+#SBATCH --nodelist=gpusrv-3
 #SBATCH --gres=gpu:3090:1
 
 pwd; hostname; date; lscpu; nvidia-smi; nvidia-smi -L

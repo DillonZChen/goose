@@ -46,11 +46,11 @@ def print_arguments(args, ignore_params=set()):
 def save_model_from_dict(model_dict, args):
     if not hasattr(args, "save_file") or args.save_file is None:
         return
-    print(f"Saving model at {save_file}...")
     save_file = args.save_file
     save_dir = os.path.dirname(save_file)
     if len(save_dir) > 0:
         os.makedirs(save_dir, exist_ok=True)
+    print(f"Saving model at {save_file}...")
     torch.save((model_dict, args), save_file)
     print("Model saved!")
     print("Model parameter file:", save_file)

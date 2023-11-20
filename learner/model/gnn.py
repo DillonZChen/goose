@@ -269,10 +269,7 @@ class Model(nn.Module):
             for i in range(len(edge_index)):
                 edge_index[i] = edge_index[i].to(self.device)
             h = self.model.forward(x, edge_index, None)
-            # h = round(h.item())
-            h = np.rint(h[0])
-            h = torch.sum(h).item()
-            h = round(h)
+            h = round(h.item())
             return h
 
     def h_batch(self, states: List[State]) -> List[float]:
@@ -287,9 +284,9 @@ class Model(nn.Module):
                 data = data.to(self.device)
                 hs = self.model.forward(data.x, data.edge_index, data.batch)
                 hs = hs.detach().cpu().numpy()  # annoying error with jit
-                hs = np.rint(hs)
                 hs_all.append(hs)
             hs_all = np.concatenate(hs_all)
+            hs_all = np.rint(hs_all)
             hs_all = hs_all.astype(int).tolist()
             return hs_all
 
