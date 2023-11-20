@@ -69,7 +69,7 @@ def scrape_train_log(file):
     if len(toks) == 0:
         continue
     
-    if "Loading " in line:
+    if "___" in line:
         arguments = False
     if arguments:
         if len(toks) == 1:

@@ -91,7 +91,6 @@ if __name__ == "__main__":
 
     # cuda
     device = torch.device(f"cuda:{args.device}" if torch.cuda.is_available() else "cpu")
-    print("device:", device)
 
     # init model
     train_loader, val_loader = get_loaders_from_args_gnn(args)
@@ -115,6 +114,7 @@ if __name__ == "__main__":
     )
 
     # train val pipeline
+    print("device:", device)
     print("Training...")
     try:
         best_dict = None

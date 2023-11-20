@@ -41,6 +41,7 @@ def print_arguments(args, ignore_params=set()):
         ):
             continue
         print("{0:20}  {1}".format(k, v))
+    print("___")
 
 
 def save_model_from_dict(model_dict, args):

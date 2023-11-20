@@ -69,7 +69,7 @@ if __name__ == "__main__":
 
         train_log_file = f"{_LOG_DIR_TRAIN}/{desc}.log"
 
-        if not os.path.exists(model_file):
+        if not os.path.exists(model_file) or not os.path.exists(train_log_file):
             cmd = f"python3 train_gnn.py {domain} -r {rep} -L {L} -H {H} --aggr {aggr} --patience {patience} --save-file {model_file}"
             os.system(f"echo training with {domain} {rep}, see {train_log_file}")
             os.system(f"{cmd} > {train_log_file}")
