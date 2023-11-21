@@ -28,10 +28,9 @@ def sorted_nicely(l):  # https://stackoverflow.com/a/2669120/13531424
     return sorted(l, key=alphanum_key)
 
 
-def get_domain_instance_pddl_for_domain(domain: str, split: str, dir_of_pddls=None):
+def get_domain_instance_pddl_for_domain(domain: str, split: str):
     ret = []
-    if dir_of_pddls is None:
-        dir_of_pddls = f"../dataset/goose/{domain}"
+    dir_of_pddls = f"../dataset/goose/{domain}"
     df = f"{dir_of_pddls}/domain.pddl"
     for file in sorted_nicely(os.listdir(f"{dir_of_pddls}/{split}")):
         pf = f"{dir_of_pddls}/{split}/{file}"
