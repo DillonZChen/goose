@@ -32,8 +32,6 @@ def arg_to_params(args, in_feat=4, out_feat=1):
 
 
 def print_arguments(args, ignore_params=set()):
-    if hasattr(args, "pretrained") and args.pretrained is not None:
-        return
     print("Parsed arguments:")
     for k, v in vars(args).items():
         if k in ignore_params.union(
@@ -66,7 +64,7 @@ def save_model(model, args):
 def load_model(path, print_args=False):
     # returns (GNN, Args)
     import torch
-    from model.gnn import Model
+    from gnns.gnn import Model
 
     print(f"Loading model from {path}...")
     if not os.path.exists(path):

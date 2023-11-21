@@ -4,11 +4,11 @@ import time
 import torch
 import argparse
 import representation
-from model.loss import BCELoss, MSELoss
-from model.gnn import Model
+from gnns.loss import BCELoss, MSELoss
+from gnns.gnn import Model
+from gnns.train_eval import train, evaluate
 from util.stats import *
 from util.save_load import *
-from util import train, evaluate
 from dataset.dataset import get_loaders_from_args_gnn
 from dataset.goose_domain_info import GOOSE_DOMAINS
 
