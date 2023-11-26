@@ -1,0 +1,8 @@
+(do-plane p2 planer0 verysmooth red varnished)
+(do-saw-small b0 p0 saw0 teak rough s2 s1)
+(do-plane p0 planer0 rough natural untreated)
+(do-spray-varnish p0 spray-varnisher0 natural smooth)
+(do-saw-medium b1 p1 saw0 oak rough s3 s2 s1)
+(do-plane p1 planer0 rough natural untreated)
+(do-glaze p1 glazer0 blue)
+; cost = 130 (general cost)

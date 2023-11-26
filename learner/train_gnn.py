@@ -73,15 +73,6 @@ def parse_args():
 
     args = parser.parse_args()
 
-    domain = args.domain
-    if domain != "ipc":
-        args.domain_pddl = f"../dataset/goose/{domain}/domain.pddl"
-        args.tasks_dir = f"../dataset/goose/{domain}/train"
-        args.plans_dir = f"../dataset/goose/{domain}/train_solution"
-    else:
-        raise NotImplementedError
-
-
     return args
 
 
@@ -123,9 +114,7 @@ if __name__ == "__main__":
         for e in range(epochs):
             t = time.time()
 
-            train_stats = train(
-                model, device, train_loader, criterion, optimiser
-            )
+            train_stats = train(model, device, train_loader, criterion, optimiser)
             train_loss = train_stats["loss"]
             val_stats = evaluate(model, device, val_loader, criterion)
             val_loss = val_stats["loss"]
@@ -138,10 +127,12 @@ if __name__ == "__main__":
                 best_dict = model.model.state_dict()
                 best_epoch = e
 
-            desc = f"epoch {e}, " \
-                    f"time {time.time() - t:.1f}, " \
-                    f"train_loss {train_loss:.2f}, " \
-                    f"val_loss {val_loss:.2f} "
+            desc = (
+                f"epoch {e}, "
+                f"time {time.time() - t:.1f}, "
+                f"train_loss {train_loss:.2f}, "
+                f"val_loss {val_loss:.2f} "
+            )
             print(desc)
 
             lr = optimiser.param_groups[0]["lr"]

@@ -1,0 +1,5 @@
+(finish-object object0 x2 y2)
+(finish-object object2 x3 y2)
+(finish-object object1 x2 y3)
+(finish-object object3 x3 y3)
+; cost = 4 (unit cost)

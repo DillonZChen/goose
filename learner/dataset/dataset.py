@@ -1,23 +1,18 @@
-import sys
-
-
-sys.path.append("..")
 import random
 import os
-import torch
-from util.stats import get_stats
+from itertools import product
+from tqdm import tqdm
 from torch_geometric.data import Data
 from torch_geometric.loader import DataLoader
-from planning.representation import get_planning_problem
 from sklearn.model_selection import train_test_split
-from dataset.graphs_gnn import get_graph_data as get_graph_data_gnn
 from representation import REPRESENTATIONS
-
-# from dataset.graphs_kernel import get_graph_data as get_graph_data_kernel
-from dataset.transform import preprocess_data
+from util.stats import get_stats
 
 _DOWNWARD = "./../planners/downward/fast-downward.py"
 _POWERLIFTED = "./../planners/powerlifted/powerlifted.py"
+_BENCHMARKS_DIR = "../dataset"  # assume script called from learner directory
+
+_MAX_Y = 64
 
 
 def get_plan_info(domain_pddl, problem_pddl, plan_file, args):
@@ -81,7 +76,7 @@ def get_plan_info(domain_pddl, problem_pddl, plan_file, args):
     ret = []
     for i, state in enumerate(states):
         if i == len(actions):
-            ret.append((state, {0:0}))
+            ret.append((state, {0: 0}))
         else:
             action = actions[i]
             schema = action.replace("(", "").split()[0]
@@ -90,29 +85,72 @@ def get_plan_info(domain_pddl, problem_pddl, plan_file, args):
     return ret
 
 
-def get_graphs_from_plans(args):
-    print("Generating graphs from plans...")
+def get_graphs_from_plan(domain_pddl, problem_pddl, plan_file, args):
+    graphs = []
+    rep = REPRESENTATIONS[args.rep](domain_pddl=domain_pddl, problem_pddl=problem_pddl)
+    rep.convert_to_pyg()
+    plan = get_plan_info(domain_pddl, problem_pddl, plan_file, args)
+
+    for state, schema_cnt in plan:
+        state = rep.str_to_state(state)
+        x, edge_index = rep.state_to_tensor(state)
+        y = sum(schema_cnt.values())
+        if y > _MAX_Y:
+            continue
+        graph = Data(x=x, edge_index=edge_index, y=y)
+        graphs.append(graph)
+    return graphs
+
+
+def get_ipc_graphs(args):
     graphs = []
 
-    representation = args.rep
-    domain_pddl = args.domain_pddl
-    tasks_dir = args.tasks_dir
-    plans_dir = args.plans_dir
+    ipcs = list(set(os.listdir(f"{_BENCHMARKS_DIR}/ipc")).difference({"README.md"}))
+    ipc_domains = []
+    for ipc in ipcs:
+        for domain in os.listdir(f"{_BENCHMARKS_DIR}/ipc/{ipc}/domains"):
+            ipc_domains.append((ipc, domain))
 
+    pbar = tqdm(sorted(ipc_domains))
+    for ipc, domain in pbar:
+        pbar.set_description(f"{ipc}-{domain}")
+        domain_pddl = f"{_BENCHMARKS_DIR}/ipc/{ipc}/domains/{domain}/domain.pddl"
+        tasks_dir = f"{_BENCHMARKS_DIR}/ipc/{ipc}/domains/{domain}/instances"
+        plans_dir = f"{_BENCHMARKS_DIR}/ipc/{ipc}/domains/{domain}/solutions"
+        try:
+            assert os.path.exists(domain_pddl)
+            assert os.path.exists(tasks_dir)
+            assert os.path.exists(plans_dir)
+            graphs += get_graphs_from_dir(domain_pddl, tasks_dir, plans_dir, args)
+        except AssertionError as e:  # cannot parse some domains
+            print(f"skipped graphs for {domain}")
+            pass
+
+    return graphs
+
+
+def get_graphs_from_dir(domain_pddl, tasks_dir, plans_dir, args):
+    graphs = []
     for plan_file in sorted(list(os.listdir(plans_dir))):
         problem_pddl = f"{tasks_dir}/{plan_file.replace('.plan', '.pddl')}"
         assert os.path.exists(problem_pddl), problem_pddl
         plan_file = f"{plans_dir}/{plan_file}"
-        rep = REPRESENTATIONS[representation](domain_pddl=domain_pddl, problem_pddl=problem_pddl)
-        rep.convert_to_pyg()
-        plan = get_plan_info(domain_pddl, problem_pddl, plan_file, args)
+        graphs += get_graphs_from_plan(domain_pddl, problem_pddl, plan_file, args)
+    return graphs
 
-        for state, schema_cnt in plan:
-            state = rep.str_to_state(state)
-            x, edge_index = rep.state_to_tensor(state)
-            y = sum(schema_cnt.values())
-            graph = Data(x=x, edge_index=edge_index, y=y)
-            graphs.append(graph)
+
+def get_graphs_from_args(args):
+    print("Generating graphs from plans...")
+
+    domain = args.domain
+
+    if domain == "ipc":
+        graphs = get_ipc_graphs(args)
+    else:
+        domain_pddl = f"{_BENCHMARKS_DIR}/goose/{domain}/domain.pddl"
+        tasks_dir = f"{_BENCHMARKS_DIR}/goose/{domain}/train"
+        plans_dir = f"{_BENCHMARKS_DIR}/goose/{domain}/train_solution"
+        graphs = get_graphs_from_dir(domain_pddl, tasks_dir, plans_dir, args)
 
     print("Graphs generated!")
     return graphs
@@ -122,7 +160,7 @@ def get_loaders_from_args_gnn(args):
     batch_size = args.batch_size
     small_train = args.small_train
 
-    dataset = get_graphs_from_plans(args)
+    dataset = get_graphs_from_args(args)
     if small_train:
         random.seed(123)
         dataset = random.sample(dataset, k=1000)
