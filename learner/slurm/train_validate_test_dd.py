@@ -44,167 +44,167 @@ def get_model_desc(rep, domain, L, H, aggr, patience, val_repeat):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-r", "--representation", required=True, choices=REPRESENTATIONS)
-    parser.add_argument("-d", "--domain", required=True, choices=GOOSE_DOMAINS)
     args = parser.parse_args()
 
     rep = args.representation
-    domain = args.domain
 
     L = 4
     H = 64
     patience = 10
     aggr = "max"
 
-    val_dir = f"../dataset/goose/{domain}/val"
-    test_dir = f"../dataset/goose/{domain}/test"
-    df = f"../dataset/goose/{domain}/domain.pddl"  # domain file
-    ###############################################################################################
+    for domain in GOOSE_DOMAINS:
 
-    """ train """
-    for val_repeat in range(VAL_REPEATS):
-        os.system("date")
+        val_dir = f"../dataset/goose/{domain}/val"
+        test_dir = f"../dataset/goose/{domain}/test"
+        df = f"../dataset/goose/{domain}/domain.pddl"  # domain file
+        ###########################################################################################
 
-        desc = get_model_desc(rep, domain, L, H, aggr, patience, val_repeat)
-        model_file = f"{_TRAINED_MODEL_DIR}/{desc}.dt"
-
-        train_log_file = f"{_LOG_DIR_TRAIN}/{desc}.log"
-
-        if not os.path.exists(model_file) or not os.path.exists(train_log_file):
-            cmd = f"python3 train_gnn.py {domain} -r {rep} -L {L} -H {H} --aggr {aggr} --patience {patience} --save-file {model_file}"
-            os.system(f"echo training with {domain} {rep}, see {train_log_file}")
-            os.system(f"{cmd} > {train_log_file}")
-        else:
-            os.system(f"echo already trained for {domain} {rep}, see {train_log_file}")
-    ###############################################################################################
-
-    """validate"""
-    for val_repeat in range(VAL_REPEATS):
-        desc = get_model_desc(rep, domain, L, H, aggr, patience, val_repeat)
-        model_file = f"{_TRAINED_MODEL_DIR}/{desc}.dt"
-
-        for f in os.listdir(val_dir):
+        """ train """
+        for val_repeat in range(VAL_REPEATS):
             os.system("date")
 
-            val_log_file = f"{_LOG_DIR_VAL}/{f.replace('.pddl', '')}_{desc}.log"
+            desc = get_model_desc(rep, domain, L, H, aggr, patience, val_repeat)
+            model_file = f"{_TRAINED_MODEL_DIR}/{desc}.dt"
 
+            train_log_file = f"{_LOG_DIR_TRAIN}/{desc}.log"
+
+            if not os.path.exists(model_file) or not os.path.exists(train_log_file):
+                cmd = f"python3 train_gnn.py {domain} -r {rep} -L {L} -H {H} --aggr {aggr} --patience {patience} --save-file {model_file}"
+                os.system(f"echo training with {domain} {rep}, see {train_log_file}")
+                os.system(f"{cmd} > {train_log_file}")
+            else:
+                os.system(f"echo already trained for {domain} {rep}, see {train_log_file}")
+        ###########################################################################################
+
+        """validate"""
+        for val_repeat in range(VAL_REPEATS):
+            desc = get_model_desc(rep, domain, L, H, aggr, patience, val_repeat)
+            model_file = f"{_TRAINED_MODEL_DIR}/{desc}.dt"
+
+            for f in os.listdir(val_dir):
+                os.system("date")
+
+                val_log_file = f"{_LOG_DIR_VAL}/{f.replace('.pddl', '')}_{desc}.log"
+
+                finished_correctly = False
+                if os.path.exists(val_log_file):
+                    finished_correctly = search_finished_correctly(val_log_file)
+                if not finished_correctly:
+                    pf = f"{val_dir}/{f}"
+                    cmd, intermediate_file = fd_cmd(df=df, pf=pf, m=model_file, search=_SEARCH)
+                    os.system(f"echo validating with {domain} {rep}, see {val_log_file}")
+                    os.system(f"{cmd} > {val_log_file}")
+                    if os.path.exists(intermediate_file):
+                        os.remove(intermediate_file)
+                else:
+                    os.system(f"echo already validated for {domain} {rep}, see {val_log_file}")
+        ###########################################################################################
+
+        """ selection """
+        # after running all validation repeats, we pick the best one
+        best_model = -1
+        best_solved = 0
+        best_expansions = float("inf")
+        best_runtimes = float("inf")
+        best_loss = float("inf")
+        best_train_time = float("inf")
+
+        # see if any model solved anything
+        for val_repeat in range(VAL_REPEATS):
+            desc = get_model_desc(rep, domain, L, H, aggr, patience, val_repeat)
+
+            solved = 0
+            for f in os.listdir(val_dir):
+                val_log_file = f"{_LOG_DIR_VAL}/{f.replace('.pddl', '')}_{desc}.log"
+                stats = scrape_search_log(val_log_file)
+                solved += stats["solved"]
+            best_solved = max(best_solved, solved)
+
+        # break ties
+        for val_repeat in range(VAL_REPEATS):
+            desc = get_model_desc(rep, domain, L, H, aggr, patience, val_repeat)
+            model_file = f"{_TRAINED_MODEL_DIR}/{desc}.dt"
+
+            solved = 0
+            expansions = []
+            runtimes = []
+            for f in os.listdir(val_dir):
+                val_log_file = f"{_LOG_DIR_VAL}/{f.replace('.pddl', '')}_{desc}.log"
+                stats = scrape_search_log(val_log_file)
+                solved += stats["solved"]
+                if stats["solved"]:
+                    expansions.append(stats["expanded"])
+                    runtimes.append(stats["time"])
+            expansions = np.median(expansions) if len(expansions) > 0 else -1
+            runtimes = np.median(runtimes) if len(runtimes) > 0 else -1
+            train_stats = scrape_train_log(f"{_LOG_DIR_TRAIN}/{desc}.log")
+            avg_loss = train_stats["best_avg_loss"]
+            train_time = train_stats["time"]
+            # choose best model
+            if (solved == best_solved and best_solved > 0 and expansions < best_expansions) or (
+                solved == best_solved and best_solved == 0 and avg_loss < best_loss
+            ):
+                best_model = model_file
+                best_expansions = expansions
+                best_runtimes = runtimes
+                best_loss = avg_loss
+                best_train_time = train_time
+
+        # log best model stats
+        desc = f"dd_{rep}_{domain}_L{L}_H{H}_{aggr}_p{patience}"
+        best_model_file = f"{_VALIDATED_MODEL_DIR}/{desc}.dt"
+        with open(f"{_LOG_DIR_SELECT}/{desc}.log", "w") as f:
+            f.write(f"model: {best_model}\n")
+            f.write(f"solved: {best_solved} / {len(os.listdir(val_dir))}\n")
+            f.write(f"median_expansions: {best_expansions}\n")
+            f.write(f"median_runtime: {best_runtimes}\n")
+            f.write(f"avg_loss: {best_loss}\n")
+            f.write(f"train_time: {best_train_time}\n")
+            f.close()
+        os.system(f"cp {best_model} {best_model_file}")
+        ###########################################################################################
+
+        """ test """
+        failed = 0
+
+        # warmup first
+        f = sorted_nicely(os.listdir(test_dir))[0]
+        pf = f"{test_dir}/{f}"
+        cmd, intermediate_file = fd_cmd(df=df, pf=pf, m=model_file, search=_SEARCH, timeout=30)
+        os.system("date")
+        os.system(f"echo warming up with {domain} {rep} {f.replace('.pddl', '')} {best_model_file}")
+        os.popen(cmd).readlines()
+        try:
+            os.remove(intermediate_file)
+        except OSError:
+            pass
+
+        # test on problems
+        for f in sorted_nicely(os.listdir(test_dir)):
+            os.system("date")
+            test_log_file = f"{_LOG_DIR_TEST}/{f.replace('.pddl', '')}_{desc}.log"
             finished_correctly = False
-            if os.path.exists(val_log_file):
-                finished_correctly = search_finished_correctly(val_log_file)
+            if os.path.exists(test_log_file):
+                finished_correctly = search_finished_correctly(test_log_file)
             if not finished_correctly:
-                pf = f"{val_dir}/{f}"
+                pf = f"{test_dir}/{f}"
                 cmd, intermediate_file = fd_cmd(df=df, pf=pf, m=model_file, search=_SEARCH)
-                os.system(f"echo validating with {domain} {rep}, see {val_log_file}")
-                os.system(f"{cmd} > {val_log_file}")
+                os.system(f"echo testing {domain} {rep}, see {test_log_file}")
+                os.system(f"{cmd} > {test_log_file}")
                 if os.path.exists(intermediate_file):
                     os.remove(intermediate_file)
             else:
-                os.system(f"echo already validated for {domain} {rep}, see {val_log_file}")
-    ###############################################################################################
+                os.system(f"echo already tested for {domain} {rep}, see {test_log_file}")
 
-    """ selection """
-    # after running all validation repeats, we pick the best one
-    best_model = -1
-    best_solved = 0
-    best_expansions = float("inf")
-    best_runtimes = float("inf")
-    best_loss = float("inf")
-    best_train_time = float("inf")
-
-    # see if any model solved anything
-    for val_repeat in range(VAL_REPEATS):
-        desc = get_model_desc(rep, domain, L, H, aggr, patience, val_repeat)
-
-        solved = 0
-        for f in os.listdir(val_dir):
-            val_log_file = f"{_LOG_DIR_VAL}/{f.replace('.pddl', '')}_{desc}.log"
-            stats = scrape_search_log(val_log_file)
-            solved += stats["solved"]
-        best_solved = max(best_solved, solved)
-
-    # break ties
-    for val_repeat in range(VAL_REPEATS):
-        desc = get_model_desc(rep, domain, L, H, aggr, patience, val_repeat)
-        model_file = f"{_TRAINED_MODEL_DIR}/{desc}.dt"
-
-        solved = 0
-        expansions = []
-        runtimes = []
-        for f in os.listdir(val_dir):
-            val_log_file = f"{_LOG_DIR_VAL}/{f.replace('.pddl', '')}_{desc}.log"
-            stats = scrape_search_log(val_log_file)
-            solved += stats["solved"]
-            if stats["solved"]:
-                expansions.append(stats["expanded"])
-                runtimes.append(stats["time"])
-        expansions = np.median(expansions) if len(expansions) > 0 else -1
-        runtimes = np.median(runtimes) if len(runtimes) > 0 else -1
-        train_stats = scrape_train_log(f"{_LOG_DIR_TRAIN}/{desc}.log")
-        avg_loss = train_stats["best_avg_loss"]
-        train_time = train_stats["time"]
-        # choose best model
-        if (solved == best_solved and best_solved > 0 and expansions < best_expansions) or (
-            solved == best_solved and best_solved == 0 and avg_loss < best_loss
-        ):
-            best_model = model_file
-            best_expansions = expansions
-            best_runtimes = runtimes
-            best_loss = avg_loss
-            best_train_time = train_time
-
-    # log best model stats
-    desc = f"dd_{rep}_{domain}_L{L}_H{H}_{aggr}_p{patience}"
-    best_model_file = f"{_VALIDATED_MODEL_DIR}/{desc}.dt"
-    with open(f"{_LOG_DIR_SELECT}/{desc}.log", "w") as f:
-        f.write(f"model: {best_model}\n")
-        f.write(f"solved: {best_solved} / {len(os.listdir(val_dir))}\n")
-        f.write(f"median_expansions: {best_expansions}\n")
-        f.write(f"median_runtime: {best_runtimes}\n")
-        f.write(f"avg_loss: {best_loss}\n")
-        f.write(f"train_time: {best_train_time}\n")
-        f.close()
-    os.system(f"cp {best_model} {best_model_file}")
-    ###############################################################################################
-
-    """ test """
-    failed = 0
-
-    # warmup first
-    f = sorted_nicely(os.listdir(test_dir))[0]
-    pf = f"{test_dir}/{f}"
-    cmd, intermediate_file = fd_cmd(df=df, pf=pf, m=model_file, search=_SEARCH, timeout=30)
-    os.system("date")
-    os.system(f"echo warming up with {domain} {rep} {f.replace('.pddl', '')} {best_model_file}")
-    os.popen(cmd).readlines()
-    try:
-        os.remove(intermediate_file)
-    except OSError:
-        pass
-
-    # test on problems
-    for f in sorted_nicely(os.listdir(test_dir)):
-        os.system("date")
-        test_log_file = f"{_LOG_DIR_TEST}/{f.replace('.pddl', '')}_{desc}.log"
-        finished_correctly = False
-        if os.path.exists(test_log_file):
-            finished_correctly = search_finished_correctly(test_log_file)
-        if not finished_correctly:
-            pf = f"{test_dir}/{f}"
-            cmd, intermediate_file = fd_cmd(df=df, pf=pf, m=model_file, search=_SEARCH)
-            os.system(f"echo testing {domain} {rep}, see {test_log_file}")
-            os.system(f"{cmd} > {test_log_file}")
-            if os.path.exists(intermediate_file):
-                os.remove(intermediate_file)
-        else:
-            os.system(f"echo already tested for {domain} {rep}, see {test_log_file}")
-
-        # check if failed or not
-        assert os.path.exists(test_log_file)
-        log = open(test_log_file, "r").read()
-        solved = "Solution found." in log
-        if solved:
-            failed = 0
-        else:
-            failed += 1
-        if failed >= FAIL_LIMIT[domain]:
-            break
-    ###############################################################################################
+            # check if failed or not
+            assert os.path.exists(test_log_file)
+            log = open(test_log_file, "r").read()
+            solved = "Solution found." in log
+            if solved:
+                failed = 0
+            else:
+                failed += 1
+            if failed >= FAIL_LIMIT[domain]:
+                break
+        ###########################################################################################

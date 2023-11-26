@@ -1,13 +1,12 @@
-REPS="ldg-el fdg-el sdg-el"
+SLURM_SCRIPT=slurm/cluster1_job_gpusrv5_a6000
 
-L=4
-H=64
-aggr=max
-p=20
+mkdir -p aaai24_logs
+mkdir -p aaai24_logs/slurm
 
-mkdir -p logs
-
-for rep in ldg-el ddg-el
+for rep in llg slg dlg # flg
 do
-  sbatch --job-name=di_tvt_${rep} --output=logs/cluster1_di_train_val_test_${rep}_L${L}_H${H}_${aggr}_p${p}.log scripts/cluster1_job_3090 "python3 scripts/train_validate_test_di.py ${rep} -L ${L} -H ${H} -a ${aggr} -p ${p}"
+    log_file=aaai24_logs/slurm/cluster1_di_tvt_${rep}.log
+    rm -f $log_file
+
+    sbatch --job-name=${rep}_tvt_di --output=$log_file $SLURM_SCRIPT "python3 slurm/train_validate_test_di.py -r $rep"
 done
