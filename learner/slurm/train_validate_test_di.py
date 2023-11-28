@@ -132,7 +132,7 @@ if __name__ == "__main__":
                     runtimes.append(stats["time"])
             expansions = np.median(expansions) if len(expansions) > 0 else -1
             runtimes = np.median(runtimes) if len(runtimes) > 0 else -1
-            train_log_file = f"{_LOG_DIR_TRAIN}/di_{rep}_{domain}_L{L}_H{H}_{aggr}_p{patience}_v{val_repeat}.log"
+            train_log_file = f"{_LOG_DIR_TRAIN}/di_{rep}_L{L}_H{H}_{aggr}_p{patience}_v{val_repeat}.log"
             train_stats = scrape_train_log(train_log_file)
             avg_loss = train_stats["best_avg_loss"]
             train_time = train_stats["time"]
@@ -198,8 +198,10 @@ if __name__ == "__main__":
             solved = "Solution found." in log
             if solved:
                 failed = 0
+                print("solved")
             else:
                 failed += 1
+                print("failed")
             if failed >= FAIL_LIMIT[domain]:
                 break
         ###########################################################################################
