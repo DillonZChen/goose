@@ -12,6 +12,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 import argparse
 import numpy as np
+from itertools import product
 from dataset.goose_domain_info import GOOSE_DOMAINS
 from representation import REPRESENTATIONS
 from util.scrape_log import scrape_search_log, scrape_train_log, search_finished_correctly
@@ -48,12 +49,12 @@ if __name__ == "__main__":
 
     rep = args.representation
 
-    L = 4
-    H = 64
     patience = 10
-    aggr = "max"
+    H = 64
+    Ls = [4, 8, 12, 16]
+    aggrs = ["mean", "max"]
 
-    for domain in GOOSE_DOMAINS:
+    for L, aggr, domain in product(Ls, aggrs, GOOSE_DOMAINS):
 
         val_dir = f"../dataset/goose/{domain}/val"
         test_dir = f"../dataset/goose/{domain}/test"
