@@ -1,5 +1,6 @@
 import random
 import os
+import pickle
 from itertools import product
 from tqdm import tqdm
 from torch_geometric.data import Data
@@ -13,6 +14,13 @@ _POWERLIFTED = "./../planners/powerlifted/powerlifted.py"
 _BENCHMARKS_DIR = "../dataset"  # assume script called from learner directory
 
 _MAX_Y = 64
+
+_DOMAINS_NOT_TO_TRAIN_FOR_GOOSE_DI = {
+    "ipc-1998-gripper-1",
+    "ipc-2000-blocks",
+    "ipc-2011-visit-all",
+    "ipc-2014-visit-all",
+}
 
 
 def get_plan_info(domain_pddl, problem_pddl, plan_file, args):
@@ -103,8 +111,16 @@ def get_graphs_from_plan(domain_pddl, problem_pddl, plan_file, args):
 
 
 def get_ipc_graphs(args):
-    graphs = []
 
+    DATA_SAVE_FILE = f"{args.rep}_ipc_graphs.pkl"
+
+    if os.path.exists(DATA_SAVE_FILE):
+        print(f"loaded saved data from {DATA_SAVE_FILE}")
+        with open(DATA_SAVE_FILE, 'rb') as inp:
+            graphs = pickle.load(inp)
+            return graphs
+
+    graphs = []
     ipcs = list(set(os.listdir(f"{_BENCHMARKS_DIR}/ipc")).difference({"README.md"}))
     ipc_domains = []
     for ipc in ipcs:
@@ -113,7 +129,11 @@ def get_ipc_graphs(args):
 
     pbar = tqdm(sorted(ipc_domains))
     for ipc, domain in pbar:
-        pbar.set_description(f"{ipc}-{domain}")
+        long_domain = f"{ipc}-{domain}"
+        if long_domain in _DOMAINS_NOT_TO_TRAIN_FOR_GOOSE_DI:
+            tqdm.write(f"skipped {long_domain}")
+            continue
+        pbar.set_description(long_domain)
         domain_pddl = f"{_BENCHMARKS_DIR}/ipc/{ipc}/domains/{domain}/domain.pddl"
         tasks_dir = f"{_BENCHMARKS_DIR}/ipc/{ipc}/domains/{domain}/instances"
         plans_dir = f"{_BENCHMARKS_DIR}/ipc/{ipc}/domains/{domain}/solutions"
@@ -125,6 +145,10 @@ def get_ipc_graphs(args):
         except AssertionError as e:  # cannot parse some domains
             print(f"skipped graphs for {domain}")
             pass
+    
+    print(f"saving data to {DATA_SAVE_FILE}")
+    with open(DATA_SAVE_FILE, 'wb') as outp:
+        pickle.dump(graphs, outp)
 
     return graphs
 

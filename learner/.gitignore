@@ -1,6 +1,7 @@
 lock
 logs*
 *.sas
+*.pkl
 plans_*
 *.sh.e*
 *.sh.o*
