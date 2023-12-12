@@ -49,10 +49,13 @@ def get_plan_info(domain_pddl, problem_pddl, plan_file, args):
         + f"&& {_DOWNWARD} --sas-file {sas_file} {domain_pddl} {problem_pddl} "
         + f"--search 'perfect([blind()])'",  # need filler h
     }[planner]
-    output = os.popen(cmd).readlines()
+    output = os.popen(cmd).read()
     if output:
         pass  # this is so syntax highlighting sees `output`
     # os.system(cmd)
+    if not os.path.exists(state_output_file):
+        print(output)
+        raise FileNotFoundError(state_output_file)
     with open(state_output_file, "r") as f:
         for line in f.readlines():
             if ";" in line:
