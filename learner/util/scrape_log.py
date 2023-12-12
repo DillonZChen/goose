@@ -15,6 +15,7 @@ def search_finished_correctly(f):
 
 def scrape_search_log(file):
   stats = {
+    "tried": 0,
     "first_h": -1,
     "solved": 0,
     "time": -1,
@@ -25,7 +26,9 @@ def scrape_search_log(file):
 
   if not os.path.exists(file):
      return stats
-
+  
+  stats["tried"] = 1
+  
   for line in open(file, 'r').readlines():
 
     line = line.replace(" state(s).", "")
