@@ -204,10 +204,10 @@ if __name__ == "__main__":
             solved = "Solution found." in log
             if solved:
                 failed = 0
-                print("solved")
+                print("solved", flush=True)
             else:
                 failed += 1
-                print("failed")
+                print("failed", flush=True)
             if failed >= FAIL_LIMIT[domain]:
                 break
         ###########################################################################################
