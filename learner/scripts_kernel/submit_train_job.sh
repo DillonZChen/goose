@@ -1,1 +1,0 @@
-sbatch --job-name=good --output=kernels.log scripts_kernel/cluster1_job_planopt "sh scripts_kernel/train_all.sh"
