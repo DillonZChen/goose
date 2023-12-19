@@ -8,6 +8,7 @@
 #include "utils/timer.h"
 
 #include <iostream>
+#include <chrono>
 
 using namespace std;
 using utils::ExitCode;
@@ -31,16 +32,19 @@ int main(int argc, const char **argv) {
 
     shared_ptr<SearchEngine> engine = parse_cmd_line(argc, argv, unit_cost);
 
-
-    utils::Timer search_timer;
+    // timer is inaccurate because of pybind11?
+    // 3 seconds would be counted as 30 seconds during search...
+    std::chrono::time_point<std::chrono::system_clock> start_search = std::chrono::system_clock::now();
     engine->search();
-    search_timer.stop();
+    std::chrono::time_point<std::chrono::system_clock> end_search = std::chrono::system_clock::now();
     utils::g_timer.stop();
+
+    double search_time = std::chrono::duration_cast<std::chrono::milliseconds>(end_search - start_search).count();
+    search_time /= 1000;
 
     engine->save_plan_if_necessary();
     engine->print_statistics();
-    utils::g_log << "Search time: " << search_timer << endl;
-    utils::g_log << "Total time: " << utils::g_timer << endl;
+    std::cout << "[Computation by walltime] Search time: " << search_time << "s" << std::endl;
 
     ExitCode exitcode = engine->found_solution()
         ? ExitCode::SUCCESS

@@ -23,9 +23,9 @@ if you plan to run GOOSE on a GPU (requires cuda version 11.8 or higher) and oth
 
 Then execute any commands below by executing 
 ```
-singularity exec --nv goose.sif $CMD
+singularity exec --nv goose_gpu.sif $CMD
 ```
-where `$CMD` corresponds to your command. If do not have a GPU, you can remove `--nv ` and even run `./goose.sif $CMD`
+where `$CMD` corresponds to your command. If do not have a GPU, you can remove `--nv ` and even run `./goose_cpu.sif $CMD`
 
 Nevertheless, you can still try to use just a virtual environment for example by
 ```

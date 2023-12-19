@@ -2,8 +2,6 @@
 import os
 import torch
 import joblib
-import datetime
-import representation
 from argparse import Namespace as Args
 from typing import Tuple
 

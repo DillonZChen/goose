@@ -6,7 +6,7 @@
 #include "goalcount.h"
 #include "hmax_heuristic.h"
 #include "rff_heuristic.h"
-#include "gnn_heuristic.h"
+#include "goose_heuristic.h"
 
 #include "datalog_transformation_options.h"
 
@@ -39,8 +39,8 @@ Heuristic *HeuristicFactory::create(const Options &opt, const Task &task)
     else if (boost::iequals(method, "rff")) {
         return new RFFHeuristic(task, DatalogTransformationOptions());
     }
-    else if (boost::iequals(method, "gnn")) {
-        return new GNNHeuristic(task, opt.get_model_path(), opt.get_domain_file(), opt.get_instance_file());
+    else if (boost::iequals(method, "gnn") or boost::iequals(method, "kernel")) {
+        return new GooseHeuristic(task, method, opt.get_model_path(), opt.get_domain_file(), opt.get_instance_file());
     }
     else {
         std::cerr << "Invalid heuristic \"" << method << "\"" << std::endl;
