@@ -1,0 +1,8 @@
+(board c2 l0)
+(sail l0 l1)
+(debark c2 l1)
+(sail l1 l0)
+(board c3 l0)
+(sail l0 l1)
+(debark c3 l1)
+; cost = 7 (unit cost)

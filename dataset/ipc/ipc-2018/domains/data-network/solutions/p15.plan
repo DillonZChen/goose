@@ -1,0 +1,8 @@
+(load data-0-2 server7 number3 number8 number0 number3)
+(load data-0-3 server7 number2 number8 number3 number5)
+(send data-0-3 server7 server2 number2 number8 number0 number2)
+(process data-0-3 data-0-2 data-1-4 script3 server7 number1 number8 number5 number6)
+(send data-1-4 server7 server2 number1 number8 number2 number3)
+(process data-1-4 data-0-3 data-2-1 script2 server2 number5 number8 number3 number8)
+(save data-2-1 number5 server2)
+; cost = 50 (general cost)

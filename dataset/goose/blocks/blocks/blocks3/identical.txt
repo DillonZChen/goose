@@ -1,0 +1,82 @@
+===== Processing directory ../benchmarks/blocks-slaney/blocks3/ =====
+Ignoring identical.txt
+Processing ../benchmarks/blocks-slaney/blocks3/task01.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task02.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task03.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task04.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task05.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task06.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task07.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task08.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task09.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task10.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task11.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task12.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task13.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task14.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task15.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task16.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task17.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task18.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task19.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task20-old.pddl
+  - Initial state and goal already encountered in ../benchmarks/blocks-slaney/blocks3/task01.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task20.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task21.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task22.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task23.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task24.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task25.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task26.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task27.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task28.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task29.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task30.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task31.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task32.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task33.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task34.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task35.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task36.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task37.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task38-old.pddl
+  - Initial state and goal already encountered in ../benchmarks/blocks-slaney/blocks3/task33.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task38.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task39-old.pddl
+  - Initial state and goal already encountered in ../benchmarks/blocks-slaney/blocks3/task12.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task39.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task40.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task41.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task42.pddl
+  - INITIAL STATE IS GOAL STATE!!!
+Processing ../benchmarks/blocks-slaney/blocks3/task43.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task44.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task45.pddl
+  - INITIAL STATE IS GOAL STATE!!!
+Processing ../benchmarks/blocks-slaney/blocks3/task46.pddl
+  - INITIAL STATE IS GOAL STATE!!!
+Processing ../benchmarks/blocks-slaney/blocks3/task47.pddl
+  - Initial state and goal already encountered in ../benchmarks/blocks-slaney/blocks3/task38.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task48.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task49.pddl
+  - Initial state and goal already encountered in ../benchmarks/blocks-slaney/blocks3/task13.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task50.pddl
+  - Initial state and goal already encountered in ../benchmarks/blocks-slaney/blocks3/task10.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task51.pddl
+  - Initial state and goal already encountered in ../benchmarks/blocks-slaney/blocks3/task29.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task52.pddl
+  - Initial state and goal already encountered in ../benchmarks/blocks-slaney/blocks3/task20.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task53.pddl
+  - INITIAL STATE IS GOAL STATE!!!
+Processing ../benchmarks/blocks-slaney/blocks3/task54.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task55.pddl
+  - Initial state and goal already encountered in ../benchmarks/blocks-slaney/blocks3/task03.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task56.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task57.pddl
+  - Initial state and goal already encountered in ../benchmarks/blocks-slaney/blocks3/task36.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task58.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task59.pddl
+  - Initial state and goal already encountered in ../benchmarks/blocks-slaney/blocks3/task34.pddl
+Processing ../benchmarks/blocks-slaney/blocks3/task60.pddl
+11 problems are not unique
+4 initial states are goals

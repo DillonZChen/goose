@@ -1,0 +1,7 @@
+(move_l_down f1-0f f2-0f f2-1f f3-0f f3-1f rightl0)
+(move_two f0-2f f1-2f f2-2f straight0)
+(move_two f1-2f f2-2f f3-2f straight0)
+(move_square f0-0f f0-1f square0)
+(move_square f0-1f f1-1f square0)
+(move_square f1-1f f2-1f square0)
+; cost = 10 (general cost)

@@ -1,0 +1,8 @@
+(drive truck-2 city-2-loc-1 city-3-loc-1)
+(pick-up truck-2 city-3-loc-1 package-1 capacity-3 capacity-4)
+(pick-up truck-2 city-3-loc-1 package-2 capacity-2 capacity-3)
+(drive truck-2 city-3-loc-1 city-1-loc-1)
+(drop truck-2 city-1-loc-1 package-1 capacity-2 capacity-3)
+(drive truck-2 city-1-loc-1 city-2-loc-1)
+(drop truck-2 city-2-loc-1 package-2 capacity-3 capacity-4)
+; cost = 478 (general cost)

@@ -1,0 +1,7 @@
+(do-plane p1 planer0 rough blue varnished)
+(load-highspeed-saw b0 highspeed-saw0)
+(cut-board-small b0 p0 highspeed-saw0 oak smooth s4 s3)
+(cut-board-large b0 p2 highspeed-saw0 oak smooth s3 s1 s2 s0)
+(do-immersion-varnish p2 immersion-varnisher0 red smooth)
+(do-spray-varnish p0 spray-varnisher0 natural smooth)
+; cost = 95 (general cost)
