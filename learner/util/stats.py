@@ -1,6 +1,5 @@
 import numpy as np
 import os
-import matplotlib.pyplot as plt
 import torch
 import networkx as nx
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay

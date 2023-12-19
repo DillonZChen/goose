@@ -29,3 +29,7 @@ dlg
 
 sas_files
 plans
+
+*.ipynb
+util/visualise
+util/scrape_log

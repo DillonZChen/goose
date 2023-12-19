@@ -39,7 +39,10 @@ def scrape_search_log(file):
     if "Solution found." in line: 
       stats["solved"] = 1
     elif "Goal found at:" in line or "Actual search time:" in line: 
-      stats["time"] = float(toks[-1].replace("s", ""))
+      try:
+        stats["time"] = float(toks[-1].replace("s", ""))
+      except:
+        stats["time"] = float(toks[-2].replace("s", ""))
     elif "Total plan cost:" in line or "Plan cost:" in line: 
       stats["cost"] = int(toks[-1])
     elif len(toks)>=2 and "Expanded" == toks[-2]: 

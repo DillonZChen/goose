@@ -23,16 +23,16 @@ def parse_args():
     parser.add_argument(
         "--aggr",
         type=str,
-        default="max",
+        default="mean",
         choices=["sum", "mean", "max"],
-        help="mpnn aggregation function",
+        help="MPNN aggregation function.",
     )
     parser.add_argument(
         "--pool",
         type=str,
         default="sum",
         choices=["sum", "mean", "max"],
-        help="pooling function for readout",
+        help="Pooling function for readout. Always used sum in AAAI-24",
     )
 
     # optimisation params
@@ -83,7 +83,7 @@ if __name__ == "__main__":
     # cuda
     device = torch.device(f"cuda:{args.device}" if torch.cuda.is_available() else "cpu")
 
-    # init model
+    # load data and init model
     train_loader, val_loader = get_loaders_from_args_gnn(args)
     args.n_edge_labels = representation.REPRESENTATIONS[args.rep].n_edge_labels
     args.in_feat = train_loader.dataset[0].x.shape[1]

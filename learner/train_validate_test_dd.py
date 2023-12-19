@@ -1,22 +1,18 @@
 """
-Main script for running GOOSE experiments described in AAAI-24. The experiment pipeline consists of
-1. training 5 models for each (domain, graph_representation) configuration
+Main script for running *domain-dependent* GOOSE experiments described in AAAI-24. The experiment pipeline consists of
+1. training 5 models for each (domain, graph_representation, GNN) configuration
 2. validating the 5 models with search
 3. selecting the best model from the 5 models
 4. evaluating the best model on test problems
 """
 import os
-import sys
-
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-
 import argparse
 import numpy as np
 from itertools import product
 from dataset.goose_domain_info import GOOSE_DOMAINS
 from representation import REPRESENTATIONS
 from util.scrape_log import scrape_search_log, scrape_train_log, search_finished_correctly
-from util.search import *
+from util.search import VAL_REPEATS, FAIL_LIMIT, fd_cmd, sorted_nicely
 
 _SEARCH = "gbbfs"
 
@@ -55,11 +51,10 @@ if __name__ == "__main__":
     aggrs = ["mean", "max"]
 
     for L, aggr, domain in product(Ls, aggrs, GOOSE_DOMAINS):
-
         val_dir = f"../dataset/goose/{domain}/val"
         test_dir = f"../dataset/goose/{domain}/test"
         df = f"../dataset/goose/{domain}/domain.pddl"  # domain file
-        ###########################################################################################
+        #######################################################################
 
         """ train """
         for val_repeat in range(VAL_REPEATS):
@@ -76,7 +71,7 @@ if __name__ == "__main__":
                 os.system(f"{cmd} > {train_log_file}")
             else:
                 os.system(f"echo already trained for {domain} {rep}, see {train_log_file}")
-        ###########################################################################################
+        #######################################################################
 
         """validate"""
         for val_repeat in range(VAL_REPEATS):
@@ -100,7 +95,7 @@ if __name__ == "__main__":
                         os.remove(intermediate_file)
                 else:
                     os.system(f"echo already validated for {domain} {rep}, see {val_log_file}")
-        ###########################################################################################
+        #######################################################################
 
         """ selection """
         # after running all validation repeats, we pick the best one
@@ -164,7 +159,7 @@ if __name__ == "__main__":
             f.write(f"train_time: {best_train_time}\n")
             f.close()
         os.system(f"cp {best_model} {best_model_file}")
-        ###########################################################################################
+        #######################################################################
 
         """ test """
         failed = 0
@@ -210,4 +205,4 @@ if __name__ == "__main__":
                 print("failed", flush=True)
             if failed >= FAIL_LIMIT[domain]:
                 break
-        ###########################################################################################
+        #######################################################################

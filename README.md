@@ -1,74 +1,83 @@
 # <span style="font-weight:normal">**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation</span>
 
+This branch corresponds to the source code used in our AAAI-24 publication "Learning Domain-Independent Heuristics for Grounded and Lifted Planning"
+
 ## Table of contents
 - [**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation](#goose-graphs-optimised-for-search-evaluation)
   - [Table of contents](#table-of-contents)
-  - [GNNs](#gnns)
-    - [Search](#search)
-    - [Training](#training)
-      - [Loading the training dataset](#loading-the-training-dataset)
-      - [Domain-dependent training](#domain-dependent-training)
-  - [Kernels](#kernels)
-    - [Search](#search-1)
-    - [Training](#training-1)
+  - [Setup](#setup)
+  - [Training](#training)
+  - [Search](#search)
+  - [AAAI-24 experiment pipelines](#aaai-24-experiment-pipelines)
 
-## GNNs
-### Search
-For all commands here, make sure ***not*** to have any python virtual environment activated (e.g. with Anaconda)
+## Setup
+We will use [Singularity/Apptainer](https://github.com/apptainer/singularity) to manage packages. This is more stable than using a conda or python virtual environment. This is because we will be using pybind11 which allows us to call python code from c++ and sometimes it does not work properly with virtual environments.
 
-We use `downward` or `powerlifted` as the search engine which calls code in the `learner` repository for computing heuristics
-using `pybind11`. To make things simple, we use singularity to contain all our requirements. This ensures you have
-singularity installed, see [here](https://github.com/apptainer/singularity). Build the singularity container and both
-Downward and Powerlifted by running in the root repository
+First ensure you have Singularity/Apptainer installed.
+
+Then build the containers by executing
 ```
-sh setup.sh
+sudo singularity goose_gpu.sif goose_gpu.def
 ```
+if you plan to run GOOSE on a GPU (requires cuda version 11.8 or higher) and otherwise replace `goose_gpu` with `goose_cpu`.
+
+Then execute any commands below by executing 
+```
+singularity exec --nv goose.sif $CMD
+```
+where `$CMD` corresponds to your command. If do not have a GPU, you can remove `--nv ` and even run `./goose.sif $CMD`
+
+Nevertheless, you can still try to use just a virtual environment for example by
+```
+python3 -m venv venv
+. venv/bin/activate
+pip install -r requirements.txt
+```
+
+## Training
+The underlying pipeline for a training a model is
+- generating states from PDDL and optimal plan files
+- converting the states into graphs in tensor format for GNNs
+- training the GNN on the graphs
+
+To train a model enter the learner directory with `cd learner` and run the `train_gnn.py` script. For example to train a Blocksworld model, run
+```
+python3 train_gnn.py blocks -L 8 --aggr mean --rep llg --save-file blocks_llg_mean_8.dt
+```
+which trains a GNN model operating on the LLG representation of planning tasks with 8 message passing layers and mean aggregation function. The trained model weights are then saved to `blocks_llg_mean_8.dt`
+
+To train a domain-independent model, execute
+```
+python3 train_gnn.py ipc
+```
+and add additional arguments as necessary. Use `-h` or `--help` for more details on arguments.
+
+## Search
+We use `downward` or `powerlifted` as the search engine which calls code in the `learner` repository for computing heuristics using `pybind11`. 
+First make sure you have built Downward and Powerlifted by running in the root repository
+```
+python3 setup.py gpu
+```
+or with `cpu` instead of `gpu` if no GPU is available.
 
 Then to run search go into the `learner` directory and execute the `run_gnn.py` script with singularity, for example:
 ```
 cd learner
-singularity exec --nv ../gpu.sif python3 run_gnn.py ../benchmarks/goose/gripper/domain.pddl ../benchmarks/goose/gripper/test/gripper-n20.pddl -m saved_models/dd_llg_gripper.dt -r llg
+singularity exec --nv ../goose_gpu.sif python3 run_gnn.py ../benchmarks/goose/blocks/domain.pddl ../benchmarks/goose/blocks/test/blocks25-task01.pddl blocks_llg_mean_8.dt
 ```
 
-The second command can also be called by running `test_gnn.sh`
-
-If you do not want to use/have a GPU, you can remove the `--nv` flag. 
-
-Use `-h` for help with arguments or refer to the description below:
+More generally, we have
 ```
-python3 run_gnn.py <DOMAIN_PDDL> <TASK_PDDL> -m <WEIGHTS_FILE> -r <REPRESENTATION>
+python3 run_gnn.py <domain_pddl> <task_pddl> <model_weights>
 ```
 
-### Training
-#### Loading the training dataset
-Requires access to `plan_objects.zip`. Also requires packages in `requirements.txt` using for example a virtual environment
-and `pip install -r requirements.txt`, or alternatively use the singularity container as in [Search](#search). Perform the
-following steps
-- enter the `learner` directory
-- create `data` directory in the `learner` directory
-- unzip `plan_objects.zip` and put into `data` (there should now be a directory
-  `path_to_goose/learner/data/plan_objects`)
-- run the following while in the  `learner` directory:
+## AAAI-24 experiment pipelines
+In the `learner` directory, execute
 ```
-python3 generate_graphs_gnn.py --regenerate <REPRESENTATION>
+python3 train_validate_test_dd.py -r <representation>
 ```
-for <REPRESENTATION> from `llg, dlg, slg, glg, flg` or generate them all at once with
+for domain-dependent experiments and 
 ```
-sh dataset/generate_all_graphs_gnn.sh
+python3 train_validate_test_di.py -r <representation>
 ```
-
-#### Domain-dependent training
-Requires packages in `requirements.txt` or alternatively use the singularity container as in [Search](#search). To train, go
-into ```learner``` directory (`cd learner`) and run
-```
-python3 train_gnn.py -m RGNN -r llg -d goose-<DOMAIN>-only --save-file <SAVE_FILE>
-```
-where you replace `<DOMAIN>` by any domain from `blocks, ferry, gripper, n-puzzle, sokoban, spanner, visitall,
-visitsome` and `<SAVE_FILE>` is the name of the save file ending in `.dt` for the trained weights of the models which
-would then be located in `trained_models/<SAVE_FILE>` after training.
-
-## Kernels
-### Search
-TODO
-### Training
-TODO
+for domain-independent experiments where `<representation>` is one of `slg`, `flg`, `llg`.

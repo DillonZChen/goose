@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from IPython.display import display, HTML
 from representation import REPRESENTATIONS
-from dataset import GOOSE_DOMAINS
+from dataset.goose_domain_info import GOOSE_DOMAINS
 from util.scrape_log import *
 from pathlib import Path
 
