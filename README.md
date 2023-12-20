@@ -1,6 +1,6 @@
 # <span style="font-weight:normal">**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation</span>
 
-This branch corresponds to the source code used in our AAAI-24 publication "Learning Domain-Independent Heuristics for Grounded and Lifted Planning"
+For code corresponding to our AAAI-24 publication "Learning Domain-Independent Heuristics for Grounded and Lifted Planning", switch to the aaai24 branch.
 
 ## Table of contents
 - [**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation](#goose-graphs-optimised-for-search-evaluation)
