@@ -3,19 +3,23 @@
 import time
 import torch
 import argparse
-import representation
-from gnns.loss import BCELoss, MSELoss
-from gnns.gnn import Model
-from gnns.train_eval import train, evaluate
-from util.stats import *
-from util.save_load import *
-from dataset.dataset import get_loaders_from_args_gnn
-from dataset.goose_domain_info import GOOSE_DOMAINS
+from models.save_load import (
+    arg_to_params,
+    print_arguments,
+    save_gnn_model_from_dict,
+)
+from models.gnn.loss import MSELoss
+from models.gnn.gnn import Model
+from models.gnn.train_eval import train, evaluate
+from dataset.dataset_gnn import get_loaders_from_args_gnn
 
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("domain", choices=["ipc"] + GOOSE_DOMAINS)
+
+    parser.add_argument("domain_pddl")
+    parser.add_argument("tasks_dir")
+    parser.add_argument("plans_dir")
 
     # model params
     parser.add_argument("-L", "--nlayers", type=int, default=4)
@@ -25,14 +29,14 @@ def parse_args():
         type=str,
         default="mean",
         choices=["sum", "mean", "max"],
-        help="MPNN aggregation function.",
+        help="mpnn aggregation function",
     )
     parser.add_argument(
         "--pool",
         type=str,
         default="sum",
         choices=["sum", "mean", "max"],
-        help="Pooling function for readout. Always used sum in AAAI-24",
+        help="pooling function for readout",
     )
 
     # optimisation params
@@ -47,8 +51,8 @@ def parse_args():
         "-r",
         "--rep",
         type=str,
-        required=True,
-        choices=["dlg", "slg", "flg", "llg"],
+        default="ilg",
+        choices=["slg", "flg", "llg", "ilg"],
         help="graph representation of planning tasks",
     )
     parser.add_argument(
@@ -66,7 +70,9 @@ def parse_args():
     )
 
     # save file
-    parser.add_argument("--save-file", dest="save_file", type=str, default=None)
+    parser.add_argument(
+        "--save-file", dest="save_file", type=str, default=None
+    )
 
     # gpu device (if exists)
     parser.add_argument("--device", type=int, default=0)
@@ -81,11 +87,13 @@ if __name__ == "__main__":
     print_arguments(args)
 
     # cuda
-    device = torch.device(f"cuda:{args.device}" if torch.cuda.is_available() else "cpu")
+    device = torch.device(
+        f"cuda:{args.device}" if torch.cuda.is_available() else "cpu"
+    )
 
-    # load data and init model
+    # init model
     train_loader, val_loader = get_loaders_from_args_gnn(args)
-    args.n_edge_labels = representation.REPRESENTATIONS[args.rep].n_edge_labels
+    args.n_edge_labels = len(train_loader.dataset[0].edge_index)
     args.in_feat = train_loader.dataset[0].x.shape[1]
     model_params = arg_to_params(args)
     model = Model(params=model_params).to(device)
@@ -101,7 +109,11 @@ if __name__ == "__main__":
     criterion = MSELoss()
     optimiser = torch.optim.Adam(model.parameters(), lr=lr)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-        optimiser, mode="min", verbose=True, factor=reduction, patience=patience
+        optimiser,
+        mode="min",
+        verbose=True,
+        factor=reduction,
+        patience=patience,
     )
 
     # train val pipeline
@@ -114,7 +126,9 @@ if __name__ == "__main__":
         for e in range(epochs):
             t = time.time()
 
-            train_stats = train(model, device, train_loader, criterion, optimiser)
+            train_stats = train(
+                model, device, train_loader, criterion, optimiser
+            )
             train_loss = train_stats["loss"]
             val_stats = evaluate(model, device, val_loader, criterion)
             val_loss = val_stats["loss"]
@@ -146,4 +160,4 @@ if __name__ == "__main__":
     if best_dict is not None:
         print(f"best_avg_loss {best_metric:.8f} at epoch {best_epoch}")
         args.best_metric = best_metric
-        save_model_from_dict(best_dict, args)
+        save_gnn_model_from_dict(best_dict, args)

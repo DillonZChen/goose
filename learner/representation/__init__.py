@@ -1,14 +1,16 @@
-from .base_class import CGraph, TGraph, Representation
+from .base_class import Representation, CGraph, TGraph
 from .slg import StripsLearningGraph
-from .dlg import DeleteLearningGraph
 from .flg import FdrLearningGraph
 from .llg import LiftedLearningGraph
+from .ilg import InstanceLearningGraph
+from .opg import ObjectPairGraph
+from .planning import State
 
 
 REPRESENTATIONS = {
-  "slg": StripsLearningGraph,
-  "dlg": DeleteLearningGraph,
-  "flg": FdrLearningGraph,
-  "llg": LiftedLearningGraph,
+    "slg": StripsLearningGraph,
+    "flg": FdrLearningGraph,
+    "llg": LiftedLearningGraph,
+    "ilg": InstanceLearningGraph,
+    "opg": ObjectPairGraph,
 }
-

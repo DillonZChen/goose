@@ -31,22 +31,15 @@ GooseHeuristic::GooseHeuristic(
   // python will be printed to stderr, even if it is not an error.
   sys.attr("stderr") = sys.attr("stdout");
 
-<<<<<<<< HEAD:planners/powerlifted/src/search/heuristics/gnn_heuristic.cc
-
-    std::cout << "Trying to load model from file " << model_path << " ..." << std::endl;
-    py::module util_module = py::module::import("util.save_load");
-    model = util_module.attr("load_and_setup_gnn_model")(model_path, domain_file, instance_file);
-========
   // Throw everything into Python code depending on model type
   std::cout << "Trying to load model from file " << model_path << " ...\n";
-  py::module util_module = py::module::import("util.save_load");
+  py::module util_module = py::module::import("models.save_load");
   if (model_type == "gnn") {
     model = util_module.attr("load_gnn_model_and_setup")(
       model_path, 
       domain_file, 
       instance_file
     );
->>>>>>>> main:planners/powerlifted/src/search/heuristics/goose_heuristic.cc
     std::cout << "Loaded model!" << std::endl;
     model.attr("dump_model_stats")();
   } else if (model_type == "kernel") {

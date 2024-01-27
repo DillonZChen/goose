@@ -1,6 +1,14 @@
-*__pycache__*
 *.pyc
 *.sif
-*.vscode*
+*.model
+*.zip
+*.graph
+*.json
 .stignore
-venv
+__pycache__/
+aux/
+plan/
+plans/
+venv/
+logs/
+trained_models/

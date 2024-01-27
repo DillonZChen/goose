@@ -7,8 +7,15 @@ from . import conditions
 
 
 class Action(object):
-    def __init__(self, name, parameters, num_external_parameters,
-                 precondition, effects, cost):
+    def __init__(
+        self,
+        name,
+        parameters,
+        num_external_parameters,
+        precondition,
+        effects,
+        cost,
+    ):
         assert 0 <= num_external_parameters <= len(parameters)
         self.name = name
         self.parameters = parameters
@@ -34,14 +41,15 @@ class Action(object):
         for eff in self.effects:
             eff.dump()
         print("Cost:")
-        if (self.cost):
+        if self.cost:
             self.cost.dump()
         else:
             print("  None")
 
     def uniquify_variables(self):
-        self.type_map = dict([(par.name, par.type_name)
-                              for par in self.parameters])
+        self.type_map = dict(
+            [(par.name, par.type_name) for par in self.parameters]
+        )
         self.precondition = self.precondition.uniquify_variables(self.type_map)
         for effect in self.effects:
             effect.uniquify_variables(self.type_map)
@@ -52,9 +60,13 @@ class Action(object):
             relaxed_eff = eff.relaxed()
             if relaxed_eff:
                 new_effects.append(relaxed_eff)
-        return Action(self.name, self.parameters, self.num_external_parameters,
-                      self.precondition.relaxed().simplified(),
-                      new_effects)
+        return Action(
+            self.name,
+            self.parameters,
+            self.num_external_parameters,
+            self.precondition.relaxed().simplified(),
+            new_effects,
+        )
 
     def untyped(self):
         # We do not actually remove the types from the parameter lists,
@@ -64,7 +76,8 @@ class Action(object):
         parameter_atoms = [par.to_untyped_strips() for par in self.parameters]
         new_precondition = self.precondition.untyped()
         result.precondition = conditions.Conjunction(
-            parameter_atoms + [new_precondition])
+            parameter_atoms + [new_precondition]
+        )
         result.effects = [eff.untyped() for eff in self.effects]
         return result
 
@@ -84,8 +97,9 @@ class Action(object):
             assert isinstance(precond, list)
         except AssertionError:
             raise NotImplementedError(
-                'Preconditions must be a single atom or a conjunction of '
-                'atoms.')
+                "Preconditions must be a single atom or a conjunction of "
+                "atoms."
+            )
         return precond
 
     @property
@@ -102,7 +116,8 @@ class Action(object):
                 assert isinstance(eff, effects.Effect)
             except AssertionError:
                 raise NotImplementedError(
-                    "Conditional effects are not supported.")
+                    "Conditional effects are not supported."
+                )
             for arg in eff.literal.args:
                 literals.add(arg)
         return literals

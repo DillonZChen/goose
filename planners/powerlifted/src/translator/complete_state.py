@@ -7,6 +7,7 @@ import pddl
 
 ## Generates all possible ground atoms of a state
 
+
 def get_ground_atoms(task, graph):
     """
     Loops over task and extracts all possible ground atoms (excluding static)
@@ -32,7 +33,7 @@ def get_ground_atoms(task, graph):
                 t = obj.type_name
                 obj_supertypes = set()
                 obj_supertypes.add(t)
-                while t != 'object':
+                while t != "object":
                     t = graph.edges[t]
                     obj_supertypes.add(t)
                 if isinstance(arg.type_name, str):

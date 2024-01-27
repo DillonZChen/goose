@@ -1,0 +1,7 @@
+(pick-up v3 l4 p1 c1 c2)
+(pick-up v3 l4 p2 c0 c1)
+(drive v3 l4 l5)
+(drop v3 l5 p2 c0 c1)
+(drive v3 l5 l2)
+(drop v3 l2 p1 c1 c2)
+; cost = 6 (unit cost)

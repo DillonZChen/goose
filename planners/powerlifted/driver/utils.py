@@ -1,5 +1,6 @@
 import os
 
+
 def get_elapsed_time():
     """
     Return the CPU time taken by the python process and its child

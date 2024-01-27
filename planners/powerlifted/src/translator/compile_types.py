@@ -39,7 +39,7 @@ def compile_into_unary_predicates(task):
     """Create one new unary predicate for each object type."""
     for t in task.types:
         pred_name = _get_type_predicate_name(str(t))
-        task.predicates.append(pddl.Predicate(pred_name, ['?x']))
+        task.predicates.append(pddl.Predicate(pred_name, ["?x"]))
         name_to_type_pred[pred_name] = task.predicates[-1]
     return
 
@@ -64,26 +64,30 @@ def add_conditions_to_actions(task, graph):
                 name = arg
                 param_type = next(
                     (x.type_name for x in action.parameters if x.name == arg),
-                    None)
+                    None,
+                )
                 if param_type is None:
                     # If the type is none, then it is not a parameter and
                     # it must be constant.  THus, we search for its type in the
                     # obj list.
                     param_type = next(
                         (x.type_name for x in task.objects if x.name == arg),
-                        None)
+                        None,
+                    )
                 obj_in_action.add((param_type, name))
         literals_in_effects = action.get_literals_in_effects
         for l in literals_in_effects:
             name = l
             param_type = next(
-                (x.type_name for x in action.parameters if x.name == l), None)
+                (x.type_name for x in action.parameters if x.name == l), None
+            )
             if param_type is None:
                 # If the type is none, then it is not a parameter and
                 # it must be constant.  THus, we search for its type in the
                 # obj list.
                 param_type = next(
-                    (x.type_name for x in task.objects if x.name == l), None)
+                    (x.type_name for x in task.objects if x.name == l), None
+                )
             obj_in_action.add((param_type, name))
 
         action.transform_precondition_into_list()
@@ -91,7 +95,8 @@ def add_conditions_to_actions(task, graph):
             param_type = obj[0]
             name = obj[1]
             action.precondition.add_condition(
-                pddl.Atom(_get_type_predicate_name(param_type), [name]))
+                pddl.Atom(_get_type_predicate_name(param_type), [name])
+            )
     return
 
 
@@ -105,7 +110,7 @@ def adjust_initial_state(task, graph):
         name = obj.name
         types = set()
         types.add(type_name)
-        while type_name != 'object':
+        while type_name != "object":
             # While there is a supertype, append this to the list of predicates
             # being added in the initial state.
             types.add(type_name)
@@ -115,7 +120,7 @@ def adjust_initial_state(task, graph):
 
 
 def _get_type_predicate_name(t):
-    return 'type@' + t
+    return "type@" + t
 
 
 def remove_trivially_inapplicable_actions(task, graph):
@@ -131,7 +136,7 @@ def remove_trivially_inapplicable_actions(task, graph):
     for obj in task.objects:
         type_name = obj.type_name
         object_types_in_task.add(type_name)
-        while type_name != 'object':
+        while type_name != "object":
             # While there is a supertype, append this to the list of types
             # appearing in any object of the task
             object_types_in_task.add(type_name)
@@ -146,9 +151,10 @@ def remove_trivially_inapplicable_actions(task, graph):
         if keep_action:
             new_actions.add(action)
         else:
-            print ("Removing action %s" % action.name)
+            print("Removing action %s" % action.name)
 
     task.actions = new_actions
+
 
 def compile_types(task):
     """

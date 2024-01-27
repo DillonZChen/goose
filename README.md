@@ -1,83 +1,107 @@
 # <span style="font-weight:normal">**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation</span>
 
-For code corresponding to our AAAI-24 publication "Learning Domain-Independent Heuristics for Grounded and Lifted Planning", switch to the aaai24 branch.
+GOOSE is a learning for planning framework. It contains various methods for learning representations for planning tasks, and algorithms for using such representations for solving planning tasks.
+
+See [references](#references) for the corresponding publications.
 
 ## Table of contents
 - [**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation](#goose-graphs-optimised-for-search-evaluation)
   - [Table of contents](#table-of-contents)
   - [Setup](#setup)
   - [Training](#training)
-  - [Search](#search)
-  - [AAAI-24 experiment pipelines](#aaai-24-experiment-pipelines)
+    - [Example for WL models](#example-for-wl-models)
+    - [Example for GNN models](#example-for-gnn-models)
+  - [Heuristic Search](#heuristic-search)
+    - [Example for WL models](#example-for-wl-models-1)
+    - [Example for GNN models](#example-for-gnn-models-1)
+  - [References](#references)
+    - [AAAI-24 Experiments](#aaai-24-experiments)
+    - [Bibtex files](#bibtex-files)
+  - [Code acknowledgements](#code-acknowledgements)
 
 ## Setup
-We will use [Singularity/Apptainer](https://github.com/apptainer/singularity) to manage packages. This is more stable than using a conda or python virtual environment. This is because we will be using pybind11 which allows us to call python code from c++ and sometimes it does not work properly with virtual environments.
-
-First ensure you have Singularity/Apptainer installed.
-
-Then build the containers by executing
+- make a virtual environment **with python3.10**, activate it and install packages
+  - later versions such as python3.11 cause some problems, possibly due to pybind and other package versions, and I haven't tested for earlier versions
+  - you can also use a conda envrionment to specify the python version of your environment
 ```
-sudo singularity goose_gpu.sif goose_gpu.def
-```
-if you plan to run GOOSE on a GPU (requires cuda version 11.8 or higher) and otherwise replace `goose_gpu` with `goose_cpu`.
-
-Then execute any commands below by executing 
-```
-singularity exec --nv goose_gpu.sif $CMD
-```
-where `$CMD` corresponds to your command. If do not have a GPU, you can remove `--nv ` and even run `./goose_cpu.sif $CMD`
-
-Nevertheless, you can still try to use just a virtual environment for example by
-```
-python3 -m venv venv
-. venv/bin/activate
+python3.10 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
+```
+- build planners:
+```
+sh build_planners.sh
+```
+- [Optional] setup xgboost and build xgboost trainer:
+```
+sh build_xgboost.sh
 ```
 
 ## Training
-The underlying pipeline for a training a model is
-- generating states from PDDL and optimal plan files
-- converting the states into graphs in tensor format for GNNs
-- training the GNN on the graphs
+- see `python3 train.py -h` for help, you will need the `--save-file` argument if you want to save the model
+- to train with your own dataset, you will need to construct an experiment configuration toml file such as in [here](experiments/ipc23-learning/blocksworld.toml)
+  - the `tasks_dir` and `plans_dir` paths must contain the same files, differentiating only in the file suffix (.pddl and .plan, respectively)
 
-To train a model enter the learner directory with `cd learner` and run the `train_gnn.py` script. For example to train a Blocksworld model, run
+### Example for WL models
 ```
-python3 train_gnn.py blocks -L 8 --aggr mean --rep llg --save-file blocks_llg_mean_8.dt
-```
-which trains a GNN model operating on the LLG representation of planning tasks with 8 message passing layers and mean aggregation function. The trained model weights are then saved to `blocks_llg_mean_8.dt`
-
-To train a domain-independent model, execute
-```
-python3 train_gnn.py ipc
-```
-and add additional arguments as necessary. Use `-h` or `--help` for more details on arguments.
-
-## Search
-We use `downward` or `powerlifted` as the search engine which calls code in the `learner` repository for computing heuristics using `pybind11`. 
-First make sure you have built Downward and Powerlifted by running in the root repository
-```
-python3 setup.py gpu
-```
-or with `cpu` instead of `gpu` if no GPU is available.
-
-Then to run search go into the `learner` directory and execute the `run_gnn.py` script with singularity, for example:
-```
-cd learner
-singularity exec --nv ../goose_gpu.sif python3 run_gnn.py ../benchmarks/goose/blocks/domain.pddl ../benchmarks/goose/blocks/test/blocks25-task01.pddl blocks_llg_mean_8.dt
+python3 train.py experiments/models/wl_ilg_gpr.toml experiments/ipc23-learning/blocksworld.toml --save-file blocksworld_wl.model
 ```
 
-More generally, we have
+### Example for GNN models
 ```
-python3 run_gnn.py <domain_pddl> <task_pddl> <model_weights>
+python3 train.py experiments/models/gnn_mean_ilg.toml experiments/ipc23-learning/blocksworld.toml --save-file blocksworld_gnn.model
 ```
 
-## AAAI-24 experiment pipelines
-In the `learner` directory, execute
+## Heuristic Search
+- see `run_wl.py` for WL models and `run_gnn.py` for GNN models
+- GNN models automatically try to use GPU where possible and CPU otherwise
+
+### Example for WL models
 ```
-python3 train_validate_test_dd.py -r <representation>
+python3 run_wl.py benchmarks/ipc23-learning/blocksworld/domain.pddl benchmarks/ipc23-learning/blocksworld/testing/medium/p01.pddl blocksworld_wl.model
 ```
-for domain-dependent experiments and 
+
+### Example for GNN models
 ```
-python3 train_validate_test_di.py -r <representation>
+python3 run_gnn.py benchmarks/ipc23-learning/blocksworld/domain.pddl benchmarks/ipc23-learning/blocksworld/testing/medium/p01.pddl blocksworld_gnn.model
 ```
-for domain-independent experiments where `<representation>` is one of `slg`, `flg`, `llg`.
+
+## References
+The relevant publications for this repository are:
+
+- Dillon Ze Chen and Sylvie Thiébaux and Felipe Trevizan. **Learning Domain-Independent Heuristics for Grounded and Lifted Planning**. AAAI 2024. [[pdf](https://dillonzchen.github.io/publications/Chen2024Goose.pdf)]
+- Dillon Ze Chen and Sylvie Thiébaux and Felipe Trevizan. **GOOSE: Learning Domain-Independent Heuristics**. Genplan 2023. [[pdf](https://dillonzchen.github.io/publications/Chen2023Wl.pdf)]
+- Dillon Ze Chen and Felipe Trevizan and Sylvie Thiébaux. **Graph Neural Networks and Graph Kernels For Learning Heuristics: Is there a difference?**. Genplan 2023. [[pdf](https://dillonzchen.github.io/publications/Chen2023Goose.pdf)]
+
+### AAAI-24 Experiments
+For source code corresponding to experiments from our AAAI-24 publication, please refer to this [release](https://github.com/DillonZChen/goose/releases/tag/v1.0.0).
+
+### Bibtex files
+For the bibtex file for GNN architectures using the `slg`, `flg` and `llg` graph representations:
+```
+@inproceedings{chen-et-al:aaai2024,
+  author       = {Dillon Ze Chen and
+                  Sylvie Thi{\'{e}}baux and
+                  Felipe W. Trevizan},
+  title        = {Learning Domain-Independent Heuristics for Grounded and Lifted Planning},
+  booktitle    = {AAAI},
+  year         = {2024},
+}
+```
+
+For the bibtex file for WL and GNN architectures using the `ilg` graph representations:
+```
+@inproceedings{chen-et-al:aaai2024,
+  author       = {Dillon Ze Chen and
+                  Felipe W. Trevizan and 
+                  Sylvie Thi{\'{e}}baux},
+  title        = {Graph Neural Networks and Graph Kernels For Learning Heuristics: Is there a difference?},
+  booktitle    = {Seventh Workshop on Generalization in Planning (GenPlan)},
+  year         = {2023},
+}
+```
+
+## Code acknowledgements
+- [Fast Downward](https://github.com/aibasel/downward) by Malte Helmert and various contributors for the planning parser, grounder and grounded search algorithm.
+- [Powerlifted](https://github.com/abcorrea/powerlifted) by Augusto B. Corrêa and various contributors for their lifted planner.
+- All the other various packages listed in the requirements

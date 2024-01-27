@@ -1,0 +1,4 @@
+[training]
+domain_pddl = "benchmarks/ipc23-learning/rovers/domain.pddl"
+tasks_dir = "benchmarks/ipc23-learning/rovers/training/easy"
+plans_dir = "benchmarks/ipc23-learning/rovers/training_plans"

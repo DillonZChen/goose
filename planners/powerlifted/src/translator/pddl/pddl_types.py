@@ -49,7 +49,7 @@ class TypedObject(object):
     def __str__(self):
         return "%s: %s" % (self.name, self.type_name)
         # Choose the line below to omit parameters
-        #return "%s" % self.name
+        # return "%s" % self.name
 
     def __repr__(self):
         return "<TypedObject %s: %s>" % (self.name, self.type_name)
@@ -71,5 +71,6 @@ class TypedObject(object):
     def get_atom(self):
         # TODO: Resolve cyclic import differently.
         from . import conditions
+
         predicate_name = _get_type_predicate_name(self.type_name)
         return conditions.Atom(predicate_name, [self.name])

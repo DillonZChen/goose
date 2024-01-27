@@ -1,0 +1,4 @@
+[training]
+domain_pddl = "benchmarks/ipc23-learning/blocksworld/domain.pddl"
+tasks_dir = "benchmarks/ipc23-learning/blocksworld/training/easy"
+plans_dir = "benchmarks/ipc23-learning/blocksworld/training_plans"

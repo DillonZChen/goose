@@ -7,6 +7,7 @@ import graph
 import greedy_join
 import pddl
 
+
 def get_connected_conditions(conditions):
     agraph = graph.Graph(conditions)
     var_to_conditions = {var: [] for var in get_variables(conditions)}
@@ -21,12 +22,14 @@ def get_connected_conditions(conditions):
             agraph.connect(conds[0], cond)
     return sorted(map(sorted, agraph.connected_components()))
 
+
 def project_rule(rule, conditions, name_generator):
     predicate = next(name_generator)
     effect_variables = set(rule.effect.args) & get_variables(conditions)
     effect = pddl.Atom(predicate, sorted(effect_variables))
     projected_rule = Rule(conditions, effect)
     return projected_rule
+
 
 def split_rule(rule, name_generator):
     # Capture original rule weight
@@ -48,14 +51,17 @@ def split_rule(rule, name_generator):
     if len(components) == 1 and not trivial_conditions:
         return split_into_binary_rules(rule, name_generator)
 
-    projected_rules = [project_rule(rule, conditions, name_generator)
-                       for conditions in components]
+    projected_rules = [
+        project_rule(rule, conditions, name_generator)
+        for conditions in components
+    ]
     result = []
     for proj_rule in projected_rules:
         result += split_into_binary_rules(proj_rule, name_generator)
 
-    conditions = ([proj_rule.effect for proj_rule in projected_rules] +
-                  trivial_conditions)
+    conditions = [
+        proj_rule.effect for proj_rule in projected_rules
+    ] + trivial_conditions
     combining_rule = Rule(conditions, rule.effect)
     if len(conditions) >= 2:
         combining_rule.type = "product"
@@ -69,11 +75,12 @@ def split_rule(rule, name_generator):
 
     return result
 
+
 def split_into_binary_rules(rule, name_generator):
     if len(rule.conditions) <= 1:
         rule.type = "project"
         return [rule]
-    rules =  greedy_join.greedy_join(rule, name_generator)
+    rules = greedy_join.greedy_join(rule, name_generator)
     # Last rule is always the "root" rule. It weight should be updated
     # TODO Make this more reliable
     rules[-1].weight = rule.weight

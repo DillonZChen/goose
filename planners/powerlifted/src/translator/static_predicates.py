@@ -2,6 +2,7 @@
 
 ## Parses all effects and computes which predicates are static
 
+
 def get_fluent_predicates_from_effects(actions):
     """Loops over all action effects and selects predicates that appear in some
     effect.  These predicates are fluent.  We return them to filter the ones not
@@ -16,6 +17,7 @@ def get_fluent_predicates_from_effects(actions):
             fluent_predicates.add(pred)
     return fluent_predicates
 
+
 def get_str_predicates(predicates):
     """Creates a set of string containing the name of the predicates
 
@@ -26,6 +28,7 @@ def get_str_predicates(predicates):
     for p in predicates:
         new_predicates.add(p.name)
     return new_predicates
+
 
 def mark_static_predicates(task, static_predicates):
     """Mark predicates in the static_predicates set as static

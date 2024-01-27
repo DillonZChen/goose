@@ -13,6 +13,7 @@ import pddl
 # predicates, then we use such reachability to overapproximate the set of
 # ground atoms in the initial state.
 
+
 def create_flow_graph(task):
     """
     Create a graph where each node corresponds to a pair of predicate and
@@ -159,7 +160,7 @@ def compute_initial_state(task, reachable_atoms, type_graph, static):
                     assert not isinstance(arg_types[p][i], list)
                     if arg_types[p][i] in object_types[arg]:
                         map_pred_instantiations[p][i].add(arg)
-                    if arg == 'roomb':
+                    if arg == "roomb":
                         continue
 
     # for action in task.actions:
@@ -175,7 +176,6 @@ def compute_initial_state(task, reachable_atoms, type_graph, static):
     #         for index, arg in enumerate(e.literal.args):
     #             if arg not in args_in_precond:
     #                 continue
-
 
     ground_atoms = set()
     for pred, instantiations in map_pred_instantiations.items():
