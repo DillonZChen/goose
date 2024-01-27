@@ -91,7 +91,7 @@ For the bibtex file for GNN architectures using the `slg`, `flg` and `llg` graph
 
 For the bibtex file for WL and GNN architectures using the `ilg` graph representations:
 ```
-@inproceedings{chen-et-al:aaai2024,
+@inproceedings{chen-et-al:genplan2023,
   author       = {Dillon Ze Chen and
                   Felipe W. Trevizan and 
                   Sylvie Thi{\'{e}}baux},
