@@ -9,6 +9,14 @@ cd build
 cmake ..
 make install
 
+### Build planners
+for planner in downward_cpu downward_gpu powerlifted; do
+    cd planners/$planner
+    rm -rf builds
+    python3 build.py
+    cd ../..
+done
+
 ### Build XGBoost trainer
 cd learner/xgboost_cpp
 rm -rf build
