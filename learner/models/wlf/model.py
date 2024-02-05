@@ -2,6 +2,7 @@
 A wrapper for the WL pipeline that involves the feature generator and machine
 learning model using generated features
 """
+
 import random
 import time
 import traceback
@@ -77,7 +78,6 @@ class Model:
         super().__init__()
         self.model_name = args.model
         self.wl_name = args.features
-        self.learn_schema_count = args.schema_count
 
         self._args = args
         self._iterations = args.iterations
@@ -133,8 +133,6 @@ class Model:
 
         self._models = {}
         for schema in args.schemata:
-            if not self.learn_schema_count and schema != ALL_KEY:
-                continue
             self._models[schema] = initialise_model(
                 predict_schema=(schema == ALL_KEY)
             )
@@ -252,8 +250,7 @@ class Model:
 
             # but if we use dot product kernel, we can simplify and get
             weights = np.sum(
-                model.alpha_ @ model.X_train_
-                for model in self._models.values()
+                m.alpha_ @ m.X_train_ for m in self._models.values()
             )
         else:
             weights = np.sum(model.coef_ for model in self._models.values())

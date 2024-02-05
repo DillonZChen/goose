@@ -1,0 +1,9 @@
+[model]
+method = "wl"
+
+[config]
+model = "gpr"
+rep = "ilg"
+features = "1wl"
+iterations = 4
+schema_count_strategy = "schema_approx"

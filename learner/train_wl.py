@@ -1,4 +1,5 @@
 """ Main training pipeline script. """
+
 import time
 import argparse
 import numpy as np
@@ -17,9 +18,10 @@ from util.metrics import f1_macro
 
 warnings.filterwarnings("ignore")
 
-_SC_STRAT_ALL = "all"
-_SC_STRAT_NONE = "none"
-_SC_STRAT_SCHEMA_ONLY = "schema"
+_SCS_ALL = "all"
+_SCS_NONE = "none"
+_SCS_SCHEMA_EXACT = "schema_exact"
+_SCS_SCHEMA_APPROX = "schema_approx"
 
 _F1_KEEP_TOL = 1e-3
 
@@ -58,13 +60,14 @@ def parse_args():
     # data arguments
     parser.add_argument(
         "-s",
-        "--schema-count",
-        default=_SC_STRAT_NONE,
-        choices=[_SC_STRAT_NONE, _SC_STRAT_ALL, _SC_STRAT_SCHEMA_ONLY],
+        "--schema_count_strategy",
+        default=_SCS_NONE,
+        choices=[_SCS_NONE, _SCS_ALL, _SCS_SCHEMA_EXACT, _SCS_SCHEMA_APPROX],
         help="Strategy for learning schema counts.\n"
-        + "none: do not learn schema counts and learn h* prediction.\n"
-        + "all: learn schema counts and sum with h* prediction.\n"
-        + "schema: learn schema coutns only and not h* prediction.",
+        + f"{_SCS_NONE}: learn h* prediction.\n"
+        + f"{_SCS_ALL}: learn schema counts and sum with h* prediction.\n"
+        + f"{_SCS_SCHEMA_EXACT}: try to learn schema counts exactly.\n"
+        + f"{_SCS_SCHEMA_APPROX}: try to learn schema counts approximately.\n",
     )
     parser.add_argument(
         "-r",
@@ -116,13 +119,14 @@ def main():
         graphs, y_true, test_size=0.33, random_state=2023
     )
 
-    schema_strat = args.schema_count
+    # parse schema count strategy
+    schema_strat = args.schema_count_strategy
     schemata = sorted(list(y_train[0].keys())) if schema_strat else [ALL_KEY]
-    if schema_strat == _SC_STRAT_NONE:
+    if schema_strat == _SCS_NONE:
         schemata = [ALL_KEY]
-    elif schema_strat == _SC_STRAT_ALL:
+    elif schema_strat == _SCS_ALL:
         pass
-    elif schema_strat == _SC_STRAT_SCHEMA_ONLY:
+    elif schema_strat in {_SCS_SCHEMA_EXACT, _SCS_SCHEMA_APPROX}:
         schemata.remove(ALL_KEY)
     args.schemata = schemata
 
@@ -196,12 +200,11 @@ def main():
             t = train_scores[(metric, schema)]
             v = val_scores[(metric, schema)]
             print(f"{'':<10} {schema:<20} {t:<10.4f} {v:<10.4f}")
-            if abs(v - 1) < _F1_KEEP_TOL and metric == F1_KEY:
+            if (abs(v - 1) < _F1_KEEP_TOL and metric == F1_KEY) or \
+               schema_strat == _SCS_SCHEMA_APPROX:
                 schemata_to_keep.add(schema)
-    if schema_strat in {_SC_STRAT_ALL, _SC_STRAT_NONE}:
+    if schema_strat in {_SCS_ALL, _SCS_NONE}:
         schemata_to_keep.add(ALL_KEY)
-    elif schema_strat == _SC_STRAT_SCHEMA_ONLY and ALL_KEY in schemata_to_keep:
-        schemata_to_keep.remove(ALL_KEY)
 
     # log schemata to learn
     print(f"{len(schemata_to_keep)} schemata to keep")
