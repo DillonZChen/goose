@@ -4,6 +4,7 @@
 *.zip
 *.graph
 *.json
+*.log
 .stignore
 __pycache__/
 aux/

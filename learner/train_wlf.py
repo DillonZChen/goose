@@ -9,7 +9,8 @@ import warnings
 from itertools import product
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import log_loss, mean_squared_error
-from models.wlf.model import BAYESIAN_MODELS, FREQUENTIST_MODELS
+from models.sml.core import MODELS
+from models.wlf.core import WL_FEATURE_GENERATORS
 from dataset.wlf import ALL_KEY, get_dataset_from_args
 from models.save_load import print_arguments, save_kernel_model
 from util.metrics import f1_macro
@@ -45,7 +46,7 @@ def parse_args():
         "--model",
         type=str,
         default="linear-svr",
-        choices=FREQUENTIST_MODELS + BAYESIAN_MODELS,
+        choices=MODELS,
         help="ML model",
     )
     parser.add_argument(
@@ -80,7 +81,7 @@ def parse_args():
         "--features",
         type=str,
         default="1wl",
-        choices=models.wlf.model.GRAPH_FEATURE_GENERATORS,
+        choices=WL_FEATURE_GENERATORS,
         help="wl algorithm to use",
     )
     parser.add_argument(
@@ -128,7 +129,7 @@ def main():
     args.schemata = schemata
 
     # class decides whether to use classifier or regressor
-    model = models.wlf.model.Model(args)
+    model = models.wlf.core.Model(args)
     model.train()
     scoring = _SCORING_HEURISTIC
 
@@ -191,12 +192,12 @@ def main():
     }
     t = time.time()
     schemata_to_keep = set()
+    print(f"{'':<10} {'schema':<20} {'train':<10} {'val':<10}")
     for metric in scoring:
-        print(f"{metric:<10} {'schema':<20} {'train':<10} {'val':<10}")
         for schema in schemata:
             t = train_scores[(metric, schema)]
             v = val_scores[(metric, schema)]
-            print(f"{'':<10} {schema:<20} {t:<10.4f} {v:<10.4f}")
+            print(f"{metric:<10} {schema:<20} {t:<10.4f} {v:<10.4f}")
             if (abs(v - 1) < _F1_KEEP_TOL and metric == F1_KEY) or \
                schema_strat == _SCS_SCHEMA_APPROX:
                 schemata_to_keep.add(schema)

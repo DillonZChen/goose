@@ -9,7 +9,7 @@ from models.save_load import (
     save_gnn_model_from_dict,
 )
 from models.gnn.loss import MSELoss
-from models.gnn.model import Model
+from models.gnn.core import Model
 from models.gnn.train_eval import train, evaluate
 from dataset.gnn import get_loaders_from_args_gnn
 

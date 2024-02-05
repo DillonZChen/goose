@@ -29,22 +29,10 @@ def arg_to_params(args, in_feat=4, out_feat=1):
     return model_params
 
 
-def print_arguments(args, ignore_params=set()):
+def print_arguments(args):
     print("Parsed arguments:")
     for k, v in vars(args).items():
-        if k in ignore_params.union(
-            {
-                "device",
-                "optimal",
-                "save_model",
-                "save_file",
-                "no_tqdm",
-                "tqdm",
-                "fast_train",
-            }
-        ):
-            continue
-        print("{0:20}  {1}".format(k, v))
+        print("{0:25}  {1}".format(k, v))
     print("___")
 
 
@@ -90,7 +78,7 @@ def save_kernel_model(model, args):
 def load_gnn_model(path, print_args=False):
     # returns (GNN, Args)
     import torch
-    from models.gnn.model import Model
+    from models.gnn.core import Model
 
     print(f"Loading model from {path}...")
     if not os.path.exists(path):

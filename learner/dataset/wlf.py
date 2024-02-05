@@ -14,7 +14,6 @@ def get_graphs_from_plans(args):
         domain_pddl,
         args.tasks_dir,
         args.plans_dir,
-        args,
     ).items():
         rep = REPRESENTATIONS[representation](
             domain_pddl=domain_pddl,

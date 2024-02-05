@@ -10,28 +10,18 @@ import numpy as np
 from tqdm import tqdm
 from typing import Iterable, List, Optional, Dict, Tuple, Union
 from sklearn.metrics import mean_squared_error
-from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.model_selection import train_test_split
-from sklearn.neural_network import MLPRegressor
-from sklearn.linear_model import BayesianRidge, Lasso, Ridge, LinearRegression
-from sklearn.svm import LinearSVR, SVR
-from sklearn.gaussian_process.kernels import DotProduct
 from representation import CGraph, Representation, REPRESENTATIONS, State
+from models.sml.core import init_reg_model, LINEAR_MODELS
 from util.stats import get_stats
 from .base_wl import Histogram, NO_EDGE, WlAlgorithm
-from .mip import MIP
 from .wl1 import ColourRefinement
 from .wl2 import WL2
 from .gwl2 import GWL2
 from .lwl2 import LWL2
 from .lwl3 import LWL3
 
-## prevent import so that we do mot get pybind issues...
-# used for deciding if we want to do schemata learning
-# from dataset.wlf import ALL_KEY
-ALL_KEY = "_all_"
-
-GRAPH_FEATURE_GENERATORS = {
+WL_FEATURE_GENERATORS = {
     "1wl": ColourRefinement,
     "2wl": WL2,
     "2gwl": GWL2,
@@ -39,38 +29,10 @@ GRAPH_FEATURE_GENERATORS = {
     "3lwl": LWL3,
 }
 
-FREQUENTIST_MODELS = [
-    "mip",
-    #
-    "linear-regression",
-    "ridge",
-    "lasso",
-    #
-    "linear-svr",
-    "quadratic-svr",
-    "cubic-svr",
-    "rbf-svr",
-    #
-    "mlp",
-]
-
-BAYESIAN_MODELS = [
-    "blr",  # bayesian linear regression
-    "gpr",  # gaussian process with dot product kernel
-]
-
-LINEAR_MODELS = {
-    "gpr",
-    "linear-svr",
-    "linear-regression",
-    "ridge",
-    "lasso",
-    "mip",
-}
-
-_C = 1.0
-_ALPHA = 1.0
-_EPSILON = 0.5
+## prevent import so that we do not get pybind issues...
+# used for deciding if we want to do schemata learning
+# from dataset.factory import ALL_KEY
+ALL_KEY = "_all_"
 
 
 class Model:
@@ -85,56 +47,16 @@ class Model:
         self._rep_type = args.rep
         self._representation = None
 
-        self._wl: WlAlgorithm = GRAPH_FEATURE_GENERATORS[args.features](
-            iterations=self._iterations, prune=self._prune
+        self._wl: WlAlgorithm = WL_FEATURE_GENERATORS[args.features](
+            iterations=self._iterations,
+            prune=self._prune,
         )
-
-        # initialise model or models depending on whether we learn schema or not
-        def initialise_model(predict_schema: bool):
-            # if predict schema, we want to fit perfectly and then see if that generalises
-            e = 0 if predict_schema else _EPSILON
-            c = 1e5 if predict_schema else _C  # inverse strength
-            a = 0 if predict_schema else _ALPHA
-
-            if self.model_name == "empty":
-                return None
-            if self.model_name == "mip":
-                return MIP()
-            if self.model_name == "linear-regression":
-                return LinearRegression(fit_intercept=False)
-            if self.model_name == "linear-svr":
-                return LinearSVR(
-                    dual="auto", epsilon=e, C=c, fit_intercept=False
-                )
-            if self.model_name == "lasso":
-                return Lasso(alpha=a)
-            if self.model_name == "ridge":
-                return Ridge(alpha=a)
-            if self.model_name == "rbf-svr":
-                return SVR(kernel="rbf", epsilon=e, C=c)
-            if self.model_name == "quadratic-svr":
-                return SVR(kernel="poly", degree=2, epsilon=e, C=c)
-            if self.model_name == "cubic-svr":
-                return SVR(kernel="poly", degree=3, epsilon=e, C=c)
-            if self.model_name == "mlp":
-                return MLPRegressor(
-                    hidden_layer_sizes=(64,),
-                    batch_size=16,
-                    learning_rate="adaptive",
-                    early_stopping=True,
-                    validation_fraction=0.15,
-                )
-            if self.model_name == "blr":
-                return BayesianRidge()
-            if self.model_name == "gpr":
-                return GaussianProcessRegressor(
-                    kernel=DotProduct(), alpha=1e-7
-                )
 
         self._models = {}
         for schema in args.schemata:
-            self._models[schema] = initialise_model(
-                predict_schema=(schema == ALL_KEY)
+            self._models[schema] = init_reg_model(
+                model_name=self.model_name,
+                regularise=(schema == ALL_KEY),
             )
 
     def train(self) -> None:
@@ -181,7 +103,7 @@ class Model:
         return X
 
     def fit_all(self, X, y_dict) -> None:
-        # when self.learn_schema_count, we fit n+1 models where n is the number of schemata
+        # fit up to len(schemata) + 1 models
         for schema in self._models:
             self.fit(X, y_dict[schema], schema=schema)
 
@@ -198,8 +120,6 @@ class Model:
         return y_dict
 
     def predict(self, X, schema=ALL_KEY) -> np.array:
-        # assert schema in self._models  # slow to assert during runtime when used by a planner
-        # print(f"Predicting number of {schema} in a plan...")
         ret = self._models[schema].predict(X)
         return ret
 

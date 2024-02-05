@@ -5,7 +5,7 @@ import numpy as np
 import warnings
 from dataset.factory import get_states_from_state_spaces
 from models.save_load import print_arguments
-from models.wlf.model import BAYESIAN_MODELS, FREQUENTIST_MODELS
+from models.wlf.core import BAYESIAN_MODELS, FREQUENTIST_MODELS
 
 warnings.filterwarnings("ignore")
 
