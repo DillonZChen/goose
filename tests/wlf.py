@@ -1,6 +1,8 @@
 import unittest
 import os
 import sys
+import subprocess
+from subprocess import PIPE
 
 _TOL = 1e-6
 
@@ -9,11 +11,23 @@ def in_venv():
     return sys.prefix != sys.base_prefix
 
 
+def get_output(cmd):
+    cmd = cmd.split(" ")
+    p = subprocess.Popen(cmd, stdout=PIPE, stderr=PIPE)
+    stdout, stderr = p.communicate()
+    p.wait()
+    output = list(str(stdout.decode("utf-8")).split("\n"))
+    output += list(str(stderr.decode("utf-8")).split("\n"))
+    return output
+
+
 def log_output(output, file):
     with open(file, "w") as f:
         for line in output:
-            f.write(line)
-        f.close()
+            f.write(line + "\n")
+    print()
+    print("\tlog @", os.getcwd() + file)
+    print()
     return
 
 
@@ -36,30 +50,31 @@ def scrape_search_log(file):
 
     if not os.path.exists(file):
         return stats
+    
+    with open(file, "r") as f:
+        for line in f.readlines():
+            line = line.replace(" state(s).", "")
+            toks = line.split()
+            if len(toks) == 0:
+                continue
 
-    for line in open(file, "r").readlines():
-        line = line.replace(" state(s).", "")
-        toks = line.split()
-        if len(toks) == 0:
-            continue
-
-        if "Solution found." in line:
-            stats["solved"] = 1
-        elif "Search time:" in line:
-            stats["time"] = float(toks[-1].replace("s", ""))
-        elif "Plan cost:" in line:
-            stats["cost"] = int(toks[-1])
-        elif len(toks) >= 2 and "Expanded" == toks[-2]:
-            stats["expanded"] = int(toks[-1])
-        elif len(toks) >= 2 and "Evaluated" == toks[-2]:
-            stats["evaluated"] = int(toks[-1])
-        elif "Initial heuristic value" in line:
-            stats["first_h"] = int(toks[-1])
-        elif "seen/unseen colours in itr" in line:
-            stats["seen_colours"] += int(toks[-2])
-            stats["unseen_colours"] += int(toks[-1])
-        elif "Computed std at initial state:" in line:
-            stats["std"] = float(toks[-1])
+            if "Solution found." in line:
+                stats["solved"] = 1
+            elif "Search time:" in line:
+                stats["time"] = float(toks[-1].replace("s", ""))
+            elif "Plan cost:" in line:
+                stats["cost"] = int(toks[-1])
+            elif len(toks) >= 2 and "Expanded" == toks[-2]:
+                stats["expanded"] = int(toks[-1])
+            elif len(toks) >= 2 and "Evaluated" == toks[-2]:
+                stats["evaluated"] = int(toks[-1])
+            elif "Initial heuristic value" in line:
+                stats["first_h"] = int(toks[-1])
+            elif "seen/unseen colours in itr" in line:
+                stats["seen_colours"] += int(toks[-2])
+                stats["unseen_colours"] += int(toks[-1])
+            elif "Computed std at initial state:" in line:
+                stats["std"] = float(toks[-1])
 
     if stats["seen_colours"] != -1 and stats["unseen_colours"] != -1:
         stats["seen_colours"] += 1
@@ -82,8 +97,7 @@ class TestWlf(unittest.TestCase):
         # train
         print("========= Training =========")
         cmd = "python3 train.py experiments/models/wlf_ilg_gpr.toml experiments/ipc23-learning/blocksworld.toml --save-file tests/test.model"
-
-        output = list(os.popen(cmd).readlines())
+        output = get_output(cmd)
 
         mse_train = None
         mse_val = None
@@ -102,7 +116,8 @@ class TestWlf(unittest.TestCase):
             elif "Model saved!" in line:
                 model_saved = True
 
-        log_output(output, "tests/train_wlf.test.log")
+        f = "tests/train_wlf.log"
+        log_output(output, f)
 
         self.assertTrue(mse_train is not None)
         self.assertTrue(mse_val is not None)
@@ -119,15 +134,15 @@ class TestWlf(unittest.TestCase):
         # run
         cmd_cpp = "python3 run_wlf.py benchmarks/ipc23-learning/blocksworld/domain.pddl benchmarks/ipc23-learning/blocksworld/testing/medium/p01.pddl tests/test.model"
         cmd_py = cmd_cpp + " --pybind"
+ 
+        cpp_f = "tests/run_wlf_cpp.log"
+        py_f = "tests/run_wlf_py.log"
 
         print("========= Executing search with cpp =========")
-        output_cpp = list(os.popen(cmd_cpp).readlines())
-        print("========= Executing search with py =========")
-        output_py = list(os.popen(cmd_py).readlines())
-
-        cpp_f = "tests/run_wlf_cpp.test.log"
-        py_f = "tests/run_wlf_py.test.log"
+        output_cpp = get_output(cmd_cpp)       
         log_output(output_cpp, cpp_f)
+        print("========= Executing search with py =========")
+        output_py = get_output(cmd_py)
         log_output(output_py, py_f)
 
         cpp_stats = scrape_search_log(cpp_f)
