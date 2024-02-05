@@ -1,8 +1,8 @@
 [model]
-method = "wl"
+method = "wlf"
 
 [config]
-model = "xgb"
+model = "gpr"
 rep = "ilg"
 features = "1wl"
 iterations = 4

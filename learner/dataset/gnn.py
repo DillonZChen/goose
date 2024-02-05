@@ -1,12 +1,10 @@
-import os
 import random
-from tqdm import tqdm
 from torch_geometric.data import Data
 from torch_geometric.loader import DataLoader
 from sklearn.model_selection import train_test_split
 from util.stats import get_stats
 from representation import REPRESENTATIONS
-from .dataset_factory import collect_states_from_plan, ALL_KEY
+from .factory import get_states_from_plans, ALL_KEY
 
 
 def get_tensor_graphs_from_plans(args):
@@ -15,20 +13,18 @@ def get_tensor_graphs_from_plans(args):
 
     representation = args.rep
     domain_pddl = args.domain_pddl
-    tasks_dir = args.tasks_dir
-    plans_dir = args.plans_dir
 
-    for plan_file in tqdm(sorted(list(os.listdir(plans_dir)))):
-        problem_pddl = f"{tasks_dir}/{plan_file.replace('.plan', '.pddl')}"
-        assert os.path.exists(problem_pddl), problem_pddl
-        plan_file = f"{plans_dir}/{plan_file}"
+    for problem_pddl, plan in get_states_from_plans(
+        domain_pddl,
+        args.tasks_dir,
+        args.plans_dir,
+        args,
+    ).items():
         rep = REPRESENTATIONS[representation](
-            domain_pddl=domain_pddl, problem_pddl=problem_pddl
+            domain_pddl=domain_pddl,
+            problem_pddl=problem_pddl,
         )
         rep.convert_to_pyg()
-        plan = collect_states_from_plan(
-            domain_pddl, problem_pddl, plan_file, args
-        )
 
         for state, schema_cnt in plan:
             state = rep.str_to_state(state)

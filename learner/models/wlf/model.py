@@ -28,7 +28,7 @@ from .lwl3 import LWL3
 
 ## prevent import so that we do mot get pybind issues...
 # used for deciding if we want to do schemata learning
-# from dataset.dataset_wl import ALL_KEY
+# from dataset.wlf import ALL_KEY
 ALL_KEY = "_all_"
 
 GRAPH_FEATURE_GENERATORS = {
@@ -241,14 +241,15 @@ class Model:
 
     def get_weights(self) -> np.array:
         if self.model_name == "gpr":
-            ## For the general GP case:
-            # L = cholesky(k(X, X)) X is X_train
-            # a = L \ (L \ t); Ax = b => x = A \ b
-            # m(x) = k(x, X) . a
-            # v = L \ k(X, x)
-            # s^2(x) = k(x, x) - v^T . v
-
-            # but if we use dot product kernel, we can simplify and get
+            """
+            For the general GP case:
+                L = cholesky(k(X, X)) X is X_train
+                a = L \ (L \ t); Ax = b => x = A \ b
+                m(x) = k(x, X) . a
+                v = L \ k(X, x)
+                s^2(x) = k(x, x) - v^T . v
+            but if we use dot product kernel, we can simplify and get
+            """
             weights = np.sum(
                 m.alpha_ @ m.X_train_ for m in self._models.values()
             )
@@ -503,7 +504,7 @@ class Model:
         # returns new model data path (contains hash and weights)
 
         try:
-            from dataset.dataset_wl import get_dataset_from_args
+            from dataset.wlf import get_dataset_from_args
 
             assert len(states) == len(ys)
             self.train()

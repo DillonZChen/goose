@@ -1,24 +1,40 @@
 import os
-import random
+from tqdm import tqdm
+from dlplan.generator import generate_features
+from dlplan.state_space import generate_state_space, GeneratorExitCode
+from dlplan.core import SyntacticElementFactory, State, InstanceInfo
 
 _DOWNWARD = "./../planners/downward_cpu/fast-downward.py"
 _POWERLIFTED = "./../planners/powerlifted/powerlifted.py"
 
 ALL_KEY = "_all_"
 
+MAX_NUM_STATES = 10000
 
-def sample_from_dict(d, sample, seed):
-    random.seed(seed)
-    keys = random.sample(list(d), sample)
-    values = [d[k] for k in keys]
-    return dict(zip(keys, values))
+# TODO construct classes for the two return types
+
+def get_states_from_plans(domain_pddl, tasks_dir, plans_dir):
+    # Dict[problem_pddl, List[Tuple[state, schema_cnt]]]
+    ret = {}
+
+    for plan_file in tqdm(sorted(list(os.listdir(plans_dir)))):
+        problem_pddl = f"{tasks_dir}/{plan_file.replace('.plan', '.pddl')}"
+        assert os.path.exists(problem_pddl), problem_pddl
+        plan_file = f"{plans_dir}/{plan_file}"
+        plan = _get_states_from_plan(
+            domain_pddl, problem_pddl, plan_file
+        )
+        ret[problem_pddl] = plan
+
+    return ret
 
 
-def collect_states_from_plan(domain_pddl, problem_pddl, plan_file, args):
+def _get_states_from_plan(domain_pddl, problem_pddl, plan_file):
     states = []
     actions = []
 
-    planner = args.planner
+    planner = "fd"  # TODO do this more systematically
+    # planner = args.planner
 
     with open(plan_file, "r") as f:
         for line in f.readlines():
@@ -27,8 +43,7 @@ def collect_states_from_plan(domain_pddl, problem_pddl, plan_file, args):
             actions.append(line.replace("\n", ""))
 
     state_file = (
-        repr(hash(repr(args)))
-        + repr(hash(domain_pddl))
+        repr(hash(domain_pddl))
         + repr(hash(problem_pddl))
         + repr(hash(plan_file))
     )
@@ -100,4 +115,51 @@ def collect_states_from_plan(domain_pddl, problem_pddl, plan_file, args):
         schema_cnt[schema] -= 1
         schema_cnt[ALL_KEY] -= 1
     # breakpoint()
+    return ret
+
+
+def get_states_from_state_spaces(domain_pddl, tasks_dir, state_space):
+    # Dict[problem_pddl, List[Dict[state, h*]]]
+    ret = {}
+
+    state_space = generate_state_space(
+        domain_pddl,
+        f"{tasks_dir}/{sorted(list(os.listdir(tasks_dir)))[0]}",
+        index=0,
+        max_num_states=1,
+    ).state_space
+    instance_info = state_space.get_instance_info()
+    vocabulary_info = instance_info.get_vocabulary_info()
+
+    for f in tqdm(sorted(list(os.listdir(tasks_dir)))):
+        problem_pddl = f"{tasks_dir}/{f}"
+        generator = generate_state_space(
+            domain_file=domain_pddl,
+            instance_file=problem_pddl,
+            vocabulary_info=vocabulary_info,
+            index=0,
+            max_num_states=MAX_NUM_STATES,
+        )
+
+        if generator.exit_code != GeneratorExitCode.COMPLETE:
+            continue
+        else:
+            tqdm.write(f"collected state space from {problem_pddl}")
+        state_space = generator.state_space
+
+        ret_helper = {}
+
+        # collect distance for all states
+        instance_info = state_space.get_instance_info()
+
+        goal_dist = state_space.compute_goal_distances()
+        for s_id, state in state_space.get_states().items():
+            # non dead end states only
+            if s_id in goal_dist:
+                ret_helper[state] = goal_dist[s_id]
+
+        print(len(ret_helper))
+
+        ret[problem_pddl] = ret_helper
+
     return ret

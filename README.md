@@ -36,7 +36,7 @@ sh build_components.sh
 
 ### Example for WL models
 ```
-python3 train.py experiments/models/wl_ilg_gpr.toml experiments/ipc23-learning/blocksworld.toml --save-file blocksworld_wl.model
+python3 train.py experiments/models/wlf_ilg_gpr.toml experiments/ipc23-learning/blocksworld.toml --save-file blocksworld_wlf.model
 ```
 
 ### Example for GNN models
@@ -45,12 +45,12 @@ python3 train.py experiments/models/gnn_mean_ilg.toml experiments/ipc23-learning
 ```
 
 ## Heuristic Search
-- see `run_wl.py` for WL models and `run_gnn.py` for GNN models
+- see `run_wlf.py` for WL models and `run_gnn.py` for GNN models
 - GNN models automatically try to use GPU where possible and CPU otherwise
 
 ### Example for WL models
 ```
-python3 run_wl.py benchmarks/ipc23-learning/blocksworld/domain.pddl benchmarks/ipc23-learning/blocksworld/testing/medium/p01.pddl blocksworld_wl.model
+python3 run_wlf.py benchmarks/ipc23-learning/blocksworld/domain.pddl benchmarks/ipc23-learning/blocksworld/testing/medium/p01.pddl blocksworld_wlf.model
 ```
 
 ### Example for GNN models

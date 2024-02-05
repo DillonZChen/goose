@@ -6,13 +6,11 @@ import numpy as np
 import representation
 import models.wlf
 import warnings
-import os
-import pathlib
 from itertools import product
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import log_loss, mean_squared_error
 from models.wlf.model import BAYESIAN_MODELS, FREQUENTIST_MODELS
-from dataset.dataset_wl import ALL_KEY, get_dataset_from_args
+from dataset.wlf import ALL_KEY, get_dataset_from_args
 from models.save_load import print_arguments, save_kernel_model
 from util.metrics import f1_macro
 
@@ -100,7 +98,6 @@ def parse_args():
         help="reduce feature sizes by discarding colours with total train count <= prune",
     )
     parser.add_argument("--seed", type=int, default=0, help="random seed")
-    parser.add_argument("--planner", default="fd", choices=["fd", "pwl"])
 
     args = parser.parse_args()
 

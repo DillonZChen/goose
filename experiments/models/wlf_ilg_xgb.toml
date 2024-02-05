@@ -1,9 +1,8 @@
 [model]
-method = "wl"
+method = "wlf"
 
 [config]
-model = "mip"
-schema-count = "schema"
+model = "xgb"
 rep = "ilg"
 features = "1wl"
 iterations = 4

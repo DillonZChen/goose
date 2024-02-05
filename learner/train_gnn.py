@@ -11,7 +11,7 @@ from models.save_load import (
 from models.gnn.loss import MSELoss
 from models.gnn.model import Model
 from models.gnn.train_eval import train, evaluate
-from dataset.dataset_gnn import get_loaders_from_args_gnn
+from dataset.gnn import get_loaders_from_args_gnn
 
 
 def parse_args():

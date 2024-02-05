@@ -1,5 +1,5 @@
 [model]
-method = "wl"
+method = "wlf"
 
 [config]
 model = "gpr"
