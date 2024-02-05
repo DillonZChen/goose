@@ -563,14 +563,6 @@ fast_downward_plugin(
     DEPENDS CGRAPH GOOSE_WL_HEURISTIC
 )
 
-# fast_downward_plugin(
-#     NAME GOOSE_WL_LINEAR_HEURISTIC_ONLINE
-#     HELP "The GOOSE heuristic with WL features linear model with online training"
-#     SOURCES
-#         heuristics/goose_linear_online
-#     DEPENDS CGRAPH GOOSE_WL_LINEAR_HEURISTIC
-# )
-
 fast_downward_plugin(
     NAME GOOSE_WL_KERNEL_HEURISTIC
     HELP "The GOOSE heuristic with WL features kernel model"
@@ -578,22 +570,6 @@ fast_downward_plugin(
         heuristics/goose_kernel
     DEPENDS CGRAPH GOOSE_WL_HEURISTIC
 )
-
-fast_downward_plugin(
-    NAME GOOSE_WL_XGBOOST_HEURISTIC
-    HELP "The GOOSE heuristic with WL features xgboost model"
-    SOURCES
-        heuristics/goose_xgboost
-    DEPENDS CGRAPH GOOSE_WL_HEURISTIC
-)
-
-# fast_downward_plugin(
-#     NAME GOOSE_WL_BAYES_HEURISTIC
-#     HELP "The GOOSE heuristic with WL features Bayesian model"
-#     SOURCES
-#         heuristics/goose_bayes
-#     DEPENDS CGRAPH GOOSE_WL_HEURISTIC
-# )
 
 fast_downward_plugin(
     NAME LP_SOLVER

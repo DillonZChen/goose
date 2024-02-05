@@ -65,6 +65,10 @@ def get_plan_info(domain_pddl, problem_pddl, plan_file, args):
     if os.path.exists(aux_file):
         os.remove(aux_file)
 
+    if not os.path.exists(state_output_file):
+        err_msg = f"Failed to generate states from training data plans. This may be because you did not build the planners yet. This can be done with\n\n\tsh build_components.sh\n"
+        raise RuntimeError(err_msg)
+    
     with open(state_output_file, "r") as f:
         for line in f.readlines():
             if ";" in line:

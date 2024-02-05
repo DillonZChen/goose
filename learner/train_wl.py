@@ -179,21 +179,6 @@ def main():
     print(f"missed colours: {n_missed_colours}")
     print(f"ratio hit/all colours: {ratio:.2f}")
 
-    # for xgb
-    mat_path_pfx = save_matrices(
-        args, X_train, y_train_true, X_val, y_val_true
-    )
-    if args.model == "xgb" and args.save_file is not None:
-        xgb_save_path = args.save_file + ".json"
-        binary = _PATH_TO_XGBOOST_BUILD + "/xgbtrain"
-        if not os.path.exists(binary):
-            print("xgboost training binary not built. exiting training...")
-            return
-        print("Training XGBoost model...", flush=True)
-        os.system(f"{binary} {mat_path_pfx} {xgb_save_path}")
-        save_kernel_model(model, args)
-        return
-
     # training
     print(f"Training {args.model}...")
     t = time.time()

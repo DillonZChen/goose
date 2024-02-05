@@ -27,13 +27,11 @@ fast_downward_set_linker_flags()
 
 # Collect source files needed for the active plugins.
 include("${CMAKE_CURRENT_SOURCE_DIR}/DownwardFiles.cmake")
-set(PYBIND11_PYTHON_VERSION "3.10.4")
+set(Python3_FIND_VIRTUALENV ONLY)
 find_package(Python3 COMPONENTS Interpreter Development)
 find_package(pybind11 REQUIRED)
-find_package(xgboost REQUIRED)
 add_executable(downward ${PLANNER_SOURCES})
 target_link_libraries(downward PRIVATE pybind11::embed)
-target_link_libraries(downward xgboost::xgboost)
 
 ## == Libraries ==
 

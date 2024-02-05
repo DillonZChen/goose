@@ -6,10 +6,8 @@ import random
 import time
 import traceback
 import numpy as np
-import xgboost as xgb
 from tqdm import tqdm
 from typing import Iterable, List, Optional, Dict, Tuple, Union
-from xgboost import XGBRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.model_selection import train_test_split
@@ -53,8 +51,6 @@ FREQUENTIST_MODELS = [
     "rbf-svr",
     #
     "mlp",
-    #
-    "xgb",
 ]
 
 BAYESIAN_MODELS = [
@@ -134,8 +130,6 @@ class Model:
                 return GaussianProcessRegressor(
                     kernel=DotProduct(), alpha=1e-7
                 )
-            if self.model_name == "xgb":
-                return XGBRegressor(objective="reg:squarederror")
 
         self._models = {}
         for schema in args.schemata:
@@ -582,23 +576,10 @@ class Model:
         except Exception:
             print(traceback.format_exc(), flush=True)
 
-    def get_xgboost_json_path(self) -> str:
-        return self._xgboost_path
-
     def setup_for_saving(self, save_file: str) -> None:
-        if self.model_name == "xgb":
-            self._models = None
-            self._xgboost_path = save_file + ".json"
+        pass
 
     def setup_after_loading(self, save_file: str) -> None:
-        # xgb models are loaded directly into cpp
-        # if self.model_name == "xgb":
-        #     json_file = save_file.replace(".model", ".json")
-        #     # model = XGBRegressor()
-        #     # model.load_model(json_file)
-        #     # self._models[ALL_KEY] = model
-        #     self._models[ALL_KEY] = xgb.Booster(model_file=json_file)
-        #     self.xgboost = True
         pass
 
     @property

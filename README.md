@@ -20,11 +20,10 @@ See [references](#references) for the corresponding publications.
   - [Code acknowledgements](#code-acknowledgements)
 
 ## Setup
-- make a virtual environment **with python3.10**, activate it, install packages, and build cpp components
-  - later versions such as python3.11 cause some problems, possibly due to pybind and other package versions, and I haven't tested for earlier versions
-  - you can also use a conda envrionment to specify the python version of your environment
+Use the commands below to make a virtual environment, activate it, install packages, and build cpp components.
+The setup has been tested with python versions 3.10 and higher, but should probably work for lower python3 versions
 ```
-python3.10 -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 sh build_components.sh
