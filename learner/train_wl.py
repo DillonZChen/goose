@@ -3,21 +3,19 @@ import time
 import argparse
 import numpy as np
 import representation
-import models.wl
+import models.wlf
 import warnings
 import os
 import pathlib
 from itertools import product
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import log_loss, mean_squared_error
-from models.wl.wl import BAYESIAN_MODELS, FREQUENTIST_MODELS
+from models.wlf.model import BAYESIAN_MODELS, FREQUENTIST_MODELS
 from dataset.dataset_wl import ALL_KEY, get_dataset_from_args
 from models.save_load import print_arguments, save_kernel_model
 from util.metrics import f1_macro
 
 warnings.filterwarnings("ignore")
-
-_PATH_TO_XGBOOST_BUILD = str(pathlib.Path().resolve()) + "/xgboost_cpp/build"
 
 _SC_STRAT_ALL = "all"
 _SC_STRAT_NONE = "none"
@@ -81,7 +79,7 @@ def parse_args():
         "--features",
         type=str,
         default="1wl",
-        choices=models.wl.GRAPH_FEATURE_GENERATORS,
+        choices=models.wlf.model.GRAPH_FEATURE_GENERATORS,
         help="wl algorithm to use",
     )
     parser.add_argument(
@@ -104,19 +102,6 @@ def parse_args():
     args = parser.parse_args()
 
     return args
-
-
-def save_matrices(args, X_train, y_train_true, X_val, y_val_true):
-    s = ALL_KEY
-    domain = args.domain_pddl.split("/")[-2]
-    os.makedirs(f"matrices", exist_ok=True)
-    pfx = f"{domain}_{args.rep}_{args.features}_{args.iterations}"
-    pfx = os.path.abspath(f"matrices/{pfx}")
-    np.savetxt(f"{pfx}_X_train.csv", X_train, delimiter=" ")
-    np.savetxt(f"{pfx}_y_train.csv", y_train_true[s], delimiter=" ")
-    np.savetxt(f"{pfx}_X_val.csv", X_val, delimiter=" ")
-    np.savetxt(f"{pfx}_y_val.csv", y_val_true[s], delimiter=" ")
-    return pfx
 
 
 def main():
@@ -142,7 +127,7 @@ def main():
     args.schemata = schemata
 
     # class decides whether to use classifier or regressor
-    model = models.wl.Model(args)
+    model = models.wlf.model.Model(args)
     model.train()
     scoring = _SCORING_HEURISTIC
 

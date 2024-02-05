@@ -90,7 +90,7 @@ def save_kernel_model(model, args):
 def load_gnn_model(path, print_args=False):
     # returns (GNN, Args)
     import torch
-    from models.gnn.gnn import Model
+    from models.gnn.model import Model
 
     print(f"Loading model from {path}...")
     if not os.path.exists(path):
