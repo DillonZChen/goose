@@ -9,7 +9,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("model_config")
     parser.add_argument("data_config")
-    parser.add_argument("--save-file", default=None)
+    parser.add_argument("--save_file", default=None)
     args = parser.parse_args()
 
     model_config = toml.load(args.model_config)
@@ -27,7 +27,7 @@ if __name__ == "__main__":
         config_args.append(str(val))
     save_args = []
     if save_file is not None:
-        save_args = ["--save-file", os.path.abspath(save_file)]
+        save_args = ["--save_file", os.path.abspath(save_file)]
     p = subprocess.Popen(
         ["python3", train_script] + data_args + config_args + save_args,
         cwd="learner",

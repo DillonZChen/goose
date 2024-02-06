@@ -26,9 +26,7 @@ def log(output, file):
     with open(file, "w") as f:
         for line in output:
             f.write(line + "\n")
-    print()
-    print("  log @", os.getcwd() + "/" + file)
-    print()
+    print("log @", os.getcwd() + "/" + file)
     return
 
 

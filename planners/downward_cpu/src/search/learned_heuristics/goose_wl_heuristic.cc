@@ -48,7 +48,7 @@ WLGooseHeuristic::WLGooseHeuristic(const plugins::Options &opts)
     instance_file = opts.get<std::string>("instance_file");
     std::cout << "Trying to load model from file " << model_path << " ...\n";
     py::module util_module = py::module::import("models.save_load");
-    model = util_module.attr("load_kernel_model_and_setup")(
+    model = util_module.attr("load_ml_model_and_setup")(
         model_path, domain_file, instance_file);
     std::cout << "Loaded model!" << std::endl;
 

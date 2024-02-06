@@ -5,7 +5,7 @@ import argparse
 import numpy as np
 import warnings
 from sklearn.model_selection import train_test_split
-from models.save_load import print_arguments
+from models.save_load import print_arguments, save_ml_model
 from models.dlf.core import Model
 from models.sml.core import add_sml_args, predict
 from models.sml.schema_count_strategy import SCS_NONE
@@ -74,7 +74,7 @@ def main():
     # init model
     model = Model(args)
     model.train()
-    X, y = model.convert_training_data(dataset)
+    X, y = model.generate_features(dataset)
     X_tr, X_va, y_tr, y_va = train_test_split(
         X, y, test_size=0.33, random_state=2024
     )
@@ -94,6 +94,9 @@ def main():
 
     # predict logging
     predict(model, X_tr, y_tr, X_va, y_va, schemata, schema_strat)
+
+    # save model
+    save_ml_model(model, args)
 
 
 if __name__ == "__main__":

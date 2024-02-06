@@ -534,7 +534,7 @@ fast_downward_plugin(
     NAME GOOSE_HEURISTIC
     HELP "The GOOSE heuristic"
     SOURCES
-        heuristics/goose_heuristic
+        learned_heuristics/goose_heuristic
     DEPENDENCY_ONLY
 )
 
@@ -542,7 +542,7 @@ fast_downward_plugin(
     NAME GOOSE_WL_HEURISTIC
     HELP "The GOOSE heuristic"
     SOURCES
-        heuristics/goose_wl_heuristic
+        learned_heuristics/goose_wl_heuristic
     DEPENDS GOOSE_HEURISTIC
     DEPENDENCY_ONLY
 )
@@ -551,7 +551,7 @@ fast_downward_plugin(
     NAME GOOSE_GNN_HEURISTIC
     HELP "The GOOSE heuristic"
     SOURCES
-        heuristics/goose_gnn_heuristic
+        learned_heuristics/goose_gnn_heuristic
     DEPENDS GOOSE_HEURISTIC
 )
 
@@ -559,7 +559,7 @@ fast_downward_plugin(
     NAME GOOSE_WL_LINEAR_HEURISTIC
     HELP "The GOOSE heuristic with WL features linear model"
     SOURCES
-        heuristics/goose_linear
+        learned_heuristics/goose_linear
     DEPENDS CGRAPH GOOSE_WL_HEURISTIC
 )
 
@@ -567,8 +567,16 @@ fast_downward_plugin(
     NAME GOOSE_WL_KERNEL_HEURISTIC
     HELP "The GOOSE heuristic with WL features kernel model"
     SOURCES
-        heuristics/goose_kernel
-    DEPENDS CGRAPH GOOSE_WL_HEURISTIC
+        learned_heuristics/goose_kernel
+    DEPENDS CGRAPH GOOSE_WL_HEURISTIC DLPLAN_HEURISTIC
+)
+
+fast_downward_plugin(
+    NAME DLPLAN_HEURISTIC
+    HELP "Linear DLPlan heuristic"
+    SOURCES
+        learned_heuristics/dlplan_heuristic
+    DEPENDENCY_ONLY
 )
 
 fast_downward_plugin(

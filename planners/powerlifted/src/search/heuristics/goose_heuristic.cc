@@ -43,7 +43,7 @@ GooseHeuristic::GooseHeuristic(
     std::cout << "Loaded model!" << std::endl;
     model.attr("dump_model_stats")();
   } else if (model_type == "kernel") {
-    model = util_module.attr("load_kernel_model_and_setup")(
+    model = util_module.attr("load_ml_model_and_setup")(
       model_path, 
       domain_file, 
       instance_file

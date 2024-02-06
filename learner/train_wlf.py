@@ -6,7 +6,7 @@ import numpy as np
 import representation
 import warnings
 from sklearn.model_selection import train_test_split
-from models.save_load import print_arguments, save_kernel_model
+from models.save_load import print_arguments, save_ml_model
 from models.wlf.core import WL_FEATURE_GENERATORS, Model
 from models.sml.core import add_sml_args, predict
 from models.sml.schema_count_strategy import get_schemata_from_data
@@ -139,7 +139,7 @@ def main():
     predict(model, X_tr, y_tr, X_va, y_va, schemata, schema_strat)
 
     # save model
-    save_kernel_model(model, args)
+    save_ml_model(model, args)
 
 
 if __name__ == "__main__":

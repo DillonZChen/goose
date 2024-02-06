@@ -124,7 +124,7 @@ class Model(BaseModel):
         return self._wl.get_x(graphs, histograms)
 
     def combine_with_other_models(self, path_to_models: List[str]):
-        from models.save_load import load_kernel_model, save_kernel_model
+        from models.save_load import load_ml_model, save_ml_model
 
         # only works for linear models + same WL
         # TODO some code to do checks
@@ -135,7 +135,7 @@ class Model(BaseModel):
         this_hash = self.get_hash()
 
         for path in path_to_models:
-            model: Model = load_kernel_model(path)
+            model: Model = load_ml_model(path)
 
             # other model is actually linear
             assert model.model_name in LINEAR_MODELS
@@ -372,12 +372,6 @@ class Model(BaseModel):
             return self._model_data_path
         except Exception:
             print(traceback.format_exc(), flush=True)
-
-    def setup_for_saving(self, save_file: str) -> None:
-        pass
-
-    def setup_after_loading(self, save_file: str) -> None:
-        pass
 
     @property
     def n_colours_(self) -> int:

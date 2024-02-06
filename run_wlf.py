@@ -43,9 +43,6 @@ if __name__ == "__main__":
         help="compute std at initial state for bayesian models",
     )
     parser.add_argument(
-        "--timeout", "-t", type=int, default=1800, help="timeout in seconds"
-    )
-    parser.add_argument(
         "--aux-file",
         type=str,
         default=None,
@@ -59,7 +56,7 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    cmd, aux_file = search_cmd(args, "wl")
+    cmd, aux_file = search_cmd(args, "wlf")
     print("Executing the following command:")
     print(cmd)
     print()

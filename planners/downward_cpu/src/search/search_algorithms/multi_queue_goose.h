@@ -6,7 +6,7 @@
 #include <memory>
 #include <vector>
 
-#include "../heuristics/goose_linear.h"
+#include "../learned_heuristics/goose_linear.h"
 #include "../open_list.h"
 #include "../search_algorithm.h"
 

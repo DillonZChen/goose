@@ -1,4 +1,5 @@
 import numpy as np
+from typing import List
 from dataset.factory import StateCostDataset
 from models.sml.core import BaseModel
 from dlplan.generator import generate_features
@@ -10,6 +11,7 @@ class Model(BaseModel):
     def __init__(self, args) -> None:
         super().__init__(args)
         self.factory = None
+        self.feature = None
 
     def parse_feature(self, feature_repr: str):
         feature_type = feature_repr[0]
@@ -22,7 +24,7 @@ class Model(BaseModel):
         feature = parse(feature_repr)
         return feature
 
-    def convert_training_data(self, dataset: StateCostDataset):
+    def generate_features(self, dataset: StateCostDataset):
         self.factory = SyntacticElementFactory(dataset.vocabulary_info)
 
         states = []
@@ -64,4 +66,13 @@ class Model(BaseModel):
 
         xs = np.array(xs)
 
+        self.features = features
+
         return xs, ys
+
+    def get_features(self) -> List[str]:
+        return self.features
+
+    def setup_for_saving(self, save_file: str) -> None:
+        super().setup_for_saving(save_file)
+        self.factory = None  # cannot be pickled :(

@@ -4,7 +4,7 @@ import time
 import torch
 import argparse
 from models.save_load import (
-    arg_to_params,
+    arg_to_gnn_params,
     print_arguments,
     save_gnn_model_from_dict,
 )
@@ -95,7 +95,7 @@ if __name__ == "__main__":
     train_loader, val_loader = get_loaders_from_args_gnn(args)
     args.n_edge_labels = len(train_loader.dataset[0].edge_index)
     args.in_feat = train_loader.dataset[0].x.shape[1]
-    model_params = arg_to_params(args)
+    model_params = arg_to_gnn_params(args)
     model = Model(params=model_params).to(device)
     print(f"model size (#params): {model.get_num_parameters()}")
 

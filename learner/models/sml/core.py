@@ -65,7 +65,7 @@ LINEAR_MODELS = {
 
 def add_sml_args(parser):
     parser.add_argument(
-        "--save-file",
+        "--save_file",
         type=str,
         default=None,
         help="save file of model weights",
@@ -307,3 +307,9 @@ class BaseModel:
             for k, v in model_hash.items():
                 if v in set_nonzero_weights:
                     print(f"{round(weights[v]):>5} * {k}")
+
+    def setup_for_saving(self, save_file: str) -> None:
+        pass
+
+    def setup_after_loading(self, save_file: str) -> None:
+        pass

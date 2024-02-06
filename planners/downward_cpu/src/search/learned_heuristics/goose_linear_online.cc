@@ -30,7 +30,7 @@ GooseLinearOnline::GooseLinearOnline(const plugins::Options &opts)
 
   // suboptimal (load a model again after it was deleted in GooseLinear)
   pybind11::module util_module = pybind11::module::import("models.save_load");
-  model = util_module.attr("load_kernel_model_and_setup")(model_path, domain_file, instance_file);
+  model = util_module.attr("load_ml_model_and_setup")(model_path, domain_file, instance_file);
 
   train();
 }

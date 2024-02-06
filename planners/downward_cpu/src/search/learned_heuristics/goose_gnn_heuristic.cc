@@ -53,7 +53,7 @@ void GooseHeuristic::initialise_model(const plugins::Options &opts) {
     std::cout << "Loaded model!" << std::endl;
     model.attr("dump_model_stats")();
   } else if (model_type == "kernel") {
-    model = util_module.attr("load_kernel_model_and_setup")(model_path, domain_file, instance_file);
+    model = util_module.attr("load_ml_model_and_setup")(model_path, domain_file, instance_file);
     std::cout << "Loaded model!" << std::endl;
   } else {
     std::cout << "Model type " << model_type << " not supported\n";

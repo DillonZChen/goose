@@ -6,8 +6,10 @@ _DOWNWARD_GPU = "./planners/downward_gpu/fast-downward.py"
 
 
 def search_cmd(args, model_type):
-    if model_type == "wl":
-        get_search_cmd = fd_wl
+    if model_type == "wlf":
+        get_search_cmd = fd_wlf
+    elif model_type == "dlf":
+        get_search_cmd = fd_dlf
     elif model_type == "gnn":
         get_search_cmd = fd_gnn
     else:
@@ -31,15 +33,15 @@ def search_cmd(args, model_type):
     return cmd, aux_file
 
 
-def fd_wl(args, aux_file, plan_file):
+def fd_wlf(args, aux_file, plan_file):
     mf = os.path.abspath(args.model_path)
     df = os.path.abspath(args.domain_pddl)
     pf = os.path.abspath(args.problem_pddl)
     algorithm = args.algorithm
 
-    from learner.models.save_load import load_kernel_model
+    from learner.models.save_load import load_ml_model
 
-    model = load_kernel_model(mf)
+    model = load_ml_model(mf)
 
     if args.pybind:
         model_type = "kernel_model"
@@ -72,6 +74,27 @@ def fd_wl(args, aux_file, plan_file):
     return cmd
 
 
+def fd_dlf(args, aux_file, plan_file):
+    mf = os.path.abspath(args.model_path)
+    df = os.path.abspath(args.domain_pddl)
+    pf = os.path.abspath(args.problem_pddl)
+    algorithm = args.algorithm
+
+    if args.pybind:
+        raise NotImplementedError
+    else:
+        model_type = "dlplan"
+
+    h_goose = f'{model_type}(model_file="{mf}", domain_file="{df}", instance_file="{pf}")'
+
+    fd_search = ""
+    if algorithm in {"lazy", "eager"}:
+        fd_search = f"{algorithm}_greedy([{h_goose}])"
+
+    cmd = f"{_DOWNWARD_CPU} --sas-file {aux_file} --plan-file {plan_file} {df} {pf} --search '{fd_search}'"
+
+    return cmd
+
 
 def fd_gnn(args, aux_file, plan_file):
     mf = os.path.abspath(args.model_path)
@@ -79,7 +102,9 @@ def fd_gnn(args, aux_file, plan_file):
     pf = os.path.abspath(args.problem_pddl)
     algorithm = args.algorithm
 
-    h_goose = f'goose(model_path="{mf}", domain_file="{df}", instance_file="{pf}")'
+    h_goose = (
+        f'goose(model_path="{mf}", domain_file="{df}", instance_file="{pf}")'
+    )
 
     fd_search = ""
     if algorithm == "eager":

@@ -30,18 +30,18 @@ sh build_components.sh
 ```
 
 ## Training
-- see `python3 train.py -h` for help, you will need the `--save-file` argument if you want to save the model
+- see `python3 train.py -h` for help, you will need the `--save_file` argument if you want to save the model
 - to train with your own dataset, you will need to construct an experiment configuration toml file such as in [here](experiments/ipc23-learning/blocksworld.toml)
   - the `tasks_dir` and `plans_dir` paths must contain the same files, differentiating only in the file suffix (.pddl and .plan, respectively)
 
 ### Example for WL models
 ```
-python3 train.py experiments/models/wlf_ilg_gpr.toml experiments/ipc23-learning/blocksworld.toml --save-file blocksworld_wlf.model
+python3 train.py experiments/models/wlf_ilg_gpr.toml experiments/ipc23-learning/blocksworld.toml --save_file blocksworld_wlf.model
 ```
 
 ### Example for GNN models
 ```
-python3 train.py experiments/models/gnn_mean_ilg.toml experiments/ipc23-learning/blocksworld.toml --save-file blocksworld_gnn.model
+python3 train.py experiments/models/gnn_mean_ilg.toml experiments/ipc23-learning/blocksworld.toml --save_file blocksworld_gnn.model
 ```
 
 ## Heuristic Search
