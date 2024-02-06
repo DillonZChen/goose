@@ -9,10 +9,12 @@ See [references](#references) for the corresponding publications.
   - [Table of contents](#table-of-contents)
   - [Setup](#setup)
   - [Training](#training)
-    - [Example for WL models](#example-for-wl-models)
+    - [Example for WLF models](#example-for-wlf-models)
+    - [Example for DLF models](#example-for-dlf-models)
     - [Example for GNN models](#example-for-gnn-models)
   - [Heuristic Search](#heuristic-search)
-    - [Example for WL models](#example-for-wl-models-1)
+    - [Example for WLF models](#example-for-wlf-models-1)
+    - [Example for DLF models](#example-for-dlf-models-1)
     - [Example for GNN models](#example-for-gnn-models-1)
   - [References](#references)
     - [AAAI-24 Experiments](#aaai-24-experiments)
@@ -34,9 +36,14 @@ sh build_components.sh
 - to train with your own dataset, you will need to construct an experiment configuration toml file such as in [here](experiments/ipc23-learning/blocksworld.toml)
   - the `tasks_dir` and `plans_dir` paths must contain the same files, differentiating only in the file suffix (.pddl and .plan, respectively)
 
-### Example for WL models
+### Example for WLF models
 ```
 python3 train.py experiments/models/wlf_ilg_gpr.toml experiments/ipc23-learning/blocksworld.toml --save_file blocksworld_wlf.model
+```
+
+### Example for DLF models
+```
+python3 train.py experiments/models/dlf_gpr.toml experiments/ipc23-learning/blocksworld.toml --save_file blocksworld_dlf.model
 ```
 
 ### Example for GNN models
@@ -45,12 +52,17 @@ python3 train.py experiments/models/gnn_mean_ilg.toml experiments/ipc23-learning
 ```
 
 ## Heuristic Search
-- see `run_wlf.py` for WL models and `run_gnn.py` for GNN models
+- see `run_wlf.py` for WLF models and `run_gnn.py` for GNN models
 - GNN models automatically try to use GPU where possible and CPU otherwise
 
-### Example for WL models
+### Example for WLF models
 ```
 python3 run_wlf.py benchmarks/ipc23-learning/blocksworld/domain.pddl benchmarks/ipc23-learning/blocksworld/testing/medium/p01.pddl blocksworld_wlf.model
+```
+
+### Example for DLF models
+```
+python3 run_dlf.py benchmarks/ipc23-learning/blocksworld/domain.pddl benchmarks/ipc23-learning/blocksworld/testing/medium/p01.pddl blocksworld_dlf.model
 ```
 
 ### Example for GNN models
@@ -71,7 +83,7 @@ For source code corresponding to experiments from our AAAI-24 publication, pleas
 ### Bibtex files
 For the bibtex file for GNN architectures using the `slg`, `flg` and `llg` graph representations:
 ```
-@inproceedings{chen-et-al:aaai2024,
+@inproceedings{chen-thiebaux-trevizan:aaai2024,
   author       = {Dillon Ze Chen and
                   Sylvie Thi{\'{e}}baux and
                   Felipe W. Trevizan},
@@ -81,9 +93,9 @@ For the bibtex file for GNN architectures using the `slg`, `flg` and `llg` graph
 }
 ```
 
-For the bibtex file for WL and GNN architectures using the `ilg` graph representations:
+For the bibtex file for WLF and GNN architectures using the `ilg` graph representations:
 ```
-@inproceedings{chen-et-al:genplan2023,
+@inproceedings{chen-trevizan-thiebaux:genplan2023,
   author       = {Dillon Ze Chen and
                   Felipe W. Trevizan and 
                   Sylvie Thi{\'{e}}baux},

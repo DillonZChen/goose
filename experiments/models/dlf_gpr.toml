@@ -3,9 +3,9 @@ method = "dlf"
 
 [config]
 model = "gpr"
-feature_limit=20000
-concept_complexity_limit=20
-role_complexity_limit=20
-boolean_complexity_limit=20
-count_numerical_complexity_limit=20
-distance_numerical_complexity_limit=20
+feature_limit=50000
+concept_complexity_limit=10
+role_complexity_limit=10
+boolean_complexity_limit=10
+count_numerical_complexity_limit=10
+distance_numerical_complexity_limit=10
