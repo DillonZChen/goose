@@ -4,7 +4,7 @@ from torch_geometric.loader import DataLoader
 from sklearn.model_selection import train_test_split
 from util.stats import get_stats
 from representation import REPRESENTATIONS
-from .factory import get_states_from_plans, ALL_KEY
+from .factory import state_cost_dataset_from_plans, ALL_KEY
 
 
 def get_tensor_graphs_from_plans(args):
@@ -14,7 +14,7 @@ def get_tensor_graphs_from_plans(args):
     representation = args.rep
     domain_pddl = args.domain_pddl
 
-    for problem_pddl, plan in get_states_from_plans(
+    for problem_pddl, plan in state_cost_dataset_from_plans(
         domain_pddl,
         args.tasks_dir,
         args.plans_dir,

@@ -4,18 +4,15 @@ import time
 import argparse
 import numpy as np
 import representation
-import models.wlf
 import warnings
-from sklearn.model_selection import tr_test_split
-from dataset.wlf import ALL_KEY, get_dataset_from_args
+from sklearn.model_selection import train_test_split
 from models.save_load import print_arguments, save_kernel_model
-from models.wlf.core import WL_FEATURE_GENERATORS
+from models.wlf.core import WL_FEATURE_GENERATORS, Model
 from models.sml.core import add_sml_args, predict
-from models.sml.schema_count_strategy import (
-    SCS_NONE,
-    SCS_ALL,
-    SCS_SCHEMA_APPROX,
-    SCS_SCHEMA_EXACT,
+from models.sml.schema_count_strategy import get_schemata_from_data
+from dataset.factory import (
+    state_cost_dataset_from_plans,
+    group_by_problem,
 )
 
 warnings.filterwarnings("ignore")
@@ -72,9 +69,26 @@ def main():
     print_arguments(args)
     np.random.seed(args.seed)
 
-    # load dataset
-    graphs, y_true = get_dataset_from_args(args)
-    graphs_tr, graphs_va, y_tr, y_va = tr_test_split(
+    # load dataset and convert to graphs
+    domain_pddl = args.domain_pddl
+    tasks_dir = args.tasks_dir
+    plans_dir = args.plans_dir
+    dataset = state_cost_dataset_from_plans(domain_pddl, tasks_dir, plans_dir)
+    dataset_by_problem = group_by_problem(dataset)
+
+    graphs = []
+    y_true = [d.cost for d in dataset.state_cost_data]
+
+    for problem_pddl, state_cost_data_list in dataset_by_problem.items():
+        rep = representation.REPRESENTATIONS[args.rep](
+            domain_pddl=domain_pddl, problem_pddl=problem_pddl
+        )
+        for data in state_cost_data_list:
+            state = rep.str_to_state(data.state)
+            graph = rep.state_to_cgraph(state)
+            graphs.append(graph)
+
+    graphs_tr, graphs_va, y_tr, y_va = train_test_split(
         graphs,
         y_true,
         test_size=0.33,
@@ -83,17 +97,10 @@ def main():
 
     # parse schema count strategy
     schema_strat = args.schema_count_strategy
-    schemata = sorted(list(y_tr[0].keys())) if schema_strat else [ALL_KEY]
-    if schema_strat == SCS_NONE:
-        schemata = [ALL_KEY]
-    elif schema_strat == SCS_ALL:
-        pass
-    elif schema_strat in {SCS_SCHEMA_EXACT, SCS_SCHEMA_APPROX}:
-        schemata.remove(ALL_KEY)
-    args.schemata = schemata
+    schemata = get_schemata_from_data(schema_strat, y_tr)
 
-    # class decides whether to use classifier or regressor
-    model = models.wlf.core.Model(args)
+    # init model
+    model = Model(args, schemata)
     model.train()
 
     # training data
@@ -136,7 +143,7 @@ def main():
     model.fit_all(X_tr, y_tr_true)
     print(f"Model training completed in {time.time()-t:.2f}s")
 
-    # predict logging and model saving
+    # predict logging
     predict(model, X_tr, y_tr_true, X_va, y_va_true, schemata, schema_strat)
 
     # save model

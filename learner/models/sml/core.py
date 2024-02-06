@@ -1,6 +1,6 @@
 import time
 from itertools import product
-from typing import Dict, List
+from typing import Dict, Iterable, List, Tuple
 import numpy as np
 from sklearn.metrics import mean_squared_error
 from sklearn.gaussian_process import GaussianProcessRegressor
@@ -133,14 +133,16 @@ def init_reg_model(model_name: str, regularise: bool):
         return BayesianRidge()
     if model_name == "gpr":
         return GaussianProcessRegressor(kernel=DotProduct(), alpha=1e-7)
+    
+    raise ValueError(f"Unknown model name: {model_name}")
 
 
 def predict(
     model,
     X_train: np.array,
-    y_train_true: Dict[np.array],
+    y_train_true: Dict[str, np.array],
     X_val: np.array,
-    y_val_true: Dict[np.array],
+    y_val_true: Dict[str, np.array],
     schemata: List[str],
     schema_strat: List[str],
 ):
@@ -192,3 +194,116 @@ def predict(
         )
     except Exception as e:  # not possible for nonlinear kernel methods
         pass
+
+
+class BaseModel:
+    def __init__(self, args, schemata=None) -> None:
+        self.model_name = args.model
+        self._args = args
+        self._models = {}
+        if schemata is None:
+            schemata = [ALL_KEY]
+        for schema in schemata:
+            self._models[schema] = init_reg_model(
+                model_name=self.model_name,
+                regularise=(schema == ALL_KEY),
+            )
+
+    def train(self) -> None:
+        """set train mode, similar to pytorch models"""
+        pass
+
+    def eval(self) -> None:
+        """set eval mode, similar to pytorch models"""
+        pass
+
+    def fit_all(self, X, y_dict) -> None:
+        # fit up to len(schemata) + 1 models
+        for schema in self._models:
+            self.fit(X, y_dict[schema], schema=schema)
+
+    def fit(self, X, y, schema=ALL_KEY) -> None:
+        assert schema in self._models
+        print(f"Fitting model for learning number of '{schema}' in a plan...")
+        if self.model_name == "mip":
+            X = self._transform_for_mip(X)
+        self._models[schema].fit(X, y)
+
+    def _transform_for_mip(self, X):
+        return X
+
+    def predict_all(self, X, schema=ALL_KEY) -> Dict[str, np.array]:
+        y_dict = {}
+        for schema in self._models:
+            y_dict[schema] = self.predict(X, schema=schema)
+        return y_dict
+
+    def predict(self, X, schema=ALL_KEY) -> np.array:
+        ret = self._models[schema].predict(X)
+        return ret
+
+    def predict_with_std(self, X, schema=ALL_KEY) -> Tuple[np.array, np.array]:
+        """for Bayesian models only"""
+        return self._models[schema].predict(X, return_std=True)
+
+    def get_learning_model(self, schema=ALL_KEY):
+        return self._models[schema]
+
+    def update_schemata_to_learn(
+        self, schemata_to_learn: Iterable[str]
+    ) -> None:
+        initial_schemata = set(self._models.keys())
+        schemata_to_keep = set(schemata_to_learn)
+        for schema in initial_schemata:
+            if schema not in schemata_to_keep:
+                del self._models[schema]
+
+    def get_weights(self) -> np.array:
+        if self.model_name == "gpr":
+            """
+            For the general GP case:
+                L = cholesky(k(X, X)) X is X_train
+                a = L \ (L \ t); Ax = b => x = A \ b
+                m(x) = k(x, X) . a
+                v = L \ k(X, x)
+                s^2(x) = k(x, x) - v^T . v
+            but if we use dot product kernel, we can simplify and get
+            """
+            weights = np.sum(
+                m.alpha_ @ m.X_train_ for m in self._models.values()
+            )
+        else:
+            weights = np.sum(model.coef_ for model in self._models.values())
+        return weights
+
+    def get_bias(self) -> float:
+        try:
+            bias = np.sum(model.intercept_ for model in self._models.values())
+            if type(bias) == float:
+                return bias
+            if type(bias) == np.float64:
+                return float(bias)
+            return float(bias[0])  # linear-svr returns array
+        except Exception:
+            return 0
+
+    def get_num_weights(self):
+        return len(self.get_weights())
+
+    def get_num_zero_weights(self):
+        return np.count_nonzero(self.get_weights() == 0)
+
+    def debug_weights(self):
+        print("Verbose linear weights information")
+        weights = self.get_weights()
+        model_hash = self.get_hash()
+        # nonzero_weights = np.nonzero(weights)[0]
+        # print(f"indices of nonzero weights:", nonzero_weights)
+        for schema, model in self._models.items():
+            print(schema)
+            weights = model.coef_
+            nonzero_weights = np.nonzero(weights)[0]
+            set_nonzero_weights = set(nonzero_weights)
+            for k, v in model_hash.items():
+                if v in set_nonzero_weights:
+                    print(f"{round(weights[v]):>5} * {k}")

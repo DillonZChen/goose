@@ -12,7 +12,7 @@ from typing import Iterable, List, Optional, Dict, Tuple, Union
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 from representation import CGraph, Representation, REPRESENTATIONS, State
-from models.sml.core import init_reg_model, LINEAR_MODELS
+from models.sml.core import LINEAR_MODELS, BaseModel
 from util.stats import get_stats
 from .base_wl import Histogram, NO_EDGE, WlAlgorithm
 from .wl1 import ColourRefinement
@@ -29,19 +29,17 @@ WL_FEATURE_GENERATORS = {
     "3lwl": LWL3,
 }
 
-## prevent import so that we do not get pybind issues...
+# prevent import so that we do not get pybind issues...
 # used for deciding if we want to do schemata learning
 # from dataset.factory import ALL_KEY
 ALL_KEY = "_all_"
 
 
-class Model:
-    def __init__(self, args) -> None:
-        super().__init__()
-        self.model_name = args.model
+class Model(BaseModel):
+    def __init__(self, args, schemata) -> None:
+        super().__init__(args, schemata)
         self.wl_name = args.features
 
-        self._args = args
         self._iterations = args.iterations
         self._prune = args.prune
         self._rep_type = args.rep
@@ -52,19 +50,12 @@ class Model:
             prune=self._prune,
         )
 
-        self._models = {}
-        for schema in args.schemata:
-            self._models[schema] = init_reg_model(
-                model_name=self.model_name,
-                regularise=(schema == ALL_KEY),
-            )
-
     def train(self) -> None:
-        """set train mode, not actually training anything"""
+        """set train mode, similar to pytorch models"""
         self._wl.train()
 
     def eval(self) -> None:
-        """set eval mode, not actually evaluating anything"""
+        """set eval mode, similar to pytorch models"""
         self._wl.eval()
 
     def get_hit_colours(self) -> int:
@@ -73,65 +64,34 @@ class Model:
     def get_missed_colours(self) -> int:
         return self._wl.get_missed_colours()
 
-    def _transform_for_fit_only(self, X) -> np.array:
-        """transform X depending on the model"""
-        if self.model_name == "mip":
-            wl_hash = self.get_hash()
-            n, d = X.shape
-            additional = np.zeros((1, d))
-            assert d == len(wl_hash)
-            for k, v in wl_hash.items():
-                assert 0 <= v and v < d
-                toks = [int(t) for t in k.split(",")]
-                node_colours = [toks[0]] + [
-                    toks[i] for i in range(1, len(toks), 2)
-                ]
-                edge_colours = [toks[i] for i in range(2, len(toks), 2)]
+    def _transform_for_mip(self, X) -> np.array:
+        assert self.model_name == "mip"
+        wl_hash = self.get_hash()
+        n, d = X.shape
+        additional = np.zeros((1, d))
+        assert d == len(wl_hash)
+        for k, v in wl_hash.items():
+            assert 0 <= v < d
+            toks = [int(t) for t in k.split(",")]
+            node_colours = [toks[0]] + [
+                toks[i] for i in range(1, len(toks), 2)
+            ]
 
-                # tiebreaker = len(toks)  # can be less naive (e.g. level of iteration)
-                # diversity = len(set([(c,'n') for c in node_colours]+[(c,'e') for c in edge_colours]))
+            edge_colours = [toks[i] for i in range(2, len(toks), 2)]
 
-                # tiebreaker = 1 + int(-1 in edge_colours)  # want to maximise this
-                # tiebreaker = 1 / tiebreaker  # because we minimise in mip
-                if -1 in edge_colours:
-                    tiebreaker = 1
-                else:
-                    tiebreaker = 10
+            # tiebreaker = len(toks)  # can be less naive (e.g. level of iteration)
+            # diversity = len(set([(c,'n') for c in node_colours]+[(c,'e') for c in edge_colours]))
 
-                additional[0][v] = tiebreaker
-            X = np.vstack((X, additional))
+            # tiebreaker = 1 + int(-1 in edge_colours)  # want to maximise this
+            # tiebreaker = 1 / tiebreaker  # because we minimise in mip
+            if -1 in edge_colours:
+                tiebreaker = 1
+            else:
+                tiebreaker = 10
+
+            additional[0][v] = tiebreaker
+        X = np.vstack((X, additional))
         return X
-
-    def fit_all(self, X, y_dict) -> None:
-        # fit up to len(schemata) + 1 models
-        for schema in self._models:
-            self.fit(X, y_dict[schema], schema=schema)
-
-    def fit(self, X, y, schema=ALL_KEY) -> None:
-        assert schema in self._models
-        print(f"Fitting model for learning number of '{schema}' in a plan...")
-        X = self._transform_for_fit_only(X)
-        self._models[schema].fit(X, y)
-
-    def predict_all(self, X, schema=ALL_KEY) -> Dict[str, np.array]:
-        y_dict = {}
-        for schema in self._models:
-            y_dict[schema] = self.predict(X, schema=schema)
-        return y_dict
-
-    def predict(self, X, schema=ALL_KEY) -> np.array:
-        ret = self._models[schema].predict(X)
-        return ret
-
-    def predict_with_std(self, X, schema=ALL_KEY) -> Tuple[np.array, np.array]:
-        """for Bayesian models only"""
-        return self._models[schema].predict(X, return_std=True)
-
-    def get_learning_model(self, schema=ALL_KEY):
-        return self._models[schema]
-
-    def lifted_state_input(self) -> bool:
-        return self._representation.lifted
 
     def update_representation(
         self, domain_pddl: str, problem_pddl: str
@@ -147,82 +107,51 @@ class Model:
         )
         return
 
-    def update_schemata_to_learn(
-        self, schemata_to_learn: Iterable[str]
-    ) -> None:
-        initial_schemata = set(self._models.keys())
-        schemata_to_keep = set(schemata_to_learn)
-        for schema in initial_schemata:
-            if schema not in schemata_to_keep:
-                del self._models[schema]
-
     def get_iterations(self) -> int:
         return self._wl.iterations
 
-    def get_weights(self) -> np.array:
-        if self.model_name == "gpr":
-            """
-            For the general GP case:
-                L = cholesky(k(X, X)) X is X_train
-                a = L \ (L \ t); Ax = b => x = A \ b
-                m(x) = k(x, X) . a
-                v = L \ k(X, x)
-                s^2(x) = k(x, x) - v^T . v
-            but if we use dot product kernel, we can simplify and get
-            """
-            weights = np.sum(
-                m.alpha_ @ m.X_train_ for m in self._models.values()
-            )
-        else:
-            weights = np.sum(model.coef_ for model in self._models.values())
-        return weights
+    def get_hash(self) -> Dict[str, int]:
+        return self._wl.get_hash()
 
-    def get_bias(self) -> float:
-        try:
-            bias = np.sum(model.intercept_ for model in self._models.values())
-            if type(bias) == float:
-                return bias
-            if type(bias) == np.float64:
-                return float(bias)
-            return float(bias[0])  # linear-svr returns array
-        except Exception:
-            return 0
+    def compute_histograms(
+        self, graphs: CGraph, return_ratio_seen_counts: bool = False
+    ) -> Union[List[Histogram], Tuple[List[Histogram], List[float]]]:
+        return self._wl.compute_histograms(graphs, return_ratio_seen_counts)
 
-    def get_num_weights(self):
-        return len(self.get_weights())
+    def get_matrix_representation(
+        self, graphs: CGraph, histograms: Optional[List[Histogram]]
+    ) -> np.array:
+        return self._wl.get_x(graphs, histograms)
 
-    def get_num_zero_weights(self):
-        return np.count_nonzero(self.get_weights() == 0)
+    def combine_with_other_models(self, path_to_models: List[str]):
+        from models.save_load import load_kernel_model, save_kernel_model
 
-    def debug_weights(self):
-        print("Verbose linear weights information")
-        weights = self.get_weights()
-        model_hash = self.get_hash()
-        # nonzero_weights = np.nonzero(weights)[0]
-        # print(f"indices of nonzero weights:", nonzero_weights)
-        for schema, model in self._models.items():
-            print(schema)
-            weights = model.coef_
-            nonzero_weights = np.nonzero(weights)[0]
-            set_nonzero_weights = set(nonzero_weights)
-            for k, v in model_hash.items():
-                if v in set_nonzero_weights:
-                    print(f"{round(weights[v]):>5} * {k}")
+        # only works for linear models + same WL
+        # TODO some code to do checks
 
-    def debug_colour_information(self):
-        domain = self._args.domain
-        domain_pddl = f"../benchmarks/ipc23-learning/{domain}/domain.pddl"
-        problem_pddl = (
-            f"../benchmarks/ipc23-learning/{domain}/training/easy/p01.pddl"
-        )
-        self.update_representation(domain_pddl, problem_pddl)
-        debug_map = self._representation.colour_explanation
-        ret = {}
-        for k, v in self.get_hash().items():
-            if "," not in k and int(k) in debug_map:
-                # print(f"{v} -> {debug_map[int(k)]}")
-                ret[v] = debug_map[int(k)]
-        return ret
+        print(f"Combining with {len(path_to_models)} other linear models...")
+
+        self._other_linear_models = []  # List[Tuple[np.array, double]]
+        this_hash = self.get_hash()
+
+        for path in path_to_models:
+            model: Model = load_kernel_model(path)
+
+            # other model is actually linear
+            assert model.model_name in LINEAR_MODELS
+
+            # so indicies of features are the same
+            other_hash = model.get_hash()
+            assert this_hash == other_hash
+
+            weights = model.get_weights()
+            bias = model.get_bias()
+            self._other_linear_models.append((weights, bias))
+
+        print("Combination successful!")
+        return
+
+    """ Methods called from cpp """
 
     def write_model_data(self) -> None:
         print("Writing model data to file...", flush=True)
@@ -235,7 +164,7 @@ class Model:
             pf = self._representation.problem_pddl
             t = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
             file_path = "_".join(["graph", df, pf, t])
-            file_path = repr(hash(file_path)).replace("-", "n")
+            file_path = repr(hash(file_path)).replace("-", "0")
             file_path = file_path + ".model"
 
             model_hash = self.get_hash()
@@ -253,9 +182,9 @@ class Model:
                 assert len(weights) == len(model_hash)
 
                 for k, v in model_hash.items():
-                    assert 0 <= v and v < len(
-                        weights
-                    ), f"{v} not in [0, {len(weights)-1}]"
+                    assert (
+                        0 <= v < len(weights)
+                    ), f"{v} not in [0, {len(weights) - 1}]"
 
             n_linear_models = 0
             if (
@@ -309,6 +238,9 @@ class Model:
         except Exception:
             print(traceback.format_exc(), flush=True)
 
+    def lifted_state_input(self) -> bool:
+        return self._representation.lifted
+
     def get_model_data_path(self) -> str:
         print("Getting model file path...", flush=True)
         try:
@@ -330,31 +262,6 @@ class Model:
             return self._representation.get_graph_file_path()
         except Exception:
             print(traceback.format_exc(), flush=True)
-
-    def clear_graph(self) -> None:
-        """Save memory for planner by deleting represntation once collected"""
-        self._representation = None
-        return
-
-    def get_hash(self) -> Dict[str, int]:
-        return self._wl.get_hash()
-
-    def get_reverse_hash(self) -> Dict[int, str]:
-        wl_hash = self.get_hash()
-        ret = {}
-        for k, v in wl_hash.items():
-            ret[v] = k
-        return ret
-
-    def compute_histograms(
-        self, graphs: CGraph, return_ratio_seen_counts: bool = False
-    ) -> Union[List[Histogram], Tuple[List[Histogram], List[float]]]:
-        return self._wl.compute_histograms(graphs, return_ratio_seen_counts)
-
-    def get_matrix_representation(
-        self, graphs: CGraph, histograms: Optional[List[Histogram]]
-    ) -> np.array:
-        return self._wl.get_x(graphs, histograms)
 
     def h(self, state: State) -> float:
         h = self.h_batch([state])[0]
@@ -385,34 +292,6 @@ class Model:
     def compute_std(self, x: Iterable[float]) -> float:
         _, std = self.predict_with_std([x])
         return std
-
-    def combine_with_other_models(self, path_to_models: List[str]):
-        from models.save_load import load_kernel_model, save_kernel_model
-
-        # only works for linear models + same WL
-        # TODO some code to do checks
-
-        print(f"Combining with {len(path_to_models)} other linear models...")
-
-        self._other_linear_models = []  # List[Tuple[np.array, double]]
-        this_hash = self.get_hash()
-
-        for path in path_to_models:
-            model: Model = load_kernel_model(path)
-
-            # other model is actually linear
-            assert model.model_name in LINEAR_MODELS
-
-            # so indicies of features are the same
-            other_hash = model.get_hash()
-            assert this_hash == other_hash
-
-            weights = model.get_weights()
-            bias = model.get_bias()
-            self._other_linear_models.append((weights, bias))
-
-        print("Combination successful!")
-        return
 
     def online_training(
         self,

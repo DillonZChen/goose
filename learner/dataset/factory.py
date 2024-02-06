@@ -1,8 +1,9 @@
 import os
+from dataclasses import dataclass
+from typing import Dict, Iterable, List, Union
 from tqdm import tqdm
-from dlplan.generator import generate_features
 from dlplan.state_space import generate_state_space, GeneratorExitCode
-from dlplan.core import SyntacticElementFactory, State, InstanceInfo
+from dlplan.core import State as DLPlanState, VocabularyInfo
 
 _DOWNWARD = "./../planners/downward_cpu/fast-downward.py"
 _POWERLIFTED = "./../planners/powerlifted/powerlifted.py"
@@ -11,29 +12,57 @@ ALL_KEY = "_all_"
 
 MAX_NUM_STATES = 10000
 
-# TODO construct classes for the two return types
+State = Union[DLPlanState, Iterable[str]]
 
-def get_states_from_plans(domain_pddl, tasks_dir, plans_dir):
-    # Dict[problem_pddl, List[Tuple[state, schema_cnt]]]
+
+@dataclass
+class StateCostData:
+    state: State
+    cost: Dict[str, float]  # schema count -> cost
+    domain_pddl: str
+    problem_pddl: str
+
+
+@dataclass
+class StateCostDataset:
+    state_cost_data: List[StateCostData]
+    vocabulary_info: VocabularyInfo
+
+
+def group_by_problem(dataset: StateCostDataset) -> Dict[str, List[StateCostData]]:
     ret = {}
+    for data in dataset.state_cost_data:
+        if data.problem_pddl not in ret:
+            ret[data.problem_pddl] = []
+        ret[data.problem_pddl].append(data)
+    return ret
+
+
+def state_cost_dataset_from_plans(
+    domain_pddl, tasks_dir, plans_dir
+) -> StateCostDataset:
+    state_cost_data = []
 
     for plan_file in tqdm(sorted(list(os.listdir(plans_dir)))):
         problem_pddl = f"{tasks_dir}/{plan_file.replace('.plan', '.pddl')}"
         assert os.path.exists(problem_pddl), problem_pddl
         plan_file = f"{plans_dir}/{plan_file}"
-        plan = _get_states_from_plan(
-            domain_pddl, problem_pddl, plan_file
-        )
-        ret[problem_pddl] = plan
+        plan = _get_states_from_plan(domain_pddl, problem_pddl, plan_file)
+        state_cost_data += plan
 
-    return ret
+    dataset = StateCostDataset(
+        state_cost_data=state_cost_data, vocabulary_info=None
+    )
+    return dataset
 
 
-def _get_states_from_plan(domain_pddl, problem_pddl, plan_file):
+def _get_states_from_plan(
+    domain_pddl, problem_pddl, plan_file
+) -> List[StateCostData]:
     states = []
     actions = []
 
-    planner = "fd"  # TODO do this more systematically
+    planner = "fd"  # TODO fix this with statics
     # planner = args.planner
 
     with open(plan_file, "r") as f:
@@ -66,9 +95,8 @@ def _get_states_from_plan(domain_pddl, problem_pddl, plan_file):
     # disgusting method which hopefully makes running in parallel work fine
     assert not os.path.exists(aux_file), aux_file
     assert not os.path.exists(state_file), state_file
-    output = os.popen(cmd).readlines()
-    if output == None:
-        pass  # make this variable seen by linter
+    if os.popen(cmd).readlines() is None:
+        pass  # make this seen by linter
     if os.path.exists(aux_file):
         os.remove(aux_file)
 
@@ -102,25 +130,24 @@ def _get_states_from_plan(domain_pddl, problem_pddl, plan_file):
         schema_cnt[schema] += 1
 
     ret = []
-    for i, state in enumerate(states):
-        if i == len(actions):
-            continue  # ignore the goal state, annoying for learning useful schema
+    # ignore the goal state, annoying for learning useful schema
+    for i, state in enumerate(states[:-1]):
         action = actions[i]
         schema = action.replace("(", "").split()[0]
-        ret.append((state, schema_cnt.copy()))
-        # print(state)
-        # for s, v in schema_cnt.items():
-        #     print(f"{s:>15} {v:>4}")
-        # print()
+        data = StateCostData(
+            state=state,
+            cost=schema_cnt.copy(),
+            domain_pddl=domain_pddl,
+            problem_pddl=problem_pddl,
+        )
+        ret.append(data)
         schema_cnt[schema] -= 1
         schema_cnt[ALL_KEY] -= 1
-    # breakpoint()
     return ret
 
 
-def get_states_from_state_spaces(domain_pddl, tasks_dir, state_space):
-    # Dict[problem_pddl, List[Dict[state, h*]]]
-    ret = {}
+def state_cost_dataset_from_spaces(domain_pddl, tasks_dir) -> StateCostDataset:
+    state_cost_data = []
 
     state_space = generate_state_space(
         domain_pddl,
@@ -130,6 +157,9 @@ def get_states_from_state_spaces(domain_pddl, tasks_dir, state_space):
     ).state_space
     instance_info = state_space.get_instance_info()
     vocabulary_info = instance_info.get_vocabulary_info()
+
+    collected_from = []
+    states = 0
 
     for f in tqdm(sorted(list(os.listdir(tasks_dir)))):
         problem_pddl = f"{tasks_dir}/{f}"
@@ -143,11 +173,9 @@ def get_states_from_state_spaces(domain_pddl, tasks_dir, state_space):
 
         if generator.exit_code != GeneratorExitCode.COMPLETE:
             continue
-        else:
-            tqdm.write(f"collected state space from {problem_pddl}")
-        state_space = generator.state_space
 
-        ret_helper = {}
+        collected_from.append(problem_pddl)
+        state_space = generator.state_space
 
         # collect distance for all states
         instance_info = state_space.get_instance_info()
@@ -156,10 +184,18 @@ def get_states_from_state_spaces(domain_pddl, tasks_dir, state_space):
         for s_id, state in state_space.get_states().items():
             # non dead end states only
             if s_id in goal_dist:
-                ret_helper[state] = goal_dist[s_id]
+                data = StateCostData(
+                    state,
+                    {ALL_KEY: goal_dist[s_id]},
+                    domain_pddl,
+                    problem_pddl,
+                )
+                state_cost_data.append(data)
 
-        print(len(ret_helper))
+    n_states = len(state_cost_data)
+    print(f"Collected {n_states} states from {len(collected_from)} problems:")
+    print("\n".join(collected_from))
 
-        ret[problem_pddl] = ret_helper
+    dataset = StateCostDataset(state_cost_data, vocabulary_info)
 
-    return ret
+    return dataset

@@ -1,103 +1,13 @@
 import unittest
-import os
-import sys
-import subprocess
-from subprocess import PIPE
-
-_TOL = 1e-6
-
-
-def in_venv():
-    return sys.prefix != sys.base_prefix
-
-
-def get_output(cmd):
-    cmd = cmd.split(" ")
-    p = subprocess.Popen(cmd, stdout=PIPE, stderr=PIPE)
-    stdout, stderr = p.communicate()
-    p.wait()
-    output = list(str(stdout.decode("utf-8")).split("\n"))
-    output += list(str(stderr.decode("utf-8")).split("\n"))
-    return output
-
-
-def log_output(output, file):
-    with open(file, "w") as f:
-        for line in output:
-            f.write(line + "\n")
-    print()
-    print("\tlog @", os.getcwd() + file)
-    print()
-    return
-
-
-def scrape_search_log(file):
-    """assumes fast downward like log files"""
-
-    stats = {
-        "first_h": -1,
-        "solved": 0,
-        "time": -1,
-        "cost": -1,
-        "expanded": -1,
-        "evaluated": -1,
-        "seen_colours": -1,  # for the wl methods only
-        "unseen_colours": -1,
-        "ratio_seen_colours": -1,
-        "std": -1,
-        "tried": 0,
-    }
-
-    if not os.path.exists(file):
-        return stats
-    
-    with open(file, "r") as f:
-        for line in f.readlines():
-            line = line.replace(" state(s).", "")
-            toks = line.split()
-            if len(toks) == 0:
-                continue
-
-            if "Solution found." in line:
-                stats["solved"] = 1
-            elif "Search time:" in line:
-                stats["time"] = float(toks[-1].replace("s", ""))
-            elif "Plan cost:" in line:
-                stats["cost"] = int(toks[-1])
-            elif len(toks) >= 2 and "Expanded" == toks[-2]:
-                stats["expanded"] = int(toks[-1])
-            elif len(toks) >= 2 and "Evaluated" == toks[-2]:
-                stats["evaluated"] = int(toks[-1])
-            elif "Initial heuristic value" in line:
-                stats["first_h"] = int(toks[-1])
-            elif "seen/unseen colours in itr" in line:
-                stats["seen_colours"] += int(toks[-2])
-                stats["unseen_colours"] += int(toks[-1])
-            elif "Computed std at initial state:" in line:
-                stats["std"] = float(toks[-1])
-
-    if stats["seen_colours"] != -1 and stats["unseen_colours"] != -1:
-        stats["seen_colours"] += 1
-        stats["unseen_colours"] += 1
-        stats["ratio_seen_colours"] = stats["seen_colours"] / (
-            stats["seen_colours"] + stats["unseen_colours"]
-        )
-
-    if stats["time"] > 1800:  # assume timeout is 1800
-        stats["solved"] = 0
-        stats["time"] = 1800
-
-    stats["tried"] = 1
-
-    return stats
+from util import *
 
 
 class TestWlf(unittest.TestCase):
     def test_wlf_ilg_gpr(self):
         # train
         print("========= Training =========")
-        cmd = "python3 train.py experiments/models/wlf_ilg_gpr.toml experiments/ipc23-learning/blocksworld.toml --save-file tests/test.model"
-        output = get_output(cmd)
+        cmd = "python3 train.py experiments/models/wlf_ilg_gpr.toml experiments/ipc23-learning/blocksworld.toml --save-file tests/wlf_test.model"
+        log_output, err_output = get_output(cmd)
 
         mse_train = None
         mse_val = None
@@ -105,7 +15,7 @@ class TestWlf(unittest.TestCase):
         f1_val = None
         model_saved = False
 
-        for line in output:
+        for line in log_output:
             toks = line.split()
             if len(toks) > 0 and toks[0] == "mse":
                 mse_train = float(toks[2])
@@ -117,33 +27,40 @@ class TestWlf(unittest.TestCase):
                 model_saved = True
 
         f = "tests/train_wlf.log"
-        log_output(output, f)
+        log((log_output, err_output), f)
 
-        self.assertTrue(mse_train is not None)
-        self.assertTrue(mse_val is not None)
-        self.assertTrue(f1_train is not None)
-        self.assertTrue(f1_val is not None)
+        if (
+            mse_train is None
+            or mse_val is None
+            or f1_train is None
+            or f1_val is None
+        ):
+            self.assertTrue(False, "\n".join(err_output))
 
         self.assertTrue(model_saved)
 
-        self.assertTrue(mse_train < _TOL, f"mse_train: {mse_train}")
+        self.assertTrue(mse_train < TOL, f"mse_train: {mse_train}")
         self.assertTrue(mse_val < 1.0, f"mse_val: {mse_val}")
-        self.assertTrue(f1_train > 1 - _TOL, f"f1_train: {f1_train}")
+        self.assertTrue(f1_train > 1 - TOL, f"f1_train: {f1_train}")
         self.assertTrue(f1_val > 0.5, f"f1_val: {f1_val}")
+        print(f"mse_train: {mse_train}")
+        print(f"mse_val: {mse_val}")
+        print(f"f1_train: {f1_train}")
+        print(f"f1_val: {f1_val}")
 
         # run
-        cmd_cpp = "python3 run_wlf.py benchmarks/ipc23-learning/blocksworld/domain.pddl benchmarks/ipc23-learning/blocksworld/testing/medium/p01.pddl tests/test.model"
+        cmd_cpp = "python3 run_wlf.py benchmarks/ipc23-learning/blocksworld/domain.pddl benchmarks/ipc23-learning/blocksworld/testing/medium/p01.pddl tests/wlf_test.model"
         cmd_py = cmd_cpp + " --pybind"
- 
+
         cpp_f = "tests/run_wlf_cpp.log"
         py_f = "tests/run_wlf_py.log"
 
         print("========= Executing search with cpp =========")
-        output_cpp = get_output(cmd_cpp)       
-        log_output(output_cpp, cpp_f)
+        output_cpp = get_output(cmd_cpp)
+        log(output_cpp, cpp_f)
         print("========= Executing search with py =========")
         output_py = get_output(cmd_py)
-        log_output(output_py, py_f)
+        log(output_py, py_f)
 
         cpp_stats = scrape_search_log(cpp_f)
         py_stats = scrape_search_log(py_f)
@@ -154,6 +71,7 @@ class TestWlf(unittest.TestCase):
             self.assertTrue(
                 cpp_val == py_val, f"cpp_{key}: {cpp_val}, py_{key}: {py_val}"
             )
+            print(f"{key}: {cpp_val}")
 
 
 if __name__ == "__main__":
