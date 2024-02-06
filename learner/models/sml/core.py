@@ -26,6 +26,8 @@ MSE_KEY = "mse"
 
 F1_KEEP_TOL = 1e-3
 
+GPR_ALPHA = 1e-7
+
 SCORER = {
     MSE_KEY: mean_squared_error,
     F1_KEY: f1_macro,
@@ -93,7 +95,7 @@ def add_sml_args(parser):
     return parser
 
 
-def init_reg_model(model_name: str, regularise: bool):
+def init_reg_model(model_name: str, regularise: bool, gpr_a: float):
     if regularise:
         e = 0
         c = 1e5  # inverse strength
@@ -132,8 +134,8 @@ def init_reg_model(model_name: str, regularise: bool):
     if model_name == "blr":
         return BayesianRidge()
     if model_name == "gpr":
-        return GaussianProcessRegressor(kernel=DotProduct(), alpha=1e-7)
-    
+        return GaussianProcessRegressor(kernel=DotProduct(), alpha=gpr_a)
+
     raise ValueError(f"Unknown model name: {model_name}")
 
 
@@ -204,10 +206,7 @@ class BaseModel:
         if schemata is None:
             schemata = [ALL_KEY]
         for schema in schemata:
-            self._models[schema] = init_reg_model(
-                model_name=self.model_name,
-                regularise=(schema == ALL_KEY),
-            )
+            self.init_ml_model(schema)
 
     def train(self) -> None:
         """set train mode, similar to pytorch models"""
@@ -216,6 +215,13 @@ class BaseModel:
     def eval(self) -> None:
         """set eval mode, similar to pytorch models"""
         pass
+
+    def init_ml_model(self, schema, gpr_a=GPR_ALPHA) -> None:
+        self._models[schema] = init_reg_model(
+            model_name=self.model_name,
+            regularise=(schema == ALL_KEY),
+            gpr_a=gpr_a,
+        )
 
     def fit_all(self, X, y_dict) -> None:
         # fit up to len(schemata) + 1 models
@@ -227,8 +233,16 @@ class BaseModel:
         print(f"Fitting model for learning number of '{schema}' in a plan...")
         if self.model_name == "mip":
             X = self._transform_for_mip(X)
-        self._models[schema].fit(X, y)
-
+        gpr_a = GPR_ALPHA
+        while True:
+            try:
+                self._models[schema].fit(X, y)
+                break
+            except np.linalg.LinAlgError:
+                gpr_a *= 1e2
+                self.init_ml_model(schema=schema, gpr_a=gpr_a)
+                print(f"Encountered LinAlgError, increasing alpha to {gpr_a}")
+    
     def _transform_for_mip(self, X):
         return X
 

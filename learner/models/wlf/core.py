@@ -3,17 +3,11 @@ A wrapper for the WL pipeline that involves the feature generator and machine
 learning model using generated features
 """
 
-import random
-import time
 import traceback
 import numpy as np
-from tqdm import tqdm
 from typing import Iterable, List, Optional, Dict, Tuple, Union
-from sklearn.metrics import mean_squared_error
-from sklearn.model_selection import train_test_split
 from representation import CGraph, Representation, REPRESENTATIONS, State
 from models.sml.core import LINEAR_MODELS, BaseModel
-from util.stats import get_stats
 from .base_wl import Histogram, NO_EDGE, WlAlgorithm
 from .wl1 import ColourRefinement
 from .wl2 import WL2
@@ -300,78 +294,7 @@ class Model(BaseModel):
         domain_pddl: str,
         problem_pddl: str,
     ) -> str:
-        # returns new model data path (contains hash and weights)
-
-        try:
-            from dataset.wlf import get_dataset_from_args
-
-            assert len(states) == len(ys)
-            self.train()
-
-            print("Loading initial training data...")
-            graphs, y_true = get_dataset_from_args(self._args)
-            graphs_train, _, y_train, _ = train_test_split(
-                graphs, y_true, test_size=0.33, random_state=2023
-            )
-            y_train = [y[ALL_KEY] for y in y_train]
-            print(f"Initial training data has {len(graphs_train)} graphs")
-
-            print("Updating model representation...")
-            self.update_representation(domain_pddl, problem_pddl)
-
-            _SELECTION = 0.5
-            print(
-                f"Generating training data from {int(len(graphs_train) * _SELECTION)} out of {len(states)} new states..."
-            )
-            new_data = list(zip(states, ys))
-            random.seed(2023)
-            random.shuffle(new_data)
-            new_data = new_data[: int(len(graphs_train) * _SELECTION)]
-            new_ys = []
-            for s, y in tqdm(new_data):
-                ## cpp code already converts states to (pred, [args]) form
-                graph = self._representation.state_to_cgraph(s)
-                graphs_train.append(graph)
-                new_ys.append(y)
-            y_train = np.concatenate((y_train, np.array(new_ys)))
-
-            # log dataset stats
-            get_stats(
-                dataset=list(zip(graphs_train, y_train)),
-                desc="Online train dataset",
-            )
-
-            # try updating iterations
-            # self._wl.update_iterations(self.iterations * 4)
-
-            print("Generating histograms...")
-            train_histograms = self.compute_histograms(
-                graphs_train, return_ratio_seen_counts=False
-            )
-
-            print("Generating matrix...")
-            X_train = self.get_matrix_representation(
-                graphs_train, train_histograms
-            )
-
-            t = time.time()
-            print("Training...")
-            self.fit(X_train, y_train)
-            print(f"Training complete in {time.time() - t:.2f}s!")
-
-            y_train_pred = self.predict(X_train)
-            mse = mean_squared_error(y_train_pred, y_train)
-            print("mse:", mse)
-
-            print("Writing model data...")
-            self.write_model_data()
-
-            self.eval()
-            print(f"New hash size:", len(self.get_hash()))
-            print("Python online training completed!", flush=True)
-            return self._model_data_path
-        except Exception:
-            print(traceback.format_exc(), flush=True)
+        raise NotImplementedError
 
     @property
     def n_colours_(self) -> int:

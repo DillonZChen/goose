@@ -71,7 +71,7 @@ def parse_args():
 
     # save file
     parser.add_argument(
-        "--save-file", dest="save_file", type=str, default=None
+        "--save_file", dest="save_file", type=str, default=None
     )
 
     # gpu device (if exists)
@@ -83,6 +83,7 @@ def parse_args():
 
 
 if __name__ == "__main__":
+    raise NotImplementedError("not implemented after refactoring")
     args = parse_args()
     print_arguments(args)
 

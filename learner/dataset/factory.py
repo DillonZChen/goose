@@ -1,7 +1,7 @@
 import os
+import time
 from dataclasses import dataclass
 from typing import Dict, Iterable, List, Union
-from tqdm import tqdm
 from dlplan.state_space import generate_state_space, GeneratorExitCode
 from dlplan.core import State as DLPlanState, VocabularyInfo
 
@@ -67,7 +67,9 @@ def state_cost_dataset_from_plans(
     instance_info = state_space.get_instance_info()
     vocabulary_info = instance_info.get_vocabulary_info()
 
-    for plan_file in tqdm(sorted(list(os.listdir(plans_dir)))):
+    print("Generating data from plans...")
+    t = time.time()
+    for plan_file in sorted(list(os.listdir(plans_dir))):
         problem_pddl = f"{tasks_dir}/{plan_file.replace('.plan', '.pddl')}"
         assert os.path.exists(problem_pddl), problem_pddl
         plan_file = f"{plans_dir}/{plan_file}"
@@ -185,6 +187,7 @@ def state_cost_dataset_from_plans(
             state_cost_data.append(data)
             schema_cnt[schema] -= 1
             schema_cnt[ALL_KEY] -= 1
+    print(f"Completed generating data from plans in {time.time()-t:.2f}s")
 
     dataset = StateCostDataset(
         state_cost_data_list=state_cost_data, vocabulary_info=vocabulary_info
@@ -207,7 +210,9 @@ def state_cost_dataset_from_spaces(
     vocabulary_info = instance_info.get_vocabulary_info()
 
     collected_from = []
-    for f in tqdm(sorted(list(os.listdir(tasks_dir)))):
+    print("Generating data from spaces...")
+    t = time.time()
+    for f in sorted(list(os.listdir(tasks_dir))):
         problem_pddl = f"{tasks_dir}/{f}"
         generator = generate_state_space(
             domain_file=domain_pddl,
@@ -237,6 +242,7 @@ def state_cost_dataset_from_spaces(
                     problem_pddl,
                 )
                 state_cost_data.append(data)
+    print(f"Completed generating data from spaces in {time.time()-t:.2f}s")
 
     n_states = len(state_cost_data)
     print(f"Collected {n_states} states from {len(collected_from)} problems:")

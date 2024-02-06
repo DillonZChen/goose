@@ -81,6 +81,9 @@ def main():
     y_tr = reformat_y(y_tr)
     y_va = reformat_y(y_va)
 
+    print("X_train shape:", X_tr.shape)
+    print("X_val shape:", X_va.shape)
+
     # parse schema count strategy
     schema_strat = args.schema_count_strategy
     assert schema_strat == SCS_NONE

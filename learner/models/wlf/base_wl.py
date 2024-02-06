@@ -4,10 +4,8 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 import numpy as np
-import networkx as nx
 from abc import ABC, abstractmethod
 from typing import List, Dict, Optional, Tuple, Union
-from tqdm import tqdm
 from representation import CGraph
 
 
@@ -54,7 +52,7 @@ class WlAlgorithm(ABC):
                 self._get_hash_value(colour)
 
         # compute colours and hashmap from training data
-        for G in tqdm(graphs):
+        for G in graphs:
             G_seen_count = self._hit_colours
             G_unseen_count = self._missed_colours
 

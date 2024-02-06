@@ -4,7 +4,6 @@ from dataset.factory import StateCostDataset
 from models.sml.core import BaseModel
 from dlplan.generator import generate_features
 from dlplan.core import SyntacticElementFactory
-from tqdm import tqdm
 
 
 class Model(BaseModel):
@@ -49,7 +48,7 @@ class Model(BaseModel):
 
         xs = []
 
-        for state in tqdm(states):
+        for state in states:
             x = []
 
             ## using caches does not give us a speed up
