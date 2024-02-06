@@ -5,6 +5,8 @@
 *.graph
 *.json
 *.log
+*.txt
+*.sas
 .stignore
 __pycache__/
 aux/
