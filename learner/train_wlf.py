@@ -13,6 +13,7 @@ from models.sml.schema_count_strategy import get_schemata_from_data
 from dataset.factory import (
     state_cost_dataset_from_plans,
     group_by_problem,
+    reformat_y,
 )
 
 warnings.filterwarnings("ignore")
@@ -75,10 +76,8 @@ def main():
     plans_dir = args.plans_dir
     dataset = state_cost_dataset_from_plans(domain_pddl, tasks_dir, plans_dir)
     dataset_by_problem = group_by_problem(dataset)
-
     graphs = []
-    y_true = [d.cost for d in dataset.state_cost_data]
-
+    y_true = [d.cost for d in dataset.state_cost_data_list]
     for problem_pddl, state_cost_data_list in dataset_by_problem.items():
         rep = representation.REPRESENTATIONS[args.rep](
             domain_pddl=domain_pddl, problem_pddl=problem_pddl
@@ -87,17 +86,18 @@ def main():
             state = rep.str_to_state(data.state)
             graph = rep.state_to_cgraph(state)
             graphs.append(graph)
-
     graphs_tr, graphs_va, y_tr, y_va = train_test_split(
         graphs,
         y_true,
         test_size=0.33,
         random_state=2023,
     )
+    y_tr = reformat_y(y_tr)
+    y_va = reformat_y(y_va)
 
     # parse schema count strategy
     schema_strat = args.schema_count_strategy
-    schemata = get_schemata_from_data(schema_strat, y_tr)
+    schemata = get_schemata_from_data(schema_strat, dataset)
 
     # init model
     model = Model(args, schemata)
@@ -111,10 +111,6 @@ def main():
     print(f"Initialised {args.features} for {len(graphs_tr)} graphs")
     print(f"Collected {model.n_colours_} colours over {n_tr_nodes} nodes")
     X_tr = model.get_matrix_representation(graphs_tr, tr_histograms)
-    y_tr_true = {s: [] for s in schemata}
-    for y_dict in y_tr:
-        for s in schemata:
-            y_tr_true[s].append(y_dict[s])
     print(f"Set up training data in {time.time()-t:.2f}s")
 
     # validation data
@@ -123,10 +119,6 @@ def main():
     t = time.time()
     histograms_va = model.compute_histograms(graphs_va)
     X_va = model.get_matrix_representation(graphs_va, histograms_va)
-    y_va_true = {s: [] for s in schemata}
-    for y_dict in y_va:
-        for s in schemata:
-            y_va_true[s].append(y_dict[s])
     print(f"Set up validation data in {time.time()-t:.2f}s")
 
     # wl colour information
@@ -140,11 +132,11 @@ def main():
     # training
     print(f"Training {args.model}...")
     t = time.time()
-    model.fit_all(X_tr, y_tr_true)
+    model.fit_all(X_tr, y_tr)
     print(f"Model training completed in {time.time()-t:.2f}s")
 
     # predict logging
-    predict(model, X_tr, y_tr_true, X_va, y_va_true, schemata, schema_strat)
+    predict(model, X_tr, y_tr, X_va, y_va, schemata, schema_strat)
 
     # save model
     save_kernel_model(model, args)

@@ -1,5 +1,6 @@
 import numpy as np
-from models.sml.core import BaseModel, ALL_KEY
+from dataset.factory import StateCostDataset
+from models.sml.core import BaseModel
 from dlplan.generator import generate_features
 from dlplan.core import SyntacticElementFactory
 from tqdm import tqdm
@@ -21,31 +22,32 @@ class Model(BaseModel):
         feature = parse(feature_repr)
         return feature
 
-    def convert_training_data(self, problem_states_dict, vocabulary_info):
-        self.factory = SyntacticElementFactory(vocabulary_info)
+    def convert_training_data(self, dataset: StateCostDataset):
+        self.factory = SyntacticElementFactory(dataset.vocabulary_info)
 
-        states_to_y = {}
-        for _, states in problem_states_dict.items():
-            for state, y in states.items():
-                states_to_y[state] = y
+        states = []
+        ys = []
+
+        for data in dataset.state_cost_data_list:
+            states.append(data.state)
+            ys.append(data.cost)
 
         args = self._args
         features = generate_features(
             self.factory,
-            list(states_to_y.keys()),
+            states,
             feature_limit=args.feature_limit,
-            concept_complexity_limit=args.concept_complexity,
-            role_complexity_limit=args.role_complexity,
-            boolean_complexity_limit=args.boolean_complexity,
-            count_numerical_complexity_limit=args.count_num_complexity,
-            distance_numerical_complexity_limit=args.distance_num_complexity,
+            concept_complexity_limit=args.concept_complexity_limit,
+            role_complexity_limit=args.role_complexity_limit,
+            boolean_complexity_limit=args.boolean_complexity_limit,
+            count_numerical_complexity_limit=args.count_numerical_complexity_limit,
+            distance_numerical_complexity_limit=args.distance_numerical_complexity_limit,
         )
         features = sorted([f for f in features if f[0] in {"b", "n"}])
 
         xs = []
-        ys = []
 
-        for state, y in tqdm(states_to_y.items()):
+        for state in tqdm(states):
             x = []
 
             ## using caches does not give us a speed up
@@ -59,9 +61,7 @@ class Model(BaseModel):
                 x.append(int(feature.evaluate(state)))
 
             xs.append(x)
-            ys.append(y)
 
         xs = np.array(xs)
-        ys = np.array(ys)
 
         return xs, ys

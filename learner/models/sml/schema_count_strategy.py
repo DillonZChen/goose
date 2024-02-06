@@ -1,5 +1,4 @@
-from typing import Dict, List
-
+from dataset.factory import StateCostDataset
 
 SCS_ALL = "all"
 SCS_NONE = "none"
@@ -8,8 +7,8 @@ SCS_SCHEMA_APPROX = "schema_approx"
 
 ALL_KEY = "_all_"
 
-def get_schemata_from_data(schema_strat, data : List[Dict[str, float]]):
-    schemata = sorted(list(data[0].keys()))
+def get_schemata_from_data(schema_strat, dataset : StateCostDataset):
+    schemata = dataset.schemata
     if schema_strat == SCS_NONE:
         schemata = [ALL_KEY]
     elif schema_strat == SCS_ALL:

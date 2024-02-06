@@ -64,6 +64,12 @@ LINEAR_MODELS = {
 
 
 def add_sml_args(parser):
+    parser.add_argument(
+        "--save-file",
+        type=str,
+        default=None,
+        help="save file of model weights",
+    )
     parser.add_argument("--seed", type=int, default=0, help="random seed")
     parser.add_argument(
         "-m",
@@ -72,12 +78,6 @@ def add_sml_args(parser):
         default="linear-svr",
         choices=MODELS,
         help="ML model",
-    )
-    parser.add_argument(
-        "--save-file",
-        type=str,
-        default=None,
-        help="save file of model weights",
     )
     parser.add_argument(
         "-s",
