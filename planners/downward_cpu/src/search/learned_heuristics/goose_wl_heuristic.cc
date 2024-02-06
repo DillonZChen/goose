@@ -9,10 +9,10 @@
 #include <unordered_map>
 #include <vector>
 
-#include "../plugins/plugin.h"
-#include "../task_utils/task_properties.h"
 #include "../goose/ilg.h"
 #include "../goose/opg.h"
+#include "../plugins/plugin.h"
+#include "../task_utils/task_properties.h"
 
 using std::string;
 namespace py = pybind11;
@@ -48,91 +48,35 @@ WLGooseHeuristic::WLGooseHeuristic(const plugins::Options &opts)
     instance_file = opts.get<std::string>("instance_file");
     std::cout << "Trying to load model from file " << model_path << " ...\n";
     py::module util_module = py::module::import("models.save_load");
-    model = util_module.attr("load_ml_model_and_setup")(
-        model_path, domain_file, instance_file);
+    model = util_module.attr("load_ml_model_and_setup")(model_path, domain_file,
+                                                        instance_file);
     std::cout << "Loaded model!" << std::endl;
 
-    // use I/O to get graph, WL and ML data (hash and weights)
-    model.attr("write_model_data")();
-    std::string model_data_path =
-        model.attr("get_model_data_path")().cast<std::string>();
-    update_model_from_data_path(model_data_path);
+    update_from_py_model();
   } catch (py::error_already_set &e) {
     std::cout << "encountered some python error" << std::endl;
     exit(-1);
   }
 }
 
-void WLGooseHeuristic::update_model_from_data_path(
-    const std::string model_data_path) {
-  // load model data
-  std::string line;
-  std::ifstream infile(model_data_path);
-  int hash_cnt = 0, hash_size = 0, weight_cnt = 0, weight_size = 0;
+void WLGooseHeuristic::update_from_py_model() {
+  iterations_ = model.attr("get_iterations")().cast<int>();
+  graph_representation_ =
+      model.attr("get_representation")().cast<std::string>();
+  wl_algorithm_ = model.attr("get_wl_algorithm")().cast<std::string>();
+  NO_EDGE_ = model.attr("get_no_edge_colour")().cast<int>();
+  hash_ = model.attr("get_hash")().cast<std::unordered_map<std::string, int>>();
 
-  hash_ = std::unordered_map<std::string, int>();
-
-  // there's probably a better way to parse things
-  while (std::getline(infile, line)) {
-    std::vector<std::string> toks;
-    std::istringstream iss(line);
-    std::string s;
-    while (std::getline(iss, s, ' ')) {
-      toks.push_back(s);
-    }
-    if (line.find("hash size") != std::string::npos) {
-      hash_size = stoi(toks[0]);
-      hash_cnt = 0;
-      continue;
-    } else if (line.find("linear model(s)") != std::string::npos) {
-      n_linear_models_ = stoi(toks[0]);
-      weights_ = std::vector<std::vector<double>>(n_linear_models_,
-                                                  std::vector<double>());
-    } else if (line.find("weights size") != std::string::npos) {
-      weight_size = stoi(toks[0]);
-      weight_cnt = 0;
-      continue;
-    } else if (line.find("bias") != std::string::npos) {
-      for (int i = 0; i < n_linear_models_; i++) {
-        bias_.push_back(stod(toks[i]));
-      }
-      continue;
-    } else if (line.find("iterations") != std::string::npos) {
-      iterations_ = stoi(toks[0]);
-      continue;
-    } else if (line.find("representation") != std::string::npos) {
-      graph_representation_ = toks[0];
-      continue;
-    } else if (line.find("wl_algorithm") != std::string::npos) {
-      wl_algorithm_ = toks[0];
-      continue;
-    } else if (line.find("NO_EDGE") != std::string::npos) {
-      NO_EDGE_ = stoi(toks[0]);
-      continue;
-    }
-
-    if (hash_cnt < hash_size) {
-      hash_[toks[0]] = stoi(toks[1]);
-      hash_cnt++;
-      continue;
-    }
-
-    if (weight_cnt < weight_size) {
-      for (int i = 0; i < n_linear_models_; i++) {
-        weights_[i].push_back(stod(toks[i]));
-      }
-      weight_cnt++;
-      continue;
-    }
-  }
+  // get weights from pybind model
+  n_linear_models_ = 1;  // TODO fix for MQ search
+  weights_ =
+      std::vector<std::vector<double>>(n_linear_models_, std::vector<double>());
+  bias_ = std::vector<double>(n_linear_models_, 0.0);
+  weights_[0] = model.attr("get_weights")().cast<std::vector<double>>();
+  bias_[0] = model.attr("get_bias")().cast<double>();
 
   cnt_seen_colours = std::vector<long>(iterations_, 0);
   cnt_unseen_colours = std::vector<long>(iterations_, 0);
-
-  // remove file
-  char *char_array = new char[model_data_path.length() + 1];
-  strcpy(char_array, model_data_path.c_str());
-  remove(char_array);
 
   // store feature size
   feature_size_ = static_cast<int>(hash_.size());
@@ -145,13 +89,16 @@ void WLGooseHeuristic::update_model_from_data_path(
   }
 
   // collect and check supported graph representation
+  // TODO could be made nicer without file I/O but not worth spending time
   model.attr("write_representation_to_file")();
   std::string graph_data_path =
       model.attr("get_graph_file_path")().cast<std::string>();
   if (graph_representation_ == "ilg") {
-    graph_ = std::make_shared<InstanceLearningGraph>(InstanceLearningGraph(graph_data_path));
+    graph_ = std::make_shared<InstanceLearningGraph>(
+        InstanceLearningGraph(graph_data_path));
   } else if (graph_representation_ == "opg") {
-    graph_ = std::make_shared<ObjectPairGraph>(ObjectPairGraph(graph_data_path));
+    graph_ =
+        std::make_shared<ObjectPairGraph>(ObjectPairGraph(graph_data_path));
   } else {
     std::cout << "error: " << graph_representation_ << " not supported"
               << std::endl;
@@ -175,7 +122,8 @@ std::shared_ptr<CGraph> WLGooseHeuristic::state_to_graph(const State &state) {
   return graph_->predicate_arguments_to_graph(pred_args);
 }
 
-std::vector<int> WLGooseHeuristic::wl_feature(const std::shared_ptr<CGraph> &graph) {
+std::vector<int>
+WLGooseHeuristic::wl_feature(const std::shared_ptr<CGraph> &graph) {
   if (wl_algorithm_ == "1wl") {
     return wl1_feature(graph);
   } else if (wl_algorithm_ == "2gwl") {
@@ -190,7 +138,8 @@ std::vector<int> WLGooseHeuristic::wl_feature(const std::shared_ptr<CGraph> &gra
   return std::vector<int>();
 }
 
-std::vector<int> WLGooseHeuristic::wl1_feature(const std::shared_ptr<CGraph> &graph) {
+std::vector<int>
+WLGooseHeuristic::wl1_feature(const std::shared_ptr<CGraph> &graph) {
   // feature to return is a histogram of colours seen during training
   std::vector<int> feature(feature_size_, 0);
 
@@ -317,7 +266,8 @@ inline int triple_to_index_map(int n, int i, int j, int k) {
   return i + (j * (j - 1)) / 2 + (k * (k - 1) * (k - 2)) / 6;
 }
 
-std::vector<int> WLGooseHeuristic::gwl2_feature(const std::shared_ptr<CGraph> &graph) {
+std::vector<int>
+WLGooseHeuristic::gwl2_feature(const std::shared_ptr<CGraph> &graph) {
   // feature to return is a histogram of colours seen during training
   std::vector<int> feature(feature_size_, 0);
 
@@ -521,7 +471,8 @@ std::vector<int> WLGooseHeuristic::gwl2_feature(const std::shared_ptr<CGraph> &g
   return feature;
 }
 
-std::vector<int> WLGooseHeuristic::lwl2_feature(const std::shared_ptr<CGraph> &graph) {
+std::vector<int>
+WLGooseHeuristic::lwl2_feature(const std::shared_ptr<CGraph> &graph) {
   // feature to return is a histogram of colours seen during training
   std::vector<int> feature(feature_size_, 0);
 
@@ -698,7 +649,8 @@ std::vector<int> WLGooseHeuristic::lwl2_feature(const std::shared_ptr<CGraph> &g
   return feature;
 }
 
-std::vector<int> WLGooseHeuristic::lwl3_feature(const std::shared_ptr<CGraph> &graph) {
+std::vector<int>
+WLGooseHeuristic::lwl3_feature(const std::shared_ptr<CGraph> &graph) {
   // feature to return is a histogram of colours seen during training
   std::vector<int> feature(feature_size_, 0);
 

@@ -36,7 +36,7 @@ class Model(BaseModel):
 
         self._iterations = args.iterations
         self._prune = args.prune
-        self._rep_type = args.rep
+        self._rep_type: str = args.rep
         self._representation = None
 
         self._wl: WlAlgorithm = WL_FEATURE_GENERATORS[args.features](
@@ -104,8 +104,17 @@ class Model(BaseModel):
     def get_iterations(self) -> int:
         return self._wl.iterations
 
+    def get_representation(self) -> str:
+        return self._rep_type
+    
+    def get_wl_algorithm(self) -> str:
+        return self.wl_name
+
     def get_hash(self) -> Dict[str, int]:
         return self._wl.get_hash()
+    
+    def get_no_edge_colour(self) -> int:
+        return NO_EDGE
 
     def compute_histograms(
         self, graphs: CGraph, return_ratio_seen_counts: bool = False
@@ -147,100 +156,8 @@ class Model(BaseModel):
 
     """ Methods called from cpp """
 
-    def write_model_data(self) -> None:
-        print("Writing model data to file...", flush=True)
-        try:
-            from datetime import datetime
-
-            write_weights = self.model_name in LINEAR_MODELS
-
-            df = self._representation.domain_pddl
-            pf = self._representation.problem_pddl
-            t = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-            file_path = "_".join(["graph", df, pf, t])
-            file_path = repr(hash(file_path)).replace("-", "0")
-            file_path = file_path + ".model"
-
-            model_hash = self.get_hash()
-            iterations = self.get_iterations()
-
-            if write_weights:
-                weights = self.get_weights()
-                bias = self.get_bias()
-
-                zero_weights = np.count_nonzero(weights == 0)
-                print(
-                    f"{zero_weights}/{len(weights)} = {zero_weights/len(weights):.2f} are zero"
-                )
-
-                assert len(weights) == len(model_hash)
-
-                for k, v in model_hash.items():
-                    assert (
-                        0 <= v < len(weights)
-                    ), f"{v} not in [0, {len(weights) - 1}]"
-
-            n_linear_models = 0
-            if (
-                hasattr(self, "_other_linear_models")
-                and self._other_linear_models is not None
-            ):
-                n_linear_models = len(self._other_linear_models)
-
-            # write data
-            with open(file_path, "w") as f:
-                f.write(f"{NO_EDGE} NO_EDGE\n")
-                f.write(f"{self._rep_type} representation\n")
-                f.write(f"{self.wl_name} wl_algorithm\n")
-                f.write(f"{iterations} iterations\n")
-
-                f.write(f"{len(model_hash)} hash size\n")
-                for k in model_hash:
-                    f.write(f"{k} {model_hash[k]}\n")
-
-                f.write(f"{n_linear_models + 1} linear model(s)\n")
-
-                if write_weights:
-                    n_weights = len(weights)
-
-                    list_of_weights = [weights]  # n_models x n_weights
-                    list_of_bias = [bias]  # n_models
-
-                    if n_linear_models > 0:
-                        for model in self._other_linear_models:
-                            list_of_weights.append(model[0])
-                            list_of_bias.append(model[1])
-
-                    list_of_weights = np.vstack(
-                        list_of_weights
-                    ).T  # n_weights x n_models
-                    assert list_of_weights.shape == (
-                        n_weights,
-                        n_linear_models + 1,
-                    )
-
-                    f.write(f"{n_weights} weights size\n")
-                    for weights in list_of_weights:
-                        f.write(
-                            " ".join([str(w) for w in weights.tolist()]) + "\n"
-                        )
-                    f.write(
-                        f"{' '.join([str(b) for b in list_of_bias])} bias\n"
-                    )
-
-            self._model_data_path = file_path
-        except Exception:
-            print(traceback.format_exc(), flush=True)
-
     def lifted_state_input(self) -> bool:
         return self._representation.lifted
-
-    def get_model_data_path(self) -> str:
-        print("Getting model file path...", flush=True)
-        try:
-            return self._model_data_path
-        except Exception:
-            print(traceback.format_exc(), flush=True)
 
     def write_representation_to_file(self) -> None:
         print("Writing representation to file...", flush=True)
@@ -272,11 +189,7 @@ class Model(BaseModel):
 
     def predict_h(self, x: Iterable[float]) -> float:
         """predict for single row x"""
-        y = self.predict([x])
-        # try:
-        #     y = self.predict([x])
-        # except Exception:
-        #     print(traceback.format_exc(), flush=True)
+        y = self.predict([x])[0]
         return y
 
     def predict_h_with_std(self, x: Iterable[float]) -> Tuple[float, float]:

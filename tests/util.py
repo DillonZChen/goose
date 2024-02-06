@@ -11,6 +11,7 @@ def in_venv():
 
 
 def get_output(cmd):
+    print("Executing:", cmd)
     cmd = cmd.split(" ")
     p = subprocess.Popen(cmd, stdout=PIPE, stderr=PIPE)
     stdout, stderr = p.communicate()

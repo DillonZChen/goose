@@ -48,7 +48,7 @@ class WLGooseHeuristic : public goose_heuristic::GooseHeuristic {
   std::vector<int> lwl2_feature(const std::shared_ptr<CGraph> &graph);
   std::vector<int> lwl3_feature(const std::shared_ptr<CGraph> &graph);
 
-  void update_model_from_data_path(const std::string model_data_path);
+  void update_from_py_model();
 
  public:
   explicit WLGooseHeuristic(const plugins::Options &opts);
