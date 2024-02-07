@@ -1,5 +1,8 @@
 # ensure this script is run after activating your virtual environment
 
+### Submodules
+git submodule update --init --recursive
+
 ### Build dlplan
 cd dlplan
 cmake -DCMAKE_BUILD_TYPE=Release -S . -B build
