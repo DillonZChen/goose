@@ -208,6 +208,11 @@ class Model(BaseModel):
         problem_pddl: str,
     ) -> str:
         raise NotImplementedError
+    
+    def setup_after_loading(self, path, domain_file, problem_file) -> None:
+        super().setup_after_loading(path, domain_file, problem_file)
+        self.update_representation(domain_file, problem_file)
+        return
 
     @property
     def n_colours_(self) -> int:

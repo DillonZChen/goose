@@ -130,12 +130,7 @@ def load_ml_model_and_setup(path, domain_file, problem_file):
     try:
         print(f"Entered Python code for loading model", flush=True)
         model = load_ml_model(path)
-        model.setup_after_loading(path)
-        print("Updating representation", flush=True)
-        model.update_representation(
-            domain_pddl=domain_file, problem_pddl=problem_file
-        )
-        print("Representation updated!", flush=True)
+        model.setup_after_loading(path, domain_file, problem_file)
         model.eval()
         print("Set to eval mode.", flush=True)
     except Exception:

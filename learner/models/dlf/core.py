@@ -1,10 +1,13 @@
+import time
 import numpy as np
 from typing import List
 from dataset.factory import StateCostDataset
 from models.sml.core import BaseModel
 from dlplan.generator import generate_features
-from dlplan.core import SyntacticElementFactory
+from dlplan.core import SyntacticElementFactory, DenotationsCaches
 
+
+_MAX_VAL = 2147483647
 
 class Model(BaseModel):
     def __init__(self, args) -> None:
@@ -34,6 +37,7 @@ class Model(BaseModel):
             ys.append(data.cost)
 
         args = self._args
+        print("Generating DLF...", flush=True)
         features = generate_features(
             self.factory,
             states,
@@ -45,27 +49,23 @@ class Model(BaseModel):
             distance_numerical_complexity_limit=args.distance_numerical_complexity_limit,
         )
         features = sorted([f for f in features if f[0] in {"b", "n"}])
+        self.features = features
 
+        print("Computing DLF for training data...")
+        t = time.time()
         xs = []
-
         for state in states:
             x = []
-
-            ## using caches does not give us a speed up
-            # caches = DenotationsCaches()
-            # for feature_repr in features:
-            #     feature = parse_feature(feature_repr, factory)
-            #     x.append(int(feature.evaluate(state, caches)))
-
+            caches = DenotationsCaches()
             for feature_repr in features:
                 feature = self.parse_feature(feature_repr)
-                x.append(int(feature.evaluate(state)))
-
+                val = int(feature.evaluate(state, caches))
+                val = 0 if val == _MAX_VAL else val
+                x.append(val)
             xs.append(x)
-
         xs = np.array(xs)
-
-        self.features = features
+        t = time.time() - t
+        print(f"Finished computing DLF for training data in {t:.2f}s")
 
         return xs, ys
 

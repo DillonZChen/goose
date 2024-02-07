@@ -188,6 +188,7 @@ def state_cost_dataset_from_plans(
             schema_cnt[schema] -= 1
             schema_cnt[ALL_KEY] -= 1
     print(f"Completed generating data from plans in {time.time()-t:.2f}s")
+    print(f"{len(state_cost_data)} states collected.")
 
     dataset = StateCostDataset(
         state_cost_data_list=state_cost_data, vocabulary_info=vocabulary_info

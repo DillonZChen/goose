@@ -242,7 +242,7 @@ class BaseModel:
                 gpr_a *= 1e2
                 self.init_ml_model(schema=schema, gpr_a=gpr_a)
                 print(f"Encountered LinAlgError, increasing alpha to {gpr_a}")
-    
+
     def _transform_for_mip(self, X):
         return X
 
@@ -325,5 +325,7 @@ class BaseModel:
     def setup_for_saving(self, save_file: str) -> None:
         pass
 
-    def setup_after_loading(self, save_file: str) -> None:
+    def setup_after_loading(
+        self, save_file: str, domain_pddl: str, problem_pddl: str
+    ) -> None:
         pass

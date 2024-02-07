@@ -142,8 +142,11 @@ int DLPlanHeuristic::compute_heuristic(const State &ancestor_state) {
     h += _b_weights[i] * _b_features[i]->evaluate(dlplan_state, caches);
   }
 
+  int f;
   for (size_t i = 0; i < _n_features.size(); i++) {
-    h += _n_weights[i] * _n_features[i]->evaluate(dlplan_state, caches);
+    f = _n_features[i]->evaluate(dlplan_state, caches);
+    f = f == 2147483646 ? 0 : f;
+    h += _n_weights[i] * f;
   }
 
   return static_cast<int>(std::round(h));
