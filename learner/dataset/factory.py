@@ -58,14 +58,17 @@ def state_cost_dataset_from_plans(
 ) -> StateCostDataset:
     state_cost_data = []
 
-    state_space = generate_state_space(
-        domain_pddl,
-        f"{tasks_dir}/{sorted(list(os.listdir(tasks_dir)))[0]}",
-        index=0,
-        max_num_states=1,
-    ).state_space
-    instance_info = state_space.get_instance_info()
-    vocabulary_info = instance_info.get_vocabulary_info()
+    if dlplan_state:
+        state_space = generate_state_space(
+            domain_pddl,
+            f"{tasks_dir}/{sorted(list(os.listdir(tasks_dir)))[0]}",
+            index=0,
+            max_num_states=1,
+        ).state_space
+        instance_info = state_space.get_instance_info()
+        vocabulary_info = instance_info.get_vocabulary_info()
+    else:
+        vocabulary_info = None
 
     print("Generating data from plans...")
     t = time.time()
