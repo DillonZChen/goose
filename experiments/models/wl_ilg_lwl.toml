@@ -1,0 +1,8 @@
+[model]
+method = "wl"
+
+[config]
+model = "linear-svr"
+rep = "ilg"
+features = "2lwl"
+iterations = 4
