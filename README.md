@@ -18,13 +18,22 @@ See [references](#references) for the corresponding publications.
     - [AAAI-24 Experiments](#aaai-24-experiments)
     - [Bibtex files](#bibtex-files)
   - [Code acknowledgements](#code-acknowledgements)
+  - [TODOs](#todos)
 
 ## Setup
 Use the commands below to make a virtual environment, activate it, install packages, and build cpp components.
-The setup has been tested with python versions 3.10 and higher, but should probably work for lower python3 versions
+The setup has been tested with python versions 3.10 and higher, but should probably work for lower python3 versions as well.
 ```
 python3 -m venv venv
 source venv/bin/activate
+pip install -r requirements.txt
+sh build_components.sh
+```
+
+In case a virtual environment does not work, you can also try anaconda:
+```
+conda create --name goose python=3.10.4
+conda activate goose
 pip install -r requirements.txt
 sh build_components.sh
 ```
@@ -98,3 +107,7 @@ For the bibtex file for WL and GNN architectures using the `ilg` graph represent
 - [Fast Downward](https://github.com/aibasel/downward) by Malte Helmert and various contributors for the planning parser, grounder and grounded search algorithm.
 - [Powerlifted](https://github.com/abcorrea/powerlifted) by Augusto B. Corrêa and various contributors for their lifted planner.
 - All the other various packages listed in the requirements
+
+## TODOs
+- Keep static facts when training and evaluating on Fast Downward states. This could be done by initial state set minus FD preprocessed facts.
+- Reimplement evaluation using Powerlifted.
