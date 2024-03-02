@@ -10,6 +10,7 @@ if __name__ == "__main__":
     parser.add_argument("model_config")
     parser.add_argument("data_config")
     parser.add_argument("--save-file", default=None)
+    parser.add_argument("--seed", default=0, type=int)
     args = parser.parse_args()
 
     model_config = toml.load(args.model_config)
@@ -25,11 +26,11 @@ if __name__ == "__main__":
     for var, val in model_config["config"].items():
         config_args.append(f"--{var}")
         config_args.append(str(val))
-    save_args = []
+    additional_args = ["--seed", str(args.seed)]
     if save_file is not None:
-        save_args = ["--save-file", os.path.abspath(save_file)]
+        additional_args += ["--save-file", os.path.abspath(save_file)]
     p = subprocess.Popen(
-        ["python3", train_script] + data_args + config_args + save_args,
+        ["python3", train_script] + data_args + config_args + additional_args,
         cwd="learner",
     )
     sys.exit(p.wait())
