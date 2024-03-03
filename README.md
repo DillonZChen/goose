@@ -27,7 +27,7 @@ The setup has been tested with python versions 3.10 and higher, but should proba
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-sh build_components.sh
+sh setup.sh
 ```
 
 In case a virtual environment does not work, you can also try anaconda:
@@ -35,7 +35,7 @@ In case a virtual environment does not work, you can also try anaconda:
 conda create --name goose python=3.10.4
 conda activate goose
 pip install -r requirements.txt
-sh build_components.sh
+sh setup.sh
 ```
 
 ## Training
@@ -105,6 +105,7 @@ For the bibtex file for WL and GNN architectures using the `ilg` graph represent
 
 ## Code acknowledgements
 - [Fast Downward](https://github.com/aibasel/downward) by Malte Helmert and various contributors for the planning parser, grounder and grounded search algorithm.
+- [scorpion](https://github.com/jendrikseipp/scorpion) by Jendrik Seipp for a powerful optimal planner for generating planning instances.
 - [Powerlifted](https://github.com/abcorrea/powerlifted) by Augusto B. Corrêa and various contributors for their lifted planner.
 - All the other various packages listed in the requirements
 
