@@ -1,5 +1,7 @@
 """ Main training pipeline script. """
 
+import random
+import numpy as np
 import time
 import torch
 import argparse
@@ -74,6 +76,9 @@ def parse_args():
         "--save-file", dest="save_file", type=str, default=None
     )
 
+    # seed
+    parser.add_argument("--seed", type=int, default=0)
+
     # gpu device (if exists)
     parser.add_argument("--device", type=int, default=0)
 
@@ -85,6 +90,11 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
     print_arguments(args)
+
+    seed = args.seed
+    torch.manual_seed(seed)
+    np.random.seed(seed)
+    random.seed(seed)    
 
     # cuda
     device = torch.device(
