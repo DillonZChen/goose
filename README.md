@@ -76,7 +76,7 @@ The relevant publications for this repository are:
 - Dillon Ze Chen and Felipe Trevizan and Sylvie Thiébaux. **Graph Neural Networks and Graph Kernels For Learning Heuristics: Is there a difference?**. Genplan 2023. [[pdf](https://dillonzchen.github.io/publications/Chen2023Goose.pdf)]
 
 ### AAAI-24 Experiments
-For source code corresponding to experiments from our AAAI-24 publication, please refer to this [release](https://github.com/DillonZChen/goose/releases/tag/v1.0.0).
+For source code corresponding to experiments from our AAAI-24 publication, please refer to this [release](https://github.com/DillonZChen/goose/releases/tag/aaai-24).
 
 ### Bibtex files
 For the bibtex file for GNN architectures using the `slg`, `flg` and `llg` graph representations:
