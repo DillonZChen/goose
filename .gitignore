@@ -14,3 +14,4 @@ plans/
 venv/
 logs/
 trained_models/
+_*

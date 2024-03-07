@@ -2,6 +2,7 @@
 import time
 import argparse
 import numpy as np
+import random
 import representation
 import models.wl
 import warnings
@@ -17,7 +18,7 @@ from util.metrics import f1_macro
 
 warnings.filterwarnings("ignore")
 
-_PATH_TO_XGBOOST_BUILD = str(pathlib.Path().resolve()) + "/xgboost_cpp/build"
+_TRAIN_ALL = True
 
 _SC_STRAT_ALL = "all"
 _SC_STRAT_NONE = "none"
@@ -123,16 +124,13 @@ def main():
     args = parse_args()
     print_arguments(args)
     np.random.seed(args.seed)
+    random.seed(args.seed)
 
     # load dataset
     graphs, y_true = get_dataset_from_args(args)
 
-    graphs_train, graphs_val, y_train, y_val = train_test_split(
-        graphs, y_true, test_size=0.33, random_state=2023
-    )
-
     schema_strat = args.schema_count
-    schemata = sorted(list(y_train[0].keys())) if schema_strat else [ALL_KEY]
+    schemata = sorted(list(y_true[0].keys())) if schema_strat else [ALL_KEY]
     if schema_strat == _SC_STRAT_NONE:
         schemata = [ALL_KEY]
     elif schema_strat == _SC_STRAT_ALL:
@@ -140,6 +138,15 @@ def main():
     elif schema_strat == _SC_STRAT_SCHEMA_ONLY:
         schemata.remove(ALL_KEY)
     args.schemata = schemata
+
+    if _TRAIN_ALL:
+        graphs_train = graphs
+        y_train = y_true
+        assert schema_strat == _SC_STRAT_NONE
+    else:
+        graphs_train, graphs_val, y_train, y_val = train_test_split(
+            graphs, y_true, test_size=0.33, random_state=args.seed
+        )
 
     # class decides whether to use classifier or regressor
     model = models.wl.Model(args)
@@ -154,6 +161,7 @@ def main():
     print(f"Initialised {args.features} for {len(graphs_train)} graphs")
     print(f"Collected {model.n_colours_} colours over {n_train_nodes} nodes")
     X_train = model.get_matrix_representation(graphs_train, train_histograms)
+    X_train = X_train.astype(np.float64)
     y_train_true = {s: [] for s in schemata}
     for y_dict in y_train:
         for s in schemata:
@@ -161,23 +169,25 @@ def main():
     print(f"Set up training data in {time.time()-t:.2f}s")
 
     # validation data
-    print(f"Setting up validation data...")
-    model.eval()
-    t = time.time()
-    val_histograms = model.compute_histograms(graphs_val)
-    X_val = model.get_matrix_representation(graphs_val, val_histograms)
-    y_val_true = {s: [] for s in schemata}
-    for y_dict in y_val:
-        for s in schemata:
-            y_val_true[s].append(y_dict[s])
-    print(f"Set up validation data in {time.time()-t:.2f}s")
+    if not _TRAIN_ALL:
+        print(f"Setting up validation data...")
+        model.eval()
+        t = time.time()
+        val_histograms = model.compute_histograms(graphs_val)
+        X_val = model.get_matrix_representation(graphs_val, val_histograms)
+        X_val = X_val.astype(np.float64)
+        y_val_true = {s: [] for s in schemata}
+        for y_dict in y_val:
+            for s in schemata:
+                y_val_true[s].append(y_dict[s])
+        print(f"Set up validation data in {time.time()-t:.2f}s")
 
-    n_hit_colours = model.get_hit_colours()
-    n_missed_colours = model.get_missed_colours()
-    ratio = n_hit_colours / (n_hit_colours + n_missed_colours)
-    print(f"hit colours: {n_hit_colours}")
-    print(f"missed colours: {n_missed_colours}")
-    print(f"ratio hit/all colours: {ratio:.2f}")
+        n_hit_colours = model.get_hit_colours()
+        n_missed_colours = model.get_missed_colours()
+        ratio = n_hit_colours / (n_hit_colours + n_missed_colours)
+        print(f"hit colours: {n_hit_colours}")
+        print(f"missed colours: {n_missed_colours}")
+        print(f"ratio hit/all colours: {ratio:.2f}")
 
     # training
     print(f"Training {args.model}...")
@@ -190,8 +200,9 @@ def main():
     t = time.time()
     print("  For train...")
     y_train_pred = model.predict_all(X_train)
-    print("  For val...")
-    y_val_pred = model.predict_all(X_val)
+    if not _TRAIN_ALL:
+        print("  For val...")
+        y_val_pred = model.predict_all(X_val)
     print(f"Predicting completed in {time.time()-t:.2f}s")
 
     # metrics
@@ -200,19 +211,27 @@ def main():
     train_scores = {
         (m, s): scoring[m](y_train_true[s], y_train_pred[s]) for m, s in itrs
     }
-    val_scores = {
-        (m, s): scoring[m](y_val_true[s], y_val_pred[s]) for m, s in itrs
-    }
+    if not _TRAIN_ALL:
+        val_scores = {
+            (m, s): scoring[m](y_val_true[s], y_val_pred[s]) for m, s in itrs
+        }
     t = time.time()
     schemata_to_keep = set()
     for metric in scoring:
-        print(f"{metric:<10} {'schema':<20} {'train':<10} {'val':<10}")
-        for schema in schemata:
-            t = train_scores[(metric, schema)]
-            v = val_scores[(metric, schema)]
-            print(f"{'':<10} {schema:<20} {t:<10.4f} {v:<10.4f}")
-            if abs(v - 1) < _F1_KEEP_TOL and metric == F1_KEY:
-                schemata_to_keep.add(schema)
+        if not _TRAIN_ALL:
+            print(f"{metric:<10} {'schema':<20} {'train':<10} {'val':<10}")
+            for schema in schemata:
+                t = train_scores[(metric, schema)]
+                v = val_scores[(metric, schema)]
+                print(f"{'':<10} {schema:<20} {t:<10.4f} {v:<10.4f}")
+                if abs(v - 1) < _F1_KEEP_TOL and metric == F1_KEY:
+                    schemata_to_keep.add(schema)
+        else:
+            print(f"{metric:<10} {'schema':<20} {'train':<10}")
+            for schema in schemata:
+                t = train_scores[(metric, schema)]
+                print(f"{'':<10} {schema:<20} {t:<10.4f}")
+
     if schema_strat in {_SC_STRAT_ALL, _SC_STRAT_NONE}:
         schemata_to_keep.add(ALL_KEY)
     elif schema_strat == _SC_STRAT_SCHEMA_ONLY and ALL_KEY in schemata_to_keep:
