@@ -332,7 +332,9 @@ class Model:
                     f"{zero_weights}/{len(weights)} = {zero_weights/len(weights):.2f} are zero"
                 )
 
-                assert len(weights) == len(model_hash)
+                n_weights = len(weights)
+                hash_size = len(model_hash)
+                assert n_weights == hash_size, f"{n_weights} != {hash_size}"
 
                 for k, v in model_hash.items():
                     assert 0 <= v and v < len(

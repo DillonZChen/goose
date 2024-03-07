@@ -5,6 +5,7 @@ from .base_wl import *
 class ColourRefinement(WlAlgorithm):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
+        self._k = 1
 
     def compute_histograms_helper(self, G: CGraph):
         cur_colours = {}

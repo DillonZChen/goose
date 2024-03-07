@@ -162,6 +162,7 @@ def main():
     print(f"Collected {model.n_colours_} colours over {n_train_nodes} nodes")
     X_train = model.get_matrix_representation(graphs_train, train_histograms)
     X_train = X_train.astype(np.float64)
+    print(f"X_train shape: {X_train.shape}")
     y_train_true = {s: [] for s in schemata}
     for y_dict in y_train:
         for s in schemata:

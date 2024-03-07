@@ -12,18 +12,18 @@ class GWL2(WlAlgorithm):
         super().__init__(**kwargs)
 
     def compute_histograms_helper(self, G: CGraph):
+        # probably wrong after updates on other code, see lwl2 for help to update
+        raise NotImplementedError
         cur_colours = {}
         histogram = {}
 
         def store_colour(colour):
             nonlocal histogram
+            colour = repr(colour)
             colour_hash = self._get_hash_value(colour)
             if colour_hash not in histogram:
                 histogram[colour_hash] = 0
             histogram[colour_hash] += 1
-
-        n_nodes = len(G.nodes)
-        assert set(G.nodes) == set(range(n_nodes))
 
         subsets = list(combinations(G.nodes, 2))
 
@@ -60,9 +60,8 @@ class GWL2(WlAlgorithm):
                 for w in G.nodes:
                     if w in subset:  # we want exactly the k-subsets
                         continue
-                    subset1 = tuple(
-                        sorted((u, w))
-                    )  # tuple(sorted(.)) is a hashable
+                    # tuple(sorted(.)) is a hashable
+                    subset1 = tuple(sorted((u, w)))
                     subset2 = tuple(sorted((v, w)))
                     colour = tuple(
                         sorted((cur_colours[subset1], cur_colours[subset2]))

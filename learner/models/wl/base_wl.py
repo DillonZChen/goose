@@ -1,3 +1,4 @@
+from itertools import combinations
 import os
 import sys
 
@@ -34,6 +35,9 @@ class WlAlgorithm(ABC):
         self._hit_colours = 0
         self._missed_colours = 0
 
+        # for getting initial colours
+        self._k = None
+
         return
 
     def compute_histograms(
@@ -47,11 +51,40 @@ class WlAlgorithm(ABC):
         histograms = []
         ratio_seen_counts = []
 
-        # get initial colours
-        for G in graphs:
-            for u in G.nodes:
-                colour = G.nodes[u]["x"]
-                self._get_hash_value(colour)
+        assert self._k is not None
+
+        # get initial colours; quick and dirty repeated code
+        if self._k == 1:
+            for G in graphs:
+                for u in G.nodes:
+                    colour = G.nodes[u]["x"]
+                    self._get_hash_value(colour)
+        elif self._k == 2:
+            for G in graphs:
+                subsets = list(combinations(G.nodes, 2))
+
+                # collect initial colours
+                for subset in subsets:
+                    u, v = subset
+
+                    # initial colour is feature of the node
+                    c_u = G.nodes[u]["x"]
+                    c_v = G.nodes[v]["x"]
+                    # graph is undirected so this equals (v, u) in G.edges
+                    edge = (u, v)
+                    is_edge = edge in G.edges
+                    if is_edge:
+                        edge_colour = G.edges[edge]["edge_label"]
+                        assert edge_colour != NO_EDGE
+                    else:
+                        edge_colour = NO_EDGE  # no edge
+                    # the more general k-wl algorithm colours by looking at colour-isomorphism
+                    colour = (c_u, c_v, edge_colour)
+
+                    self._get_hash_value(colour)
+
+        else:
+            raise NotImplementedError
 
         # compute colours and hashmap from training data
         for G in tqdm(graphs):

@@ -12,6 +12,8 @@ class LWL3(WlAlgorithm):
         super().__init__(**kwargs)
 
     def compute_histograms_helper(self, G: CGraph):
+        # probably wrong after updates on other code, see lwl2 for help to update
+        raise NotImplementedError
         cur_colours = {}
         histogram = {}
 
