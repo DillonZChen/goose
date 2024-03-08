@@ -1,5 +1,14 @@
 import os
 
+# TODO refactor whole code base
+LINEAR_MODELS = {
+    "gpr",
+    "linear-svr",
+    "linear-regression",
+    "ridge",
+    "lasso",
+    "mip",
+}
 
 _DOWNWARD_CPU = "./planners/downward_cpu/fast-downward.py"
 _DOWNWARD_GPU = "./planners/downward_gpu/fast-downward.py"
@@ -40,8 +49,10 @@ def fd_wl(args, aux_file, plan_file):
     from learner.models.save_load import load_kernel_model
 
     model = load_kernel_model(mf)
+    # print(model.get_weights())
+    # exit(-1)
 
-    if args.pybind:
+    if args.pybind or model.model_name not in LINEAR_MODELS:
         model_type = "kernel_model"
     elif model.model_name == "xgb":
         model_type = "xgboost_model"
