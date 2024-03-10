@@ -1,11 +1,9 @@
-MODEL_DIR=icaps24_wl_logs_and_models/models
-TRAIN_LOG_DIR=icaps24_wl_logs_and_models/train_logs
-TEST_LOG_DIR=icaps24_wl_logs_and_models/test_logs
+MODEL_DIR=_models
+TRAIN_LOG_DIR=_train_logs
 
-mkdir -p $MODEL_DIR $TRAIN_LOG_DIR $TEST_LOG_DIR
+mkdir -p $MODEL_DIR $TRAIN_LOG_DIR
 
-# for config in svr-linear svr-rbf lwl gpr; do
-for config in lwl; do
+for config in svr-linear svr-rbf lwl gpr; do
 for domain in blocksworld childsnack ferry floortile miconic rovers satellite sokoban spanner transport; do
 for seed in 0 1 2 3 4; do
     desc=${domain}_${config}_r${seed}

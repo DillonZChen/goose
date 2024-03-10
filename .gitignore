@@ -12,8 +12,4 @@ aux/
 plan/
 plans/
 venv/
-logs/
-trained_models/
 _*
-icaps24_gnn_logs_and_models/
-icaps24_wl_logs_and_models/
