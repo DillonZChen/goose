@@ -19,7 +19,7 @@ from .schema_count_strategy import (
     SCS_SCHEMA_APPROX,
     SCS_SCHEMA_EXACT,
 )
-
+from ..svm import RankSVM
 
 F1_KEY = "f1_macro"
 MSE_KEY = "mse"
@@ -62,6 +62,7 @@ LINEAR_MODELS = {
     "ridge",
     "lasso",
     "mip",
+    "rank-svm",
 }
 
 
@@ -77,7 +78,7 @@ def add_sml_args(parser):
         "-m",
         "--model",
         type=str,
-        default="linear-svr",
+        default="rank-svm",
         choices=MODELS,
         help="ML model",
     )
@@ -135,7 +136,8 @@ def init_reg_model(model_name: str, regularise: bool, gpr_a: float):
         return BayesianRidge()
     if model_name == "gpr":
         return GaussianProcessRegressor(kernel=DotProduct(), alpha=gpr_a)
-
+    if model_name == "rank-svm":
+        return RankSVM(C=c)
     raise ValueError(f"Unknown model name: {model_name}")
 
 

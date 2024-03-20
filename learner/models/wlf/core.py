@@ -117,12 +117,12 @@ class Model(BaseModel):
         return NO_EDGE
 
     def compute_histograms(
-        self, graphs: CGraph, return_ratio_seen_counts: bool = False
+        self, graphs: List[CGraph], return_ratio_seen_counts: bool = False
     ) -> Union[List[Histogram], Tuple[List[Histogram], List[float]]]:
         return self._wl.compute_histograms(graphs, return_ratio_seen_counts)
 
     def get_matrix_representation(
-        self, graphs: CGraph, histograms: Optional[List[Histogram]]
+        self, graphs: List[CGraph], histograms: Optional[List[Histogram]]
     ) -> np.array:
         return self._wl.get_x(graphs, histograms)
 
