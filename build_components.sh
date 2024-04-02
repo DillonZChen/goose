@@ -17,9 +17,9 @@ cmake --build build -j16
 cmake --install build --prefix=../planners/downward_cpu/src/search/ext/dlplan
 cd ..
 
-### Build planners
+## Build planners
 #for planner in downward_cpu downward_gpu powerlifted; do
-#planner=downward_cpu
+##planner=downward_cpu
 #echo
 #echo "========= Building $planner ========="
 #echo

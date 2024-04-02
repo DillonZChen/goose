@@ -507,6 +507,23 @@ fast_downward_plugin(
 )
 
 fast_downward_plugin(
+        NAME PLUGIN_PERFECT_SIBLINGS
+        HELP "plan to states with siblings"
+        SOURCES
+        search_algorithms/plugin_perfect_with_siblings
+        DEPENDS PERFECT_SIBLINGS SEARCH_COMMON
+)
+
+fast_downward_plugin(
+        NAME PERFECT_SIBLINGS
+        HELP "plan to states with siblings"
+        SOURCES
+        search_algorithms/perfect_with_siblings
+        DEPENDS ORDERED_SET SUCCESSOR_GENERATOR
+        DEPENDENCY_ONLY
+)
+
+fast_downward_plugin(
     NAME CGRAPH
     HELP "WL GOOSE CGraphs"
     SOURCES
