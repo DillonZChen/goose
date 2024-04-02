@@ -12,7 +12,7 @@ from models.sml.schema_count_strategy import get_schemata_from_data
 from dataset.factory import (
     state_cost_dataset_from_plans,
     group_by_problem,
-    reformat_y,
+    reformat_y, StateCostDataset, DATA_PATH,
 )
 
 warnings.filterwarnings("ignore")
@@ -64,7 +64,13 @@ def parse_args():
         type=str,
         default="combination",
         choices=["combination", "sequential", "neighbor"],
-        help="reduce feature sizes by discarding colours with count <= prune",
+        help="How to train the ranker",
+    )
+
+    parser.add_argument(
+        "--load",
+        action="store_true",
+        help="load data rather than generate",
     )
 
     args = parser.parse_args()
@@ -82,13 +88,15 @@ def main():
     tasks_dir = args.tasks_dir
     plans_dir = args.plans_dir
     if args.pair == "neighbor":
-        dataset = state_cost_dataset_from_plans(domain_pddl, tasks_dir, plans_dir, planner="fd-rank")
+        if args.load:
+            dataset = StateCostDataset.load(DATA_PATH)
+        else:
+            dataset = state_cost_dataset_from_plans(domain_pddl, tasks_dir, plans_dir, planner="fd-rank")
     else:
         dataset = state_cost_dataset_from_plans(domain_pddl, tasks_dir, plans_dir)
     dataset_by_problem = group_by_problem(dataset)
     graphs_by_problem = []
     i = 0
-    indices = []
     for problem_pddl, state_cost_data_list in dataset_by_problem.items():
         rep = representation.REPRESENTATIONS[args.rep](
             domain_pddl=domain_pddl, problem_pddl=problem_pddl
@@ -97,8 +105,10 @@ def main():
         for data in state_cost_data_list:
             state = rep.str_to_state(data.state)
             graph = rep.state_to_cgraph(state)
-            prob_list.append((graph, data.cost, i))
-            indices.append(i)
+            if args.pair == "neighbor":
+                prob_list.append((graph, data.cost, (data.loc[0], data.loc[1], i)))
+            else:
+                prob_list.append((graph, data.cost, i))
         graphs_by_problem.append(prob_list)
         i += 1
     pairs_va = graphs_by_problem[::len(dataset_by_problem)//10]
@@ -128,9 +138,12 @@ def main():
     print(f"Collected {model.n_colours_} colours over {n_tr_nodes} nodes")
     X_tr = model.get_matrix_representation(list(itertools.chain.from_iterable(graphs_tr)), tr_histograms)
     idx_tr = np.array(list(itertools.chain.from_iterable(idx_tr)))
+    if len(idx_tr.shape) == 1:
+        idx_tr = idx_tr.reshape((-1, 1))
     # X_tr = np.concatenate((X_tr, idx_tr.reshape([-1, 1])), axis=1)
     for key in y_tr.keys():
-        y_tr[key] = np.stack((y_tr[key], idx_tr)).T
+        y_tr[key] = np.concatenate((np.array(y_tr[key]).reshape((-1, 1)),
+                              idx_tr), axis=1)
     print(f"Set up training data in {time.time()-t:.2f}s")
 
     # validation data
@@ -140,8 +153,12 @@ def main():
     histograms_va = model.compute_histograms(list(itertools.chain.from_iterable(graphs_va)))
     X_va = model.get_matrix_representation(list(itertools.chain.from_iterable(graphs_va)), histograms_va)
     idx_va = np.array(list(itertools.chain.from_iterable(idx_va)))
+    if len(idx_va.shape) == 1:
+        idx_va = idx_va.reshape((-1, 1))
+    # X_tr = np.concatenate((X_tr, idx_tr.reshape([-1, 1])), axis=1)
     for key in y_va.keys():
-        y_va[key] = np.stack((y_va[key], idx_va)).T
+        y_va[key] = np.concatenate((np.array(y_va[key]).reshape((-1, 1)),
+                                    idx_va), axis=1)
     # X_va = np.concatenate((X_va, idx_va.reshape([-1, 1])), axis=1)
     print(f"Set up validation data in {time.time()-t:.2f}s")
 

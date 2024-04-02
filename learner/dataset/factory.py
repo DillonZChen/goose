@@ -1,13 +1,14 @@
 import os
+import pickle
 import time
 from dataclasses import dataclass
-from typing import Dict, Iterable, List, Union
+from typing import Dict, Iterable, List, Union, Tuple
 from dlplan.state_space import generate_state_space, GeneratorExitCode
 from dlplan.core import State as DLPlanState, VocabularyInfo
 
 _DOWNWARD = "./../planners/downward_cpu/fast-downward.py"
 _POWERLIFTED = "./../planners/powerlifted/powerlifted.py"
-
+DATA_PATH = "../data/ipc23/ranker/blocksworld"
 ALL_KEY = "_all_"
 
 MAX_NUM_STATES = 10000
@@ -24,6 +25,11 @@ class StateCostData:
 
 
 @dataclass
+class StateRankData(StateCostData):
+    loc: Tuple[int, int]
+
+
+@dataclass
 class StateCostDataset:
     state_cost_data_list: List[StateCostData]
     vocabulary_info: VocabularyInfo
@@ -31,6 +37,21 @@ class StateCostDataset:
     @property
     def schemata(self) -> List[str]:
         return list(self.state_cost_data_list[0].cost.keys())
+
+    def save(self, path):
+        for name, attribute in self.__dict__.items():
+            name = ".".join((name, "pkl"))
+            with open("/".join((path, name)), "wb") as f:
+                pickle.dump(attribute, f)
+
+    @classmethod
+    def load(cls, path):
+        my_model = {}
+        for name in cls.__annotations__:
+            file_name = ".".join((name, "pkl"))
+            with open("/".join((path, file_name)), "rb") as f:
+                my_model[name] = pickle.load(f)
+        return cls(**my_model)
 
 
 def reformat_y(y: List[Dict[str, float]]) -> Dict[str, List[float]]:
@@ -136,41 +157,70 @@ def state_cost_dataset_from_plans(
                 for atom in instance_info.get_atoms()
             }
 
-        # read states written into log file by fd
-        with open(state_file, "r") as f:
-            for line in f.readlines():
-                if ";" in line:
-                    continue
-                line = line.replace("\n", "")
+        if planner == "fd":
+            # read states written into log file by fd
+            with open(state_file, "r") as f:
+                for line in f.readlines():
+                    if ";" in line:
+                        continue
+                    line = line.replace("\n", "")
 
-                if dlplan_state:
-                    state_mod = []
-                    for fact in line.split():
-                        fact = fact.replace(",)", ")")
-                        if (")") not in fact:
-                            fact = fact + "()"
-                        state_mod.append(fact)
-                    atom_idx_vec = [atoms_idx_map[prop] for prop in state_mod]
-                    state = DLPlanState(
-                        instance_info=instance_info,
-                        atom_indices=atom_idx_vec,
-                        index=len(state_cost_data),
-                    )
-                else:
-                    state = set()
+                    if dlplan_state:
+                        state_mod = []
+                        for fact in line.split():
+                            fact = fact.replace(",)", ")")
+                            if (")") not in fact:
+                                fact = fact + "()"
+                            state_mod.append(fact)
+                        atom_idx_vec = [atoms_idx_map[prop] for prop in state_mod]
+                        state = DLPlanState(
+                            instance_info=instance_info,
+                            atom_indices=atom_idx_vec,
+                            index=len(state_cost_data),
+                        )
+                    else:
+                        state = set()
+                        for fact in line.split():
+                            if "(" not in fact:
+                                fact_str = f"({fact})"
+                            else:
+                                pred = fact[: fact.index("(")]
+                                fact = fact.replace(pred + "(", "")
+                                fact = fact.replace(")", "")
+                                args = fact.split(",")[:-1]
+                                fact_str = "(" + " ".join([pred] + args) + ")"
+                            state.add(fact_str)
+                        state = sorted(list(state))
+
+                    states.append(state)
+
+        elif planner == "fd-rank":
+            # fd-rank returns a state file with {n-1} line breaks,
+            # between line breaks are optimal states followed by their neighbors
+            # so the first state after a line break (except the first state in the file)
+            # is always the optimal
+            with open(state_file, "r") as f:
+                state_and_siblings = []
+                for line in f.readlines():
+                    if line == "\n":
+                        states.append(state_and_siblings)
+                        state_and_siblings = []
+                        continue
+                    if ";" in line:
+                        continue
+                    line = line.replace("\n", "")
+                    s = set()
                     for fact in line.split():
                         if "(" not in fact:
-                            fact_str = f"({fact})"
+                            lime = f"({fact})"
                         else:
                             pred = fact[: fact.index("(")]
-                            fact = fact.replace(pred + "(", "")
-                            fact = fact.replace(")", "")
+                            fact = fact.replace(pred + "(", "").replace(")", "")
                             args = fact.split(",")[:-1]
-                            fact_str = "(" + " ".join([pred] + args) + ")"
-                        state.add(fact_str)
-                    state = sorted(list(state))
+                            lime = "(" + " ".join([pred] + args) + ")"
+                        s.add(lime)
+                    state_and_siblings.append(s)
 
-                states.append(state)
         os.remove(state_file)
 
         # collect distance, and also remaining schema count
@@ -185,13 +235,27 @@ def state_cost_dataset_from_plans(
         for i, state in enumerate(states[:-1]):
             action = actions[i]
             schema = action.replace("(", "").split()[0]
-            data = StateCostData(
-                state=state,
-                cost=schema_cnt.copy(),
-                domain_pddl=domain_pddl,
-                problem_pddl=problem_pddl,
-            )
-            state_cost_data.append(data)
+            if planner == "fd":
+                data = StateCostData(
+                    state=state,
+                    cost=schema_cnt.copy(),
+                    domain_pddl=domain_pddl,
+                    problem_pddl=problem_pddl,
+                )
+                state_cost_data.append(data)
+            elif planner == "fd-rank":
+                # give each state a coordinate (i, j), where i is h* of the optimal state,
+                # j=0 means the optimal, otherwise means neighbor of the optimal
+                for j, neighbor_state in enumerate(state):
+                    data = StateRankData(
+                        state=neighbor_state,
+                        cost=schema_cnt.copy(),
+                        domain_pddl=domain_pddl,
+                        problem_pddl=problem_pddl,
+                        loc=(i, j),
+                    )
+                    state_cost_data.append(data)
+
             schema_cnt[schema] -= 1
             schema_cnt[ALL_KEY] -= 1
     print(f"Completed generating data from plans in {time.time()-t:.2f}s")
@@ -200,6 +264,9 @@ def state_cost_dataset_from_plans(
     dataset = StateCostDataset(
         state_cost_data_list=state_cost_data, vocabulary_info=vocabulary_info
     )
+
+    dataset.save(DATA_PATH)
+
     return dataset
 
 

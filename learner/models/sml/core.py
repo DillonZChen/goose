@@ -19,7 +19,7 @@ from .schema_count_strategy import (
     SCS_SCHEMA_APPROX,
     SCS_SCHEMA_EXACT,
 )
-from ..rank.transform import transform_pairwise, transform_pairwise_sequential
+from ..rank.transform import transform_pairwise, transform_pairwise_sequential, transform_neighbor
 from ..rank.svm import RankSVM
 
 F1_KEY = "f1_macro"
@@ -347,4 +347,4 @@ class BaseModel:
         elif self._args.pair == "sequential":
             return transform_pairwise_sequential(X, y)
         elif self._args.pair == "neighbor":
-            return transform_pairwise(X, y)
+            return transform_neighbor(X, y)

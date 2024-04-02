@@ -86,3 +86,38 @@ def transform_pairwise_sequential(X, y):
         X_new[i] = - X_new[i]
     return np.asarray(X_new), np.asarray(y_new)
 
+
+def transform_neighbor(X, y):
+    p_idxs = np.unique(y[:, 3])
+    diffs = None
+    for p_idx in p_idxs:
+        encodes = X[y[:,3] == p_idx, :]
+        coord_x = y[y[:,3] == p_idx, 1]
+        coord_y = y[y[:,3] == p_idx, 2]
+        encodes_xy = np.concatenate([encodes, coord_x.reshape(-1, 1), coord_y.reshape(-1, 1)], axis=1)
+        unique = np.unique(coord_x)
+        split_by_x = [encodes_xy[coord_x == i] for i in unique]
+        diff = []
+        last_best = None
+        for s in split_by_x:
+            # init state, no states worse than it
+            if s[0, -2] == 0:
+                last_best = s
+                continue
+            sort_s = s[s[:, -1].argsort()]
+            # print(torch.logical_and(data.coord_x == (s[0, -2].item()-1), data.coord_y == 0))
+            diff.append(sort_s[1:, :-2] - sort_s[0, :-2])
+            diff.append((last_best[0, :-2] - sort_s[0, :-2]).reshape([1, -1]))
+            last_best = sort_s[0, :].reshape((1, -1))
+        diff = np.concatenate(diff, axis=0)
+
+        if diffs is not None:
+            diffs = np.concatenate([diffs, diff], axis=0)
+        else:
+            diffs = diff
+
+    # randomly flip half of data as SVM requires both signs in data
+    polarity_copy = np.random.choice([-1, 1], size=diffs.shape[0], p=[.5, .5])
+    diffs = np.multiply(diffs, polarity_copy[:, np.newaxis])
+
+    return diffs, polarity_copy
