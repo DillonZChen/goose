@@ -81,7 +81,10 @@ def main():
     domain_pddl = args.domain_pddl
     tasks_dir = args.tasks_dir
     plans_dir = args.plans_dir
-    dataset = state_cost_dataset_from_plans(domain_pddl, tasks_dir, plans_dir)
+    if args.pair == "neighbor":
+        dataset = state_cost_dataset_from_plans(domain_pddl, tasks_dir, plans_dir, planner="fd-rank")
+    else:
+        dataset = state_cost_dataset_from_plans(domain_pddl, tasks_dir, plans_dir)
     dataset_by_problem = group_by_problem(dataset)
     graphs_by_problem = []
     i = 0

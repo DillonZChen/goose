@@ -54,7 +54,7 @@ def group_by_problem(
 
 
 def state_cost_dataset_from_plans(
-    domain_pddl, tasks_dir, plans_dir, dlplan_state=False
+    domain_pddl, tasks_dir, plans_dir, dlplan_state=False, planner="fd",
 ) -> StateCostDataset:
     state_cost_data = []
 
@@ -80,7 +80,7 @@ def state_cost_dataset_from_plans(
         # extract states with fd first
         states = []
         actions = []
-        planner = "fd"  # TODO fix this with statics
+        # planner = "fd"  # TODO fix this with statics
         # planner = args.planner
 
         with open(plan_file, "r") as f:
@@ -102,6 +102,10 @@ def state_cost_dataset_from_plans(
             + f"&& export STATES_OUTPUT_PATH={state_file} "
             + f"&& {_DOWNWARD} --sas-file {aux_file} {domain_pddl} {problem_pddl} "
             + f"--search 'perfect([blind()])'",  # need filler h
+            "fd-rank": f"export PLAN_INPUT_PATH={plan_file} "
+              + f"&& export STATES_OUTPUT_PATH={state_file} "
+              + f"&& {_DOWNWARD} --sas-file {aux_file} {domain_pddl} {problem_pddl} "
+              + f"--search 'perfect_with_siblings([blind()])'",
         }[planner]
 
         # print("generating plan states with:") print(cmd)
