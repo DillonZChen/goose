@@ -19,7 +19,8 @@ from .schema_count_strategy import (
     SCS_SCHEMA_APPROX,
     SCS_SCHEMA_EXACT,
 )
-from ..svm import RankSVM
+from ..rank.transform import transform_pairwise, transform_pairwise_sequential
+from ..rank.svm import RankSVM
 
 F1_KEY = "f1_macro"
 MSE_KEY = "mse"
@@ -235,6 +236,8 @@ class BaseModel:
         print(f"Fitting model for learning number of '{schema}' in a plan...")
         if self.model_name == "mip":
             X = self._transform_for_mip(X)
+        elif self.model_name == "rank-svm":
+            X, y = self._transform_for_svm(X, y)
         gpr_a = GPR_ALPHA
         while True:
             try:
@@ -257,6 +260,12 @@ class BaseModel:
     def predict(self, X, schema=ALL_KEY) -> np.array:
         ret = self._models[schema].predict(X)
         return ret
+
+    def score(self, X, y):
+        if self.model_name == "rank-svm":
+            X, y = self._transform_for_svm(X, y)
+
+        return self._models[ALL_KEY].score(X, y)
 
     def predict_with_std(self, X, schema=ALL_KEY) -> Tuple[np.array, np.array]:
         """for Bayesian models only"""
@@ -331,3 +340,11 @@ class BaseModel:
         self, save_file: str, domain_pddl: str, problem_pddl: str
     ) -> None:
         pass
+
+    def _transform_for_svm(self, X, y):
+        if self._args.pair == "combination":
+            return transform_pairwise(X, y)
+        elif self._args.pair == "sequential":
+            return transform_pairwise_sequential(X, y)
+        elif self._args.pair == "neighbor":
+            return transform_pairwise(X, y)

@@ -5,11 +5,9 @@ import argparse
 import numpy as np
 import representation
 import warnings
-from sklearn.model_selection import train_test_split
 from models.save_load import print_arguments, save_ml_model
-from models.svm import RankSVM
 from models.wlf.core import WL_FEATURE_GENERATORS, Model
-from models.sml.core import add_sml_args, predict
+from models.sml.core import add_sml_args
 from models.sml.schema_count_strategy import get_schemata_from_data
 from dataset.factory import (
     state_cost_dataset_from_plans,
@@ -58,6 +56,14 @@ def parse_args():
         "--prune",
         type=int,
         default=0,
+        help="reduce feature sizes by discarding colours with count <= prune",
+    )
+
+    parser.add_argument(
+        "--pair",
+        type=str,
+        default="combination",
+        choices=["combination", "sequential", "neighbor"],
         help="reduce feature sizes by discarding colours with count <= prune",
     )
 
@@ -153,9 +159,9 @@ def main():
 
     # predict logging
     # predict(model, X_tr, y_tr, X_va, y_va, schemata, schema_strat)
-    svm_model:RankSVM = model.get_learning_model('_all_')
-    svm_model.score(X_tr, y_tr['_all_'])
-    svm_model.score(X_va, y_va['_all_'])
+    # svm_model:RankSVM = model.get_learning_model('_all_')
+    model.score(X_tr, y_tr['_all_'])
+    model.score(X_va, y_va['_all_'])
     # save model
     save_ml_model(model, args)
 
