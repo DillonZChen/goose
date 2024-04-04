@@ -13,7 +13,7 @@ for seed in 0 1 2 3 4; do
     train_log_file=$TRAIN_LOG_DIR/$desc.log
     date
     echo "Training $desc; log at $train_log_file";
-    python3 train.py configurations/models/wl_ilg_$config.toml configurations/ipc23-learning/$domain.toml --seed $seed --save-file $model_file > $train_log_file 2>&1;
+    python3 train.py experiments/models/wl_ilg_$config.toml experiments/ipc23-learning/$domain.toml --seed $seed --save-file $model_file > $train_log_file 2>&1;
 done;
 done;
 done;

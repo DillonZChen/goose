@@ -4,10 +4,10 @@
 from collections import defaultdict
 from typing import Any, Dict, List, Optional, Set, Tuple
 
-import learner.representation.planning.translate.build_model as build_model
-import learner.representation.planning.translate.pddl as pddl
-import learner.representation.planning.translate.pddl_to_prolog as pddl_to_prolog
-import learner.representation.planning.translate.timers as timers
+import representation.planning.translate.build_model as build_model
+import representation.planning.translate.pddl_to_prolog as pddl_to_prolog
+import representation.planning.translate.pddl as pddl
+import representation.planning.translate.timers as timers
 
 
 def get_fluent_facts(task, model):

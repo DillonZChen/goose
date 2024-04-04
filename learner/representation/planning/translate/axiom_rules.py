@@ -1,10 +1,11 @@
+import representation.planning.translate.options as options
+import representation.planning.translate.pddl as pddl
+import representation.planning.translate.sccs as sccs
+import representation.planning.translate.timers as timers
+
 from collections import defaultdict
 from itertools import chain
 
-import learner.representation.planning.translate.options as options
-import learner.representation.planning.translate.pddl as pddl
-import learner.representation.planning.translate.sccs as sccs
-import learner.representation.planning.translate.timers as timers
 
 DEBUG = False
 

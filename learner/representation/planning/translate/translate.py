@@ -17,23 +17,23 @@ if not python_version_supported():
     sys.exit("Error: Translator only supports Python >= 3.6.")
 
 
-import signal
 from collections import defaultdict
 from copy import deepcopy
 from itertools import product
 
-import learner.representation.planning.translate.axiom_rules as axiom_rules
-import learner.representation.planning.translate.fact_groups as fact_groups
-import learner.representation.planning.translate.instantiate as instantiate
-import learner.representation.planning.translate.normalize as normalize
-import learner.representation.planning.translate.options as options
-import learner.representation.planning.translate.pddl as pddl
-import learner.representation.planning.translate.pddl_parser as pddl_parser
-import learner.representation.planning.translate.sas_tasks as sas_tasks
-import learner.representation.planning.translate.simplify as simplify
-import learner.representation.planning.translate.timers as timers
-import learner.representation.planning.translate.tools as tools
-import learner.representation.planning.translate.variable_order as variable_order
+import representation.planning.translate.axiom_rules as axiom_rules
+import representation.planning.translate.fact_groups as fact_groups
+import representation.planning.translate.instantiate as instantiate
+import representation.planning.translate.normalize as normalize
+import representation.planning.translate.options as options
+import representation.planning.translate.pddl as pddl
+import representation.planning.translate.pddl_parser as pddl_parser
+import representation.planning.translate.sas_tasks as sas_tasks
+import signal
+import representation.planning.translate.simplify as simplify
+import representation.planning.translate.timers as timers
+import representation.planning.translate.tools as tools
+import representation.planning.translate.variable_order as variable_order
 
 # TODO: The translator may generate trivial derived variables which are always
 # true, for example if there ia a derived predicate in the input that only

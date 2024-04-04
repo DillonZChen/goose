@@ -1,6 +1,5 @@
-import os
 import unittest
-
+import os
 from util import *
 
 
@@ -15,8 +14,8 @@ class TestWlf(unittest.TestCase):
 
     def wlf_helper_test(self, model_config, domain):
         desc = f"{domain}-{model_config}"
-        config_file = f"configurations/models/{model_config}.toml"
-        data_file = f"configurations/ipc23-learning/{domain}.toml"
+        config_file = f"experiments/models/{model_config}.toml"
+        data_file = f"experiments/ipc23-learning/{domain}.toml"
         assert os.path.exists(config_file), config_file
         assert os.path.exists(data_file), data_file
 

@@ -1,15 +1,15 @@
 #! /usr/bin/env python3
 
 
+from collections import deque, defaultdict
 import itertools
 import time
-from collections import defaultdict, deque
 from typing import List
 
-import learner.representation.planning.translate.invariants as invariants
-import learner.representation.planning.translate.options as options
-import learner.representation.planning.translate.pddl as pddl
-import learner.representation.planning.translate.timers as timers
+import representation.planning.translate.invariants as invariants
+import representation.planning.translate.options as options
+import representation.planning.translate.pddl as pddl
+import representation.planning.translate.timers as timers
 
 
 class BalanceChecker:

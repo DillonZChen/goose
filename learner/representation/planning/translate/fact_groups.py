@@ -1,9 +1,9 @@
+import representation.planning.translate.invariant_finder as invariant_finder
+import representation.planning.translate.options as options
+import representation.planning.translate.pddl as pddl
+import representation.planning.translate.timers as timers
 from typing import Dict, List, Set, Tuple
 
-import learner.representation.planning.translate.invariant_finder as invariant_finder
-import learner.representation.planning.translate.options as options
-import learner.representation.planning.translate.pddl as pddl
-import learner.representation.planning.translate.timers as timers
 
 DEBUG = False
 

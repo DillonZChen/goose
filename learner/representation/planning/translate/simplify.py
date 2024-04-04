@@ -26,7 +26,7 @@ filter_unreachable_propositions.)
 from collections import defaultdict
 from itertools import count
 
-import learner.representation.planning.translate.sas_tasks as sas_tasks
+import representation.planning.translate.sas_tasks as sas_tasks
 
 DEBUG = False
 

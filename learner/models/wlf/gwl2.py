@@ -1,40 +1,33 @@
-from typing import Optional, Dict
 from itertools import combinations
-from tqdm import tqdm
 from .base_wl import *
 
-""" 2-LWL """
-# this class can be easily changed into k-LWL
+""" 2-GWL """
+# this class can be easily changed into k-GWL
 
 
-class LWL2(WlAlgorithm):
+class GWL2(WlAlgorithm):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
-        self._k = 2
 
     def compute_histograms_helper(self, G: CGraph):
+        # probably wrong after updates on other code, see lwl2 for help to update
+        raise NotImplementedError
         cur_colours = {}
         histogram = {}
 
         def store_colour(colour):
             nonlocal histogram
+            colour = repr(colour)
             colour_hash = self._get_hash_value(colour)
             if colour_hash not in histogram:
                 histogram[colour_hash] = 0
             histogram[colour_hash] += 1
 
-        # n_nodes = len(G.nodes)
-        # assert set(G.nodes) == set(range(n_nodes))
-        node_to_idx = {node: i for i, node in enumerate(G.nodes)}
-        idx_to_node = {i: node for i, node in enumerate(G.nodes)}
-
-        subsets = list(combinations(range(len(G.nodes)), 2))
+        subsets = list(combinations(G.nodes, 2))
 
         # collect initial colours
         for subset in subsets:
             u, v = subset
-            u = idx_to_node[u]
-            v = idx_to_node[v]
 
             # initial colour is feature of the node
             c_u = G.nodes[u]["x"]
@@ -51,7 +44,7 @@ class LWL2(WlAlgorithm):
             colour = (c_u, c_v, edge_colour)
 
             cur_colours[subset] = self._get_hash_value(colour)
-            # assert colour in self._hash, colour
+            assert colour in self._hash, colour
             store_colour(colour)
 
         # WL iterations
@@ -59,15 +52,13 @@ class LWL2(WlAlgorithm):
             new_colours = {}
             for subset in subsets:
                 u, v = subset
-                u_node = idx_to_node[u]
-                v_node = idx_to_node[v]
 
                 # k-wl does not care about graph structure after initial colours
-                neighbour_nodes = set(G[u_node]).union(set(G[v_node])).difference({u_node, v_node})
                 neighbour_colours = []
-                for w_node in neighbour_nodes:
+                for w in G.nodes:
+                    if w in subset:  # we want exactly the k-subsets
+                        continue
                     # tuple(sorted(.)) is a hashable
-                    w = node_to_idx[w_node]
                     subset1 = tuple(sorted((u, w)))
                     subset2 = tuple(sorted((v, w)))
                     colour = tuple(

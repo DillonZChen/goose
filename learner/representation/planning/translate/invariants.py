@@ -1,9 +1,9 @@
-import itertools
 from collections import defaultdict
+import itertools
 
-import learner.representation.planning.translate.constraints as constraints
-import learner.representation.planning.translate.pddl as pddl
-import learner.representation.planning.translate.tools as tools
+import representation.planning.translate.constraints as constraints
+import representation.planning.translate.pddl as pddl
+import representation.planning.translate.tools as tools
 
 # Notes:
 # All parts of an invariant always use all non-counted variables

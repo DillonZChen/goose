@@ -1,17 +1,14 @@
+from itertools import combinations
 import os
 import sys
-from itertools import combinations
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
-from abc import ABC, abstractmethod
-from typing import Dict, List, Optional, Tuple, Union
-
-import networkx as nx
 import numpy as np
-from tqdm import tqdm
+from abc import ABC, abstractmethod
+from typing import List, Dict, Optional, Tuple, Union
+from representation import CGraph
 
-from learner.representation import CGraph
 
 Histogram = Dict[int, int]
 NO_EDGE = -2
@@ -88,7 +85,7 @@ class WlAlgorithm(ABC):
             raise NotImplementedError
 
         # compute colours and hashmap from training data
-        for G in tqdm(graphs):
+        for G in graphs:
             G_seen_count = self._hit_colours
             G_unseen_count = self._missed_colours
 

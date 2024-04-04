@@ -2,11 +2,10 @@
 # components" (where to conditions are related if they share a variabe) into
 # several rules, one for each connected component and one high-level rule.
 
-import learner.representation.planning.translate.graph as graph
-import learner.representation.planning.translate.greedy_join as greedy_join
-import learner.representation.planning.translate.pddl as pddl
-from learner.representation.planning.translate.pddl_to_prolog import (
-    Rule, get_variables)
+from representation.planning.translate.pddl_to_prolog import Rule, get_variables
+import representation.planning.translate.graph as graph
+import representation.planning.translate.greedy_join as greedy_join
+import representation.planning.translate.pddl as pddl
 
 
 def get_connected_conditions(conditions):
