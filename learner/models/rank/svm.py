@@ -48,7 +48,6 @@ class RankSVM(svm.LinearSVC):
         #     raise ValueError("invalid mode input")
         print(f"pair used for training: {X_trans.shape, y_trans.shape}")
         super(RankSVM, self).fit(X_trans, y_trans)
-        self.coef_ = self.coef_.reshape(1, -1)
         return self
 
     # def predict(self, X):
