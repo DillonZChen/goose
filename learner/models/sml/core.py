@@ -1,26 +1,24 @@
 import time
+import traceback
 from itertools import product
 from typing import Dict, Iterable, List, Tuple
+
 import numpy as np
-from sklearn.metrics import mean_squared_error
 from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.gaussian_process.kernels import DotProduct
+from sklearn.linear_model import BayesianRidge, Lasso, LinearRegression, Ridge
+from sklearn.metrics import log_loss, mean_squared_error
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor
-from sklearn.linear_model import BayesianRidge, Lasso, Ridge, LinearRegression
-from sklearn.svm import LinearSVR, SVR
-from sklearn.gaussian_process.kernels import DotProduct
-from sklearn.metrics import log_loss, mean_squared_error
+from sklearn.svm import SVR, LinearSVR
 from util.metrics import f1_macro
-from .mip import MIP
-from .schema_count_strategy import (
-    ALL_KEY,
-    SCS_NONE,
-    SCS_ALL,
-    SCS_SCHEMA_APPROX,
-    SCS_SCHEMA_EXACT,
-)
-from ..rank.transform import transform_pairwise, transform_pairwise_sequential, transform_neighbor
+
 from ..rank.svm import RankSVM
+from ..rank.transform import (transform_neighbor, transform_pairwise,
+                              transform_pairwise_sequential)
+from .mip import MIP
+from .schema_count_strategy import (ALL_KEY, SCS_ALL, SCS_NONE, SCS_SCHEMA_APPROX,
+                                    SCS_SCHEMA_EXACT)
 
 F1_KEY = "f1_macro"
 MSE_KEY = "mse"
@@ -166,9 +164,7 @@ def predict(
     train_scores = {
         (m, s): SCORER[m](y_train_true[s], y_train_pred[s]) for m, s in itrs
     }
-    val_scores = {
-        (m, s): SCORER[m](y_val_true[s], y_val_pred[s]) for m, s in itrs
-    }
+    val_scores = {(m, s): SCORER[m](y_val_true[s], y_val_pred[s]) for m, s in itrs}
     t = time.time()
     schemata_to_keep = set()
     print(f"{'':<10} {'schema':<20} {'train':<10} {'val':<10}")
@@ -274,9 +270,7 @@ class BaseModel:
     def get_learning_model(self, schema=ALL_KEY):
         return self._models[schema]
 
-    def update_schemata_to_learn(
-        self, schemata_to_learn: Iterable[str]
-    ) -> None:
+    def update_schemata_to_learn(self, schemata_to_learn: Iterable[str]) -> None:
         initial_schemata = set(self._models.keys())
         schemata_to_keep = set(schemata_to_learn)
         for schema in initial_schemata:
@@ -284,21 +278,27 @@ class BaseModel:
                 del self._models[schema]
 
     def get_weights(self) -> np.array:
-        if self.model_name == "gpr":
-            """
-            For the general GP case:
-                L = cholesky(k(X, X)) X is X_train
-                a = L \ (L \ t); Ax = b => x = A \ b
-                m(x) = k(x, X) . a
-                v = L \ k(X, x)
-                s^2(x) = k(x, x) - v^T . v
-            but if we use dot product kernel, we can simplify and get
-            """
-            weights = np.sum(
-                m.alpha_ @ m.X_train_ for m in self._models.values()
-            )
-        else:
-            weights = np.sum(model.coef_ for model in self._models.values())
+        try:
+            if self.model_name == "gpr":
+                """
+                For the general GP case:
+                    L = cholesky(k(X, X)) X is X_train
+                    a = L \ (L \ t); Ax = b => x = A \ b
+                    m(x) = k(x, X) . a
+                    v = L \ k(X, x)
+                    s^2(x) = k(x, x) - v^T . v
+                but if we use dot product kernel, we can simplify and get
+                """
+                weights = np.sum(m.alpha_ @ m.X_train_ for m in self._models.values())
+            else:
+                weights = np.sum(model.coef_ for model in self._models.values())
+        except:
+            traceback.print_exc()
+            print("", flush=True)
+            exit(-1)
+        # rank svm returns shape (1, d), but we want (d,)
+        if weights.shape[0] == 1:
+            weights = weights[0]
         return weights
 
     def get_bias(self) -> float:

@@ -1,8 +1,7 @@
 [model]
-method = "wlf"
+method = "wlf_rank"
 
 [config]
-model = "rank-svm"
 rep = "ilg"
 features = "1wl"
 iterations = 4

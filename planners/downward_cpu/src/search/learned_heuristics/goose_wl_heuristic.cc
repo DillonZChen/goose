@@ -60,11 +60,15 @@ WLGooseHeuristic::WLGooseHeuristic(const plugins::Options &opts)
 }
 
 void WLGooseHeuristic::update_from_py_model() {
+  std::cout << "Getting iterations..." << std::endl;
   iterations_ = model.attr("get_iterations")().cast<int>();
+  std::cout << "Getting representation..." << std::endl;
   graph_representation_ =
       model.attr("get_representation")().cast<std::string>();
-  wl_algorithm_ = model.attr("get_wl_algorithm")().cast<std::string>();
   NO_EDGE_ = model.attr("get_no_edge_colour")().cast<int>();
+  std::cout << "Getting WL algorithm..." << std::endl;
+  wl_algorithm_ = model.attr("get_wl_algorithm")().cast<std::string>();
+  std::cout << "Getting hash..." << std::endl;
   hash_ = model.attr("get_hash")().cast<std::unordered_map<std::string, int>>();
 
   // get weights from pybind model
@@ -72,7 +76,9 @@ void WLGooseHeuristic::update_from_py_model() {
   weights_ =
       std::vector<std::vector<double>>(n_linear_models_, std::vector<double>());
   bias_ = std::vector<double>(n_linear_models_, 0.0);
+  std::cout << "Getting weights..." << std::endl;
   weights_[0] = model.attr("get_weights")().cast<std::vector<double>>();
+  std::cout << "Getting bias..." << std::endl;
   bias_[0] = model.attr("get_bias")().cast<double>();
 
   cnt_seen_colours = std::vector<long>(iterations_, 0);

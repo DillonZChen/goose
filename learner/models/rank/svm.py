@@ -1,10 +1,10 @@
 import itertools
-import numpy as np
 import random
-from sklearn import svm, linear_model
-from sklearn.preprocessing import StandardScaler
 
+import numpy as np
 from models.rank.transform import transform_pairwise
+from sklearn import linear_model, svm
+from sklearn.preprocessing import StandardScaler
 
 
 # RankSVM using linearSVC
@@ -14,16 +14,15 @@ class RankSVM(svm.LinearSVC):
     initialise with a C of regularization term
     default using hinge loss
     """
-    
-    def __init__(self, C = 1.0):
+
+    def __init__(self, C=1.0):
         super(RankSVM, self).__init__()
         self.C = C
-        self.loss = 'hinge'
+        self.loss = "hinge"
         self.fit_intercept = False
         self.max_iter = 999999999
-        
-        
-    def fit(self, X, y, mode = 0):
+
+    def fit(self, X, y, mode=0):
         """
         Fit a pairwise ranking model by first transfer it into pairwise than fitting
         Inputs
@@ -47,8 +46,9 @@ class RankSVM(svm.LinearSVC):
         #     X_trans, y_trans = X, y
         # else:
         #     raise ValueError("invalid mode input")
-        print(f'pair used for training: {X_trans.shape, y_trans.shape}')
+        print(f"pair used for training: {X_trans.shape, y_trans.shape}")
         super(RankSVM, self).fit(X_trans, y_trans)
+        self.coef_ = self.coef_.reshape(1, -1)
         return self
 
     # def predict(self, X):
@@ -79,14 +79,13 @@ class RankSVM(svm.LinearSVC):
     #     else:
     #         raise ValueError("Must call fit() prior to predict()")
 
-
     def score(self, X, y):
         """
         Returns the accuracy for the rank prediction, from 0-1
         """
         X_trans, y_trans = X, y
         predictions = super(RankSVM, self).predict(X_trans)
-        mse = np.mean((predictions - y_trans)**2)
+        mse = np.mean((predictions - y_trans) ** 2)
         accuracy = np.mean((np.abs(predictions - y_trans)) < 0.001)
 
         print(f"MSE: {mse}; Accuracy: {accuracy}")
@@ -95,12 +94,11 @@ class RankSVM(svm.LinearSVC):
         """
         return pseudo heuristic for search
         """
-        if hasattr(self, 'coef_'):
-            x_r = x.reshape(1,-1)
-            return np.dot(x_r, self.coef_.T)
+        if hasattr(self, "coef_"):
+            ret = np.dot(x, self.coef_.T)
+            return ret
         else:
             raise ValueError("Must call fit() prior to predict()")
-
 
 
 def generate_feature_vec_relaxed(planning_graph, state, param):
@@ -110,28 +108,28 @@ def generate_feature_vec_relaxed(planning_graph, state, param):
 class RankHeuristic:
     """
     Implement the heuristic using the trained RankSVM's coef for dot product
-    
+
     Inadmissible, directly reflect the rank
-    
+
     Default scale value is 10000
     """
-    
-    def __init__(self, svm : RankSVM, planning_graph, scale_1 = 100000, scale_2 = 1000):
+
+    def __init__(self, svm: RankSVM, planning_graph, scale_1=100000, scale_2=1000):
         super().__init__()
         self.svm = svm
         self.planning_graph = planning_graph
         self.scale_1 = scale_1
         self.scale_2 = scale_2
         self.expand_nodes = 0
-        
+
     def __call__(self, node):
         self.expand_nodes += 1
-        if (self.planning_graph.task.goals <= node.state):
+        if self.planning_graph.task.goals <= node.state:
             print("reached goal state")
             return -999999
         vec = generate_feature_vec_relaxed(self.planning_graph, node.state, 99999999)
-        h = round((self.svm.h_val(vec).item() + self.scale_1)*self.scale_2)
-        if (h<0):
-            print(f'original val: {self.svm.h_val(vec).item()}')
-            print(f'heristic values:{h}')
+        h = round((self.svm.h_val(vec).item() + self.scale_1) * self.scale_2)
+        if h < 0:
+            print(f"original val: {self.svm.h_val(vec).item()}")
+            print(f"heristic values:{h}")
         return h

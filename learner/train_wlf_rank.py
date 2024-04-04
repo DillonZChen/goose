@@ -1,19 +1,17 @@
 """ Main training pipeline script. """
+import argparse
 import itertools
 import time
-import argparse
+import warnings
+
 import numpy as np
 import representation
-import warnings
+from dataset.factory import (DATA_PATH, StateCostDataset, group_by_problem, reformat_y,
+                             state_cost_dataset_from_plans)
 from models.save_load import print_arguments, save_ml_model
-from models.wlf.core import WL_FEATURE_GENERATORS, Model
 from models.sml.core import add_sml_args
 from models.sml.schema_count_strategy import get_schemata_from_data
-from dataset.factory import (
-    state_cost_dataset_from_plans,
-    group_by_problem,
-    reformat_y, StateCostDataset, DATA_PATH,
-)
+from models.wlf.core import WL_FEATURE_GENERATORS, Model
 
 warnings.filterwarnings("ignore")
 
@@ -176,12 +174,12 @@ def main():
     model.fit_all(X_tr, y_tr)
     print(f"Model training completed in {time.time()-t:.2f}s")
 
-
     # predict logging
     # predict(model, X_tr, y_tr, X_va, y_va, schemata, schema_strat)
     # svm_model:RankSVM = model.get_learning_model('_all_')
     model.score(X_tr, y_tr['_all_'])
     model.score(X_va, y_va['_all_'])
+
     # save model
     save_ml_model(model, args)
 

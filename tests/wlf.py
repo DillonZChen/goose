@@ -3,6 +3,9 @@ import unittest
 
 from .util import *
 
+output_dir = "tests/logs"
+os.makedirs(output_dir, exist_ok=True)
+
 
 class TestWlf(unittest.TestCase):
     def test_ilg_gpr(self):
@@ -12,6 +15,13 @@ class TestWlf(unittest.TestCase):
         ]:
             with self.subTest(domain):
                 self.wlf_helper_test("wlf_ilg_gpr", domain)
+
+    def test_rank(self):
+        for domain in [
+            "blocksworld",
+        ]:
+            with self.subTest(domain):
+                self.wlf_helper_test("wlf_ilg_rank", domain)
 
     def wlf_helper_test(self, model_config, domain):
         desc = f"{domain}-{model_config}"
@@ -47,12 +57,7 @@ class TestWlf(unittest.TestCase):
         f = f"tests/train_wlf_{desc}.log"
         log((log_output, err_output), f)
 
-        if (
-            mse_train is None
-            or mse_val is None
-            or f1_train is None
-            or f1_val is None
-        ):
+        if mse_train is None or mse_val is None or f1_train is None or f1_val is None:
             self.assertTrue(False, "\n".join(err_output))
 
         self.assertTrue(model_saved)
@@ -66,8 +71,8 @@ class TestWlf(unittest.TestCase):
         cmd_cpp = f"python3 run_wlf.py benchmarks/ipc23-learning/{domain}/domain.pddl benchmarks/ipc23-learning/{domain}/testing/medium/p01.pddl tests/wlf_{desc}.model"
         cmd_py = cmd_cpp + " --pybind"
 
-        cpp_f = f"tests/run_wlf_cpp_{desc}.log"
-        py_f = f"tests/run_wlf_py_{desc}.log"
+        cpp_f = f"{output_dir}/run_wlf_cpp_{desc}.log"
+        py_f = f"{output_dir}/run_wlf_py_{desc}.log"
 
         print("=== Executing search with cpp ===")
         output_cpp = get_output(cmd_cpp)

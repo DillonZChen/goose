@@ -15,6 +15,7 @@ plan/
 plans/
 venv/
 logs/
+tests/outputs
 trained_models/
 data/
 _*/
