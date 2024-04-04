@@ -4,28 +4,26 @@ This file contains three variants of classes:
 2. GNN classes themselves
 3. the model which acts as a wrapper of a GNN and Representation object
 """
+import time
+import warnings
+from abc import ABC, abstractmethod
+from typing import FrozenSet, List, Optional
+
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import time
-import warnings
-from representation import REPRESENTATIONS, Representation, State
-from torch_geometric.nn import (
-    global_add_pool,
-    global_max_pool,
-    global_mean_pool,
-)
-from abc import ABC, abstractmethod
-from torch_geometric.nn import MessagePassing
-from torch.nn import Sequential, Linear, ReLU, Dropout, LeakyReLU, BatchNorm1d
-from torch.nn.parameter import Parameter
-from torch.nn.modules.module import Module
 from torch import Tensor
-from typing import Optional, List, FrozenSet
-from torch_geometric.loader import DataLoader
+from torch.nn import BatchNorm1d, Dropout, LeakyReLU, Linear, ReLU, Sequential
+from torch.nn.modules.module import Module
+from torch.nn.parameter import Parameter
 from torch_geometric.data import Data
+from torch_geometric.loader import DataLoader
+from torch_geometric.nn import (MessagePassing, global_add_pool,
+                                global_max_pool, global_mean_pool)
 from torch_geometric.nn.inits import glorot, zeros
+
+from learner.representation import REPRESENTATIONS, Representation, State
 
 # from torch_geometric.nn.conv import (
 #     RGCNConv,

@@ -1,6 +1,6 @@
-""" Module for reading information from logs. """
-
 import os
+
+""" Module for reading information from logs. """
 
 
 def predict_finished_correctly(f):

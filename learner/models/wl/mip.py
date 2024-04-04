@@ -7,12 +7,15 @@ from sklearn.utils.validation import check_array, check_is_fitted
 
 class MIP(BaseEstimator):
     def __init__(self):
+        import pulp
+
         self.coef_ = np.array([0])
         self.bias_ = 0  # no bias
         self.intercept_ = 0  # no bias
+        pass
 
     def fit(self, X, y):
-        # TODO pulp MIP construction is slow, even when solving is fast
+        # TODO(DZC) pulp MIP construction is slow, even when solving is fast
         import pulp
         from pulp import LpVariable as Var
         from pulp import lpDot, lpSum
@@ -21,9 +24,9 @@ class MIP(BaseEstimator):
         print("Constructing MIP problem...")
         m = pulp.LpProblem()
         n, d = X.shape
+        n -= 1
 
-        # n -= 1
-        # tiebreaker = X[-1]  # see Model._transform_for_fit_only
+        tiebreaker = X[-1]  # see Model._transform_for_fit_only
 
         """ Variables """
         t1 = time.time()

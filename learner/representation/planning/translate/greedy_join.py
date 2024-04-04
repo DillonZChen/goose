@@ -1,7 +1,7 @@
 import sys
 
-import representation.planning.translate.pddl as pddl
-import representation.planning.translate.pddl_to_prolog as pddl_to_prolog
+import learner.representation.planning.translate.pddl as pddl
+import learner.representation.planning.translate.pddl_to_prolog as pddl_to_prolog
 
 
 class OccurrencesTracker:

@@ -1,4 +1,6 @@
+from typing import Optional, Dict
 from itertools import product
+from tqdm import tqdm
 from .base_wl import *
 
 """ 2-FWL algorithm, not 2-WL. Not actually used since slow. """

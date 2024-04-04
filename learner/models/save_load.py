@@ -1,11 +1,13 @@
 """ Module for dealing with model saving and loading. """
 import os
-import pickle
+# import pickle
 import sys
 import traceback
 
+import joblib
 
-def arg_to_gnn_params(args, out_feat=1):
+
+def arg_to_params(args, in_feat=4, out_feat=1):
     # this is an artifact of legacy code, could be just put into object input
     nlayers = args.nlayers
     nhid = args.nhid
@@ -28,10 +30,22 @@ def arg_to_gnn_params(args, out_feat=1):
     return model_params
 
 
-def print_arguments(args):
+def print_arguments(args, ignore_params=set()):
     print("Parsed arguments:")
     for k, v in vars(args).items():
-        print("{0:25}  {1}".format(k, v))
+        if k in ignore_params.union(
+            {
+                "device",
+                "optimal",
+                "save_model",
+                "save_file",
+                "no_tqdm",
+                "tqdm",
+                "fast_train",
+            }
+        ):
+            continue
+        print("{0:20}  {1}".format(k, v))
     print("___")
 
 
@@ -56,7 +70,8 @@ def save_gnn_model(model, args):
     return
 
 
-def save_ml_model(model, args):
+def save_kernel_model(model, args):
+    import learner.util.pickle as pickle
     if not hasattr(args, "save_file") or args.save_file is None:
         return
     print("Saving model...")
@@ -67,6 +82,7 @@ def save_ml_model(model, args):
     model.setup_for_saving(save_file)
     with open(save_file, "wb") as handle:
         pickle.dump(model, handle)
+    # joblib.dump(model, save_file)
     print("Model saved!")
     print("Model parameter file:", save_file)
     return
@@ -75,7 +91,7 @@ def save_ml_model(model, args):
 def load_gnn_model(path, print_args=False):
     # returns (GNN, Args)
     import torch
-    from models.gnn.core import Model
+    from models.gnn.gnn import Model
 
     print(f"Loading model from {path}...")
     if not os.path.exists(path):
@@ -87,7 +103,7 @@ def load_gnn_model(path, print_args=False):
         model_state_dict, args = torch.load(
             path, map_location=torch.device("cpu")
         )
-    model = Model(params=arg_to_gnn_params(args))
+    model = Model(params=arg_to_params(args))
     model.load_state_dict_into_gnn(model_state_dict)
     print("Model loaded!")
     if print_args:
@@ -96,12 +112,14 @@ def load_gnn_model(path, print_args=False):
     return model, args
 
 
-def load_ml_model(path):
+def load_kernel_model(path):
     path = os.path.abspath(path)
     sys.path.append('learner/')
+    import learner.util.pickle as pickle
     with open(path, "rb") as handle:
         try:
             model = pickle.load(handle)
+            # model = joblib.load(path)
         except Exception:
             print(traceback.format_exc(), flush=True)
             exit(-1)
@@ -126,11 +144,16 @@ def load_gnn_model_and_setup(path, domain_file, problem_file):
     return model
 
 
-def load_ml_model_and_setup(path, domain_file, problem_file):
+def load_kernel_model_and_setup(path, domain_file, problem_file):
     try:
         print(f"Entered Python code for loading model", flush=True)
-        model = load_ml_model(path)
-        model.setup_after_loading(path, domain_file, problem_file)
+        model = load_kernel_model(path)
+        model.setup_after_loading(path)
+        print("Updating representation", flush=True)
+        model.update_representation(
+            domain_pddl=domain_file, problem_pddl=problem_file
+        )
+        print("Representation updated!", flush=True)
         model.eval()
         print("Set to eval mode.", flush=True)
     except Exception:

@@ -2,7 +2,7 @@
 
 import copy
 
-import representation.planning.translate.pddl as pddl
+import learner.representation.planning.translate.pddl as pddl
 
 
 class ConditionProxy:

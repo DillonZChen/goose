@@ -42,22 +42,22 @@ sh setup.sh
 
 ## Training
 - see `python3 train.py -h` for help, you will need the `--save_file` argument if you want to save the model
-- to train with your own dataset, you will need to construct an experiment configuration toml file such as in [here](experiments/ipc23-learning/blocksworld.toml)
+- to train with your own dataset, you will need to construct an experiment configuration toml file such as in [here](configurations/ipc23-learning/blocksworld.toml)
   - the `tasks_dir` and `plans_dir` paths must contain the same files, differentiating only in the file suffix (.pddl and .plan, respectively)
 
 ### Example for WLF models
 ```
-python3 train.py experiments/models/wlf_ilg_gpr.toml experiments/ipc23-learning/blocksworld.toml --save_file blocksworld_wlf.model
+python3 train.py configurations/models/wlf_ilg_gpr.toml configurations/ipc23-learning/blocksworld.toml --save_file blocksworld_wlf.model
 ```
 
 ### Example for DLF models
 ```
-python3 train.py experiments/models/dlf_gpr.toml experiments/ipc23-learning/blocksworld.toml --save_file blocksworld_dlf.model
+python3 train.py configurations/models/dlf_gpr.toml configurations/ipc23-learning/blocksworld.toml --save_file blocksworld_dlf.model
 ```
 
 ### Example for GNN models
 ```
-python3 train.py experiments/models/gnn_mean_ilg.toml experiments/ipc23-learning/blocksworld.toml --save_file blocksworld_gnn.model
+python3 train.py configurations/models/gnn_mean_ilg.toml configurations/ipc23-learning/blocksworld.toml --save_file blocksworld_gnn.model
 ```
 
 ## Heuristic Search

@@ -1,11 +1,14 @@
 """ Object-Pair Binary Structure """
 import itertools
-import torch
 from enum import Enum
+
+import torch
 from torch import Tensor
-from util import pair_to_index_map
-from .planning.translate.pddl import Atom, NegatedAtom
-from .base_class import Representation, LiftedState, TGraph, CGraph
+
+from learner.representation.base_class import (CGraph, LiftedState,
+                                               Representation, TGraph)
+from learner.representation.planning.translate.pddl import Atom, NegatedAtom
+from learner.util import pair_to_index_map
 
 
 class WlColours(Enum):

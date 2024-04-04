@@ -1,4 +1,6 @@
+from typing import Optional, Dict
 from itertools import combinations
+from tqdm import tqdm
 from .base_wl import *
 
 """ 3-LWL """

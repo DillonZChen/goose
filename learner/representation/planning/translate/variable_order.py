@@ -1,8 +1,8 @@
+import heapq
 from collections import defaultdict, deque
 from itertools import chain
-import heapq
 
-import representation.planning.translate.sccs as sccs
+import learner.representation.planning.translate.sccs as sccs
 
 DEBUG = False
 

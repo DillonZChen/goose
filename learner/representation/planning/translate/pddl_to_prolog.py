@@ -3,9 +3,9 @@
 
 import itertools
 
-import representation.planning.translate.normalize as normalize
-import representation.planning.translate.pddl as pddl
-import representation.planning.translate.timers as timers
+import learner.representation.planning.translate.normalize as normalize
+import learner.representation.planning.translate.pddl as pddl
+import learner.representation.planning.translate.timers as timers
 
 
 class PrologProgram:
@@ -44,7 +44,7 @@ class PrologProgram:
         self.convert_trivial_rules()
 
     def split_rules(self):
-        import representation.planning.translate.split_rules as split_rules
+        import learner.representation.planning.translate.split_rules as split_rules
 
         # Splits rules whose conditions can be partitioned in such a way that
         # the parts have disjoint variable sets, then split n-ary joins into

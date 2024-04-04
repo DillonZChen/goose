@@ -1,7 +1,6 @@
-from . import lisp_parser
-from . import parsing_functions
+from learner.representation.planning.translate.pddl import Task
 
-from representation.planning.translate.pddl import Task
+from . import lisp_parser, parsing_functions
 
 file_open = open
 

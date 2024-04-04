@@ -1,7 +1,7 @@
 import sys
 
-import representation.planning.translate.graph as graph
-import representation.planning.translate.pddl as pddl
+import learner.representation.planning.translate.graph as graph
+import learner.representation.planning.translate.pddl as pddl
 
 
 def parse_typed_list(

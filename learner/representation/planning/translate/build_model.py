@@ -1,12 +1,12 @@
 #! /usr/bin/env python3
 
 
-import sys
 import itertools
-
-import representation.planning.translate.pddl as pddl
-import representation.planning.translate.timers as timers
+import sys
 from functools import reduce
+
+import learner.representation.planning.translate.pddl as pddl
+import learner.representation.planning.translate.timers as timers
 
 
 def convert_rules(prog):
@@ -369,8 +369,8 @@ def compute_model(prog):
 
 
 if __name__ == "__main__":
-    import pddl_parser
     import normalize
+    import pddl_parser
     import pddl_to_prolog
 
     print("Parsing...")
