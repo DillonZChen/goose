@@ -585,15 +585,7 @@ fast_downward_plugin(
     HELP "The GOOSE heuristic with WL features kernel model"
     SOURCES
         learned_heuristics/goose_kernel
-    DEPENDS CGRAPH GOOSE_WL_HEURISTIC DLPLAN_HEURISTIC
-)
-
-fast_downward_plugin(
-    NAME DLPLAN_HEURISTIC
-    HELP "Linear DLPlan heuristic"
-    SOURCES
-        learned_heuristics/dlplan_heuristic
-    DEPENDENCY_ONLY
+    DEPENDS CGRAPH GOOSE_WL_HEURISTIC
 )
 
 fast_downward_plugin(

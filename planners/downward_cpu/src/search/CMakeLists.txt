@@ -33,13 +33,14 @@ set(Python3_FIND_VIRTUALENV ONLY)
 find_package(Python3 COMPONENTS Interpreter Development)
 find_package(pybind11 REQUIRED)
 
-# dlplan
-cmake_policy(SET CMP0057 NEW)
-list(APPEND CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/ext/dlplan")
-find_package(dlplan REQUIRED COMPONENTS core generator policy statespace novelty)
+# # dlplan
+# cmake_policy(SET CMP0057 NEW)
+# list(APPEND CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/ext/dlplan")
+# find_package(dlplan REQUIRED COMPONENTS core generator policy statespace novelty)
 
 add_executable(downward ${PLANNER_SOURCES})
-target_link_libraries(downward PRIVATE pybind11::embed dlplan::core dlplan::statespace)
+target_link_libraries(downward PRIVATE pybind11::embed)
+# target_link_libraries(downward PRIVATE pybind11::embed dlplan::core dlplan::statespace)
 
 ## == Libraries ==
 

@@ -1,7 +1,3 @@
-[submodule "dlplan"] 
-  path = dlplan 
-  url = https://github.com/rleap-project/dlplan.git
-  ignore = untracked
 [submodule "benchmarks"]
 	path = benchmarks
 	url = https://github.com/DillonZChen/goose-dataset

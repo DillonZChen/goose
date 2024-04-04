@@ -28,9 +28,9 @@ if __name__ == "__main__":
         config_args.append(str(val))
     additional_args = ["--seed", str(args.seed)]
     if save_file is not None:
-        save_args = ["--save_file", os.path.abspath(save_file)]
+        additional_args += ["--save_file", os.path.abspath(save_file)]
     p = subprocess.Popen(
-        ["python3", train_script] + data_args + config_args + save_args,
+        ["python3", train_script] + data_args + config_args + additional_args,
         cwd="learner",
     )
     sys.exit(p.wait())

@@ -2,18 +2,17 @@ import os
 import pickle
 import time
 from dataclasses import dataclass
-from typing import Dict, Iterable, List, Union, Tuple
-from dlplan.state_space import generate_state_space, GeneratorExitCode
-from dlplan.core import State as DLPlanState, VocabularyInfo
+from typing import Dict, Iterable, List, Tuple, Union
 
 _DOWNWARD = "./../planners/downward_cpu/fast-downward.py"
 _POWERLIFTED = "./../planners/powerlifted/powerlifted.py"
 DATA_PATH = "../data/ipc23/ranker/blocksworld"
 ALL_KEY = "_all_"
+os.makedirs(DATA_PATH, exist_ok=True)
 
 MAX_NUM_STATES = 10000
 
-State = Union[DLPlanState, Iterable[str]]
+State = Iterable[str]
 
 
 @dataclass
@@ -32,7 +31,6 @@ class StateRankData(StateCostData):
 @dataclass
 class StateCostDataset:
     state_cost_data_list: List[StateCostData]
-    vocabulary_info: VocabularyInfo
 
     @property
     def schemata(self) -> List[str]:
@@ -75,21 +73,12 @@ def group_by_problem(
 
 
 def state_cost_dataset_from_plans(
-    domain_pddl, tasks_dir, plans_dir, dlplan_state=False, planner="fd",
+    domain_pddl,
+    tasks_dir,
+    plans_dir,
+    planner="fd",
 ) -> StateCostDataset:
     state_cost_data = []
-
-    if dlplan_state:
-        state_space = generate_state_space(
-            domain_pddl,
-            f"{tasks_dir}/{sorted(list(os.listdir(tasks_dir)))[0]}",
-            index=0,
-            max_num_states=1,
-        ).state_space
-        instance_info = state_space.get_instance_info()
-        vocabulary_info = instance_info.get_vocabulary_info()
-    else:
-        vocabulary_info = None
 
     print("Generating data from plans...")
     t = time.time()
@@ -124,9 +113,9 @@ def state_cost_dataset_from_plans(
             + f"&& {_DOWNWARD} --sas-file {aux_file} {domain_pddl} {problem_pddl} "
             + f"--search 'perfect([blind()])'",  # need filler h
             "fd-rank": f"export PLAN_INPUT_PATH={plan_file} "
-              + f"&& export STATES_OUTPUT_PATH={state_file} "
-              + f"&& {_DOWNWARD} --sas-file {aux_file} {domain_pddl} {problem_pddl} "
-              + f"--search 'perfect_with_siblings([blind()])'",
+            + f"&& export STATES_OUTPUT_PATH={state_file} "
+            + f"&& {_DOWNWARD} --sas-file {aux_file} {domain_pddl} {problem_pddl} "
+            + f"--search 'perfect_with_siblings([blind()])'",
         }[planner]
 
         # print("generating plan states with:") print(cmd)
@@ -143,20 +132,6 @@ def state_cost_dataset_from_plans(
             err_msg = f"Failed to generate states from training data plans. This may be because you did not build the planners yet. This can be done with\n\n\tsh build_components.sh\n"
             raise RuntimeError(err_msg)
 
-        if dlplan_state:
-            state_space = generate_state_space(
-                domain_pddl,
-                problem_pddl,
-                vocabulary_info=vocabulary_info,
-                index=0,
-                max_num_states=1,
-            ).state_space
-            instance_info = state_space.get_instance_info()
-            atoms_idx_map = {
-                atom.get_name(): atom.get_index()
-                for atom in instance_info.get_atoms()
-            }
-
         if planner == "fd":
             # read states written into log file by fd
             with open(state_file, "r") as f:
@@ -165,32 +140,18 @@ def state_cost_dataset_from_plans(
                         continue
                     line = line.replace("\n", "")
 
-                    if dlplan_state:
-                        state_mod = []
-                        for fact in line.split():
-                            fact = fact.replace(",)", ")")
-                            if (")") not in fact:
-                                fact = fact + "()"
-                            state_mod.append(fact)
-                        atom_idx_vec = [atoms_idx_map[prop] for prop in state_mod]
-                        state = DLPlanState(
-                            instance_info=instance_info,
-                            atom_indices=atom_idx_vec,
-                            index=len(state_cost_data),
-                        )
-                    else:
-                        state = set()
-                        for fact in line.split():
-                            if "(" not in fact:
-                                fact_str = f"({fact})"
-                            else:
-                                pred = fact[: fact.index("(")]
-                                fact = fact.replace(pred + "(", "")
-                                fact = fact.replace(")", "")
-                                args = fact.split(",")[:-1]
-                                fact_str = "(" + " ".join([pred] + args) + ")"
-                            state.add(fact_str)
-                        state = sorted(list(state))
+                    state = set()
+                    for fact in line.split():
+                        if "(" not in fact:
+                            fact_str = f"({fact})"
+                        else:
+                            pred = fact[: fact.index("(")]
+                            fact = fact.replace(pred + "(", "")
+                            fact = fact.replace(")", "")
+                            args = fact.split(",")[:-1]
+                            fact_str = "(" + " ".join([pred] + args) + ")"
+                        state.add(fact_str)
+                    state = sorted(list(state))
 
                     states.append(state)
 
@@ -261,72 +222,8 @@ def state_cost_dataset_from_plans(
     print(f"Completed generating data from plans in {time.time()-t:.2f}s")
     print(f"{len(state_cost_data)} states collected.")
 
-    dataset = StateCostDataset(
-        state_cost_data_list=state_cost_data, vocabulary_info=vocabulary_info
-    )
+    dataset = StateCostDataset(state_cost_data_list=state_cost_data)
 
     dataset.save(DATA_PATH)
-
-    return dataset
-
-
-def state_cost_dataset_from_spaces(
-    domain_pddl, tasks_dir, dlplan_state=False
-) -> StateCostDataset:
-    state_cost_data = []
-
-    state_space = generate_state_space(
-        domain_pddl,
-        f"{tasks_dir}/{sorted(list(os.listdir(tasks_dir)))[0]}",
-        index=0,
-        max_num_states=1,
-    ).state_space
-    instance_info = state_space.get_instance_info()
-    vocabulary_info = instance_info.get_vocabulary_info()
-
-    collected_from = []
-    print("Generating data from spaces...")
-    t = time.time()
-    for f in sorted(list(os.listdir(tasks_dir))):
-        problem_pddl = f"{tasks_dir}/{f}"
-        generator = generate_state_space(
-            domain_file=domain_pddl,
-            instance_file=problem_pddl,
-            vocabulary_info=vocabulary_info,
-            index=0,
-            max_num_states=MAX_NUM_STATES,
-        )
-
-        if generator.exit_code != GeneratorExitCode.COMPLETE:
-            continue
-
-        collected_from.append(problem_pddl)
-        state_space = generator.state_space
-
-        # collect distance for all states
-        instance_info = state_space.get_instance_info()
-
-        goal_dist = state_space.compute_goal_distances()
-        for s_id, state in state_space.get_states().items():
-            # non dead end states only
-            if s_id in goal_dist:
-                data = StateCostData(
-                    state,
-                    {ALL_KEY: goal_dist[s_id]},
-                    domain_pddl,
-                    problem_pddl,
-                )
-                state_cost_data.append(data)
-    print(f"Completed generating data from spaces in {time.time()-t:.2f}s")
-
-    n_states = len(state_cost_data)
-    print(f"Collected {n_states} states from {len(collected_from)} problems:")
-    print("\n".join(collected_from))
-
-    if not dlplan_state:
-        # convert states to sets of fact strings
-        raise NotImplementedError
-
-    dataset = StateCostDataset(state_cost_data, vocabulary_info)
 
     return dataset

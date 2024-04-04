@@ -10,11 +10,9 @@ See [references](#references) for the corresponding publications.
   - [Setup](#setup)
   - [Training](#training)
     - [Example for WLF models](#example-for-wlf-models)
-    - [Example for DLF models](#example-for-dlf-models)
     - [Example for GNN models](#example-for-gnn-models)
   - [Heuristic Search](#heuristic-search)
     - [Example for WLF models](#example-for-wlf-models-1)
-    - [Example for DLF models](#example-for-dlf-models-1)
     - [Example for GNN models](#example-for-gnn-models-1)
   - [References](#references)
     - [AAAI-24 Experiments](#aaai-24-experiments)
@@ -42,22 +40,17 @@ sh setup.sh
 
 ## Training
 - see `python3 train.py -h` for help, you will need the `--save_file` argument if you want to save the model
-- to train with your own dataset, you will need to construct an experiment configuration toml file such as in [here](experiments/ipc23-learning/blocksworld.toml)
+- to train with your own dataset, you will need to construct an experiment configuration toml file such as in [here](configurations/data/blocksworld.toml)
   - the `tasks_dir` and `plans_dir` paths must contain the same files, differentiating only in the file suffix (.pddl and .plan, respectively)
 
 ### Example for WLF models
 ```
-python3 train.py experiments/models/wlf_ilg_gpr.toml experiments/ipc23-learning/blocksworld.toml --save_file blocksworld_wlf.model
-```
-
-### Example for DLF models
-```
-python3 train.py experiments/models/dlf_gpr.toml experiments/ipc23-learning/blocksworld.toml --save_file blocksworld_dlf.model
+python3 train.py configurations/models/wlf_ilg_gpr.toml configurations/data/blocksworld.toml --save_file blocksworld_wlf.model
 ```
 
 ### Example for GNN models
 ```
-python3 train.py experiments/models/gnn_mean_ilg.toml experiments/ipc23-learning/blocksworld.toml --save_file blocksworld_gnn.model
+python3 train.py configurations/models/gnn_mean_ilg.toml configurations/data/blocksworld.toml --save_file blocksworld_gnn.model
 ```
 
 ## Heuristic Search
@@ -66,17 +59,12 @@ python3 train.py experiments/models/gnn_mean_ilg.toml experiments/ipc23-learning
 
 ### Example for WLF models
 ```
-python3 run_wlf.py benchmarks/ipc23-learning/blocksworld/domain.pddl benchmarks/ipc23-learning/blocksworld/testing/medium/p01.pddl blocksworld_wlf.model
-```
-
-### Example for DLF models
-```
-python3 run_dlf.py benchmarks/ipc23-learning/blocksworld/domain.pddl benchmarks/ipc23-learning/blocksworld/testing/medium/p01.pddl blocksworld_dlf.model
+python3 run_wlf.py benchmarks/data/blocksworld/domain.pddl benchmarks/data/blocksworld/testing/medium/p01.pddl blocksworld_wlf.model
 ```
 
 ### Example for GNN models
 ```
-python3 run_gnn.py benchmarks/ipc23-learning/blocksworld/domain.pddl benchmarks/ipc23-learning/blocksworld/testing/medium/p01.pddl blocksworld_gnn.model
+python3 run_gnn.py benchmarks/data/blocksworld/domain.pddl benchmarks/data/blocksworld/testing/medium/p01.pddl blocksworld_gnn.model
 ```
 
 ## References

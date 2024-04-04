@@ -17,8 +17,6 @@ _DOWNWARD_GPU = "./planners/downward_gpu/fast-downward.py"
 def search_cmd(args, model_type):
     if model_type == "wlf":
         get_search_cmd = fd_wlf
-    elif model_type == "dlf":
-        get_search_cmd = fd_dlf
     elif model_type == "gnn":
         get_search_cmd = fd_gnn
     else:
@@ -29,13 +27,8 @@ def search_cmd(args, model_type):
 
     description = repr(hash(repr(args))).replace("-", "n")
 
-    if aux_file is None:
-        os.makedirs("aux", exist_ok=True)
-        aux_file = f"aux/{description}.aux"
-
-    if plan_file is None:
-        os.makedirs("plans", exist_ok=True)
-        plan_file = f"plans/{description}.plan"
+    aux_file = f"{description}.aux"
+    plan_file = f"{description}.plan"
 
     cmd = get_search_cmd(args, aux_file, plan_file)
     cmd = f"export GOOSE={os.getcwd()}/learner && {cmd}"
@@ -61,7 +54,9 @@ def fd_wlf(args, aux_file, plan_file):
 
     if args.train:
         model_type += "_online"
-    h_goose = f'{model_type}(model_file="{mf}", domain_file="{df}", instance_file="{pf}")'
+    h_goose = (
+        f'{model_type}(model_file="{mf}", domain_file="{df}", instance_file="{pf}")'
+    )
     if args.std:
         assert model_type == "linear_model"
         h_goose = f'{model_type}(model_file="{mf}", domain_file="{df}", instance_file="{pf}", compute_std=true)'
@@ -83,37 +78,13 @@ def fd_wlf(args, aux_file, plan_file):
     return cmd
 
 
-def fd_dlf(args, aux_file, plan_file):
-    mf = os.path.abspath(args.model_path)
-    df = os.path.abspath(args.domain_pddl)
-    pf = os.path.abspath(args.problem_pddl)
-    algorithm = args.algorithm
-
-    if args.pybind:
-        raise NotImplementedError
-    else:
-        model_type = "dlplan"
-
-    h_goose = f'{model_type}(model_file="{mf}", domain_file="{df}", instance_file="{pf}")'
-
-    fd_search = ""
-    if algorithm in {"lazy", "eager"}:
-        fd_search = f"{algorithm}_greedy([{h_goose}])"
-
-    cmd = f"{_DOWNWARD_CPU} --sas-file {aux_file} --plan-file {plan_file} {df} {pf} --search '{fd_search}'"
-
-    return cmd
-
-
 def fd_gnn(args, aux_file, plan_file):
     mf = os.path.abspath(args.model_path)
     df = os.path.abspath(args.domain_pddl)
     pf = os.path.abspath(args.problem_pddl)
     algorithm = args.algorithm
 
-    h_goose = (
-        f'goose(model_path="{mf}", domain_file="{df}", instance_file="{pf}")'
-    )
+    h_goose = f'goose(model_path="{mf}", domain_file="{df}", instance_file="{pf}")'
 
     fd_search = ""
     if algorithm == "eager":
