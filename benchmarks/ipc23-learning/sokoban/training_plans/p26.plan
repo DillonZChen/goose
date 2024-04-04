@@ -1,6 +1,0 @@
-(move loc_6_7 loc_6_6 left)
-(move loc_6_6 loc_6_5 left)
-(move loc_6_5 loc_6_4 left)
-(move loc_6_4 loc_6_3 left)
-(push loc_6_3 loc_5_3 loc_4_3 up box1)
-; cost = 5 (unit cost)

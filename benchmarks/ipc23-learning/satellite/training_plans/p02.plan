@@ -1,6 +1,0 @@
-(switch_on ins1 sat1)
-(turn_to sat1 dir2 dir1)
-(calibrate sat1 ins1 dir2)
-(turn_to sat1 dir1 dir2)
-(take_image sat1 dir1 ins1 mod1)
-; cost = 5 (unit cost)

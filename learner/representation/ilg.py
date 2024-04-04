@@ -108,7 +108,6 @@ class InstanceLearningGraph(Representation):
     def state_to_cgraph(self, state: LiftedState) -> CGraph:
         """States are represented as a list of (pred, [args])"""
         c_graph = self.G.copy()
-        new_idx = len(self._node_to_i)
 
         for fact in state:
             pred = fact[0]
@@ -126,9 +125,6 @@ class InstanceLearningGraph(Representation):
                 col = colour_start + WlColours.T_POS_GOAL.value
                 c_graph.nodes[node]["x"] = col
                 continue
-
-            node = new_idx
-            new_idx += 1
 
             # else add node and corresponding edges to graph
             col = colour_start + WlColours.T_NON_GOAL.value

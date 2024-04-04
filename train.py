@@ -1,15 +1,16 @@
 import argparse
 import os
-import sys
-import toml
 import subprocess
+import sys
 
+import toml
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("model_config")
     parser.add_argument("data_config")
     parser.add_argument("--save_file", default=None)
+    parser.add_argument("--seed", default=0, type=int)
     args = parser.parse_args()
 
     model_config = toml.load(args.model_config)
@@ -25,7 +26,7 @@ if __name__ == "__main__":
     for var, val in model_config["config"].items():
         config_args.append(f"--{var}")
         config_args.append(str(val))
-    save_args = []
+    additional_args = ["--seed", str(args.seed)]
     if save_file is not None:
         save_args = ["--save_file", os.path.abspath(save_file)]
     p = subprocess.Popen(
