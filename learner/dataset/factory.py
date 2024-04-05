@@ -6,9 +6,9 @@ from typing import Dict, Iterable, List, Tuple, Union
 
 _DOWNWARD = "./../planners/downward_cpu/fast-downward.py"
 _POWERLIFTED = "./../planners/powerlifted/powerlifted.py"
-DATA_PATH = "../data/ipc23/ranker/blocksworld"
+DATA_PATH = os.path.abspath("data/ipc23/")
 ALL_KEY = "_all_"
-os.makedirs(DATA_PATH, exist_ok=True)
+
 
 MAX_NUM_STATES = 10000
 
@@ -77,8 +77,18 @@ def state_cost_dataset_from_plans(
     tasks_dir,
     plans_dir,
     planner="fd",
+    load_from_memory=False,
 ) -> StateCostDataset:
     state_cost_data = []
+    domain = domain_pddl.split('/')[-1].split('.')[0]
+    data_path = os.path.join(DATA_PATH, f"{planner}-{domain}")
+    if load_from_memory:
+        print(f"loading data from {data_path}...")
+        try:
+            dataset = StateCostDataset.load(data_path)
+            return dataset
+        except FileNotFoundError:
+            print("Dataset file not found. Have you generated the dataset before?")
 
     print("Generating data from plans...")
     t = time.time()
@@ -223,7 +233,7 @@ def state_cost_dataset_from_plans(
     print(f"{len(state_cost_data)} states collected.")
 
     dataset = StateCostDataset(state_cost_data_list=state_cost_data)
-
-    dataset.save(DATA_PATH)
+    os.makedirs(data_path, exist_ok=True)
+    dataset.save(data_path)
 
     return dataset

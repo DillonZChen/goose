@@ -89,46 +89,14 @@ class RankSVM(svm.LinearSVC):
 
         print(f"MSE: {mse}; Accuracy: {accuracy}")
 
-    def h_val(self, x):
+    def predict(self, x):
         """
         return pseudo heuristic for search
         """
+        # print("here")
         if hasattr(self, "coef_"):
             ret = np.dot(x, self.coef_.T)
             return ret
         else:
             raise ValueError("Must call fit() prior to predict()")
 
-
-def generate_feature_vec_relaxed(planning_graph, state, param):
-    pass
-
-
-class RankHeuristic:
-    """
-    Implement the heuristic using the trained RankSVM's coef for dot product
-
-    Inadmissible, directly reflect the rank
-
-    Default scale value is 10000
-    """
-
-    def __init__(self, svm: RankSVM, planning_graph, scale_1=100000, scale_2=1000):
-        super().__init__()
-        self.svm = svm
-        self.planning_graph = planning_graph
-        self.scale_1 = scale_1
-        self.scale_2 = scale_2
-        self.expand_nodes = 0
-
-    def __call__(self, node):
-        self.expand_nodes += 1
-        if self.planning_graph.task.goals <= node.state:
-            print("reached goal state")
-            return -999999
-        vec = generate_feature_vec_relaxed(self.planning_graph, node.state, 99999999)
-        h = round((self.svm.h_val(vec).item() + self.scale_1) * self.scale_2)
-        if h < 0:
-            print(f"original val: {self.svm.h_val(vec).item()}")
-            print(f"heristic values:{h}")
-        return h

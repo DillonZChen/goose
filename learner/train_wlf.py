@@ -60,6 +60,12 @@ def parse_args():
         help="reduce feature sizes by discarding colours with count <= prune",
     )
 
+    parser.add_argument(
+        "--load",
+        action="store_true",
+        help="load data rather than generate",
+    )
+
     args = parser.parse_args()
 
     return args

@@ -26,6 +26,8 @@ if __name__ == "__main__":
     for var, val in model_config["config"].items():
         config_args.append(f"--{var}")
         config_args.append(str(val))
+    for var, val in model_config["store_true"].items():
+        config_args.append(f"--{var}") if val else None
     additional_args = ["--seed", str(args.seed)]
     if save_file is not None:
         additional_args += ["--save_file", os.path.abspath(save_file)]

@@ -86,12 +86,10 @@ def main():
     tasks_dir = args.tasks_dir
     plans_dir = args.plans_dir
     if args.pair == "neighbor":
-        if args.load:
-            dataset = StateCostDataset.load(DATA_PATH)
-        else:
-            dataset = state_cost_dataset_from_plans(domain_pddl, tasks_dir, plans_dir, planner="fd-rank")
+        dataset_planner="fd-rank"
     else:
-        dataset = state_cost_dataset_from_plans(domain_pddl, tasks_dir, plans_dir)
+        dataset_planner = "fd"
+    dataset = state_cost_dataset_from_plans(domain_pddl, tasks_dir, plans_dir, dataset_planner, args.load)
     dataset_by_problem = group_by_problem(dataset)
     graphs_by_problem = []
     i = 0
@@ -180,8 +178,10 @@ def main():
     model.score(X_tr, y_tr['_all_'])
     model.score(X_va, y_va['_all_'])
 
+    print(model.predict_h(X_tr))
+
     # save model
-    save_ml_model(model, args)
+    # save_ml_model(model, args)
 
 
 if __name__ == "__main__":
