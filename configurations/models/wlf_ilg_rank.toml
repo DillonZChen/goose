@@ -8,4 +8,4 @@ iterations = 4
 pair = "neighbor"
 
 [store_true]
-load = true
+load = false
