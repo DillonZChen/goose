@@ -139,7 +139,7 @@ def state_cost_dataset_from_plans(
             os.remove(aux_file)
 
         if not os.path.exists(state_file):
-            err_msg = f"Failed to generate states from training data plans. This may be because you did not build the planners yet. This can be done with\n\n\tsh build_components.sh\n"
+            err_msg = f"Failed to generate states from training data plans. This may be because you did not build the planners yet. This can be done with\n\n\tsh setup.sh\n"
             raise RuntimeError(err_msg)
 
         if planner == "fd":

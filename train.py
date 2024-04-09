@@ -22,12 +22,16 @@ if __name__ == "__main__":
         os.path.abspath(data_config["training"][arg])
         for arg in ["domain_pddl", "tasks_dir", "plans_dir"]
     ]
+
+    ## TODO: make a function to handle default values like in ngoose
     config_args = []
-    for var, val in model_config["config"].items():
-        config_args.append(f"--{var}")
-        config_args.append(str(val))
-    for var, val in model_config["store_true"].items():
-        config_args.append(f"--{var}") if val else None
+    if "config" in model_config:
+        for var, val in model_config["config"].items():
+            config_args.append(f"--{var}")
+            config_args.append(str(val))
+    if "store_true" in model_config:
+        for var, val in model_config["store_true"].items():
+            config_args.append(f"--{var}") if val else None
     additional_args = ["--seed", str(args.seed)]
     if save_file is not None:
         additional_args += ["--save_file", os.path.abspath(save_file)]

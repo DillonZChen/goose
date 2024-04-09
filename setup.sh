@@ -9,6 +9,7 @@ for planner in downward_cpu downward_gpu powerlifted; do
     echo "========= Building $planner ========="
     echo
     cd planners/$planner
+    rm -r builds
     python3 build.py
     cd ../..
 done

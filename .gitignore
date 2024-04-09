@@ -19,5 +19,6 @@ tests/outputs
 trained_models/
 data/
 _*/
+_*
 icaps24_gnn_logs_and_models/
 icaps24_wl_logs_and_models/
