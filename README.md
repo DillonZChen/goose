@@ -70,10 +70,8 @@ python3 run_gnn.py benchmarks/ipc23-learning/blocksworld/domain.pddl benchmarks/
 ## References
 The relevant publications for this repository are:
 
-- Dillon Ze Chen and Felipe Trevizan and Sylvie Thiébaux. **Return to Tradition: Learning Reliable Heuristics with Classical Machine Learning**. ICAPS 2024.
-- Dillon Ze Chen and Sylvie Thiébaux and Felipe Trevizan. **Learning Domain-Independent Heuristics for Grounded and Lifted Planning**. AAAI 2024. [[pdf](https://dillonzchen.github.io/publications/Chen2024Goose.pdf)]
-- Dillon Ze Chen and Sylvie Thiébaux and Felipe Trevizan. **GOOSE: Learning Domain-Independent Heuristics**. Genplan 2023. [[pdf](https://dillonzchen.github.io/publications/Chen2023Wl.pdf)]
-- Dillon Ze Chen and Felipe Trevizan and Sylvie Thiébaux. **Graph Neural Networks and Graph Kernels For Learning Heuristics: Is there a difference?**. Genplan 2023. [[pdf](https://dillonzchen.github.io/publications/Chen2023Goose.pdf)]
+- Dillon Ze Chen and Felipe Trevizan and Sylvie Thiébaux. **Return to Tradition: Learning Reliable Heuristics with Classical Machine Learning**. ICAPS 2024. [[pdf](https://dillonzchen.github.io/publications/chen-trevizan-thiebaux-icaps2024.pdf)]
+- Dillon Ze Chen and Sylvie Thiébaux and Felipe Trevizan. **Learning Domain-Independent Heuristics for Grounded and Lifted Planning**. AAAI 2024. [[pdf](https://dillonzchen.github.io/publications/chen-thiebaux-trevizan-aaai2024.pdf)]
 
 ### AAAI-24 Experiments
 For source code corresponding to experiments from our AAAI-24 publication, please refer to this [release](https://github.com/DillonZChen/goose/releases/tag/aaai-24).
