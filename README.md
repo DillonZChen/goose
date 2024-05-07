@@ -109,6 +109,7 @@ For the bibtex file for WL and GNN architectures using the `ilg` graph represent
 
 ## TODOs
 The next release will aim to support the following features:
+- Even faster heuristic evaluation
 - An option to keep static facts when training and evaluating on Fast Downward states. This could be done by initial state set minus FD preprocessed facts.
-- Reimplement evaluation using Powerlifted for problems that cannot be grounded such as Beluga.
+- Evaluation using Powerlifted for problems that cannot be grounded such as Beluga.
 - RankSVM for heuristic predictions from [here](https://arxiv.org/abs/1608.01302)
