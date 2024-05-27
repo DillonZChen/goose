@@ -2,6 +2,8 @@
 
 GOOSE is a learning for planning framework. It contains various methods for learning representations for planning tasks, and algorithms for using such representations for solving planning tasks.
 
+If you just want to use the WL features, take a look at the [WLPlan](https://github.com/DillonZChen/wlplan) package.
+
 See [references](#references) for the corresponding publications.
 
 ## Table of contents
