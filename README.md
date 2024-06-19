@@ -2,7 +2,10 @@
 
 GOOSE is a learning for planning framework. It contains various methods for learning representations for planning tasks, and algorithms for using such representations for solving planning tasks.
 
-If you just want to use the WL features, take a look at the [WLPlan](https://github.com/DillonZChen/wlplan) package.
+- If you just want to use the WL features, take a look at the [WLPlan](https://github.com/DillonZChen/wlplan) package.
+- If you want the code used for our ICAPS-24 paper, refer to the [ICAPS-24 release](https://github.com/DillonZChen/goose/releases/tag/icaps-24).
+- If you want the code used for our AAAI-24 paper, refer to the [AAAI-24 release](https://github.com/DillonZChen/goose/releases/tag/aaai-24).
+- Future releases will deprecate support for GNN models and will be built around the WLPlan package.
 
 See [references](#references) for the corresponding publications.
 
@@ -105,13 +108,14 @@ For the bibtex file for WL and GNN architectures using the `ilg` graph represent
 
 ## Code acknowledgements
 - [Fast Downward](https://github.com/aibasel/downward) by Malte Helmert and various contributors for the planning parser, grounder and grounded search algorithm.
-- [scorpion](https://github.com/jendrikseipp/scorpion) by Jendrik Seipp for a powerful optimal planner for generating planning instances.
+- [Scorpion](https://github.com/jendrikseipp/scorpion) by Jendrik Seipp for a powerful optimal planner for generating planning instances.
 - [Powerlifted](https://github.com/abcorrea/powerlifted) by Augusto B. Corrêa and various contributors for their lifted planner.
 - All the other various packages listed in the requirements
 
 ## TODOs
 The next release will aim to support the following features:
 - Even faster heuristic evaluation
-- An option to keep static facts when training and evaluating on Fast Downward states. This could be done by initial state set minus FD preprocessed facts.
+- An option to keep static facts when training and evaluating by considering schema effects.
 - Evaluation using Powerlifted for problems that cannot be grounded such as Beluga.
-- RankSVM for heuristic predictions from [here](https://arxiv.org/abs/1608.01302)
+- Ranking formulations for heuristic prediction, e.g. [RankSVM](https://arxiv.org/abs/1608.01302) or [DirectRanker](https://felipe.trevizan.org/papers/hao24:ranking.pdf)
+- Apptainer recipe
