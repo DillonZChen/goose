@@ -1,0 +1,4 @@
+optimisation = 'rank-lp'
+iterations = 3
+rank = true
+data_generation = 'plan'

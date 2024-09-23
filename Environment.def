@@ -1,0 +1,51 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%files
+    # Copy directories.
+    learning /goose/
+    planning /goose/
+    util /goose/
+    wlplan /goose/
+
+    *.py /goose/
+    build.sh /goose/
+    requirements.txt /goose/
+
+%post
+    # Install all necessary dependencies.
+    apt-get update
+
+    apt-get -y install --no-install-recommends \
+        cmake \
+        g++ \
+        make \
+        libboost-all-dev \
+        python3.10 \
+        python3-pip \
+        python3-dev
+
+    # Move into goose.
+    cd /goose/
+
+    # Clear build directories.
+    rm -rf wlplan/build
+    rm -rf planning/*/builds
+
+    # Build components.
+    sh build.sh wlplan
+
+    # Python dependencies.
+    pip3 install -r requirements.txt
+
+    # Clean up.
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
+    rm -rf wlplan/
+    rm -rf __pycache__/
+    rm -rf scripts/
+
+%labels
+    Name        goose-environment
+    Description Environment containing dependencies for running GOOSE from source.
+    Authors     Dillon Chen <dillon.chen1@gmail.com>

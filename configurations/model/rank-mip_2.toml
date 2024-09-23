@@ -1,0 +1,4 @@
+optimisation = 'rank-mip'
+iterations = 2
+rank = true
+data_generation = 'plan'

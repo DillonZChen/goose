@@ -1,0 +1,4 @@
+optimisation = 'gpr'
+iterations = 3
+rank = false
+data_generation = 'state-space'
