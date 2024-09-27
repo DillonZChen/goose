@@ -1,0 +1,5 @@
+[training]
+domain_pddl = 'benchmarks/rovers/classic/domain.pddl'
+tasks_dir = 'benchmarks/rovers/classic/training'
+plans_dir = 'benchmarks/rovers/classic/training_plans'
+numeric = false

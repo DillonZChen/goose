@@ -1,0 +1,5 @@
+[training]
+domain_pddl = 'benchmarks/blocksworld/numeric/domain.pddl'
+tasks_dir = 'benchmarks/blocksworld/numeric/training'
+plans_dir = 'benchmarks/blocksworld/numeric/training_plans'
+numeric = true

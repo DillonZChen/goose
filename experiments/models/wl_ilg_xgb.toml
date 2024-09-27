@@ -1,8 +1,0 @@
-[model]
-method = "wl"
-
-[config]
-model = "xgb"
-rep = "ilg"
-features = "1wl"
-iterations = 4

@@ -1,0 +1,5 @@
+[training]
+domain_pddl = 'benchmarks/satellite/numeric/domain.pddl'
+tasks_dir = 'benchmarks/satellite/numeric/training'
+plans_dir = 'benchmarks/satellite/numeric/training_plans'
+numeric = true

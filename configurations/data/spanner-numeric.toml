@@ -1,0 +1,5 @@
+[training]
+domain_pddl = 'benchmarks/spanner/numeric/domain.pddl'
+tasks_dir = 'benchmarks/spanner/numeric/training'
+plans_dir = 'benchmarks/spanner/numeric/training_plans'
+numeric = true

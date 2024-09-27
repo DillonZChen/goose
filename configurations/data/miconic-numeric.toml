@@ -1,0 +1,5 @@
+[training]
+domain_pddl = 'benchmarks/miconic/numeric/domain.pddl'
+tasks_dir = 'benchmarks/miconic/numeric/training'
+plans_dir = 'benchmarks/miconic/numeric/training_plans'
+numeric = true

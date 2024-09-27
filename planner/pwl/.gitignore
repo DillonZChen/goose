@@ -1,0 +1,18 @@
+# Untracked files
+*~
+*.pyc
+src/search/config
+src/search/latex
+src/search/html
+builds/
+output.lifted
+model.lp
+plan*
+sas_plan
+powerlifted.img
+powerlifted.sif
+reports/
+local-tests/
+*.out
+plan
+*.sas

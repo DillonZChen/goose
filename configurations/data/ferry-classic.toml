@@ -1,0 +1,5 @@
+[training]
+domain_pddl = 'benchmarks/ferry/classic/domain.pddl'
+tasks_dir = 'benchmarks/ferry/classic/training'
+plans_dir = 'benchmarks/ferry/classic/training_plans'
+numeric = false

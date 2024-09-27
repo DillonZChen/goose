@@ -1,0 +1,23 @@
+
+[model]
+method = "gnn"
+target = "h"
+
+[data]
+val_ratio = 0.25
+
+[representation]
+dynamic_features = false
+
+[estimator]
+jumping_knowledge = false
+round = true
+aggr = "max"
+pool = "sum"
+nhid = 64
+nlayers = 3
+
+[opt]
+batch_size = 16
+lr = 0.001
+l2 = 0.001

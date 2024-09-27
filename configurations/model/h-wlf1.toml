@@ -1,0 +1,15 @@
+
+[model]
+method = "wlf"
+target = "h"
+
+[data]
+val_ratio = 0.0
+
+[representation]
+cat_iterations = 1
+con_iterations = 1
+
+[estimator]
+estimator = "gpr"
+round = true

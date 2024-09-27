@@ -1,0 +1,5 @@
+[training]
+domain_pddl = 'benchmarks/transport/classic/domain.pddl'
+tasks_dir = 'benchmarks/transport/classic/training'
+plans_dir = 'benchmarks/transport/classic/training_plans'
+numeric = false

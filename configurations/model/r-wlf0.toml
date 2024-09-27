@@ -1,0 +1,15 @@
+
+[model]
+method = "wlf"
+target = "r"
+
+[data]
+val_ratio = 0.0
+
+[representation]
+cat_iterations = 0
+con_iterations = 0
+
+[estimator]
+estimator = "miprk"
+round = true

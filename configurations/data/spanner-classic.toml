@@ -1,0 +1,5 @@
+[training]
+domain_pddl = 'benchmarks/spanner/classic/domain.pddl'
+tasks_dir = 'benchmarks/spanner/classic/training'
+plans_dir = 'benchmarks/spanner/classic/training_plans'
+numeric = false

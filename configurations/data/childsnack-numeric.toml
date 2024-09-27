@@ -1,0 +1,5 @@
+[training]
+domain_pddl = 'benchmarks/childsnack/numeric/domain.pddl'
+tasks_dir = 'benchmarks/childsnack/numeric/training'
+plans_dir = 'benchmarks/childsnack/numeric/training_plans'
+numeric = true
