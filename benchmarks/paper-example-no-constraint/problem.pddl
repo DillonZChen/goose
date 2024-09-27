@@ -1,0 +1,33 @@
+(define (problem running-example)
+    (:domain ccblocksworld)
+    (:objects
+      a b c d e f - block
+      x y z - base
+    )
+    (:init 
+        (arm_empty) 
+        (= (capacity x) 2) 
+        (= (capacity y) 0) 
+        (= (capacity z) 1) 
+        (clear a)
+        (on a x)
+        (above a x)
+        (clear f)
+        (on f d)
+        (on d b)
+        (on b y)
+        (above f y)
+        (above d y)
+        (above b y)
+        (clear e)
+        (on e c)
+        (on c z)
+        (above e z)
+        (above c z)
+    )
+    (:goal (and 
+        (clear a)
+        (on a b)
+        (on b x)
+    ))
+)
