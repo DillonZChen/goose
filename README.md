@@ -88,7 +88,7 @@ python3 run_gnn.py benchmarks/ipc23-learning/blocksworld/domain.pddl benchmarks/
 The relevant publications for this repository are:
 
 - Dillon Ze Chen and Sylvie Thiébaux. **Learning Heuristics for Numeric
-  Planning**. ICAPS 2024. [coming soon]
+  Planning**. NeurIPS 2024. [coming soon]
 - Dillon Ze Chen and Felipe Trevizan and Sylvie Thiébaux. **Return to Tradition:
   Learning Reliable Heuristics with Classical Machine Learning**. ICAPS 2024.
   [[pdf](https://dillonzchen.github.io/publications/chen-trevizan-thiebaux-icaps2024.pdf)
