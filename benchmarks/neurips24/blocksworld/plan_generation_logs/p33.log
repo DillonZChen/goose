@@ -1,0 +1,2972 @@
+/scratch/xb83/dc6693/generate_plans
+gadi-cpu-clx-1109.gadi.nci.org.au
+Sun Mar 24 00:33:37 AEDT 2024
+
+Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              96
+On-line CPU(s) list: 0-95
+Thread(s) per core:  2
+Core(s) per socket:  24
+Socket(s):           2
+NUMA node(s):        4
+Vendor ID:           GenuineIntel
+CPU family:          6
+Model:               85
+Model name:          Intel(R) Xeon(R) Platinum 8274 CPU @ 3.20GHz
+Stepping:            7
+CPU MHz:             3319.691
+CPU max MHz:         4000.0000
+CPU min MHz:         1200.0000
+BogoMIPS:            6400.00
+Virtualization:      VT-x
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            1024K
+L3 cache:            36608K
+NUMA node0 CPU(s):   0-3,7-9,13-15,19,20,48-51,55-57,61-63,67,68
+NUMA node1 CPU(s):   4-6,10-12,16-18,21-23,52-54,58-60,64-66,69-71
+NUMA node2 CPU(s):   24-27,31-33,37-39,43,44,72-75,79-81,85-87,91,92
+NUMA node3 CPU(s):   28-30,34-36,40-42,45-47,76-78,82-84,88-90,93-95
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3 invpcid_single intel_ppin ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm mpx rdt_a avx512f avx512dq rdseed adx smap clflushopt clwb intel_pt avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts hwp hwp_act_window hwp_epp hwp_pkg_req pku ospke avx512_vnni md_clear flush_l1d arch_capabilities
+
+--- exec ---
+INFO     Running translator.
+INFO     callstring: /usr/bin/python2 /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/translate/translate.py /scratch/xb83/dc6693/ngoose/benchmarks/l4np/blocksworld/numeric/domain.pddl /scratch/xb83/dc6693/ngoose/benchmarks/l4np/blocksworld/numeric/training/p33.pddl --sas_file p33.sas
+
+Warning: Domain name in domain file blocksworld_numeric-domain differs from domain name in task file p33-domain
+
+INFO     Running preprocessor (release64).
+INFO     callstring: /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/preprocess p33.sas < p33.sas
+
+INFO     Running search (release64).
+INFO     search executable: /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/downward
+INFO     callstring: /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/downward --search 'astar(lmcutnumeric(use_second_order_simple=true,bound_iterations=10,ceiling_less_than_one=true),max_time=1800)' --internal-plan-file /scratch/xb83/dc6693/generate_plans/blocksworld/plans/p33.plan < p33.sas.num
+reading input... [t=7.34329e-05s]
+done reading input! [t=0.00596356s]
+packing state variables...done! [t=0.00597715s]
+Variables: 50
+Facts: 254
+Bytes per state: 80
+Building successor generator...done! [t=0.00767851s]
+done initalizing global data [t=0.00768328s]
+pruning method: none
+The current working directory is /scratch/xb83/dc6693/ngoose/planner/nfd
+Conducting best first search with reopening closed nodes, (real) bound = 2147483647
+Initializing landmark cut heuristic...
+2
+
+variables
+PNE capacity(c1)  lb: 0 
+PNE capacity(c2)  lb: 0 
+PNE capacity(c3)  lb: 0 
+PNE capacity(c4)  lb: 0 
+
+actions
+
+pickup b1 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+pickup b1 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+pickup b1 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+pickup b1 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+pickup b10 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+pickup b10 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+pickup b10 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+pickup b10 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+pickup b2 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+pickup b2 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+pickup b2 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+pickup b2 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+pickup b3 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+pickup b3 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+pickup b3 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+pickup b3 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+pickup b4 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+pickup b4 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+pickup b4 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+pickup b4 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+pickup b5 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+pickup b5 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+pickup b5 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+pickup b5 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+pickup b6 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+pickup b6 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+pickup b6 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+pickup b6 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+pickup b7 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+pickup b7 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+pickup b7 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+pickup b7 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+pickup b8 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+pickup b8 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+pickup b8 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+pickup b8 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+pickup b9 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+pickup b9 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+pickup b9 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+pickup b9 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+putdown b1 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+putdown b1 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+putdown b1 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+putdown b1 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+putdown b10 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+putdown b10 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+putdown b10 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+putdown b10 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+putdown b2 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+putdown b2 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+putdown b2 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+putdown b2 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+putdown b3 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+putdown b3 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+putdown b3 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+putdown b3 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+putdown b4 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+putdown b4 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+putdown b4 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+putdown b4 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+putdown b5 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+putdown b5 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+putdown b5 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+putdown b5 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+putdown b6 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+putdown b6 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+putdown b6 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+putdown b6 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+putdown b7 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+putdown b7 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+putdown b7 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+putdown b7 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+putdown b8 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+putdown b8 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+putdown b8 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+putdown b8 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+putdown b9 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+putdown b9 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+putdown b9 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+putdown b9 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b1 b10 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b1 b10 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b1 b10 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b1 b10 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b1 b2 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b1 b2 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b1 b2 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b1 b2 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b1 b3 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b1 b3 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b1 b3 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b1 b3 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b1 b4 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b1 b4 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b1 b4 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b1 b4 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b1 b5 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b1 b5 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b1 b5 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b1 b5 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b1 b6 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b1 b6 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b1 b6 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b1 b6 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b1 b7 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b1 b7 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b1 b7 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b1 b7 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b1 b8 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b1 b8 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b1 b8 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b1 b8 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b1 b9 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b1 b9 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b1 b9 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b1 b9 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b10 b1 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b10 b1 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b10 b1 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b10 b1 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b10 b2 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b10 b2 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b10 b2 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b10 b2 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b10 b3 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b10 b3 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b10 b3 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b10 b3 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b10 b4 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b10 b4 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b10 b4 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b10 b4 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b10 b5 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b10 b5 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b10 b5 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b10 b5 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b10 b6 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b10 b6 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b10 b6 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b10 b6 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b10 b7 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b10 b7 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b10 b7 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b10 b7 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b10 b8 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b10 b8 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b10 b8 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b10 b8 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b10 b9 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b10 b9 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b10 b9 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b10 b9 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b2 b1 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b2 b1 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b2 b1 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b2 b1 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b2 b10 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b2 b10 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b2 b10 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b2 b10 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b2 b3 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b2 b3 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b2 b3 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b2 b3 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b2 b4 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b2 b4 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b2 b4 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b2 b4 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b2 b5 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b2 b5 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b2 b5 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b2 b5 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b2 b6 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b2 b6 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b2 b6 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b2 b6 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b2 b7 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b2 b7 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b2 b7 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b2 b7 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b2 b8 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b2 b8 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b2 b8 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b2 b8 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b2 b9 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b2 b9 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b2 b9 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b2 b9 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b3 b1 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b3 b1 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b3 b1 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b3 b1 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b3 b10 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b3 b10 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b3 b10 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b3 b10 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b3 b2 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b3 b2 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b3 b2 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b3 b2 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b3 b4 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b3 b4 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b3 b4 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b3 b4 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b3 b5 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b3 b5 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b3 b5 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b3 b5 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b3 b6 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b3 b6 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b3 b6 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b3 b6 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b3 b7 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b3 b7 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b3 b7 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b3 b7 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b3 b8 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b3 b8 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b3 b8 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b3 b8 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b3 b9 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b3 b9 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b3 b9 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b3 b9 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b4 b1 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b4 b1 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b4 b1 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b4 b1 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b4 b10 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b4 b10 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b4 b10 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b4 b10 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b4 b2 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b4 b2 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b4 b2 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b4 b2 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b4 b3 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b4 b3 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b4 b3 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b4 b3 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b4 b5 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b4 b5 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b4 b5 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b4 b5 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b4 b6 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b4 b6 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b4 b6 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b4 b6 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b4 b7 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b4 b7 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b4 b7 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b4 b7 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b4 b8 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b4 b8 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b4 b8 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b4 b8 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b4 b9 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b4 b9 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b4 b9 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b4 b9 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b5 b1 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b5 b1 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b5 b1 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b5 b1 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b5 b10 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b5 b10 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b5 b10 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b5 b10 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b5 b2 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b5 b2 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b5 b2 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b5 b2 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b5 b3 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b5 b3 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b5 b3 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b5 b3 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b5 b4 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b5 b4 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b5 b4 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b5 b4 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b5 b6 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b5 b6 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b5 b6 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b5 b6 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b5 b7 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b5 b7 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b5 b7 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b5 b7 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b5 b8 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b5 b8 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b5 b8 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b5 b8 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b5 b9 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b5 b9 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b5 b9 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b5 b9 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b6 b1 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b6 b1 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b6 b1 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b6 b1 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b6 b10 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b6 b10 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b6 b10 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b6 b10 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b6 b2 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b6 b2 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b6 b2 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b6 b2 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b6 b3 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b6 b3 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b6 b3 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b6 b3 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b6 b4 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b6 b4 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b6 b4 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b6 b4 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b6 b5 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b6 b5 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b6 b5 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b6 b5 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b6 b7 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b6 b7 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b6 b7 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b6 b7 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b6 b8 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b6 b8 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b6 b8 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b6 b8 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b6 b9 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b6 b9 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b6 b9 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b6 b9 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b7 b1 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b7 b1 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b7 b1 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b7 b1 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b7 b10 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b7 b10 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b7 b10 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b7 b10 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b7 b2 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b7 b2 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b7 b2 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b7 b2 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b7 b3 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b7 b3 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b7 b3 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b7 b3 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b7 b4 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b7 b4 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b7 b4 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b7 b4 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b7 b5 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b7 b5 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b7 b5 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b7 b5 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b7 b6 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b7 b6 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b7 b6 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b7 b6 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b7 b8 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b7 b8 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b7 b8 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b7 b8 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b7 b9 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b7 b9 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b7 b9 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b7 b9 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b8 b1 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b8 b1 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b8 b1 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b8 b1 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b8 b10 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b8 b10 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b8 b10 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b8 b10 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b8 b2 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b8 b2 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b8 b2 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b8 b2 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b8 b3 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b8 b3 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b8 b3 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b8 b3 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b8 b4 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b8 b4 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b8 b4 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b8 b4 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b8 b5 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b8 b5 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b8 b5 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b8 b5 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b8 b6 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b8 b6 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b8 b6 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b8 b6 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b8 b7 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b8 b7 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b8 b7 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b8 b7 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b8 b9 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b8 b9 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b8 b9 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b8 b9 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b9 b1 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b9 b1 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b9 b1 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b9 b1 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b9 b10 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b9 b10 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b9 b10 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b9 b10 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b9 b2 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b9 b2 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b9 b2 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b9 b2 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b9 b3 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b9 b3 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b9 b3 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b9 b3 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b9 b4 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b9 b4 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b9 b4 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b9 b4 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b9 b5 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b9 b5 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b9 b5 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b9 b5 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b9 b6 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b9 b6 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b9 b6 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b9 b6 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b9 b7 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b9 b7 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b9 b7 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b9 b7 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+stack b9 b8 c1
+PNE capacity(c1) before  lb: 1 
+PNE capacity(c1) increment  lb: -1  ub: -1 
+
+stack b9 b8 c2
+PNE capacity(c2) before  lb: 1 
+PNE capacity(c2) increment  lb: -1  ub: -1 
+
+stack b9 b8 c3
+PNE capacity(c3) before  lb: 1 
+PNE capacity(c3) increment  lb: -1  ub: -1 
+
+stack b9 b8 c4
+PNE capacity(c4) before  lb: 1 
+PNE capacity(c4) increment  lb: -1  ub: -1 
+
+unstack b1 b10 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b1 b10 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b1 b10 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b1 b10 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b1 b2 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b1 b2 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b1 b2 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b1 b2 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b1 b3 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b1 b3 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b1 b3 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b1 b3 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b1 b4 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b1 b4 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b1 b4 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b1 b4 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b1 b5 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b1 b5 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b1 b5 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b1 b5 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b1 b6 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b1 b6 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b1 b6 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b1 b6 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b1 b7 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b1 b7 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b1 b7 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b1 b7 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b1 b8 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b1 b8 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b1 b8 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b1 b8 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b1 b9 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b1 b9 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b1 b9 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b1 b9 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b10 b1 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b10 b1 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b10 b1 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b10 b1 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b10 b2 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b10 b2 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b10 b2 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b10 b2 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b10 b3 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b10 b3 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b10 b3 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b10 b3 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b10 b4 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b10 b4 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b10 b4 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b10 b4 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b10 b5 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b10 b5 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b10 b5 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b10 b5 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b10 b6 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b10 b6 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b10 b6 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b10 b6 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b10 b7 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b10 b7 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b10 b7 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b10 b7 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b10 b8 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b10 b8 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b10 b8 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b10 b8 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b10 b9 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b10 b9 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b10 b9 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b10 b9 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b2 b1 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b2 b1 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b2 b1 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b2 b1 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b2 b10 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b2 b10 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b2 b10 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b2 b10 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b2 b3 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b2 b3 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b2 b3 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b2 b3 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b2 b4 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b2 b4 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b2 b4 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b2 b4 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b2 b5 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b2 b5 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b2 b5 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b2 b5 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b2 b6 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b2 b6 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b2 b6 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b2 b6 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b2 b7 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b2 b7 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b2 b7 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b2 b7 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b2 b8 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b2 b8 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b2 b8 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b2 b8 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b2 b9 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b2 b9 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b2 b9 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b2 b9 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b3 b1 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b3 b1 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b3 b1 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b3 b1 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b3 b10 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b3 b10 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b3 b10 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b3 b10 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b3 b2 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b3 b2 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b3 b2 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b3 b2 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b3 b4 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b3 b4 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b3 b4 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b3 b4 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b3 b5 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b3 b5 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b3 b5 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b3 b5 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b3 b6 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b3 b6 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b3 b6 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b3 b6 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b3 b7 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b3 b7 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b3 b7 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b3 b7 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b3 b8 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b3 b8 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b3 b8 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b3 b8 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b3 b9 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b3 b9 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b3 b9 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b3 b9 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b4 b1 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b4 b1 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b4 b1 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b4 b1 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b4 b10 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b4 b10 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b4 b10 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b4 b10 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b4 b2 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b4 b2 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b4 b2 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b4 b2 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b4 b3 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b4 b3 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b4 b3 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b4 b3 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b4 b5 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b4 b5 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b4 b5 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b4 b5 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b4 b6 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b4 b6 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b4 b6 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b4 b6 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b4 b7 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b4 b7 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b4 b7 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b4 b7 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b4 b8 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b4 b8 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b4 b8 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b4 b8 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b4 b9 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b4 b9 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b4 b9 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b4 b9 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b5 b1 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b5 b1 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b5 b1 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b5 b1 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b5 b10 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b5 b10 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b5 b10 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b5 b10 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b5 b2 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b5 b2 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b5 b2 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b5 b2 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b5 b3 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b5 b3 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b5 b3 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b5 b3 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b5 b4 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b5 b4 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b5 b4 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b5 b4 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b5 b6 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b5 b6 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b5 b6 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b5 b6 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b5 b7 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b5 b7 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b5 b7 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b5 b7 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b5 b8 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b5 b8 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b5 b8 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b5 b8 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b5 b9 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b5 b9 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b5 b9 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b5 b9 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b6 b1 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b6 b1 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b6 b1 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b6 b1 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b6 b10 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b6 b10 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b6 b10 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b6 b10 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b6 b2 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b6 b2 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b6 b2 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b6 b2 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b6 b3 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b6 b3 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b6 b3 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b6 b3 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b6 b4 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b6 b4 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b6 b4 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b6 b4 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b6 b5 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b6 b5 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b6 b5 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b6 b5 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b6 b7 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b6 b7 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b6 b7 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b6 b7 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b6 b8 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b6 b8 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b6 b8 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b6 b8 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b6 b9 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b6 b9 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b6 b9 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b6 b9 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b7 b1 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b7 b1 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b7 b1 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b7 b1 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b7 b10 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b7 b10 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b7 b10 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b7 b10 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b7 b2 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b7 b2 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b7 b2 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b7 b2 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b7 b3 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b7 b3 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b7 b3 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b7 b3 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b7 b4 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b7 b4 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b7 b4 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b7 b4 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b7 b5 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b7 b5 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b7 b5 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b7 b5 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b7 b6 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b7 b6 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b7 b6 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b7 b6 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b7 b8 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b7 b8 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b7 b8 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b7 b8 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b7 b9 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b7 b9 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b7 b9 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b7 b9 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b8 b1 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b8 b1 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b8 b1 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b8 b1 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b8 b10 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b8 b10 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b8 b10 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b8 b10 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b8 b2 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b8 b2 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b8 b2 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b8 b2 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b8 b3 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b8 b3 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b8 b3 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b8 b3 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b8 b4 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b8 b4 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b8 b4 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b8 b4 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b8 b5 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b8 b5 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b8 b5 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b8 b5 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b8 b6 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b8 b6 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b8 b6 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b8 b6 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b8 b7 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b8 b7 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b8 b7 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b8 b7 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b8 b9 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b8 b9 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b8 b9 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b8 b9 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b9 b1 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b9 b1 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b9 b1 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b9 b1 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b9 b10 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b9 b10 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b9 b10 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b9 b10 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b9 b2 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b9 b2 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b9 b2 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b9 b2 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b9 b3 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b9 b3 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b9 b3 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b9 b3 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b9 b4 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b9 b4 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b9 b4 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b9 b4 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b9 b5 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b9 b5 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b9 b5 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b9 b5 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b9 b6 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b9 b6 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b9 b6 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b9 b6 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b9 b7 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b9 b7 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b9 b7 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b9 b7 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+
+unstack b9 b8 c1
+PNE capacity(c1) increment  lb: 1  ub: 1 
+
+unstack b9 b8 c2
+PNE capacity(c2) increment  lb: 1  ub: 1 
+
+unstack b9 b8 c3
+PNE capacity(c3) increment  lb: 1  ub: 1 
+
+unstack b9 b8 c4
+PNE capacity(c4) increment  lb: 1  ub: 1 
+Extracting bounds takes 0.00270557
+Infinite operators: 0
+Second-order simple operators: 0
+ops 801, prop: 260, numeric conditions 4
+Initial heuristic value for lmcutnumeric(use_second_order_simple = true, bound_iterations = 10, ceiling_less_than_one = true): 15
+New best h=15 [g=0, 1 evaluated, 0 expanded, t=0.0164835s, 21028 KB]
+f = 15 [1 evaluated, 0 expanded, t=0.0165229s, 21028 KB]
+New best h=14 [g=1, 4 evaluated, 1 expanded, t=0.0182295s, 21028 KB]
+f = 16 [7 evaluated, 2 expanded, t=0.0199268s, 21028 KB]
+f = 17 [13 evaluated, 4 expanded, t=0.0233481s, 21028 KB]
+New best h=13 [g=4, 14 evaluated, 5 expanded, t=0.0238838s, 21028 KB]
+New best h=12 [g=4, 16 evaluated, 5 expanded, t=0.0248938s, 21028 KB]
+New best h=11 [g=5, 18 evaluated, 6 expanded, t=0.0259063s, 21028 KB]
+New best h=10 [g=3, 65 evaluated, 24 expanded, t=0.0518889s, 21028 KB]
+f = 18 [79 evaluated, 30 expanded, t=0.0593536s, 21028 KB]
+f = 19 [157 evaluated, 59 expanded, t=0.102136s, 21028 KB]
+New best h=9 [g=8, 201 evaluated, 75 expanded, t=0.127222s, 21028 KB]
+f = 20 [425 evaluated, 164 expanded, 2 reopened, t=0.250212s, 21160 KB]
+f = 21 [815 evaluated, 322 expanded, 3 reopened, t=0.468666s, 21160 KB]
+New best h=8 [g=8, 951 evaluated, 379 expanded, 3 reopened, t=0.542592s, 21288 KB]
+f = 22 [1681 evaluated, 689 expanded, 8 reopened, t=0.946526s, 21408 KB]
+f = 23 [3751 evaluated, 1555 expanded, 17 reopened, t=2.09281s, 21804 KB]
+f = 24 [7947 evaluated, 3374 expanded, 41 reopened, t=4.41254s, 22736 KB]
+New best h=7 [g=15, 9311 evaluated, 3898 expanded, 44 reopened, t=5.12268s, 23004 KB]
+f = 25 [16655 evaluated, 7177 expanded, 101 reopened, t=9.24608s, 24480 KB]
+New best h=6 [g=14, 20152 evaluated, 8578 expanded, 105 reopened, t=11.1185s, 25108 KB]
+f = 26 [32891 evaluated, 14400 expanded, 208 reopened, t=18.3262s, 27776 KB]
+New best h=5 [g=16, 33640 evaluated, 14673 expanded, 208 reopened, t=18.7037s, 27908 KB]
+f = 27 [65729 evaluated, 29219 expanded, 447 reopened, t=36.6207s, 34472 KB]
+f = 28 [128405 evaluated, 58440 expanded, 1054 reopened, t=71.7037s, 47372 KB]
+f = 29 [245340 evaluated, 114312 expanded, 2128 reopened, t=137.197s, 71524 KB]
+f = 30 [463083 evaluated, 219579 expanded, 4268 reopened, t=261.609s, 116712 KB]
+New best h=4 [g=25, 465890 evaluated, 220689 expanded, 4270 reopened, t=262.946s, 117240 KB]
+New best h=3 [g=26, 465894 evaluated, 220690 expanded, 4270 reopened, t=262.947s, 117240 KB]
+f = 31 [856085 evaluated, 413298 expanded, 8301 reopened, t=482.231s, 198800 KB]
+f = 32 [1557818 evaluated, 766888 expanded, 15758 reopened, t=876.551s, 346808 KB]
+New best h=2 [g=30, 1557819 evaluated, 766889 expanded, 15758 reopened, t=876.551s, 346808 KB]
+New best h=1 [g=31, 1557822 evaluated, 766890 expanded, 15758 reopened, t=876.552s, 346808 KB]
+New best h=0 [g=32, 1557824 evaluated, 766891 expanded, 15758 reopened, t=876.552s, 346808 KB]
+Solution found!
+Actual search time: 876.536s [t=876.552s]
+unstack b3 b10 c2 (1)
+putdown b3 c4 (1)
+unstack b10 b5 c2 (1)
+stack b10 b2 c1 (1)
+pickup b5 c2 (1)
+stack b5 b10 c1 (1)
+pickup b3 c4 (1)
+putdown b3 c2 (1)
+unstack b5 b10 c1 (1)
+stack b5 b3 c2 (1)
+unstack b10 b2 c1 (1)
+stack b10 b5 c2 (1)
+unstack b7 b1 c3 (1)
+stack b7 b2 c1 (1)
+unstack b1 b6 c3 (1)
+putdown b1 c4 (1)
+unstack b6 b9 c3 (1)
+stack b6 b1 c4 (1)
+unstack b9 b4 c3 (1)
+stack b9 b10 c2 (1)
+unstack b7 b2 c1 (1)
+stack b7 b9 c2 (1)
+unstack b6 b1 c4 (1)
+stack b6 b7 c2 (1)
+pickup b1 c4 (1)
+stack b1 b6 c2 (1)
+unstack b2 b8 c1 (1)
+putdown b2 c4 (1)
+pickup b4 c3 (1)
+stack b4 b8 c1 (1)
+pickup b2 c4 (1)
+stack b2 b4 c1 (1)
+Plan length: 32 step(s).
+Plan cost: 32
+Expanded 766892 state(s).
+Reopened 15758 state(s).
+Evaluated 1557826 state(s).
+Evaluations: 1557826
+Generated 2855489 state(s).
+Dead ends: 0 state(s).
+Expanded until last jump: 766888 state(s).
+Reopened until last jump: 15758 state(s).
+Evaluated until last jump: 1557818 state(s).
+Generated until last jump: 2855478 state(s).
+Number of registered states: 1557826
+Search time: 876.544s
+Total time: 876.552s
+Solution found.
+Peak memory: 346808 KB
+
+--- done ---
+Sun Mar 24 00:48:14 AEDT 2024
+
+======================================================================================
+                  Resource Usage on 2024-03-24 00:48:18:
+   Job Id:             111623572.gadi-pbs
+   Project:            xb83
+   Exit Status:        0
+   Service Units:      0.98
+   NCPUs Requested:    1                      NCPUs Used: 1               
+                                           CPU Time Used: 00:14:35        
+   Memory Requested:   8.0GB                 Memory Used: 343.64MB        
+   Walltime requested: 00:33:00            Walltime Used: 00:14:38        
+   JobFS requested:    100.0MB                JobFS used: 0B              
+======================================================================================

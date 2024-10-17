@@ -1,0 +1,1286 @@
+/scratch/xb83/dc6693/generate_plans
+gadi-cpu-clx-1908.gadi.nci.org.au
+Thu Mar 21 22:59:42 AEDT 2024
+
+Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              96
+On-line CPU(s) list: 0-95
+Thread(s) per core:  2
+Core(s) per socket:  24
+Socket(s):           2
+NUMA node(s):        4
+Vendor ID:           GenuineIntel
+CPU family:          6
+Model:               85
+Model name:          Intel(R) Xeon(R) Platinum 8274 CPU @ 3.20GHz
+Stepping:            7
+CPU MHz:             3799.999
+CPU max MHz:         4000.0000
+CPU min MHz:         1200.0000
+BogoMIPS:            6400.00
+Virtualization:      VT-x
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            1024K
+L3 cache:            36608K
+NUMA node0 CPU(s):   0-3,7-9,13-15,19,20,48-51,55-57,61-63,67,68
+NUMA node1 CPU(s):   4-6,10-12,16-18,21-23,52-54,58-60,64-66,69-71
+NUMA node2 CPU(s):   24-27,31-33,37-39,43,44,72-75,79-81,85-87,91,92
+NUMA node3 CPU(s):   28-30,34-36,40-42,45-47,76-78,82-84,88-90,93-95
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3 invpcid_single intel_ppin ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm mpx rdt_a avx512f avx512dq rdseed adx smap clflushopt clwb intel_pt avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts hwp hwp_act_window hwp_epp hwp_pkg_req pku ospke avx512_vnni md_clear flush_l1d arch_capabilities
+
+--- exec ---
+INFO     Running translator.
+INFO     callstring: /usr/bin/python2 /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/translate/translate.py /scratch/xb83/dc6693/ngoose/benchmarks/l4np/miconic/numeric/domain.pddl /scratch/xb83/dc6693/ngoose/benchmarks/l4np/miconic/numeric/training/p60.pddl --sas_file p60.sas
+
+Warning: Domain name in domain file miconic differs from domain name in task file miconic_60-domain
+
+INFO     Running preprocessor (release64).
+INFO     callstring: /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/preprocess p60.sas < p60.sas
+
+INFO     Running search (release64).
+INFO     search executable: /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/downward
+INFO     callstring: /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/downward --search 'astar(lmcutnumeric(use_second_order_simple=true,bound_iterations=10,ceiling_less_than_one=true),max_time=1800)' --internal-plan-file /scratch/xb83/dc6693/generate_plans/miconic/plans/p60.plan < p60.sas.num
+reading input... [t=0.000133753s]
+done reading input! [t=0.00223017s]
+packing state variables...done! [t=0.00224233s]
+Variables: 12
+Facts: 44
+Bytes per state: 56
+Building successor generator...done! [t=0.002563s]
+done initalizing global data [t=0.00256467s]
+pruning method: none
+The current working directory is /scratch/xb83/dc6693/ngoose/planner/nfd
+Conducting best first search with reopening closed nodes, (real) bound = 2147483647
+Initializing landmark cut heuristic...
+2
+
+variables
+PNE lift-capacity()  ub: 4 
+
+actions
+
+board f11 p4
+PNE lift-capacity() before  ub: 3 
+PNE lift-capacity() increment  lb: 1  ub: 1 
+
+board f12 p1
+PNE lift-capacity() before  ub: 3 
+PNE lift-capacity() increment  lb: 1  ub: 1 
+
+board f12 p5
+PNE lift-capacity() before  ub: 1 
+PNE lift-capacity() increment  lb: 3  ub: 3 
+
+board f12 p6
+PNE lift-capacity() before  ub: 1 
+PNE lift-capacity() increment  lb: 3  ub: 3 
+
+board f5 p3
+PNE lift-capacity() before  ub: 1 
+PNE lift-capacity() increment  lb: 3  ub: 3 
+
+board f9 p2
+PNE lift-capacity() before  ub: 3 
+PNE lift-capacity() increment  lb: 1  ub: 1 
+
+depart f2 p2
+PNE lift-capacity() increment  lb: -1  ub: -1 
+
+depart f2 p6
+PNE lift-capacity() increment  lb: -3  ub: -3 
+
+depart f4 p1
+PNE lift-capacity() increment  lb: -1  ub: -1 
+
+depart f6 p5
+PNE lift-capacity() increment  lb: -3  ub: -3 
+
+depart f7 p3
+PNE lift-capacity() increment  lb: -3  ub: -3 
+
+depart f9 p4
+PNE lift-capacity() increment  lb: -1  ub: -1 
+
+down_fast f10 f1
+PNE lift-capacity() before  ub: 3 
+
+down_fast f10 f2
+PNE lift-capacity() before  ub: 3 
+
+down_fast f10 f3
+PNE lift-capacity() before  ub: 3 
+
+down_fast f10 f4
+PNE lift-capacity() before  ub: 3 
+
+down_fast f10 f5
+PNE lift-capacity() before  ub: 3 
+
+down_fast f10 f6
+PNE lift-capacity() before  ub: 3 
+
+down_fast f10 f7
+PNE lift-capacity() before  ub: 3 
+
+down_fast f10 f8
+PNE lift-capacity() before  ub: 3 
+
+down_fast f10 f9
+PNE lift-capacity() before  ub: 3 
+
+down_fast f11 f1
+PNE lift-capacity() before  ub: 3 
+
+down_fast f11 f10
+PNE lift-capacity() before  ub: 3 
+
+down_fast f11 f2
+PNE lift-capacity() before  ub: 3 
+
+down_fast f11 f3
+PNE lift-capacity() before  ub: 3 
+
+down_fast f11 f4
+PNE lift-capacity() before  ub: 3 
+
+down_fast f11 f5
+PNE lift-capacity() before  ub: 3 
+
+down_fast f11 f6
+PNE lift-capacity() before  ub: 3 
+
+down_fast f11 f7
+PNE lift-capacity() before  ub: 3 
+
+down_fast f11 f8
+PNE lift-capacity() before  ub: 3 
+
+down_fast f11 f9
+PNE lift-capacity() before  ub: 3 
+
+down_fast f12 f1
+PNE lift-capacity() before  ub: 3 
+
+down_fast f12 f10
+PNE lift-capacity() before  ub: 3 
+
+down_fast f12 f11
+PNE lift-capacity() before  ub: 3 
+
+down_fast f12 f2
+PNE lift-capacity() before  ub: 3 
+
+down_fast f12 f3
+PNE lift-capacity() before  ub: 3 
+
+down_fast f12 f4
+PNE lift-capacity() before  ub: 3 
+
+down_fast f12 f5
+PNE lift-capacity() before  ub: 3 
+
+down_fast f12 f6
+PNE lift-capacity() before  ub: 3 
+
+down_fast f12 f7
+PNE lift-capacity() before  ub: 3 
+
+down_fast f12 f8
+PNE lift-capacity() before  ub: 3 
+
+down_fast f12 f9
+PNE lift-capacity() before  ub: 3 
+
+down_fast f13 f1
+PNE lift-capacity() before  ub: 3 
+
+down_fast f13 f10
+PNE lift-capacity() before  ub: 3 
+
+down_fast f13 f11
+PNE lift-capacity() before  ub: 3 
+
+down_fast f13 f12
+PNE lift-capacity() before  ub: 3 
+
+down_fast f13 f2
+PNE lift-capacity() before  ub: 3 
+
+down_fast f13 f3
+PNE lift-capacity() before  ub: 3 
+
+down_fast f13 f4
+PNE lift-capacity() before  ub: 3 
+
+down_fast f13 f5
+PNE lift-capacity() before  ub: 3 
+
+down_fast f13 f6
+PNE lift-capacity() before  ub: 3 
+
+down_fast f13 f7
+PNE lift-capacity() before  ub: 3 
+
+down_fast f13 f8
+PNE lift-capacity() before  ub: 3 
+
+down_fast f13 f9
+PNE lift-capacity() before  ub: 3 
+
+down_fast f2 f1
+PNE lift-capacity() before  ub: 3 
+
+down_fast f3 f1
+PNE lift-capacity() before  ub: 3 
+
+down_fast f3 f2
+PNE lift-capacity() before  ub: 3 
+
+down_fast f4 f1
+PNE lift-capacity() before  ub: 3 
+
+down_fast f4 f2
+PNE lift-capacity() before  ub: 3 
+
+down_fast f4 f3
+PNE lift-capacity() before  ub: 3 
+
+down_fast f5 f1
+PNE lift-capacity() before  ub: 3 
+
+down_fast f5 f2
+PNE lift-capacity() before  ub: 3 
+
+down_fast f5 f3
+PNE lift-capacity() before  ub: 3 
+
+down_fast f5 f4
+PNE lift-capacity() before  ub: 3 
+
+down_fast f6 f1
+PNE lift-capacity() before  ub: 3 
+
+down_fast f6 f2
+PNE lift-capacity() before  ub: 3 
+
+down_fast f6 f3
+PNE lift-capacity() before  ub: 3 
+
+down_fast f6 f4
+PNE lift-capacity() before  ub: 3 
+
+down_fast f6 f5
+PNE lift-capacity() before  ub: 3 
+
+down_fast f7 f1
+PNE lift-capacity() before  ub: 3 
+
+down_fast f7 f2
+PNE lift-capacity() before  ub: 3 
+
+down_fast f7 f3
+PNE lift-capacity() before  ub: 3 
+
+down_fast f7 f4
+PNE lift-capacity() before  ub: 3 
+
+down_fast f7 f5
+PNE lift-capacity() before  ub: 3 
+
+down_fast f7 f6
+PNE lift-capacity() before  ub: 3 
+
+down_fast f8 f1
+PNE lift-capacity() before  ub: 3 
+
+down_fast f8 f2
+PNE lift-capacity() before  ub: 3 
+
+down_fast f8 f3
+PNE lift-capacity() before  ub: 3 
+
+down_fast f8 f4
+PNE lift-capacity() before  ub: 3 
+
+down_fast f8 f5
+PNE lift-capacity() before  ub: 3 
+
+down_fast f8 f6
+PNE lift-capacity() before  ub: 3 
+
+down_fast f8 f7
+PNE lift-capacity() before  ub: 3 
+
+down_fast f9 f1
+PNE lift-capacity() before  ub: 3 
+
+down_fast f9 f2
+PNE lift-capacity() before  ub: 3 
+
+down_fast f9 f3
+PNE lift-capacity() before  ub: 3 
+
+down_fast f9 f4
+PNE lift-capacity() before  ub: 3 
+
+down_fast f9 f5
+PNE lift-capacity() before  ub: 3 
+
+down_fast f9 f6
+PNE lift-capacity() before  ub: 3 
+
+down_fast f9 f7
+PNE lift-capacity() before  ub: 3 
+
+down_fast f9 f8
+PNE lift-capacity() before  ub: 3 
+
+down_slow_part_1 f10 f1
+
+down_slow_part_1 f10 f2
+
+down_slow_part_1 f10 f3
+
+down_slow_part_1 f10 f4
+
+down_slow_part_1 f10 f5
+
+down_slow_part_1 f10 f6
+
+down_slow_part_1 f10 f7
+
+down_slow_part_1 f10 f8
+
+down_slow_part_1 f10 f9
+
+down_slow_part_1 f11 f1
+
+down_slow_part_1 f11 f10
+
+down_slow_part_1 f11 f2
+
+down_slow_part_1 f11 f3
+
+down_slow_part_1 f11 f4
+
+down_slow_part_1 f11 f5
+
+down_slow_part_1 f11 f6
+
+down_slow_part_1 f11 f7
+
+down_slow_part_1 f11 f8
+
+down_slow_part_1 f11 f9
+
+down_slow_part_1 f12 f1
+
+down_slow_part_1 f12 f10
+
+down_slow_part_1 f12 f11
+
+down_slow_part_1 f12 f2
+
+down_slow_part_1 f12 f3
+
+down_slow_part_1 f12 f4
+
+down_slow_part_1 f12 f5
+
+down_slow_part_1 f12 f6
+
+down_slow_part_1 f12 f7
+
+down_slow_part_1 f12 f8
+
+down_slow_part_1 f12 f9
+
+down_slow_part_1 f13 f1
+
+down_slow_part_1 f13 f10
+
+down_slow_part_1 f13 f11
+
+down_slow_part_1 f13 f12
+
+down_slow_part_1 f13 f2
+
+down_slow_part_1 f13 f3
+
+down_slow_part_1 f13 f4
+
+down_slow_part_1 f13 f5
+
+down_slow_part_1 f13 f6
+
+down_slow_part_1 f13 f7
+
+down_slow_part_1 f13 f8
+
+down_slow_part_1 f13 f9
+
+down_slow_part_1 f2 f1
+
+down_slow_part_1 f3 f1
+
+down_slow_part_1 f3 f2
+
+down_slow_part_1 f4 f1
+
+down_slow_part_1 f4 f2
+
+down_slow_part_1 f4 f3
+
+down_slow_part_1 f5 f1
+
+down_slow_part_1 f5 f2
+
+down_slow_part_1 f5 f3
+
+down_slow_part_1 f5 f4
+
+down_slow_part_1 f6 f1
+
+down_slow_part_1 f6 f2
+
+down_slow_part_1 f6 f3
+
+down_slow_part_1 f6 f4
+
+down_slow_part_1 f6 f5
+
+down_slow_part_1 f7 f1
+
+down_slow_part_1 f7 f2
+
+down_slow_part_1 f7 f3
+
+down_slow_part_1 f7 f4
+
+down_slow_part_1 f7 f5
+
+down_slow_part_1 f7 f6
+
+down_slow_part_1 f8 f1
+
+down_slow_part_1 f8 f2
+
+down_slow_part_1 f8 f3
+
+down_slow_part_1 f8 f4
+
+down_slow_part_1 f8 f5
+
+down_slow_part_1 f8 f6
+
+down_slow_part_1 f8 f7
+
+down_slow_part_1 f9 f1
+
+down_slow_part_1 f9 f2
+
+down_slow_part_1 f9 f3
+
+down_slow_part_1 f9 f4
+
+down_slow_part_1 f9 f5
+
+down_slow_part_1 f9 f6
+
+down_slow_part_1 f9 f7
+
+down_slow_part_1 f9 f8
+
+down_slow_part_2 f10 f1
+
+down_slow_part_2 f10 f2
+
+down_slow_part_2 f10 f3
+
+down_slow_part_2 f10 f4
+
+down_slow_part_2 f10 f5
+
+down_slow_part_2 f10 f6
+
+down_slow_part_2 f10 f7
+
+down_slow_part_2 f10 f8
+
+down_slow_part_2 f10 f9
+
+down_slow_part_2 f11 f1
+
+down_slow_part_2 f11 f10
+
+down_slow_part_2 f11 f2
+
+down_slow_part_2 f11 f3
+
+down_slow_part_2 f11 f4
+
+down_slow_part_2 f11 f5
+
+down_slow_part_2 f11 f6
+
+down_slow_part_2 f11 f7
+
+down_slow_part_2 f11 f8
+
+down_slow_part_2 f11 f9
+
+down_slow_part_2 f12 f1
+
+down_slow_part_2 f12 f10
+
+down_slow_part_2 f12 f11
+
+down_slow_part_2 f12 f2
+
+down_slow_part_2 f12 f3
+
+down_slow_part_2 f12 f4
+
+down_slow_part_2 f12 f5
+
+down_slow_part_2 f12 f6
+
+down_slow_part_2 f12 f7
+
+down_slow_part_2 f12 f8
+
+down_slow_part_2 f12 f9
+
+down_slow_part_2 f13 f1
+
+down_slow_part_2 f13 f10
+
+down_slow_part_2 f13 f11
+
+down_slow_part_2 f13 f12
+
+down_slow_part_2 f13 f2
+
+down_slow_part_2 f13 f3
+
+down_slow_part_2 f13 f4
+
+down_slow_part_2 f13 f5
+
+down_slow_part_2 f13 f6
+
+down_slow_part_2 f13 f7
+
+down_slow_part_2 f13 f8
+
+down_slow_part_2 f13 f9
+
+down_slow_part_2 f2 f1
+
+down_slow_part_2 f3 f1
+
+down_slow_part_2 f3 f2
+
+down_slow_part_2 f4 f1
+
+down_slow_part_2 f4 f2
+
+down_slow_part_2 f4 f3
+
+down_slow_part_2 f5 f1
+
+down_slow_part_2 f5 f2
+
+down_slow_part_2 f5 f3
+
+down_slow_part_2 f5 f4
+
+down_slow_part_2 f6 f1
+
+down_slow_part_2 f6 f2
+
+down_slow_part_2 f6 f3
+
+down_slow_part_2 f6 f4
+
+down_slow_part_2 f6 f5
+
+down_slow_part_2 f7 f1
+
+down_slow_part_2 f7 f2
+
+down_slow_part_2 f7 f3
+
+down_slow_part_2 f7 f4
+
+down_slow_part_2 f7 f5
+
+down_slow_part_2 f7 f6
+
+down_slow_part_2 f8 f1
+
+down_slow_part_2 f8 f2
+
+down_slow_part_2 f8 f3
+
+down_slow_part_2 f8 f4
+
+down_slow_part_2 f8 f5
+
+down_slow_part_2 f8 f6
+
+down_slow_part_2 f8 f7
+
+down_slow_part_2 f9 f1
+
+down_slow_part_2 f9 f2
+
+down_slow_part_2 f9 f3
+
+down_slow_part_2 f9 f4
+
+down_slow_part_2 f9 f5
+
+down_slow_part_2 f9 f6
+
+down_slow_part_2 f9 f7
+
+down_slow_part_2 f9 f8
+
+up_fast f1 f10
+PNE lift-capacity() before  ub: 3 
+
+up_fast f1 f11
+PNE lift-capacity() before  ub: 3 
+
+up_fast f1 f12
+PNE lift-capacity() before  ub: 3 
+
+up_fast f1 f13
+PNE lift-capacity() before  ub: 3 
+
+up_fast f1 f2
+PNE lift-capacity() before  ub: 3 
+
+up_fast f1 f3
+PNE lift-capacity() before  ub: 3 
+
+up_fast f1 f4
+PNE lift-capacity() before  ub: 3 
+
+up_fast f1 f5
+PNE lift-capacity() before  ub: 3 
+
+up_fast f1 f6
+PNE lift-capacity() before  ub: 3 
+
+up_fast f1 f7
+PNE lift-capacity() before  ub: 3 
+
+up_fast f1 f8
+PNE lift-capacity() before  ub: 3 
+
+up_fast f1 f9
+PNE lift-capacity() before  ub: 3 
+
+up_fast f10 f11
+PNE lift-capacity() before  ub: 3 
+
+up_fast f10 f12
+PNE lift-capacity() before  ub: 3 
+
+up_fast f10 f13
+PNE lift-capacity() before  ub: 3 
+
+up_fast f11 f12
+PNE lift-capacity() before  ub: 3 
+
+up_fast f11 f13
+PNE lift-capacity() before  ub: 3 
+
+up_fast f12 f13
+PNE lift-capacity() before  ub: 3 
+
+up_fast f2 f10
+PNE lift-capacity() before  ub: 3 
+
+up_fast f2 f11
+PNE lift-capacity() before  ub: 3 
+
+up_fast f2 f12
+PNE lift-capacity() before  ub: 3 
+
+up_fast f2 f13
+PNE lift-capacity() before  ub: 3 
+
+up_fast f2 f3
+PNE lift-capacity() before  ub: 3 
+
+up_fast f2 f4
+PNE lift-capacity() before  ub: 3 
+
+up_fast f2 f5
+PNE lift-capacity() before  ub: 3 
+
+up_fast f2 f6
+PNE lift-capacity() before  ub: 3 
+
+up_fast f2 f7
+PNE lift-capacity() before  ub: 3 
+
+up_fast f2 f8
+PNE lift-capacity() before  ub: 3 
+
+up_fast f2 f9
+PNE lift-capacity() before  ub: 3 
+
+up_fast f3 f10
+PNE lift-capacity() before  ub: 3 
+
+up_fast f3 f11
+PNE lift-capacity() before  ub: 3 
+
+up_fast f3 f12
+PNE lift-capacity() before  ub: 3 
+
+up_fast f3 f13
+PNE lift-capacity() before  ub: 3 
+
+up_fast f3 f4
+PNE lift-capacity() before  ub: 3 
+
+up_fast f3 f5
+PNE lift-capacity() before  ub: 3 
+
+up_fast f3 f6
+PNE lift-capacity() before  ub: 3 
+
+up_fast f3 f7
+PNE lift-capacity() before  ub: 3 
+
+up_fast f3 f8
+PNE lift-capacity() before  ub: 3 
+
+up_fast f3 f9
+PNE lift-capacity() before  ub: 3 
+
+up_fast f4 f10
+PNE lift-capacity() before  ub: 3 
+
+up_fast f4 f11
+PNE lift-capacity() before  ub: 3 
+
+up_fast f4 f12
+PNE lift-capacity() before  ub: 3 
+
+up_fast f4 f13
+PNE lift-capacity() before  ub: 3 
+
+up_fast f4 f5
+PNE lift-capacity() before  ub: 3 
+
+up_fast f4 f6
+PNE lift-capacity() before  ub: 3 
+
+up_fast f4 f7
+PNE lift-capacity() before  ub: 3 
+
+up_fast f4 f8
+PNE lift-capacity() before  ub: 3 
+
+up_fast f4 f9
+PNE lift-capacity() before  ub: 3 
+
+up_fast f5 f10
+PNE lift-capacity() before  ub: 3 
+
+up_fast f5 f11
+PNE lift-capacity() before  ub: 3 
+
+up_fast f5 f12
+PNE lift-capacity() before  ub: 3 
+
+up_fast f5 f13
+PNE lift-capacity() before  ub: 3 
+
+up_fast f5 f6
+PNE lift-capacity() before  ub: 3 
+
+up_fast f5 f7
+PNE lift-capacity() before  ub: 3 
+
+up_fast f5 f8
+PNE lift-capacity() before  ub: 3 
+
+up_fast f5 f9
+PNE lift-capacity() before  ub: 3 
+
+up_fast f6 f10
+PNE lift-capacity() before  ub: 3 
+
+up_fast f6 f11
+PNE lift-capacity() before  ub: 3 
+
+up_fast f6 f12
+PNE lift-capacity() before  ub: 3 
+
+up_fast f6 f13
+PNE lift-capacity() before  ub: 3 
+
+up_fast f6 f7
+PNE lift-capacity() before  ub: 3 
+
+up_fast f6 f8
+PNE lift-capacity() before  ub: 3 
+
+up_fast f6 f9
+PNE lift-capacity() before  ub: 3 
+
+up_fast f7 f10
+PNE lift-capacity() before  ub: 3 
+
+up_fast f7 f11
+PNE lift-capacity() before  ub: 3 
+
+up_fast f7 f12
+PNE lift-capacity() before  ub: 3 
+
+up_fast f7 f13
+PNE lift-capacity() before  ub: 3 
+
+up_fast f7 f8
+PNE lift-capacity() before  ub: 3 
+
+up_fast f7 f9
+PNE lift-capacity() before  ub: 3 
+
+up_fast f8 f10
+PNE lift-capacity() before  ub: 3 
+
+up_fast f8 f11
+PNE lift-capacity() before  ub: 3 
+
+up_fast f8 f12
+PNE lift-capacity() before  ub: 3 
+
+up_fast f8 f13
+PNE lift-capacity() before  ub: 3 
+
+up_fast f8 f9
+PNE lift-capacity() before  ub: 3 
+
+up_fast f9 f10
+PNE lift-capacity() before  ub: 3 
+
+up_fast f9 f11
+PNE lift-capacity() before  ub: 3 
+
+up_fast f9 f12
+PNE lift-capacity() before  ub: 3 
+
+up_fast f9 f13
+PNE lift-capacity() before  ub: 3 
+
+up_slow_part_1 f1 f10
+
+up_slow_part_1 f1 f11
+
+up_slow_part_1 f1 f12
+
+up_slow_part_1 f1 f13
+
+up_slow_part_1 f1 f2
+
+up_slow_part_1 f1 f3
+
+up_slow_part_1 f1 f4
+
+up_slow_part_1 f1 f5
+
+up_slow_part_1 f1 f6
+
+up_slow_part_1 f1 f7
+
+up_slow_part_1 f1 f8
+
+up_slow_part_1 f1 f9
+
+up_slow_part_1 f10 f11
+
+up_slow_part_1 f10 f12
+
+up_slow_part_1 f10 f13
+
+up_slow_part_1 f11 f12
+
+up_slow_part_1 f11 f13
+
+up_slow_part_1 f12 f13
+
+up_slow_part_1 f2 f10
+
+up_slow_part_1 f2 f11
+
+up_slow_part_1 f2 f12
+
+up_slow_part_1 f2 f13
+
+up_slow_part_1 f2 f3
+
+up_slow_part_1 f2 f4
+
+up_slow_part_1 f2 f5
+
+up_slow_part_1 f2 f6
+
+up_slow_part_1 f2 f7
+
+up_slow_part_1 f2 f8
+
+up_slow_part_1 f2 f9
+
+up_slow_part_1 f3 f10
+
+up_slow_part_1 f3 f11
+
+up_slow_part_1 f3 f12
+
+up_slow_part_1 f3 f13
+
+up_slow_part_1 f3 f4
+
+up_slow_part_1 f3 f5
+
+up_slow_part_1 f3 f6
+
+up_slow_part_1 f3 f7
+
+up_slow_part_1 f3 f8
+
+up_slow_part_1 f3 f9
+
+up_slow_part_1 f4 f10
+
+up_slow_part_1 f4 f11
+
+up_slow_part_1 f4 f12
+
+up_slow_part_1 f4 f13
+
+up_slow_part_1 f4 f5
+
+up_slow_part_1 f4 f6
+
+up_slow_part_1 f4 f7
+
+up_slow_part_1 f4 f8
+
+up_slow_part_1 f4 f9
+
+up_slow_part_1 f5 f10
+
+up_slow_part_1 f5 f11
+
+up_slow_part_1 f5 f12
+
+up_slow_part_1 f5 f13
+
+up_slow_part_1 f5 f6
+
+up_slow_part_1 f5 f7
+
+up_slow_part_1 f5 f8
+
+up_slow_part_1 f5 f9
+
+up_slow_part_1 f6 f10
+
+up_slow_part_1 f6 f11
+
+up_slow_part_1 f6 f12
+
+up_slow_part_1 f6 f13
+
+up_slow_part_1 f6 f7
+
+up_slow_part_1 f6 f8
+
+up_slow_part_1 f6 f9
+
+up_slow_part_1 f7 f10
+
+up_slow_part_1 f7 f11
+
+up_slow_part_1 f7 f12
+
+up_slow_part_1 f7 f13
+
+up_slow_part_1 f7 f8
+
+up_slow_part_1 f7 f9
+
+up_slow_part_1 f8 f10
+
+up_slow_part_1 f8 f11
+
+up_slow_part_1 f8 f12
+
+up_slow_part_1 f8 f13
+
+up_slow_part_1 f8 f9
+
+up_slow_part_1 f9 f10
+
+up_slow_part_1 f9 f11
+
+up_slow_part_1 f9 f12
+
+up_slow_part_1 f9 f13
+
+up_slow_part_2 f1 f10
+
+up_slow_part_2 f1 f11
+
+up_slow_part_2 f1 f12
+
+up_slow_part_2 f1 f13
+
+up_slow_part_2 f1 f2
+
+up_slow_part_2 f1 f3
+
+up_slow_part_2 f1 f4
+
+up_slow_part_2 f1 f5
+
+up_slow_part_2 f1 f6
+
+up_slow_part_2 f1 f7
+
+up_slow_part_2 f1 f8
+
+up_slow_part_2 f1 f9
+
+up_slow_part_2 f10 f11
+
+up_slow_part_2 f10 f12
+
+up_slow_part_2 f10 f13
+
+up_slow_part_2 f11 f12
+
+up_slow_part_2 f11 f13
+
+up_slow_part_2 f12 f13
+
+up_slow_part_2 f2 f10
+
+up_slow_part_2 f2 f11
+
+up_slow_part_2 f2 f12
+
+up_slow_part_2 f2 f13
+
+up_slow_part_2 f2 f3
+
+up_slow_part_2 f2 f4
+
+up_slow_part_2 f2 f5
+
+up_slow_part_2 f2 f6
+
+up_slow_part_2 f2 f7
+
+up_slow_part_2 f2 f8
+
+up_slow_part_2 f2 f9
+
+up_slow_part_2 f3 f10
+
+up_slow_part_2 f3 f11
+
+up_slow_part_2 f3 f12
+
+up_slow_part_2 f3 f13
+
+up_slow_part_2 f3 f4
+
+up_slow_part_2 f3 f5
+
+up_slow_part_2 f3 f6
+
+up_slow_part_2 f3 f7
+
+up_slow_part_2 f3 f8
+
+up_slow_part_2 f3 f9
+
+up_slow_part_2 f4 f10
+
+up_slow_part_2 f4 f11
+
+up_slow_part_2 f4 f12
+
+up_slow_part_2 f4 f13
+
+up_slow_part_2 f4 f5
+
+up_slow_part_2 f4 f6
+
+up_slow_part_2 f4 f7
+
+up_slow_part_2 f4 f8
+
+up_slow_part_2 f4 f9
+
+up_slow_part_2 f5 f10
+
+up_slow_part_2 f5 f11
+
+up_slow_part_2 f5 f12
+
+up_slow_part_2 f5 f13
+
+up_slow_part_2 f5 f6
+
+up_slow_part_2 f5 f7
+
+up_slow_part_2 f5 f8
+
+up_slow_part_2 f5 f9
+
+up_slow_part_2 f6 f10
+
+up_slow_part_2 f6 f11
+
+up_slow_part_2 f6 f12
+
+up_slow_part_2 f6 f13
+
+up_slow_part_2 f6 f7
+
+up_slow_part_2 f6 f8
+
+up_slow_part_2 f6 f9
+
+up_slow_part_2 f7 f10
+
+up_slow_part_2 f7 f11
+
+up_slow_part_2 f7 f12
+
+up_slow_part_2 f7 f13
+
+up_slow_part_2 f7 f8
+
+up_slow_part_2 f7 f9
+
+up_slow_part_2 f8 f10
+
+up_slow_part_2 f8 f11
+
+up_slow_part_2 f8 f12
+
+up_slow_part_2 f8 f13
+
+up_slow_part_2 f8 f9
+
+up_slow_part_2 f9 f10
+
+up_slow_part_2 f9 f11
+
+up_slow_part_2 f9 f12
+
+up_slow_part_2 f9 f13
+Extracting bounds takes 0.000845194
+Infinite operators: 0
+Second-order simple operators: 0
+ops 481, prop: 49, numeric conditions 3
+Initial heuristic value for lmcutnumeric(use_second_order_simple = true, bound_iterations = 10, ceiling_less_than_one = true): 20
+New best h=20 [g=0, 1 evaluated, 0 expanded, t=0.0065558s, 16876 KB]
+f = 20 [1 evaluated, 0 expanded, t=0.00661659s, 16876 KB]
+New best h=19 [g=1, 3 evaluated, 1 expanded, t=0.00695348s, 16876 KB]
+New best h=18 [g=2, 16 evaluated, 3 expanded, t=0.00884843s, 16876 KB]
+New best h=17 [g=3, 20 evaluated, 4 expanded, t=0.00941491s, 16876 KB]
+New best h=15 [g=4, 33 evaluated, 7 expanded, t=0.0111048s, 16876 KB]
+New best h=14 [g=5, 35 evaluated, 8 expanded, t=0.0113876s, 16876 KB]
+New best h=13.3333 [g=6, 47 evaluated, 9 expanded, t=0.0128031s, 16876 KB]
+New best h=10.3333 [g=7, 48 evaluated, 10 expanded, t=0.0129309s, 16876 KB]
+New best h=10 [g=8, 52 evaluated, 12 expanded, t=0.0133817s, 16876 KB]
+New best h=9.33333 [g=10, 79 evaluated, 35 expanded, t=0.0164237s, 17008 KB]
+New best h=9 [g=11, 91 evaluated, 36 expanded, t=0.0175819s, 17008 KB]
+New best h=8 [g=9, 733 evaluated, 386 expanded, 4 reopened, t=0.0933058s, 17132 KB]
+New best h=7 [g=11, 816 evaluated, 429 expanded, 4 reopened, t=0.100447s, 17132 KB]
+f = 21 [1043 evaluated, 496 expanded, 5 reopened, t=0.123272s, 17132 KB]
+New best h=6 [g=15, 1072 evaluated, 511 expanded, 5 reopened, t=0.125513s, 17132 KB]
+New best h=5.66667 [g=16, 1089 evaluated, 514 expanded, 5 reopened, t=0.12655s, 17132 KB]
+New best h=5.33333 [g=17, 1093 evaluated, 515 expanded, 5 reopened, t=0.126882s, 17132 KB]
+New best h=5 [g=17, 1106 evaluated, 517 expanded, 5 reopened, t=0.127798s, 17132 KB]
+New best h=4 [g=15, 1905 evaluated, 902 expanded, 28 reopened, t=0.203583s, 17264 KB]
+f = 22 [2995 evaluated, 1526 expanded, 150 reopened, t=0.326043s, 17528 KB]
+New best h=3 [g=19, 3098 evaluated, 1563 expanded, 150 reopened, t=0.332117s, 17528 KB]
+f = 23 [5916 evaluated, 3285 expanded, 225 reopened, t=0.613818s, 18000 KB]
+New best h=2 [g=21, 5917 evaluated, 3286 expanded, 225 reopened, t=0.613909s, 18000 KB]
+New best h=1 [g=22, 5922 evaluated, 3287 expanded, 225 reopened, t=0.614064s, 18000 KB]
+New best h=0 [g=23, 5933 evaluated, 3288 expanded, 225 reopened, t=0.614345s, 18000 KB]
+Solution found!
+Actual search time: 0.607738s [t=0.614374s]
+up_fast f3 f5 (1)
+board f5 p3 (1)
+up_fast f5 f7 (1)
+depart f7 p3 (1)
+up_fast f7 f12 (1)
+board f12 p5 (1)
+down_fast f12 f6 (1)
+depart f6 p5 (1)
+up_fast f6 f11 (1)
+board f11 p4 (1)
+down_fast f11 f9 (1)
+board f9 p2 (1)
+depart f9 p4 (1)
+up_fast f9 f12 (1)
+board f12 p1 (1)
+down_fast f12 f4 (1)
+depart f4 p1 (1)
+down_fast f4 f2 (1)
+depart f2 p2 (1)
+up_fast f2 f12 (1)
+board f12 p6 (1)
+down_fast f12 f2 (1)
+depart f2 p6 (1)
+Plan length: 23 step(s).
+Plan cost: 23
+Expanded 3289 state(s).
+Reopened 225 state(s).
+Evaluated 5933 state(s).
+Evaluations: 5933
+Generated 84462 state(s).
+Dead ends: 0 state(s).
+Expanded until last jump: 3285 state(s).
+Reopened until last jump: 225 state(s).
+Evaluated until last jump: 5916 state(s).
+Generated until last jump: 84388 state(s).
+Number of registered states: 5933
+Search time: 0.610766s
+Total time: 0.614375s
+Solution found.
+Peak memory: 18000 KB
+
+--- done ---
+Thu Mar 21 22:59:43 AEDT 2024
+
+======================================================================================
+                  Resource Usage on 2024-03-21 22:59:48:
+   Job Id:             111405543.gadi-pbs
+   Project:            xb83
+   Exit Status:        0
+   Service Units:      0.00
+   NCPUs Requested:    1                      NCPUs Used: 1               
+                                           CPU Time Used: 00:00:01        
+   Memory Requested:   8.0GB                 Memory Used: 91.7MB          
+   Walltime requested: 00:33:00            Walltime Used: 00:00:02        
+   JobFS requested:    100.0MB                JobFS used: 0B              
+======================================================================================

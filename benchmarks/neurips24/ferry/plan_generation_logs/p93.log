@@ -1,0 +1,2611 @@
+/scratch/xb83/dc6693/generate_plans
+gadi-cpu-clx-1103.gadi.nci.org.au
+Thu Mar 21 19:43:57 AEDT 2024
+
+Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              96
+On-line CPU(s) list: 0-95
+Thread(s) per core:  2
+Core(s) per socket:  24
+Socket(s):           2
+NUMA node(s):        4
+Vendor ID:           GenuineIntel
+CPU family:          6
+Model:               85
+Model name:          Intel(R) Xeon(R) Platinum 8274 CPU @ 3.20GHz
+Stepping:            7
+CPU MHz:             3200.000
+CPU max MHz:         4000.0000
+CPU min MHz:         1200.0000
+BogoMIPS:            6400.00
+Virtualization:      VT-x
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            1024K
+L3 cache:            36608K
+NUMA node0 CPU(s):   0-3,7-9,13-15,19,20,48-51,55-57,61-63,67,68
+NUMA node1 CPU(s):   4-6,10-12,16-18,21-23,52-54,58-60,64-66,69-71
+NUMA node2 CPU(s):   24-27,31,32,36-38,42-44,72-75,79,80,84-86,90-92
+NUMA node3 CPU(s):   28-30,33-35,39-41,45-47,76-78,81-83,87-89,93-95
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3 invpcid_single intel_ppin ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm mpx rdt_a avx512f avx512dq rdseed adx smap clflushopt clwb intel_pt avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts hwp hwp_act_window hwp_epp hwp_pkg_req pku ospke avx512_vnni md_clear flush_l1d arch_capabilities
+
+--- exec ---
+INFO     Running translator.
+INFO     callstring: /usr/bin/python2 /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/translate/translate.py /scratch/xb83/dc6693/ngoose/benchmarks/l4np/ferry/numeric/domain.pddl /scratch/xb83/dc6693/ngoose/benchmarks/l4np/ferry/numeric/training/p93.pddl --sas_file p93.sas
+
+Warning: Domain name in domain file ferry differs from domain name in task file ferry_93-domain
+
+INFO     Running preprocessor (release64).
+INFO     callstring: /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/preprocess p93.sas < p93.sas
+
+INFO     Running search (release64).
+INFO     search executable: /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/downward
+INFO     callstring: /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/downward --search 'astar(lmcutnumeric(use_second_order_simple=true,bound_iterations=10,ceiling_less_than_one=true),max_time=1800)' --internal-plan-file /scratch/xb83/dc6693/generate_plans/ferry/plans/p93.plan < p93.sas.num
+reading input... [t=0.000141621s]
+done reading input! [t=0.00417495s]
+packing state variables...done! [t=0.0041945s]
+Variables: 22
+Facts: 324
+Bytes per state: 32
+Building successor generator...done! [t=0.00525689s]
+done initalizing global data [t=0.0052619s]
+pruning method: none
+The current working directory is /scratch/xb83/dc6693/ngoose/planner/nfd
+Conducting best first search with reopening closed nodes, (real) bound = 2147483647
+Initializing landmark cut heuristic...
+2
+
+variables
+PNE ferry-capacity()  ub: 4 
+
+actions
+
+board car1 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car1 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car1 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car1 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car1 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car1 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car1 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car1 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car1 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car1 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car1 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car1 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car1 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car1 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car1 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car10 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car10 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car10 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car10 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car10 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car10 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car10 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car10 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car10 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car10 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car10 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car10 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car10 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car10 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car10 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car11 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car11 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car11 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car11 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car11 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car11 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car11 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car11 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car11 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car11 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car11 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car11 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car11 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car11 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car11 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car12 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car12 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car12 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car12 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car12 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car12 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car12 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car12 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car12 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car12 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car12 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car12 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car12 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car12 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car12 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car13 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car13 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car13 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car13 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car13 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car13 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car13 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car13 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car13 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car13 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car13 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car13 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car13 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car13 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car13 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car14 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car14 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car14 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car14 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car14 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car14 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car14 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car14 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car14 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car14 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car14 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car14 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car14 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car14 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car14 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car15 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car15 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car15 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car15 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car15 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car15 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car15 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car15 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car15 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car15 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car15 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car15 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car15 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car15 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car15 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car16 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car16 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car16 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car16 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car16 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car16 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car16 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car16 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car16 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car16 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car16 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car16 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car16 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car16 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car16 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car17 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car17 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car17 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car17 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car17 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car17 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car17 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car17 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car17 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car17 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car17 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car17 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car17 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car17 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car17 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car18 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car18 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car18 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car18 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car18 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car18 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car18 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car18 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car18 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car18 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car18 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car18 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car18 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car18 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car18 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car19 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car19 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car19 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car19 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car19 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car19 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car19 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car19 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car19 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car19 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car19 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car19 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car19 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car19 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car19 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car2 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car2 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car2 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car2 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car2 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car2 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car2 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car2 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car2 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car2 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car2 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car2 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car2 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car2 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car2 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car3 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car3 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car3 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car3 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car3 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car3 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car3 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car3 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car3 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car3 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car3 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car3 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car3 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car3 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car3 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car4 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car4 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car4 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car4 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car4 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car4 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car4 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car4 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car4 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car4 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car4 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car4 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car4 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car4 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car4 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car5 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car5 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car5 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car5 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car5 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car5 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car5 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car5 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car5 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car5 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car5 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car5 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car5 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car5 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car5 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car6 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car6 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car6 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car6 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car6 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car6 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car6 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car6 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car6 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car6 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car6 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car6 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car6 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car6 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car6 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car7 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car7 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car7 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car7 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car7 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car7 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car7 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car7 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car7 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car7 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car7 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car7 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car7 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car7 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car7 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car8 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car8 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car8 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car8 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car8 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car8 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car8 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car8 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car8 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car8 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car8 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car8 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car8 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car8 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car8 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car9 loc1
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car9 loc10
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car9 loc11
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car9 loc12
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car9 loc13
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car9 loc14
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car9 loc15
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car9 loc2
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car9 loc3
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car9 loc4
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car9 loc5
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car9 loc6
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car9 loc7
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car9 loc8
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+board car9 loc9
+PNE ferry-capacity() before  ub: 3 
+PNE ferry-capacity() increment  lb: 1  ub: 1 
+
+debark car1 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car1 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car1 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car1 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car1 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car1 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car1 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car1 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car1 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car1 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car1 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car1 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car1 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car1 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car1 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car10 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car10 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car10 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car10 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car10 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car10 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car10 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car10 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car10 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car10 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car10 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car10 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car10 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car10 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car10 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car11 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car11 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car11 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car11 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car11 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car11 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car11 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car11 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car11 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car11 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car11 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car11 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car11 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car11 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car11 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car12 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car12 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car12 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car12 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car12 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car12 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car12 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car12 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car12 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car12 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car12 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car12 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car12 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car12 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car12 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car13 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car13 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car13 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car13 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car13 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car13 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car13 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car13 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car13 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car13 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car13 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car13 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car13 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car13 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car13 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car14 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car14 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car14 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car14 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car14 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car14 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car14 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car14 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car14 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car14 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car14 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car14 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car14 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car14 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car14 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car15 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car15 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car15 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car15 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car15 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car15 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car15 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car15 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car15 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car15 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car15 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car15 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car15 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car15 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car15 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car16 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car16 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car16 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car16 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car16 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car16 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car16 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car16 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car16 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car16 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car16 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car16 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car16 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car16 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car16 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car17 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car17 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car17 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car17 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car17 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car17 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car17 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car17 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car17 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car17 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car17 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car17 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car17 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car17 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car17 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car18 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car18 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car18 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car18 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car18 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car18 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car18 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car18 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car18 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car18 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car18 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car18 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car18 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car18 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car18 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car19 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car19 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car19 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car19 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car19 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car19 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car19 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car19 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car19 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car19 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car19 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car19 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car19 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car19 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car19 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car2 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car2 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car2 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car2 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car2 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car2 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car2 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car2 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car2 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car2 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car2 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car2 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car2 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car2 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car2 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car3 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car3 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car3 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car3 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car3 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car3 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car3 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car3 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car3 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car3 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car3 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car3 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car3 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car3 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car3 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car4 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car4 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car4 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car4 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car4 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car4 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car4 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car4 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car4 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car4 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car4 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car4 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car4 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car4 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car4 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car5 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car5 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car5 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car5 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car5 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car5 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car5 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car5 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car5 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car5 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car5 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car5 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car5 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car5 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car5 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car6 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car6 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car6 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car6 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car6 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car6 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car6 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car6 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car6 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car6 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car6 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car6 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car6 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car6 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car6 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car7 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car7 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car7 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car7 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car7 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car7 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car7 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car7 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car7 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car7 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car7 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car7 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car7 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car7 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car7 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car8 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car8 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car8 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car8 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car8 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car8 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car8 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car8 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car8 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car8 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car8 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car8 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car8 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car8 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car8 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car9 loc1
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car9 loc10
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car9 loc11
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car9 loc12
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car9 loc13
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car9 loc14
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car9 loc15
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car9 loc2
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car9 loc3
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car9 loc4
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car9 loc5
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car9 loc6
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car9 loc7
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car9 loc8
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+debark car9 loc9
+PNE ferry-capacity() increment  lb: -1  ub: -1 
+
+sail loc1 loc10
+
+sail loc1 loc11
+
+sail loc1 loc12
+
+sail loc1 loc13
+
+sail loc1 loc14
+
+sail loc1 loc15
+
+sail loc1 loc2
+
+sail loc1 loc3
+
+sail loc1 loc4
+
+sail loc1 loc5
+
+sail loc1 loc6
+
+sail loc1 loc7
+
+sail loc1 loc8
+
+sail loc1 loc9
+
+sail loc10 loc1
+
+sail loc10 loc11
+
+sail loc10 loc12
+
+sail loc10 loc13
+
+sail loc10 loc14
+
+sail loc10 loc15
+
+sail loc10 loc2
+
+sail loc10 loc3
+
+sail loc10 loc4
+
+sail loc10 loc5
+
+sail loc10 loc6
+
+sail loc10 loc7
+
+sail loc10 loc8
+
+sail loc10 loc9
+
+sail loc11 loc1
+
+sail loc11 loc10
+
+sail loc11 loc12
+
+sail loc11 loc13
+
+sail loc11 loc14
+
+sail loc11 loc15
+
+sail loc11 loc2
+
+sail loc11 loc3
+
+sail loc11 loc4
+
+sail loc11 loc5
+
+sail loc11 loc6
+
+sail loc11 loc7
+
+sail loc11 loc8
+
+sail loc11 loc9
+
+sail loc12 loc1
+
+sail loc12 loc10
+
+sail loc12 loc11
+
+sail loc12 loc13
+
+sail loc12 loc14
+
+sail loc12 loc15
+
+sail loc12 loc2
+
+sail loc12 loc3
+
+sail loc12 loc4
+
+sail loc12 loc5
+
+sail loc12 loc6
+
+sail loc12 loc7
+
+sail loc12 loc8
+
+sail loc12 loc9
+
+sail loc13 loc1
+
+sail loc13 loc10
+
+sail loc13 loc11
+
+sail loc13 loc12
+
+sail loc13 loc14
+
+sail loc13 loc15
+
+sail loc13 loc2
+
+sail loc13 loc3
+
+sail loc13 loc4
+
+sail loc13 loc5
+
+sail loc13 loc6
+
+sail loc13 loc7
+
+sail loc13 loc8
+
+sail loc13 loc9
+
+sail loc14 loc1
+
+sail loc14 loc10
+
+sail loc14 loc11
+
+sail loc14 loc12
+
+sail loc14 loc13
+
+sail loc14 loc15
+
+sail loc14 loc2
+
+sail loc14 loc3
+
+sail loc14 loc4
+
+sail loc14 loc5
+
+sail loc14 loc6
+
+sail loc14 loc7
+
+sail loc14 loc8
+
+sail loc14 loc9
+
+sail loc15 loc1
+
+sail loc15 loc10
+
+sail loc15 loc11
+
+sail loc15 loc12
+
+sail loc15 loc13
+
+sail loc15 loc14
+
+sail loc15 loc2
+
+sail loc15 loc3
+
+sail loc15 loc4
+
+sail loc15 loc5
+
+sail loc15 loc6
+
+sail loc15 loc7
+
+sail loc15 loc8
+
+sail loc15 loc9
+
+sail loc2 loc1
+
+sail loc2 loc10
+
+sail loc2 loc11
+
+sail loc2 loc12
+
+sail loc2 loc13
+
+sail loc2 loc14
+
+sail loc2 loc15
+
+sail loc2 loc3
+
+sail loc2 loc4
+
+sail loc2 loc5
+
+sail loc2 loc6
+
+sail loc2 loc7
+
+sail loc2 loc8
+
+sail loc2 loc9
+
+sail loc3 loc1
+
+sail loc3 loc10
+
+sail loc3 loc11
+
+sail loc3 loc12
+
+sail loc3 loc13
+
+sail loc3 loc14
+
+sail loc3 loc15
+
+sail loc3 loc2
+
+sail loc3 loc4
+
+sail loc3 loc5
+
+sail loc3 loc6
+
+sail loc3 loc7
+
+sail loc3 loc8
+
+sail loc3 loc9
+
+sail loc4 loc1
+
+sail loc4 loc10
+
+sail loc4 loc11
+
+sail loc4 loc12
+
+sail loc4 loc13
+
+sail loc4 loc14
+
+sail loc4 loc15
+
+sail loc4 loc2
+
+sail loc4 loc3
+
+sail loc4 loc5
+
+sail loc4 loc6
+
+sail loc4 loc7
+
+sail loc4 loc8
+
+sail loc4 loc9
+
+sail loc5 loc1
+
+sail loc5 loc10
+
+sail loc5 loc11
+
+sail loc5 loc12
+
+sail loc5 loc13
+
+sail loc5 loc14
+
+sail loc5 loc15
+
+sail loc5 loc2
+
+sail loc5 loc3
+
+sail loc5 loc4
+
+sail loc5 loc6
+
+sail loc5 loc7
+
+sail loc5 loc8
+
+sail loc5 loc9
+
+sail loc6 loc1
+
+sail loc6 loc10
+
+sail loc6 loc11
+
+sail loc6 loc12
+
+sail loc6 loc13
+
+sail loc6 loc14
+
+sail loc6 loc15
+
+sail loc6 loc2
+
+sail loc6 loc3
+
+sail loc6 loc4
+
+sail loc6 loc5
+
+sail loc6 loc7
+
+sail loc6 loc8
+
+sail loc6 loc9
+
+sail loc7 loc1
+
+sail loc7 loc10
+
+sail loc7 loc11
+
+sail loc7 loc12
+
+sail loc7 loc13
+
+sail loc7 loc14
+
+sail loc7 loc15
+
+sail loc7 loc2
+
+sail loc7 loc3
+
+sail loc7 loc4
+
+sail loc7 loc5
+
+sail loc7 loc6
+
+sail loc7 loc8
+
+sail loc7 loc9
+
+sail loc8 loc1
+
+sail loc8 loc10
+
+sail loc8 loc11
+
+sail loc8 loc12
+
+sail loc8 loc13
+
+sail loc8 loc14
+
+sail loc8 loc15
+
+sail loc8 loc2
+
+sail loc8 loc3
+
+sail loc8 loc4
+
+sail loc8 loc5
+
+sail loc8 loc6
+
+sail loc8 loc7
+
+sail loc8 loc9
+
+sail loc9 loc1
+
+sail loc9 loc10
+
+sail loc9 loc11
+
+sail loc9 loc12
+
+sail loc9 loc13
+
+sail loc9 loc14
+
+sail loc9 loc15
+
+sail loc9 loc2
+
+sail loc9 loc3
+
+sail loc9 loc4
+
+sail loc9 loc5
+
+sail loc9 loc6
+
+sail loc9 loc7
+
+sail loc9 loc8
+Extracting bounds takes 0.00199962
+Infinite operators: 0
+Second-order simple operators: 0
+ops 781, prop: 327, numeric conditions 1
+Initial heuristic value for lmcutnumeric(use_second_order_simple = true, bound_iterations = 10, ceiling_less_than_one = true): 51
+New best h=51 [g=0, 1 evaluated, 0 expanded, t=0.0116465s, 18760 KB]
+f = 51 [1 evaluated, 0 expanded, t=0.0117166s, 18760 KB]
+New best h=50 [g=1, 16 evaluated, 1 expanded, t=0.0204206s, 18892 KB]
+New best h=49 [g=2, 32 evaluated, 2 expanded, t=0.0295925s, 18892 KB]
+f = 52 [60 evaluated, 4 expanded, t=0.0455306s, 18892 KB]
+New best h=48 [g=4, 67 evaluated, 8 expanded, t=0.0496507s, 18892 KB]
+New best h=38 [g=5, 105 evaluated, 11 expanded, t=0.0706239s, 18892 KB]
+New best h=37 [g=9, 486 evaluated, 61 expanded, t=0.271494s, 18892 KB]
+New best h=35 [g=11, 520 evaluated, 64 expanded, t=0.28809s, 18892 KB]
+New best h=34 [g=12, 525 evaluated, 65 expanded, t=0.290567s, 18892 KB]
+New best h=32 [g=13, 3345 evaluated, 568 expanded, 30 reopened, t=1.68771s, 19452 KB]
+New best h=30 [g=15, 3511 evaluated, 599 expanded, 30 reopened, t=1.76233s, 19452 KB]
+New best h=29 [g=16, 3514 evaluated, 600 expanded, 30 reopened, t=1.76369s, 19452 KB]
+New best h=28 [g=19, 3717 evaluated, 636 expanded, 30 reopened, t=1.85031s, 19452 KB]
+New best h=27 [g=19, 3794 evaluated, 652 expanded, 30 reopened, t=1.88071s, 19452 KB]
+New best h=26 [g=20, 3800 evaluated, 653 expanded, 30 reopened, t=1.88311s, 19452 KB]
+New best h=24 [g=22, 4006 evaluated, 688 expanded, 30 reopened, t=1.96314s, 19452 KB]
+New best h=23 [g=24, 4060 evaluated, 691 expanded, 30 reopened, t=1.98213s, 19576 KB]
+f = 53 [23457 evaluated, 3617 expanded, 213 reopened, t=11.5654s, 22700 KB]
+New best h=21 [g=28, 23514 evaluated, 3623 expanded, 213 reopened, t=11.5831s, 22700 KB]
+New best h=20 [g=28, 23623 evaluated, 3641 expanded, 213 reopened, t=11.6165s, 22700 KB]
+New best h=19 [g=28, 24351 evaluated, 3767 expanded, 213 reopened, t=11.8471s, 22832 KB]
+New best h=15 [g=34, 24647 evaluated, 3803 expanded, 213 reopened, t=11.9331s, 22964 KB]
+f = 54 [572451 evaluated, 100568 expanded, 7551 reopened, t=264.682s, 109632 KB]
+New best h=14 [g=38, 572521 evaluated, 100573 expanded, 7551 reopened, t=264.698s, 109632 KB]
+New best h=13 [g=41, 572664 evaluated, 100592 expanded, 7551 reopened, t=264.731s, 109632 KB]
+New best h=12 [g=40, 572699 evaluated, 100596 expanded, 7551 reopened, t=264.737s, 109632 KB]
+New best h=11 [g=41, 572703 evaluated, 100597 expanded, 7551 reopened, t=264.738s, 109632 KB]
+New best h=10 [g=44, 575120 evaluated, 100885 expanded, 7555 reopened, t=265.258s, 110028 KB]
+New best h=9 [g=43, 575174 evaluated, 100891 expanded, 7555 reopened, t=265.266s, 110028 KB]
+New best h=8 [g=44, 575180 evaluated, 100892 expanded, 7555 reopened, t=265.267s, 110028 KB]
+New best h=7 [g=47, 578396 evaluated, 101388 expanded, 7584 reopened, t=266.003s, 110560 KB]
+New best h=6 [g=48, 578431 evaluated, 101391 expanded, 7584 reopened, t=266.007s, 110560 KB]
+New best h=5 [g=49, 578448 evaluated, 101392 expanded, 7584 reopened, t=266.009s, 110560 KB]
+New best h=4 [g=50, 578450 evaluated, 101393 expanded, 7584 reopened, t=266.009s, 110560 KB]
+New best h=3 [g=51, 578467 evaluated, 101394 expanded, 7584 reopened, t=266.011s, 110560 KB]
+New best h=2 [g=52, 578486 evaluated, 101395 expanded, 7584 reopened, t=266.012s, 110560 KB]
+New best h=1 [g=53, 578498 evaluated, 101396 expanded, 7584 reopened, t=266.013s, 110560 KB]
+New best h=0 [g=54, 578506 evaluated, 101397 expanded, 7584 reopened, t=266.013s, 110560 KB]
+Solution found!
+Actual search time: 266.001s [t=266.013s]
+board car10 loc1 (1)
+board car17 loc1 (1)
+sail loc1 loc3 (1)
+board car18 loc3 (1)
+board car19 loc3 (1)
+debark car10 loc3 (1)
+sail loc3 loc9 (1)
+board car12 loc9 (1)
+debark car17 loc9 (1)
+board car13 loc9 (1)
+sail loc9 loc2 (1)
+debark car13 loc2 (1)
+board car2 loc2 (1)
+debark car18 loc2 (1)
+board car6 loc2 (1)
+sail loc2 loc10 (1)
+debark car2 loc10 (1)
+sail loc10 loc1 (1)
+debark car19 loc1 (1)
+sail loc1 loc5 (1)
+board car1 loc5 (1)
+board car5 loc5 (1)
+sail loc5 loc4 (1)
+debark car5 loc4 (1)
+debark car6 loc4 (1)
+sail loc4 loc15 (1)
+board car8 loc15 (1)
+sail loc15 loc7 (1)
+board car11 loc7 (1)
+debark car1 loc7 (1)
+board car4 loc7 (1)
+debark car12 loc7 (1)
+debark car8 loc7 (1)
+sail loc7 loc11 (1)
+debark car11 loc11 (1)
+sail loc11 loc14 (1)
+board car16 loc14 (1)
+board car7 loc14 (1)
+board car9 loc14 (1)
+sail loc14 loc12 (1)
+debark car16 loc12 (1)
+sail loc12 loc13 (1)
+board car3 loc13 (1)
+debark car4 loc13 (1)
+debark car9 loc13 (1)
+sail loc13 loc6 (1)
+board car14 loc6 (1)
+board car15 loc6 (1)
+debark car3 loc6 (1)
+sail loc6 loc1 (1)
+debark car14 loc1 (1)
+debark car7 loc1 (1)
+sail loc1 loc7 (1)
+debark car15 loc7 (1)
+Plan length: 54 step(s).
+Plan cost: 54
+Expanded 101398 state(s).
+Reopened 7584 state(s).
+Evaluated 578506 state(s).
+Evaluations: 578506
+Generated 1827316 state(s).
+Dead ends: 0 state(s).
+Expanded until last jump: 100568 state(s).
+Reopened until last jump: 7551 state(s).
+Evaluated until last jump: 572451 state(s).
+Generated until last jump: 1812358 state(s).
+Number of registered states: 578506
+Search time: 266.007s
+Total time: 266.013s
+Solution found.
+Peak memory: 110560 KB
+
+--- done ---
+Thu Mar 21 19:48:25 AEDT 2024
+
+======================================================================================
+                  Resource Usage on 2024-03-21 19:48:27:
+   Job Id:             111391552.gadi-pbs
+   Project:            xb83
+   Exit Status:        0
+   Service Units:      0.30
+   NCPUs Requested:    1                      NCPUs Used: 1               
+                                           CPU Time Used: 00:04:26        
+   Memory Requested:   8.0GB                 Memory Used: 191.86MB        
+   Walltime requested: 00:33:00            Walltime Used: 00:04:28        
+   JobFS requested:    100.0MB                JobFS used: 0B              
+======================================================================================

@@ -1,0 +1,2019 @@
+/scratch/xb83/dc6693/generate_plans
+gadi-cpu-clx-2465.gadi.nci.org.au
+Thu Mar 21 20:42:32 AEDT 2024
+
+Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              96
+On-line CPU(s) list: 0-95
+Thread(s) per core:  2
+Core(s) per socket:  24
+Socket(s):           2
+NUMA node(s):        4
+Vendor ID:           GenuineIntel
+CPU family:          6
+Model:               85
+Model name:          Intel(R) Xeon(R) Platinum 8274 CPU @ 3.20GHz
+Stepping:            7
+CPU MHz:             3800.000
+CPU max MHz:         4000.0000
+CPU min MHz:         1200.0000
+BogoMIPS:            6400.00
+Virtualization:      VT-x
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            1024K
+L3 cache:            36608K
+NUMA node0 CPU(s):   0-3,7-9,13-15,19,20,48-51,55-57,61-63,67,68
+NUMA node1 CPU(s):   4-6,10-12,16-18,21-23,52-54,58-60,64-66,69-71
+NUMA node2 CPU(s):   24-27,31-33,37-39,43,44,72-75,79-81,85-87,91,92
+NUMA node3 CPU(s):   28-30,34-36,40-42,45-47,76-78,82-84,88-90,93-95
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3 invpcid_single intel_ppin ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm mpx rdt_a avx512f avx512dq rdseed adx smap clflushopt clwb intel_pt avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts hwp hwp_act_window hwp_epp hwp_pkg_req pku ospke avx512_vnni md_clear flush_l1d arch_capabilities
+
+--- exec ---
+INFO     Running translator.
+INFO     callstring: /usr/bin/python2 /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/translate/translate.py /scratch/xb83/dc6693/ngoose/benchmarks/l4np/rovers/numeric/domain.pddl /scratch/xb83/dc6693/ngoose/benchmarks/l4np/rovers/numeric/training/p89.pddl --sas_file p89.sas
+
+Warning: Domain name in domain file rover differs from domain name in task file rover_89-domain
+
+INFO     Running preprocessor (release64).
+INFO     callstring: /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/preprocess p89.sas < p89.sas
+
+INFO     Running search (release64).
+INFO     search executable: /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/downward
+INFO     callstring: /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/downward --search 'astar(lmcutnumeric(use_second_order_simple=true,bound_iterations=10,ceiling_less_than_one=true),max_time=1800)' --internal-plan-file /scratch/xb83/dc6693/generate_plans/rovers/plans/p89.plan < p89.sas.num
+reading input... [t=0.00013423s]
+done reading input! [t=0.00303888s]
+packing state variables...done! [t=0.00305581s]
+Variables: 83
+Facts: 223
+Bytes per state: 192
+Building successor generator...done! [t=0.00382471s]
+done initalizing global data [t=0.00382757s]
+pruning method: none
+The current working directory is /scratch/xb83/dc6693/ngoose/planner/nfd
+Conducting best first search with reopening closed nodes, (real) bound = 2147483647
+Initializing landmark cut heuristic...
+2
+
+variables
+PNE energy(rover1)  lb: 0  ub: 100 
+PNE energy(rover3)  lb: 0  ub: 100 
+PNE energy(rover4)  lb: 0  ub: 100 
+
+actions
+
+calibrate rover1 camera2 objective3 waypoint1
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera2 objective3 waypoint10
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera2 objective3 waypoint2
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera2 objective3 waypoint3
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera2 objective3 waypoint4
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera2 objective3 waypoint5
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera2 objective3 waypoint7
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera2 objective3 waypoint9
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera3 objective1 waypoint1
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera3 objective1 waypoint10
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera3 objective1 waypoint2
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera3 objective1 waypoint5
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera3 objective1 waypoint7
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera3 objective1 waypoint8
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera3 objective1 waypoint9
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera4 objective2 waypoint10
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera4 objective2 waypoint2
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera4 objective2 waypoint4
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera4 objective2 waypoint7
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera4 objective2 waypoint8
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover1 camera4 objective2 waypoint9
+PNE energy(rover1) before  lb: 2  ub: 100 
+PNE energy(rover1) increment  lb: -2  ub: -2 
+
+calibrate rover3 camera1 objective2 waypoint10
+PNE energy(rover3) before  lb: 2  ub: 100 
+PNE energy(rover3) increment  lb: -2  ub: -2 
+
+calibrate rover3 camera1 objective2 waypoint2
+PNE energy(rover3) before  lb: 2  ub: 100 
+PNE energy(rover3) increment  lb: -2  ub: -2 
+
+calibrate rover3 camera1 objective2 waypoint4
+PNE energy(rover3) before  lb: 2  ub: 100 
+PNE energy(rover3) increment  lb: -2  ub: -2 
+
+calibrate rover3 camera1 objective2 waypoint7
+PNE energy(rover3) before  lb: 2  ub: 100 
+PNE energy(rover3) increment  lb: -2  ub: -2 
+
+calibrate rover3 camera1 objective2 waypoint8
+PNE energy(rover3) before  lb: 2  ub: 100 
+PNE energy(rover3) increment  lb: -2  ub: -2 
+
+calibrate rover3 camera1 objective2 waypoint9
+PNE energy(rover3) before  lb: 2  ub: 100 
+PNE energy(rover3) increment  lb: -2  ub: -2 
+
+communicate_image_data rover1 general objective1 colour waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective1 high_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective1 low_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective2 colour waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective2 high_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective2 low_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective3 colour waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective3 high_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective3 low_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective4 colour waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective4 high_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective4 low_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective5 colour waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective5 high_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective5 low_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective6 colour waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective6 high_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective6 low_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective7 colour waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective7 high_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective7 low_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective8 colour waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective8 high_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective8 low_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective9 colour waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective9 high_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover1 general objective9 low_res waypoint4 waypoint5
+PNE energy(rover1) before  lb: 6  ub: 100 
+PNE energy(rover1) increment  lb: -6  ub: -6 
+
+communicate_image_data rover3 general objective1 high_res waypoint4 waypoint5
+PNE energy(rover3) before  lb: 6  ub: 100 
+PNE energy(rover3) increment  lb: -6  ub: -6 
+
+communicate_image_data rover3 general objective2 high_res waypoint4 waypoint5
+PNE energy(rover3) before  lb: 6  ub: 100 
+PNE energy(rover3) increment  lb: -6  ub: -6 
+
+communicate_image_data rover3 general objective3 high_res waypoint4 waypoint5
+PNE energy(rover3) before  lb: 6  ub: 100 
+PNE energy(rover3) increment  lb: -6  ub: -6 
+
+communicate_image_data rover3 general objective4 high_res waypoint4 waypoint5
+PNE energy(rover3) before  lb: 6  ub: 100 
+PNE energy(rover3) increment  lb: -6  ub: -6 
+
+communicate_image_data rover3 general objective5 high_res waypoint4 waypoint5
+PNE energy(rover3) before  lb: 6  ub: 100 
+PNE energy(rover3) increment  lb: -6  ub: -6 
+
+communicate_image_data rover3 general objective6 high_res waypoint4 waypoint5
+PNE energy(rover3) before  lb: 6  ub: 100 
+PNE energy(rover3) increment  lb: -6  ub: -6 
+
+communicate_image_data rover3 general objective7 high_res waypoint4 waypoint5
+PNE energy(rover3) before  lb: 6  ub: 100 
+PNE energy(rover3) increment  lb: -6  ub: -6 
+
+communicate_image_data rover3 general objective8 high_res waypoint4 waypoint5
+PNE energy(rover3) before  lb: 6  ub: 100 
+PNE energy(rover3) increment  lb: -6  ub: -6 
+
+communicate_image_data rover3 general objective9 high_res waypoint4 waypoint5
+PNE energy(rover3) before  lb: 6  ub: 100 
+PNE energy(rover3) increment  lb: -6  ub: -6 
+
+communicate_rock_data rover1 general waypoint1 waypoint4 waypoint5
+PNE energy(rover1) before  lb: 4  ub: 100 
+PNE energy(rover1) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover1 general waypoint10 waypoint4 waypoint5
+PNE energy(rover1) before  lb: 4  ub: 100 
+PNE energy(rover1) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover1 general waypoint2 waypoint4 waypoint5
+PNE energy(rover1) before  lb: 4  ub: 100 
+PNE energy(rover1) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover1 general waypoint3 waypoint4 waypoint5
+PNE energy(rover1) before  lb: 4  ub: 100 
+PNE energy(rover1) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover1 general waypoint4 waypoint4 waypoint5
+PNE energy(rover1) before  lb: 4  ub: 100 
+PNE energy(rover1) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover1 general waypoint7 waypoint4 waypoint5
+PNE energy(rover1) before  lb: 4  ub: 100 
+PNE energy(rover1) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover1 general waypoint8 waypoint4 waypoint5
+PNE energy(rover1) before  lb: 4  ub: 100 
+PNE energy(rover1) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover3 general waypoint1 waypoint4 waypoint5
+PNE energy(rover3) before  lb: 4  ub: 100 
+PNE energy(rover3) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover3 general waypoint10 waypoint4 waypoint5
+PNE energy(rover3) before  lb: 4  ub: 100 
+PNE energy(rover3) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover3 general waypoint2 waypoint4 waypoint5
+PNE energy(rover3) before  lb: 4  ub: 100 
+PNE energy(rover3) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover3 general waypoint3 waypoint4 waypoint5
+PNE energy(rover3) before  lb: 4  ub: 100 
+PNE energy(rover3) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover3 general waypoint4 waypoint4 waypoint5
+PNE energy(rover3) before  lb: 4  ub: 100 
+PNE energy(rover3) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover3 general waypoint7 waypoint4 waypoint5
+PNE energy(rover3) before  lb: 4  ub: 100 
+PNE energy(rover3) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover3 general waypoint8 waypoint4 waypoint5
+PNE energy(rover3) before  lb: 4  ub: 100 
+PNE energy(rover3) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover4 general waypoint1 waypoint4 waypoint5
+PNE energy(rover4) before  lb: 4  ub: 100 
+PNE energy(rover4) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover4 general waypoint10 waypoint4 waypoint5
+PNE energy(rover4) before  lb: 4  ub: 100 
+PNE energy(rover4) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover4 general waypoint2 waypoint4 waypoint5
+PNE energy(rover4) before  lb: 4  ub: 100 
+PNE energy(rover4) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover4 general waypoint3 waypoint4 waypoint5
+PNE energy(rover4) before  lb: 4  ub: 100 
+PNE energy(rover4) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover4 general waypoint4 waypoint4 waypoint5
+PNE energy(rover4) before  lb: 4  ub: 100 
+PNE energy(rover4) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover4 general waypoint7 waypoint4 waypoint5
+PNE energy(rover4) before  lb: 4  ub: 100 
+PNE energy(rover4) increment  lb: -4  ub: -4 
+
+communicate_rock_data rover4 general waypoint8 waypoint4 waypoint5
+PNE energy(rover4) before  lb: 4  ub: 100 
+PNE energy(rover4) increment  lb: -4  ub: -4 
+
+communicate_soil_data rover1 general waypoint10 waypoint4 waypoint5
+PNE energy(rover1) before  lb: 4  ub: 100 
+PNE energy(rover1) increment  lb: -4  ub: -4 
+
+communicate_soil_data rover1 general waypoint4 waypoint4 waypoint5
+PNE energy(rover1) before  lb: 4  ub: 100 
+PNE energy(rover1) increment  lb: -4  ub: -4 
+
+communicate_soil_data rover1 general waypoint5 waypoint4 waypoint5
+PNE energy(rover1) before  lb: 4  ub: 100 
+PNE energy(rover1) increment  lb: -4  ub: -4 
+
+communicate_soil_data rover1 general waypoint7 waypoint4 waypoint5
+PNE energy(rover1) before  lb: 4  ub: 100 
+PNE energy(rover1) increment  lb: -4  ub: -4 
+
+drop rover1 rover1store
+
+drop rover3 rover3store
+
+drop rover4 rover4store
+
+navigate rover1 waypoint1 waypoint4
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint1 waypoint7
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint10 waypoint2
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint10 waypoint8
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint2 waypoint10
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint2 waypoint6
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint3 waypoint7
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint4 waypoint1
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint4 waypoint5
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint4 waypoint6
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint5 waypoint4
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint6 waypoint2
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint6 waypoint4
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint6 waypoint7
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint6 waypoint8
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint6 waypoint9
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint7 waypoint1
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint7 waypoint3
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint7 waypoint6
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint8 waypoint10
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint8 waypoint6
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover1 waypoint9 waypoint6
+PNE energy(rover1) before  lb: 8  ub: 100 
+PNE energy(rover1) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint1 waypoint4
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint1 waypoint7
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint10 waypoint2
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint2 waypoint10
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint2 waypoint6
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint3 waypoint7
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint4 waypoint1
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint4 waypoint5
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint4 waypoint6
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint5 waypoint4
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint6 waypoint2
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint6 waypoint4
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint6 waypoint8
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint6 waypoint9
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint7 waypoint1
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint7 waypoint3
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint8 waypoint6
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover3 waypoint9 waypoint6
+PNE energy(rover3) before  lb: 8  ub: 100 
+PNE energy(rover3) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint1 waypoint3
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint1 waypoint4
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint1 waypoint7
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint10 waypoint2
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint10 waypoint8
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint2 waypoint10
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint2 waypoint6
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint2 waypoint9
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint3 waypoint1
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint3 waypoint4
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint3 waypoint7
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint4 waypoint1
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint4 waypoint3
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint4 waypoint5
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint4 waypoint6
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint5 waypoint4
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint6 waypoint2
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint6 waypoint4
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint6 waypoint7
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint6 waypoint8
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint6 waypoint9
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint7 waypoint1
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint7 waypoint3
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint7 waypoint6
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint8 waypoint10
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint8 waypoint6
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint9 waypoint2
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+navigate rover4 waypoint9 waypoint6
+PNE energy(rover4) before  lb: 8  ub: 100 
+PNE energy(rover4) increment  lb: -8  ub: -8 
+
+recharge rover1 waypoint2
+PNE energy(rover1) before  lb: 0  ub: 80 
+PNE energy(rover1) increment  lb: 20  ub: 20 
+
+recharge rover1 waypoint3
+PNE energy(rover1) before  lb: 0  ub: 80 
+PNE energy(rover1) increment  lb: 20  ub: 20 
+
+recharge rover1 waypoint5
+PNE energy(rover1) before  lb: 0  ub: 80 
+PNE energy(rover1) increment  lb: 20  ub: 20 
+
+recharge rover1 waypoint6
+PNE energy(rover1) before  lb: 0  ub: 80 
+PNE energy(rover1) increment  lb: 20  ub: 20 
+
+recharge rover1 waypoint8
+PNE energy(rover1) before  lb: 0  ub: 80 
+PNE energy(rover1) increment  lb: 20  ub: 20 
+
+recharge rover1 waypoint9
+PNE energy(rover1) before  lb: 0  ub: 80 
+PNE energy(rover1) increment  lb: 20  ub: 20 
+
+recharge rover3 waypoint2
+PNE energy(rover3) before  lb: 0  ub: 80 
+PNE energy(rover3) increment  lb: 20  ub: 20 
+
+recharge rover3 waypoint3
+PNE energy(rover3) before  lb: 0  ub: 80 
+PNE energy(rover3) increment  lb: 20  ub: 20 
+
+recharge rover3 waypoint5
+PNE energy(rover3) before  lb: 0  ub: 80 
+PNE energy(rover3) increment  lb: 20  ub: 20 
+
+recharge rover3 waypoint6
+PNE energy(rover3) before  lb: 0  ub: 80 
+PNE energy(rover3) increment  lb: 20  ub: 20 
+
+recharge rover3 waypoint8
+PNE energy(rover3) before  lb: 0  ub: 80 
+PNE energy(rover3) increment  lb: 20  ub: 20 
+
+recharge rover3 waypoint9
+PNE energy(rover3) before  lb: 0  ub: 80 
+PNE energy(rover3) increment  lb: 20  ub: 20 
+
+recharge rover4 waypoint2
+PNE energy(rover4) before  lb: 0  ub: 80 
+PNE energy(rover4) increment  lb: 20  ub: 20 
+
+recharge rover4 waypoint3
+PNE energy(rover4) before  lb: 0  ub: 80 
+PNE energy(rover4) increment  lb: 20  ub: 20 
+
+recharge rover4 waypoint5
+PNE energy(rover4) before  lb: 0  ub: 80 
+PNE energy(rover4) increment  lb: 20  ub: 20 
+
+recharge rover4 waypoint6
+PNE energy(rover4) before  lb: 0  ub: 80 
+PNE energy(rover4) increment  lb: 20  ub: 20 
+
+recharge rover4 waypoint8
+PNE energy(rover4) before  lb: 0  ub: 80 
+PNE energy(rover4) increment  lb: 20  ub: 20 
+
+recharge rover4 waypoint9
+PNE energy(rover4) before  lb: 0  ub: 80 
+PNE energy(rover4) increment  lb: 20  ub: 20 
+
+sample_rock rover1 rover1store waypoint1
+PNE energy(rover1) before  lb: 5  ub: 100 
+PNE energy(rover1) increment  lb: -5  ub: -5 
+
+sample_rock rover1 rover1store waypoint10
+PNE energy(rover1) before  lb: 5  ub: 100 
+PNE energy(rover1) increment  lb: -5  ub: -5 
+
+sample_rock rover1 rover1store waypoint2
+PNE energy(rover1) before  lb: 5  ub: 100 
+PNE energy(rover1) increment  lb: -5  ub: -5 
+
+sample_rock rover1 rover1store waypoint3
+PNE energy(rover1) before  lb: 5  ub: 100 
+PNE energy(rover1) increment  lb: -5  ub: -5 
+
+sample_rock rover1 rover1store waypoint4
+PNE energy(rover1) before  lb: 5  ub: 100 
+PNE energy(rover1) increment  lb: -5  ub: -5 
+
+sample_rock rover1 rover1store waypoint7
+PNE energy(rover1) before  lb: 5  ub: 100 
+PNE energy(rover1) increment  lb: -5  ub: -5 
+
+sample_rock rover1 rover1store waypoint8
+PNE energy(rover1) before  lb: 5  ub: 100 
+PNE energy(rover1) increment  lb: -5  ub: -5 
+
+sample_rock rover3 rover3store waypoint1
+PNE energy(rover3) before  lb: 5  ub: 100 
+PNE energy(rover3) increment  lb: -5  ub: -5 
+
+sample_rock rover3 rover3store waypoint10
+PNE energy(rover3) before  lb: 5  ub: 100 
+PNE energy(rover3) increment  lb: -5  ub: -5 
+
+sample_rock rover3 rover3store waypoint2
+PNE energy(rover3) before  lb: 5  ub: 100 
+PNE energy(rover3) increment  lb: -5  ub: -5 
+
+sample_rock rover3 rover3store waypoint3
+PNE energy(rover3) before  lb: 5  ub: 100 
+PNE energy(rover3) increment  lb: -5  ub: -5 
+
+sample_rock rover3 rover3store waypoint4
+PNE energy(rover3) before  lb: 5  ub: 100 
+PNE energy(rover3) increment  lb: -5  ub: -5 
+
+sample_rock rover3 rover3store waypoint7
+PNE energy(rover3) before  lb: 5  ub: 100 
+PNE energy(rover3) increment  lb: -5  ub: -5 
+
+sample_rock rover3 rover3store waypoint8
+PNE energy(rover3) before  lb: 5  ub: 100 
+PNE energy(rover3) increment  lb: -5  ub: -5 
+
+sample_rock rover4 rover4store waypoint1
+PNE energy(rover4) before  lb: 5  ub: 100 
+PNE energy(rover4) increment  lb: -5  ub: -5 
+
+sample_rock rover4 rover4store waypoint10
+PNE energy(rover4) before  lb: 5  ub: 100 
+PNE energy(rover4) increment  lb: -5  ub: -5 
+
+sample_rock rover4 rover4store waypoint2
+PNE energy(rover4) before  lb: 5  ub: 100 
+PNE energy(rover4) increment  lb: -5  ub: -5 
+
+sample_rock rover4 rover4store waypoint3
+PNE energy(rover4) before  lb: 5  ub: 100 
+PNE energy(rover4) increment  lb: -5  ub: -5 
+
+sample_rock rover4 rover4store waypoint4
+PNE energy(rover4) before  lb: 5  ub: 100 
+PNE energy(rover4) increment  lb: -5  ub: -5 
+
+sample_rock rover4 rover4store waypoint7
+PNE energy(rover4) before  lb: 5  ub: 100 
+PNE energy(rover4) increment  lb: -5  ub: -5 
+
+sample_rock rover4 rover4store waypoint8
+PNE energy(rover4) before  lb: 5  ub: 100 
+PNE energy(rover4) increment  lb: -5  ub: -5 
+
+sample_soil rover1 rover1store waypoint10
+PNE energy(rover1) before  lb: 3  ub: 100 
+PNE energy(rover1) increment  lb: -3  ub: -3 
+
+sample_soil rover1 rover1store waypoint4
+PNE energy(rover1) before  lb: 3  ub: 100 
+PNE energy(rover1) increment  lb: -3  ub: -3 
+
+sample_soil rover1 rover1store waypoint5
+PNE energy(rover1) before  lb: 3  ub: 100 
+PNE energy(rover1) increment  lb: -3  ub: -3 
+
+sample_soil rover1 rover1store waypoint7
+PNE energy(rover1) before  lb: 3  ub: 100 
+PNE energy(rover1) increment  lb: -3  ub: -3 
+
+take_image rover1 waypoint1 objective1 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective1 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective1 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective1 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective1 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective1 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective3 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective3 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective3 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective3 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective3 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective3 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective8 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective8 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective8 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective8 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective8 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint1 objective8 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective1 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective1 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective1 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective1 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective1 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective1 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective2 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective2 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective2 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective2 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective2 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective2 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective3 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective3 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective3 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective3 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective3 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective3 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective5 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective5 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective5 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective5 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective5 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective5 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective6 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective6 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective6 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective6 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective6 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective6 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective8 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective8 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective8 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective8 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective8 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint10 objective8 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective1 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective1 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective1 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective1 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective1 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective1 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective2 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective2 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective2 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective2 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective2 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective2 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective3 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective3 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective3 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective3 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective3 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective3 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective5 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective5 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective5 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective5 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective5 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective5 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective9 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective9 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective9 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective9 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective9 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint2 objective9 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint3 objective3 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint3 objective3 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint3 objective3 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint3 objective3 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint3 objective3 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint3 objective3 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective2 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective2 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective2 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective2 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective2 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective2 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective3 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective3 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective3 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective3 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective3 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective3 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective8 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective8 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective8 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective8 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective8 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint4 objective8 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective1 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective1 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective1 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective1 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective1 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective1 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective3 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective3 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective3 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective3 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective3 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective3 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective4 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective4 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective4 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective4 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective4 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective4 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective6 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective6 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective6 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective6 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective6 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective6 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective7 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective7 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective7 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective7 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective7 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective7 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective9 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective9 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective9 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective9 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective9 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint5 objective9 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint6 objective4 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint6 objective4 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint6 objective4 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint6 objective4 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint6 objective4 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint6 objective4 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective1 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective1 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective1 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective1 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective1 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective1 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective2 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective2 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective2 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective2 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective2 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective2 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective3 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective3 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective3 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective3 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective3 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective3 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective8 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective8 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective8 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective8 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective8 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective8 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective9 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective9 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective9 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective9 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective9 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint7 objective9 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective1 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective1 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective1 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective1 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective1 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective1 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective2 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective2 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective2 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective2 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective2 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective2 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective5 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective5 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective5 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective5 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective5 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint8 objective5 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective1 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective1 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective1 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective1 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective1 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective1 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective2 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective2 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective2 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective2 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective2 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective2 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective3 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective3 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective3 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective3 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective3 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective3 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective7 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective7 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective7 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective7 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective7 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective7 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective9 camera2 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective9 camera2 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective9 camera3 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective9 camera3 low_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective9 camera4 colour
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover1 waypoint9 objective9 camera4 high_res
+PNE energy(rover1) before  lb: 1  ub: 100 
+PNE energy(rover1) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint1 objective1 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint1 objective3 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint1 objective8 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint10 objective1 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint10 objective2 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint10 objective3 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint10 objective5 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint10 objective6 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint10 objective8 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint2 objective1 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint2 objective2 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint2 objective3 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint2 objective5 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint2 objective9 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint3 objective3 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint4 objective2 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint4 objective3 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint4 objective8 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint5 objective1 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint5 objective3 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint5 objective4 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint5 objective6 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint5 objective7 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint5 objective9 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint6 objective4 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint7 objective1 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint7 objective2 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint7 objective3 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint7 objective8 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint7 objective9 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint8 objective1 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint8 objective2 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint8 objective5 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint9 objective1 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint9 objective2 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint9 objective3 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint9 objective7 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+
+take_image rover3 waypoint9 objective9 camera1 high_res
+PNE energy(rover3) before  lb: 1  ub: 100 
+PNE energy(rover3) increment  lb: -1  ub: -1 
+Extracting bounds takes 0.00210404
+Infinite operators: 0
+Second-order simple operators: 0
+ops 469, prop: 244, numeric conditions 19
+Initial heuristic value for lmcutnumeric(use_second_order_simple = true, bound_iterations = 10, ceiling_less_than_one = true): 14
+New best h=14 [g=0, 1 evaluated, 0 expanded, t=0.0094974s, 17956 KB]
+f = 14 [1 evaluated, 0 expanded, t=0.00956297s, 17956 KB]
+f = 15 [13 evaluated, 1 expanded, t=0.0113668s, 17956 KB]
+New best h=13 [g=2, 38 evaluated, 4 expanded, t=0.0148723s, 17956 KB]
+f = 16 [131 evaluated, 13 expanded, t=0.028249s, 17956 KB]
+New best h=12 [g=4, 150 evaluated, 15 expanded, t=0.0308244s, 17956 KB]
+f = 17 [1052 evaluated, 124 expanded, t=0.159909s, 18220 KB]
+f = 18 [6376 evaluated, 849 expanded, t=0.919752s, 19940 KB]
+New best h=11 [g=7, 6398 evaluated, 851 expanded, t=0.922567s, 19940 KB]
+New best h=10 [g=8, 8332 evaluated, 1065 expanded, t=1.18458s, 20472 KB]
+f = 19 [32139 evaluated, 4747 expanded, t=4.60296s, 28096 KB]
+f = 20 [144290 evaluated, 22742 expanded, t=20.4557s, 63320 KB]
+New best h=9 [g=11, 145385 evaluated, 22825 expanded, t=20.5305s, 63588 KB]
+New best h=8 [g=12, 145921 evaluated, 22861 expanded, t=20.5746s, 63724 KB]
+f = 21 [591350 evaluated, 97275 expanded, 1 reopened, t=82.4619s, 203760 KB]
+New best h=7 [g=14, 591382 evaluated, 97278 expanded, 1 reopened, t=82.4647s, 203760 KB]
+New best h=6 [g=15, 591426 evaluated, 97281 expanded, 1 reopened, t=82.4682s, 203760 KB]
+New best h=5 [g=16, 595892 evaluated, 97633 expanded, 1 reopened, t=82.8852s, 205108 KB]
+f = 22 [2284169 evaluated, 383660 expanded, 2 reopened, t=311.699s, 737036 KB]
+New best h=4 [g=18, 2285583 evaluated, 383757 expanded, 2 reopened, t=311.767s, 737432 KB]
+f = 23 [8482400 evaluated, 1436180 expanded, 5 reopened, t=1128.64s, 2697296 KB]
+New best h=3 [g=20, 8484359 evaluated, 1436331 expanded, 5 reopened, t=1128.71s, 2697960 KB]
+New best h=2 [g=21, 8484378 evaluated, 1436332 expanded, 5 reopened, t=1128.71s, 2697960 KB]
+New best h=1 [g=22, 8484391 evaluated, 1436333 expanded, 5 reopened, t=1128.71s, 2697960 KB]
+New best h=0 [g=23, 8484412 evaluated, 1436334 expanded, 5 reopened, t=1128.71s, 2697960 KB]
+Solution found!
+Actual search time: 1128.71s [t=1128.72s]
+calibrate rover1 camera4 objective2 waypoint9 (1)
+take_image rover1 waypoint9 objective1 camera4 colour (1)
+calibrate rover1 camera4 objective2 waypoint9 (1)
+take_image rover1 waypoint9 objective7 camera4 colour (1)
+recharge rover1 waypoint9 (1)
+calibrate rover1 camera3 objective1 waypoint9 (1)
+take_image rover1 waypoint9 objective9 camera3 low_res (1)
+calibrate rover1 camera3 objective1 waypoint9 (1)
+calibrate rover1 camera2 objective3 waypoint9 (1)
+navigate rover1 waypoint9 waypoint6 (1)
+take_image rover1 waypoint6 objective4 camera3 high_res (1)
+recharge rover1 waypoint6 (1)
+recharge rover1 waypoint6 (1)
+navigate rover1 waypoint6 waypoint4 (1)
+communicate_image_data rover1 general objective9 low_res waypoint4 waypoint5 (1)
+communicate_image_data rover1 general objective1 colour waypoint4 waypoint5 (1)
+communicate_image_data rover1 general objective4 high_res waypoint4 waypoint5 (1)
+communicate_image_data rover1 general objective7 colour waypoint4 waypoint5 (1)
+take_image rover1 waypoint4 objective3 camera2 low_res (1)
+communicate_image_data rover1 general objective3 low_res waypoint4 waypoint5 (1)
+calibrate rover1 camera2 objective3 waypoint4 (1)
+take_image rover1 waypoint4 objective8 camera2 colour (1)
+communicate_image_data rover1 general objective8 colour waypoint4 waypoint5 (1)
+Plan length: 23 step(s).
+Plan cost: 23
+Expanded 1436335 state(s).
+Reopened 5 state(s).
+Evaluated 8484423 state(s).
+Evaluations: 8484423
+Generated 23949202 state(s).
+Dead ends: 520791 state(s).
+Expanded until last jump: 1436180 state(s).
+Reopened until last jump: 5 state(s).
+Evaluated until last jump: 8482400 state(s).
+Generated until last jump: 23945939 state(s).
+Number of registered states: 8484423
+Search time: 1128.71s
+Total time: 1128.72s
+Solution found.
+Peak memory: 2697960 KB
+
+--- done ---
+Thu Mar 21 21:01:24 AEDT 2024
+
+======================================================================================
+                  Resource Usage on 2024-03-21 21:01:27:
+   Job Id:             111396607.gadi-pbs
+   Project:            xb83
+   Exit Status:        0
+   Service Units:      1.26
+   NCPUs Requested:    1                      NCPUs Used: 1               
+                                           CPU Time Used: 00:18:49        
+   Memory Requested:   8.0GB                 Memory Used: 2.65GB          
+   Walltime requested: 00:33:00            Walltime Used: 00:18:52        
+   JobFS requested:    100.0MB                JobFS used: 0B              
+======================================================================================
