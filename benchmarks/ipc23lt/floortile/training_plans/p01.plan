@@ -1,0 +1,3 @@
+(change_color robot1 black white)
+(paint_up robot1 tile_1_1 tile_0_1 white)
+; cost = 2 (unit cost)

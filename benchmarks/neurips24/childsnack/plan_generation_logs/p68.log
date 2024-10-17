@@ -1,0 +1,398 @@
+/scratch/xb83/dc6693/generate_plans
+gadi-cpu-clx-1578.gadi.nci.org.au
+Wed Mar 27 20:11:01 AEDT 2024
+
+Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              96
+On-line CPU(s) list: 0-95
+Thread(s) per core:  2
+Core(s) per socket:  24
+Socket(s):           2
+NUMA node(s):        4
+Vendor ID:           GenuineIntel
+CPU family:          6
+Model:               85
+Model name:          Intel(R) Xeon(R) Platinum 8274 CPU @ 3.20GHz
+Stepping:            7
+CPU MHz:             3779.334
+CPU max MHz:         4000.0000
+CPU min MHz:         1200.0000
+BogoMIPS:            6400.00
+Virtualization:      VT-x
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            1024K
+L3 cache:            36608K
+NUMA node0 CPU(s):   0-3,7-9,13-15,19,20,48-51,55-57,61-63,67,68
+NUMA node1 CPU(s):   4-6,10-12,16-18,21-23,52-54,58-60,64-66,69-71
+NUMA node2 CPU(s):   24-27,31-33,37-39,43,44,72-75,79-81,85-87,91,92
+NUMA node3 CPU(s):   28-30,34-36,40-42,45-47,76-78,82-84,88-90,93-95
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3 invpcid_single intel_ppin ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm mpx rdt_a avx512f avx512dq rdseed adx smap clflushopt clwb intel_pt avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts hwp hwp_act_window hwp_epp hwp_pkg_req pku ospke avx512_vnni md_clear flush_l1d arch_capabilities
+
+--- exec ---
+INFO     Running translator.
+INFO     callstring: /usr/bin/python2 /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/translate/translate.py /scratch/xb83/dc6693/ngoose/benchmarks/l4np/childsnack/numeric/domain.pddl /scratch/xb83/dc6693/ngoose/benchmarks/l4np/childsnack/numeric/training/p68.pddl --sas_file p68.sas
+
+Warning: Domain name in domain file childsnack_numeric-domain differs from domain name in task file p68-domain
+
+INFO     Running preprocessor (release64).
+INFO     callstring: /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/preprocess p68.sas < p68.sas
+
+INFO     Running search (release64).
+INFO     search executable: /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/downward
+INFO     callstring: /scratch/xb83/dc6693/ngoose/planner/nfd/builds/release64/bin/downward --search 'astar(lmcutnumeric(use_second_order_simple=true,bound_iterations=10,ceiling_less_than_one=true),max_time=1800)' --internal-plan-file /scratch/xb83/dc6693/generate_plans/childsnack/plans/p68.plan < p68.sas.num
+reading input... [t=0.000112534s]
+done reading input! [t=0.000730991s]
+packing state variables...done! [t=0.000743628s]
+Variables: 27
+Facts: 81
+Bytes per state: 328
+Building successor generator...done! [t=0.000844717s]
+done initalizing global data [t=0.000846148s]
+pruning method: none
+The current working directory is /scratch/xb83/dc6693/ngoose/planner/nfd
+Conducting best first search with reopening closed nodes, (real) bound = 2147483647
+Initializing landmark cut heuristic...
+2
+
+variables
+PNE at_kitchen_content(is_gluten_free)  lb: 0  ub: 4 
+PNE at_kitchen_bread(is_gluten_free)  lb: 0  ub: 4 
+PNE at_kitchen_bread(is_not_gluten_free)  lb: 0  ub: 4 
+PNE at_kitchen_content(is_not_gluten_free)  lb: 0  ub: 4 
+PNE at_kitchen_sandwich(is_not_gluten_free)  lb: 0 
+PNE at_kitchen_sandwich(is_gluten_free)  lb: 0 
+PNE hungry(kitchen, is_gluten_free)  lb: 0  ub: 0 
+PNE hungry(place1, is_gluten_free)  lb: 0  ub: 0 
+PNE hungry(place1, is_not_gluten_free)  lb: 0  ub: 1 
+PNE hungry(place2, is_not_gluten_free)  lb: 0  ub: 2 
+PNE hungry(place3, is_not_gluten_free)  lb: 0  ub: 1 
+PNE ontray(tray1, is_not_gluten_free)  lb: 0 
+PNE ontray(tray2, is_not_gluten_free)  lb: 0 
+PNE hungry(place2, is_gluten_free)  lb: 0  ub: 2 
+PNE hungry(place3, is_gluten_free)  lb: 0  ub: 2 
+PNE ontray(tray1, is_gluten_free)  lb: 0 
+PNE ontray(tray2, is_gluten_free)  lb: 0 
+
+actions
+
+make_sandwich is_gluten_free is_gluten_free
+PNE at_kitchen_content(is_gluten_free) before  lb: 1  ub: 4 
+PNE at_kitchen_content(is_gluten_free) increment  lb: -1  ub: -1 
+PNE at_kitchen_bread(is_gluten_free) before  lb: 1  ub: 4 
+PNE at_kitchen_bread(is_gluten_free) increment  lb: -1  ub: -1 
+PNE at_kitchen_sandwich(is_not_gluten_free) increment  lb: 1  ub: 1 
+
+make_sandwich is_gluten_free is_not_gluten_free
+PNE at_kitchen_bread(is_gluten_free) before  lb: 1  ub: 4 
+PNE at_kitchen_bread(is_gluten_free) increment  lb: -1  ub: -1 
+PNE at_kitchen_content(is_not_gluten_free) before  lb: 1  ub: 4 
+PNE at_kitchen_content(is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE at_kitchen_sandwich(is_not_gluten_free) increment  lb: 1  ub: 1 
+
+make_sandwich is_not_gluten_free is_gluten_free
+PNE at_kitchen_content(is_gluten_free) before  lb: 1  ub: 4 
+PNE at_kitchen_content(is_gluten_free) increment  lb: -1  ub: -1 
+PNE at_kitchen_bread(is_not_gluten_free) before  lb: 1  ub: 4 
+PNE at_kitchen_bread(is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE at_kitchen_sandwich(is_not_gluten_free) increment  lb: 1  ub: 1 
+
+make_sandwich is_not_gluten_free is_not_gluten_free
+PNE at_kitchen_bread(is_not_gluten_free) before  lb: 1  ub: 4 
+PNE at_kitchen_bread(is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE at_kitchen_content(is_not_gluten_free) before  lb: 1  ub: 4 
+PNE at_kitchen_content(is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE at_kitchen_sandwich(is_not_gluten_free) increment  lb: 1  ub: 1 
+
+make_sandwich_no_gluten is_gluten_free is_gluten_free
+PNE at_kitchen_content(is_gluten_free) before  lb: 1  ub: 4 
+PNE at_kitchen_content(is_gluten_free) increment  lb: -1  ub: -1 
+PNE at_kitchen_bread(is_gluten_free) before  lb: 1  ub: 4 
+PNE at_kitchen_bread(is_gluten_free) increment  lb: -1  ub: -1 
+PNE at_kitchen_sandwich(is_gluten_free) increment  lb: 1  ub: 1 
+
+move_tray tray1 kitchen place1
+
+move_tray tray1 kitchen place2
+
+move_tray tray1 kitchen place3
+
+move_tray tray1 place1 kitchen
+
+move_tray tray1 place1 place2
+
+move_tray tray1 place1 place3
+
+move_tray tray1 place2 kitchen
+
+move_tray tray1 place2 place1
+
+move_tray tray1 place2 place3
+
+move_tray tray1 place3 kitchen
+
+move_tray tray1 place3 place1
+
+move_tray tray1 place3 place2
+
+move_tray tray2 kitchen place1
+
+move_tray tray2 kitchen place2
+
+move_tray tray2 kitchen place3
+
+move_tray tray2 place1 kitchen
+
+move_tray tray2 place1 place2
+
+move_tray tray2 place1 place3
+
+move_tray tray2 place2 kitchen
+
+move_tray tray2 place2 place1
+
+move_tray tray2 place2 place3
+
+move_tray tray2 place3 kitchen
+
+move_tray tray2 place3 place1
+
+move_tray tray2 place3 place2
+
+put_on_tray tray1 is_gluten_free
+PNE at_kitchen_sandwich(is_gluten_free) before  lb: 1 
+PNE at_kitchen_sandwich(is_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray1, is_gluten_free) increment  lb: 1  ub: 1 
+
+put_on_tray tray1 is_not_gluten_free
+PNE at_kitchen_sandwich(is_not_gluten_free) before  lb: 1 
+PNE at_kitchen_sandwich(is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray1, is_not_gluten_free) increment  lb: 1  ub: 1 
+
+put_on_tray tray2 is_gluten_free
+PNE at_kitchen_sandwich(is_gluten_free) before  lb: 1 
+PNE at_kitchen_sandwich(is_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray2, is_gluten_free) increment  lb: 1  ub: 1 
+
+put_on_tray tray2 is_not_gluten_free
+PNE at_kitchen_sandwich(is_not_gluten_free) before  lb: 1 
+PNE at_kitchen_sandwich(is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray2, is_not_gluten_free) increment  lb: 1  ub: 1 
+
+serve_sandwich tray1 place1 is_gluten_free
+PNE hungry(place1, is_not_gluten_free) before  lb: 1  ub: 1 
+PNE hungry(place1, is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray1, is_gluten_free) before  lb: 1 
+PNE ontray(tray1, is_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich tray1 place1 is_not_gluten_free
+PNE hungry(place1, is_not_gluten_free) before  lb: 1  ub: 1 
+PNE hungry(place1, is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray1, is_not_gluten_free) before  lb: 1 
+PNE ontray(tray1, is_not_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich tray1 place2 is_gluten_free
+PNE hungry(place2, is_not_gluten_free) before  lb: 1  ub: 2 
+PNE hungry(place2, is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray1, is_gluten_free) before  lb: 1 
+PNE ontray(tray1, is_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich tray1 place2 is_not_gluten_free
+PNE hungry(place2, is_not_gluten_free) before  lb: 1  ub: 2 
+PNE hungry(place2, is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray1, is_not_gluten_free) before  lb: 1 
+PNE ontray(tray1, is_not_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich tray1 place3 is_gluten_free
+PNE hungry(place3, is_not_gluten_free) before  lb: 1  ub: 1 
+PNE hungry(place3, is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray1, is_gluten_free) before  lb: 1 
+PNE ontray(tray1, is_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich tray1 place3 is_not_gluten_free
+PNE hungry(place3, is_not_gluten_free) before  lb: 1  ub: 1 
+PNE hungry(place3, is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray1, is_not_gluten_free) before  lb: 1 
+PNE ontray(tray1, is_not_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich tray2 place1 is_gluten_free
+PNE hungry(place1, is_not_gluten_free) before  lb: 1  ub: 1 
+PNE hungry(place1, is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray2, is_gluten_free) before  lb: 1 
+PNE ontray(tray2, is_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich tray2 place1 is_not_gluten_free
+PNE hungry(place1, is_not_gluten_free) before  lb: 1  ub: 1 
+PNE hungry(place1, is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray2, is_not_gluten_free) before  lb: 1 
+PNE ontray(tray2, is_not_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich tray2 place2 is_gluten_free
+PNE hungry(place2, is_not_gluten_free) before  lb: 1  ub: 2 
+PNE hungry(place2, is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray2, is_gluten_free) before  lb: 1 
+PNE ontray(tray2, is_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich tray2 place2 is_not_gluten_free
+PNE hungry(place2, is_not_gluten_free) before  lb: 1  ub: 2 
+PNE hungry(place2, is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray2, is_not_gluten_free) before  lb: 1 
+PNE ontray(tray2, is_not_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich tray2 place3 is_gluten_free
+PNE hungry(place3, is_not_gluten_free) before  lb: 1  ub: 1 
+PNE hungry(place3, is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray2, is_gluten_free) before  lb: 1 
+PNE ontray(tray2, is_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich tray2 place3 is_not_gluten_free
+PNE hungry(place3, is_not_gluten_free) before  lb: 1  ub: 1 
+PNE hungry(place3, is_not_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray2, is_not_gluten_free) before  lb: 1 
+PNE ontray(tray2, is_not_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich_no_gluten tray1 kitchen
+PNE hungry(kitchen, is_gluten_free) before  lb: 1  ub: 0 
+PNE hungry(kitchen, is_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray1, is_gluten_free) before  lb: 2 
+PNE ontray(tray1, is_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich_no_gluten tray1 place1
+PNE hungry(place1, is_gluten_free) before  lb: 1  ub: 0 
+PNE hungry(place1, is_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray1, is_gluten_free) before  lb: 2 
+PNE ontray(tray1, is_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich_no_gluten tray1 place2
+PNE hungry(place2, is_gluten_free) before  lb: 1  ub: 2 
+PNE hungry(place2, is_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray1, is_gluten_free) before  lb: 1 
+PNE ontray(tray1, is_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich_no_gluten tray1 place3
+PNE hungry(place3, is_gluten_free) before  lb: 1  ub: 2 
+PNE hungry(place3, is_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray1, is_gluten_free) before  lb: 1 
+PNE ontray(tray1, is_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich_no_gluten tray2 kitchen
+PNE hungry(kitchen, is_gluten_free) before  lb: 1  ub: 0 
+PNE hungry(kitchen, is_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray2, is_gluten_free) before  lb: 2 
+PNE ontray(tray2, is_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich_no_gluten tray2 place1
+PNE hungry(place1, is_gluten_free) before  lb: 1  ub: 0 
+PNE hungry(place1, is_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray2, is_gluten_free) before  lb: 2 
+PNE ontray(tray2, is_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich_no_gluten tray2 place2
+PNE hungry(place2, is_gluten_free) before  lb: 1  ub: 2 
+PNE hungry(place2, is_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray2, is_gluten_free) before  lb: 1 
+PNE ontray(tray2, is_gluten_free) increment  lb: -1  ub: -1 
+
+serve_sandwich_no_gluten tray2 place3
+PNE hungry(place3, is_gluten_free) before  lb: 1  ub: 2 
+PNE hungry(place3, is_gluten_free) increment  lb: -1  ub: -1 
+PNE ontray(tray2, is_gluten_free) before  lb: 1 
+PNE ontray(tray2, is_gluten_free) increment  lb: -1  ub: -1 
+Extracting bounds takes 0.00041604
+Infinite operators: 0
+Second-order simple operators: 0
+ops 55, prop: 257, numeric conditions 174
+Initial heuristic value for lmcutnumeric(use_second_order_simple = true, bound_iterations = 10, ceiling_less_than_one = true): 13
+New best h=13 [g=0, 1 evaluated, 0 expanded, t=0.00497079s, 17488 KB]
+f = 13 [1 evaluated, 0 expanded, t=0.00501871s, 17488 KB]
+New best h=12 [g=1, 3 evaluated, 1 expanded, t=0.00520039s, 17488 KB]
+New best h=11 [g=2, 13 evaluated, 2 expanded, t=0.00587225s, 17488 KB]
+New best h=10 [g=3, 32 evaluated, 3 expanded, t=0.00700784s, 17488 KB]
+New best h=9 [g=3, 123 evaluated, 13 expanded, t=0.0124121s, 17488 KB]
+f = 14 [299 evaluated, 41 expanded, t=0.0224745s, 17624 KB]
+New best h=8 [g=6, 913 evaluated, 127 expanded, t=0.056843s, 17888 KB]
+f = 15 [1692 evaluated, 336 expanded, t=0.104631s, 18292 KB]
+f = 16 [7566 evaluated, 1689 expanded, t=0.436536s, 20840 KB]
+f = 17 [22456 evaluated, 6213 expanded, 12 reopened, t=1.27993s, 27632 KB]
+New best h=7 [g=10, 23375 evaluated, 6507 expanded, 12 reopened, t=1.32145s, 28036 KB]
+f = 18 [58858 evaluated, 18523 expanded, 12 reopened, t=3.28041s, 43996 KB]
+f = 19 [120916 evaluated, 46076 expanded, 94 reopened, t=6.69528s, 71856 KB]
+New best h=6 [g=13, 125625 evaluated, 47842 expanded, 94 reopened, t=6.90309s, 73892 KB]
+f = 20 [228184 evaluated, 98194 expanded, 121 reopened, t=12.4116s, 120088 KB]
+f = 21 [366028 evaluated, 182516 expanded, 379 reopened, t=19.8919s, 183028 KB]
+New best h=5 [g=16, 369760 evaluated, 183881 expanded, 379 reopened, t=20.0379s, 184648 KB]
+New best h=4 [g=17, 369868 evaluated, 183904 expanded, 379 reopened, t=20.0416s, 184648 KB]
+f = 22 [548207 evaluated, 298965 expanded, 456 reopened, t=29.565s, 262532 KB]
+f = 23 [744444 evaluated, 450334 expanded, 832 reopened, t=40.1842s, 353632 KB]
+New best h=3 [g=20, 744653 evaluated, 450388 expanded, 832 reopened, t=40.1892s, 353768 KB]
+f = 24 [954250 evaluated, 622348 expanded, 890 reopened, t=51.2918s, 445100 KB]
+f = 25 [1133558 evaluated, 805811 expanded, 1358 reopened, t=60.9403s, 522948 KB]
+New best h=2 [g=23, 1134025 evaluated, 805969 expanded, 1358 reopened, t=60.9519s, 523084 KB]
+f = 26 [1281707 evaluated, 971141 expanded, 1417 reopened, t=68.7985s, 587016 KB]
+f = 27 [1370967 evaluated, 1106462 expanded, 1753 reopened, t=73.7173s, 625524 KB]
+New best h=1 [g=26, 1371342 evaluated, 1106780 expanded, 1753 reopened, t=73.7274s, 625656 KB]
+New best h=0 [g=27, 1371348 evaluated, 1106781 expanded, 1753 reopened, t=73.7275s, 625656 KB]
+Solution found!
+Actual search time: 73.7225s [t=73.7275s]
+make_sandwich_no_gluten is_gluten_free is_gluten_free (1)
+make_sandwich is_not_gluten_free is_not_gluten_free (1)
+make_sandwich_no_gluten is_gluten_free is_gluten_free (1)
+make_sandwich_no_gluten is_gluten_free is_gluten_free (1)
+make_sandwich_no_gluten is_gluten_free is_gluten_free (1)
+make_sandwich is_not_gluten_free is_not_gluten_free (1)
+make_sandwich is_not_gluten_free is_not_gluten_free (1)
+put_on_tray tray2 is_not_gluten_free (1)
+put_on_tray tray2 is_not_gluten_free (1)
+put_on_tray tray2 is_not_gluten_free (1)
+put_on_tray tray2 is_gluten_free (1)
+put_on_tray tray2 is_gluten_free (1)
+put_on_tray tray2 is_gluten_free (1)
+put_on_tray tray2 is_gluten_free (1)
+move_tray tray2 kitchen place2 (1)
+serve_sandwich tray2 place2 is_not_gluten_free (1)
+serve_sandwich_no_gluten tray2 place2 (1)
+serve_sandwich_no_gluten tray2 place2 (1)
+serve_sandwich tray2 place2 is_not_gluten_free (1)
+move_tray tray2 place2 place3 (1)
+serve_sandwich_no_gluten tray2 place3 (1)
+serve_sandwich_no_gluten tray2 place3 (1)
+make_sandwich is_not_gluten_free is_not_gluten_free (1)
+serve_sandwich tray2 place3 is_not_gluten_free (1)
+put_on_tray tray1 is_not_gluten_free (1)
+move_tray tray1 kitchen place1 (1)
+serve_sandwich tray1 place1 is_not_gluten_free (1)
+Plan length: 27 step(s).
+Plan cost: 27
+Expanded 1106782 state(s).
+Reopened 1753 state(s).
+Evaluated 1371348 state(s).
+Evaluations: 1371348
+Generated 11130998 state(s).
+Dead ends: 162141 state(s).
+Expanded until last jump: 1106462 state(s).
+Reopened until last jump: 1753 state(s).
+Evaluated until last jump: 1370967 state(s).
+Generated until last jump: 11128677 state(s).
+Number of registered states: 1371348
+Search time: 73.7263s
+Total time: 73.7275s
+Solution found.
+Peak memory: 625656 KB
+
+--- done ---
+Wed Mar 27 20:12:17 AEDT 2024
+
+======================================================================================
+                  Resource Usage on 2024-03-27 20:12:22:
+   Job Id:             111905739.gadi-pbs
+   Project:            xb83
+   Exit Status:        0
+   Service Units:      0.09
+   NCPUs Requested:    1                      NCPUs Used: 1               
+                                           CPU Time Used: 00:01:14        
+   Memory Requested:   8.0GB                 Memory Used: 710.67MB        
+   Walltime requested: 00:33:00            Walltime Used: 00:01:17        
+   JobFS requested:    100.0MB                JobFS used: 0B              
+======================================================================================
