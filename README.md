@@ -1,7 +1,7 @@
 <span style="font-weight:normal">**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation</span>
 =============================================================================================================
 
-GOOSE is a learning for planning framework. It contains various methods for learning representations for planning tasks, and algorithms for using such representations for solving planning tasks.
+GOOSE is a learning for planning framework. It contains various methods for learning representations for planning tasks, and algorithms for using such representations for solving planning tasks. Currently, GOOSE supports [classical grounded](https://github.com/aibasel/downward), [classical lifted](https://github.com/abcorrea/powerlifted), and [numeric planning](https://github.com/Kurorororo/numeric-fast-downward).
 
 If you just want to use the WL features, take a look at the [WLPlan](https://github.com/DillonZChen/wlplan) package.
 
