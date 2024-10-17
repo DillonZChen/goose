@@ -22,12 +22,11 @@ See [references](#references) for the corresponding publications.
 ## Setup
 
 ### Apptainer image
-Install submodules and [Apptainer](https://apptainer.org/) and then build the images
+Install submodules and [Apptainer](https://apptainer.org/) and then build the image
 
     git submodule update --init --recursive
     sudo apt-get install apptainer
-    sudo apptainer build GooseLearner.sif GooseLearner.def
-    sudo apptainer build GoosePlanner.sif GoosePlanner.def
+    sudo apptainer build Goose.sif Goose.def
 
 
 ### Manual compilation
@@ -51,13 +50,14 @@ In case a virtual environment does not work, you can also try anaconda and speci
 
 ## Usage
 ### Training
-Call `GooseLearner.sif -h` or `python3 train.py -h` for arguments, you will need the `-s` argument if you want to save the model.
-See below for [recommended training configurations](#recommended-configurations).
-To add your own datasets, follow the directory and `.toml` file structure.
+Call `Goose.sif train -h` or `python3 train.py -h` for arguments, you will need the `-s` argument if you want to save the model.
+- See below for [recommended training configurations](#recommended-configurations).
+- To add your own datasets, follow the directory and `.toml` file structure.
+- If you own a CPLEX license and want to train LP models faster, [add it to PYTHONPATH](https://www.ibm.com/docs/en/icos/22.1.1?topic=cplex-setting-up-python-api) and use the manual installation.
 
 For example with Apptainer:
 
-    ./GooseLearner.sif configurations/data/neurips24/childsnack.toml configurations/model/ccwl/ccwl_rank-lp_1.toml -s numeric_childsnack.model
+    ./Goose.sif train configurations/data/neurips24/childsnack.toml configurations/model/ccwl/ccwl_rank-lp_1.toml -s numeric_childsnack.model
 
 or with a manual installation:
 
@@ -65,11 +65,11 @@ or with a manual installation:
 
 
 ### Planning
-Call `GoosePlanner.sif -h` or `python3 plan.py -h` for arguments.
+Call `Goose.sif plan -h` or `python3 plan.py -h` for arguments.
 
 For example with Apptainer:
 
-    ./GoosePlanner.sif benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model
+    ./Goose.sif plan benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model
 
 or with a manual installation:
 

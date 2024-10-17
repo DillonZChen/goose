@@ -57,9 +57,24 @@ From: ubuntu:22.04
 %runscript
     #!/bin/bash
 
-    python3.10 /goose/train.py "$@"
+    if [ "$#" -lt 1 ]; then
+        echo "Usage: $0 <train|plan> <args>"
+        exit 1
+    fi
+
+    command=$1
+    shift
+
+    if [ "$command" = "plan" ]; then
+        python3.10 /goose/plan.py "$@"
+    elif [ "$command" = "train" ]; then
+        python3.10 /goose/train.py "$@"
+    else
+        echo "Usage: $0 <train|plan> <args>"
+        exit 1
+    fi
 
 %labels
-    Name        goose-learner
-    Description Planner component of GOOSE.
+    Name        goose
+    Description GOOSE: Graphs Optimised fOr Search Evaluation.
     Authors     Dillon Chen <dillon.chen1@gmail.com>
