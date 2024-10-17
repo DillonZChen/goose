@@ -1,0 +1,3 @@
+domain_pddl = 'benchmarks/neurips24/ferry/domain.pddl'
+tasks_dir = 'benchmarks/neurips24/ferry/training'
+plans_dir = 'benchmarks/neurips24/ferry/training_plans'

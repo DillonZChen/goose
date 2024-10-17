@@ -1,0 +1,3 @@
+domain_pddl = 'benchmarks/neurips24/blocksworld/domain.pddl'
+tasks_dir = 'benchmarks/neurips24/blocksworld/training'
+plans_dir = 'benchmarks/neurips24/blocksworld/training_plans'

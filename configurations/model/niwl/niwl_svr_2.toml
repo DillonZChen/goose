@@ -1,0 +1,5 @@
+features = 'niwl'
+optimisation = 'svr'
+iterations = 2
+rank = false
+data_generation = 'plan'

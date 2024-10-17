@@ -1,0 +1,12 @@
+matplotlib==3.5.0
+matplotlib-inline==0.1.7
+numpy==1.26.4
+PuLP==2.8.0
+pybind11==2.12.0
+pybind11-global==2.12.0
+pymdzcf==0.1.0
+pytest==8.2.1
+scikit-learn==1.5.0
+termcolor==2.4.0
+toml==0.10.2
+tqdm==4.66.4

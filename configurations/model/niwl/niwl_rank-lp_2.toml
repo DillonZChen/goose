@@ -1,0 +1,5 @@
+features = 'niwl'
+optimisation = 'rank-lp'
+iterations = 2
+rank = true
+data_generation = 'plan'

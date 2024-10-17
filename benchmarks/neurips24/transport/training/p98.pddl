@@ -1,0 +1,10 @@
+(define (problem transport-problem)
+ (:domain transport-domain)
+ (:objects
+   l6 l1 l4 l14 l7 l8 l11 l12 l3 l2 l13 l15 l5 l10 l9 l16 - location
+   v1 v2 v3 v4 v5 v6 v7 - vehicle
+   p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11 p12 p13 p14 p15 p16 p17 - package
+ )
+ (:init (= (capacity v1) 1) (= (capacity v2) 3) (= (capacity v3) 3) (= (capacity v4) 3) (= (capacity v5) 3) (= (capacity v6) 3) (= (capacity v7) 2) (at p1 l1) (at p2 l11) (at p3 l9) (at p4 l12) (at p5 l5) (at p6 l9) (at p7 l8) (at p8 l10) (at p9 l16) (at p10 l5) (at p11 l11) (at p12 l1) (at p13 l6) (at p14 l11) (at p15 l12) (at p16 l3) (at p17 l4) (at v1 l9) (at v2 l1) (at v3 l1) (at v4 l15) (at v5 l10) (at v6 l2) (at v7 l8) (road l10 l13) (road l13 l10) (road l1 l13) (road l13 l1) (road l6 l13) (road l13 l6) (road l3 l1) (road l1 l3) (road l1 l4) (road l4 l1) (road l6 l2) (road l6 l1) (road l2 l6) (road l1 l6) (road l5 l4) (road l5 l2) (road l4 l5) (road l2 l5) (road l14 l1) (road l8 l14) (road l1 l14) (road l14 l8) (road l5 l14) (road l14 l5) (road l2 l7) (road l7 l2) (road l5 l7) (road l7 l5) (road l14 l15) (road l15 l14) (road l3 l8) (road l8 l3) (road l4 l8) (road l8 l4) (road l6 l8) (road l8 l6) (road l15 l12) (road l15 l2) (road l12 l15) (road l2 l15) (road l9 l15) (road l15 l9) (road l9 l1) (road l1 l9) (road l9 l6) (road l9 l8) (road l6 l9) (road l8 l9) (road l16 l6) (road l16 l4) (road l16 l7) (road l16 l14) (road l16 l8) (road l2 l10) (road l16 l3) (road l10 l2) (road l16 l10) (road l6 l16) (road l4 l16) (road l7 l16) (road l14 l16) (road l10 l8) (road l8 l16) (road l8 l10) (road l3 l16) (road l10 l16) (road l6 l11) (road l11 l6) (road l2 l11) (road l11 l2) (road l3 l11) (road l11 l3) (road l2 l12) (road l12 l2) (road l10 l12) (road l12 l10) (road l8 l12) (road l12 l8) (road l6 l12) (road l12 l6) (road l5 l12) (road l12 l5))
+ (:goal (and (at p1 l2) (at p2 l1) (at p3 l13) (at p4 l7) (at p5 l4) (at p6 l2) (at p7 l6) (at p8 l6) (at p9 l2) (at p10 l10) (at p11 l15) (at p12 l15) (at p13 l12) (at p14 l16) (at p15 l4) (at p16 l13) (at p17 l12)))
+)

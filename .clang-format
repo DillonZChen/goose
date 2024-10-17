@@ -1,0 +1,16 @@
+---
+AccessModifierOffset: '-1'
+AllowAllParametersOfDeclarationOnNextLine: false
+BinPackArguments: false
+BinPackParameters: false
+ColumnLimit: '100'
+ExperimentalAutoDetectBinPacking: false
+IncludeBlocks: Regroup
+NamespaceIndentation: All
+PackConstructorInitializers: NextLine
+SortIncludes: 'true'
+SpacesBeforeTrailingComments: '2'
+TabWidth: '2'
+UseTab: Never
+
+...
