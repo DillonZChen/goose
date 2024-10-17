@@ -39,8 +39,6 @@ class NumericRankingDatasetFromPlans(NumericDatasetCreator):
                     wlplan_states.append(state)
 
                 y.append(RankingGroup(good_group, maybe_group, bad_group))
-                print(RankingGroup(good_group, maybe_group, bad_group))
-                breakpoint()
 
             wlplan_data.append((wlplan_problem, wlplan_states))
 

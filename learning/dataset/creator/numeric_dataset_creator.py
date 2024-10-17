@@ -101,7 +101,6 @@ class NumericDatasetCreator(DatasetCreator):
         nfd_fluent_names = []
 
         for line in lines:
-            print(line)
             if line.startswith("_atoms"):
                 nfd_fact_names = line.split("|")[1:]
                 nfd_fact_names = [f for f in nfd_fact_names if len(f) > 0]

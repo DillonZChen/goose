@@ -92,8 +92,6 @@ def call_numeric_downward(
     output = output.decode()
     error = error.decode()
 
-    breakpoint()
-
     # print(output, flush=True)
     # print(error, flush=True)
 
