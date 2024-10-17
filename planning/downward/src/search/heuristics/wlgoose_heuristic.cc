@@ -38,7 +38,7 @@ namespace wlgoose_heuristic {
   }
 
   WlGooseHeuristic::WlGooseHeuristic(const plugins::Options &opts) : Heuristic(opts) {
-    model = std::make_shared<feature_generation::WLFeatures>(opts.get<std::string>("model_file"));
+    model = load_feature_generator(opts.get<std::string>("model_file"));
 
     const planning::Domain domain = *(model->get_domain());
     std::unordered_map<std::string, planning::Predicate> name_to_predicate;
@@ -74,7 +74,7 @@ namespace wlgoose_heuristic {
 
       if (name_to_predicate.count(predicate_name)) {
         planning::Atom wlplan_atom = planning::Atom(name_to_predicate.at(predicate_name), args);
-        fd_fact_to_wlplan_atom.insert({fact.get_pair(), wlplan_atom});
+        fd_fact_to_wlplan_atom.insert({fact.get_pair(), std::make_shared<planning::Atom>(wlplan_atom)});
       }
     }
 
@@ -127,15 +127,15 @@ namespace wlgoose_heuristic {
   int WlGooseHeuristic::compute_heuristic(const State &ancestor_state) {
     State state = convert_ancestor_state(ancestor_state);
 
-    planning::State wlplan_state;
+    std::vector<std::shared_ptr<planning::Atom>> atoms;
 
     for (const FactProxy &fact : state) {
       if (fd_fact_to_wlplan_atom.count(fact.get_pair())) {
-        wlplan_state.push_back(fd_fact_to_wlplan_atom.at(fact.get_pair()));
+        atoms.push_back(fd_fact_to_wlplan_atom.at(fact.get_pair()));
       }
     }
 
-    double h = model->predict(wlplan_state);
+    double h = model->predict(planning::State(atoms));
     int h_round = static_cast<int>(std::round(h));
 
     return h_round;

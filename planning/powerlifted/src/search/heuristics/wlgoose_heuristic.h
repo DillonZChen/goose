@@ -10,7 +10,7 @@
 
 #include "../datalog/grounder/weighted_grounder.h"
 
-#include "../ext/wlplan/include/feature_generation/wl_features.hpp"
+#include "../ext/wlplan/include/feature_generation/feature_generator_loader.hpp"
 #include "../ext/wlplan/include/planning/atom.hpp"
 #include "../ext/wlplan/include/planning/predicate.hpp"
 #include "../ext/wlplan/include/planning/problem.hpp"
@@ -22,7 +22,7 @@
 class WlGooseHeuristic : public Heuristic {
 protected:
     std::unordered_map<int, planning::Predicate> pwl_index_to_predicate;
-    std::shared_ptr<feature_generation::WLFeatures> model;
+    std::shared_ptr<feature_generation::Features> model;
 
 public:
     WlGooseHeuristic(const Options &opts, const Task &task);

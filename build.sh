@@ -3,6 +3,9 @@
 # optional arg [wlplan|planners|""]
 arg=$1
 
+# planners
+PLANNERS="powerlifted downward numeric-downward"
+
 # Show commands
 set -x
 
@@ -21,7 +24,7 @@ fi
 if [ "$arg" != "wlplan" ]; then
     # Install c++ wlplan interfaces
     cd wlplan/
-    for planner in powerlifted downward; do
+    for planner in $PLANNERS; do
         install_dir=../planning/$planner/src/search/ext/wlplan
         rm -rf $install_dir
         python3 cmake_build.py $install_dir
@@ -29,12 +32,16 @@ if [ "$arg" != "wlplan" ]; then
     cd ..
 
     # Build planners
-    for planner in powerlifted downward; do
+    for planner in $PLANNERS; do
         cd planning/$planner
         if [ "$arg" = "fresh"]; then
             rm -r builds
         fi
-        python3 build.py
+        if [ -f "compile.sh" ]; then
+            ./compile.sh  # numeric-downward
+        else
+            python3 build.py
+        fi
         cd ../..
     done
 fi

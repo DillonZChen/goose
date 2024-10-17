@@ -3,7 +3,7 @@
 
 #include "../heuristic.h"
 
-#include "../ext/wlplan/include/feature_generation/wl_features.hpp"
+#include "../ext/wlplan/include/feature_generation/feature_generator_loader.hpp"
 #include "../ext/wlplan/include/planning/atom.hpp"
 #include "../ext/wlplan/include/planning/predicate.hpp"
 #include "../ext/wlplan/include/planning/problem.hpp"
@@ -16,9 +16,9 @@ namespace wlgoose_heuristic {
 
   class WlGooseHeuristic : public Heuristic {
    protected:
-    std::shared_ptr<feature_generation::WLFeatures> model;
+    std::shared_ptr<feature_generation::Features> model;
 
-    std::map<FactPair, planning::Atom> fd_fact_to_wlplan_atom;
+    std::map<FactPair, std::shared_ptr<planning::Atom>> fd_fact_to_wlplan_atom;
 
     virtual int compute_heuristic(const State &ancestor_state) override;
 

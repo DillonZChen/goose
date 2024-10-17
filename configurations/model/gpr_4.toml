@@ -1,4 +1,0 @@
-optimisation = 'gpr'
-iterations = 4
-rank = false
-data_generation = 'plan'

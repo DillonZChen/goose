@@ -1,4 +1,3 @@
 [submodule "wlplan"]
 	path = wlplan
 	url = https://github.com/DillonZChen/wlplan
-	branch = goose

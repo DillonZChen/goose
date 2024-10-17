@@ -1,7 +1,9 @@
+plots/
 logs/
 _*/
 *.model
 *.out
+*.out.num
 *.sif
 *.plan
 *.sas

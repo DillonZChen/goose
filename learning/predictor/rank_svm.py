@@ -4,7 +4,7 @@ import random
 import numpy as np
 from sklearn import svm
 
-from learning.dataset.ranking_dataset import RankingGroup
+from learning.dataset.container.ranking_dataset import RankingGroup
 from learning.predictor.base_predictor import BasePredictor
 
 

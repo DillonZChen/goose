@@ -30,14 +30,14 @@ The setup has been tested with python versions 3.10 and higher, but should proba
     python3 -m venv venv
     source venv/bin/activate
     pip install -r requirements.txt
-    sh scripts/build.sh
+    sh build.sh
 
 In case a virtual environment does not work, you can also try anaconda and specify a Python version:
 
     conda create --name goose python=3.10.4
     conda activate goose
     pip install -r requirements.txt
-    sh scripts/build.sh
+    sh build.sh
 
 ### Apptainer environment
 We can also use apptainer as an environment. Install apptainer and then build the container

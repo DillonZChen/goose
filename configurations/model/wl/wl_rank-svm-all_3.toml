@@ -1,0 +1,5 @@
+features = 'wl'
+optimisation = 'rank-svm'
+iterations = 3
+rank = true
+data_generation = 'all'

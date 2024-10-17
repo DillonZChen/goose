@@ -1,0 +1,5 @@
+features = 'ccwl'
+optimisation = 'rank-lp'
+iterations = 0
+rank = true
+data_generation = 'plan'

@@ -1,0 +1,3 @@
+domain_pddl = 'benchmarks/ipc23lt-pathfree-complete/transport/domain.pddl'
+tasks_dir = 'benchmarks/ipc23lt-pathfree-complete/transport/training'
+plans_dir = 'benchmarks/ipc23lt-pathfree-complete/transport/training_plans'

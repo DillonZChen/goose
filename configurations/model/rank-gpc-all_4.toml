@@ -1,4 +1,0 @@
-optimisation = 'rank-gpc'
-iterations = 4
-rank = true
-data_generation = 'all'

@@ -1,0 +1,3 @@
+domain_pddl = 'benchmarks/neurips24/rovers/domain.pddl'
+tasks_dir = 'benchmarks/neurips24/rovers/training'
+plans_dir = 'benchmarks/neurips24/rovers/training_plans'

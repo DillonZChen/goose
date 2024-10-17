@@ -3,11 +3,12 @@ import logging
 
 import numpy as np
 import pulp
-from learning.dataset.ranking_dataset import RankingGroup
-from learning.predictor.mip import MixedIntegerProgram
 from pulp import LpVariable as Var
 from pulp import lpDot, lpSum
 from tqdm import trange
+
+from learning.dataset.container.ranking_dataset import RankingGroup
+from learning.predictor.mip import MixedIntegerProgram
 
 
 class MixedIntegerProgramRanker(MixedIntegerProgram):

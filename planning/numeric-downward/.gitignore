@@ -1,0 +1,9 @@
+driver/*.pyc
+driver/__pycache__/
+builds/
+output
+sas_plan
+*.sas
+*.num
+plan
+/src/search/ext/wlplan

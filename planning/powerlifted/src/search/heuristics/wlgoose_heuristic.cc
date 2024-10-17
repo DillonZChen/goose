@@ -7,7 +7,7 @@ using namespace std;
 
 WlGooseHeuristic::WlGooseHeuristic(const Options &opts, const Task &task)
 {
-    model = std::make_shared<feature_generation::WLFeatures>(opts.get_goose_model_path());
+    model = load_feature_generator(opts.get_goose_model_path());
 
     const planning::Domain domain = *(model->get_domain());
     std::unordered_map<std::string, planning::Predicate> name_to_predicate;
@@ -72,12 +72,12 @@ WlGooseHeuristic::WlGooseHeuristic(const Options &opts, const Task &task)
 
 int WlGooseHeuristic::compute_heuristic(const DBState &s, const Task &task)
 {
-    planning::State state;  // list of wlplan atoms
+    std::vector<planning::Atom> atoms;  // list of wlplan atoms
 
     const auto &nullary_atoms = s.get_nullary_atoms();
     for (size_t j = 0; j < nullary_atoms.size(); ++j) {
         if (nullary_atoms[j]) {
-            state.push_back({pwl_index_to_predicate.at(j), {}});
+            atoms.push_back({pwl_index_to_predicate.at(j), {}});
         }
     }
     const auto &predicate_indices = s.get_relations();
@@ -90,11 +90,11 @@ int WlGooseHeuristic::compute_heuristic(const DBState &s, const Task &task)
             for (const auto &obj : tuple) {
                 object_names.push_back(task.get_object_name(obj));
             }
-            state.push_back({predicate, object_names});
+            atoms.push_back({predicate, object_names});
         }
     }
 
-    double h = model->predict(state);
+    double h = model->predict(planning::State(atoms));
     int h_round = static_cast<int>(std::round(h));
 
     return h_round;

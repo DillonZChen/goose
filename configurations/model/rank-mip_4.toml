@@ -1,4 +1,0 @@
-optimisation = 'rank-mip'
-iterations = 4
-rank = true
-data_generation = 'plan'

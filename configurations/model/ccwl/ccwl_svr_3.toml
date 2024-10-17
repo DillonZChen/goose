@@ -1,0 +1,5 @@
+features = 'ccwl'
+optimisation = 'svr'
+iterations = 3
+rank = false
+data_generation = 'plan'

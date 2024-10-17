@@ -1,4 +1,0 @@
-optimisation = 'rank-lp'
-iterations = 4
-rank = true
-data_generation = 'all'

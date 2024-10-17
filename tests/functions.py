@@ -1,7 +1,8 @@
 import logging
+import os
 import re
 import subprocess
-from subprocess import PIPE, STDOUT
+from subprocess import PIPE
 
 
 def popen(cmd):
@@ -14,23 +15,14 @@ def popen(cmd):
     return output, err, rc
 
 
-def _log_subprocess_output(pipe):
-    for line in iter(pipe.readline, b""):  # b'\n'-separated lines
-        line = line.decode("utf-8").strip()
-        logging.info(line)
-
-
-def train(domain, save_path, predictor="gpr_2"):
-    data_config = f"configurations/data/ipc23lt/{domain}.toml"
+def train(domain, save_path, predictor, benchmarks="ipc23lt"):
+    data_config = f"configurations/data/{benchmarks}/{domain}.toml"
     model_config = f"configurations/model/{predictor}.toml"
     cmd = ["python3", "train.py", data_config, model_config, "-s", save_path]
     cmd_str = " ".join(cmd)
     logging.critical(cmd_str)
-    process = subprocess.Popen(cmd, stdout=PIPE, stderr=STDOUT)
-    with process.stdout:
-        _log_subprocess_output(process.stdout)
-    rc = process.wait()  # 0 means success
-    assert rc == 0, cmd_str
+    rc = os.system(cmd_str)
+    assert rc == 0
 
 
 def parse_output(output, planner):
@@ -50,7 +42,7 @@ def parse_output(output, planner):
                 stats["plan_length"] = int(line.split(" ")[-2])
             elif line.startswith("Expanded") and stats["expanded"] == float("inf"):
                 stats["expanded"] = int(line.split(" ")[-2])
-    elif planner == "fd":
+    elif planner in {"fd", "nfd"}:
         if "Solution found!" in output:
             stats["solved"] = True
             output = output.split("Solution found!")[1]
@@ -80,9 +72,9 @@ def parse_output(output, planner):
     return stats
 
 
-def plan(domain, problem, evaluator, planner, **kwargs):
-    domain_pddl = f"benchmarks/ipc23lt/{domain}/domain.pddl"
-    problem_pddl = f"benchmarks/ipc23lt/{domain}/testing/p{problem}.pddl"
+def plan(domain, problem, evaluator, planner, benchmarks="ipc23lt", **kwargs):
+    domain_pddl = f"benchmarks/{benchmarks}/{domain}/domain.pddl"
+    problem_pddl = f"benchmarks/{benchmarks}/{domain}/testing/p{problem}.pddl"
     cmd = ["python3", "plan.py", domain_pddl, problem_pddl, evaluator, "-t", "60", "-p", planner]
     cmd_str = " ".join(cmd)
     logging.critical(cmd_str)
