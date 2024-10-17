@@ -1,8 +1,0 @@
-[model]
-method = "gnn"
-
-[config]
-rep = "ilg"
-aggr = "mean"
-nhid = 64
-nlayers = 4

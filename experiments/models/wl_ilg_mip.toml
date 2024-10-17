@@ -1,9 +1,0 @@
-[model]
-method = "wl"
-
-[config]
-model = "mip"
-schema-count = "schema"
-rep = "ilg"
-features = "1wl"
-iterations = 4
