@@ -24,10 +24,10 @@ See [references](#references) for the corresponding publications.
 ### Apptainer image
 Install submodules and [Apptainer](https://apptainer.org/) and then build the images
 
-    apt-get install apptainer
     git submodule update --init --recursive
-    apptainer build GooseLearner.sif GooseLearner.def
-    apptainer build GoosePlanner.sif GoosePlanner.def
+    sudo apt-get install apptainer
+    sudo apptainer build GooseLearner.sif GooseLearner.def
+    sudo apptainer build GoosePlanner.sif GoosePlanner.def
 
 
 ### Manual compilation
