@@ -1,0 +1,64 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%files
+    planning /goose/
+    util /goose/
+    wlplan /goose/
+
+    *.py /goose/
+    build.sh /goose/
+    requirements.txt /goose/
+
+%post
+    # Install all necessary dependencies.
+    apt-get update
+
+    export DEBIAN_FRONTEND=noninteractive
+
+    # python packages
+    apt-get install -y --no-install-recommends \
+        python2 \
+        python3.10 \
+        python3-tk \
+        python3-pip \
+        python3-dev \
+        python3-distutils \
+        python3-setuptools
+
+    # cpp packages
+    apt-get install -y --no-install-recommends \
+        build-essential \
+        g++ \
+        cmake \
+        libboost-all-dev \
+        git
+
+    ## Move into repo and build.
+    cd /goose
+
+    # Clear build directories.
+    rm -rf wlplan/build
+    rm -rf planning/*/builds
+
+    # Python dependencies.
+    pip3 install -r requirements.txt
+
+    # Build components.
+    sh build.sh
+
+    # Clean up.
+    apt-get clean
+    rm -rf __pycache__/
+    rm -rf /var/lib/apt/lists/*
+    rm -rf wlplan/
+
+%runscript
+    #!/bin/bash
+
+    python3.10 /goose/plan.py "$@"
+
+%labels
+    Name        goose-planner
+    Description Planner component of GOOSE.
+    Authors     Dillon Chen <dillon.chen1@gmail.com>

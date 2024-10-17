@@ -2,7 +2,6 @@ Bootstrap: docker
 From: ubuntu:22.04
 
 %files
-    # Copy directories.
     learning /goose/
     planning /goose/
     util /goose/
@@ -36,27 +35,31 @@ From: ubuntu:22.04
         libboost-all-dev \
         git
 
-    # Move into goose.
-    cd /goose/
+    ## Move into repo and build.
+    cd /goose
 
     # Clear build directories.
     rm -rf wlplan/build
     rm -rf planning/*/builds
 
-    # Build components.
-    sh build.sh wlplan
-
     # Python dependencies.
     pip3 install -r requirements.txt
 
+    # Build components.
+    sh build.sh
+
     # Clean up.
     apt-get clean
+    rm -rf __pycache__/
     rm -rf /var/lib/apt/lists/*
     rm -rf wlplan/
-    rm -rf __pycache__/
-    rm -rf scripts/
+
+%runscript
+    #!/bin/bash
+
+    python3.10 /goose/train.py "$@"
 
 %labels
-    Name        goose-environment
-    Description Environment containing dependencies for running GOOSE from source.
+    Name        goose-learner
+    Description Planner component of GOOSE.
     Authors     Dillon Chen <dillon.chen1@gmail.com>

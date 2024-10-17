@@ -1,4 +1,5 @@
-# <span style="font-weight:normal">**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation</span>
+<span style="font-weight:normal">**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation</span>
+=============================================================================================================
 
 GOOSE is a learning for planning framework. It contains various methods for learning representations for planning tasks, and algorithms for using such representations for solving planning tasks.
 
@@ -10,21 +11,27 @@ See [references](#references) for the corresponding publications.
 - [**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation](#goose-graphs-optimised-for-search-evaluation)
   - [Table of contents](#table-of-contents)
   - [Setup](#setup)
-    - [Virtual environment](#virtual-environment)
-    - [Apptainer environment](#apptainer-environment)
-  - [Training](#training)
-  - [Planning](#planning)
-  - [Examples](#examples)
+    - [Apptainer image](#apptainer-image)
+    - [Manual compilation](#manual-compilation)
+  - [Usage](#usage)
+    - [Training](#training)
+    - [Planning](#planning)
+    - [Recommended configurations](#recommended-configurations)
   - [References](#references)
 
 ## Setup
 
-1. Download submodules with `git submodule update --init --recursive`
-2. Set up your environment manually or with a virtual or Apptainer environment described below.
-3. Call `sh build.sh` with your environment active
+### Apptainer image
+Install submodules and [Apptainer](https://apptainer.org/) and then build the images
 
-### Virtual environment
-Use the commands below to make a virtual environment, activate it, install packages, and build cpp components.
+    apt-get install apptainer
+    git submodule update --init --recursive
+    apptainer build GooseLearner.sif GooseLearner.def
+    apptainer build GoosePlanner.sif GoosePlanner.def
+
+
+### Manual compilation
+Create a virtual environment, activate it, install submodules and packages, and build cpp components.
 The setup has been tested with python versions 3.10 and higher, but should probably work for lower python3 versions as well.
 
     python3 -m venv venv
@@ -41,29 +48,43 @@ In case a virtual environment does not work, you can also try anaconda and speci
     git submodule update --init --remote --recursive
     sh build.sh
 
-### Apptainer environment
-We can also use apptainer as an environment. Install apptainer and then build the container
 
-    apt-get install apptainer
-    apptainer build goose-environment.sif Environment.def
+## Usage
+### Training
+Call `GooseLearner.sif -h` or `python3 train.py -h` for arguments, you will need the `-s` argument if you want to save the model.
+See below for [recommended training configurations](#recommended-configurations).
+To add your own datasets, follow the directory and `.toml` file structure.
 
-## Training
-Call `python3 train.py -h` for arguments, you will need the `-s` argument if you want to save the model.
+For example with Apptainer:
 
-## Planning
-Call `python3 plan.py -h` for arguments.
+    ./GooseLearner.sif configurations/data/neurips24/childsnack.toml configurations/model/ccwl/ccwl_rank-lp_1.toml -s numeric_childsnack.model
 
-## Examples
-Training
+or with a manual installation:
 
-    python3 train.py configurations/data/ipc23lt/blocksworld.toml configurations/model/gpr_4.toml -s blocks.model
+    python3 train.py configurations/data/neurips24/childsnack.toml configurations/model/ccwl/ccwl_rank-lp_1.toml -s numeric_childsnack.model
 
-Planning
 
-    python3 plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_01.pddl blocks.model
+### Planning
+Call `GoosePlanner.sif -h` or `python3 plan.py -h` for arguments.
+
+For example with Apptainer:
+
+    ./GoosePlanner.sif benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model
+
+or with a manual installation:
+
+    python3 plan.py benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model
+
+
+### Recommended configurations
+For classical planning, train with the `configurations/model/wl/wl_rank-lp_3.toml` configuration file.
+
+For numeric planning, train with the `configurations/model/ccwl/ccwl_rank-lp_1.toml` configuration file.
+
 
 ## References
-The GOOSE architecture was initially introduced in our AAAI-24 paper and significantly improved in our ICAPS-24 paper by replacing the deep learning component with a learned linear function. Please refer to the [releases](https://github.com/DillonZChen/goose/releases) page to find the latest version to use or code from a specific publication. The relevant publications so far for this repository are listed as follows.
+GOOSE has been published in various venues. Please refer to the [releases](https://github.com/DillonZChen/goose/releases) page to find the latest version to use or code from a specific publication. The relevant publications so far for this repository are listed as follows.
 
-- Dillon Ze Chen and Felipe Trevizan and Sylvie Thiébaux. **Return to Tradition: Learning Reliable Heuristics with Classical Machine Learning**. ICAPS 2024. [[arxiv](https://arxiv.org/abs/2403.16508) | [bib](https://dblp.org/rec/conf/icaps/ChenTT24.html?view=bibtex)]
-- Dillon Ze Chen and Sylvie Thiébaux and Felipe Trevizan. **Learning Domain-Independent Heuristics for Grounded and Lifted Planning**. AAAI 2024. [[arxiv](https://arxiv.org/abs/2312.11143) | [bib](https://dblp.org/rec/conf/aaai/ChenTT24.html?view=bibtex)]
+- Dillon Ze Chen and Sylvie Thiébaux. **Graph Learning for Numeric Planning**. NeurIPS 2024.
+- Dillon Ze Chen and Felipe Trevizan and Sylvie Thiébaux. **Return to Tradition: Learning Reliable Heuristics with Classical Machine Learning**. ICAPS 2024.
+- Dillon Ze Chen and Sylvie Thiébaux and Felipe Trevizan. **Learning Domain-Independent Heuristics for Grounded and Lifted Planning**. AAAI 2024.

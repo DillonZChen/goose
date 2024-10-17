@@ -1,4 +1,4 @@
-# goose-dataset
+# GOOSE Dataset
 
 Dataset and training plans for [GOOSE](https://github.com/DillonZChen/goose).
 
