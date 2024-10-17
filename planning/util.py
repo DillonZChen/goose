@@ -76,21 +76,23 @@ def call_numeric_downward(
     # call NFD
     cmd = [
         "python2",
-        "fast-downward.py",
+        f"{nfd_path}/fast-downward.py",
         "--build",
         "release64",
         "--sas_file",
         sas_file,
-        os.path.abspath(domain_pddl),
-        os.path.abspath(problem_pddl),
+        domain_pddl,
+        problem_pddl,
         "--search",
         config,
     ]
     pipe = subprocess.PIPE
-    process = subprocess.Popen(cmd, stdout=pipe, stderr=pipe, cwd=nfd_path)
+    process = subprocess.Popen(cmd, stdout=pipe, stderr=pipe)
     output, error = process.communicate()
     output = output.decode()
     error = error.decode()
+
+    breakpoint()
 
     # print(output, flush=True)
     # print(error, flush=True)
