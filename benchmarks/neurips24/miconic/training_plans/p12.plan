@@ -1,5 +1,0 @@
-(down_fast f2 f1)
-(board f1 p1)
-(up_fast f1 f3)
-(depart f3 p1)
-; cost = 4 (unit cost)

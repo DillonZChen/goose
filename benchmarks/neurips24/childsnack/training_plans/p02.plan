@@ -1,5 +1,0 @@
-(make_sandwich_no_gluten is_gluten_free is_gluten_free)
-(put_on_tray tray1 is_gluten_free)
-(move_tray tray1 kitchen place1)
-(serve_sandwich_no_gluten tray1 place1)
-; cost = 4 (unit cost)
