@@ -37,8 +37,13 @@ namespace wlgoose_heuristic {
     return {predicate_name, args};
   }
 
-  WlGooseHeuristic::WlGooseHeuristic(const plugins::Options &opts) : Heuristic(opts) {
-    model = load_feature_generator(opts.get<std::string>("model_file"));
+  WlGooseHeuristic::WlGooseHeuristic(
+        const std::string &model_file,
+        const std::shared_ptr<AbstractTask> &transform,
+        bool cache_estimates, const std::string &description,
+        utils::Verbosity verbosity) 
+        : Heuristic(transform, cache_estimates, description, verbosity) {
+    model = load_feature_generator(model_file);
 
     const planning::Domain domain = *(model->get_domain());
     std::unordered_map<std::string, planning::Predicate> name_to_predicate;
@@ -148,8 +153,7 @@ namespace wlgoose_heuristic {
 
       // https://github.com/aibasel/downward/pull/170 for string options
       add_option<std::string>("model_file", "path to trained model", "default_value");
-
-      Heuristic::add_options_to_feature(*this);
+      add_heuristic_options_to_feature(*this, "wlgoose");
 
       document_language_support("action costs", "ignored by design");
       document_language_support("conditional effects", "supported");
@@ -159,6 +163,15 @@ namespace wlgoose_heuristic {
       document_property("consistent", "no");
       document_property("safe", "yes");
       document_property("preferred operators", "no");
+    }
+
+    virtual shared_ptr<WlGooseHeuristic> create_component(
+        const plugins::Options &opts,
+        const utils::Context &) const override {
+        return plugins::make_shared_from_arg_tuples<WlGooseHeuristic>(
+            opts.get<std::string>("model_file"),
+            get_heuristic_arguments_from_options(opts)
+            );
     }
   };
 

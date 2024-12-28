@@ -15,7 +15,6 @@ if not python_version_supported():
     sys.exit("Error: Translator only supports Python >= 3.6.")
 
 
-import signal
 from collections import defaultdict
 from copy import deepcopy
 from itertools import product
@@ -28,6 +27,7 @@ import options
 import pddl
 import pddl_parser
 import sas_tasks
+import signal
 import simplify
 import timers
 import tools
@@ -379,18 +379,14 @@ def translate_strips_axiom(axiom, dictionary, ranges, mutex_dict, mutex_ranges):
                                              ranges, mutex_dict, mutex_ranges)
     if conditions is None:
         return []
-    if axiom.effect.negated:
-        [(var, _)] = dictionary[axiom.effect.positive()]
-        effect = (var, ranges[var] - 1)
-    else:
-        [effect] = dictionary[axiom.effect]
-        # Here we exploit that due to the invariant analysis algorithm derived
-        # variables cannot have more than one representation in the dictionary,
-        # even with the full encoding. They can never be part of a non-trivial
-        # mutex group.
-    axioms = []
-    for condition in conditions:
-        axioms.append(sas_tasks.SASAxiom(condition.items(), effect))
+    assert not axiom.effect.negated
+    [effect] = dictionary[axiom.effect]
+    # Here we exploit that due to the invariant analysis algorithm derived
+    # variables cannot have more than one representation in the dictionary,
+    # even with the full encoding. They can never be part of a non-trivial
+    # mutex group.
+    axioms = [sas_tasks.SASAxiom(condition.items(), effect)
+              for condition in conditions]
     return axioms
 
 
