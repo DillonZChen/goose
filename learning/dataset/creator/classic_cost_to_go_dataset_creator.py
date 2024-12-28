@@ -1,18 +1,17 @@
 from typing import Optional
 
 import pymimir
-
 import wlplan
 from learning.dataset.container.cost_to_go_dataset import CostToGoDataset
 from learning.dataset.creator.classic_dataset_creator import ClassicDatasetCreator
 from wlplan.data import Dataset as WLPlanDataset
 from wlplan.data import ProblemStates
 
-from .dataset_creator import MAX_EXPANSIONS, MAX_STATE_SPACE_DATA
+from .dataset_creator import MAX_EXPANSIONS_PER_PROBLEM, MAX_STATE_SPACE_DATA
 
 
 class ClassicCostToGoDatasetFromStateSpace(ClassicDatasetCreator):
-    def __init__(self, max_expanded: Optional[int] = MAX_EXPANSIONS, **kwargs):
+    def __init__(self, max_expanded: Optional[int] = MAX_EXPANSIONS_PER_PROBLEM, **kwargs):
         super().__init__(**kwargs)
         self.max_expanded = max_expanded
 
@@ -43,6 +42,8 @@ class ClassicCostToGoDatasetFromStateSpace(ClassicDatasetCreator):
                 if len(seen_x_y_pairs) >= MAX_STATE_SPACE_DATA:
                     break
                 h = ss.get_distance_to_goal_state(state)
+                if h == -1:
+                    continue
                 wlplan_state = self._mimir_to_wlplan_state(state)
 
                 # check if WL repr of the state has been seen before

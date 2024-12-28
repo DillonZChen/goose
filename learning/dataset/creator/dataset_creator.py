@@ -3,15 +3,15 @@ import sys
 from abc import abstractmethod
 
 import toml
-from tqdm import tqdm
-
 import wlplan
-from learning.dataset.container.base_dataset import Dataset
-from util.error_message import get_path_error_msg
+from tqdm import tqdm
 from wlplan.feature_generation import Features
 
-MAX_EXPANSIONS = 100000
-MAX_STATE_SPACE_DATA = 10000
+from learning.dataset.container.base_dataset import Dataset
+from util.error_message import get_path_error_msg
+
+MAX_EXPANSIONS_PER_PROBLEM = 10000
+MAX_STATE_SPACE_DATA = 100000
 
 
 class DatasetCreator:
@@ -26,11 +26,11 @@ class DatasetCreator:
 
         self.domain_pddl = data_config["domain_pddl"]
         self.tasks_dir = data_config["tasks_dir"]
-        self.plans_dir = data_config["plans_dir"]
+        # plans_dir collected later as not always necessary (e.g. state space data)
+        self._data_config = data_config
 
         assert os.path.exists(self.domain_pddl), get_path_error_msg(self.domain_pddl)
         assert os.path.exists(self.tasks_dir), get_path_error_msg(self.tasks_dir)
-        assert os.path.exists(self.plans_dir), get_path_error_msg(self.plans_dir)
 
         self.wlplan_domain = wlplan.planning.parse_domain(self.domain_pddl)
 
@@ -45,6 +45,8 @@ class DatasetCreator:
         if not plans_only:
             pbar = [self.tasks_dir + "/" + f for f in sorted(os.listdir(self.tasks_dir))]
         else:
+            self.plans_dir = self._data_config["plans_dir"]
+            assert os.path.exists(self.plans_dir), get_path_error_msg(self.plans_dir)
             for f in sorted(os.listdir(self.plans_dir)):
                 problem_pddl = self.tasks_dir + "/" + f.replace(".plan", ".pddl")
                 plan_file = self.plans_dir + "/" + f
