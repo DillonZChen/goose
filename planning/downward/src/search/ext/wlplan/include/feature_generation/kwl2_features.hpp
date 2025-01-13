@@ -16,7 +16,7 @@ namespace feature_generation {
     KWL2Features(const planning::Domain &domain,
                  std::string graph_representation,
                  int iterations,
-                 std::string prune_features,
+                 std::string pruning,
                  bool multiset_hash);
 
     KWL2Features(const std::string &filename);

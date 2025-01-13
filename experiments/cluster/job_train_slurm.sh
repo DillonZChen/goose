@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --mem=32gb
+#SBATCH --mem=16gb
 #SBATCH --time=03:00:00
 
 # Show commands

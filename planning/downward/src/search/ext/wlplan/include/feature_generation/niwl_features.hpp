@@ -13,7 +13,7 @@ namespace feature_generation {
     NIWLFeatures(const planning::Domain &domain,
                  std::string graph_representation,
                  int iterations,
-                 std::string prune_features,
+                 std::string pruning,
                  bool multiset_hash);
 
     NIWLFeatures(const std::string &filename);

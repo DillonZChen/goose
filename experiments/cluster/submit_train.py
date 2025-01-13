@@ -15,8 +15,8 @@ FEATURES = CONFIG["features"]
 PRUNING = CONFIG["pruning"]
 OPTIMISERS = CONFIG["optimisers"]
 DATA_GENERATION = CONFIG["data_generation"]
-ITERATIONS = CONFIG["iterations"]
-REPEATS = range(CONFIG["repeats"])
+ITERATIONS = [str(i) for i in CONFIG["iterations"]]
+REPEATS = [str(i) for i in range(CONFIG["repeats"])]
 
 if os.path.exists("/pfcalcul/work/dchen"):
     CLUSTER_NAME = "pfcalcul"
@@ -51,6 +51,12 @@ def main():
         action="store_true",
         help="remove logs for models which failed to train or save a model",
     )
+    parser.add_argument(
+        "-ra",
+        "--remove_all",
+        action="store_true",
+        help="remove everything",
+    )
     args = parser.parse_args()
 
     submissions = args.submissions
@@ -63,10 +69,16 @@ def main():
         print("Locks removed. Exiting.")
         return
 
+    if args.remove_all:
+        os.system(f"rm -rf {LCK_DIR} {LOG_DIR} {MDL_DIR} {TMP_DIR}")
+        print("Everything removed. Exiting.")
+        return
+
     submitted = 0
 
-    for domain, feature, pruning, optimiser, data_gen, iterations, repeat in product(DOMAINS, FEATURES, PRUNING, OPTIMISERS, DATA_GENERATION, ITERATIONS, REPEATS):
-        job_description = f"{domain}_{optimiser}_{data_gen}_{iterations}_{repeat}"
+    for config in product(DOMAINS, FEATURES, PRUNING, OPTIMISERS, DATA_GENERATION, ITERATIONS, REPEATS):
+        domain, feature, pruning, optimiser, data_gen, iterations, repeat = config
+        job_description = "_".join(config)
         log_file = f"{LOG_DIR}/{job_description}.log"
         lck_file = f"{LCK_DIR}/{job_description}.lck"
         sve_file = f"{MDL_DIR}/{job_description}.model"

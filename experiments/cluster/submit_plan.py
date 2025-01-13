@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import csv
+import json
 import os
 import subprocess
 import sys
@@ -15,17 +16,18 @@ except ImportError:
 
 CUR_DIR = os.path.dirname(os.path.realpath(__file__))
 ROOT_DIR = os.path.normpath(f"{CUR_DIR}/../..")
-DOMAINS = [row[0] for row in csv.reader(open(f"{ROOT_DIR}/domains.csv"))]
-PLANNERS = [row[0] for row in csv.reader(open(f"{ROOT_DIR}/planners.csv"))]
-LEARNERS = set(row[0] for row in csv.reader(open(f"{ROOT_DIR}/learners.csv")))
-DIDP_DOMAINS = set([row[0] for row in csv.reader(open(f"{ROOT_DIR}/didp_domains.csv"))])
-LRNN_DOMAINS = set([row[0] for row in csv.reader(open(f"{ROOT_DIR}/lrnn_domains.csv"))])
-INCOMPLETE_DOMAINS = set([row[0] for row in csv.reader(open(f"{ROOT_DIR}/incomplete_domains.csv"))])
-INCOMPLETE_PLANNERS = set([row[0] for row in csv.reader(open(f"{ROOT_DIR}/incomplete_planners.csv"))])
-NO_AXIOM_PLANNERS = set([row[0] for row in csv.reader(open(f"{ROOT_DIR}/no_axiom_planners.csv"))])
+with open(f"{ROOT_DIR}/experiments/config.json") as f:
+    CONFIG = json.load(f)
+
+DOMAINS = CONFIG["domains"]
+FEATURES = CONFIG["features"]
+PRUNING = CONFIG["pruning"]
+OPTIMISERS = CONFIG["optimisers"]
+DATA_GENERATION = CONFIG["data_generation"]
+ITERATIONS = [str(i) for i in CONFIG["iterations"]]
+REPEATS = [str(i) for i in range(CONFIG["repeats"])]
 
 PROBLEMS = [f"{x}_{y:02d}" for y in range(1, 31) for x in [0, 1, 2]]
-GP_REPEATS = range(1)
 
 if os.path.exists("/pfcalcul/work/dchen"):
     CLUSTER_NAME = "pfcalcul"
@@ -40,6 +42,8 @@ else:
 TMP_DIR = os.path.normpath(f"{CUR_DIR}/../_tmp_plan")
 LCK_DIR = os.path.normpath(f"{CUR_DIR}/../_lck_plan")
 LOG_DIR = os.path.normpath(f"{CUR_DIR}/../_log_plan/{CLUSTER_NAME}")
+MDL_DIR = os.path.normpath(f"{CUR_DIR}/../_models")
+PLN_DIR = os.path.normpath(f"{CUR_DIR}/../_plans")
 os.makedirs(LOG_DIR, exist_ok=True)
 JOB_SCRIPT = f"{CUR_DIR}/job_plan.sh"
 assert os.path.exists(JOB_SCRIPT), JOB_SCRIPT
@@ -73,25 +77,11 @@ def main():
         help="remove all logs and locks for a domain",
     )
     parser.add_argument(
-        "-rp",
-        "--remove_planner",
-        type=str,
-        choices=PLANNERS,
-        help="remove all logs and locks for a planner",
-    )
-    parser.add_argument(
         "-d",
         "--domain",
         type=str,
         choices=DOMAINS,
         help="submit jobs only from specified domain",
-    )
-    parser.add_argument(
-        "-p",
-        "--planner",
-        type=str,
-        choices=PLANNERS,
-        help="submit jobs only from specified planner",
     )
     args = parser.parse_args()
 
@@ -106,63 +96,23 @@ def main():
         print("Locks removed. Exiting.")
         return
 
-    done_planners = {p: 0 for p in PLANNERS}
     done_domains = {d: 0 for d in DOMAINS}
 
     submitted = 0
 
-    for domain, problem, planner, repeat in Perc(
-        list(product(DOMAINS, PROBLEMS, PLANNERS, GP_REPEATS))
-    ):  
-        # Check which configs to skip
+    for config in Perc(list(product(DOMAINS, FEATURES, PRUNING, OPTIMISERS, DATA_GENERATION, ITERATIONS, PROBLEMS, REPEATS))):
+        domain, feature, pruning, optimiser, data_gen, iterations, problem, repeat = config
+        job_description = "_".join(config)
+        log_file = f"{LOG_DIR}/{job_description}.log"
+        lck_file = f"{LCK_DIR}/{job_description}.lck"
+        sve_file = f"{MDL_DIR}/{job_description}.model".replace(f"_{problem}", "")
+        plan_file = f"{PLN_DIR}/{job_description}.plan"
+        tmp_dir = f"{TMP_DIR}/{job_description}"
 
-        # now have fd-translator to didp, so should work for any domain
-        # if planner.startswith("didp-") and domain not in DIDP_DOMAINS:
-            # continue
-
-        if planner == "lrnn" and domain not in LRNN_DOMAINS:
-            continue
-
-        if planner.startswith("vanir"):
-            i = planner[len("vanir"):]
-            model_path = f"{ROOT_DIR}/planning/vanir/models/{domain}_{i}/output/sketch_minimized_{i}.txt"
-            if not os.path.exists(model_path):
-                continue
-        
-        if planner in INCOMPLETE_PLANNERS and domain in INCOMPLETE_DOMAINS:
-            continue
-
-        if "goose" in planner or "lrnn" in planner:
-            learner_name = planner.replace("fd-", "")
-            learner_name = learner_name.replace("gbfs-", "")
-            learner_name = learner_name.replace("gp-", "")
-            model_path = f"{ROOT_DIR}/experiments/_models/{domain}_{learner_name}_{repeat}.model"
-            if not os.path.exists(model_path):
-                skipped_from_missing_model += 1
-                continue
-        
-        # Submit jobs
-        job_description = f"{planner}_{domain}_{problem}"
-        log_file = f"{LOG_DIR}/{planner}/{domain}_{problem}"
-        lck_file = f"{LCK_DIR}/{planner}/{domain}_{problem}"
-
-        if planner.startswith("gp-"):
-            job_description += f"_{repeat}"
-            log_file += f"_{repeat}"
-            lck_file += f"_{repeat}"
-        elif repeat != 0:
-            continue
-
-        log_file += ".log"
-        lck_file += ".lck"
         os.makedirs(os.path.dirname(log_file), exist_ok=True)
         os.makedirs(os.path.dirname(lck_file), exist_ok=True)
-
-        if args.domain and not domain == args.domain:
-            continue
-
-        if args.planner and not planner == args.planner:
-            continue
+        os.makedirs(os.path.dirname(sve_file), exist_ok=True)
+        os.makedirs(os.path.dirname(plan_file), exist_ok=True)
 
         if args.remove_terminated:
             if not os.path.exists(log_file):
@@ -204,27 +154,12 @@ def main():
                 print(f"Removed {job_description}")
             continue
 
-        if args.remove_planner:
-            if not planner == args.remove_planner:
-                continue
-            removed = False
-            if os.path.exists(log_file):
-                os.remove(log_file)
-                removed = True
-            if os.path.exists(lck_file):
-                os.remove(lck_file)
-                removed = True
-            if removed:
-                print(f"Removed {job_description}")
-            continue
-
         if os.path.exists(lck_file) and not args.force:
             skipped_from_lock += 1
             continue
 
         if os.path.exists(log_file) and not args.force:
             skipped_from_log += 1
-            done_planners[planner] += 1
             done_domains[domain] += 1
             continue
 
@@ -233,24 +168,26 @@ def main():
             to_go += 1
             continue
 
+        if not os.path.exists(sve_file):
+            # print(sve_file)
+            skipped_from_missing_model += 1
+            continue
+
         if submitted >= submissions:
             to_go += 1
             continue
 
-        # domain_pddl = f"{ROOT_DIR}/benchmarks/{domain}-axioms/domain.pddl"
-        # problem_pddl = f"{ROOT_DIR}/benchmarks/{domain}-axioms/testing/p{problem}.pddl"
-        script = f"{ROOT_DIR}/planning/plan.py"
-        tmp_dir = f"{TMP_DIR}/{job_description}"
+        domain_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/domain.pddl"
+        problem_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/testing/p{problem}.pddl"
 
-        # domain_pddl = os.path.normpath(domain_pddl)
-        # problem_pddl = os.path.normpath(problem_pddl)
-        script = os.path.normpath(script)
-        tmp_dir = os.path.normpath(tmp_dir)
-
-        cmd = f"python3 {script} {domain} {problem} {planner} --seed {repeat}"
-        if planner in NO_AXIOM_PLANNERS:
-            cmd += " -na"
-            cmd = cmd.replace("-noaxioms", "")
+        cmd = " ".join([
+            f"{ROOT_DIR}/Goose.sif",
+            "plan",
+            domain_pddl,
+            problem_pddl,
+            sve_file,
+            f"--plan_file={plan_file}",
+        ])
 
         job_vars = ",".join(
             [
@@ -289,15 +226,12 @@ def main():
         print(f" log: {log_file}")
         submitted += 1
 
-    if args.remove_terminated or args.remove_failed or args.remove_domain or args.remove_planner:
+    if args.remove_terminated or args.remove_failed or args.remove_domain:
         return
 
     print("*" * 80)
     for d in DOMAINS:
         print(f"{d}: {done_domains[d]}")
-    print("*" * 80)
-    for p in PLANNERS:
-        print(f"{p}: {done_planners[p]}")
     print("*" * 80)
     print(f"{submitted=}")
     print(f"{skipped_from_missing_model=}")

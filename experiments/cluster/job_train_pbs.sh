@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -l mem=32gb
+#PBS -l mem=16gb
 #PBS -l walltime=03:00:00
 #PBS -P cd85
 #PBS -q normal

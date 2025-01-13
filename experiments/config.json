@@ -20,12 +20,9 @@
         "collapse"
     ],
     "optimisers": [
-        "gpr",
         "svr",
-        "rank-mip",
         "rank-lp",
-        "rank-svm",
-        "rank-gpc"
+        "rank-svm"
     ],
     "data_generation": [
         "plan"
