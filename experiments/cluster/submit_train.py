@@ -18,8 +18,6 @@ DATA_GENERATION = CONFIG["data_generation"]
 ITERATIONS = CONFIG["iterations"]
 REPEATS = range(CONFIG["repeats"])
 
-TRAIN_MEMORY = CONFIG["train_memory"]
-
 if os.path.exists("/pfcalcul/work/dchen"):
     CLUSTER_NAME = "pfcalcul"
     CLUSTER_TYPE = "slurm"
