@@ -1,6 +1,7 @@
 from typing import Optional
 
 import pymimir
+
 import wlplan
 from learning.dataset.container.cost_to_go_dataset import CostToGoDataset
 from learning.dataset.creator.classic_dataset_creator import ClassicDatasetCreator
@@ -50,7 +51,10 @@ class ClassicCostToGoDatasetFromStateSpace(ClassicDatasetCreator):
                 mini_dataset = WLPlanDataset(
                     domain=self.wlplan_domain, data=[ProblemStates(problem=wlplan_problem, states=[wlplan_state])]
                 )
+                pruning = self.feature_generator.get_pruning()
+                self.feature_generator.set_pruning("none")
                 self.feature_generator.collect(mini_dataset)
+                self.feature_generator.set_pruning(pruning)
                 x_repr = self.feature_generator.get_string_representation(wlplan_state)
                 if (x_repr, h) in seen_x_y_pairs:
                     continue
@@ -109,4 +113,5 @@ class ClassicCostToGoDatasetFromPlans(ClassicDatasetCreator):
             data.append(ProblemStates(problem=problem, states=states))
         dataset = CostToGoDataset(wlplan_domain=self.wlplan_domain, data=data, y=y)
 
+        return dataset
         return dataset

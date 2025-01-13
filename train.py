@@ -19,7 +19,8 @@ from util.logging import init_logger
 from util.pca_visualise import visualise
 from util.statistics import log_quartiles
 from util.timer import TimerContextManager
-from wlplan.feature_generation import get_available_feature_generators, get_feature_generator
+from wlplan.feature_generation import (get_available_feature_generators,
+                                       get_available_pruning_methods, get_feature_generator)
 from wlplan.planning import parse_domain
 
 _DEF_VAL = {
@@ -28,6 +29,7 @@ _DEF_VAL = {
     "optimisation": "svr",
     "data_generation": "plan",
     "size": -1,
+    "pruning": "none",
 }
 
 
@@ -46,6 +48,10 @@ def parse_opts():
     parser.add_argument("-f", "--features", type=str, default=None, 
                         choices=get_available_feature_generators(),
                         help=f"Feature generator to use (default: {_DEF_VAL['features']}).")
+    parser.add_argument("-p", "--pruning", type=str, default=None,
+                        choices=get_available_pruning_methods(),
+                        help=f"Pruning method to use for feature generation. " + \
+                             f"(default: {_DEF_VAL['pruning']}).")
     parser.add_argument("-L", "--iterations", type=int, default=None,
                         help=f"Number of iterations of the WL feature generator. Analogous to number of hidden layers in a neural network. " + \
                              f"(default: {_DEF_VAL['iterations']})")
@@ -75,6 +81,8 @@ def parse_opts():
                         help=f"Path to save visualisation of PCA on WL features.")
     parser.add_argument("--distinguish_test", action="store_true",
                         help=f"Run distinguishability test.")
+    parser.add_argument("--collect_only", action="store_true",
+                        help=f"Only collect features and exit.")
     
     opts = parser.parse_args()
     # fmt: on
@@ -90,8 +98,10 @@ def parse_opts():
     for key, default_value in _DEF_VAL.items():
         config_value = model_config.get(key, None)
         parsed_value = getattr(opts, key)
+
         def get_msg(desc, value):
             return f"Setting {desc} value {key}: " + tc.colored(value, "cyan")
+
         if parsed_value is None and config_value is not None:
             logging.info(get_msg("config", config_value))
             opts.__dict__[key] = config_value
@@ -123,18 +133,29 @@ def main():
         features = opts.features
         if opts.size != -1:
             raise NotImplementedError("Size limit not implemented.")
-        feature_generator = get_feature_generator(features, domain, iterations=opts.iterations)
+        feature_generator = get_feature_generator(
+            features,
+            domain,
+            iterations=opts.iterations,
+            pruning=opts.pruning,
+        )
         feature_generator.print_init_colours()
         dataset = get_dataset(opts, feature_generator)
 
     # Collect colours
     with TimerContextManager("collecting colours"):
         feature_generator.collect(dataset.wlplan_dataset)
-    logging.info(f"n_seen_graphs={feature_generator.get_n_seen_graphs()}")
-    logging.info(f"n_seen_nodes={feature_generator.get_n_seen_nodes()}")
-    logging.info(f"n_seen_edges={feature_generator.get_n_seen_edges()}")
-    logging.info(f"n_seen_initial_colours={feature_generator.get_n_seen_initial_colours()}")
-    logging.info(f"n_seen_refined_colours={feature_generator.get_n_seen_refined_colours()}")
+    logging.info(f"n_graphs={feature_generator.get_n_seen_graphs()}")
+    logging.info(f"n_nodes={feature_generator.get_n_seen_nodes()}")
+    logging.info(f"n_edges={feature_generator.get_n_seen_edges()}")
+    logging.info(f"n_initial_colours={feature_generator.get_n_seen_initial_colours()}")
+    logging.info(f"n_refined_colours={feature_generator.get_n_seen_refined_colours()}")
+    logging.info(f"n_colours_per_layer:")
+    for i, n_colours in enumerate(feature_generator.get_layer_to_n_colours()):
+        logging.info(f"  {i}={n_colours}")
+    if opts.collect_only:
+        logging.info("Exiting after collecting colours.")
+        exit(0)
 
     # Construct features
     with TimerContextManager("constructing features"):
