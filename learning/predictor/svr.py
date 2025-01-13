@@ -11,6 +11,8 @@ warnings.filterwarnings("ignore", category=ConvergenceWarning)
 class SupportVectorRegression(BasePredictor):
     """Linear SVR"""
 
+    IS_RANK = False
+
     def fit(self, X, y):
         model = LinearSVR(random_state=0, max_iter=10000)
         model.fit(X, y)

@@ -1,5 +1,4 @@
 features = 'wl'
 optimisation = 'rank-mip'
 iterations = 1
-rank = true
 data_generation = 'all'

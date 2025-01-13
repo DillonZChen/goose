@@ -11,6 +11,8 @@ from .base_predictor import BasePredictor
 class GaussianProcessRanker(BasePredictor):
     """Linear GPC for Ranking with Laplace Approximation"""
 
+    IS_RANK = True
+
     def fit(self, X, y):
         kernel = DotProduct(sigma_0=0, sigma_0_bounds="fixed")
         model = GPC(kernel=kernel, random_state=0)

@@ -1,5 +1,4 @@
 features = 'wl'
 optimisation = 'rank-gpc'
 iterations = 2
-rank = true
 data_generation = 'all'

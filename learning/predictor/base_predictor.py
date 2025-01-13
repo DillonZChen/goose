@@ -2,7 +2,10 @@ from abc import ABC, abstractmethod
 
 import numpy as np
 
+from util.custom_decorators import abstract_class_attributes
 
+
+@abstract_class_attributes("IS_RANK")
 class BasePredictor(ABC):
     def __init__(self) -> None:
         super().__init__()
@@ -22,4 +25,5 @@ class BasePredictor(ABC):
         ret = self._weights
         if isinstance(ret, np.ndarray):
             ret = ret.tolist()
+        return ret
         return ret

@@ -1,5 +1,4 @@
 features = 'wl'
 optimisation = 'rank-svm'
 iterations = 1
-rank = true
 data_generation = 'plan'

@@ -1,5 +1,4 @@
 features = 'wl'
 optimisation = 'gpr'
 iterations = 1
-rank = false
 data_generation = 'state-space'

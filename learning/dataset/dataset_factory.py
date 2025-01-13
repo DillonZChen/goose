@@ -79,4 +79,4 @@ def get_dataset(opts: Namespace, feature_generator: WLFeatures) -> Dataset:
 
         ##### Remaining problems #####
         case _:
-            raise ValueError(f"Unknown data_generation {data_generation}")
+            raise ValueError(f"Unknown dataset configuration {rank=}, {data_generation=}, {domain_is_numeric=}")

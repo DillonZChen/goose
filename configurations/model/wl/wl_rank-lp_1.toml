@@ -1,5 +1,4 @@
 features = 'wl'
 optimisation = 'rank-lp'
 iterations = 1
-rank = true
 data_generation = 'plan'

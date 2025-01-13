@@ -1,5 +1,4 @@
 features = 'ccwl'
 optimisation = 'svr'
 iterations = 1
-rank = false
 data_generation = 'plan'

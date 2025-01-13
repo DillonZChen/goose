@@ -14,6 +14,8 @@ from learning.predictor.mip import MixedIntegerProgram
 class MixedIntegerProgramRanker(MixedIntegerProgram):
     """Ranking with MIP formulation"""
 
+    IS_RANK = True
+
     def fit(self, X, y: list[RankingGroup]):
         n, d = X.shape
 

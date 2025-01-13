@@ -9,6 +9,10 @@ from learning.predictor.base_predictor import BasePredictor
 
 
 class SVMRanker(BasePredictor):
+    """Ranking with SVM formulation"""
+
+    IS_RANK = True
+    
     def fit(self, X, y: list[RankingGroup]):
         # n, d = X.shape
 

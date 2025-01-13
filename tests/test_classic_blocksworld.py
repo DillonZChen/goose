@@ -1,10 +1,10 @@
 import pytest
 from functions import plan, train
 
-BENCHMARKS = "neurips24"
-DOMAIN = "spanner"
-PREDICTOR = "ccwl/ccwl_rank-lp_1"
-PROBLEM = "2_30"
+BENCHMARKS = "ipc23lt"
+DOMAIN = "blocksworld"
+PREDICTOR = "wl/wl_gpr_4"
+PROBLEM = "1_01"
 EXPECTED_EXPANDED_UB = None
 
 
@@ -16,16 +16,16 @@ def test_domain(domain):
         modelpath,
         predictor=PREDICTOR,
         benchmarks=BENCHMARKS,
-        numeric=True,
+        numeric=False,
     )
     plan(
         domain,
         PROBLEM,
         modelpath,
-        "nfd",
+        "fd",
         expected_expanded_ub=EXPECTED_EXPANDED_UB,
         benchmarks=BENCHMARKS,
-        numeric=True,
+        numeric=False,
     )
 
 

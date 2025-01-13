@@ -10,6 +10,8 @@ MIP_TIMEOUT = 3600 * 24  # 24 hours
 
 
 class MixedIntegerProgram(BasePredictor):
+    IS_RANK = True
+
     def __init__(self):
         self._weights = None
 

@@ -1,5 +1,4 @@
 features = 'ccwl'
 optimisation = 'rank-mip'
 iterations = 0
-rank = true
 data_generation = 'plan'

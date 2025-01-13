@@ -15,11 +15,11 @@ if (Boost_FOUND)
 endif()
 
 
-set(CMAKE_CXX_FLAGS "-Wall -Wnon-virtual-dtor")
+set(CMAKE_CXX_FLAGS "-Wnon-virtual-dtor")
 
 # Release
 set(CMAKE_CXX_FLAGS_RELEASE
-        "-O3 -g -DNDEBUG -fomit-frame-pointer -Werror")
+        "-O3 -g -DNDEBUG -fomit-frame-pointer")
 
 # Debug and Profile
 set(CMAKE_CXX_FLAGS_DEBUG
