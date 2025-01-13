@@ -1,0 +1,41 @@
+{
+    "repeats": 1,
+    "domains": [
+        "blocksworld",
+        "childsnack",
+        "ferry",
+        "floortile",
+        "miconic",
+        "rovers",
+        "satellite",
+        "sokoban",
+        "spanner",
+        "transport"
+    ],
+    "features": [
+        "wl"
+    ],
+    "pruning": [
+        "none",
+        "collapse"
+    ],
+    "optimisers": [
+        "gpr",
+        "svr",
+        "rank-mip",
+        "rank-lp",
+        "rank-svm",
+        "rank-gpc"
+    ],
+    "data_generation": [
+        "plan"
+    ],
+    "iterations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+    ]
+}
