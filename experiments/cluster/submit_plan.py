@@ -27,7 +27,7 @@ DATA_GENERATION = CONFIG["data_generation"]
 ITERATIONS = [str(i) for i in CONFIG["iterations"]]
 REPEATS = [str(i) for i in range(CONFIG["repeats"])]
 
-PROBLEMS = [f"{x}_{y:02d}" for y in range(1, 31) for x in [0, 1, 2]]
+PROBLEMS = [f"{x}_{y:02d}" for y in range(1, 31, 3) for x in [0, 1, 2]]
 
 if os.path.exists("/pfcalcul/work/dchen"):
     CLUSTER_NAME = "pfcalcul"
