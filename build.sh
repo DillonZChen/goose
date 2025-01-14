@@ -16,7 +16,7 @@ set -e
 if [ "$arg" != "planners" ]; then
     cd wlplan/
     mkdir -p _wlplan/
-    pip install .
+    pip install . -v
     cd ..
 fi
 

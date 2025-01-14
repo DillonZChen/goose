@@ -3,7 +3,9 @@ import os
 import re
 from itertools import product
 
+import numpy as np
 import pandas as pd
+import plotly.express as px
 from tqdm import tqdm
 
 CUR_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -23,7 +25,7 @@ DATA_GENERATION = CONFIG["data_generation"]
 ITERATIONS = [str(i) for i in CONFIG["iterations"]]
 REPEATS = [str(i) for i in range(CONFIG["repeats"])]
 
-PROBLEMS = [f"{x}_{y:02d}" for y in range(3, 31, 3) for x in [0, 1, 2]]
+PROBLEMS = sorted([f"{x}_{y:02d}" for y in range(3, 31, 3) for x in [0, 1, 2]])
 
 TIMEOUT = 300
 

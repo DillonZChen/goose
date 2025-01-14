@@ -3,7 +3,7 @@
 DOMAIN=blocksworld
 f=wl
 L=4
-p=collapse
+p=collapse-all
 d=plan
 save_file=experiments/_short/model/${DOMAIN}_${f}_${L}_${p}_${d}.model
 log_file=experiments/_short/train/${DOMAIN}_${f}_${L}_${p}_${d}.log
