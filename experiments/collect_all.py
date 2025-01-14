@@ -20,7 +20,7 @@ DOMAINS = [
     "transport",
 ]
 DATA_GENERATIONS = ["plan", "state-space"]
-PRUNING = ["none", "collapse"]
+PRUNING = ["none", "collapse_all"]
 
 _CUR_DIR = os.path.dirname(os.path.realpath(__file__))
 _LOG_DIR = f"{_CUR_DIR}/_collect_logs"

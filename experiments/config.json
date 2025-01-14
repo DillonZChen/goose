@@ -17,22 +17,16 @@
     ],
     "pruning": [
         "none",
-        "collapse"
+        "collapse-layer"
     ],
     "optimisers": [
         "svr",
-        "rank-lp",
         "rank-svm"
     ],
     "data_generation": [
         "plan"
     ],
     "iterations": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6
+        4
     ]
 }

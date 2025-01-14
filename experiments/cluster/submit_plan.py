@@ -27,7 +27,7 @@ DATA_GENERATION = CONFIG["data_generation"]
 ITERATIONS = [str(i) for i in CONFIG["iterations"]]
 REPEATS = [str(i) for i in range(CONFIG["repeats"])]
 
-PROBLEMS = [f"{x}_{y:02d}" for y in range(1, 31, 3) for x in [0, 1, 2]]
+PROBLEMS = [f"{x}_{y:02d}" for y in range(3, 31, 3) for x in [0, 1, 2]]
 
 if os.path.exists("/pfcalcul/work/dchen"):
     CLUSTER_NAME = "pfcalcul"
@@ -46,6 +46,9 @@ MDL_DIR = os.path.normpath(f"{CUR_DIR}/../_models")
 PLN_DIR = os.path.normpath(f"{CUR_DIR}/../_plans")
 os.makedirs(LOG_DIR, exist_ok=True)
 JOB_SCRIPT = f"{CUR_DIR}/job_plan.sh"
+if CLUSTER_NAME == "pfcalcul":
+    MDL_DIR += "/pfcalcul"
+    JOB_SCRIPT = f"{CUR_DIR}/job_plan_slurm.sh"
 assert os.path.exists(JOB_SCRIPT), JOB_SCRIPT
 
 """ Main loop """
@@ -100,7 +103,20 @@ def main():
 
     submitted = 0
 
-    for config in Perc(list(product(DOMAINS, FEATURES, PRUNING, OPTIMISERS, DATA_GENERATION, ITERATIONS, PROBLEMS, REPEATS))):
+    for config in Perc(
+        list(
+            product(
+                DOMAINS,
+                FEATURES,
+                PRUNING,
+                OPTIMISERS,
+                DATA_GENERATION,
+                ITERATIONS,
+                PROBLEMS,
+                REPEATS,
+            )
+        )
+    ):
         domain, feature, pruning, optimiser, data_gen, iterations, problem, repeat = config
         job_description = "_".join(config)
         log_file = f"{LOG_DIR}/{job_description}.log"
@@ -129,7 +145,7 @@ def main():
             os.remove(log_file)
             print(f"Removed {job_description}")
             continue
-        
+
         if args.remove_failed:
             if not os.path.exists(log_file):
                 continue
@@ -180,14 +196,23 @@ def main():
         domain_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/domain.pddl"
         problem_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/testing/p{problem}.pddl"
 
-        cmd = " ".join([
+        cmd = [
             f"{ROOT_DIR}/Goose.sif",
             "plan",
             domain_pddl,
             problem_pddl,
             sve_file,
             f"--plan_file={plan_file}",
-        ])
+        ]
+        if CLUSTER_TYPE == "slurm":
+            cmd = [
+                "apptainer",
+                "run",
+                "--bind",
+                f"{ROOT_DIR}:{ROOT_DIR}",
+            ] + cmd
+
+        cmd = " ".join(cmd)
 
         job_vars = ",".join(
             [

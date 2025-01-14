@@ -22,7 +22,8 @@ OPTIMISERS = CONFIG["optimisers"]
 DATA_GENERATION = CONFIG["data_generation"]
 ITERATIONS = [str(i) for i in CONFIG["iterations"]]
 REPEATS = [str(i) for i in range(CONFIG["repeats"])]
-PROBLEMS = [f"{x}_{y:02d}" for y in range(1, 31, 3) for x in [0, 1, 2]]
+
+PROBLEMS = [f"{x}_{y:02d}" for y in range(3, 31, 3) for x in [0, 1, 2]]
 
 TIMEOUT = 300
 
@@ -49,7 +50,8 @@ TRAIN_DF_KEYS = CONFIG_KEYS + [
     "tried",
     "completed",
     "oom",
-    "colours",
+    "n_colours",
+    "n_data",
     "collection_time",
     "construction_time",
     "training_time",
@@ -91,7 +93,8 @@ def parse_train_log(log_path: str):
         "tried": False,
         "completed": False,
         "oom": False,
-        "colours": -1,
+        "n_colours": -1,
+        "n_data": -1,
         "collection_time": -1,
         "construction_time": -1,
         "training_time": -1,
@@ -109,7 +112,8 @@ def parse_train_log(log_path: str):
     data["tried"] = True
     data["completed"] = "Finished saving model" in content
     data["oom"] = "OOM" in content
-    data["colours"] = int(try_match(r"n_refined_colours=(\d+)", -1))
+    data["n_colours"] = int(try_match(r"n_refined_colours=(\d+)", -1))
+    data["n_data"] = int(try_match(r"X.shape=\((\d+),", -1))
     data["collection_time"] = float(try_match(r"Finished collecting colours in ([\d.]+)s", -1))
     data["construction_time"] = float(try_match(r"Finished constructing features in ([\d.]+)s", -1))
     data["training_time"] = float(try_match(r"Finished training model in ([\d.]+)s", -1))
