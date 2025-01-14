@@ -14,6 +14,9 @@ ROOT_DIR = os.path.normpath(f"{CUR_DIR}/../..")
 LOG_PLAN_DIR = os.path.normpath(f"{CUR_DIR}/../_log_plan/gadi")
 LOG_TRAIN_DIR = os.path.normpath(f"{CUR_DIR}/../_log_train")
 
+PLOT_DIR = os.path.normpath(f"{CUR_DIR}/../_plots")
+os.makedirs(PLOT_DIR, exist_ok=True)
+
 with open(f"{ROOT_DIR}/experiments/config.json") as f:
     CONFIG = json.load(f)
 
