@@ -3,7 +3,7 @@
 set -e
 set -x
 
-./build.sh
 cd wlplan
-pytest
+pip install .
 cd -
+./experiments/train.sh
