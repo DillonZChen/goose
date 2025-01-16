@@ -4,7 +4,7 @@
 arg=$1
 
 # planners
-PLANNERS="powerlifted downward numeric-downward"
+PLANNERS="downward powerlifted numeric-downward"
 
 # Show commands
 set -x
