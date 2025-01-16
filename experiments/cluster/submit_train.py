@@ -52,6 +52,12 @@ def main():
         help="remove logs for models which failed to train or save a model",
     )
     parser.add_argument(
+        "-rp",
+        "--remove_pruning",
+        type=str,
+        help="remove all logs and models for a specific pruning",
+    )
+    parser.add_argument(
         "-ra",
         "--remove_all",
         action="store_true",
@@ -99,8 +105,17 @@ def main():
                 continue
             if "Model saved to" in content:
                 continue
-            print(f"Removed: {log_file}")
+            print(f"Removed {log_file}")
             os.remove(log_file)
+            continue
+
+        if args.remove_pruning:
+            if args.remove_pruning == pruning:
+                # remove log lck and sve
+                for f in [log_file, lck_file, sve_file]:
+                    if os.path.exists(f):
+                        print(f"Removed {f}")
+                        os.remove(f)
             continue
 
         if os.path.exists(lck_file) and not args.force:

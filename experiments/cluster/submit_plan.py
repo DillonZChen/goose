@@ -73,6 +73,12 @@ def main():
         help="remove jobs with container failure",
     )
     parser.add_argument(
+        "-rp",
+        "--remove_pruning",
+        type=str,
+        help="remove all logs and models for a specific pruning",
+    )
+    parser.add_argument(
         "-rd",
         "--remove_domain",
         type=str,
@@ -154,6 +160,15 @@ def main():
             if "FATAL:   container creation failed: mount" in content:
                 os.remove(log_file)
                 print(f"Removed {job_description}")
+            continue
+
+        if args.remove_pruning:
+            if args.remove_pruning == pruning:
+                # remove log lck and sve
+                for f in [log_file, lck_file, sve_file]:
+                    if os.path.exists(f):
+                        print(f"Removed {f}")
+                        os.remove(f)
             continue
 
         if args.remove_domain:

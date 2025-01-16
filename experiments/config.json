@@ -17,7 +17,8 @@
     ],
     "pruning": [
         "none",
-        "collapse-layer"
+        "collapse-layer",
+        "collapse-all"
     ],
     "optimisers": [
         "svr",

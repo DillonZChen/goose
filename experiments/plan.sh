@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROBLEM=1_02
+PROBLEM=0_27
 DOMAIN=blocksworld
 f=wl
 L=4
