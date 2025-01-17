@@ -28,8 +28,9 @@ _DEF_VAL = {
     "iterations": 4,
     "optimisation": "svr",
     "data_generation": "plan",
-    "size": -1,
     "pruning": "none",
+    "facts": "fd",
+    "multiset_hash": 1,
 }
 
 
@@ -47,7 +48,8 @@ def parse_opts():
     # model options
     parser.add_argument("-f", "--features", type=str, default=None, 
                         choices=get_available_feature_generators(),
-                        help=f"Feature generator to use (default: {_DEF_VAL['features']}).")
+                        help=f"Feature generator to use. " + \
+                             f"(default: {_DEF_VAL['features']}).")
     parser.add_argument("-p", "--pruning", type=str, default=None,
                         choices=get_available_pruning_methods(),
                         help=f"Pruning method to use for feature generation. " + \
@@ -55,9 +57,9 @@ def parse_opts():
     parser.add_argument("-L", "--iterations", type=int, default=None,
                         help=f"Number of iterations of the WL feature generator. Analogous to number of hidden layers in a neural network. " + \
                              f"(default: {_DEF_VAL['iterations']})")
-    parser.add_argument("-H", "--size", type=int, default=None,
-                        help=f"Max number of features to collect. Use -1 for no limit." + \
-                             f"(default: {_DEF_VAL['size']})")
+    parser.add_argument("--multiset_hash", type=int, default=None,
+                        help=f"Whether to use multisets or sets for neighbour colours. " + \
+                             f"(default: {_DEF_VAL['multiset_hash']})")
     
     # optimisation options
     parser.add_argument("-o", "--optimisation", type=str, default=None,
@@ -68,9 +70,10 @@ def parse_opts():
                         choices=["plan", "state-space"],
                         help=f"Method for collecting data from training problems. " + \
                              f"(default: {_DEF_VAL['data_generation']})")
-    parser.add_argument("--facts", type=str, default="fd", 
+    parser.add_argument("--facts", type=str, default=None, 
                         choices=["fd", "nfd", "all", "nostatic"],
-                        help=f"Intended facts to keep e.g. Fast Downward `fd` grounds the task and prunes away some facts, e.g. statics and unreachable.")
+                        help=f"Intended facts to keep e.g. Fast Downward `fd` grounds the task and prunes away statics as well as some unreachable facts. " + \
+                             f"(default: {_DEF_VAL['facts']})")
     
     # script options
     parser.add_argument("-r", "--random_seed", type=int, default=2024,
@@ -131,13 +134,12 @@ def main():
         domain_pddl = toml.load(opts.data_config)["domain_pddl"]
         domain = parse_domain(domain_pddl)
         features = opts.features
-        if opts.size != -1:
-            raise NotImplementedError("Size limit not implemented.")
         feature_generator = get_feature_generator(
             features,
             domain,
             iterations=opts.iterations,
             pruning=opts.pruning,
+            multiset_hash=opts.multiset_hash,
         )
         feature_generator.print_init_colours()
         dataset = get_dataset(opts, feature_generator)

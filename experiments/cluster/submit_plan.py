@@ -92,6 +92,12 @@ def main():
         choices=DOMAINS,
         help="submit jobs only from specified domain",
     )
+    parser.add_argument(
+        "-p",
+        "--pruning",
+        type=str,
+        help="submit jobs only from specified pruning",
+    )
     args = parser.parse_args()
 
     submissions = args.submissions
@@ -183,6 +189,12 @@ def main():
                 removed = True
             if removed:
                 print(f"Removed {job_description}")
+            continue
+
+        if args.domain and not domain == args.domain:
+            continue
+
+        if args.pruning and not pruning == args.pruning:
             continue
 
         if os.path.exists(lck_file) and not args.force:
