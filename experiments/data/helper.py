@@ -60,6 +60,8 @@ TRAIN_DF_KEYS = CONFIG_KEYS + [
     "collection_time",
     "construction_time",
     "training_time",
+    "mse_loss",
+    "f1_macro",
 ]
 
 
@@ -103,6 +105,8 @@ def parse_train_log(log_path: str):
         "collection_time": -1,
         "construction_time": -1,
         "training_time": -1,
+        "mse_loss": -1,
+        "f1_macro": -1,
     }
 
     if not os.path.exists(log_path):
@@ -117,11 +121,13 @@ def parse_train_log(log_path: str):
     data["tried"] = True
     data["completed"] = "Finished saving model" in content
     data["oom"] = "OOM" in content
-    data["n_colours"] = int(try_match(r"n_refined_colours=(\d+)", -1))
+    data["n_colours"] = int(try_match(r"X.shape=\(\d+, (\d+)\)", -1))
     data["n_data"] = int(try_match(r"X.shape=\((\d+),", -1))
     data["collection_time"] = float(try_match(r"Finished collecting colours in ([\d.]+)s", -1))
     data["construction_time"] = float(try_match(r"Finished constructing features in ([\d.]+)s", -1))
     data["training_time"] = float(try_match(r"Finished training model in ([\d.]+)s", -1))
+    data["mse_loss"] = float(try_match(r"mse_loss=([\d.]+)", -1))
+    data["f1_macro"] = float(try_match(r"f1_macro=([\d.]+)", -1))
 
     return data
 
