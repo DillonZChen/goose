@@ -9,5 +9,5 @@ t_duration=$((t_end - t_start))
 
 # Print timing results
 echo "----------------------------------------"
-echo "Apptainer build time=: $t_duration seconds"
+echo "Apptainer build time: $t_duration seconds"
 echo "----------------------------------------"

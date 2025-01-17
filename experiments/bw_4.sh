@@ -3,7 +3,7 @@
 DOMAIN=blocksworld
 f=wl
 L=4
-p=collapse-layer
+p=none
 d=plan
 multiset_hash=0
 facts=nostatic

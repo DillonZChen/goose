@@ -183,7 +183,6 @@ def main():
     with TimerContextManager("training model"):
         predictor = get_predictor(opts.optimisation)
         predictor.fit(X, y)
-        feature_generator.set_weights(predictor.get_weights())
 
     # Evaluate model
     if not opts.rank:
@@ -197,6 +196,7 @@ def main():
     # Save model
     if opts.save_file:
         with TimerContextManager("saving model"):
+            feature_generator.set_weights(predictor.get_weights())
             feature_generator.save(opts.save_file)
 
 
