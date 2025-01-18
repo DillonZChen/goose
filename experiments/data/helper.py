@@ -11,7 +11,7 @@ from tqdm import tqdm
 CUR_DIR = os.path.dirname(os.path.realpath(__file__))
 ROOT_DIR = os.path.normpath(f"{CUR_DIR}/../..")
 
-LOG_PLAN_DIR = os.path.normpath(f"{CUR_DIR}/../_log_plan/gadi")
+LOG_PLAN_DIR = os.path.normpath(f"{CUR_DIR}/../_log_plan")
 LOG_TRAIN_DIR = os.path.normpath(f"{CUR_DIR}/../_log_train")
 
 PLOT_DIR = os.path.normpath(f"{CUR_DIR}/../_plots")
@@ -132,7 +132,7 @@ def parse_train_log(log_path: str):
     return data
 
 
-def get_plan_df():
+def get_plan_df(cluster: str):
     data = {k: [] for k in PLAN_DF_KEYS}
 
     for config in tqdm(
@@ -149,7 +149,7 @@ def get_plan_df():
             )
         )
     ):
-        log_path = f"{LOG_PLAN_DIR}/{'_'.join(config)}.log"
+        log_path = f"{LOG_PLAN_DIR}/{cluster}/{'_'.join(config)}.log"
         config_data = parse_plan_log(log_path)
         for k, v in config_data.items():
             data[k].append(v)

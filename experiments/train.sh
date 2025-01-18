@@ -1,8 +1,8 @@
 #!/bin/bash
 
 DOMAIN=blocksworld
-f=wl
-L=4
+f=lwl2
+L=2
 p=collapse-all
 d=plan
 multiset_hash=1

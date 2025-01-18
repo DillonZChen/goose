@@ -1,6 +1,7 @@
 plots/
 logs/
 _*/
+_*
 *.model
 *.out
 *.out.num

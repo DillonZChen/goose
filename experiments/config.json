@@ -13,12 +13,14 @@
         "transport"
     ],
     "features": [
-        "wl"
+        "wl",
+        "iwl",
+        "niwl",
+        "2-lwl",
+        "2-kwl"
     ],
     "pruning": [
-        "none",
-        "collapse-layer",
-        "collapse-all"
+        "none"
     ],
     "optimisers": [
         "svr",

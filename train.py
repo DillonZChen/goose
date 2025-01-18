@@ -141,17 +141,12 @@ def main():
             pruning=opts.pruning,
             multiset_hash=opts.multiset_hash,
         )
-        feature_generator.print_init_colours()
+        # feature_generator.print_init_colours()
         dataset = get_dataset(opts, feature_generator)
 
     # Collect colours
     with TimerContextManager("collecting colours"):
         feature_generator.collect(dataset.wlplan_dataset)
-    logging.info(f"n_graphs={feature_generator.get_n_seen_graphs()}")
-    logging.info(f"n_nodes={feature_generator.get_n_seen_nodes()}")
-    logging.info(f"n_edges={feature_generator.get_n_seen_edges()}")
-    logging.info(f"n_initial_colours={feature_generator.get_n_seen_initial_colours()}")
-    logging.info(f"n_refined_colours={feature_generator.get_n_seen_refined_colours()}")
     logging.info(f"n_colours_per_layer:")
     for i, n_colours in enumerate(feature_generator.get_layer_to_n_colours()):
         logging.info(f"  {i}={n_colours}")
