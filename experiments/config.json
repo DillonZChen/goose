@@ -16,11 +16,12 @@
         "wl",
         "iwl",
         "niwl",
-        "2-lwl",
-        "2-kwl"
+        "lwl2",
+        "kwl2"
     ],
     "pruning": [
-        "none"
+        "none",
+        "collapse-all"
     ],
     "optimisers": [
         "svr",

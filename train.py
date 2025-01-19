@@ -91,6 +91,7 @@ def parse_opts():
     # fmt: on
 
     assert os.path.exists(opts.data_config), get_path_error_msg(opts.data_config)
+    logging.info(f"{opts.data_config=}")
 
     if opts.model_config is not None:
         assert os.path.exists(opts.model_config), get_path_error_msg(opts.model_config)
