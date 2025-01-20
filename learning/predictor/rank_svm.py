@@ -1,4 +1,5 @@
 import itertools
+import logging
 import random
 
 import numpy as np
@@ -12,11 +13,11 @@ class SVMRanker(BasePredictor):
     """Ranking with SVM formulation"""
 
     IS_RANK = True
-    
+
     def fit(self, X, y: list[RankingGroup]):
         # n, d = X.shape
 
-        model = svm.LinearSVC(loss='hinge', fit_intercept=False, max_iter=1000000, C=1.0)
+        model = svm.LinearSVC(loss="hinge", fit_intercept=False, max_iter=1000000, C=1.0)
 
         X_in = []
         y_in = []
@@ -39,8 +40,14 @@ class SVMRanker(BasePredictor):
         y_in = np.array(y_in)
         model.fit(X_in, y_in)
 
-        # Set learned weights
-        self._weights = model.coef_.reshape(-1,)
+        self._model = model
+        self._X = X_in
+        self._y = y_in
+
+    def _evaluate(self):
+        mean_accuracy = self._model.score(self._X, self._y)
+        logging.info(f"{mean_accuracy=}")
 
     def predict(self, X):
-        return X @ self._weights.T
+        w = self._model.coef_.reshape(-1)
+        return X @ w.T

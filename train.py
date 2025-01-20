@@ -11,6 +11,7 @@ import toml
 from sklearn.metrics import f1_score
 
 from learning.dataset.dataset_factory import get_dataset
+from learning.dataset.state_to_vec import embed_data
 from learning.predictor.predictor_factory import (get_available_predictors, get_predictor,
                                                   is_rank_predictor)
 from util.distinguish_test import distinguish
@@ -28,7 +29,8 @@ _DEF_VAL = {
     "iterations": 4,
     "optimisation": "svr",
     "data_generation": "plan",
-    "pruning": "none",
+    "feature_pruning": "none",
+    "data_pruning": "equivalent",
     "facts": "fd",
     "multiset_hash": 1,
 }
@@ -50,10 +52,10 @@ def parse_opts():
                         choices=get_available_feature_generators(),
                         help=f"Feature generator to use. " + \
                              f"(default: {_DEF_VAL['features']}).")
-    parser.add_argument("-p", "--pruning", type=str, default=None,
+    parser.add_argument("-fp", "--feature_pruning", type=str, default=None,
                         choices=get_available_pruning_methods(),
                         help=f"Pruning method to use for feature generation. " + \
-                             f"(default: {_DEF_VAL['pruning']}).")
+                             f"(default: {_DEF_VAL['feature_pruning']}).")
     parser.add_argument("-L", "--iterations", type=int, default=None,
                         help=f"Number of iterations of the WL feature generator. Analogous to number of hidden layers in a neural network. " + \
                              f"(default: {_DEF_VAL['iterations']})")
@@ -70,6 +72,10 @@ def parse_opts():
                         choices=["plan", "state-space"],
                         help=f"Method for collecting data from training problems. " + \
                              f"(default: {_DEF_VAL['data_generation']})")
+    parser.add_argument("-dp", "--data_pruning", type=str, default=None,
+                        choices=["none", "equivalent"],
+                        help=f"Method for pruning data. " + \
+                             f"(default: {_DEF_VAL['data_pruning']})")
     parser.add_argument("--facts", type=str, default=None, 
                         choices=["fd", "nfd", "all", "nostatic"],
                         help=f"Intended facts to keep e.g. Fast Downward `fd` grounds the task and prunes away statics as well as some unreachable facts. " + \
@@ -139,7 +145,7 @@ def main():
             features,
             domain,
             iterations=opts.iterations,
-            pruning=opts.pruning,
+            pruning=opts.feature_pruning,
             multiset_hash=opts.multiset_hash,
         )
         # feature_generator.print_init_colours()
@@ -157,11 +163,9 @@ def main():
 
     # Construct features
     with TimerContextManager("constructing features"):
-        X = feature_generator.embed(dataset.wlplan_dataset)
-        X = np.array(X).astype(float)
-        y = dataset.y
-        if not opts.rank:
-            log_quartiles(y)
+        X, y = embed_data(dataset=dataset, feature_generator=feature_generator, opts=opts)
+    if not opts.rank:
+        log_quartiles(y)
     logging.info(f"{X.shape=}")
 
     # PCA visualisation
@@ -176,18 +180,8 @@ def main():
         return
 
     # Train model
-    with TimerContextManager("training model"):
-        predictor = get_predictor(opts.optimisation)
-        predictor.fit(X, y)
-
-    # Evaluate model
-    if not opts.rank:
-        y_pred = predictor.predict(X)
-        mse_loss = np.mean((y - y_pred) ** 2)
-        logging.info(f"{mse_loss=}")
-        y_pred = np.round(y_pred)
-        f1_macro = f1_score(y, y_pred, average="macro")
-        logging.info(f"{f1_macro=}")
+    predictor = get_predictor(opts.optimisation)
+    predictor.fit_evaluate(X, y)
 
     # Save model
     if opts.save_file:

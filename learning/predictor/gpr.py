@@ -5,10 +5,10 @@ from sklearn.gaussian_process import GaussianProcessRegressor as GPR
 from sklearn.gaussian_process.kernels import DotProduct
 from termcolor import colored
 
-from .base_predictor import BasePredictor
+from .mse_minimiser import MSEMinimiser
 
 
-class GaussianProcessRegressor(BasePredictor):
+class GaussianProcessRegressor(MSEMinimiser):
     """Linear GPR"""
 
     IS_RANK = False
@@ -18,6 +18,8 @@ class GaussianProcessRegressor(BasePredictor):
         model = GPR(kernel=kernel, alpha=1e-7, random_state=0)
         model.fit(X, y)
         self._weights = model.alpha_ @ model.X_train_
+        self._X = X
+        self._y = y
 
     def fit(self, X, y):
         alpha = 1e-7

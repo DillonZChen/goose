@@ -12,9 +12,12 @@ with open(f"{ROOT_DIR}/experiments/config.json") as f:
 
 DOMAINS = CONFIG["domains"]
 FEATURES = CONFIG["features"]
-PRUNING = CONFIG["pruning"]
+FEATURE_PRUNING = CONFIG["feature_pruning"]
+DATA_PRUNING = CONFIG["data_pruning"]
 OPTIMISERS = CONFIG["optimisers"]
 DATA_GENERATION = CONFIG["data_generation"]
+FACTS = CONFIG["facts"]
+
 ITERATIONS = [str(i) for i in CONFIG["iterations"]]
 REPEATS = [str(i) for i in range(CONFIG["repeats"])]
 
@@ -82,8 +85,18 @@ def main():
 
     submitted = 0
 
-    for config in product(DOMAINS, FEATURES, PRUNING, OPTIMISERS, DATA_GENERATION, ITERATIONS, REPEATS):
-        domain, feature, pruning, optimiser, data_gen, iterations, repeat = config
+    for config in product(
+        DOMAINS,
+        FEATURES,
+        FEATURE_PRUNING,
+        DATA_PRUNING,
+        OPTIMISERS,
+        DATA_GENERATION,
+        FACTS,
+        ITERATIONS,
+        REPEATS,
+    ):
+        domain, feature, fpruning, dpruning, optimiser, data_gen, facts, iterations, repeat = config
         job_description = "_".join(config)
         log_file = f"{LOG_DIR}/{job_description}.log"
         lck_file = f"{LCK_DIR}/{job_description}.lck"
@@ -110,7 +123,7 @@ def main():
             continue
 
         if args.remove_pruning:
-            if args.remove_pruning == pruning:
+            if args.remove_pruning == fpruning:
                 # remove log lck and sve
                 for f in [log_file, lck_file, sve_file]:
                     if os.path.exists(f):
@@ -138,18 +151,22 @@ def main():
         data_config = os.path.normpath(f"{ROOT_DIR}/configurations/data/ipc23lt/{domain}.toml")
         assert os.path.exists(data_config), data_config
 
-        cmd = " ".join([
-            f"{ROOT_DIR}/Goose.sif",
-            "train",
-            data_config,
-            f"--features={feature}",
-            f"--pruning={pruning}",
-            f"--iterations={iterations}",
-            f"--optimisation={optimiser}",
-            f"--data_generation={data_gen}",
-            f"--random_seed={repeat}",
-            f"--save_file={sve_file}",
-        ])
+        cmd = " ".join(
+            [
+                f"{ROOT_DIR}/Goose.sif",
+                "train",
+                data_config,
+                f"--features={feature}",
+                f"--feature_pruning={fpruning}",
+                f"--data_pruning={dpruning}",
+                f"--iterations={iterations}",
+                f"--optimisation={optimiser}",
+                f"--data_generation={data_gen}",
+                f"--facts={facts}",
+                f"--random_seed={repeat}",
+                f"--save_file={sve_file}",
+            ]
+        )
 
         job_vars = ",".join([f"CMD={cmd}"])
 

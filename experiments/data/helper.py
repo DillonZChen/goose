@@ -22,9 +22,11 @@ with open(f"{ROOT_DIR}/experiments/config.json") as f:
 
 DOMAINS = CONFIG["domains"]
 FEATURES = CONFIG["features"]
-PRUNING = CONFIG["pruning"]
+FEATURE_PRUNING = CONFIG["feature_pruning"]
+DATA_PRUNING = CONFIG["data_pruning"]
 OPTIMISERS = CONFIG["optimisers"]
 DATA_GENERATION = CONFIG["data_generation"]
+FACTS = CONFIG["facts"]
 ITERATIONS = [str(i) for i in CONFIG["iterations"]]
 REPEATS = [str(i) for i in range(CONFIG["repeats"])]
 
@@ -35,9 +37,11 @@ TIMEOUT = 300
 CONFIG_KEYS = [
     "domain",
     "features",
-    "pruning",
+    "feature_pruning",
+    "data_pruning",
     "optimiser",
     "data_generation",
+    "facts",
     "iterations",
 ]
 
@@ -79,19 +83,26 @@ def parse_plan_log(log_path: str):
     with open(log_path, "r") as file:
         content = file.read()
 
-    data["tried"] = True
-    solved = "Solution found" in content
-    if solved:
-        # [t=0.016241s, 10888 KB] Plan length: 10 step(s).
-        # [t=0.016241s, 10888 KB] Expanded 13 state(s).
-        # INFO     Planner time: 0.15s
-        plan_length = re.search(r"Plan length: (\d+) step\(s\)", content)
-        expanded = re.search(r"Expanded (\d+) state\(s\)", content)
-        runtime = re.search(r"Planner time: ([\d.]+)s", content)
-        data["solved"] = True
-        data["plan_length"] = int(plan_length.group(1))
-        data["expanded"] = int(expanded.group(1))
-        data["runtime"] = float(runtime.group(1))
+    try:
+        data["tried"] = True
+        solved = "Solution found" in content
+        if solved:
+            # [t=0.016241s, 10888 KB] Plan length: 10 step(s).
+            # [t=0.016241s, 10888 KB] Expanded 13 state(s).
+            # INFO     Planner time: 0.15s
+            plan_length = re.search(r"Plan length: (\d+) step\(s\)", content)
+            expanded = re.search(r"Expanded (\d+) state\(s\)", content)
+            runtime = re.search(r"Planner time: ([\d.]+)s", content)
+            if runtime is None:
+                # Total time: 0.002756
+                runtime = re.search(r"Total time: ([\d.]+)", content)
+            data["solved"] = True
+            data["plan_length"] = int(plan_length.group(1))
+            data["expanded"] = int(expanded.group(1))
+            data["runtime"] = float(runtime.group(1))
+    except Exception as e:
+        print(f"Error parsing {log_path}: {e}")
+
     return data
 
 
@@ -140,9 +151,11 @@ def get_plan_df(cluster: str):
             product(
                 DOMAINS,
                 FEATURES,
-                PRUNING,
+                FEATURE_PRUNING,
+                DATA_PRUNING,
                 OPTIMISERS,
                 DATA_GENERATION,
+                FACTS,
                 ITERATIONS,
                 PROBLEMS,
                 REPEATS,
@@ -165,7 +178,18 @@ def get_plan_df(cluster: str):
 def get_train_df():
     data = {k: [] for k in TRAIN_DF_KEYS}
     for config in tqdm(
-        list(product(DOMAINS, FEATURES, PRUNING, OPTIMISERS, DATA_GENERATION, ITERATIONS, REPEATS))
+        list(
+            product(
+                DOMAINS,
+                FEATURES,
+                FEATURE_PRUNING,
+                OPTIMISERS,
+                DATA_GENERATION,
+                FACTS,
+                ITERATIONS,
+                REPEATS,
+            )
+        )
     ):
         log_path = f"{LOG_TRAIN_DIR}/{'_'.join(config)}.log"
         config_data = parse_train_log(log_path)

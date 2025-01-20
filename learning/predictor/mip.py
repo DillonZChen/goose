@@ -28,24 +28,31 @@ class MixedIntegerProgram(BasePredictor):
         solver = self._make_solver(timeout=timeout)
         m.solve(solver)
 
-        logging.info("=" * 30)
+        self._solver = solver
+        self._m = m
+        self._main_obj = main_obj
+        self._regularisation = regularisation
+
+    def _evaluate(self):
         try:
-            solver_output = solver.solverModel.solution.get_status_string()
+            solver_output = self._solver.solverModel.solution.get_status_string()
             solved_optimally = "integer optimal solution" in solver_output
             logging.info(f"{solver_output=}")
         except AttributeError:
-            solved_optimally = m.status == pulp.constants.LpStatusOptimal
-        logging.info(f"{m.objective.value()=}")
-        logging.info(f"{main_obj.value()=}")
-        logging.info(f"{regularisation.value()=}")
-        logging.info("=" * 30)
+            solved_optimally = self._m.status == pulp.constants.LpStatusOptimal
+        obj_value = self._m.objective.value()
+        main_obj_value = self._main_obj.value()
+        regularisation_value = self._regularisation.value()
+        logging.info(f"{obj_value=}")
+        logging.info(f"{main_obj_value=}")
+        logging.info(f"{regularisation_value=}")
 
-        if solved_optimally:
-            logging.info(f"Fit perfectly with minimal weights")
-        elif abs(main_obj.value()) < 1e-5:
-            logging.info(f"Fit perfectly on training data but not necessarily minimal weights")
-        else:
-            logging.info(f"Failed to fit perfectly on training data")
+        # if solved_optimally:
+        #     logging.info(f"Fit perfectly with minimal weights")
+        # elif abs(self._main_obj.value()) < 1e-5:
+        #     logging.info(f"Fit perfectly on training data but not necessarily minimal weights")
+        # else:
+        #     logging.info(f"Failed to fit perfectly on training data")
 
     @abstractmethod
     def fit(self, X, y):

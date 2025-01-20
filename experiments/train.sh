@@ -3,16 +3,17 @@
 arg=$1
 
 DOMAIN=bw-small
-# DOMAIN=blocksworld
-f=lwl2
-L=2
-p=collapse-all
+DOMAIN=blocksworld
+f=iwl
+L=4
+p=collapse-layer
 if [[ $1 != "" ]]; then
     p=$1
 fi
 d=plan
 multiset_hash=1
 facts=fd
+
 save_file=experiments/_short/model/${DOMAIN}_${f}_${L}_${p}_${d}_${multiset_hash}_${facts}.model
 log_file=experiments/_short/train/${DOMAIN}_${f}_${L}_${p}_${d}_${multiset_hash}_${facts}.log
 mkdir -p experiments/_short/model
@@ -27,7 +28,7 @@ fi
 python3 train.py $CONFIG_PATH \
     -f $f \
     -L $L \
-    -p $p \
+    -fp $p \
     -d $d \
     --multiset_hash $multiset_hash \
     --facts $facts \

@@ -4,24 +4,25 @@
         "blocksworld",
         "childsnack",
         "ferry",
-        "floortile",
         "miconic",
         "rovers",
         "satellite",
-        "sokoban",
         "spanner",
         "transport"
     ],
     "features": [
         "wl",
-        "iwl",
-        "niwl",
-        "lwl2",
-        "kwl2"
+        "lwl2"
     ],
-    "pruning": [
+    "feature_pruning": [
         "none",
-        "collapse-all"
+        "collapse-all",
+        "collapse-layer",
+        "collapse-layer-x"
+    ],
+    "data_pruning": [
+        "none",
+        "equivalent"
     ],
     "optimisers": [
         "svr",
@@ -31,6 +32,12 @@
         "plan"
     ],
     "iterations": [
-        4
+        2,
+        4,
+        6
+    ],
+    "facts": [
+        "fd",
+        "all"
     ]
 }

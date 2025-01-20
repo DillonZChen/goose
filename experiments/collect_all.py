@@ -20,7 +20,7 @@ DOMAINS = [
     "transport",
 ]
 DATA_GENERATIONS = ["plan", "state-space"]
-PRUNING = ["none", "collapse_all"]
+FEATURE_PRUNING = ["none", "collapse_all"]
 
 _CUR_DIR = os.path.dirname(os.path.realpath(__file__))
 _LOG_DIR = f"{_CUR_DIR}/_collect_logs"
@@ -37,7 +37,7 @@ if __name__ == "__main__":
         exit(0)
 
     try:
-        pbar = tqdm(list(product(DOMAINS, DATA_GENERATIONS, PRUNING)))
+        pbar = tqdm(list(product(DOMAINS, DATA_GENERATIONS, FEATURE_PRUNING)))
         for domain, data_generation, pruning in pbar:
             description = f"{domain}_{data_generation}_{pruning}"
             pbar.set_description(description)

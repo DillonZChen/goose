@@ -21,9 +21,12 @@ with open(f"{ROOT_DIR}/experiments/config.json") as f:
 
 DOMAINS = CONFIG["domains"]
 FEATURES = CONFIG["features"]
-PRUNING = CONFIG["pruning"]
+FEATURE_PRUNING = CONFIG["feature_pruning"]
+DATA_PRUNING = CONFIG["data_pruning"]
 OPTIMISERS = CONFIG["optimisers"]
 DATA_GENERATION = CONFIG["data_generation"]
+FACTS = CONFIG["facts"]
+
 ITERATIONS = [str(i) for i in CONFIG["iterations"]]
 REPEATS = [str(i) for i in range(CONFIG["repeats"])]
 
@@ -120,16 +123,18 @@ def main():
             product(
                 DOMAINS,
                 FEATURES,
-                PRUNING,
+                FEATURE_PRUNING,
+                DATA_PRUNING,
                 OPTIMISERS,
                 DATA_GENERATION,
+                FACTS,
                 ITERATIONS,
                 PROBLEMS,
                 REPEATS,
             )
         )
     ):
-        domain, feature, pruning, optimiser, data_gen, iterations, problem, repeat = config
+        domain, feature, fpruning, dpruning, optimiser, data_gen, facts, iterations, problem, repeat = config
         job_description = "_".join(config)
         log_file = f"{LOG_DIR}/{job_description}.log"
         lck_file = f"{LCK_DIR}/{job_description}.lck"
@@ -169,7 +174,7 @@ def main():
             continue
 
         if args.remove_pruning:
-            if args.remove_pruning == pruning:
+            if args.remove_pruning == fpruning:
                 # remove log lck and sve
                 for f in [log_file, lck_file, sve_file]:
                     if os.path.exists(f):
@@ -194,7 +199,7 @@ def main():
         if args.domain and not domain == args.domain:
             continue
 
-        if args.pruning and not pruning == args.pruning:
+        if args.pruning and not fpruning == args.pruning:
             continue
 
         if os.path.exists(lck_file) and not args.force:
@@ -223,12 +228,20 @@ def main():
         domain_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/domain.pddl"
         problem_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/testing/p{problem}.pddl"
 
+        if facts == "fd":
+            planner = "fd"
+        elif facts == "all":
+            planner = "pwl"
+        else:
+            raise NotImplementedError(f"Planner for {facts=}")
+
         cmd = [
             f"{ROOT_DIR}/Goose.sif",
             "plan",
             domain_pddl,
             problem_pddl,
             sve_file,
+            f"--planner={planner}",
             f"--plan_file={plan_file}",
         ]
         if CLUSTER_TYPE == "slurm":

@@ -114,4 +114,3 @@ class ClassicCostToGoDatasetFromPlans(ClassicDatasetCreator):
         dataset = CostToGoDataset(wlplan_domain=self.wlplan_domain, data=data, y=y)
 
         return dataset
-        return dataset
