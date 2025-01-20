@@ -41,17 +41,15 @@ class GaussianProcessRanker(BasePredictor):
         self._model = model
         self._X = X_in
         self._y = y_in
+        # See 3.4.3 [Rasmussen, Carl Edward and Williams, Christopher K. I., 2006]
+        self._weights = np.dot(
+            (model.base_estimator_.y_train_ - model.base_estimator_.pi_).T,
+            model.base_estimator_.X_train_,
+        )
 
     def _evaluate(self):
         mean_accuracy = self._model.score(self._X, self._y)
         logging.info(f"{mean_accuracy=}")
 
     def predict(self, X):
-        model = self._model
-
-        # See 3.4.3 [Rasmussen, Carl Edward and Williams, Christopher K. I., 2006]
-        w = np.dot(
-            (model.base_estimator_.y_train_ - model.base_estimator_.pi_).T,
-            model.base_estimator_.X_train_,
-        )
-        return X @ w.T
+        return X @ self._weights.T

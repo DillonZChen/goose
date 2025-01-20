@@ -3,9 +3,9 @@
 arg=$1
 
 DOMAIN=bw-small
-DOMAIN=blocksworld
-f=iwl
-L=4
+# DOMAIN=blocksworld
+f=wl
+L=2
 p=collapse-layer
 if [[ $1 != "" ]]; then
     p=$1

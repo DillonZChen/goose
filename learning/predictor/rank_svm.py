@@ -43,11 +43,11 @@ class SVMRanker(BasePredictor):
         self._model = model
         self._X = X_in
         self._y = y_in
+        self._weights = self._model.coef_.reshape(-1)
 
     def _evaluate(self):
         mean_accuracy = self._model.score(self._X, self._y)
         logging.info(f"{mean_accuracy=}")
 
     def predict(self, X):
-        w = self._model.coef_.reshape(-1)
-        return X @ w.T
+        return X @ self._weights.T

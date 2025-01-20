@@ -9,7 +9,7 @@ from .base_predictor import BasePredictor
 class MSEMinimiser(BasePredictor):
     IS_RANK = False
 
-    def evaluate(self):
+    def _evaluate(self):
         X, y = self._X, self._y
         y_pred = self.predict(X)
         mse_loss = np.mean((y - y_pred) ** 2)

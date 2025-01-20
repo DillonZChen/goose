@@ -14,6 +14,7 @@ def embed_data(dataset: Dataset, feature_generator: Features, opts: Namespace):
         X = np.array(X).astype(float)
         y = dataset.y
         return X, y
+    assert opts.data_pruning == "equivalent"
     if opts.rank:
         assert isinstance(dataset, RankingDataset)
         dataset: RankingDataset = dataset
