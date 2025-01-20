@@ -30,13 +30,13 @@ _DEF_VAL = {
     "optimisation": "svr",
     "data_generation": "plan",
     "feature_pruning": "none",
-    "data_pruning": "equivalent",
+    "data_pruning": "equivalent-weighted",
     "facts": "fd",
     "multiset_hash": 1,
 }
 
 
-def parse_opts():
+def get_parser():
     # fmt: off
     parser = argparse.ArgumentParser()
 
@@ -73,7 +73,7 @@ def parse_opts():
                         help=f"Method for collecting data from training problems. " + \
                              f"(default: {_DEF_VAL['data_generation']})")
     parser.add_argument("-dp", "--data_pruning", type=str, default=None,
-                        choices=["none", "equivalent"],
+                        choices=["none", "equivalent", "equivalent-weighted"],
                         help=f"Method for pruning data. " + \
                              f"(default: {_DEF_VAL['data_pruning']})")
     parser.add_argument("--facts", type=str, default=None, 
@@ -92,9 +92,13 @@ def parse_opts():
                         help=f"Run distinguishability test.")
     parser.add_argument("--collect_only", action="store_true",
                         help=f"Only collect features and exit.")
-    
-    opts = parser.parse_args()
     # fmt: on
+    return parser
+
+
+def parse_opts():
+    parser = get_parser()
+    opts = parser.parse_args()
 
     assert os.path.exists(opts.data_config), get_path_error_msg(opts.data_config)
     logging.info(f"{opts.data_config=}")
@@ -124,18 +128,15 @@ def parse_opts():
                 msg += f" (overriding config value {config_value})"
             logging.info(msg)
 
-    opts.rank = is_rank_predictor(opts.optimisation)
-
     random.seed(opts.random_seed)
     np.random.seed(opts.random_seed)
 
     return opts
 
 
-def main():
-    init_logger()
-    opts = parse_opts()
-
+def train(opts):
+    opts.rank = is_rank_predictor(opts.optimisation)
+    
     # Parse dataset
     with TimerContextManager("parsing training data"):
         domain_pddl = toml.load(opts.data_config)["domain_pddl"]
@@ -163,7 +164,9 @@ def main():
 
     # Construct features
     with TimerContextManager("constructing features"):
-        X, y = embed_data(dataset=dataset, feature_generator=feature_generator, opts=opts)
+        X, y, sample_weight = embed_data(
+            dataset=dataset, feature_generator=feature_generator, opts=opts
+        )
     if not opts.rank:
         log_quartiles(y)
     logging.info(f"{X.shape=}")
@@ -181,7 +184,7 @@ def main():
 
     # Train model
     predictor = get_predictor(opts.optimisation)
-    predictor.fit_evaluate(X, y)
+    predictor.fit_evaluate(X, y, sample_weight=sample_weight)
 
     # Save model
     if opts.save_file:
@@ -191,4 +194,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    init_logger()
+    opts = parse_opts()
+    train(opts)

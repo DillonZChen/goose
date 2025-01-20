@@ -183,6 +183,7 @@ def get_train_df():
                 DOMAINS,
                 FEATURES,
                 FEATURE_PRUNING,
+                DATA_PRUNING,
                 OPTIMISERS,
                 DATA_GENERATION,
                 FACTS,

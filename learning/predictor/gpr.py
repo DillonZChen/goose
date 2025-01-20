@@ -1,4 +1,5 @@
 import logging
+import warnings
 
 import numpy as np
 from sklearn.gaussian_process import GaussianProcessRegressor as GPR
@@ -13,19 +14,22 @@ class GaussianProcessRegressor(MSEMinimiser):
 
     IS_RANK = False
 
-    def _try_fit(self, X, y):
+    def _try_fit(self, X, y, sample_weight):
+        if sample_weight is not None and not np.isclose(sample_weight, np.ones(len(y))).all():
+            warnings.warn("sample_weights is not supported by Gaussian Processes")
         kernel = DotProduct(sigma_0=0, sigma_0_bounds="fixed")
         model = GPR(kernel=kernel, alpha=1e-7, random_state=0)
         model.fit(X, y)
         self._weights = model.alpha_ @ model.X_train_
         self._X = X
         self._y = y
+        self._sample_weight = sample_weight
 
-    def fit(self, X, y):
+    def _fit_impl(self, X, y, sample_weight):
         alpha = 1e-7
 
         try:
-            self._try_fit(X, y)
+            self._try_fit(X, y, sample_weight)
         except np.linalg.LinAlgError:
             logging.info(
                 colored(
@@ -43,7 +47,7 @@ class GaussianProcessRegressor(MSEMinimiser):
 
         while True:
             try:
-                self._try_fit(X, y)
+                self._try_fit(X, y, sample_weight)
                 break
             except np.linalg.LinAlgError:
                 alpha *= 10

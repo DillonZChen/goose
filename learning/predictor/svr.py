@@ -13,12 +13,13 @@ class SupportVectorRegression(MSEMinimiser):
 
     IS_RANK = False
 
-    def fit(self, X, y):
+    def _fit_impl(self, X, y, sample_weight):
         model = LinearSVR(random_state=0, max_iter=10000)
-        model.fit(X, y)
+        model.fit(X, y, sample_weight=sample_weight)
         self._weights = model.coef_
         self._X = X
         self._y = y
+        self._sample_weight = sample_weight
 
     def predict(self, X):
         return X @ self._weights.T

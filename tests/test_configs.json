@@ -1,0 +1,36 @@
+{
+    "features": [
+        "wl",
+        "lwl2"
+    ],
+    "feature_pruning": [
+        "none",
+        "collapse-all",
+        "collapse-layer",
+        "collapse-layer-x"
+    ],
+    "data_pruning": [
+        "none",
+        "equivalent",
+        "equivalent-weighted"
+    ],
+    "optimisers": [
+        "svr",
+        "gpr",
+        "rank-svm",
+        "rank-gpc",
+        "rank-lp",
+        "rank-mip"
+    ],
+    "data_generation": [
+        "plan",
+        "state-space"
+    ],
+    "iterations": [
+        3
+    ],
+    "facts": [
+        "fd",
+        "all"
+    ]
+}

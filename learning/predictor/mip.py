@@ -33,7 +33,7 @@ class MixedIntegerProgram(BasePredictor):
         self._main_obj = main_obj
         self._regularisation = regularisation
 
-    def _evaluate(self):
+    def _evaluate_impl(self):
         try:
             solver_output = self._solver.solverModel.solution.get_status_string()
             solved_optimally = "integer optimal solution" in solver_output
@@ -55,7 +55,7 @@ class MixedIntegerProgram(BasePredictor):
         #     logging.info(f"Failed to fit perfectly on training data")
 
     @abstractmethod
-    def fit(self, X, y):
+    def _fit_impl(self, X, y, sample_weight):
         pass
 
     @abstractmethod

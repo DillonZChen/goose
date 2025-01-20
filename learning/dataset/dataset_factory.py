@@ -46,9 +46,6 @@ def get_dataset(opts: Namespace, feature_generator: WLFeatures) -> Dataset:
         "hash_prefix": str(hash(repr(opts))),
     }
 
-    rank_ss_err_msg = "Ranking dataset from state space not supported as it is too large."
-    numeric_ss_err_msg = "Numeric dataset from state space not implemented."
-
     match (rank, data_generation, domain_is_numeric):
         ##### Classic datasets #####
         case (False, "plan", False):
@@ -67,7 +64,7 @@ def get_dataset(opts: Namespace, feature_generator: WLFeatures) -> Dataset:
         case (True, "plan", False):
             return ClassicRankingDatasetFromPlans(**kwargs).get_dataset()
         case (True, _, False):
-            raise ValueError(rank_ss_err_msg)
+            raise ValueError("Ranking dataset from state space not supported as it is too large.")
 
         ##### Numeric datasets #####
         case (False, "plan", True):
@@ -75,8 +72,10 @@ def get_dataset(opts: Namespace, feature_generator: WLFeatures) -> Dataset:
         case (True, "plan", True):
             return NumericRankingDatasetFromPlans(**kwargs).get_dataset()
         case (_, _, True):
-            raise ValueError(numeric_ss_err_msg)
+            raise ValueError("Numeric dataset from state space not supported.")
 
         ##### Remaining problems #####
         case _:
-            raise ValueError(f"Unknown dataset configuration {rank=}, {data_generation=}, {domain_is_numeric=}")
+            raise ValueError(
+                f"Dataset configuration not supported {rank=}, {data_generation=}, {domain_is_numeric=}"
+            )

@@ -13,12 +13,23 @@ def embed_data(dataset: Dataset, feature_generator: Features, opts: Namespace):
         X = feature_generator.embed(dataset.wlplan_dataset)
         X = np.array(X).astype(float)
         y = dataset.y
-        return X, y
-    assert opts.data_pruning == "equivalent"
+        sample_weight = None
+    elif opts.data_pruning == "equivalent-weighted":
+        X, y, sample_weight = get_data_weighted(dataset, feature_generator, opts)
+    elif opts.data_pruning == "equivalent":
+        X, y, _ = get_data_weighted(dataset, feature_generator, opts)
+        sample_weight = None
+    else:
+        raise ValueError(f"Unknown data pruning method: {opts.data_pruning}")
+    return X, y, sample_weight
+
+
+def get_data_weighted(dataset: Dataset, feature_generator: Features, opts: Namespace):
     if opts.rank:
         assert isinstance(dataset, RankingDataset)
         dataset: RankingDataset = dataset
         unique_groups = {}
+        sample_weight_dict = {}
         counter = 0
         graphs = feature_generator.convert_to_graphs(dataset.wlplan_dataset)
         for ranking_group in tqdm(dataset.y, total=len(dataset.y)):
@@ -43,21 +54,35 @@ def embed_data(dataset: Dataset, feature_generator: Features, opts: Namespace):
                 ranking_group.bad_group = [i + counter for i in range(len(bg))]
                 counter += len(bg)
                 unique_groups[key] = ranking_group
+                sample_weight_dict[key] = 0
+            sample_weight_dict[key] += 1
         X = []
         y = []
+        sample_weight = []
         for key, ranking_group in unique_groups.items():
             for i in range(3):
                 for x in key[i]:
                     X.append(x)
             y.append(ranking_group)
+            sample_weight.append(sample_weight_dict[key])
         X = np.array(X).astype(float)
-        return X, y
+        return X, y, sample_weight
     else:
-        unique_rows = set()
+        unique_rows = {}
         graphs = feature_generator.convert_to_graphs(dataset.wlplan_dataset)
         for graph, y in tqdm(zip(graphs, dataset.y), total=len(graphs)):
             x = feature_generator.embed(graph)
             xy = np.array(x + [y])
-            unique_rows.add(tuple(xy))
-        Xy = np.array(list(unique_rows)).astype(float)
-        return Xy[:, :-1], Xy[:, -1]
+            xy = tuple(xy)
+            if xy not in unique_rows:
+                unique_rows[xy] = 0
+            unique_rows[xy] += 1
+        Xy = []
+        sample_weight = []
+        for xy, count in unique_rows.items():
+            Xy.append(xy)
+            sample_weight.append(count)
+        Xy = np.array(Xy).astype(float)
+        sample_weight = np.array(sample_weight).astype(float)
+        assert Xy.shape[0] == sample_weight.shape[0]
+        return Xy[:, :-1], Xy[:, -1], sample_weight

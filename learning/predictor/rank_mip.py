@@ -16,7 +16,7 @@ class MixedIntegerProgramRanker(MixedIntegerProgram):
 
     IS_RANK = True
 
-    def fit(self, X, y: list[RankingGroup]):
+    def _fit_impl(self, X, y: list[RankingGroup], sample_weight):
         n, d = X.shape
 
         m = pulp.LpProblem()
@@ -30,7 +30,7 @@ class MixedIntegerProgramRanker(MixedIntegerProgram):
         slacks = []
 
         # Ranking
-        for ranking_groups in y:
+        for ranking_groups, w in zip(y, sample_weight):
             good_group = ranking_groups.good_group
             maybe_group = ranking_groups.maybe_group
             bad_group = ranking_groups.bad_group
@@ -38,7 +38,7 @@ class MixedIntegerProgramRanker(MixedIntegerProgram):
             for bad_group, diff in [(maybe_group, 0), (bad_group, 1)]:
                 for good_i, bad_i in itertools.product(good_group, bad_group):
                     slack_var = Var(f"s:{len(slacks)}", lowBound=0, cat=pulp.const.LpContinuous)
-                    slacks.append(slack_var)
+                    slacks.append(slack_var * w)
                     m += f_pred[bad_i] - f_pred[good_i] >= diff - slack_var
 
         # Minimise complexity
