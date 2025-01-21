@@ -25,21 +25,15 @@
         "equivalent-weighted"
     ],
     "optimisers": [
-        "gpr",
         "svr",
-        "rank-gpc",
-        "rank-svm",
-        "rank-lp"
+        "rank-svm"
     ],
     "data_generation": [
         "plan"
     ],
     "iterations": [
-        1,
         2,
-        3,
         4,
-        5,
         6
     ],
     "facts": [
