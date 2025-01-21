@@ -1,3 +1,0 @@
-domain_pddl = 'benchmarks/ipc23lt-pathfree-axioms/transport/domain.pddl'
-tasks_dir = 'benchmarks/ipc23lt-pathfree-axioms/transport/training'
-plans_dir = 'benchmarks/ipc23lt-pathfree-axioms/transport/training_plans'

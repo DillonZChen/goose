@@ -1,0 +1,3 @@
+domain_pddl = 'benchmarks/hbf/warehouse/domain.pddl'
+tasks_dir = 'benchmarks/hbf/warehouse/training'
+plans_dir = 'benchmarks/hbf/warehouse/training_plans_fd'

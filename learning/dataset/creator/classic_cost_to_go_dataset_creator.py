@@ -103,7 +103,8 @@ class ClassicCostToGoDatasetFromPlans(ClassicDatasetCreator):
                 if h_opt == 0:
                     break
                 mimir_state = action.apply(mimir_state)
-                wlplan_states.append(self._mimir_to_wlplan_state(mimir_state))
+                wlplan_state = self._mimir_to_wlplan_state(mimir_state)
+                wlplan_states.append(wlplan_state)
                 y.append(h_opt)
 
             wlplan_data.append((wlplan_problem, wlplan_states))

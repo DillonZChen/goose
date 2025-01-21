@@ -3,7 +3,7 @@
 arg=$1
 
 # DOMAIN=bw-small  # don't call this for planning
-DOMAIN=blocksworld
+DOMAIN=warehouse-hbf
 f=wl
 L=4
 p=none
@@ -13,18 +13,28 @@ fi
 d=plan
 multiset_hash=1
 facts=fd
+optimisation=svr
+planner=fd
 
-save_file=experiments/_short/model/${DOMAIN}_${f}_${L}_${p}_${d}_${multiset_hash}_${facts}.model
-log_file=experiments/_short/plan/${DOMAIN}_${f}_${L}_${p}_${d}_${multiset_hash}_${facts}.log
+save_file=experiments/_short/model/${DOMAIN}_${f}_${L}_${p}_${d}_${optimisation}_${multiset_hash}_${facts}.model
+log_file=experiments/_short/train/${DOMAIN}_${f}_${L}_${p}_${d}_${optimisation}_${multiset_hash}_${facts}.log
 mkdir -p experiments/_short/model
 mkdir -p experiments/_short/plan
 
 PROBLEM=1_12
 
-domain_pddl=benchmarks/ipc23lt/$DOMAIN/domain.pddl
-problem_pddl=benchmarks/ipc23lt/$DOMAIN/testing/p${PROBLEM}.pddl
+if [ $DOMAIN == "blocksworld-hbf" ]; then
+    domain_pddl=benchmarks/hbf/blocksworld/domain.pddl
+    problem_pddl=benchmarks/hbf/blocksworld/testing/p${PROBLEM}.pddl
+elif [ $DOMAIN == "warehouse-hbf" ]; then
+    domain_pddl=benchmarks/hbf/warehouse/domain.pddl
+    problem_pddl=benchmarks/hbf/warehouse/testing/p${PROBLEM}.pddl
+else 
+    domain_pddl=benchmarks/ipc23lt/$DOMAIN/domain.pddl
+    problem_pddl=benchmarks/ipc23lt/$DOMAIN/testing/p${PROBLEM}.pddl
+fi
 
-python3 plan.py $domain_pddl $problem_pddl $save_file | tee $log_file
+python3 plan.py $domain_pddl $problem_pddl $save_file -p $planner | tee $log_file
 
 # wl, 4, none pruning
 # blocksworld 1_12
