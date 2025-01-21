@@ -11,8 +11,7 @@
         "transport"
     ],
     "features": [
-        "wl",
-        "lwl2"
+        "wl"
     ],
     "feature_pruning": [
         "none",
@@ -21,24 +20,27 @@
         "collapse-layer-x"
     ],
     "data_pruning": [
-        "none",
-        "equivalent",
         "equivalent-weighted"
     ],
     "optimisers": [
+        "gpr",
         "svr",
-        "rank-svm"
+        "rank-gpc",
+        "rank-svm",
+        "rank-lp"
     ],
     "data_generation": [
         "plan"
     ],
     "iterations": [
+        1,
         2,
+        3,
         4,
+        5,
         6
     ],
     "facts": [
-        "fd",
-        "all"
+        "fd"
     ]
 }
