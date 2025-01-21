@@ -22,7 +22,8 @@
     ],
     "data_pruning": [
         "none",
-        "equivalent"
+        "equivalent",
+        "equivalent-unique"
     ],
     "optimisers": [
         "svr",
