@@ -31,9 +31,10 @@ ITERATIONS = [str(i) for i in CONFIG["iterations"]]
 REPEATS = [str(i) for i in range(CONFIG["repeats"])]
 
 PROBLEMS = []
-# PROBLEMS = sorted([f"{x}_{y:02d}" for y in range(3, 31, 3) for x in [0, 1, 2]])
+PROBLEMS = sorted([f"{x}_{y:02d}" for y in range(3, 31, 3) for x in [0, 1, 2]])
 PROBLEMS += sorted([f"{x}_{y:02d}" for y in range(2, 31, 3) for x in [0, 1, 2]])
 PROBLEMS += sorted([f"{x}_{y:02d}" for y in range(1, 31, 3) for x in [0, 1, 2]])
+PROBLEMS = sorted(PROBLEMS)
 
 if os.path.exists("/pfcalcul/work/dchen"):
     CLUSTER_NAME = "pfcalcul"
@@ -167,6 +168,17 @@ def main():
             problem,
             repeat,
         ) = config
+        if problem[0] == "1" and domain in {
+            "floortile",
+        }:
+            continue
+        if problem[0] == "2" and domain in {
+            "childsnack",
+            "floortile",
+            "sokoban",
+            "transport",
+        }:
+            continue
         job_description = "_".join(config)
         log_file = f"{LOG_DIR}/{job_description}.log"
         lck_file = f"{LCK_DIR}/{job_description}.lck"
