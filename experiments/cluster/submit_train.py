@@ -28,16 +28,21 @@ elif os.path.exists("/scratch/cd85/dc6693"):
     CLUSTER_NAME = "gadi"
     CLUSTER_TYPE = "pbs"
 else:
-    raise RuntimeError("Not on a compute cluster.")
+    CLUSTER_NAME = "local"
+    CLUSTER_TYPE = "local"
+    # raise RuntimeError("Not on a compute cluster.")
 
 ## paths
 TMP_DIR = os.path.normpath(f"{CUR_DIR}/../_tmp_train")
 LCK_DIR = os.path.normpath(f"{CUR_DIR}/../_lck_train")
 LOG_DIR = os.path.normpath(f"{CUR_DIR}/../_log_train/{CLUSTER_NAME}")
 MDL_DIR = os.path.normpath(f"{CUR_DIR}/../_models/{CLUSTER_NAME}")
-os.makedirs(LOG_DIR, exist_ok=True)
 JOB_SCRIPT = f"{CUR_DIR}/job_train_{CLUSTER_TYPE}.sh"
-assert os.path.exists(JOB_SCRIPT), JOB_SCRIPT
+if CLUSTER_NAME != "local":
+    assert os.path.exists(JOB_SCRIPT), JOB_SCRIPT
+else:
+    LOG_DIR = os.path.normpath(f"{CUR_DIR}/../_log_train")
+os.makedirs(LOG_DIR, exist_ok=True)
 
 """ Main loop """
 
@@ -66,9 +71,17 @@ def main():
         action="store_true",
         help="remove everything",
     )
+    parser.add_argument(
+        "--remove_not_in_config_files",
+        action="store_true",
+        help="remove files not in config",
+    )
     args = parser.parse_args()
 
     submissions = args.submissions
+    if CLUSTER_NAME == "local":
+        print("SETTING SUBMISSIONS TO 0 FOR LOCAL CLUSTER")
+        submissions = 0
     skipped_from_lock = 0
     skipped_from_log = 0
     to_go = 0
@@ -84,6 +97,9 @@ def main():
         return
 
     submitted = 0
+
+    log_files = set()
+    sve_files = set()
 
     for config in product(
         DOMAINS,
@@ -105,6 +121,9 @@ def main():
         os.makedirs(os.path.dirname(log_file), exist_ok=True)
         os.makedirs(os.path.dirname(lck_file), exist_ok=True)
         os.makedirs(os.path.dirname(sve_file), exist_ok=True)
+
+        log_files.add(log_file)
+        sve_files.add(sve_file)
 
         if args.remove_failed:
             if not os.path.exists(log_file):
@@ -204,6 +223,20 @@ def main():
     print(f"{skipped_from_lock=}")
     print(f"{skipped_from_log=}")
     print(f"{to_go=}")
+
+    if args.remove_not_in_config_files:
+        removed = 0
+        for f in sorted(os.listdir(LOG_DIR)):
+            log_file = f"{LOG_DIR}/{f}"
+            if not log_file in log_files:
+                os.remove(log_file)
+                removed += 1
+        for f in sorted(os.listdir(MDL_DIR)):
+            sve_file = f"{MDL_DIR}/{f}"
+            if not sve_file in sve_files and os.path.exists(sve_file):
+                os.remove(sve_file)
+                removed += 1
+        print(f"Removed {removed} files not in config")
 
 
 if __name__ == "__main__":

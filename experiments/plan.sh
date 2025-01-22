@@ -2,11 +2,11 @@
 
 arg=$1
 
-# DOMAIN=bw-small  # don't call this for planning
-DOMAIN=warehouse-hbf
+DOMAIN=bw-small
+DOMAIN=blocksworld
 f=wl
 L=4
-p=none
+p=collapse-all
 if [[ $1 != "" ]]; then
     p=$1
 fi
@@ -51,3 +51,18 @@ python3 plan.py $domain_pddl $problem_pddl $save_file -p $planner | tee $log_fil
 # [t=6.038954s, 76116 KB] Int hash set resizes: 16
 # [t=6.038954s, 76116 KB] Search time: 5.952955s
 # [t=6.038954s, 76116 KB] Total time: 6.038954s
+
+# wl, 4, collapse-all pruning
+# [t=6.308636s, 72804 KB] Plan length: 352 step(s).
+# [t=6.308636s, 72804 KB] Plan cost: 352
+# [t=6.308636s, 72804 KB] Expanded 1164 state(s).
+# [t=6.308636s, 72804 KB] Reopened 0 state(s).
+# [t=6.308636s, 72804 KB] Evaluated 29825 state(s).
+# [t=6.308636s, 72804 KB] Evaluations: 29825
+# [t=6.308636s, 72804 KB] Generated 31173 state(s).
+# [t=6.308636s, 72804 KB] Dead ends: 0 state(s).
+# [t=6.308636s, 72804 KB] Number of registered states: 29825
+# [t=6.308636s, 72804 KB] Int hash set load factor: 29825/32768 = 0.910187
+# [t=6.308636s, 72804 KB] Int hash set resizes: 15
+# [t=6.308636s, 72804 KB] Search time: 6.235496s
+# [t=6.308636s, 72804 KB] Total time: 6.308636s

@@ -30,7 +30,8 @@ FACTS = CONFIG["facts"]
 ITERATIONS = [str(i) for i in CONFIG["iterations"]]
 REPEATS = [str(i) for i in range(CONFIG["repeats"])]
 
-PROBLEMS = [f"{x}_{y:02d}" for y in range(3, 31, 3) for x in [0, 1, 2]]
+# PROBLEMS = [f"{x}_{y:02d}" for y in range(3, 31, 3) for x in [0, 1, 2]]
+PROBLEMS = [f"{x}_{y:02d}" for y in range(1, 31) for x in [0, 1, 2]]
 
 if os.path.exists("/pfcalcul/work/dchen"):
     CLUSTER_NAME = "pfcalcul"
@@ -39,7 +40,9 @@ elif os.path.exists("/scratch/cd85/dc6693"):
     CLUSTER_NAME = "gadi"
     CLUSTER_TYPE = "pbs"
 else:
-    raise RuntimeError("Not on a compute cluster.")
+    CLUSTER_NAME = "local"
+    CLUSTER_TYPE = "local"
+    # raise RuntimeError("Not on a compute cluster.")
 
 ## paths
 TMP_DIR = os.path.normpath(f"{CUR_DIR}/../_tmp_plan")
@@ -52,7 +55,10 @@ JOB_SCRIPT = f"{CUR_DIR}/job_plan.sh"
 if CLUSTER_NAME == "pfcalcul":
     MDL_DIR += "/pfcalcul"
     JOB_SCRIPT = f"{CUR_DIR}/job_plan_slurm.sh"
-assert os.path.exists(JOB_SCRIPT), JOB_SCRIPT
+if CLUSTER_NAME != "local":
+    assert os.path.exists(JOB_SCRIPT), JOB_SCRIPT
+else:
+    LOG_DIR = os.path.normpath(f"{CUR_DIR}/../_log_plan/local")
 
 """ Main loop """
 
@@ -101,9 +107,17 @@ def main():
         type=str,
         help="submit jobs only from specified pruning",
     )
+    parser.add_argument(
+        "--remove_not_in_config_files",
+        action="store_true",
+        help="remove files not in config",
+    )
     args = parser.parse_args()
 
     submissions = args.submissions
+    if CLUSTER_NAME == "local":
+        print("SETTING SUBMISSIONS TO 0 FOR LOCAL CLUSTER")
+        submissions = 0
     skipped_from_missing_model = 0
     skipped_from_lock = 0
     skipped_from_log = 0
@@ -117,6 +131,10 @@ def main():
     done_domains = {d: 0 for d in DOMAINS}
 
     submitted = 0
+
+    log_files = set()
+    sve_files = set()
+    plan_files = set()
 
     for config in Perc(
         list(
@@ -134,7 +152,18 @@ def main():
             )
         )
     ):
-        domain, feature, fpruning, dpruning, optimiser, data_gen, facts, iterations, problem, repeat = config
+        (
+            domain,
+            feature,
+            fpruning,
+            dpruning,
+            optimiser,
+            data_gen,
+            facts,
+            iterations,
+            problem,
+            repeat,
+        ) = config
         job_description = "_".join(config)
         log_file = f"{LOG_DIR}/{job_description}.log"
         lck_file = f"{LCK_DIR}/{job_description}.lck"
@@ -146,6 +175,10 @@ def main():
         os.makedirs(os.path.dirname(lck_file), exist_ok=True)
         os.makedirs(os.path.dirname(sve_file), exist_ok=True)
         os.makedirs(os.path.dirname(plan_file), exist_ok=True)
+
+        log_files.add(log_file)
+        sve_files.add(sve_file)
+        plan_files.add(plan_file)
 
         if args.remove_terminated:
             if not os.path.exists(log_file):
@@ -304,6 +337,25 @@ def main():
     print(f"{skipped_from_log=}")
     print(f"{to_go=}")
     print("*" * 80)
+
+    if args.remove_not_in_config_files:
+        removed = 0
+        for f in sorted(os.listdir(LOG_DIR)):
+            log_file = f"{LOG_DIR}/{f}"
+            if not log_file in log_files:
+                os.remove(log_file)
+                removed += 1
+        for f in sorted(os.listdir(MDL_DIR)):
+            sve_file = f"{MDL_DIR}/{f}"
+            if not sve_file in sve_files and os.path.exists(sve_file):
+                os.remove(sve_file)
+                removed += 1
+        for f in sorted(os.listdir(PLN_DIR)):
+            plan_file = f"{PLN_DIR}/{f}"
+            if not plan_file in plan_files and os.path.exists(plan_file):
+                os.remove(plan_file)
+                removed += 1
+        print(f"Removed {removed} files not in config")
 
 
 class Perc:

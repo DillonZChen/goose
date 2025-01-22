@@ -3,10 +3,10 @@
 arg=$1
 
 DOMAIN=bw-small
-DOMAIN=warehouse-hbf
+DOMAIN=blocksworld
 f=wl
 L=4
-p=none
+p=collapse-all
 if [[ $1 != "" ]]; then
     p=$1
 fi
