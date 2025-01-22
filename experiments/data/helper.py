@@ -30,7 +30,10 @@ FACTS = CONFIG["facts"]
 ITERATIONS = [str(i) for i in CONFIG["iterations"]]
 REPEATS = [str(i) for i in range(CONFIG["repeats"])]
 
+PROBLEMS = []
 PROBLEMS = sorted([f"{x}_{y:02d}" for y in range(3, 31, 3) for x in [0, 1, 2]])
+PROBLEMS += sorted([f"{x}_{y:02d}" for y in range(2, 31, 3) for x in [0, 1, 2]])
+PROBLEMS += sorted([f"{x}_{y:02d}" for y in range(1, 31, 3) for x in [0, 1, 2]])
 
 TIMEOUT = 300
 
@@ -69,14 +72,18 @@ TRAIN_DF_KEYS = CONFIG_KEYS + [
 ]
 
 
-def parse_plan_log(log_path: str):
-    data = {
+def _get_default_plan_data():
+    return {
         "tried": False,
         "solved": False,
         "expanded": -1,
         "plan_length": -1,
         "runtime": TIMEOUT,
     }
+
+
+def parse_plan_log(log_path: str):
+    data = _get_default_plan_data()
 
     if not os.path.exists(log_path):
         return data
@@ -94,12 +101,14 @@ def parse_plan_log(log_path: str):
             expanded = re.search(r"Expanded (\d+) state\(s\)", content)
             runtime = re.search(r"Planner time: ([\d.]+)s", content)
             if runtime is None:
-                # Total time: 0.002756
+                # Total time: 0.002756 (for Powerlifted)
                 runtime = re.search(r"Total time: ([\d.]+)", content)
             data["solved"] = True
             data["plan_length"] = int(plan_length.group(1))
             data["expanded"] = int(expanded.group(1))
             data["runtime"] = float(runtime.group(1))
+            if data["runtime"] > TIMEOUT:
+                data = _get_default_plan_data()
     except Exception as e:
         print(f"Error parsing {log_path}: {e}")
 

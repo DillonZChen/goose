@@ -30,8 +30,10 @@ FACTS = CONFIG["facts"]
 ITERATIONS = [str(i) for i in CONFIG["iterations"]]
 REPEATS = [str(i) for i in range(CONFIG["repeats"])]
 
-# PROBLEMS = [f"{x}_{y:02d}" for y in range(3, 31, 3) for x in [0, 1, 2]]
-PROBLEMS = [f"{x}_{y:02d}" for y in range(1, 31) for x in [0, 1, 2]]
+PROBLEMS = []
+# PROBLEMS = sorted([f"{x}_{y:02d}" for y in range(3, 31, 3) for x in [0, 1, 2]])
+PROBLEMS += sorted([f"{x}_{y:02d}" for y in range(2, 31, 3) for x in [0, 1, 2]])
+PROBLEMS += sorted([f"{x}_{y:02d}" for y in range(1, 31, 3) for x in [0, 1, 2]])
 
 if os.path.exists("/pfcalcul/work/dchen"):
     CLUSTER_NAME = "pfcalcul"
@@ -135,6 +137,7 @@ def main():
     log_files = set()
     sve_files = set()
     plan_files = set()
+    n_removed = 0
 
     for config in Perc(
         list(
@@ -242,6 +245,21 @@ def main():
         if os.path.exists(log_file) and not args.force:
             skipped_from_log += 1
             done_domains[domain] += 1
+            with open(log_file) as f:
+                content = f.read()
+            if len(content) == 0 or "No space left on device" in content:
+                os.remove(log_file)
+                print("REMOVE", log_file)
+                n_removed += 1
+                continue
+            if "Solution found" in content:
+                continue
+            if "DUE TO TIME LIMIT" in content:
+                continue
+            if "OOM Killed" in content:
+                continue
+            # os.remove(log_file)
+            # n_removed += 1
             continue
 
         if args.which:
@@ -356,6 +374,9 @@ def main():
                 os.remove(plan_file)
                 removed += 1
         print(f"Removed {removed} files not in config")
+
+    if n_removed > 0:
+        print(f"Removed {n_removed} empty logs")
 
 
 class Perc:

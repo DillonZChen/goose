@@ -22,6 +22,7 @@
         "collapse-layer-x"
     ],
     "data_pruning": [
+        "none",
         "equivalent-weighted"
     ],
     "optimisers": [
