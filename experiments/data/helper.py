@@ -17,6 +17,8 @@ LOG_TRAIN_DIR = os.path.normpath(f"{CUR_DIR}/../_log_train")
 PLOT_DIR = os.path.normpath(f"{CUR_DIR}/../_plots")
 os.makedirs(PLOT_DIR, exist_ok=True)
 
+PAPER_PLOT_DIR = "/home/dzc/manuscripts/socs-25-redundant/auto_plots"
+
 with open(f"{ROOT_DIR}/experiments/config.json") as f:
     CONFIG = json.load(f)
 
@@ -229,7 +231,10 @@ def get_train_df():
         for k, v in config_data.items():
             data[k].append(v)
         for i, k in enumerate(CONFIG_KEYS):
-            data[k].append(config[i])
+            v = config[i]
+            if k == "domain":
+                v = str(v).capitalize()
+            data[k].append(v)
 
     df = pd.DataFrame(data)
     return df

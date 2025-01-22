@@ -35,21 +35,20 @@ def main():
     opts = parse_opts()
 
     domain_pddl = opts.domain_pddl
-    assert os.path.exists(domain_pddl)
-    # domain_pddl = os.path.abspath(domain_pddl)
-
-    if is_numeric(domain_pddl):
-        if opts.planner != "nfd":
-            print("Domain is numeric so switching planner to nfd.")
-        opts.planner = "nfd"
+    if domain_pddl == "fdr":
+        assert opts.planner == "fd", "FDR inputs are only supported with Fast Downward"
+    else:
+        assert os.path.exists(domain_pddl), domain_pddl
+        if is_numeric(domain_pddl):
+            if opts.planner != "nfd":
+                print("Domain is numeric so switching planner to nfd.")
+            opts.planner = "nfd"
 
     problem_pddl = opts.problem_pddl
-    assert os.path.exists(problem_pddl)
-    # problem_pddl = os.path.abspath(problem_pddl)
+    assert os.path.exists(problem_pddl), problem_pddl
 
     model_path = opts.model_path
-    assert os.path.exists(model_path)
-    # model_path = os.path.abspath(model_path)
+    assert os.path.exists(model_path), model_path
 
     planner = opts.planner
     timeout = str(opts.timeout)
@@ -58,7 +57,6 @@ def main():
     for s in [domain_pddl, problem_pddl, model_path, planner, timeout]:
         trash_file += str(hash(s))
     trash_file = f"output_{trash_file}.out"
-    # trash_file = os.path.abspath(trash_file)
 
     match planner:
         case "pwl":
@@ -87,20 +85,29 @@ def main():
         case "fd":
             h_goose = f'wlgoose(model_file="{model_path}")'
 
-            cmd = [
-                "python3",
-                f"{_CUR_DIR}/planning/downward/fast-downward.py",
-                "--sas-file",
-                trash_file,
-                "--plan-file",
-                opts.plan_file,
-                "--search-time-limit",
-                timeout,
-                domain_pddl,
-                problem_pddl,
-                "--search",
-                f"eager_greedy([{h_goose}])",
-            ]
+            if domain_pddl == "fdr":
+                cmd = [
+                    "python3",
+                    f"{_CUR_DIR}/planning/downward/fast-downward.py",
+                    problem_pddl,
+                    "--search",
+                    f"eager_greedy([{h_goose}])",
+                ]
+            else:
+                cmd = [
+                    "python3",
+                    f"{_CUR_DIR}/planning/downward/fast-downward.py",
+                    "--sas-file",
+                    trash_file,
+                    "--plan-file",
+                    opts.plan_file,
+                    "--search-time-limit",
+                    timeout,
+                    domain_pddl,
+                    problem_pddl,
+                    "--search",
+                    f"eager_greedy([{h_goose}])",
+                ]
         case "nfd":
             h_goose = f'wlgoose(model_path={model_path},domain_path={domain_pddl},problem_path={problem_pddl})'
 

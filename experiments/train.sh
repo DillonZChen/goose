@@ -6,7 +6,7 @@ DOMAIN=bw-small
 DOMAIN=blocksworld
 f=wl
 L=4
-p=none
+p=collapse-layer-x
 if [[ $1 != "" ]]; then
     p=$1
 fi
