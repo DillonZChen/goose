@@ -30,6 +30,14 @@ FACTS = CONFIG["facts"]
 ITERATIONS = [str(i) for i in CONFIG["iterations"]]
 REPEATS = [str(i) for i in range(CONFIG["repeats"])]
 
+FEATURE_GENERATION_PREFIX = {
+    "none": 0,
+    "collapse-all": 9,
+    "collapse-all-x": 1,
+    "collapse-layer": 2,
+    "collapse-layer-x": 3,
+}
+
 PROBLEMS = []
 PROBLEMS = sorted([f"{x}_{y:02d}" for y in range(3, 31, 3) for x in [0, 1, 2]])
 PROBLEMS += sorted([f"{x}_{y:02d}" for y in range(2, 31, 3) for x in [0, 1, 2]])
@@ -57,6 +65,7 @@ PLAN_DF_KEYS = CONFIG_KEYS + [
     "expanded",
     "plan_length",
     "runtime",
+    "cpu",
 ]
 
 TRAIN_DF_KEYS = CONFIG_KEYS + [
@@ -70,6 +79,7 @@ TRAIN_DF_KEYS = CONFIG_KEYS + [
     "training_time",
     "mse_loss",
     "f1_macro",
+    "mean_accuracy",
 ]
 
 
@@ -80,6 +90,7 @@ def _get_default_plan_data():
         "expanded": -1,
         "plan_length": -1,
         "runtime": TIMEOUT,
+        "cpu": "",
     }
 
 
@@ -91,8 +102,12 @@ def parse_plan_log(log_path: str):
     with open(log_path, "r") as file:
         content = file.read()
 
+    # Model name:                           Intel(R) Xeon(R) CPU E5-2695 v4 @ 2.10GHz
+    cpu = re.search(r"Model name:\s+(.*)", content)
+    if cpu:
+        cpu = cpu.group(1).strip()
+
     try:
-        data["tried"] = True
         solved = "Solution found" in content
         if solved:
             # [t=0.016241s, 10888 KB] Plan length: 10 step(s).
@@ -110,8 +125,10 @@ def parse_plan_log(log_path: str):
             data["runtime"] = float(runtime.group(1))
             if data["runtime"] > TIMEOUT:
                 data = _get_default_plan_data()
+        data["tried"] = True
     except Exception as e:
         print(f"Error parsing {log_path}: {e}")
+    data["cpu"] = cpu
 
     return data
 
@@ -128,6 +145,7 @@ def parse_train_log(log_path: str):
         "training_time": -1,
         "mse_loss": -1,
         "f1_macro": -1,
+        "mean_accuracy": -1,
     }
 
     if not os.path.exists(log_path):
@@ -149,6 +167,7 @@ def parse_train_log(log_path: str):
     data["training_time"] = float(try_match(r"Finished training model in ([\d.]+)s", -1))
     data["mse_loss"] = float(try_match(r"mse_loss=([\d.]+)", -1))
     data["f1_macro"] = float(try_match(r"f1_macro=([\d.]+)", -1))
+    data["mean_accuracy"] = float(try_match(r"mean_accuracy=([\d.]+)", -1))
 
     return data
 
@@ -179,7 +198,10 @@ def get_plan_df(cluster: str):
         data["problem"].append(config[-2])
         data["repeat"].append(config[-1])
         for i, k in enumerate(CONFIG_KEYS):
-            data[k].append(config[i])
+            value = config[i]
+            if k == "feature_pruning":
+                value = str(FEATURE_GENERATION_PREFIX[config[i]]) + value
+            data[k].append(value)
 
     df = pd.DataFrame(data)
     return df

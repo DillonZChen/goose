@@ -17,7 +17,6 @@
     ],
     "feature_pruning": [
         "none",
-        "collapse-all",
         "collapse-all-x",
         "collapse-layer",
         "collapse-layer-x"

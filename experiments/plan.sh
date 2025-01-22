@@ -6,7 +6,7 @@ DOMAIN=bw-small
 DOMAIN=blocksworld
 f=wl
 L=4
-p=collapse-all
+p=none
 if [[ $1 != "" ]]; then
     p=$1
 fi
@@ -38,31 +38,46 @@ python3 plan.py $domain_pddl $problem_pddl $save_file -p $planner | tee $log_fil
 
 # wl, 4, none pruning
 # blocksworld 1_12
-# [t=6.038954s, 76116 KB] Plan length: 334 step(s).
-# [t=6.038954s, 76116 KB] Plan cost: 334
-# [t=6.038954s, 76116 KB] Expanded 1193 state(s).
-# [t=6.038954s, 76116 KB] Reopened 0 state(s).
-# [t=6.038954s, 76116 KB] Evaluated 29499 state(s).
-# [t=6.038954s, 76116 KB] Evaluations: 29499
-# [t=6.038954s, 76116 KB] Generated 31064 state(s).
-# [t=6.038954s, 76116 KB] Dead ends: 0 state(s).
-# [t=6.038954s, 76116 KB] Number of registered states: 29499
-# [t=6.038954s, 76116 KB] Int hash set load factor: 29499/65536 = 0.450119
-# [t=6.038954s, 76116 KB] Int hash set resizes: 16
-# [t=6.038954s, 76116 KB] Search time: 5.952955s
-# [t=6.038954s, 76116 KB] Total time: 6.038954s
+# [t=5.391743s, 76116 KB] Plan length: 324 step(s).
+# [t=5.391743s, 76116 KB] Plan cost: 324
+# [t=5.391743s, 76116 KB] Expanded 942 state(s).
+# [t=5.391743s, 76116 KB] Reopened 0 state(s).
+# [t=5.391743s, 76116 KB] Evaluated 25247 state(s).
+# [t=5.391743s, 76116 KB] Evaluations: 25247
+# [t=5.391743s, 76116 KB] Generated 26286 state(s).
+# [t=5.391743s, 76116 KB] Dead ends: 0 state(s).
+# [t=5.391743s, 76116 KB] Number of registered states: 25247
+# [t=5.391743s, 76116 KB] Int hash set load factor: 25247/32768 = 0.770477
+# [t=5.391743s, 76116 KB] Int hash set resizes: 15
+# [t=5.391743s, 76116 KB] Search time: 5.306756s
+# [t=5.391743s, 76116 KB] Total time: 5.391743s
 
 # wl, 4, collapse-all pruning
-# [t=6.308636s, 72804 KB] Plan length: 352 step(s).
-# [t=6.308636s, 72804 KB] Plan cost: 352
-# [t=6.308636s, 72804 KB] Expanded 1164 state(s).
-# [t=6.308636s, 72804 KB] Reopened 0 state(s).
-# [t=6.308636s, 72804 KB] Evaluated 29825 state(s).
-# [t=6.308636s, 72804 KB] Evaluations: 29825
-# [t=6.308636s, 72804 KB] Generated 31173 state(s).
-# [t=6.308636s, 72804 KB] Dead ends: 0 state(s).
-# [t=6.308636s, 72804 KB] Number of registered states: 29825
-# [t=6.308636s, 72804 KB] Int hash set load factor: 29825/32768 = 0.910187
-# [t=6.308636s, 72804 KB] Int hash set resizes: 15
-# [t=6.308636s, 72804 KB] Search time: 6.235496s
-# [t=6.308636s, 72804 KB] Total time: 6.308636s
+# [t=2.491777s, 56984 KB] Plan length: 302 step(s).
+# [t=2.491777s, 56984 KB] Plan cost: 302
+# [t=2.491777s, 56984 KB] Expanded 509 state(s).
+# [t=2.491777s, 56984 KB] Reopened 0 state(s).
+# [t=2.491777s, 56984 KB] Evaluated 12396 state(s).
+# [t=2.491777s, 56984 KB] Evaluations: 12396
+# [t=2.491777s, 56984 KB] Generated 12903 state(s).
+# [t=2.491777s, 56984 KB] Dead ends: 0 state(s).
+# [t=2.491777s, 56984 KB] Number of registered states: 12396
+# [t=2.491777s, 56984 KB] Int hash set load factor: 12396/16384 = 0.756592
+# [t=2.491777s, 56984 KB] Int hash set resizes: 14
+# [t=2.491777s, 56984 KB] Search time: 2.426787s
+# [t=2.491777s, 56984 KB] Total time: 2.491777s
+
+# wl, 4, collapse-all-x pruning
+# [t=2.511108s, 56796 KB] Plan length: 310 step(s).
+# [t=2.511108s, 56796 KB] Plan cost: 310
+# [t=2.511108s, 56796 KB] Expanded 565 state(s).
+# [t=2.511108s, 56796 KB] Reopened 0 state(s).
+# [t=2.511108s, 56796 KB] Evaluated 13381 state(s).
+# [t=2.511108s, 56796 KB] Evaluations: 13381
+# [t=2.511108s, 56796 KB] Generated 13959 state(s).
+# [t=2.511108s, 56796 KB] Dead ends: 0 state(s).
+# [t=2.511108s, 56796 KB] Number of registered states: 13381
+# [t=2.511108s, 56796 KB] Int hash set load factor: 13381/16384 = 0.816711
+# [t=2.511108s, 56796 KB] Int hash set resizes: 14
+# [t=2.511108s, 56796 KB] Search time: 2.436418s
+# [t=2.511108s, 56796 KB] Total time: 2.511108s
