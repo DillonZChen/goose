@@ -34,10 +34,11 @@ REPEATS = [str(i) for i in range(CONFIG["repeats"])]
 
 FEATURE_GENERATION_PREFIX = {
     "none": 0,
-    "collapse-all": 9,
     "collapse-all-x": 1,
-    "collapse-layer": 2,
-    "collapse-layer-x": 3,
+    "collapse-layer-x": 2,
+    "collapse-layer-y": 3,
+    "collapse-all": 9,
+    "collapse-layer": 9,
 }
 
 PROBLEMS = []

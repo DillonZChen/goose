@@ -19,7 +19,9 @@
         "none",
         "collapse-all-x",
         "collapse-layer-x",
-        "collapse-layer-y"
+        "collapse-layer-y",
+        "collapse-layer-f",
+        "collapse-layer-yf"
     ],
     "data_pruning": [
         "equivalent-weighted"
