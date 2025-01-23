@@ -288,8 +288,10 @@ def main():
             to_go += 1
             continue
 
-        domain_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/domain.pddl"
-        problem_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/testing/p{problem}.pddl"
+        # domain_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/domain.pddl"
+        # problem_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/testing/p{problem}.pddl"
+        domain_pddl = f"fdr"
+        problem_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/testing/p{problem}.sas"
 
         if facts == "fd":
             planner = "fd"

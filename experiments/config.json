@@ -18,11 +18,10 @@
     "feature_pruning": [
         "none",
         "collapse-all-x",
-        "collapse-layer",
-        "collapse-layer-x"
+        "collapse-layer-x",
+        "collapse-layer-y"
     ],
     "data_pruning": [
-        "none",
         "equivalent-weighted"
     ],
     "optimisers": [
