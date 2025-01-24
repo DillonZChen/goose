@@ -15,6 +15,7 @@ FEATURES = CONFIG["features"]
 FEATURE_PRUNING = CONFIG["feature_pruning"]
 DATA_PRUNING = CONFIG["data_pruning"]
 OPTIMISERS = CONFIG["optimisers"]
+MULTISET_HASH = CONFIG["multiset_hash"]
 DATA_GENERATION = CONFIG["data_generation"]
 FACTS = CONFIG["facts"]
 
@@ -107,12 +108,13 @@ def main():
         FEATURE_PRUNING,
         DATA_PRUNING,
         OPTIMISERS,
+        MULTISET_HASH,
         DATA_GENERATION,
         FACTS,
         ITERATIONS,
         REPEATS,
     ):
-        domain, feature, fpruning, dpruning, optimiser, data_gen, facts, iterations, repeat = config
+        domain, feature, fpruning, dpruning, optimiser, multiset_hash, data_gen, facts, iterations, repeat = config
         job_description = "_".join(config)
         log_file = f"{LOG_DIR}/{job_description}.log"
         lck_file = f"{LCK_DIR}/{job_description}.lck"
@@ -180,6 +182,7 @@ def main():
                 f"--data_pruning={dpruning}",
                 f"--iterations={iterations}",
                 f"--optimisation={optimiser}",
+                f"--multiset_hash={multiset_hash}",
                 f"--data_generation={data_gen}",
                 f"--facts={facts}",
                 f"--random_seed={repeat}",

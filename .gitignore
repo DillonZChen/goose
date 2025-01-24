@@ -10,6 +10,7 @@ _*
 *.sas
 *.bak
 *.csv
+*.zip
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

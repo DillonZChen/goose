@@ -13,31 +13,39 @@
         "transport"
     ],
     "features": [
-        "wl"
+        "wl",
+        "lwl2",
+        "iwl",
+        "niwl"
     ],
     "feature_pruning": [
-        "none",
-        "collapse-all-x",
-        "collapse-layer-x",
-        "collapse-layer-y",
-        "collapse-layer-f",
-        "collapse-layer-yf"
+        "none"
     ],
     "data_pruning": [
         "equivalent-weighted"
     ],
     "optimisers": [
         "svr",
-        "rank-svm"
+        "gpr",
+        "rank-svm",
+        "rank-gpc",
+        "rank-lp"
+    ],
+    "multiset_hash": [
+        0,
+        1
     ],
     "data_generation": [
         "plan"
     ],
     "iterations": [
+        1,
         2,
+        3,
         4
     ],
     "facts": [
-        "fd"
+        "fd",
+        "all"
     ]
 }

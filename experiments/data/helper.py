@@ -37,6 +37,8 @@ FEATURE_GENERATION_PREFIX = {
     "collapse-all-x": 1,
     "collapse-layer-x": 2,
     "collapse-layer-y": 3,
+    "collapse-layer-f": 4,
+    "collapse-layer-yf": 5,
     "collapse-all": 9,
     "collapse-layer": 9,
 }

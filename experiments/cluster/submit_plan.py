@@ -24,6 +24,7 @@ FEATURES = CONFIG["features"]
 FEATURE_PRUNING = CONFIG["feature_pruning"]
 DATA_PRUNING = CONFIG["data_pruning"]
 OPTIMISERS = CONFIG["optimisers"]
+MULTISET_HASH = CONFIG["multiset_hash"]
 DATA_GENERATION = CONFIG["data_generation"]
 FACTS = CONFIG["facts"]
 
@@ -148,6 +149,7 @@ def main():
                 FEATURE_PRUNING,
                 DATA_PRUNING,
                 OPTIMISERS,
+                MULTISET_HASH,
                 DATA_GENERATION,
                 FACTS,
                 ITERATIONS,
@@ -162,6 +164,7 @@ def main():
             fpruning,
             dpruning,
             optimiser,
+            multiset_hash,
             data_gen,
             facts,
             iterations,
@@ -288,15 +291,15 @@ def main():
             to_go += 1
             continue
 
-        # domain_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/domain.pddl"
-        # problem_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/testing/p{problem}.pddl"
-        domain_pddl = f"fdr"
-        problem_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/testing/p{problem}.sas"
 
         if facts == "fd":
             planner = "fd"
+            domain_pddl = f"fdr"
+            problem_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/testing/p{problem}.sas"
         elif facts == "all":
             planner = "pwl"
+            domain_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/domain.pddl"
+            problem_pddl = f"{ROOT_DIR}/benchmarks/ipc23lt/{domain}/testing/p{problem}.pddl"
         else:
             raise NotImplementedError(f"Planner for {facts=}")
 
