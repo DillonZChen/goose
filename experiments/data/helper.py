@@ -27,6 +27,7 @@ FEATURES = CONFIG["features"]
 FEATURE_PRUNING = CONFIG["feature_pruning"]
 DATA_PRUNING = CONFIG["data_pruning"]
 OPTIMISERS = CONFIG["optimisers"]
+MULTISET_HASH = CONFIG["multiset_hash"]
 DATA_GENERATION = CONFIG["data_generation"]
 FACTS = CONFIG["facts"]
 ITERATIONS = [str(i) for i in CONFIG["iterations"]]
@@ -57,6 +58,7 @@ CONFIG_KEYS = [
     "feature_pruning",
     "data_pruning",
     "optimiser",
+    "multiset_hash",
     "data_generation",
     "facts",
     "iterations",
@@ -188,6 +190,7 @@ def get_plan_df(cluster: str):
                 FEATURE_PRUNING,
                 DATA_PRUNING,
                 OPTIMISERS,
+                MULTISET_HASH,
                 DATA_GENERATION,
                 FACTS,
                 ITERATIONS,
@@ -222,6 +225,7 @@ def get_train_df():
                 FEATURE_PRUNING,
                 DATA_PRUNING,
                 OPTIMISERS,
+                MULTISET_HASH,
                 DATA_GENERATION,
                 FACTS,
                 ITERATIONS,
