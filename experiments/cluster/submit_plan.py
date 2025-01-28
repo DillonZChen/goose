@@ -260,21 +260,21 @@ def main():
         if os.path.exists(log_file) and not args.force:
             skipped_from_log += 1
             done_domains[domain] += 1
-            with open(log_file) as f:
-                content = f.read()
-            if len(content) == 0 or "No space left on device" in content:
-                os.remove(log_file)
-                print("REMOVE", log_file)
-                n_removed += 1
-                continue
-            if "Solution found" in content:
-                continue
-            if "DUE TO TIME LIMIT" in content:
-                continue
-            if "OOM Killed" in content:
-                continue
-            # os.remove(log_file)
-            # n_removed += 1
+            # with open(log_file) as f:
+            #     content = f.read()
+            # if len(content) == 0 or "No space left on device" in content:
+            #     os.remove(log_file)
+            #     print("REMOVE", log_file)
+            #     n_removed += 1
+            #     continue
+            # if "Solution found" in content:
+            #     continue
+            # if "DUE TO TIME LIMIT" in content:
+            #     continue
+            # if "OOM Killed" in content:
+            #     continue
+            # # os.remove(log_file)
+            # # n_removed += 1
             continue
 
         if args.which:
@@ -356,7 +356,7 @@ def main():
         p = subprocess.Popen(job_cmd)
         p.wait()
 
-        print(f" log: {log_file}")
+        # print(f" log: {log_file}")
         submitted += 1
 
     if args.remove_terminated or args.remove_failed or args.remove_domain:

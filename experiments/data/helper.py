@@ -6,6 +6,7 @@ from itertools import product
 import numpy as np
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 from tqdm import tqdm
 
 CUR_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -207,8 +208,8 @@ def get_plan_df(cluster: str):
         data["repeat"].append(config[-1])
         for i, k in enumerate(CONFIG_KEYS):
             value = config[i]
-            if k == "feature_pruning":
-                value = str(FEATURE_GENERATION_PREFIX[config[i]]) + value
+            # if k == "feature_pruning":
+            #     value = str(FEATURE_GENERATION_PREFIX[config[i]]) + value
             data[k].append(value)
 
     df = pd.DataFrame(data)
