@@ -70,6 +70,7 @@ def main():
         feature_generator = get_feature_generator(features, domain, iterations=opts.iterations)
         feature_generator.print_init_colours()
         dataset = get_dataset(opts, feature_generator)
+        logging.info(f"{len(dataset)=}")
 
     # Collect colours
     with TimerContextManager("collecting colours"):

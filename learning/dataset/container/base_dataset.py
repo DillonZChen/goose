@@ -20,10 +20,13 @@ class Dataset(ABC):
         return self._domain
 
     @property
-    def wlplan_dataset(self) -> list[ProblemStates]:
+    def wlplan_dataset(self) -> WLPlanDataset:
         return self._wlplan_dataset
 
     @property
     @abstractmethod
     def y(self):
         pass
+
+    def __len__(self):
+        return len(self._data)
