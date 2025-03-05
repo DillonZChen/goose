@@ -55,31 +55,32 @@ Call `Goose.sif train -h` or `python3 train.py -h` for arguments, you will need 
 - To add your own datasets, follow the directory and `.toml` file structure.
 - If you own a CPLEX license and want to train LP models faster, [add it to PYTHONPATH](https://www.ibm.com/docs/en/icos/22.1.1?topic=cplex-setting-up-python-api) and use the manual installation.
 
-For example with Apptainer:
+e.g.
 
-    ./Goose.sif train configurations/data/neurips24/childsnack.toml configurations/model/ccwl/ccwl_rank-lp_1.toml -s numeric_childsnack.model
-
-or with a manual installation:
-
-    python3 train.py configurations/data/neurips24/childsnack.toml configurations/model/ccwl/ccwl_rank-lp_1.toml -s numeric_childsnack.model
+    ./Goose.sif train configurations/data/neurips24/childsnack.toml configurations/model/ccwl/ccwl_rank-lp_1.toml -s numeric_childsnack.model   # Apptainer
+    python3 train.py configurations/data/neurips24/childsnack.toml configurations/model/ccwl/ccwl_rank-lp_1.toml -s numeric_childsnack.model    # manual installation
 
 
 ### Planning
 Call `Goose.sif plan -h` or `python3 plan.py -h` for arguments.
+e.g.
 
-For example with Apptainer:
-
-    ./Goose.sif plan benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model
-
-or with a manual installation:
-
-    python3 plan.py benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model
+    ./Goose.sif plan benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model    # Apptainer
+    python3 plan.py benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model     # manual installation
 
 
 ### Recommended configurations
 For classical planning, train with the `configurations/model/wl/wl_rank-lp_3.toml` configuration file.
+e.g. with Blocksworld
+
+    python3 train.py configurations/data/ipc23lt/blocksworld.toml configurations/model/wl/wl_gpr_4.toml -s blocksworld.model                    # train
+    python3 plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_01.pddl blocksworld.model              # plan
 
 For numeric planning, train with the `configurations/model/ccwl/ccwl_rank-lp_1.toml` configuration file.
+e.g. with numeric Childsnack
+
+    python3 train.py configurations/data/neurips24/childsnack.toml configurations/model/ccwl/ccwl_rank-lp_1.toml -s numeric_childsnack.model    # train
+    python3 plan.py benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model     # plan
 
 
 ## References
