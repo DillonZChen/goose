@@ -3,6 +3,7 @@
 
 #include "../datalog_atom.h"
 
+#include <algorithm>
 #include <unordered_map>
 #include <vector>
 
