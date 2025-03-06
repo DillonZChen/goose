@@ -30,6 +30,19 @@ Install submodules and [Apptainer](https://apptainer.org/) and then build the im
 
 
 ### Manual compilation
+You will need the usual cpp packages
+
+    sudo apt-get install build-essential g++ cmake libboost-all-dev
+
+**[Optional]** For numeric planning, you will also need Python2 as we use Numeric Fast Downward which requires it. To install from source (e.g. for Ubuntu 23.04 and above) and symlink to `python2`:
+
+    wget https://www.python.org/ftp/python/2.7.9/Python-2.7.9.tgz
+    sudo tar xzf Python-2.7.9.tgz
+    cd Python-2.7.9
+    sudo ./configure --enable-optimizations
+    sudo make altinstall
+    sudo ln -s /usr/local/bin/python2.7 /usr/local/bin/python2
+
 Create a virtual environment, activate it, install submodules and packages, and build cpp components.
 The setup has been tested with python versions 3.10 and higher, but should probably work for lower python3 versions as well.
 
