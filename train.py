@@ -12,16 +12,22 @@ from sklearn.metrics import f1_score
 
 from learning.dataset.dataset_factory import get_dataset
 from learning.dataset.state_to_vec import embed_data
-from learning.predictor.predictor_factory import (get_available_predictors, get_predictor,
-                                                  is_rank_predictor)
+from learning.predictor.predictor_factory import (
+    get_available_predictors,
+    get_predictor,
+    is_rank_predictor
+)
 from util.distinguish_test import distinguish
 from util.error_message import get_path_error_msg
 from util.logging import init_logger
 from util.pca_visualise import visualise
 from util.statistics import log_quartiles
 from util.timer import TimerContextManager
-from wlplan.feature_generation import (get_available_feature_generators,
-                                       get_available_pruning_methods, get_feature_generator)
+from wlplan.feature_generation import (
+    get_available_feature_generators,
+    get_available_pruning_methods,
+    get_feature_generator
+)
 from wlplan.planning import parse_domain
 
 _DEF_VAL = {

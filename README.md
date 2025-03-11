@@ -75,6 +75,7 @@ For example with Apptainer:
 or with a manual installation:
 
     python3 train.py configurations/data/neurips24/childsnack.toml configurations/model/ccwl/ccwl_rank-lp_1.toml -s numeric_childsnack.model
+    python3 train.py configurations/data/ipc23lt/blocksworld.toml -mc configurations/model/wl/wl_svr_4.toml -s blocks.model
 
 
 ### Planning
