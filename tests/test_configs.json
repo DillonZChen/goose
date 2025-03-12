@@ -5,9 +5,12 @@
     ],
     "feature_pruning": [
         "none",
-        "collapse-all",
+        "collapse-all-x",
         "collapse-layer",
-        "collapse-layer-x"
+        "collapse-layer-x",
+        "collapse-layer-y",
+        "collapse-layer-f",
+        "collapse-layer-yf"
     ],
     "data_pruning": [
         "none",

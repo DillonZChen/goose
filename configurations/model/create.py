@@ -66,8 +66,13 @@ def write_configurations(features, optimisation, iterations, data_generation):
     rank = "true" if optimisation.startswith("rank") else "false"
     if rank == "true" and data_generation == "state-space":
         return
+    if features == "ccwl":
+        graph_representation = "nilg"
+    else:
+        graph_representation = "ilg"
     print(file)
     with open(file, "w") as f:
+        f.write(f"graph_representation = '{graph_representation}'\n")
         f.write(f"features = '{features}'\n")
         f.write(f"optimisation = '{optimisation}'\n")
         f.write(f"iterations = {iterations}\n")

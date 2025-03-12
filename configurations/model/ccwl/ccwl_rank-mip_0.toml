@@ -1,3 +1,4 @@
+graph_representation = 'nilg'
 features = 'ccwl'
 optimisation = 'rank-mip'
 iterations = 0

@@ -1,3 +1,4 @@
+graph_representation = 'ilg'
 features = 'wl'
 optimisation = 'svr'
 iterations = 3

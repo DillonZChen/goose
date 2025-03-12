@@ -1,4 +1,5 @@
 import datetime
+import logging
 import os
 import re
 import subprocess
@@ -91,6 +92,9 @@ def call_numeric_downward(
     output, error = process.communicate()
     output = output.decode()
     error = error.decode()
+    if process.returncode != 0:
+        logging.info("Encountered error in call_numeric_downward\n" + error)
+        exit(process.returncode)
 
     # print(output, flush=True)
     # print(error, flush=True)

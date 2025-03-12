@@ -41,6 +41,8 @@ def test_train_small(
         data_config,
         "--features",
         features,
+        "--graph_representation",
+        "ilg",
         "--feature_pruning",
         feature_pruning,
         "--data_pruning",

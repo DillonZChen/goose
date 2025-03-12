@@ -42,7 +42,7 @@ ExtensionalStatePacker::ExtensionalStatePacker(const Task &task) :
         const auto& types = pred.getTypes();
         if (types.empty()) { // A nullary predicate - special treatment
             ati_map.emplace(args_t(), index_to_args.size());
-            index_to_args.push_back({pid, {}});
+            index_to_args.push_back({static_cast<int>(pid), {}});
             continue;
         }
 
