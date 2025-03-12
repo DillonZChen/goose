@@ -44,7 +44,7 @@ You will need the usual cpp packages
     sudo ln -s /usr/local/bin/python2.7 /usr/local/bin/python2
 
 Create a virtual environment, activate it, install submodules and packages, and build cpp components.
-The setup has been tested with python versions 3.10 and higher, but should probably work for lower python3 versions as well.
+The setup has been tested with python versions 3.10 and higher, but should probably work for different python3 versions as well.
 
     python3 -m venv venv
     source venv/bin/activate

@@ -1,6 +1,7 @@
 from typing import Optional
 
 import pymimir
+
 import wlplan
 from learning.dataset.container.cost_to_go_dataset import CostToGoDataset
 from learning.dataset.creator.classic_dataset_creator import ClassicDatasetCreator
@@ -31,7 +32,9 @@ class ClassicCostToGoDatasetFromStateSpace(ClassicDatasetCreator):
             wlplan_problem = wlplan.planning.parse_problem(self.domain_pddl, problem_pddl)
 
             succ_generator = pymimir.GroundedSuccessorGenerator(mimir_problem)
-            ss = pymimir.StateSpace.new(mimir_problem, succ_generator, max_expanded=self.max_expanded)
+            ss = pymimir.StateSpace.new(
+                mimir_problem, succ_generator, max_expanded=self.max_expanded
+            )
 
             if ss is None:
                 # reached max ss size, and assume train problems are monotonic in ss size
@@ -48,9 +51,13 @@ class ClassicCostToGoDatasetFromStateSpace(ClassicDatasetCreator):
 
                 # check if WL repr of the state has been seen before
                 mini_dataset = WLPlanDataset(
-                    domain=self.wlplan_domain, data=[ProblemStates(problem=wlplan_problem, states=[wlplan_state])]
+                    domain=self.wlplan_domain,
+                    data=[ProblemStates(problem=wlplan_problem, states=[wlplan_state])],
                 )
+                pruning = self.feature_generator.get_pruning()
+                self.feature_generator.set_pruning("none")
                 self.feature_generator.collect(mini_dataset)
+                self.feature_generator.set_pruning(pruning)
                 x_repr = self.feature_generator.get_string_representation(wlplan_state)
                 if (x_repr, h) in seen_x_y_pairs:
                     continue
@@ -99,7 +106,8 @@ class ClassicCostToGoDatasetFromPlans(ClassicDatasetCreator):
                 if h_opt == 0:
                     break
                 mimir_state = action.apply(mimir_state)
-                wlplan_states.append(self._mimir_to_wlplan_state(mimir_state))
+                wlplan_state = self._mimir_to_wlplan_state(mimir_state)
+                wlplan_states.append(wlplan_state)
                 y.append(h_opt)
 
             wlplan_data.append((wlplan_problem, wlplan_states))

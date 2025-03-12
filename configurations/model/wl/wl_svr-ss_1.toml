@@ -2,5 +2,4 @@ graph_representation = 'ilg'
 features = 'wl'
 optimisation = 'svr'
 iterations = 1
-rank = false
 data_generation = 'state-space'

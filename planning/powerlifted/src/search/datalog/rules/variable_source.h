@@ -3,7 +3,7 @@
 
 #include "../datalog_atom.h"
 
-#include <algorithm>
+#include <algorithm>    // std::find
 #include <unordered_map>
 #include <vector>
 

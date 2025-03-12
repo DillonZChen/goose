@@ -8,8 +8,10 @@ from wlplan.feature_generation import WLFeatures
 
 from .container.base_dataset import Dataset
 from .container.cost_to_go_dataset import CostToGoDataset
-from .creator.classic_cost_to_go_dataset_creator import (ClassicCostToGoDatasetFromPlans,
-                                                         ClassicCostToGoDatasetFromStateSpace)
+from .creator.classic_cost_to_go_dataset_creator import (
+    ClassicCostToGoDatasetFromPlans,
+    ClassicCostToGoDatasetFromStateSpace,
+)
 from .creator.classic_ranking_dataset_creator import ClassicRankingDatasetFromPlans
 from .creator.numeric_cost_to_go_dataset_creator import NumericCostToGoDatasetFromPlans
 from .creator.numeric_ranking_dataset_creator import NumericRankingDatasetFromPlans
@@ -46,9 +48,6 @@ def get_dataset(opts: Namespace, feature_generator: WLFeatures) -> Dataset:
         "hash_prefix": str(hash(repr(opts))),
     }
 
-    rank_ss_err_msg = "Ranking dataset from state space not supported as it is too large."
-    numeric_ss_err_msg = "Numeric dataset from state space not implemented."
-
     match (rank, data_generation, domain_is_numeric):
         ##### Classic datasets #####
         case (False, "plan", False):
@@ -67,7 +66,7 @@ def get_dataset(opts: Namespace, feature_generator: WLFeatures) -> Dataset:
         case (True, "plan", False):
             return ClassicRankingDatasetFromPlans(**kwargs).get_dataset()
         case (True, _, False):
-            raise ValueError(rank_ss_err_msg)
+            raise ValueError("Ranking dataset from state space not supported as it is too large.")
 
         ##### Numeric datasets #####
         case (False, "plan", True):
@@ -75,8 +74,10 @@ def get_dataset(opts: Namespace, feature_generator: WLFeatures) -> Dataset:
         case (True, "plan", True):
             return NumericRankingDatasetFromPlans(**kwargs).get_dataset()
         case (_, _, True):
-            raise ValueError(numeric_ss_err_msg)
+            raise ValueError("Numeric dataset from state space not supported.")
 
         ##### Remaining problems #####
         case _:
-            raise ValueError(f"Unknown data_generation {data_generation}")
+            raise ValueError(
+                f"Dataset configuration not supported {rank=}, {data_generation=}, {domain_is_numeric=}"
+            )

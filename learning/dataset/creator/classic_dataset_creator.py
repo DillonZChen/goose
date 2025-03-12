@@ -64,8 +64,11 @@ class ClassicDatasetCreator(DatasetCreator):
         for atom in mimir_state.get_atoms():
             if not self.keep_atom_f(atom):
                 continue
+            predicate_name = atom.predicate.name
+            if predicate_name == "=":
+                continue
             wlplan_atom = wlplan.planning.Atom(
-                predicate=self.name_to_predicate[atom.predicate.name],
+                predicate=self.name_to_predicate[predicate_name],
                 objects=[o.name for o in atom.terms],
             )
             atoms.append(wlplan_atom)

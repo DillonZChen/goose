@@ -2,5 +2,4 @@ graph_representation = 'ilg'
 features = 'wl'
 optimisation = 'rank-gpc'
 iterations = 3
-rank = true
 data_generation = 'plan'

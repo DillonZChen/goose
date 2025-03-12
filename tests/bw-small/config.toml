@@ -1,0 +1,3 @@
+domain_pddl = 'tests/bw-small/domain.pddl'
+tasks_dir = 'tests/bw-small/training'
+plans_dir = 'tests/bw-small/training_plans'

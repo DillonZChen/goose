@@ -76,7 +76,7 @@ def write_configurations(features, optimisation, iterations, data_generation):
         f.write(f"features = '{features}'\n")
         f.write(f"optimisation = '{optimisation}'\n")
         f.write(f"iterations = {iterations}\n")
-        f.write(f"rank = {rank}\n")
+        # f.write(f"rank = {rank}\n")
         f.write(f"data_generation = '{data_generation}'\n")
 
 

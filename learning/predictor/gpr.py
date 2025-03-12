@@ -1,29 +1,42 @@
 import logging
+import warnings
 
 import numpy as np
 from sklearn.gaussian_process import GaussianProcessRegressor as GPR
 from sklearn.gaussian_process.kernels import DotProduct
 from termcolor import colored
 
-from .base_predictor import BasePredictor
+from .mse_minimiser import MSEMinimiser
 
 
-class GaussianProcessRegressor(BasePredictor):
+class GaussianProcessRegressor(MSEMinimiser):
     """Linear GPR"""
 
-    def _try_fit(self, X, y):
+    IS_RANK = False
+
+    def _try_fit(self, X, y, sample_weight):
+        if sample_weight is not None and not np.isclose(sample_weight, np.ones(len(y))).all():
+            warnings.warn("sample_weights is not supported by Gaussian Processes")
         kernel = DotProduct(sigma_0=0, sigma_0_bounds="fixed")
         model = GPR(kernel=kernel, alpha=1e-7, random_state=0)
         model.fit(X, y)
         self._weights = model.alpha_ @ model.X_train_
+        self._X = X
+        self._y = y
+        self._sample_weight = sample_weight
 
-    def fit(self, X, y):
+    def _fit_impl(self, X, y, sample_weight):
         alpha = 1e-7
 
         try:
-            self._try_fit(X, y)
+            self._try_fit(X, y, sample_weight)
         except np.linalg.LinAlgError:
-            logging.info(colored(f"Encounterd LinAlgError, trying again with duplicate entries removed", "light_red"))
+            logging.info(
+                colored(
+                    f"Encounterd LinAlgError, trying again with duplicate entries removed",
+                    "light_red",
+                )
+            )
             y = np.array(y)
             Xy = np.hstack([X, y.reshape(-1, 1)])
             Xy_unique = np.unique(Xy, axis=0)
@@ -34,16 +47,20 @@ class GaussianProcessRegressor(BasePredictor):
 
         while True:
             try:
-                self._try_fit(X, y)
+                self._try_fit(X, y, sample_weight)
                 break
             except np.linalg.LinAlgError:
                 alpha *= 10
                 logging.info(colored(f"LinAlgError, setting alpha={alpha}", "light_red"))
             if alpha > 1:
-                logging.info(colored("Failed to train up to alpha=1. It is unlikely anything good will be learned so saving zero weights...", "red"))
+                logging.info(
+                    colored(
+                        "Failed to train up to alpha=1. It is unlikely anything good will be learned so saving zero weights...",
+                        "red",
+                    )
+                )
                 self._weights = np.zeros(X.shape[1])
                 break
-
 
     def predict(self, X):
         return X @ self._weights.T

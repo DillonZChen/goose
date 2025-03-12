@@ -15,4 +15,3 @@ def log_quartiles(array: np.array):
     logging.info(f"  q2 {q2}")
     logging.info(f"  q3 {q3}")
     logging.info(f" max {max_val}")
-    

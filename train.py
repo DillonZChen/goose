@@ -1,18 +1,14 @@
 #!/usr/bin/env python
 
-import argparse
 import logging
-import os
-import random
 
-import numpy as np
 import toml
-from sklearn.metrics import f1_score
 
 from learning.dataset.dataset_factory import get_dataset
-from learning.predictor.predictor_factory import get_predictor
+from learning.dataset.state_to_vec import embed_data
+from learning.options import parse_opts
+from learning.predictor.predictor_factory import get_predictor, is_rank_predictor
 from util.distinguish_test import distinguish
-from util.error_message import get_path_error_msg
 from util.logging import init_logger
 from util.pca_visualise import visualise
 from util.statistics import log_quartiles
@@ -21,46 +17,8 @@ from wlplan.feature_generation import get_feature_generator
 from wlplan.planning import parse_domain
 
 
-def parse_opts():
-    # fmt: off
-    parser = argparse.ArgumentParser()
-    parser.add_argument("data_config", type=str, 
-                        help="Path to .toml data configuration file")
-    parser.add_argument("model_config", type=str, 
-                        help="Path to .toml model configuration file")
-    parser.add_argument("-f", "--facts", type=str, default="fd", choices=["fd", "nfd", "all", "nostatic"],
-                        help="Intended facts to keep e.g. Fast Downward `fd` grounds the task and prunes away some facts.")
-    parser.add_argument("-r", "--random_seed", type=int, default=2024,
-                        help="Random seed for nondeterministic training algorithms.")
-    parser.add_argument("-s", "--save_file", type=str, default=None,
-                        help="Path to save the model to.")
-    parser.add_argument("--visualise_pca", type=str, default=None,
-                        help="Path to save visualisation of PCA on WL features.")
-    parser.add_argument("--distinguish_test", action="store_true",
-                        help="Run distinguishability test.")
-    opts = parser.parse_args()
-    # fmt: on
-
-    assert os.path.exists(opts.data_config), get_path_error_msg(opts.data_config)
-    assert os.path.exists(opts.model_config), get_path_error_msg(opts.model_config)
-
-    model_config = toml.load(opts.model_config)
-    opts.features = model_config["features"]
-    opts.graph_representation = model_config["graph_representation"]
-    opts.optimisation = model_config["optimisation"]
-    opts.iterations = model_config["iterations"]
-    opts.rank = model_config["rank"]
-    opts.data_generation = model_config["data_generation"]
-
-    random.seed(opts.random_seed)
-    np.random.seed(opts.random_seed)
-
-    return opts
-
-
-def main():
-    init_logger()
-    opts = parse_opts()
+def train(opts):
+    opts.rank = is_rank_predictor(opts.optimisation)
 
     # Parse dataset
     with TimerContextManager("parsing training data"):
@@ -83,20 +41,42 @@ def main():
     # Collect colours
     with TimerContextManager("collecting colours"):
         feature_generator.collect(dataset.wlplan_dataset)
-    # logging.info(f"n_seen_graphs={feature_generator.get_n_seen_graphs()}")
-    # logging.info(f"n_seen_nodes={feature_generator.get_n_seen_nodes()}")
-    # logging.info(f"n_seen_edges={feature_generator.get_n_seen_edges()}")
-    # logging.info(f"n_seen_initial_colours={feature_generator.get_n_seen_initial_colours()}")
-    # logging.info(f"n_seen_refined_colours={feature_generator.get_n_seen_refined_colours()}")
+    logging.info(f"n_colours_per_layer:")
+    for i, n_colours in enumerate(feature_generator.get_layer_to_n_colours()):
+        logging.info(f"  {i}={n_colours}")
+    if opts.collect_only:
+        logging.info("Exiting after collecting colours.")
+        exit(0)
 
     # Construct features
     with TimerContextManager("constructing features"):
-        X = feature_generator.embed(dataset.wlplan_dataset)
-        X = np.array(X).astype(float)
-        y = dataset.y
-        if not opts.rank:
-            log_quartiles(y)
+        X, y, sample_weight = embed_data(
+            dataset=dataset, feature_generator=feature_generator, opts=opts
+        )
+    if not opts.rank:
+        log_quartiles(y)
     logging.info(f"{X.shape=}")
+
+    # distinct_per_column_counts = {}
+    # for column in X.T:
+    #     column = set(column)
+    #     size = len(column)
+    #     if size not in distinct_per_column_counts:
+    #         distinct_per_column_counts[size] = 0
+    #     distinct_per_column_counts[size] += 1
+    # for k in sorted(distinct_per_column_counts.keys()):
+    #     print(k, distinct_per_column_counts[k])
+
+    # colour_counts = {}
+    # for column in X.T:
+    #     summ = sum(column)
+    #     if summ not in colour_counts:
+    #         colour_counts[summ] = 0
+    #     colour_counts[summ] += 1
+    # for k in sorted(colour_counts.keys()):
+    #     print(k, colour_counts[k])
+
+    # breakpoint()
 
     # PCA visualisation
     pca_save_file = opts.visualise_pca
@@ -110,25 +90,17 @@ def main():
         return
 
     # Train model
-    with TimerContextManager("training model"):
-        predictor = get_predictor(opts.optimisation)
-        predictor.fit(X, y)
-        feature_generator.set_weights(predictor.get_weights())
-
-    # Evaluate model
-    if not opts.rank:
-        y_pred = predictor.predict(X)
-        mse_loss = np.mean((y - y_pred) ** 2)
-        logging.info(f"{mse_loss=}")
-        y_pred = np.round(y_pred)
-        f1_macro = f1_score(y, y_pred, average="macro")
-        logging.info(f"{f1_macro=}")
+    predictor = get_predictor(opts.optimisation)
+    predictor.fit_evaluate(X, y, sample_weight=sample_weight)
 
     # Save model
     if opts.save_file:
         with TimerContextManager("saving model"):
+            feature_generator.set_weights(predictor.get_weights())
             feature_generator.save(opts.save_file)
 
 
 if __name__ == "__main__":
-    main()
+    init_logger()
+    opts = parse_opts()
+    train(opts)

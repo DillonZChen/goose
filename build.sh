@@ -1,10 +1,18 @@
 #!/bin/bash
 
-# optional arg [wlplan|planners|""]
+# optional arg [wlplan|planners|fd|nfd|pwl|""]
 arg=$1
 
 # planners
-PLANNERS="powerlifted downward numeric-downward"
+PLANNERS="downward powerlifted numeric-downward"
+
+if [ "$arg" = "fd" ]; then
+    PLANNERS="downward"
+elif [ "$arg" = "nfd" ]; then
+    PLANNERS="numeric-downward"
+elif [ "$arg" = "pwl" ]; then
+    PLANNERS="powerlifted"
+fi
 
 # Show commands
 set -x
@@ -16,7 +24,7 @@ set -e
 if [ "$arg" != "planners" ]; then
     cd wlplan/
     mkdir -p _wlplan/
-    pip install .
+    pip install . -v
     cd ..
 fi
 

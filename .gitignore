@@ -3,6 +3,7 @@ planning/downward/src/search/ext/wlplan/include/
 plots/
 logs/
 _*/
+_*
 *.model
 *.out
 *.out.num

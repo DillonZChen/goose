@@ -4,6 +4,16 @@ import re
 import subprocess
 from subprocess import PIPE
 
+import termcolor
+
+_CUR_DIR = os.path.dirname(os.path.abspath(__file__))
+_ROOT_DIR = os.path.normpath(f"{_CUR_DIR}/..")
+_PYTHON2_RECIPE = os.path.normpath(f"{_ROOT_DIR}/util/python2.def")
+_PYTHON2_CONTAINER = os.path.normpath(f"{_ROOT_DIR}/python2.sif")
+_PYTHON2_MSG = f"Please build the Python2 container via\n\n\t" + termcolor.colored(
+    f"apptainer build {_PYTHON2_CONTAINER} {_PYTHON2_RECIPE}\n", "magenta"
+)
+
 
 def popen(cmd):
     logging.info("This make take some time...")
@@ -15,10 +25,15 @@ def popen(cmd):
     return output, err, rc
 
 
-def train(domain, save_path, predictor, benchmarks="ipc23lt"):
+def train(domain, save_path, predictor, benchmarks="ipc23lt", numeric=False):
+    # if numeric and not os.path.exists(_PYTHON2_CONTAINER):
+    #     logging.info(_PYTHON2_MSG)
+    #     assert False
     data_config = f"configurations/data/{benchmarks}/{domain}.toml"
     model_config = f"configurations/model/{predictor}.toml"
     cmd = ["python3", "train.py", data_config, model_config, "-s", save_path]
+    # if numeric:
+    #     cmd = [_PYTHON2_CONTAINER] + cmd
     cmd_str = " ".join(cmd)
     logging.critical(cmd_str)
     rc = os.system(cmd_str)
@@ -72,10 +87,15 @@ def parse_output(output, planner):
     return stats
 
 
-def plan(domain, problem, evaluator, planner, benchmarks="ipc23lt", **kwargs):
+def plan(domain, problem, evaluator, planner, benchmarks="ipc23lt", numeric=False, **kwargs):
+    # if numeric and not os.path.exists(_PYTHON2_CONTAINER):
+    #     logging.info(_PYTHON2_MSG)
+    #     assert False
     domain_pddl = f"benchmarks/{benchmarks}/{domain}/domain.pddl"
     problem_pddl = f"benchmarks/{benchmarks}/{domain}/testing/p{problem}.pddl"
     cmd = ["python3", "plan.py", domain_pddl, problem_pddl, evaluator, "-t", "60", "-p", planner]
+    # if numeric:
+    #     cmd = [_PYTHON2_CONTAINER] + cmd
     cmd_str = " ".join(cmd)
     logging.critical(cmd_str)
     output, err, rc = popen(cmd)

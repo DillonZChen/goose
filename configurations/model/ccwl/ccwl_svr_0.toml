@@ -2,5 +2,4 @@ graph_representation = 'nilg'
 features = 'ccwl'
 optimisation = 'svr'
 iterations = 0
-rank = false
 data_generation = 'plan'
