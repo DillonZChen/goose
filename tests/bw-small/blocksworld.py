@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-import sys
-import random
 import argparse
-from typing import Dict
 import os
+import random
+import sys
+from typing import Dict
 
 
 def get_block(b: int) -> str:
@@ -29,10 +29,7 @@ def get_state(blocks: int, is_goal: bool = False, **kwargs: dict) -> str:
             str_state += offset + f"(on-table {get_block(vblocks[i])})"
             str_state += offset + f"(clear {get_block(vblocks[i+1])})"
         else:
-            str_state += (
-                offset
-                + f"(on {get_block(vblocks[i])} {get_block(vblocks[i+1])})"
-            )
+            str_state += offset + f"(on {get_block(vblocks[i])} {get_block(vblocks[i+1])})"
     str_state += offset + f"(on-table {get_block(vblocks[-1])})"
     return str_state
 
@@ -50,9 +47,7 @@ def generate_problem(args: Dict):
     str_objects = get_objects(**args)
     str_init = get_init(**args)
     str_goal = get_goal(**args)
-    with open(
-        f"{args['out_folder']}/p{args['instance_id']:02}.pddl", "w"
-    ) as f_problem:
+    with open(f"{args['out_folder']}/p{args['instance_id']:02}.pddl", "w") as f_problem:
         f_problem.write(
             f";; {str_config}\n\n"
             f"(define (problem blocksworld-{args['instance_id']:02})\n"
@@ -73,9 +68,7 @@ def parse_args() -> Dict[str, int]:
         help="number of boxes (min 2)",
         required=True,
     )
-    parser.add_argument(
-        "--seed", type=int, default=42, help="random seed (default: 42)"
-    )
+    parser.add_argument("--seed", type=int, default=42, help="random seed (default: 42)")
     parser.add_argument(
         "-out",
         "--out_folder",
@@ -103,9 +96,7 @@ def parse_args() -> Dict[str, int]:
 
     # Initialize data
     random.seed(args.seed)  # set the random seed here
-    os.makedirs(
-        name=out_f, exist_ok=True
-    )  # create the output folder if that doesn't exist
+    os.makedirs(name=out_f, exist_ok=True)  # create the output folder if that doesn't exist
 
     return {
         "blocks": blocks,

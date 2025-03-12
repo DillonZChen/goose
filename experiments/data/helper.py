@@ -172,7 +172,9 @@ def parse_train_log(log_path: str):
     data["n_colours"] = int(try_match(r"X.shape=\(\d+, (\d+)\)", -1))
     data["n_data"] = int(try_match(r"X.shape=\((\d+),", -1))
     data["collection_time"] = float(try_match(r"Finished collecting colours in ([\d.]+)s", -1))
-    data["construction_time"] = float(try_match(r"Finished constructing features in ([\d.]+)s", -1))
+    data["construction_time"] = float(
+        try_match(r"Finished constructing features in ([\d.]+)s", -1)
+    )
     data["training_time"] = float(try_match(r"Finished training model in ([\d.]+)s", -1))
     data["mse_loss"] = float(try_match(r"mse_loss=([\d.]+)", -1))
     data["f1_macro"] = float(try_match(r"f1_macro=([\d.]+)", -1))

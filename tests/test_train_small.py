@@ -10,7 +10,8 @@ CUR_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # so pytest can import from root directory
 sys.path.append(os.path.realpath(os.path.dirname(__file__) + "/.."))
-from train import get_parser, train
+from learning.options import get_parser
+from train import train
 
 with open(f"{CUR_DIR}/test_configs.json") as f:
     CONFIG = json.load(f)

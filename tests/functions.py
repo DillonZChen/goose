@@ -10,8 +10,9 @@ _CUR_DIR = os.path.dirname(os.path.abspath(__file__))
 _ROOT_DIR = os.path.normpath(f"{_CUR_DIR}/..")
 _PYTHON2_RECIPE = os.path.normpath(f"{_ROOT_DIR}/util/python2.def")
 _PYTHON2_CONTAINER = os.path.normpath(f"{_ROOT_DIR}/python2.sif")
-_PYTHON2_MSG = f"Please build the Python2 container via\n\n\t" + \
-                termcolor.colored(f"apptainer build {_PYTHON2_CONTAINER} {_PYTHON2_RECIPE}\n", "magenta")
+_PYTHON2_MSG = f"Please build the Python2 container via\n\n\t" + termcolor.colored(
+    f"apptainer build {_PYTHON2_CONTAINER} {_PYTHON2_RECIPE}\n", "magenta"
+)
 
 
 def popen(cmd):
@@ -30,7 +31,7 @@ def train(domain, save_path, predictor, benchmarks="ipc23lt", numeric=False):
     #     assert False
     data_config = f"configurations/data/{benchmarks}/{domain}.toml"
     model_config = f"configurations/model/{predictor}.toml"
-    cmd = ["python3", "train.py", data_config, "-mc", model_config, "-s", save_path]
+    cmd = ["python3", "train.py", data_config, model_config, "-s", save_path]
     # if numeric:
     #     cmd = [_PYTHON2_CONTAINER] + cmd
     cmd_str = " ".join(cmd)

@@ -109,7 +109,7 @@ def main():
                     f"eager_greedy([{h_goose}])",
                 ]
         case "nfd":
-            h_goose = f'wlgoose(model_path={model_path},domain_path={domain_pddl},problem_path={problem_pddl})'
+            h_goose = f"wlgoose(model_path={model_path},domain_path={domain_pddl},problem_path={problem_pddl})"
 
             cmd = [
                 "python2",  # nfd defines a pddl module which clashes with the pddl package

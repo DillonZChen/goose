@@ -1,5 +1,6 @@
-from benchmarking_utils import execute_command
 import logging
+
+from benchmarking_utils import execute_command
 
 
 def get_next_config(
@@ -11,13 +12,9 @@ def get_next_config(
     seed: int = 42,
 ):
     instance_id = starting_instance_id
-    step_block = float(max_blocks - starting_blocks) / float(
-        1 + max_instance_id - instance_id
-    )
+    step_block = float(max_blocks - starting_blocks) / float(1 + max_instance_id - instance_id)
     while instance_id <= max_instance_id:
-        blocks = int(
-            starting_blocks + step_block * (instance_id - starting_instance_id)
-        )
+        blocks = int(starting_blocks + step_block * (instance_id - starting_instance_id))
         print(f"id={instance_id}; b={blocks}; seed={seed}")
         yield f"python blocksworld.py -b {blocks} -out {out_folder} -id {instance_id} --seed {seed}"
         # Update input values for the next instance

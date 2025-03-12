@@ -1,10 +1,11 @@
 # https://stackoverflow.com/a/45250114
 
+
 def abstract_class_attributes(*names):
     """Class decorator to add one or more abstract attribute."""
 
     def _func(cls, *names):
-        """ Function that extends the __init_subclass__ method of a class."""
+        """Function that extends the __init_subclass__ method of a class."""
 
         # Add each attribute to the class with the value of NotImplemented
         for name in names:
@@ -32,7 +33,7 @@ def abstract_class_attributes(*names):
             # Check that each attribute is defined.
             for name in names:
                 if getattr(cls, name, NotImplemented) is NotImplemented:
-                    raise NotImplementedError(f'You forgot to define {name}!!!')
+                    raise NotImplementedError(f"You forgot to define {name}!!!")
 
         # Bind this new function to the __init_subclass__.
         # For reasons beyond the scope here, it we must manually

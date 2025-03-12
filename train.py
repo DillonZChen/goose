@@ -1,25 +1,14 @@
 #!/usr/bin/env python
 
-import argparse
 import logging
-import os
-import random
 
-import numpy as np
-import termcolor as tc
 import toml
-from sklearn.metrics import f1_score
 
 from learning.dataset.dataset_factory import get_dataset
 from learning.dataset.state_to_vec import embed_data
 from learning.options import parse_opts
-from learning.predictor.predictor_factory import (
-    get_available_predictors,
-    get_predictor,
-    is_rank_predictor
-)
+from learning.predictor.predictor_factory import get_predictor, is_rank_predictor
 from util.distinguish_test import distinguish
-from util.error_message import get_path_error_msg
 from util.logging import init_logger
 from util.pca_visualise import visualise
 from util.statistics import log_quartiles
@@ -61,7 +50,9 @@ def train(opts):
 
     # Construct features
     with TimerContextManager("constructing features"):
-        X, y, sample_weight = embed_data(dataset=dataset, feature_generator=feature_generator, opts=opts)
+        X, y, sample_weight = embed_data(
+            dataset=dataset, feature_generator=feature_generator, opts=opts
+        )
     if not opts.rank:
         log_quartiles(y)
     logging.info(f"{X.shape=}")

@@ -9,9 +9,9 @@ from wlplan.planning import Domain
 class RankingGroup:
     """A tuple of list of indices representing states segragated into good, maybe, and bad groups.
 
-    RankingGroups are currently only computed from optimal plans (see dataset_factory._RankingDatasetFromPlans). 
-    A plan induces state-action pairs (s_i, a_i) where action a_i is an optimal action in state s_i and 
-    leads to state s_{i+1}. 
+    RankingGroups are currently only computed from optimal plans (see dataset_factory._RankingDatasetFromPlans).
+    A plan induces state-action pairs (s_i, a_i) where action a_i is an optimal action in state s_i and
+    leads to state s_{i+1}.
 
     RankingGroup are computed from state-action pairs (s, a) with
         - good_group = [s*]
@@ -22,6 +22,7 @@ class RankingGroup:
         - successors(s) = list of successor states from s
         - siblings(s*) = successors(s) with s* removed
     """
+
     good_group: list[int]
     maybe_group: list[int]
     bad_group: list[int]

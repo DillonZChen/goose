@@ -3,12 +3,12 @@ import sys
 from abc import abstractmethod
 
 import toml
-import wlplan
 from tqdm import tqdm
-from wlplan.feature_generation import Features
 
+import wlplan
 from learning.dataset.container.base_dataset import Dataset
 from util.error_message import get_path_error_msg
+from wlplan.feature_generation import Features
 
 MAX_EXPANSIONS_PER_PROBLEM = 10000
 MAX_STATE_SPACE_DATA = 100000

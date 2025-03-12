@@ -8,8 +8,10 @@ from wlplan.feature_generation import WLFeatures
 
 from .container.base_dataset import Dataset
 from .container.cost_to_go_dataset import CostToGoDataset
-from .creator.classic_cost_to_go_dataset_creator import (ClassicCostToGoDatasetFromPlans,
-                                                         ClassicCostToGoDatasetFromStateSpace)
+from .creator.classic_cost_to_go_dataset_creator import (
+    ClassicCostToGoDatasetFromPlans,
+    ClassicCostToGoDatasetFromStateSpace,
+)
 from .creator.classic_ranking_dataset_creator import ClassicRankingDatasetFromPlans
 from .creator.numeric_cost_to_go_dataset_creator import NumericCostToGoDatasetFromPlans
 from .creator.numeric_ranking_dataset_creator import NumericRankingDatasetFromPlans

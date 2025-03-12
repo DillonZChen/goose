@@ -6,7 +6,6 @@
 
 from data.helper import *
 
-
 # In[2]:
 
 
@@ -29,10 +28,12 @@ COLUMNS = [
     "feature_pruning",
 ]
 
+
 def get_plan_df_copy():
     df = PLAN_DF.copy()
     df = df[df.data_pruning == "equivalent-weighted"]
     return df
+
 
 def get_train_df_copy():
     df = TRAIN_DF.copy()
@@ -46,9 +47,9 @@ def get_train_df_copy():
 train_dfs = {}
 metric = "completed"
 for column_to_keep in COLUMNS:
-    print("*"*80)
+    print("*" * 80)
     print(column_to_keep)
-    print("*"*80)
+    print("*" * 80)
     for f in [
         # "max",
         "sum",
@@ -82,9 +83,9 @@ for column_to_keep in COLUMNS:
 plan_dfs = {}
 metric = "solved"
 for column_to_keep in COLUMNS:
-    print("*"*80)
+    print("*" * 80)
     print(column_to_keep)
-    print("*"*80)
+    print("*" * 80)
     for f in [
         "max",
         "sum",
@@ -127,7 +128,14 @@ orders = {
 with open("/home/dzc/manuscripts/socs-25-hyperparameters/tables/results_template.tex") as f:
     content = f.read()
 
-for column_to_keep in ["features", "iterations", "feature_pruning", "multiset_hash", "facts", "optimiser"]:
+for column_to_keep in [
+    "features",
+    "iterations",
+    "feature_pruning",
+    "multiset_hash",
+    "facts",
+    "optimiser",
+]:
     train_df = train_dfs[column_to_keep]
     plan_df = plan_dfs[(column_to_keep, "sum")]
     df = train_df.join(plan_df, lsuffix="_train", rsuffix="_plan")
@@ -144,10 +152,10 @@ for column_to_keep in ["features", "iterations", "feature_pruning", "multiset_ha
         if column_to_keep == "features":
             # remove numbers from config
             config = "".join([c for c in config if not c.isdigit()])
-            config = '\\' + config + "{}"
+            config = "\\" + config + "{}"
         elif column_to_keep in {"feature_pruning", "optimiser"}:
             config = config.replace("-", "")
-            config = '\\' + config + "{}"
+            config = "\\" + config + "{}"
         elif column_to_keep == "multiset_hash":
             if config == "1":
                 config = r"\multiset{}"
@@ -203,7 +211,3 @@ for optimisation, iterations in product(["svr", "rank-svm"], ["2", "4"]):
 
 
 # In[ ]:
-
-
-
-

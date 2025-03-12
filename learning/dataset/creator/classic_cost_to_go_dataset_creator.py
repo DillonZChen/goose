@@ -32,7 +32,9 @@ class ClassicCostToGoDatasetFromStateSpace(ClassicDatasetCreator):
             wlplan_problem = wlplan.planning.parse_problem(self.domain_pddl, problem_pddl)
 
             succ_generator = pymimir.GroundedSuccessorGenerator(mimir_problem)
-            ss = pymimir.StateSpace.new(mimir_problem, succ_generator, max_expanded=self.max_expanded)
+            ss = pymimir.StateSpace.new(
+                mimir_problem, succ_generator, max_expanded=self.max_expanded
+            )
 
             if ss is None:
                 # reached max ss size, and assume train problems are monotonic in ss size
@@ -49,7 +51,8 @@ class ClassicCostToGoDatasetFromStateSpace(ClassicDatasetCreator):
 
                 # check if WL repr of the state has been seen before
                 mini_dataset = WLPlanDataset(
-                    domain=self.wlplan_domain, data=[ProblemStates(problem=wlplan_problem, states=[wlplan_state])]
+                    domain=self.wlplan_domain,
+                    data=[ProblemStates(problem=wlplan_problem, states=[wlplan_state])],
                 )
                 pruning = self.feature_generator.get_pruning()
                 self.feature_generator.set_pruning("none")

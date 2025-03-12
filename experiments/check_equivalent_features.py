@@ -44,4 +44,3 @@ for config in product(
     fg_collapse_all = WLFeatures.load(fp_collapse_all)
 
     breakpoint()
-

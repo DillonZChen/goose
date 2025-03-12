@@ -114,7 +114,18 @@ def main():
         ITERATIONS,
         REPEATS,
     ):
-        domain, feature, fpruning, dpruning, optimiser, multiset_hash, data_gen, facts, iterations, repeat = config
+        (
+            domain,
+            feature,
+            fpruning,
+            dpruning,
+            optimiser,
+            multiset_hash,
+            data_gen,
+            facts,
+            iterations,
+            repeat,
+        ) = config
         job_description = "_".join(config)
         log_file = f"{LOG_DIR}/{job_description}.log"
         lck_file = f"{LCK_DIR}/{job_description}.lck"

@@ -15,11 +15,14 @@ _PREDICTORS = {
     "rank-gpc": GaussianProcessRanker,
 }
 
+
 def get_available_predictors():
     return set(_PREDICTORS.keys())
 
+
 def is_rank_predictor(predictor_name: str):
     return _PREDICTORS[predictor_name].IS_RANK
+
 
 def get_predictor(predictor_name: str):
     if predictor_name in _PREDICTORS:

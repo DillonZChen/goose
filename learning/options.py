@@ -11,7 +11,7 @@ from learning.predictor.predictor_factory import get_available_predictors
 from util.error_message import get_path_error_msg
 from wlplan.feature_generation import (
     get_available_feature_generators,
-    get_available_pruning_methods
+    get_available_pruning_methods,
 )
 
 _DEF_VAL = {
@@ -39,7 +39,7 @@ python3 train.py configurations/data/neurips24/childsnack.toml configurations/mo
 """
 
 
-def parse_opts():
+def get_parser():
     # fmt: off
     parser = argparse.ArgumentParser(description=_DESCRIPTION, epilog=_EPILOG, formatter_class=argparse.RawDescriptionHelpFormatter)
 
@@ -99,7 +99,11 @@ def parse_opts():
     parser.add_argument("--collect_only", action="store_true",
                         help=f"Only collect features and exit.")
     # fmt: on
+    return parser
 
+
+def parse_opts():
+    parser = get_parser()
     opts = parser.parse_args()
 
     assert os.path.exists(opts.data_config), get_path_error_msg(opts.data_config)

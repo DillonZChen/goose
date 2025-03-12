@@ -16,7 +16,7 @@ class NumericCostToGoDatasetFromPlans(NumericDatasetCreator):
             wlplan_states = []
             info = self._get_nfd_info(problem_pddl, plan_file)
             ranking_groups = info["ranking_groups"]
-            
+
             h_opt = len(ranking_groups)
 
             for ranking_group in ranking_groups:  # skips the goal state

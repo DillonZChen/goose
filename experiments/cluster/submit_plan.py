@@ -291,7 +291,6 @@ def main():
             to_go += 1
             continue
 
-
         if facts == "fd":
             planner = "fd"
             domain_pddl = f"fdr"
@@ -479,11 +478,16 @@ class Perc:
                             secs_remaining = p(self._vmax) - p(self._it)
                             print(
                                 "<%s => %s"
-                                % (self.tomins(secs_remaining), self.tomins(secs_remaining + elps)),
+                                % (
+                                    self.tomins(secs_remaining),
+                                    self.tomins(secs_remaining + elps),
+                                ),
                                 end="",
                             )
                             if self._verbose > 3:
-                                endtime = self._starttime + timedelta(seconds=elps + secs_remaining)
+                                endtime = self._starttime + timedelta(
+                                    seconds=elps + secs_remaining
+                                )
                                 print(
                                     " | Started: %s - Ends at: %s"
                                     % (
