@@ -75,11 +75,11 @@ def main():
     # Collect colours
     with TimerContextManager("collecting colours"):
         feature_generator.collect(dataset.wlplan_dataset)
-    logging.info(f"n_seen_graphs={feature_generator.get_n_seen_graphs()}")
-    logging.info(f"n_seen_nodes={feature_generator.get_n_seen_nodes()}")
-    logging.info(f"n_seen_edges={feature_generator.get_n_seen_edges()}")
-    logging.info(f"n_seen_initial_colours={feature_generator.get_n_seen_initial_colours()}")
-    logging.info(f"n_seen_refined_colours={feature_generator.get_n_seen_refined_colours()}")
+    # logging.info(f"n_seen_graphs={feature_generator.get_n_seen_graphs()}")
+    # logging.info(f"n_seen_nodes={feature_generator.get_n_seen_nodes()}")
+    # logging.info(f"n_seen_edges={feature_generator.get_n_seen_edges()}")
+    # logging.info(f"n_seen_initial_colours={feature_generator.get_n_seen_initial_colours()}")
+    # logging.info(f"n_seen_refined_colours={feature_generator.get_n_seen_refined_colours()}")
 
     # Construct features
     with TimerContextManager("constructing features"):
