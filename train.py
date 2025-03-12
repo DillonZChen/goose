@@ -46,6 +46,7 @@ def parse_opts():
 
     model_config = toml.load(opts.model_config)
     opts.features = model_config["features"]
+    opts.graph_representation = model_config["graph_representation"]
     opts.optimisation = model_config["optimisation"]
     opts.iterations = model_config["iterations"]
     opts.rank = model_config["rank"]
@@ -66,8 +67,15 @@ def main():
         domain_pddl = toml.load(opts.data_config)["domain_pddl"]
         domain = parse_domain(domain_pddl)
         features = opts.features
+        graph_representation = opts.graph_representation
         logging.info(f"{features=}")
-        feature_generator = get_feature_generator(features, domain, iterations=opts.iterations)
+        logging.info(f"{graph_representation=}")
+        feature_generator = get_feature_generator(
+            feature_algorithm=features,
+            graph_representation=graph_representation,
+            domain=domain,
+            iterations=opts.iterations,
+        )
         feature_generator.print_init_colours()
         dataset = get_dataset(opts, feature_generator)
         logging.info(f"{len(dataset)=}")
@@ -95,7 +103,7 @@ def main():
     if pca_save_file is not None:
         visualise(X, y, save_file=pca_save_file)
         return
-    
+
     # distinguishability testing
     if opts.distinguish_test:
         distinguish(X, y)

@@ -1,3 +1,5 @@
+planning/downward/src/search/ext/wlplan/include/
+
 plots/
 logs/
 _*/
@@ -9,6 +11,7 @@ _*/
 *.sas
 *.bak
 *.csv
+*.zip
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
