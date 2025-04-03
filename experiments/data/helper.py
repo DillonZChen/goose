@@ -14,6 +14,7 @@ CUR_DIR = os.path.dirname(os.path.realpath(__file__))
 ROOT_DIR = os.path.normpath(f"{CUR_DIR}/../..")
 
 LOG_PLAN_DIR = os.path.normpath(f"{CUR_DIR}/../_log_plan")
+RED_LOG_PLAN_DIR = os.path.normpath(f"{CUR_DIR}/../_redundancy_experiments/_log_plan")
 LOG_TRAIN_DIR = os.path.normpath(f"{CUR_DIR}/../_log_train")
 
 PLOT_DIR = os.path.normpath(f"{CUR_DIR}/../_plots")
@@ -42,8 +43,8 @@ FEATURE_GENERATION_PREFIX = {
     "collapse-layer-y": 3,
     "collapse-layer-f": 4,
     "collapse-layer-yf": 5,
-    "collapse-all": 9,
-    "collapse-layer": 9,
+    # "collapse-all": 9,
+    # "collapse-layer": 9,
 }
 
 PROBLEMS = []
@@ -181,6 +182,44 @@ def parse_train_log(log_path: str):
     data["mean_accuracy"] = float(try_match(r"mean_accuracy=([\d.]+)", -1))
 
     return data
+
+
+def get_plan_df_redundant_paper(cluster: str):
+    data = {k: [] for k in PLAN_DF_KEYS}
+
+    for config in tqdm(
+        list(
+            product(
+                DOMAINS,
+                ["wl"],
+                FEATURE_GENERATION_PREFIX.keys(),
+                DATA_PRUNING,
+                ["rank-svm", "svr"],
+                DATA_GENERATION,
+                ["fd"],
+                ["2", "4"],
+                PROBLEMS,
+                REPEATS,
+            )
+        )
+    ):
+        log_path = f"{RED_LOG_PLAN_DIR}/{cluster}/{'_'.join(config)}.log"
+        config_data = parse_plan_log(log_path)
+        for k, v in config_data.items():
+            data[k].append(v)
+        data["problem"].append(config[-2])
+        data["repeat"].append(config[-1])
+        for i, k in enumerate(CONFIG_KEYS):
+            value = config[i]
+            if k == "feature_pruning":
+                value = str(FEATURE_GENERATION_PREFIX[config[i]]) + value
+            elif k == "iterations":
+                value = int(config[-3])
+            data[k].append(value)
+            
+
+    df = pd.DataFrame(data)
+    return df
 
 
 def get_plan_df(cluster: str):
