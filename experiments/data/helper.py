@@ -90,6 +90,7 @@ TRAIN_DF_KEYS = CONFIG_KEYS + [
     "mse_loss",
     "f1_macro",
     "mean_accuracy",
+    "obj_value",
 ]
 
 
@@ -156,6 +157,7 @@ def parse_train_log(log_path: str):
         "mse_loss": -1,
         "f1_macro": -1,
         "mean_accuracy": -1,
+        "obj_value": -1,
     }
 
     if not os.path.exists(log_path):
@@ -180,6 +182,7 @@ def parse_train_log(log_path: str):
     data["mse_loss"] = float(try_match(r"mse_loss=([\d.]+)", -1))
     data["f1_macro"] = float(try_match(r"f1_macro=([\d.]+)", -1))
     data["mean_accuracy"] = float(try_match(r"mean_accuracy=([\d.]+)", -1))
+    data["obj_value"] = float(try_match(r"obj_value=([\d.]+)", -1))
 
     return data
 
