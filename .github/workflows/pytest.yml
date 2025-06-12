@@ -36,9 +36,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y apptainer
 
-      - name: Install wlplan submodule
+      - name: Install submodules
         run: |
-          git submodule update --init --recursive wlplan
+          git submodule update --init --recursive
 
       - name: Build image
         run: |

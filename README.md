@@ -20,8 +20,9 @@ See [references](#references) for the corresponding publications.
 After cloning this repository, there are 3 commands to download Goose, train a model, and plan. 
 
 ```
-# (1) Download the Apptainer image
+# (1) Download the Apptainer image and submodules
 apptainer pull goose.sif oras://ghcr.io/dillonzchen/goose:latest
+git submodule update --init --recursive
 
 # (2) Train 
 ./goose.sif train configurations/data/ipc23lt/blocksworld.toml -s blocksworld.model
@@ -50,7 +51,11 @@ See further below for more information on how to run Goose for different setting
 
 ## Setup
 
-There are 3 possible ways to install Goose.
+There are 3 possible ways to install Goose. First, install submodules
+
+```
+git submodule update --init --recursive
+```
 
 
 ### Download Apptainer image
@@ -62,7 +67,6 @@ Download the image from the internet
 ### Build Apptainer image
 Install submodules and [Apptainer](https://apptainer.org/) and then build the image
 
-    git submodule update --init --recursive
     sudo apt-get install apptainer
     sudo apptainer build goose.sif Apptainer
 
@@ -87,7 +91,6 @@ The setup has been tested with python versions 3.10 and higher, but should proba
     python3 -m venv venv
     source venv/bin/activate
     pip install -r requirements.txt
-    git submodule update --init --remote --recursive
     sh build.sh
 
 In case a virtual environment does not work, you can also try anaconda and specify a Python version:
@@ -95,7 +98,6 @@ In case a virtual environment does not work, you can also try anaconda and speci
     conda create --name goose python=3.10.4
     conda activate goose
     pip install -r requirements.txt
-    git submodule update --init --remote --recursive
     sh build.sh
 
 
