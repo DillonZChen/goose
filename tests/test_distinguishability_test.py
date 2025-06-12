@@ -4,7 +4,7 @@ import os
 
 
 def test_distinguishability_test():
-    cmd = "python3 train.py configurations/data/ipc23lt/blocksworld.toml configurations/model/wl/wl_gpr_4.toml --distinguish_test"
+    cmd = "./goose.sif train configurations/data/ipc23lt/blocksworld.toml configurations/model/wl/wl_gpr_2.toml --distinguish_test"
     rc = os.system(cmd)
     assert rc == 0
 

@@ -95,9 +95,7 @@ class ClassicDatasetCreator(DatasetCreator):
                         assert predicates[name] == predicate
         return predicates
 
-    def _collect_actions_from_plan(
-        self, mimir_problem: pymimir.Problem, plan_file: str
-    ) -> list[pymimir.Action]:
+    def _collect_actions_from_plan(self, mimir_problem: pymimir.Problem, plan_file: str) -> list[pymimir.Action]:
         name_to_schema = {s.name: s for s in self.mimir_domain.action_schemas}
         name_to_object = {o.name: o for o in mimir_problem.objects}
         actions = []

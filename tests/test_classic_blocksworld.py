@@ -10,22 +10,20 @@ EXPECTED_EXPANDED_UB = None
 
 @pytest.mark.parametrize("domain", [DOMAIN])
 def test_domain(domain):
-    modelpath = f"tests/models/{domain}.model"
+    model_path = f"tests/models/{domain}.model"
     train(
-        domain,
-        modelpath,
+        domain=domain,
+        save_path=model_path,
         predictor=PREDICTOR,
         benchmarks=BENCHMARKS,
-        numeric=False,
     )
     plan(
-        domain,
-        PROBLEM,
-        modelpath,
-        "fd",
+        domain=domain,
+        problem=PROBLEM,
+        evaluator=model_path,
+        planner="fd",
         expected_expanded_ub=EXPECTED_EXPANDED_UB,
         benchmarks=BENCHMARKS,
-        numeric=False,
     )
 
 

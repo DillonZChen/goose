@@ -3,12 +3,12 @@ import warnings
 from sklearn.exceptions import ConvergenceWarning
 from sklearn.svm import LinearSVR
 
-from .mse_minimiser import MSEMinimiser
+from .regressor import Regressor
 
 warnings.filterwarnings("ignore", category=ConvergenceWarning)
 
 
-class SupportVectorRegression(MSEMinimiser):
+class SupportVectorRegression(Regressor):
     """Linear SVR"""
 
     IS_RANK = False

@@ -73,9 +73,7 @@ def validate(domain_pddl: str, problem_pddl: str, plan_file: str):
             print(f"Bad: Objects in action ({action}) not found")
             return
         action_schema = name_to_action_schema[schema]
-        action = pymimir.Action.new(
-            problem, action_schema, [name_to_objects[tok] for tok in objects]
-        )
+        action = pymimir.Action.new(problem, action_schema, [name_to_objects[tok] for tok in objects])
         state = action.apply(state)
 
     goal = problem.goal

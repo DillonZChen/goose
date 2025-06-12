@@ -7,9 +7,10 @@ from util.timer import TimerContextManager
 
 
 @abstract_class_attributes("IS_RANK")
-class BasePredictor(ABC):
+class Predictor(ABC):
     def __init__(self) -> None:
         super().__init__()
+        self._class_name = self.__class__.__name__
         self._weights = None
 
     def fit_evaluate(self, X, y, sample_weight):

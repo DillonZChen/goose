@@ -1,9 +1,9 @@
 from learning.predictor.rank_lp import LinearProgramRanker
 
 from .gpr import GaussianProcessRegressor
-from .rank_gpc import GaussianProcessRanker
+from .rank_gpc import GaussianProcessClassifierRanker
 from .rank_mip import MixedIntegerProgramRanker
-from .rank_svm import SVMRanker
+from .rank_svm import SupportVectorMachineRanker
 from .svr import SupportVectorRegression
 
 _PREDICTORS = {
@@ -11,8 +11,8 @@ _PREDICTORS = {
     "svr": SupportVectorRegression,
     "rank-mip": MixedIntegerProgramRanker,
     "rank-lp": LinearProgramRanker,
-    "rank-svm": SVMRanker,
-    "rank-gpc": GaussianProcessRanker,
+    "rank-svm": SupportVectorMachineRanker,
+    "rank-gpc": GaussianProcessClassifierRanker,
 }
 
 

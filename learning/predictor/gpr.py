@@ -6,10 +6,10 @@ from sklearn.gaussian_process import GaussianProcessRegressor as GPR
 from sklearn.gaussian_process.kernels import DotProduct
 from termcolor import colored
 
-from .mse_minimiser import MSEMinimiser
+from .regressor import Regressor
 
 
-class GaussianProcessRegressor(MSEMinimiser):
+class GaussianProcessRegressor(Regressor):
     """Linear GPR"""
 
     IS_RANK = False
