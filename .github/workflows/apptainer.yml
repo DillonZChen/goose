@@ -1,6 +1,5 @@
 name: Apptainer
 
-# Run for all pushes to the main branch.
 on:
   push:
     branches:
