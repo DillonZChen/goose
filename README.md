@@ -1,9 +1,17 @@
+<div style="text-align: center;">
+    <img src="goose.jpg" alt="GOOSE Image" style="height:256px; width:auto;">
+</div>
+
+--------------------------------------------------------------------------------
+
 <span style="font-weight:normal">**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation</span>
 =============================================================================================================
 
-GOOSE is a learning for planning framework. It contains various methods for learning representations for planning tasks, and algorithms for using such representations for solving planning tasks. Currently, GOOSE supports [classical grounded](https://github.com/aibasel/downward), [classical lifted](https://github.com/abcorrea/powerlifted), and [numeric planning](https://github.com/Kurorororo/numeric-fast-downward).
+GOOSE is a learning for planning framework. It contains various methods for learning representations for planning tasks, and algorithms for using such representations for solving planning tasks. Currently, GOOSE supports [ground STRIPS](https://github.com/aibasel/downward), [lifted STRIPS](https://github.com/abcorrea/powerlifted), and [ground numeric (PDDL2.1) planning](https://github.com/Kurorororo/numeric-fast-downward).
 
-If you just want to use the WL features, take a look at the [WLPlan](https://github.com/DillonZChen/wlplan) package.
+If you just want to use the WL features introduced in our [ICAPS'24 paper](https://arxiv.org/abs/2403.16508), take a look at the [WLPlan](https://github.com/DillonZChen/wlplan) package.
+
+Note that the main branch contains **no GNN implementations**. Please refer to the `icaps24` branch or release for *domain-dependent* GNNs, and `aaai24` for *domain-independent* GNNs.
 
 See [references](#references) for the corresponding publications.
 
@@ -137,5 +145,44 @@ e.g. with numeric Childsnack
 GOOSE has been published in various venues. Please refer to the [releases](https://github.com/DillonZChen/goose/releases) page to find the latest version to use or code from a specific publication. The relevant publications so far for this repository are listed as follows.
 
 - Dillon Ze Chen and Sylvie Thiébaux. **Graph Learning for Numeric Planning**. NeurIPS 2024.
+
+```
+@inproceedings{chen.thiebaux.neurips2024,
+    author       = {Dillon Z. Chen and
+                    Sylvie Thi{\'{e}}baux},
+    title        = {Graph Learning for Numeric Planning},
+    booktitle    = {NeurIPS},
+    year         = {2024}
+}
+```
+
 - Dillon Ze Chen and Felipe Trevizan and Sylvie Thiébaux. **Return to Tradition: Learning Reliable Heuristics with Classical Machine Learning**. ICAPS 2024.
+
+```
+@inproceedings{chen.etal.icaps2024,
+    author       = {Dillon Z. Chen and
+                    Felipe W. Trevizan and
+                    Sylvie Thi{\'{e}}baux},
+    title        = {Return to Tradition: Learning Reliable Heuristics with Classical Machine
+                    Learning},
+    booktitle    = {{ICAPS}},
+    pages        = {68--76},
+    publisher    = {{AAAI} Press},
+    year         = {2024}
+}
+```
+
 - Dillon Ze Chen and Sylvie Thiébaux and Felipe Trevizan. **Learning Domain-Independent Heuristics for Grounded and Lifted Planning**. AAAI 2024.
+
+```
+@inproceedings{chen.etal.aaai2024,
+    author       = {Dillon Ze Chen and
+                    Sylvie Thi{\'{e}}baux and
+                    Felipe W. Trevizan},
+    title        = {Learning Domain-Independent Heuristics for Grounded and Lifted Planning},
+    booktitle    = {{AAAI}},
+    pages        = {20078--20086},
+    publisher    = {{AAAI} Press},
+    year         = {2024}
+}
+```
