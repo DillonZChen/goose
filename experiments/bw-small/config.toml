@@ -1,3 +1,0 @@
-domain_pddl = 'experiments/bw-small/domain.pddl'
-tasks_dir = 'experiments/bw-small/training'
-plans_dir = 'experiments/bw-small/training_plans'
