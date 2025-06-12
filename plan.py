@@ -16,9 +16,7 @@ def parse_opts():
     parser.add_argument("problem_pddl", type=str)
     parser.add_argument("model_path", type=str)
     parser.add_argument("-t", "--timeout", type=int, default=1800)
-    parser.add_argument(
-        "-p", "--planner", type=str, default="fd", choices=["pwl", "fd", "nfd", "policy"]
-    )
+    parser.add_argument("-p", "--planner", type=str, default="fd", choices=["pwl", "fd", "nfd", "policy"])
     parser.add_argument(
         "-f",
         "--plan_file",

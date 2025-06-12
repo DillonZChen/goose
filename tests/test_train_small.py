@@ -33,9 +33,7 @@ print(fixture_values)
 
 # @pytest.mark.filterwarnings("ignore:not supported")
 @pytest.mark.parametrize(fixture_keys, fixture_values)
-def test_train_small(
-    features, feature_pruning, data_pruning, optimisers, data_generation, iterations, facts
-):
+def test_train_small(features, feature_pruning, data_pruning, optimisers, data_generation, iterations, facts):
     data_config = f"{CUR_DIR}/bw-small/config.toml"
     parser = get_parser()
     args = [

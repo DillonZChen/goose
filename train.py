@@ -50,9 +50,7 @@ def train(opts):
 
     # Construct features
     with TimerContextManager("constructing features"):
-        X, y, sample_weight = embed_data(
-            dataset=dataset, feature_generator=feature_generator, opts=opts
-        )
+        X, y, sample_weight = embed_data(dataset=dataset, feature_generator=feature_generator, opts=opts)
     if not opts.rank:
         log_quartiles(y)
     logging.info(f"{X.shape=}")
