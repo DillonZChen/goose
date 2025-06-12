@@ -1,8 +1,8 @@
-<div style="text-align: center;">
+<p align="center">
     <img src="goose.jpg" alt="GOOSE Image" style="height:256px; width:auto;">
-</div>
+</p>
 
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
 
 <span style="font-weight:normal">**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation</span>
 =============================================================================================================
@@ -16,17 +16,17 @@ Note that the main branch contains **no GNN implementations**. Please refer to t
 See [references](#references) for the corresponding publications.
 
 ## tl;dr for setup and usage
-There are 3 commands to download Goose, train a model, and plan. 
+After cloning this repository, there are 3 commands to download Goose, train a model, and plan. 
 
 ```
 # (1) Download the Apptainer image
 apptainer pull goose.sif oras://ghcr.io/dillonzchen/goose:latest
 
 # (2) Train 
-python3 train.py configurations/data/ipc23lt/blocksworld.toml -s blocksworld.model
+./goose.sif train configurations/data/ipc23lt/blocksworld.toml -s blocksworld.model
 
 # (3) Plan
-python3 plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_01.pddl blocksworld.model
+./goose.sif plan benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_01.pddl blocksworld.model
 ```
 
 See further below for more information on how to run Goose for different settings.
