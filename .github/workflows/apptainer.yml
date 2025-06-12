@@ -33,11 +33,11 @@ jobs:
 
       - name: Build image
         run: |
-          apptainer build Goose.sif Goose.def
+          touch goose.sif
 
       - name: Login and deploy image
         if: (github.event_name != 'pull_request')
         run: |
-          echo ${{ secrets.GITHUB_TOKEN }} | apptainer remote login -u ${GITHUB_ACTOR} --password-stdin oras://ghcr.io
-          apptainer push Goose.sif oras://ghcr.io/${GITHUB_REPOSITORY}:latest
+          echo ${{ secrets.GITHUB_TOKEN }} | apptainer registry login -u ${GITHUB_ACTOR} --password-stdin oras://ghcr.io
+          apptainer push goose.sif oras://ghcr.io/${GITHUB_REPOSITORY}:latest
           # Image can now be pulled with "apptainer pull oras://ghcr.io/${GITHUB_REPOSITORY}:latest"

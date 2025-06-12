@@ -8,11 +8,11 @@ If you just want to use the WL features, take a look at the [WLPlan](https://git
 See [references](#references) for the corresponding publications.
 
 ## tl;dr for setup and usage
-There are 3 commands to download Goose, train a model, and plan. See further below for more information on how to run Goose for different settings.
+There are 3 commands to download Goose, train a model, and plan. 
 
 ```
 # (1) Download the Apptainer image
-apptainer pull Goose.sif oras://ghcr.io/dillonzchen/goose:latest
+apptainer pull goose.sif oras://ghcr.io/dillonzchen/goose:latest
 
 # (2) Train 
 python3 train.py configurations/data/ipc23lt/blocksworld.toml -s blocksworld.model
@@ -21,12 +21,15 @@ python3 train.py configurations/data/ipc23lt/blocksworld.toml -s blocksworld.mod
 python3 plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_01.pddl blocksworld.model
 ```
 
+See further below for more information on how to run Goose for different settings.
+
 ## Table of contents
 - [**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation](#goose-graphs-optimised-for-search-evaluation)
   - [tl;dr for setup and usage](#tldr-for-setup-and-usage)
   - [Table of contents](#table-of-contents)
   - [Setup](#setup)
-    - [Apptainer image](#apptainer-image)
+    - [Download Apptainer image](#download-apptainer-image)
+    - [Build Apptainer image](#build-apptainer-image)
     - [Manual compilation](#manual-compilation)
   - [Usage](#usage)
     - [Training](#training)
@@ -36,12 +39,19 @@ python3 plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/bl
 
 ## Setup
 
-### Apptainer image
+There are 3 possible ways to install Goose.
+
+### Download Apptainer image
+Download the image from the internet
+
+    apptainer pull goose.sif oras://ghcr.io/dillonzchen/goose:latest
+
+### Build Apptainer image
 Install submodules and [Apptainer](https://apptainer.org/) and then build the image
 
     git submodule update --init --recursive
     sudo apt-get install apptainer
-    sudo apptainer build Goose.sif Goose.def
+    sudo apptainer build goose.sif Apptainer
 
 
 ### Manual compilation
@@ -78,7 +88,7 @@ In case a virtual environment does not work, you can also try anaconda and speci
 
 ## Usage
 ### Training
-Call `Goose.sif train -h` or `python3 train.py -h` for arguments, you will need the `-s` argument if you want to save the model.
+Call `goose.sif train -h` or `python3 train.py -h` for arguments, you will need the `-s` argument if you want to save the model.
 - See below for [recommended training configurations](#recommended-configurations).
 - To add your own datasets, follow the directory and `.toml` file structure.
 - If you own a CPLEX license and want to train LP models faster, [add it to PYTHONPATH](https://www.ibm.com/docs/en/icos/22.1.1?topic=cplex-setting-up-python-api) and use the manual installation.
@@ -86,18 +96,18 @@ Call `Goose.sif train -h` or `python3 train.py -h` for arguments, you will need 
 e.g.
 
     # Apptainer
-    ./Goose.sif train configurations/data/neurips24/childsnack.toml configurations/model/ccwl/ccwl_rank-lp_1.toml -s numeric_childsnack.model
+    ./goose.sif train configurations/data/neurips24/childsnack.toml configurations/model/ccwl/ccwl_rank-lp_1.toml -s numeric_childsnack.model
 
     # manual installation 
     python3 train.py configurations/data/neurips24/childsnack.toml configurations/model/ccwl/ccwl_rank-lp_1.toml -s numeric_childsnack.model
 
 
 ### Planning
-Call `Goose.sif plan -h` or `python3 plan.py -h` for arguments.
+Call `goose.sif plan -h` or `python3 plan.py -h` for arguments.
 e.g.
 
     # Apptainer
-    ./Goose.sif plan benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model
+    ./goose.sif plan benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model
 
     # manual installation
     python3 plan.py benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model
