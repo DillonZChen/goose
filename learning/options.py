@@ -17,8 +17,8 @@ from wlplan.feature_generation import (
 _DEF_VAL = {
     "features": "wl",
     "graph_representation": "ilg",
-    "iterations": 4,
-    "optimisation": "svr",
+    "iterations": 2,
+    "optimisation": "rank-lp",
     "data_generation": "plan",
     "feature_pruning": "none",
     "data_pruning": "equivalent-weighted",

@@ -57,34 +57,13 @@ def train(opts):
         log_quartiles(y)
     logging.info(f"{X.shape=}")
 
-    # distinct_per_column_counts = {}
-    # for column in X.T:
-    #     column = set(column)
-    #     size = len(column)
-    #     if size not in distinct_per_column_counts:
-    #         distinct_per_column_counts[size] = 0
-    #     distinct_per_column_counts[size] += 1
-    # for k in sorted(distinct_per_column_counts.keys()):
-    #     print(k, distinct_per_column_counts[k])
-
-    # colour_counts = {}
-    # for column in X.T:
-    #     summ = sum(column)
-    #     if summ not in colour_counts:
-    #         colour_counts[summ] = 0
-    #     colour_counts[summ] += 1
-    # for k in sorted(colour_counts.keys()):
-    #     print(k, colour_counts[k])
-
-    # breakpoint()
-
     # PCA visualisation
     pca_save_file = opts.visualise_pca
     if pca_save_file is not None:
         visualise(X, y, save_file=pca_save_file)
         return
 
-    # distinguishability testing
+    # Distinguishability testing
     if opts.distinguish_test:
         distinguish(X, y)
         return
