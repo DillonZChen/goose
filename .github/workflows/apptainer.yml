@@ -27,9 +27,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y apptainer
 
-    #   - name: Install wlplan submodule
-    #     run: |
-    #       git submodule update --init --recursive wlplan
+      - name: Install wlplan submodule
+        run: |
+          git submodule update --init --recursive wlplan
 
       - name: Build image
         run: |
@@ -39,5 +39,9 @@ jobs:
         if: (github.event_name != 'pull_request')
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | apptainer registry login -u ${GITHUB_ACTOR} --password-stdin oras://ghcr.io
+
+          # We cannot use ${GITHUB_REPOSITORY} as the below command requires lowercase.
+          # See https://github.com/apptainer/apptainer/issues/2272
           apptainer push image.sif oras://ghcr.io/dillonzchen/goose:latest
+
           # Image can now be pulled with "apptainer pull oras://ghcr.io/dillonzchen/goose:latest"
