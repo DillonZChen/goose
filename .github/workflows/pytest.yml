@@ -11,7 +11,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
@@ -42,8 +42,7 @@ jobs:
 
       - name: Build image
         run: |
-          apptainer build image.sif Apptainer
-          mv image.sif goose.sif
+          apptainer build goose.sif Apptainer
 
       - name: Install test dependencies
         run: python -m pip install -r tests/test-requirements.txt

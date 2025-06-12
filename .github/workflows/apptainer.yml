@@ -9,8 +9,8 @@ on:
       - main
 
 jobs:
-  build-image:
-    name: Build Apptainer image
+  build:
+    
     if: github.repository == 'DillonZChen/goose'
     runs-on: ubuntu-22.04
 
