@@ -15,6 +15,7 @@ Note that the main branch contains **no GNN implementations**. Please refer to t
 
 See [references](#references) for the corresponding publications.
 
+
 ## tl;dr for setup and usage
 After cloning this repository, there are 3 commands to download Goose, train a model, and plan. 
 
@@ -31,6 +32,7 @@ apptainer pull goose.sif oras://ghcr.io/dillonzchen/goose:latest
 
 See further below for more information on how to run Goose for different settings.
 
+
 ## Table of contents
 - [**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation](#goose-graphs-optimised-for-search-evaluation)
   - [tl;dr for setup and usage](#tldr-for-setup-and-usage)
@@ -45,14 +47,17 @@ See further below for more information on how to run Goose for different setting
     - [Recommended configurations](#recommended-configurations)
   - [References](#references)
 
+
 ## Setup
 
 There are 3 possible ways to install Goose.
+
 
 ### Download Apptainer image
 Download the image from the internet
 
     apptainer pull goose.sif oras://ghcr.io/dillonzchen/goose:latest
+
 
 ### Build Apptainer image
 Install submodules and [Apptainer](https://apptainer.org/) and then build the image
@@ -95,6 +100,8 @@ In case a virtual environment does not work, you can also try anaconda and speci
 
 
 ## Usage
+
+
 ### Training
 Call `goose.sif train -h` or `python3 train.py -h` for arguments, you will need the `-s` argument if you want to save the model.
 - See below for [recommended training configurations](#recommended-configurations).
