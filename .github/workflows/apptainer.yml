@@ -27,6 +27,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y apptainer
 
+      - name: Install wlplan submodule
+        run: |
+          git submodule update --init --recursive wlplan
+
       - name: Build image
         run: |
           apptainer build Goose.sif Goose.def
