@@ -35,59 +35,60 @@ bool SearchNode::is_new() const {
     return info.status == SearchNodeInfo::NEW;
 }
 
-void SearchNode::set_h(int h) {
-    info.h = h;
-}
-
-int SearchNode::get_h() const {
-    return info.h;
-}
-
 int SearchNode::get_g() const {
     assert(info.g >= 0);
     return info.g;
+}
+
+int SearchNode::get_real_g() const {
+    return info.real_g;
 }
 
 void SearchNode::open_initial() {
     assert(info.status == SearchNodeInfo::NEW);
     info.status = SearchNodeInfo::OPEN;
     info.g = 0;
+    info.real_g = 0;
     info.parent_state_id = StateID::no_state;
     info.creating_operator = OperatorID::no_operator;
 }
 
 void SearchNode::open(const SearchNode &parent_node,
                       const OperatorProxy &parent_op,
-                      int h) {
+                      int adjusted_cost) {
     assert(info.status == SearchNodeInfo::NEW);
     info.status = SearchNodeInfo::OPEN;
-    info.h = h;
-    info.g = parent_node.info.g + parent_op.get_cost();
+    info.g = parent_node.info.g + adjusted_cost;
+    info.real_g = parent_node.info.real_g + parent_op.get_cost();
     info.parent_state_id = parent_node.get_state().get_id();
     info.creating_operator = OperatorID(parent_op.get_id());
 }
 
 void SearchNode::reopen(const SearchNode &parent_node,
-                        const OperatorProxy &parent_op) {
+                        const OperatorProxy &parent_op,
+                        int adjusted_cost) {
     assert(info.status == SearchNodeInfo::OPEN ||
            info.status == SearchNodeInfo::CLOSED);
 
     // The latter possibility is for inconsistent heuristics, which
     // may require reopening closed nodes.
     info.status = SearchNodeInfo::OPEN;
-    info.g = parent_node.info.g + parent_op.get_cost();
+    info.g = parent_node.info.g + adjusted_cost;
+    info.real_g = parent_node.info.real_g + parent_op.get_cost();
     info.parent_state_id = parent_node.get_state().get_id();
     info.creating_operator = OperatorID(parent_op.get_id());
 }
 
 // like reopen, except doesn't change status
 void SearchNode::update_parent(const SearchNode &parent_node,
-                               const OperatorProxy &parent_op) {
+                               const OperatorProxy &parent_op,
+                               int adjusted_cost) {
     assert(info.status == SearchNodeInfo::OPEN ||
            info.status == SearchNodeInfo::CLOSED);
     // The latter possibility is for inconsistent heuristics, which
     // may require reopening closed nodes.
-    info.g = parent_node.info.g + parent_op.get_cost();
+    info.g = parent_node.info.g + adjusted_cost;
+    info.real_g = parent_node.info.real_g + parent_op.get_cost();
     info.parent_state_id = parent_node.get_state().get_id();
     info.creating_operator = OperatorID(parent_op.get_id());
 }

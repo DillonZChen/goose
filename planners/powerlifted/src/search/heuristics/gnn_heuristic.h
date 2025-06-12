@@ -1,5 +1,5 @@
-#ifndef SEARCH_GOOSE_HEURISTIC_H
-#define SEARCH_GOOSE_HEURISTIC_H
+#ifndef SEARCH_GNN_HEURISTIC_H
+#define SEARCH_GNN_HEURISTIC_H
 
 // #include <torch/script.h>
 // #include <torchscatter/scatter.h>
@@ -12,9 +12,11 @@
 
 #include "heuristic.h"
 
-class GooseHeuristic : public Heuristic {
+class GNNHeuristic : public Heuristic {
 
-    bool lifted_goose;
+    bool lifted_state_input;
+
+    // torch::jit::script::Module model;
 
     // Required for pybind. Once this goes out of scope python interaction is no
     // longer possible.
@@ -32,8 +34,7 @@ class GooseHeuristic : public Heuristic {
 
 
 public:
-    GooseHeuristic(const Task &task,
-                 const std::string &model_type,
+    GNNHeuristic(const Task &task,
                  const std::string &model_path,
                  const std::string &domain_file,
                  const std::string &instance_file);
@@ -45,4 +46,4 @@ public:
 };
 
 
-#endif  // SEARCH_GOOSE_HEURISTIC_H
+#endif  // SEARCH_GNN_HEURISTIC_H

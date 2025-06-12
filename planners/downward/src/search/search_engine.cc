@@ -94,6 +94,8 @@ void SearchEngine::search() {
             break;
         }
     }
+    // TODO: Revise when and which search times are logged.
+    log << "Actual search time: " << timer.get_elapsed_time() << endl;
 }
 
 bool SearchEngine::check_goal_and_set_plan(const State &state) {

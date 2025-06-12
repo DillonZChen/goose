@@ -40,9 +40,10 @@ The underlying pipeline for a training a model is
 - converting the states into graphs in tensor format for GNNs
 - training the GNN on the graphs
 
-To train a model enter the learner directory with `cd learner` and run the `train_gnn.py` script. For example to train a Blocksworld model, run
+To train a model enter the learner directory with `cd learner` and run the `train_gnn.py` script. For example to train a Blocksworld model with the container, run
 ```
-python3 train_gnn.py blocks -L 8 --aggr mean --rep llg --save-file blocks_llg_mean_8.dt
+cd learner
+singularity exec --nv ../goose_gpu.sif python3 train_gnn.py blocks -L 8 --aggr mean --rep llg --save-file blocks_llg_mean_8.dt
 ```
 which trains a GNN model operating on the LLG representation of planning tasks with 8 message passing layers and mean aggregation function. The trained model weights are then saved to `blocks_llg_mean_8.dt`
 
@@ -63,7 +64,7 @@ or with `cpu` instead of `gpu` if no GPU is available.
 Then to run search go into the `learner` directory and execute the `run_gnn.py` script with singularity, for example:
 ```
 cd learner
-singularity exec --nv ../goose_gpu.sif python3 run_gnn.py ../benchmarks/goose/blocks/domain.pddl ../benchmarks/goose/blocks/test/blocks25-task01.pddl blocks_llg_mean_8.dt
+singularity exec --nv ../goose_gpu.sif python3 run_gnn.py ../dataset/goose/blocks/domain.pddl ../dataset/goose/blocks/test/blocks25-task01.pddl blocks_llg_mean_8.dt
 ```
 
 More generally, we have

@@ -53,8 +53,6 @@ protected:
     bool is_unit_cost;
     double max_time;
 
-    int best_h;
-
     virtual void initialize() {}
     virtual SearchStatus step() = 0;
 

@@ -28,18 +28,19 @@ public:
     bool is_closed() const;
     bool is_dead_end() const;
 
-    void set_h(int h);
-    int get_h() const;
     int get_g() const;
+    int get_real_g() const;
 
     void open_initial();
     void open(const SearchNode &parent_node,
               const OperatorProxy &parent_op,
-              int h);
+              int adjusted_cost);
     void reopen(const SearchNode &parent_node,
-                const OperatorProxy &parent_op);
+                const OperatorProxy &parent_op,
+                int adjusted_cost);
     void update_parent(const SearchNode &parent_node,
-                       const OperatorProxy &parent_op);
+                       const OperatorProxy &parent_op,
+                       int adjusted_cost);
     void close();
     void mark_as_dead_end();
 
