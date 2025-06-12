@@ -8,6 +8,8 @@ See [references](#references) for the corresponding publications.
 - [**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation](#goose-graphs-optimised-for-search-evaluation)
   - [Table of contents](#table-of-contents)
   - [Setup](#setup)
+    - [Apptainer environment](#apptainer-environment)
+    - [Virtual environment](#virtual-environment)
   - [Training](#training)
     - [Example for WL models](#example-for-wl-models)
     - [Example for GNN models](#example-for-gnn-models)
@@ -21,13 +23,33 @@ See [references](#references) for the corresponding publications.
   - [TODOs](#todos)
 
 ## Setup
+
+First run 
+```
+sh setup.sh
+```
+
+### Apptainer environment
+Build an image using `cpu` or `gpu` e.g.
+
+```
+apptainer build env_gpu.sif env_gpu.def
+```
+
+Then to run any command below, prefix it with `apptainer exec --nv env_gpu.sif`. e.g. 
+```
+apptainer exec --nv env_gpu.sif python3 train.py experiments/models/gnn_mean_ilg.toml experiments/ipc23-learning/blocksworld.toml --save-file blocksworld_gnn.model
+```
+
+The `--nv` flag is only necssary for cpus.
+
+### Virtual environment
 Use the commands below to make a virtual environment, activate it, install packages, and build cpp components.
 The setup has been tested with python versions 3.10 and higher, but should probably work for lower python3 versions as well.
 ```
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-sh setup.sh
 ```
 
 In case a virtual environment does not work, you can also try anaconda:
@@ -35,7 +57,6 @@ In case a virtual environment does not work, you can also try anaconda:
 conda create --name goose python=3.10.4
 conda activate goose
 pip install -r requirements.txt
-sh setup.sh
 ```
 
 ## Training
