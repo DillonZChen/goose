@@ -17,9 +17,6 @@ MIP_TIMEOUT = 3600 * 24  # 24 hours
 class MixedIntegerProgram(Predictor):
     IS_RANK = True
 
-    def __init__(self):
-        self._weights = None
-
     def _make_solver(self, timeout: float):
         if pulp.apis.CPLEX_PY().available():
             logging.info("Using CPLEX solver")
