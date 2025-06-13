@@ -20,9 +20,9 @@ See [references](#references) for the corresponding publications.
 After cloning this repository, there are 3 commands to download Goose, train a model, and plan. 
 
 ```
-# (1) Download the Apptainer image and submodules
+# (1) Download the Apptainer image and dataset
 apptainer pull goose.sif oras://ghcr.io/dillonzchen/goose:latest
-git submodule update --init --recursive
+git submodule update --init --recursive benchmarks
 
 # (2) Train 
 ./goose.sif train configurations/data/ipc23lt/blocksworld.toml -s blocksworld.model
