@@ -79,6 +79,9 @@ def plan(domain, problem, evaluator, planner, benchmarks="ipc23lt", **kwargs):
     cmd = cmd.split()
     output, err, rc = popen(cmd)
     stats = parse_output(output, planner)
+    if rc != 0:
+        logging.info(f"OUTPUT:\n{output}\n")
+        logging.info(f"ERROR:\n{err}\n")
     assert rc == 0, cmd
     if expected_expanded_ub := kwargs.get("expected_expanded_ub"):
         assert stats["expanded"] <= expected_expanded_ub, (stats["expanded"], expected_expanded_ub)

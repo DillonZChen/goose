@@ -4,7 +4,7 @@ from functions import plan, train
 BENCHMARKS = "neurips24"
 DOMAIN = "childsnack"
 PREDICTOR = "ccwl/ccwl_rank-lp_1"
-PROBLEM = "0_30"  # 2_30 does not work for CI
+PROBLEM = "2_30"
 EXPECTED_EXPANDED_UB = None
 
 
