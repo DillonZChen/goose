@@ -5,6 +5,7 @@
 
 #include "../ext/wlplan/include/feature_generation/feature_generator_loader.hpp"
 #include "../ext/wlplan/include/planning/atom.hpp"
+#include "../ext/wlplan/include/planning/atom_verbose.hpp"
 #include "../ext/wlplan/include/planning/predicate.hpp"
 #include "../ext/wlplan/include/planning/problem.hpp"
 #include "../ext/wlplan/include/planning/state.hpp"

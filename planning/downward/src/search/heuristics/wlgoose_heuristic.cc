@@ -37,12 +37,12 @@ namespace wlgoose_heuristic {
     return {predicate_name, args};
   }
 
-  WlGooseHeuristic::WlGooseHeuristic(
-        const std::string &model_file,
-        const std::shared_ptr<AbstractTask> &transform,
-        bool cache_estimates, const std::string &description,
-        utils::Verbosity verbosity) 
-        : Heuristic(transform, cache_estimates, description, verbosity) {
+  WlGooseHeuristic::WlGooseHeuristic(const std::string &model_file,
+                                     const std::shared_ptr<AbstractTask> &transform,
+                                     bool cache_estimates,
+                                     const std::string &description,
+                                     utils::Verbosity verbosity)
+      : Heuristic(transform, cache_estimates, description, verbosity) {
     model = load_feature_generator(model_file);
 
     const planning::Domain domain = *(model->get_domain());
@@ -50,8 +50,8 @@ namespace wlgoose_heuristic {
     for (const auto &pred : domain.predicates) {
       name_to_predicate[pred.name] = pred;
     }
-
     std::unordered_set<planning::Object> objects;
+    std::map<FactPair, std::shared_ptr<planning::AtomVerbose>> fd_fact_to_wlplan_atom_verbose;
 
     // Preprocess Downward's FDR var-val pairs and map to WLPlan atoms. See :fd_fact_to_wlplan_atom:
     FactsProxy facts(*task);
@@ -78,8 +78,10 @@ namespace wlgoose_heuristic {
       }
 
       if (name_to_predicate.count(predicate_name)) {
-        planning::Atom wlplan_atom = planning::Atom(name_to_predicate.at(predicate_name), args);
-        fd_fact_to_wlplan_atom.insert({fact.get_pair(), std::make_shared<planning::Atom>(wlplan_atom)});
+        planning::AtomVerbose wlplan_atom =
+            planning::AtomVerbose(name_to_predicate.at(predicate_name), args);
+        fd_fact_to_wlplan_atom_verbose.insert(
+            {fact.get_pair(), std::make_shared<planning::AtomVerbose>(wlplan_atom)});
       }
     }
 
@@ -90,8 +92,8 @@ namespace wlgoose_heuristic {
     std::sort(objects_vec_sorted.begin(), objects_vec_sorted.end());
 
     // Deal with goals
-    std::vector<planning::Atom> positive_goals;
-    std::vector<planning::Atom> negative_goals;
+    std::vector<planning::AtomVerbose> positive_goals;
+    std::vector<planning::AtomVerbose> negative_goals;
 
     for (FactProxy goal : task_proxy.get_goals()) {
       string name = goal.get_name();
@@ -115,7 +117,7 @@ namespace wlgoose_heuristic {
       std::pair<std::string, std::vector<std::string>> pred_args = fd_fact_to_pred_args(name);
       std::string predicate_name = pred_args.first;
       std::vector<planning::Object> args = pred_args.second;
-      planning::Atom atom = planning::Atom(name_to_predicate.at(predicate_name), args);
+      planning::AtomVerbose atom = planning::AtomVerbose(name_to_predicate.at(predicate_name), args);
 
       if (positive) {
         positive_goals.push_back(atom);
@@ -127,6 +129,33 @@ namespace wlgoose_heuristic {
     planning::Problem problem =
         planning::Problem(domain, objects_vec_sorted, positive_goals, negative_goals);
     model->set_problem(problem);
+
+    std::unordered_map<std::string, int> predicate_to_id = domain.predicate_to_colour;
+    std::unordered_map<std::string, int> object_to_id = problem.get_object_to_id();
+
+    // Compactify atoms
+    for (const auto &pair : fd_fact_to_wlplan_atom_verbose) {
+      FactPair fact_pair = pair.first;
+      std::shared_ptr<planning::AtomVerbose> atom_verbose = pair.second;
+
+      std::vector<int> object_ids;
+      for (const planning::Object &object : atom_verbose->objects) {
+        if (object_to_id.count(object)) {
+          object_ids.push_back(object_to_id.at(object));
+        } else {
+          std::cout << "Error: Object '" << object << "' not found in problem objects."
+                    << std::endl;
+          std::exit(1);
+        }
+      }
+
+      // Create a wlplan Atom from the verbose Atom
+      std::shared_ptr<planning::Atom> atom = std::make_shared<planning::Atom>(
+          predicate_to_id.at(atom_verbose->predicate.name), object_ids);
+
+      // Store the mapping from Downward FactPair to wlplan Atom
+      fd_fact_to_wlplan_atom.insert({fact_pair, atom});
+    }
   }
 
   int WlGooseHeuristic::compute_heuristic(const State &ancestor_state) {
@@ -165,13 +194,10 @@ namespace wlgoose_heuristic {
       document_property("preferred operators", "no");
     }
 
-    virtual shared_ptr<WlGooseHeuristic> create_component(
-        const plugins::Options &opts,
-        const utils::Context &) const override {
-        return plugins::make_shared_from_arg_tuples<WlGooseHeuristic>(
-            opts.get<std::string>("model_file"),
-            get_heuristic_arguments_from_options(opts)
-            );
+    virtual shared_ptr<WlGooseHeuristic> create_component(const plugins::Options &opts,
+                                                          const utils::Context &) const override {
+      return plugins::make_shared_from_arg_tuples<WlGooseHeuristic>(
+          opts.get<std::string>("model_file"), get_heuristic_arguments_from_options(opts));
     }
   };
 

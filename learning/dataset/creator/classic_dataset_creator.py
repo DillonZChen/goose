@@ -8,7 +8,7 @@ from learning.dataset.container.base_dataset import Dataset
 from learning.dataset.creator.dataset_creator import DatasetCreator
 from planning.util import get_downward_translation_atoms
 from wlplan.feature_generation import CCWLFeatures, Features
-from wlplan.planning import Predicate, State
+from wlplan.planning import Predicate, StateVerbose
 
 
 class ClassicDatasetCreator(DatasetCreator):
@@ -59,7 +59,7 @@ class ClassicDatasetCreator(DatasetCreator):
         else:
             self.atoms_to_keep = None
 
-    def _mimir_to_wlplan_state(self, mimir_state: pymimir.State) -> wlplan.planning.State:
+    def _mimir_to_wlplan_state(self, mimir_state: pymimir.State) -> wlplan.planning.StateVerbose:
         atoms = []
         for atom in mimir_state.get_atoms():
             if not self.keep_atom_f(atom):
@@ -67,12 +67,12 @@ class ClassicDatasetCreator(DatasetCreator):
             predicate_name = atom.predicate.name
             if predicate_name == "=":
                 continue
-            wlplan_atom = wlplan.planning.Atom(
+            wlplan_atom = wlplan.planning.AtomVerbose(
                 predicate=self.name_to_predicate[predicate_name],
                 objects=[o.name for o in atom.terms],
             )
             atoms.append(wlplan_atom)
-        return State(atoms)
+        return StateVerbose(atoms)
 
     def _get_predicates(self, keep_statics: bool) -> dict[str, Predicate]:
         predicates = {}
