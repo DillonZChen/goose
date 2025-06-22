@@ -74,8 +74,9 @@ def parse_output(output, planner):
 def plan(domain, problem, evaluator, planner, benchmarks="ipc23lt", **kwargs):
     domain_pddl = f"benchmarks/{benchmarks}/{domain}/domain.pddl"
     problem_pddl = f"benchmarks/{benchmarks}/{domain}/testing/p{problem}.pddl"
-    cmd = f"./goose.sif plan {domain_pddl} {problem_pddl} {evaluator} -t 60 -p {planner}".split()
+    cmd = f"./goose.sif plan {domain_pddl} {problem_pddl} {evaluator} -t 60 -p {planner}"
     logging.critical(cmd)
+    cmd = cmd.split()
     output, err, rc = popen(cmd)
     stats = parse_output(output, planner)
     assert rc == 0, cmd
