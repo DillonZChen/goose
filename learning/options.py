@@ -120,8 +120,8 @@ def parse_opts():
     else:
         model_config = {}
             
-    if opts.distinguish_test:
-        logging.info("Overriding optimisation to `svr` to use regression labels.")
+    if opts.distinguish_test or opts.visualise_pca:
+        logging.info("Overriding optimisation to `svr` to use regression labels for non-training routine.")
         model_config["optimisation"] = "svr"
 
     for key, default_value in _DEF_VAL.items():
