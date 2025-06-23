@@ -1,4 +1,0 @@
-features = 'lwl2'
-optimisation = 'rank-svm'
-iterations = 2
-data_generation = 'plan'

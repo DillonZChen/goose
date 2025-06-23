@@ -1,5 +1,0 @@
-graph_representation = 'ilg'
-features = 'wl'
-optimisation = 'rank-mip'
-iterations = 4
-data_generation = 'all'

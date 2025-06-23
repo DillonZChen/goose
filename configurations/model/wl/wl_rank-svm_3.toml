@@ -1,5 +1,0 @@
-graph_representation = 'ilg'
-features = 'wl'
-optimisation = 'rank-svm'
-iterations = 3
-data_generation = 'plan'

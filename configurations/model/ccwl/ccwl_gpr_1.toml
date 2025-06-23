@@ -1,5 +1,0 @@
-graph_representation = 'nilg'
-features = 'ccwl'
-optimisation = 'gpr'
-iterations = 1
-data_generation = 'plan'
