@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="goose.jpg" alt="GOOSE Image" style="height:256px; width:auto;">
+    <img src="goose.jpg" alt="GOOSE Image" style="height:256px; width:auto; border-radius: 50%;">
 </p>
 
 -------------------------------------------------------------------------------------------------------------
