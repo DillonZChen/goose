@@ -6,4 +6,4 @@ feature_pruning = "none"
 data_pruning = "none"
 data_generation = "plan"
 facts = "nfd"
-multiset_hash = 1
+hash = "set"

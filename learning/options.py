@@ -18,12 +18,12 @@ _DEF_VAL = {
     "features": "wl",
     "graph_representation": "ilg",
     "iterations": 2,
-    "optimisation": "rank-lp",
-    "data_generation": "plan",
-    "feature_pruning": "none",
+    "optimisation": "rank-svm",
+    "feature_pruning": "i-mf",
     "data_pruning": "equivalent-weighted",
+    "data_generation": "plan",
     "facts": "fd",
-    "multiset_hash": 1,
+    "hash": "set",
 }
 
 _DESCRIPTION = """GOOSE trainer script."""
@@ -70,9 +70,9 @@ def get_parser():
     parser.add_argument("-L", "--iterations", type=int, default=None,
                         help=f"Number of iterations of the WL feature generator. Analogous to number of hidden layers in a neural network. " + \
                              f"(default: {_DEF_VAL['iterations']})")
-    parser.add_argument("--multiset_hash", type=int, default=None,
+    parser.add_argument("--hash", type=str, default=None, choices=["mset", "set"],
                         help=f"Whether to use multisets or sets for neighbour colours. " + \
-                             f"(default: {_DEF_VAL['multiset_hash']})")
+                             f"(default: {_DEF_VAL['hash']})")
     
     # optimisation options
     parser.add_argument("-o", "--optimisation", type=str, default=None,
