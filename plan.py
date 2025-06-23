@@ -51,10 +51,9 @@ def main():
     planner = opts.planner
     timeout = str(opts.timeout)
 
-    trash_file = ""
-    for s in [domain_pddl, problem_pddl, model_path, planner, timeout]:
-        trash_file += str(hash(s))
-    trash_file = f"output_{trash_file}.out"
+    os.makedirs(".tmp", exist_ok=True)
+    trash_file = "".join(str(hash(s)) for s in ["out", domain_pddl, problem_pddl, model_path, planner, timeout])
+    trash_file = f".tmp/{trash_file}.out"
 
     match planner:
         case "pwl":

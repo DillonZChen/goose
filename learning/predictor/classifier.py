@@ -9,7 +9,7 @@ from sklearn.gaussian_process.kernels import DotProduct
 from sklearn.metrics import f1_score, mean_squared_error
 
 from learning.dataset.container.ranking_dataset import RankingGroup
-from learning.predictor.ranker import handle_redundant_pairs
+from learning.predictor.mixed_integer_program import handle_redundant_pairs
 
 from .predictor import Predictor
 

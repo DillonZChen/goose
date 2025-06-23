@@ -429,29 +429,29 @@ fast_downward_plugin(
 #     DEPENDS ADDITIVE_HEURISTIC EXTRA_TASKS LANDMARKS
 # )
 
-fast_downward_plugin(
-    NAME MAS_HEURISTIC
-    HELP "The Merge-and-Shrink heuristic"
-    SOURCES
-        merge_and_shrink/distances.cc
-        merge_and_shrink/factored_transition_system.cc
-        merge_and_shrink/fts_factory.cc
-        merge_and_shrink/heuristic_representation.cc
-        merge_and_shrink/label_equivalence_relation.cc
-        merge_and_shrink/label_reduction.cc
-        merge_and_shrink/labels.cc
-        merge_and_shrink/merge_and_shrink_heuristic.cc
-        merge_and_shrink/merge_dfp.cc
-        merge_and_shrink/merge_linear.cc
-        merge_and_shrink/merge_strategy.cc
-        merge_and_shrink/shrink_bisimulation.cc
-        merge_and_shrink/shrink_bucket_based.cc
-        merge_and_shrink/shrink_fh.cc
-        merge_and_shrink/shrink_random.cc
-        merge_and_shrink/shrink_strategy.cc
-        merge_and_shrink/transition_system.cc
-        merge_and_shrink/types.cc
-)
+# fast_downward_plugin(
+#     NAME MAS_HEURISTIC
+#     HELP "The Merge-and-Shrink heuristic"
+#     SOURCES
+#         merge_and_shrink/distances.cc
+#         merge_and_shrink/factored_transition_system.cc
+#         merge_and_shrink/fts_factory.cc
+#         merge_and_shrink/heuristic_representation.cc
+#         merge_and_shrink/label_equivalence_relation.cc
+#         merge_and_shrink/label_reduction.cc
+#         merge_and_shrink/labels.cc
+#         merge_and_shrink/merge_and_shrink_heuristic.cc
+#         merge_and_shrink/merge_dfp.cc
+#         merge_and_shrink/merge_linear.cc
+#         merge_and_shrink/merge_strategy.cc
+#         merge_and_shrink/shrink_bisimulation.cc
+#         merge_and_shrink/shrink_bucket_based.cc
+#         merge_and_shrink/shrink_fh.cc
+#         merge_and_shrink/shrink_random.cc
+#         merge_and_shrink/shrink_strategy.cc
+#         merge_and_shrink/transition_system.cc
+#         merge_and_shrink/types.cc
+# )
 
 # fast_downward_plugin(
 #     NAME LANDMARKS

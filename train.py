@@ -2,9 +2,7 @@
 
 import logging
 
-import networkx as nx
 import toml
-from pyvis.network import Network
 
 from learning.dataset.dataset_factory import get_dataset
 from learning.dataset.state_to_vec import embed_data
@@ -16,7 +14,6 @@ from util.pca_visualise import visualise
 from util.statistics import log_quartiles
 from util.timer import TimerContextManager
 from wlplan.feature_generation import get_feature_generator
-from wlplan.graph import PLOIGGenerator, to_networkx
 from wlplan.planning import parse_domain
 
 
@@ -42,6 +39,9 @@ def train(opts):
         logging.info(f"{len(dataset)=}")
         
         # # debugging
+        # from wlplan.graph import PLOIGGenerator, to_networkx
+        # from pyvis.network import Network
+        # import networkx as nx
         # gg = PLOIGGenerator(domain)
         # problem_states = dataset._data[-1]
         # problem = problem_states.problem
@@ -68,8 +68,7 @@ def train(opts):
         # }
         # """)
         # net.save_graph("network.html")
-        
-        breakpoint()
+        # breakpoint()
 
     # Collect colours
     with TimerContextManager("collecting colours"):
