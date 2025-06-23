@@ -119,6 +119,10 @@ def parse_opts():
         model_config = toml.load(opts.model_config)
     else:
         model_config = {}
+            
+    if opts.distinguish_test:
+        logging.info("Overriding optimisation to `svr` to use regression labels.")
+        model_config["optimisation"] = "svr"
 
     for key, default_value in _DEF_VAL.items():
         config_value = model_config.get(key, None)

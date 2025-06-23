@@ -26,8 +26,6 @@ def train(opts):
         domain = parse_domain(domain_pddl)
         features = opts.features
         graph_representation = opts.graph_representation
-        logging.info(f"{features=}")
-        logging.info(f"{graph_representation=}")
         feature_generator = get_feature_generator(
             feature_algorithm=features,
             graph_representation=graph_representation,
@@ -37,38 +35,6 @@ def train(opts):
         feature_generator.print_init_colours()
         dataset = get_dataset(opts, feature_generator)
         logging.info(f"{len(dataset)=}")
-        
-        # # debugging
-        # from wlplan.graph import PLOIGGenerator, to_networkx
-        # from pyvis.network import Network
-        # import networkx as nx
-        # gg = PLOIGGenerator(domain)
-        # problem_states = dataset._data[-1]
-        # problem = problem_states.problem
-        # state = problem_states.states[0]
-        # gg.set_problem(problem)
-        
-        # graph = gg.to_graph(state)
-        # goals = problem.positive_goals
-        # state = state.atoms
-        
-        # print(f"{state=}")
-        # print(f"{goals=}")
-        # graph.dump()
-        
-        # G = to_networkx(graph)
-        # net = Network(height="600px", width="100%", bgcolor="#222222", font_color="white")
-        # net.from_nx(G)
-        # net.set_options("""
-        # var options = {
-        # "physics": {
-        #     "enabled": true,
-        #     "stabilization": {"iterations": 100}
-        # }
-        # }
-        # """)
-        # net.save_graph("network.html")
-        # breakpoint()
 
     # Collect colours
     with TimerContextManager("collecting colours"):

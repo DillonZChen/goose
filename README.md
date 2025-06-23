@@ -16,27 +16,26 @@ Note that the main branch contains **no GNN implementations**. Please refer to t
 See [references](#references) for the corresponding publications.
 
 
-## tl;dr for setup and usage
-After cloning this repository, there are 3 commands to download Goose, train a model, and plan. 
+## tl;dr for downloading and running GOOSE on existing benchmarks
+GOOSE can be installed and run with pretrained weights for the IPC23LT benchmarks in a matter of lines.
 
 ```
-# (1) Download the Apptainer image and dataset
+# (1) Download the Apptainer image
 apptainer pull goose.sif oras://ghcr.io/dillonzchen/goose:latest
+
+# (2) Install benchmarks
 git submodule update --init --recursive benchmarks
 
-# (2) Train 
-./goose.sif train configurations/data/ipc23lt/blocksworld.toml configurations/model/classic.toml -s blocksworld.model
-
-# (3) Plan
-./goose.sif plan benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_01.pddl blocksworld.model
+# (3) Plan with pretrained weights
+./goose.sif plan benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_30.pddl pretrained_models/ipc23lt-blocksworld.model
 ```
 
-See further below for more information on how to run Goose for different settings.
+See further below for more information on how to train and plan with GOOSE for different settings.
 
 
 ## Table of contents
 - [**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation](#goose-graphs-optimised-for-search-evaluation)
-  - [tl;dr for setup and usage](#tldr-for-setup-and-usage)
+  - [tl;dr for downloading and running GOOSE on existing benchmarks](#tldr-for-downloading-and-running-goose-on-existing-benchmarks)
   - [Table of contents](#table-of-contents)
   - [Setup](#setup)
     - [Download Apptainer image](#download-apptainer-image)
@@ -51,7 +50,7 @@ See further below for more information on how to run Goose for different setting
 
 ## Setup
 
-There are 3 possible ways to install Goose. First, install submodules
+There are 3 possible ways to install GOOSE. First, install submodules
 
 ```
 git submodule update --init --recursive

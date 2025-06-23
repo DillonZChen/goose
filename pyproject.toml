@@ -1,7 +1,7 @@
 [tool.isort]
 profile = "black"
 line_length = 119
-skip = ["planning/", "venv/", "wlplan/", "benchmarks/"]
+skip = ["planning/", "venv/", ".venv/", "wlplan/", "benchmarks/"]
 
 [tool.black]
 line-length = 119
