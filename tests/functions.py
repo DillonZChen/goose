@@ -15,9 +15,9 @@ def popen(cmd):
     return output, err, rc
 
 
-def train(domain, save_path, predictor, benchmarks="ipc23lt", numeric=False):
+def train(domain, save_path, config, benchmarks="ipc23lt"):
     data_config = f"configurations/data/{benchmarks}/{domain}.toml"
-    model_config = f"configurations/model/{predictor}.toml"
+    model_config = f"configurations/model/{config}.toml"
     cmd = f"./goose.sif train {data_config} {model_config} -s {save_path}"
     logging.critical(cmd)
     rc = os.system(cmd)

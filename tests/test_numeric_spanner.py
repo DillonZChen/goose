@@ -3,7 +3,7 @@ from functions import plan, train
 
 BENCHMARKS = "neurips24"
 DOMAIN = "spanner"
-PREDICTOR = "ccwl/ccwl_rank-lp_1"
+CONFIG = "numeric"
 PROBLEM = "2_30"
 EXPECTED_EXPANDED_UB = None
 
@@ -14,7 +14,7 @@ def test_domain(domain):
     train(
         domain=domain,
         save_path=model_path,
-        predictor=PREDICTOR,
+        config=CONFIG,
         benchmarks=BENCHMARKS,
     )
     plan(

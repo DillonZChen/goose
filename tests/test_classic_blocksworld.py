@@ -3,7 +3,7 @@ from functions import plan, train
 
 BENCHMARKS = "ipc23lt"
 DOMAIN = "blocksworld"
-PREDICTOR = "wl/wl_gpr_4"
+CONFIG = "classic"
 PROBLEM = "1_01"
 EXPECTED_EXPANDED_UB = None
 
@@ -14,7 +14,7 @@ def test_domain(domain):
     train(
         domain=domain,
         save_path=model_path,
-        predictor=PREDICTOR,
+        config=CONFIG,
         benchmarks=BENCHMARKS,
     )
     plan(
