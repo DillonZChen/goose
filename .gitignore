@@ -1,9 +1,12 @@
+!requirements.txt
+!goose.jpg
+
 planning/downward/src/search/ext/wlplan/include/
 
 plots/
 logs/
-_*/
-_*
+*.png
+*.jpg
 *.model
 *.out
 *.out.num

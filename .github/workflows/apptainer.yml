@@ -1,17 +1,13 @@
 name: Apptainer
 
-# Run for all pushes to the main branch.
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  build-image:
-    name: Build Apptainer image
+  build:
+    
     if: github.repository == 'DillonZChen/goose'
     runs-on: ubuntu-22.04
 

@@ -26,8 +26,6 @@ def train(opts):
         domain = parse_domain(domain_pddl)
         features = opts.features
         graph_representation = opts.graph_representation
-        logging.info(f"{features=}")
-        logging.info(f"{graph_representation=}")
         feature_generator = get_feature_generator(
             feature_algorithm=features,
             graph_representation=graph_representation,
@@ -50,9 +48,7 @@ def train(opts):
 
     # Construct features
     with TimerContextManager("constructing features"):
-        X, y, sample_weight = embed_data(
-            dataset=dataset, feature_generator=feature_generator, opts=opts
-        )
+        X, y, sample_weight = embed_data(dataset=dataset, feature_generator=feature_generator, opts=opts)
     if not opts.rank:
         log_quartiles(y)
     logging.info(f"{X.shape=}")

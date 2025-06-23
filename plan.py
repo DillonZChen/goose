@@ -16,9 +16,7 @@ def parse_opts():
     parser.add_argument("problem_pddl", type=str)
     parser.add_argument("model_path", type=str)
     parser.add_argument("-t", "--timeout", type=int, default=1800)
-    parser.add_argument(
-        "-p", "--planner", type=str, default="fd", choices=["pwl", "fd", "nfd", "policy"]
-    )
+    parser.add_argument("-p", "--planner", type=str, default="fd", choices=["pwl", "fd", "nfd", "policy"])
     parser.add_argument(
         "-f",
         "--plan_file",
@@ -53,10 +51,9 @@ def main():
     planner = opts.planner
     timeout = str(opts.timeout)
 
-    trash_file = ""
-    for s in [domain_pddl, problem_pddl, model_path, planner, timeout]:
-        trash_file += str(hash(s))
-    trash_file = f"output_{trash_file}.out"
+    os.makedirs(".tmp", exist_ok=True)
+    trash_file = "".join(str(hash(s)) for s in ["out", domain_pddl, problem_pddl, model_path, planner, timeout])
+    trash_file = f".tmp/{trash_file}.out"
 
     match planner:
         case "pwl":

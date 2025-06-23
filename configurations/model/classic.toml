@@ -1,0 +1,9 @@
+features = "wl"
+graph_representation = "ilg"
+iterations = 2
+optimisation = "rank-lp"
+feature_pruning = "none"
+data_pruning = "none"
+data_generation = "plan"
+facts = "fd"
+multiset_hash = 1

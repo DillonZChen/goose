@@ -3,29 +3,27 @@ from functions import plan, train
 
 BENCHMARKS = "ipc23lt"
 DOMAIN = "blocksworld"
-PREDICTOR = "wl/wl_gpr_4"
+CONFIG = "classic"
 PROBLEM = "1_01"
 EXPECTED_EXPANDED_UB = None
 
 
 @pytest.mark.parametrize("domain", [DOMAIN])
 def test_domain(domain):
-    modelpath = f"tests/models/{domain}.model"
+    model_path = f"tests/models/{domain}.model"
     train(
-        domain,
-        modelpath,
-        predictor=PREDICTOR,
+        domain=domain,
+        save_path=model_path,
+        config=CONFIG,
         benchmarks=BENCHMARKS,
-        numeric=False,
     )
     plan(
-        domain,
-        PROBLEM,
-        modelpath,
-        "fd",
+        domain=domain,
+        problem=PROBLEM,
+        evaluator=model_path,
+        planner="fd",
         expected_expanded_ub=EXPECTED_EXPANDED_UB,
         benchmarks=BENCHMARKS,
-        numeric=False,
     )
 
 

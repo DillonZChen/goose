@@ -1,0 +1,1 @@
+These are models trained for benchmarks used in our ICAPS'24 and NeurIPS'24 paper via code from commit [c418c1a](https://github.com/DillonZChen/goose/pull/19/commits/c418c1a04603ad29edb4a8c439212a1fd65438c2).

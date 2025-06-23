@@ -72,7 +72,8 @@ def call_numeric_downward(
     sas_file = domain_pddl + problem_pddl + hash_prefix + repr(hash(output))
     for tok in ["/", ".", "-", " ", "\n"]:
         sas_file = sas_file.replace(tok, "_")
-    sas_file += ".sas"
+    os.makedirs(".tmp", exist_ok=True)
+    sas_file = f".tmp/{sas_file}.sas"
 
     # call NFD
     cmd = [

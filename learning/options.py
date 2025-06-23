@@ -31,11 +31,16 @@ _DESCRIPTION = """GOOSE trainer script."""
 _EPILOG = """example usages:
 
 // Train and save a classical Blocksworld model
-python3 train.py configurations/data/ipc23lt/blocksworld.toml configurations/model/wl/wl_gpr_4.toml -s blocksworld.model
+python3 train.py configurations/data/ipc23lt/blocksworld.toml configurations/model/classic.toml -s blocksworld.model
 
 // Train and save a numeric Childsnack model
-python3 train.py configurations/data/neurips24/childsnack.toml configurations/model/ccwl/ccwl_rank-lp_1.toml -s numeric_childsnack.model
+python3 train.py configurations/data/neurips24/childsnack.toml configurations/model/numeric.toml -s numeric_childsnack.model
 
+// Run a distinguishability test
+python3 train.py configurations/data/ipc23lt/blocksworld.toml --distinguish-test
+
+// Save a PCA visualisation of features to file
+python3 train.py configurations/data/ipc23lt/blocksworld.toml --visualise-pca blocksworld_pca.png
 """
 
 
@@ -55,10 +60,10 @@ def get_parser():
                         choices=get_available_feature_generators(),
                         help=f"Feature generator to use. " + \
                              f"(default: {_DEF_VAL['features']}).")
-    parser.add_argument("-g", "--graph_representation", type=str, default=None, 
+    parser.add_argument("-g", "--graph-representation", type=str, default=None, 
                         help=f"Feature generator to use. " + \
                              f"(default: {_DEF_VAL['graph_representation']}).")
-    parser.add_argument("-fp", "--feature_pruning", type=str, default=None,
+    parser.add_argument("-fp", "--feature-pruning", type=str, default=None,
                         choices=get_available_pruning_methods(),
                         help=f"Pruning method to use for feature generation. " + \
                              f"(default: {_DEF_VAL['feature_pruning']}).")
@@ -74,11 +79,11 @@ def get_parser():
                         choices=get_available_predictors(),
                         help=f"Optimisation algorithm to use for prediction. " + \
                              f"(default: {_DEF_VAL['optimisation']}).")
-    parser.add_argument("-d", "--data_generation", type=str, default=None,
+    parser.add_argument("-d", "--data-generation", type=str, default=None,
                         choices=["plan", "state-space"],
                         help=f"Method for collecting data from training problems. " + \
                              f"(default: {_DEF_VAL['data_generation']})")
-    parser.add_argument("-dp", "--data_pruning", type=str, default=None,
+    parser.add_argument("-dp", "--data-pruning", type=str, default=None,
                         choices=["none", "equivalent", "equivalent-weighted"],
                         help=f"Method for pruning data. " + \
                              f"(default: {_DEF_VAL['data_pruning']})")
@@ -88,15 +93,15 @@ def get_parser():
                              f"(default: {_DEF_VAL['facts']})")
     
     # script options
-    parser.add_argument("-r", "--random_seed", type=int, default=2024,
+    parser.add_argument("-r", "--random-seed", type=int, default=2024,
                         help=f"Random seed for nondeterministic training algorithms.")
-    parser.add_argument("-s", "--save_file", type=str, default=None,
+    parser.add_argument("-s", "--save-file", type=str, default=None,
                         help=f"Path to save the model to.")
-    parser.add_argument("--visualise_pca", type=str, default=None,
+    parser.add_argument("--visualise-pca", type=str, default=None,
                         help=f"Path to save visualisation of PCA on WL features.")
-    parser.add_argument("--distinguish_test", action="store_true",
+    parser.add_argument("--distinguish-test", action="store_true",
                         help=f"Run distinguishability test.")
-    parser.add_argument("--collect_only", action="store_true",
+    parser.add_argument("--collect-only", action="store_true",
                         help=f"Only collect features and exit.")
     # fmt: on
     return parser
@@ -114,6 +119,10 @@ def parse_opts():
         model_config = toml.load(opts.model_config)
     else:
         model_config = {}
+            
+    if opts.distinguish_test or opts.visualise_pca:
+        logging.info("Overriding optimisation to `svr` to use regression labels for non-training routine.")
+        model_config["optimisation"] = "svr"
 
     for key, default_value in _DEF_VAL.items():
         config_value = model_config.get(key, None)
