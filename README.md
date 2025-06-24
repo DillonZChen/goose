@@ -17,7 +17,7 @@ See [references](#references) for the corresponding publications.
 
 
 ## tl;dr for downloading and running GOOSE on existing benchmarks
-GOOSE can be installed and run with pretrained weights for the IPC23LT benchmarks in a matter of lines.
+GOOSE can be installed and run with pretrained weights for the IPC23LT benchmarks in a matter of lines after cloning this repository.
 
 ```
 # (1) Download the Apptainer image
