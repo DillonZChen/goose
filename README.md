@@ -30,6 +30,7 @@ git submodule update --init --recursive benchmarks
 ./goose.sif plan benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_30.pddl pretrained_models/ipc23lt-blocksworld.model
 ```
 
+In step 3, `blocksworld` can be replaced with any other IPC23LT domain.
 See further below for more information on how to train and plan with GOOSE for different settings.
 
 
@@ -111,14 +112,14 @@ Call `goose.sif train -h` or `python3 train.py -h` for arguments, you will need 
 
 e.g.
 
-    ./goose.sif train configurations/data/neurips24/childsnack.toml configurations/model/numeric.toml -s numeric_childsnack.model
+    ./train.py configurations/data/neurips24/childsnack.toml configurations/model/numeric.toml -s numeric_childsnack.model
 
 
 ### Planning
 Call `goose.sif plan -h` or `python3 plan.py -h` for arguments.
 e.g.
 
-    ./goose.sif plan benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model
+    ./plan.py benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model
 
 
 ### Recommended configurations
@@ -126,19 +127,19 @@ For classical planning, train with the `configurations/model/classic.toml` confi
 e.g. with Blocksworld
 
     # Training
-    ./goose.sif train configurations/data/ipc23lt/blocksworld.toml configurations/model/classic.toml -s blocksworld.model
+    ./train.py configurations/data/ipc23lt/blocksworld.toml configurations/model/classic.toml -s blocksworld.model
 
     # Planning                 
-    ./goose.sif plan benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_01.pddl blocksworld.model
+    ./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_01.pddl blocksworld.model
 
 For numeric planning, train with the `configurations/model/numeric.toml` configuration file.
 e.g. with numeric Childsnack
 
     # Training
-    ./goose.sif train configurations/data/neurips24/childsnack.toml configurations/model/numeric.toml -s numeric_childsnack.model
+    ./train.py configurations/data/neurips24/childsnack.toml configurations/model/numeric.toml -s numeric_childsnack.model
 
     # Planning  
-    ./goose.sif plan benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model
+    ./plan.py benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model
 
 
 ## References
