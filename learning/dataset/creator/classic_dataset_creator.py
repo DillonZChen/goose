@@ -14,18 +14,8 @@ from wlplan.planning import Predicate, State
 class ClassicDatasetCreator(DatasetCreator):
     """Base class for creating datasets for classical planning. Relies on the mimir package."""
 
-    def __init__(
-        self,
-        data_config: str,
-        feature_generator: Features,
-        facts: str,
-        hash_prefix: str,
-    ):
-        super().__init__(
-            data_config=data_config,
-            feature_generator=feature_generator,
-            hash_prefix=hash_prefix,
-        )
+    def __init__(self, feature_generator: Features, facts: str, **kwargs):
+        super().__init__(feature_generator=feature_generator, **kwargs)
 
         if isinstance(feature_generator, (CCWLFeatures)):
             raise ValueError("Classic datasets must use classic WLFeatures")
@@ -54,7 +44,7 @@ class ClassicDatasetCreator(DatasetCreator):
             self.atoms_to_keep = get_downward_translation_atoms(
                 self.domain_pddl,
                 problem_pddl,
-                hash_prefix=self.hash_prefix,
+                hash_prefix=self._hash_prefix,
             )
         else:
             self.atoms_to_keep = None

@@ -42,6 +42,7 @@ def get_dataset(opts: Namespace, feature_generator: WLFeatures) -> Dataset:
         opts.facts = "nfd"
 
     kwargs = {
+        "num_data": opts.num_data,
         "feature_generator": feature_generator,
         "data_config": opts.data_config,
         "facts": opts.facts,

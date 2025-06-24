@@ -13,25 +13,15 @@ from wlplan.planning import Atom, State
 class NumericDatasetCreator(DatasetCreator):
     """Base class for creating datasets for numeric planning. Relies on Numeric Fast Downward."""
 
-    def __init__(
-        self,
-        data_config: str,
-        feature_generator: Features,
-        facts: str,
-        hash_prefix: str,
-    ):
-        super().__init__(
-            data_config=data_config,
-            feature_generator=feature_generator,
-            hash_prefix=hash_prefix,
-        )
+    def __init__(self, feature_generator: Features, facts: str, **kwargs):
+        super().__init__(feature_generator=feature_generator, **kwargs)
         if facts != "nfd":
             raise ValueError("Numeric configs must use Numeric Downward, so facts must be 'nfd'")
         if not isinstance(feature_generator, CCWLFeatures):
             raise ValueError("Numeric datasets must use CCWLFeatures")
 
-        self.name_to_predicate = {p.name: p for p in self.wlplan_domain.predicates}
-        self.name_to_function = {f.name: f for f in self.wlplan_domain.functions}
+        self.name_to_predicate = {p.name: p for p in self._wlplan_domain.predicates}
+        self.name_to_function = {f.name: f for f in self._wlplan_domain.functions}
 
     def _nfd_to_wlplan_state(self, input: str, problem_info) -> State:
         if len(input) == 0:
@@ -87,7 +77,7 @@ class NumericDatasetCreator(DatasetCreator):
             self.domain_pddl,
             problem_pddl,
             config=config,
-            hash_prefix=self.hash_prefix,
+            hash_prefix=self._hash_prefix,
         )
 
         output = output[output.find("__START_HERE__") + len("__START_HERE__") :]

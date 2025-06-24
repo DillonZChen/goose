@@ -1,5 +1,4 @@
 import os
-import sys
 from abc import abstractmethod
 
 import toml
@@ -19,6 +18,7 @@ class DatasetCreator:
         self,
         data_config: str,
         feature_generator: Features,
+        num_data: int,
         hash_prefix: str,
     ):
         # domain information
@@ -32,26 +32,35 @@ class DatasetCreator:
         assert os.path.exists(self.domain_pddl), get_path_error_msg(self.domain_pddl)
         assert os.path.exists(self.tasks_dir), get_path_error_msg(self.tasks_dir)
 
-        self.wlplan_domain = wlplan.planning.parse_domain(self.domain_pddl)
+        self._wlplan_domain = wlplan.planning.parse_domain(self.domain_pddl)
 
         # feature generator
-        self.feature_generator = feature_generator
+        self._feature_generator = feature_generator
 
         # prevent tmp files from being overwritten by parallel jobs
-        self.hash_prefix = hash_prefix
+        self._hash_prefix = hash_prefix
+
+        # number of data to collect
+        self._num_data = num_data
 
     def _get_problem_iterator(self, plans_only=True):
         pbar = []
         if not plans_only:
             pbar = [self.tasks_dir + "/" + f for f in sorted(os.listdir(self.tasks_dir))]
         else:
-            self.plans_dir = self._data_config["plans_dir"]
-            assert os.path.exists(self.plans_dir), get_path_error_msg(self.plans_dir)
-            for f in sorted(os.listdir(self.plans_dir)):
+            plans_dir = self._data_config["plans_dir"]
+            assert os.path.exists(plans_dir), get_path_error_msg(plans_dir)
+            for f in sorted(os.listdir(plans_dir)):
                 problem_pddl = self.tasks_dir + "/" + f.replace(".plan", ".pddl")
-                plan_file = self.plans_dir + "/" + f
+                plan_file = plans_dir + "/" + f
+                if not os.path.exists(plan_file) or not os.path.exists(problem_pddl):
+                    continue
                 pbar.append((problem_pddl, plan_file))
+
+        if self._num_data >= 0:
+            pbar = pbar[: self._num_data]
         pbar = tqdm(pbar, desc="Collecting data from problems")
+        
         return pbar
 
     @abstractmethod

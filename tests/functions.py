@@ -23,7 +23,6 @@ def train(domain, save_path, config, benchmarks="ipc23lt"):
     rc = os.system(cmd)
     assert rc == 0
 
-
 def parse_output(output, planner):
     stats = {
         "solved": False,

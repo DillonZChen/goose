@@ -32,6 +32,6 @@ class NumericCostToGoDatasetFromPlans(NumericDatasetCreator):
         data = []
         for problem, states in wlplan_data:
             data.append(ProblemStates(problem=problem, states=states))
-        dataset = CostToGoDataset(wlplan_domain=self.wlplan_domain, data=data, y=y)
+        dataset = CostToGoDataset(wlplan_domain=self._wlplan_domain, data=data, y=y)
 
         return dataset

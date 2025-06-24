@@ -79,10 +79,13 @@ def get_parser():
                         choices=get_available_predictors(),
                         help=f"Optimisation algorithm to use for prediction. " + \
                              f"(default: {_DEF_VAL['optimisation']}).")
-    parser.add_argument("-d", "--data-generation", type=str, default=None,
+    parser.add_argument("-dg", "--data-generation", type=str, default=None,
                         choices=["plan", "state-space"],
                         help=f"Method for collecting data from training problems. " + \
                              f"(default: {_DEF_VAL['data_generation']})")
+    parser.add_argument("-nd", "--num-data", type=int, default=-1,
+                        help=f"Number of training data to use. " + \
+                             f"(default: -1 = all available data)")
     parser.add_argument("-dp", "--data-pruning", type=str, default=None,
                         choices=["none", "equivalent", "equivalent-weighted"],
                         help=f"Method for pruning data. " + \
