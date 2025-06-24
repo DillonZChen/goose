@@ -1,9 +1,9 @@
 features = "wl"
 graph_representation = "ilg"
 iterations = 2
-optimisation = "rank-lp"
-feature_pruning = "none"
-data_pruning = "none"
+optimisation = "rank-svm"
+feature_pruning = "i-mf"
+data_pruning = "equivalent-weighted"
 data_generation = "plan"
 facts = "fd"
-multiset_hash = 1
+hash = "set"

@@ -58,7 +58,7 @@ def handle_redundant_pairs(X, y):
         X[i] = x
     X = np.array(X)
 
-    return X, counts, maybe_pair, maybe_sample_weight, bad_pair, bad_sample_weight
+    return X, maybe_pair, maybe_sample_weight, bad_pair, bad_sample_weight
 
 
 class MixedIntegerProgram(Predictor):
@@ -97,7 +97,7 @@ class MixedIntegerProgram(Predictor):
 
     def _fit_impl(self, X, y, sample_weight):
         # Remove duplicate pairs
-        X, counts, maybe_pair, maybe_sample_weight, bad_pair, bad_sample_weight = handle_redundant_pairs(X, y)
+        X, maybe_pair, maybe_sample_weight, bad_pair, bad_sample_weight = handle_redundant_pairs(X, y)
 
         n, d = X.shape
 

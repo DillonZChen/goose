@@ -31,6 +31,8 @@ def train(opts):
             graph_representation=graph_representation,
             domain=domain,
             iterations=opts.iterations,
+            pruning=opts.feature_pruning,
+            multiset_hash=bool(opts.hash == "mset"),
         )
         feature_generator.print_init_colours()
         dataset = get_dataset(opts, feature_generator)
