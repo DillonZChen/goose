@@ -17,7 +17,7 @@ See [references](#references) for the corresponding publications.
 
 
 ## tl;dr for downloading and running GOOSE on existing benchmarks
-GOOSE can be installed and run with pretrained weights for the IPC23LT benchmarks in a matter of lines.
+GOOSE can be installed and run with pretrained weights for the IPC23LT benchmarks in a matter of lines after cloning this repository.
 
 ```
 # (1) Download the Apptainer image
@@ -27,7 +27,7 @@ apptainer pull goose.sif oras://ghcr.io/dillonzchen/goose:latest
 git submodule update --init --recursive benchmarks
 
 # (3) Plan with pretrained weights
-./goose.sif plan benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_30.pddl pretrained_models/ipc23lt-blocksworld.model
+./goose.sif plan benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_30.pddl pretrained_models/ipc23lt-blocksworld.model
 ```
 
 In step 3, `blocksworld` can be replaced with any other IPC23LT domain.
