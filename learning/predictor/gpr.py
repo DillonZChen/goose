@@ -15,14 +15,14 @@ class GaussianProcessRegressor(Regressor):
     IS_RANK = False
 
     def _try_fit(self, X, y, sample_weight):
+        self._X = X
+        self._y = y
         if sample_weight is not None and not np.isclose(sample_weight, np.ones(len(y))).all():
             warnings.warn("sample_weights is not supported by Gaussian Processes")
         kernel = DotProduct(sigma_0=0, sigma_0_bounds="fixed")
         model = GPR(kernel=kernel, alpha=1e-7, random_state=0)
         model.fit(X, y)
         self._weights = model.alpha_ @ model.X_train_
-        self._X = X
-        self._y = y
         self._sample_weight = sample_weight
 
     def _fit_impl(self, X, y, sample_weight):
@@ -60,6 +60,7 @@ class GaussianProcessRegressor(Regressor):
                     )
                 )
                 self._weights = np.zeros(X.shape[1])
+                self._sample_weight = np.ones(X.shape[1])
                 break
 
     def predict(self, X):
