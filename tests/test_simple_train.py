@@ -4,11 +4,6 @@ from itertools import product
 
 import pytest
 
-from wlplan.feature_generation import (
-    get_available_feature_generators,
-    get_available_pruning_methods,
-)
-
 CONFIGS = {
     "features": ["wl"],
     "graph_representation": ["ilg"],
