@@ -1,6 +1,7 @@
 from learning.predictor.rank_lp import LinearProgramRanker
 
 from .gpr import GaussianProcessRegressor
+from .lasso import LassoRegression
 from .rank_gpc import GaussianProcessClassifierRanker
 from .rank_mip import MixedIntegerProgramRanker
 from .rank_svm import SupportVectorMachineRanker
@@ -9,6 +10,7 @@ from .svr import SupportVectorRegression
 _PREDICTORS = {
     "gpr": GaussianProcessRegressor,
     "svr": SupportVectorRegression,
+    "lasso": LassoRegression,
     "rank-mip": MixedIntegerProgramRanker,
     "rank-lp": LinearProgramRanker,
     "rank-svm": SupportVectorMachineRanker,
