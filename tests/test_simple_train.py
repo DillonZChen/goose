@@ -6,7 +6,7 @@ import pytest
 
 CONFIGS = {
     "features": ["wl"],
-    "graph_representation": ["ilg"],
+    "graph_representation": ["ilg", "ploig"],
     "iterations": ["2"],
     "optimisation": ["svr", "rank-svm", "rank-lp"],
     "feature_pruning": ["none", "i-mf"],
