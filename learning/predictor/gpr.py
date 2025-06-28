@@ -19,6 +19,7 @@ class GaussianProcessRegressor(Regressor):
         self._y = y
         if sample_weight is not None and not np.isclose(sample_weight, np.ones(len(y))).all():
             warnings.warn("sample_weights is not supported by Gaussian Processes")
+            sample_weight = np.ones(len(y))
         kernel = DotProduct(sigma_0=0, sigma_0_bounds="fixed")
         model = GPR(kernel=kernel, alpha=1e-7, random_state=0)
         model.fit(X, y)

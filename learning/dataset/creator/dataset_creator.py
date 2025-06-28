@@ -57,10 +57,10 @@ class DatasetCreator:
                     continue
                 pbar.append((problem_pddl, plan_file))
 
-        if self._num_data >= 0:
+        if self._num_data is not None and self._num_data >= 0:
             pbar = pbar[: self._num_data]
         pbar = tqdm(pbar, desc="Collecting data from problems")
-        
+
         return pbar
 
     @abstractmethod

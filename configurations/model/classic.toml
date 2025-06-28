@@ -1,3 +1,4 @@
+mode = "wlf"
 features = "wl"
 graph_representation = "ilg"
 iterations = 2

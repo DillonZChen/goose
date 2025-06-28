@@ -1,3 +1,5 @@
+from typing import Optional
+
 from learning.predictor.rank_lp import LinearProgramRanker
 
 from .gpr import GaussianProcessRegressor
@@ -22,7 +24,9 @@ def get_available_predictors():
     return set(_PREDICTORS.keys())
 
 
-def is_rank_predictor(predictor_name: str):
+def is_rank_predictor(predictor_name: Optional[str]):
+    if predictor_name is None:
+        return False
     return _PREDICTORS[predictor_name].IS_RANK
 
 

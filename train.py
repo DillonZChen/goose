@@ -18,16 +18,13 @@ from wlplan.planning import parse_domain
 
 
 def train(opts):
-    opts.rank = is_rank_predictor(opts.optimisation)
-
     # Parse dataset
     with TimerContextManager("parsing training data"):
         domain_pddl = toml.load(opts.data_config)["domain_pddl"]
         domain = parse_domain(domain_pddl)
-        features = opts.features
         graph_representation = opts.graph_representation
         feature_generator = get_feature_generator(
-            feature_algorithm=features,
+            feature_algorithm=opts.features,
             graph_representation=graph_representation,
             domain=domain,
             iterations=opts.iterations,

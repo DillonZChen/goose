@@ -19,11 +19,11 @@ class Classifier(Predictor):
 
     def _fit_impl(self, X, y: list[RankingGroup], sample_weight):
         if self._class_name == "SupportVectorMachineRanker":
+            model = svm.LinearSVC(loss="hinge", fit_intercept=False, max_iter=1000000, C=1.0)
+        elif self._class_name == "GaussianProcessClassifierRanker":
             if sample_weight is not None and not np.isclose(sample_weight, np.ones(len(y))).all():
                 warnings.warn("sample_weights is not supported by Gaussian Processes")
                 sample_weight_in = np.ones(len(y))
-            model = svm.LinearSVC(loss="hinge", fit_intercept=False, max_iter=1000000, C=1.0)
-        elif self._class_name == "GaussianProcessClassifierRanker":
             model = GPC(kernel=DotProduct(sigma_0=0, sigma_0_bounds="fixed"), random_state=0)
         else:
             raise NotImplementedError(f"Unknown class name: {self._class_name}")
