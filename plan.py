@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
 import argparse
+import logging
 import os
 import subprocess
 
-from planning.util import PLANNERS_DIR, is_numeric
+from planning.util import PLANNERS_DIR, is_domain_numeric
 from util.logging import init_logger
 
 
@@ -30,9 +31,8 @@ def main():
         assert opts.planner == "fd", "FDR inputs are only supported with Fast Downward"
     else:
         assert os.path.exists(domain_pddl), domain_pddl
-        if is_numeric(domain_pddl):
-            if opts.planner != "nfd":
-                print("Domain is numeric so switching planner to nfd.")
+        if is_domain_numeric(domain_pddl) and opts.planner != "nfd":
+            logging.info("Domain is numeric so switching planner to nfd.")
             opts.planner = "nfd"
 
     problem_pddl = opts.problem_pddl

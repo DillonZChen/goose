@@ -6,8 +6,7 @@ import pymimir
 import wlplan
 from learning.dataset.container.cost_to_go_dataset import CostToGoDataset
 from learning.dataset.creator.classic_dataset_creator import ClassicDatasetCreator
-from wlplan.data import Dataset as WLPlanDataset
-from wlplan.data import ProblemStates
+from wlplan.data import DomainDataset, ProblemDataset
 from wlplan.feature_generation import get_feature_generator
 
 from .dataset_creator import MAX_EXPANSIONS_PER_PROBLEM, MAX_STATE_SPACE_DATA
@@ -60,9 +59,9 @@ class ClassicCostToGoDatasetFromStateSpace(ClassicDatasetCreator):
                 wlplan_state = self._mimir_to_wlplan_state(state)
 
                 # check if WL repr of the state has been seen before
-                mini_dataset = WLPlanDataset(
+                mini_dataset = DomainDataset(
                     domain=self._wlplan_domain,
-                    data=[ProblemStates(problem=wlplan_problem, states=[wlplan_state])],
+                    data=[ProblemDataset(problem=wlplan_problem, states=[wlplan_state])],
                 )
                 self._feature_generator.collect(mini_dataset)
                 x_repr = self._feature_generator.get_string_representation(wlplan_state)
@@ -79,7 +78,7 @@ class ClassicCostToGoDatasetFromStateSpace(ClassicDatasetCreator):
 
         data = []
         for problem, states in wlplan_data:
-            data.append(ProblemStates(problem=problem, states=states))
+            data.append(ProblemDataset(problem=problem, states=states))
         dataset = CostToGoDataset(wlplan_domain=self._wlplan_domain, data=data, y=y)
 
         return dataset
@@ -121,7 +120,7 @@ class ClassicCostToGoDatasetFromPlans(ClassicDatasetCreator):
 
         data = []
         for problem, states in wlplan_data:
-            data.append(ProblemStates(problem=problem, states=states))
+            data.append(ProblemDataset(problem=problem, states=states))
         dataset = CostToGoDataset(wlplan_domain=self._wlplan_domain, data=data, y=y)
 
         return dataset

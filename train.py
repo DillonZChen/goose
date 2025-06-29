@@ -81,6 +81,12 @@ def train_gnn(opts: argparse.Namespace) -> None:
     Args:
         opts (argparse.Namespace): parsed arguments
     """
+
+    # Parse dataset
+    with TimerContextManager("parsing training data"):
+        dataset = get_dataset(opts)
+        logging.info(f"{len(dataset)=}")
+
     pass
 
 

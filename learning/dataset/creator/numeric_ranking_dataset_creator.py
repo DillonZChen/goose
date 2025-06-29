@@ -1,7 +1,7 @@
 import wlplan
 from learning.dataset.container.base_dataset import Dataset
 from learning.dataset.container.ranking_dataset import RankingDataset, RankingGroup
-from wlplan.data import ProblemStates
+from wlplan.data import ProblemDataset
 
 from .numeric_dataset_creator import NumericDatasetCreator
 
@@ -44,7 +44,7 @@ class NumericRankingDatasetFromPlans(NumericDatasetCreator):
 
         data = []
         for problem, states in wlplan_data:
-            data.append(ProblemStates(problem=problem, states=states))
+            data.append(ProblemDataset(problem=problem, states=states))
         dataset = RankingDataset(wlplan_domain=self._wlplan_domain, data=data, y=y)
 
         return dataset

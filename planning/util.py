@@ -11,7 +11,7 @@ _CUR_DIR = os.path.dirname(os.path.abspath(__file__))
 PLANNERS_DIR = f"{_CUR_DIR}/ext"
 
 
-def is_numeric(domain_pddl: str):
+def is_domain_numeric(domain_pddl: str) -> bool:
     pddl_domain = pddl.parse_domain(domain_pddl)
     return len(pddl_domain.functions) > 0
 

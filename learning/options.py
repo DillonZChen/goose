@@ -8,7 +8,7 @@ import numpy as np
 import termcolor as tc
 import toml
 
-from learning.predictor.predictor_factory import get_available_predictors, is_rank_predictor
+from learning.predictor.predictor_factory import get_available_predictors
 from util.error_message import get_path_error_msg
 from util.logging import mat_to_str
 from wlplan.feature_generation import (
@@ -210,9 +210,6 @@ def parse_opts():
 
     # Log parsed options
     logging.info(f"Processed options:\n{mat_to_str([[k, tc.colored(v, 'cyan')] for k, v in vars(opts).items()])}")
-
-    # Detect if ranker
-    opts.__dict__["rank"] = is_rank_predictor(opts.optimisation)
 
     # Set seeds
     random.seed(opts.random_seed)

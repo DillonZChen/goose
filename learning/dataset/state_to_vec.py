@@ -5,6 +5,7 @@ from tqdm import tqdm
 
 from learning.dataset.container.base_dataset import Dataset
 from learning.dataset.container.ranking_dataset import RankingDataset
+from learning.predictor.predictor_factory import is_rank_predictor
 from wlplan.feature_generation import Features
 
 
@@ -25,7 +26,7 @@ def embed_data(dataset: Dataset, wlf_generator: Features, opts: Namespace):
 
 
 def get_data_weighted(dataset: Dataset, feature_generator: Features, opts: Namespace):
-    if opts.rank:
+    if is_rank_predictor(opts.optimisation):
         assert isinstance(dataset, RankingDataset)
         dataset: RankingDataset = dataset
         unique_groups = {}

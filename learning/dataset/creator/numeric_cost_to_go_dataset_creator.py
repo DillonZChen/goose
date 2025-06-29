@@ -1,7 +1,7 @@
 import wlplan
 from learning.dataset.container.base_dataset import Dataset
 from learning.dataset.container.cost_to_go_dataset import CostToGoDataset
-from wlplan.data import ProblemStates
+from wlplan.data import ProblemDataset
 
 from .numeric_dataset_creator import NumericDatasetCreator
 
@@ -31,7 +31,7 @@ class NumericCostToGoDatasetFromPlans(NumericDatasetCreator):
 
         data = []
         for problem, states in wlplan_data:
-            data.append(ProblemStates(problem=problem, states=states))
+            data.append(ProblemDataset(problem=problem, states=states))
         dataset = CostToGoDataset(wlplan_domain=self._wlplan_domain, data=data, y=y)
 
         return dataset
