@@ -93,7 +93,8 @@ def get_parser():
                         choices=get_available_pruning_methods(),
                         help=f"Pruning method to use for feature generation. " + \
                              f"(default: {_DEFAULT_WLF_VALS['feature_pruning']}).")
-    wlf_group.add_argument("--hash", type=str, default=None, choices=["mset", "set"],
+    wlf_group.add_argument("--hash", type=str, default=None,
+                        choices=["mset", "set"],
                         help=f"Whether to use multisets or sets for neighbour colours. " + \
                              f"(default: {_DEFAULT_WLF_VALS['hash']})")
     wlf_group.add_argument("-o", "--optimisation", type=str, default=None,
@@ -178,8 +179,8 @@ def parse_opts():
 
     def handle_config_vals(relevant_args: Dict[str, Any], irrelevant_args: Dict[str, Any]) -> None:
         for key, default_value in relevant_args.items():
-            default_value = relevant_args[key]
-            opts.__dict__[key] = default_value
+            if opts.__dict__[key] is None:
+                opts.__dict__[key] = default_value
         for key in irrelevant_args:
             opts.__dict__[key] = None
             if key in model_config:
