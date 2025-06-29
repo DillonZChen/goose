@@ -1,3 +1,4 @@
+import argparse
 import os
 from abc import abstractmethod
 
@@ -13,12 +14,10 @@ from wlplan.planning import Atom, State
 class NumericDatasetCreator(DatasetCreator):
     """Base class for creating datasets for numeric planning. Relies on Numeric Fast Downward."""
 
-    def __init__(self, feature_generator: Features, facts: str, **kwargs):
-        super().__init__(feature_generator=feature_generator, **kwargs)
-        if facts != "nfd":
+    def __init__(self, opts: argparse.Namespace):
+        super().__init__(opts)
+        if opts.facts != "nfd":
             raise ValueError("Numeric configs must use Numeric Downward, so facts must be 'nfd'")
-        if not isinstance(feature_generator, CCWLFeatures):
-            raise ValueError("Numeric datasets must use CCWLFeatures")
 
         self.name_to_predicate = {p.name: p for p in self._wlplan_domain.predicates}
         self.name_to_function = {f.name: f for f in self._wlplan_domain.functions}

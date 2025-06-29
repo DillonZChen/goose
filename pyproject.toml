@@ -1,8 +1,16 @@
 [tool.isort]
 profile = "black"
 line_length = 119
-skip = ["planning/", "venv/", ".venv/", "wlplan/", "benchmarks/"]
+skip = ["venv/", ".venv/", "planning/ext/", "wlplan/", "benchmarks/"]
 
 [tool.black]
 line-length = 119
-extend-exclude = "/(planning|wlplan|benchmarks)/"
+extend-exclude = "/(venv|.venv|planning/ext|wlplan|benchmarks)/"
+
+[tool.pytest.ini_options]
+addopts = "-s"
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "[%(asctime)s %(filename)s::%(lineno)s %(levelname)s] %(message)s"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+testpaths = ["tests"]

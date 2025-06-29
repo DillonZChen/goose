@@ -185,14 +185,15 @@ def parse_opts():
             if key in model_config:
                 raise ValueError(f"Contradictory argument *{key}* in config file for {opts.mode=}")
 
-    if opts.mode == "wlf":
-        logging.info(f"WLF mode detected. Ignoring all GNN options.")
-        handle_config_vals(relevant_args=_DEFAULT_WLF_VALS, irrelevant_args=_DEFAULT_GNN_VALS)
-    elif opts.mode == "gnn":
-        logging.info(f"GNN mode detected. Ignoring all WLF options.")
-        handle_config_vals(relevant_args=_DEFAULT_GNN_VALS, irrelevant_args=_DEFAULT_WLF_VALS)
-    else:
-        raise ValueError(f"Unknown value for {opts.mode=}")
+    match opts.mode:
+        case "wlf":
+            logging.info(f"WLF mode detected. Ignoring all GNN options.")
+            handle_config_vals(relevant_args=_DEFAULT_WLF_VALS, irrelevant_args=_DEFAULT_GNN_VALS)
+        case "gnn":
+            logging.info(f"GNN mode detected. Ignoring all WLF options.")
+            handle_config_vals(relevant_args=_DEFAULT_GNN_VALS, irrelevant_args=_DEFAULT_WLF_VALS)
+        case _:
+            raise ValueError(f"Unknown value {opts.mode=}")
 
     for key, val in model_config.items():
         if key not in opts.__dict__:
@@ -202,9 +203,10 @@ def parse_opts():
 
     # Modify options based on distinguish or visualisation routine
     if opts.distinguish_test or opts.visualise_pca:
+        if opts.mode == "gnn":
+            raise ValueError("Distinguishability testing and PCA visualisation are only supported for WLF mode.")
         logging.info("Overriding options to use WLF and regression labels for non-training routine.")
         opts.__dict__["optimisation"] = "svr"
-        opts.__dict__["gnn_policy"] = None
 
     # Log parsed options
     logging.info(f"Processed options:\n{mat_to_str([[k, tc.colored(v, 'cyan')] for k, v in vars(opts).items()])}")

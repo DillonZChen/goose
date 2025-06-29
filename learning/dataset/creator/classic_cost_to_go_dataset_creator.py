@@ -1,3 +1,4 @@
+import argparse
 from typing import Optional
 
 import pymimir
@@ -7,14 +8,25 @@ from learning.dataset.container.cost_to_go_dataset import CostToGoDataset
 from learning.dataset.creator.classic_dataset_creator import ClassicDatasetCreator
 from wlplan.data import Dataset as WLPlanDataset
 from wlplan.data import ProblemStates
+from wlplan.feature_generation import get_feature_generator
 
 from .dataset_creator import MAX_EXPANSIONS_PER_PROBLEM, MAX_STATE_SPACE_DATA
 
 
 class ClassicCostToGoDatasetFromStateSpace(ClassicDatasetCreator):
-    def __init__(self, max_expanded: Optional[int] = MAX_EXPANSIONS_PER_PROBLEM, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, opts: argparse.Namespace, max_expanded: Optional[int] = MAX_EXPANSIONS_PER_PROBLEM):
+        super().__init__(opts)
         self.max_expanded = max_expanded
+
+        # feature generator for pruning duplicate WL states
+        self._feature_generator = get_feature_generator(
+            feature_algorithm=opts.features,
+            graph_representation=opts.graph_representation,
+            domain=self._wlplan_domain,
+            iterations=opts.iterations,
+            pruning="none",
+            multiset_hash=bool(opts.hash == "mset"),
+        )
 
     def get_dataset(self) -> CostToGoDataset:
         wlplan_data = []
@@ -52,10 +64,7 @@ class ClassicCostToGoDatasetFromStateSpace(ClassicDatasetCreator):
                     domain=self._wlplan_domain,
                     data=[ProblemStates(problem=wlplan_problem, states=[wlplan_state])],
                 )
-                pruning = self._feature_generator.get_pruning()
-                self._feature_generator.set_pruning("none")
                 self._feature_generator.collect(mini_dataset)
-                self._feature_generator.set_pruning(pruning)
                 x_repr = self._feature_generator.get_string_representation(wlplan_state)
                 if (x_repr, h) in seen_x_y_pairs:
                     continue

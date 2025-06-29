@@ -1,8 +1,6 @@
 !requirements.txt
 !goose.png
 
-planning/downward/src/search/ext/wlplan/include/
-
 plots/
 logs/
 *.png

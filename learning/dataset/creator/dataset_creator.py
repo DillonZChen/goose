@@ -1,3 +1,4 @@
+import argparse
 import os
 from abc import abstractmethod
 
@@ -14,15 +15,9 @@ MAX_STATE_SPACE_DATA = 100000
 
 
 class DatasetCreator:
-    def __init__(
-        self,
-        data_config: str,
-        feature_generator: Features,
-        num_data: int,
-        hash_prefix: str,
-    ):
+    def __init__(self, opts: argparse.Namespace):
         # domain information
-        data_config = toml.load(data_config)
+        data_config = toml.load(opts.data_config)
 
         self.domain_pddl = data_config["domain_pddl"]
         self.tasks_dir = data_config["tasks_dir"]
@@ -34,14 +29,13 @@ class DatasetCreator:
 
         self._wlplan_domain = wlplan.planning.parse_domain(self.domain_pddl)
 
-        # feature generator
-        self._feature_generator = feature_generator
-
-        # prevent tmp files from being overwritten by parallel jobs
-        self._hash_prefix = hash_prefix
+        # hack to prevent tmp files from being overwritten by parallel jobs
+        self._hash_prefix = str(hash(repr(opts)))
 
         # number of data to collect
-        self._num_data = num_data
+        self._num_data = opts.num_data
+
+        self._opts = opts
 
     def _get_problem_iterator(self, plans_only=True):
         pbar = []

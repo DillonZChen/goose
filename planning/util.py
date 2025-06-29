@@ -8,6 +8,7 @@ from typing import Optional
 import pddl
 
 _CUR_DIR = os.path.dirname(os.path.abspath(__file__))
+PLANNERS_DIR = f"{_CUR_DIR}/ext"
 
 
 def is_numeric(domain_pddl: str):
@@ -16,7 +17,7 @@ def is_numeric(domain_pddl: str):
 
 
 def get_downward_translation_atoms(domain_pddl: str, problem_pddl: str, hash_prefix: str):
-    script = f"{_CUR_DIR}/downward/fast-downward.py"
+    script = f"{PLANNERS_DIR}/downward/fast-downward.py"
     sas_file = str(hash(domain_pddl)) + "_" + str(hash(problem_pddl))
     sas_file = sas_file.replace("-", "0") + ".sas"
     sas_file = hash_prefix.replace("-", "0") + "_" + sas_file
@@ -56,7 +57,7 @@ def call_numeric_downward(
     """
 
     # check if built yet
-    nfd_path = f"{_CUR_DIR}/numeric-downward"
+    nfd_path = f"{PLANNERS_DIR}/numeric-downward"
     build_path = f"{nfd_path}/builds"
     if not os.path.exists(build_path):
         print("Error: Numeric Fast Downward not built yet. You can build it with `sh build.sh`.")

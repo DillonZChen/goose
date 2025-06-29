@@ -1,3 +1,4 @@
+exclude: ^(planning/ext/|wlplan/|benchmarks/)
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v5.0.0
@@ -20,4 +21,4 @@ repos:
   rev: 6.0.1
   hooks:
     - id: isort
-      args: ["--profile", "black"]
+      args: ["--profile", "black", --settings-path, pyproject.toml]

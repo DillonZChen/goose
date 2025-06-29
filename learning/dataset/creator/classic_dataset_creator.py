@@ -1,3 +1,4 @@
+import argparse
 import logging
 from abc import abstractmethod
 
@@ -7,18 +8,16 @@ import wlplan
 from learning.dataset.container.base_dataset import Dataset
 from learning.dataset.creator.dataset_creator import DatasetCreator
 from planning.util import get_downward_translation_atoms
-from wlplan.feature_generation import CCWLFeatures, Features
 from wlplan.planning import Predicate, State
 
 
 class ClassicDatasetCreator(DatasetCreator):
     """Base class for creating datasets for classical planning. Relies on the mimir package."""
 
-    def __init__(self, feature_generator: Features, facts: str, **kwargs):
-        super().__init__(feature_generator=feature_generator, **kwargs)
+    def __init__(self, opts: argparse.Namespace):
+        super().__init__(opts)
 
-        if isinstance(feature_generator, (CCWLFeatures)):
-            raise ValueError("Classic datasets must use classic WLFeatures")
+        facts = opts.facts
 
         self.mimir_domain = pymimir.DomainParser(str(self.domain_pddl)).parse()
         self.name_to_predicate = self._get_predicates(keep_statics=(facts != "nostatic"))

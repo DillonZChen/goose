@@ -8,16 +8,16 @@ from learning.dataset.container.ranking_dataset import RankingDataset
 from wlplan.feature_generation import Features
 
 
-def embed_data(dataset: Dataset, feature_generator: Features, opts: Namespace):
+def embed_data(dataset: Dataset, wlf_generator: Features, opts: Namespace):
     if opts.data_pruning == "none":
-        X = feature_generator.embed(dataset.wlplan_dataset)
+        X = wlf_generator.embed(dataset.wlplan_dataset)
         X = np.array(X).astype(float)
         y = dataset.y
         sample_weight = None
     elif opts.data_pruning == "equivalent-weighted":
-        X, y, sample_weight = get_data_weighted(dataset, feature_generator, opts)
+        X, y, sample_weight = get_data_weighted(dataset, wlf_generator, opts)
     elif opts.data_pruning == "equivalent":
-        X, y, _ = get_data_weighted(dataset, feature_generator, opts)
+        X, y, _ = get_data_weighted(dataset, wlf_generator, opts)
         sample_weight = None
     else:
         raise ValueError(f"Unknown data pruning method: {opts.data_pruning}")

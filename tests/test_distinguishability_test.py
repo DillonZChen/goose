@@ -1,13 +1,11 @@
-import os
+import pytest
 
-""" Tests whether code does not crash """
-
-
-def test_distinguishability_test():
-    cmd = "./goose.sif train configurations/data/ipc23lt/blocksworld.toml --distinguish-test"
-    rc = os.system(cmd)
-    assert rc == 0
+from util import execute_command, get_command_prefix
 
 
-if __name__ == "__main__":
-    test_distinguishability_test()
+def test_distinguishability_test(request: pytest.FixtureRequest):
+    """Tests whether code does not crash when running the distinguishability test."""
+    prefix = get_command_prefix(request, script="train")
+    cmd = f"{prefix} configurations/data/ipc23lt/blocksworld.toml --distinguish-test"
+
+    execute_command(cmd)

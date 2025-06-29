@@ -30,7 +30,7 @@ DOMAINS = {
 }
 
 
-def get_dataset(opts: Namespace, feature_generator: WLFeatures) -> Dataset:
+def get_dataset(opts: Namespace) -> Dataset:
     """State space datasets automatically remove WL-indistinguishable states with equivalent target values."""
 
     rank = opts.rank
@@ -41,23 +41,15 @@ def get_dataset(opts: Namespace, feature_generator: WLFeatures) -> Dataset:
             logging.info("Changing facts option to 'nfd' for numeric planning.")
         opts.facts = "nfd"
 
-    kwargs = {
-        "num_data": opts.num_data,
-        "feature_generator": feature_generator,
-        "data_config": opts.data_config,
-        "facts": opts.facts,
-        "hash_prefix": str(hash(repr(opts))),
-    }
-
     match (rank, data_generation, domain_is_numeric):
         ##### Classic datasets #####
         case (False, "plan", False):
-            return ClassicCostToGoDatasetFromPlans(**kwargs).get_dataset()
+            return ClassicCostToGoDatasetFromPlans(opts).get_dataset()
         case (False, "state-space", False):
-            return ClassicCostToGoDatasetFromStateSpace(**kwargs).get_dataset()
+            return ClassicCostToGoDatasetFromStateSpace(opts).get_dataset()
         case (False, "all", False):
-            dataset_1 = ClassicCostToGoDatasetFromPlans(**kwargs).get_dataset()
-            dataset_2 = ClassicCostToGoDatasetFromStateSpace(**kwargs).get_dataset()
+            dataset_1 = ClassicCostToGoDatasetFromPlans(opts).get_dataset()
+            dataset_2 = ClassicCostToGoDatasetFromStateSpace(opts).get_dataset()
             dataset = CostToGoDataset(
                 wlplan_domain=dataset_1.domain,
                 data=dataset_1.data + dataset_2.data,
@@ -65,15 +57,15 @@ def get_dataset(opts: Namespace, feature_generator: WLFeatures) -> Dataset:
             )
             return dataset
         case (True, "plan", False):
-            return ClassicRankingDatasetFromPlans(**kwargs).get_dataset()
+            return ClassicRankingDatasetFromPlans(opts).get_dataset()
         case (True, _, False):
             raise ValueError("Ranking dataset from state space not supported as it is too large.")
 
         ##### Numeric datasets #####
         case (False, "plan", True):
-            return NumericCostToGoDatasetFromPlans(**kwargs).get_dataset()
+            return NumericCostToGoDatasetFromPlans(opts).get_dataset()
         case (True, "plan", True):
-            return NumericRankingDatasetFromPlans(**kwargs).get_dataset()
+            return NumericRankingDatasetFromPlans(opts).get_dataset()
         case (_, _, True):
             raise ValueError("Numeric dataset from state space not supported.")
 

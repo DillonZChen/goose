@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import argparse
 import logging
 
 import toml
@@ -7,39 +8,41 @@ import toml
 from learning.dataset.dataset_factory import get_dataset
 from learning.dataset.state_to_vec import embed_data
 from learning.options import parse_opts
-from learning.predictor.predictor_factory import get_predictor, is_rank_predictor
+from learning.predictor.predictor_factory import get_predictor
 from util.distinguish_test import distinguish
 from util.logging import init_logger
 from util.pca_visualise import visualise
-from util.statistics import log_quartiles
 from util.timer import TimerContextManager
 from wlplan.feature_generation import get_feature_generator
 from wlplan.planning import parse_domain
 
 
-def train(opts):
+def train_wlf(opts: argparse.Namespace) -> None:
+    """Trains a linear model using WLF features for learning value functions.
+
+    Args:
+        opts (argparse.Namespace): parsed arguments
+    """
+
     # Parse dataset
     with TimerContextManager("parsing training data"):
-        domain_pddl = toml.load(opts.data_config)["domain_pddl"]
-        domain = parse_domain(domain_pddl)
-        graph_representation = opts.graph_representation
-        feature_generator = get_feature_generator(
-            feature_algorithm=opts.features,
-            graph_representation=graph_representation,
-            domain=domain,
-            iterations=opts.iterations,
-            pruning=opts.feature_pruning,
-            multiset_hash=bool(opts.hash == "mset"),
-        )
-        feature_generator.print_init_colours()
-        dataset = get_dataset(opts, feature_generator)
+        dataset = get_dataset(opts)
         logging.info(f"{len(dataset)=}")
 
     # Collect colours
+    wlf_generator = get_feature_generator(
+        feature_algorithm=opts.features,
+        graph_representation=opts.graph_representation,
+        domain=parse_domain(toml.load(opts.data_config)["domain_pddl"]),
+        iterations=opts.iterations,
+        pruning=opts.feature_pruning,
+        multiset_hash=bool(opts.hash == "mset"),
+    )
+    wlf_generator.print_init_colours()
     with TimerContextManager("collecting colours"):
-        feature_generator.collect(dataset.wlplan_dataset)
+        wlf_generator.collect(dataset.wlplan_dataset)
     logging.info(f"n_colours_per_layer:")
-    for i, n_colours in enumerate(feature_generator.get_layer_to_n_colours()):
+    for i, n_colours in enumerate(wlf_generator.get_layer_to_n_colours()):
         logging.info(f"  {i}={n_colours}")
     if opts.collect_only:
         logging.info("Exiting after collecting colours.")
@@ -47,9 +50,7 @@ def train(opts):
 
     # Construct features
     with TimerContextManager("constructing features"):
-        X, y, sample_weight = embed_data(dataset=dataset, feature_generator=feature_generator, opts=opts)
-    if not opts.rank:
-        log_quartiles(y)
+        X, y, sample_weight = embed_data(dataset=dataset, wlf_generator=wlf_generator, opts=opts)
     logging.info(f"{X.shape=}")
 
     # PCA visualisation
@@ -70,11 +71,28 @@ def train(opts):
     # Save model
     if opts.save_file:
         with TimerContextManager("saving model"):
-            feature_generator.set_weights(predictor.get_weights())
-            feature_generator.save(opts.save_file)
+            wlf_generator.set_weights(predictor.get_weights())
+            wlf_generator.save(opts.save_file)
+
+
+def train_gnn(opts: argparse.Namespace) -> None:
+    """Trains a GNN model for learning policies.
+
+    Args:
+        opts (argparse.Namespace): parsed arguments
+    """
+    pass
 
 
 if __name__ == "__main__":
     init_logger()
     opts = parse_opts()
-    train(opts)
+    match opts.mode:
+        case "wlf":
+            logging.info("Training using WL features")
+            train_wlf(opts)
+        case "gnn":
+            logging.info("Training using GNN features")
+            train_gnn(opts)
+        case _:
+            raise ValueError(f"Unknown value {opts.mode=}")

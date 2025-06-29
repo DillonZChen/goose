@@ -4,10 +4,8 @@ import argparse
 import os
 import subprocess
 
-from planning.util import is_numeric
+from planning.util import PLANNERS_DIR, is_numeric
 from util.logging import init_logger
-
-_CUR_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 def parse_opts():
@@ -17,13 +15,8 @@ def parse_opts():
     parser.add_argument("model_path", type=str)
     parser.add_argument("-t", "--timeout", type=int, default=1800)
     parser.add_argument("-p", "--planner", type=str, default="fd", choices=["pwl", "fd", "nfd", "policy"])
-    parser.add_argument(
-        "-f",
-        "--plan_file",
-        type=str,
-        default="plan.plan",
-        help="Output plan file. Default: plan.plan",
-    )
+    parser.add_argument("-o", "--plan_file", type=str, default="plan.plan")
+    parser.add_argument("--intermediate-file", type=str, default="intermediate.tmp")
     opts = parser.parse_args()
     return opts
 
@@ -51,15 +44,11 @@ def main():
     planner = opts.planner
     timeout = str(opts.timeout)
 
-    os.makedirs(".tmp", exist_ok=True)
-    trash_file = "".join(str(hash(s)) for s in ["out", domain_pddl, problem_pddl, model_path, planner, timeout])
-    trash_file = f".tmp/{trash_file}.out"
-
     match planner:
         case "pwl":
             cmd = [
                 "python3",
-                f"{_CUR_DIR}/planning/powerlifted/powerlifted.py",
+                f"{PLANNERS_DIR}/powerlifted/powerlifted.py",
                 "-s",
                 "gbfs",
                 "-d",
@@ -75,7 +64,7 @@ def main():
                 "-m",
                 model_path,
                 "--translator-output-file",
-                trash_file,
+                opts.intermediate_file,
                 "--plan-file",
                 opts.plan_file,
             ]
@@ -85,7 +74,7 @@ def main():
             if domain_pddl == "fdr":
                 cmd = [
                     "python3",
-                    f"{_CUR_DIR}/planning/downward/fast-downward.py",
+                    f"{PLANNERS_DIR}/downward/fast-downward.py",
                     problem_pddl,
                     "--search",
                     f"eager_greedy([{h_goose}])",
@@ -93,9 +82,9 @@ def main():
             else:
                 cmd = [
                     "python3",
-                    f"{_CUR_DIR}/planning/downward/fast-downward.py",
+                    f"{PLANNERS_DIR}/downward/fast-downward.py",
                     "--sas-file",
-                    trash_file,
+                    opts.intermediate_file,
                     "--plan-file",
                     opts.plan_file,
                     "--search-time-limit",
@@ -110,11 +99,11 @@ def main():
 
             cmd = [
                 "python2",  # nfd defines a pddl module which clashes with the pddl package
-                f"{_CUR_DIR}/planning/numeric-downward/fast-downward.py",
+                f"{PLANNERS_DIR}/numeric-downward/fast-downward.py",
                 "--build",
                 "release64",
                 "--sas_file",
-                trash_file,
+                opts.intermediate_file,
                 "--plan-file",
                 opts.plan_file,
                 "--search-time-limit",
@@ -129,8 +118,8 @@ def main():
 
     subprocess.check_call(cmd)
 
-    if os.path.exists(trash_file):
-        os.remove(trash_file)
+    if os.path.exists(opts.intermediate_file):
+        os.remove(opts.intermediate_file)
 
 
 if __name__ == "__main__":

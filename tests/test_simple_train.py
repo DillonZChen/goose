@@ -1,29 +1,16 @@
-import logging
-import os
-from itertools import product
-
 import pytest
+from fixtures import CONFIGS
 
-CONFIGS = {
-    "features": ["wl"],
-    "graph_representation": ["ilg", "ploig"],
-    "iterations": ["2"],
-    "optimisation": ["svr", "rank-svm", "rank-lp"],
-    "feature_pruning": ["none", "i-mf"],
-    "data_pruning": ["equivalent-weighted"],
-    "data_generation": ["plan"],
-    "facts": ["fd", "all"],
-    "hash": ["set"],
-}
+from util import execute_command, get_command_prefix
 
 
-@pytest.mark.parametrize("domain", ["blocksworld", "childsnack", "satellite"])
-@pytest.mark.parametrize("config", [dict(zip(CONFIGS.keys(), values)) for values in product(*CONFIGS.values())])
-def test_train_ipc23lt(domain, config):
-    data_config = f"configurations/data/ipc23lt/{domain}.toml"
-    cmd = f"./goose.sif train {data_config} --num-data=1"
+@pytest.mark.parametrize("domain_name", ["blocksworld", "childsnack", "satellite"])
+@pytest.mark.parametrize("config", CONFIGS)
+def test_train_ipc23lt(request: pytest.FixtureRequest, domain_name: str, config: dict[str, str]) -> None:
+    script = get_command_prefix(request, "train")
+    data_config = f"configurations/data/ipc23lt/{domain_name}.toml"
+    cmd = f"{script} {data_config} --num-data=1"
     for k, v in config.items():
         cmd += f" --{k.replace('_', '-')}={v}"
-    logging.critical(cmd)
-    rc = os.system(cmd)
-    assert rc == 0
+
+    execute_command(cmd)
