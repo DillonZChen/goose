@@ -1,10 +1,13 @@
 mode = "wlf"
-features = "ccwl"
+
 graph_representation = "nilg"
 iterations = 1
+
+features = "ccwl"
 optimisation = "rank-lp"
 feature_pruning = "none"
+hash = "set"
+
 data_pruning = "none"
 data_generation = "plan"
 facts = "nfd"
-hash = "set"

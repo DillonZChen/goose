@@ -7,7 +7,7 @@ import wlplan
 from learning.dataset.container.cost_to_go_dataset import CostToGoDataset
 from learning.dataset.creator.classic_dataset_creator import ClassicDatasetCreator
 from wlplan.data import DomainDataset, ProblemDataset
-from wlplan.feature_generation import get_feature_generator
+from wlplan.feature_generator import init_feature_generator
 
 from .dataset_creator import MAX_EXPANSIONS_PER_PROBLEM, MAX_STATE_SPACE_DATA
 
@@ -18,7 +18,7 @@ class ClassicCostToGoDatasetFromStateSpace(ClassicDatasetCreator):
         self.max_expanded = max_expanded
 
         # feature generator for pruning duplicate WL states
-        self._feature_generator = get_feature_generator(
+        self._feature_generator = init_feature_generator(
             feature_algorithm=opts.features,
             graph_representation=opts.graph_representation,
             domain=self._wlplan_domain,

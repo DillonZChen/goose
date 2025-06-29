@@ -8,7 +8,7 @@ from tqdm import tqdm
 import wlplan
 from learning.dataset.container.base_dataset import Dataset
 from util.error_message import get_path_error_msg
-from wlplan.feature_generation import Features
+from wlplan.feature_generator import Features
 
 MAX_EXPANSIONS_PER_PROBLEM = 10000
 MAX_STATE_SPACE_DATA = 100000

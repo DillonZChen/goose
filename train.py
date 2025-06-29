@@ -13,8 +13,13 @@ from util.distinguish_test import distinguish
 from util.logging import init_logger
 from util.pca_visualise import visualise
 from util.timer import TimerContextManager
-from wlplan.feature_generation import get_feature_generator
-from wlplan.planning import parse_domain
+from wlplan.feature_generator import init_feature_generator
+from wlplan.graph_generator import init_graph_generator
+from wlplan.planning import Domain, parse_domain
+
+
+def _domain_from_opts(opts: argparse.Namespace) -> Domain:
+    return parse_domain(toml.load(opts.data_config)["domain_pddl"])
 
 
 def train_wlf(opts: argparse.Namespace) -> None:
@@ -30,10 +35,10 @@ def train_wlf(opts: argparse.Namespace) -> None:
         logging.info(f"{len(dataset)=}")
 
     # Collect colours
-    wlf_generator = get_feature_generator(
+    wlf_generator = init_feature_generator(
         feature_algorithm=opts.features,
         graph_representation=opts.graph_representation,
-        domain=parse_domain(toml.load(opts.data_config)["domain_pddl"]),
+        domain=_domain_from_opts(opts),
         iterations=opts.iterations,
         pruning=opts.feature_pruning,
         multiset_hash=bool(opts.hash == "mset"),
@@ -64,7 +69,7 @@ def train_wlf(opts: argparse.Namespace) -> None:
         distinguish(X, y)
         return
 
-    # Train model
+    # Optimisation
     predictor = get_predictor(opts.optimisation)
     predictor.fit_evaluate(X, y, sample_weight=sample_weight)
 
@@ -87,7 +92,16 @@ def train_gnn(opts: argparse.Namespace) -> None:
         dataset = get_dataset(opts)
         logging.info(f"{len(dataset)=}")
 
-    pass
+    # TODO in WLPlan: factory method for graph generator
+    graph_generator = init_graph_generator(
+        graph_representation=opts.graph_representation,
+        domain=_domain_from_opts(opts),
+        differentiate_constant_objects=True,
+    )
+    graphs = graph_generator.to_graphs(dataset.wlplan_dataset)
+
+    # Optimisation
+    raise NotImplementedError
 
 
 if __name__ == "__main__":

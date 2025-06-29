@@ -6,7 +6,7 @@ from tqdm import tqdm
 from learning.dataset.container.base_dataset import Dataset
 from learning.dataset.container.ranking_dataset import RankingDataset
 from learning.predictor.predictor_factory import is_rank_predictor
-from wlplan.feature_generation import Features
+from wlplan.feature_generator import Features
 
 
 def embed_data(dataset: Dataset, wlf_generator: Features, opts: Namespace):
@@ -32,7 +32,7 @@ def get_data_weighted(dataset: Dataset, feature_generator: Features, opts: Names
         unique_groups = {}
         sample_weight_dict = {}
         counter = 0
-        graphs = feature_generator.convert_to_graphs(dataset.wlplan_dataset)
+        graphs = feature_generator.to_graphs(dataset.wlplan_dataset)
         for ranking_group in tqdm(dataset.y, total=len(dataset.y)):
             gg = ranking_group.good_group
             mg = ranking_group.maybe_group
@@ -70,7 +70,7 @@ def get_data_weighted(dataset: Dataset, feature_generator: Features, opts: Names
         return X, y, sample_weight
     else:
         unique_rows = {}
-        graphs = feature_generator.convert_to_graphs(dataset.wlplan_dataset)
+        graphs = feature_generator.to_graphs(dataset.wlplan_dataset)
         for graph, y in tqdm(zip(graphs, dataset.y), total=len(graphs)):
             x = feature_generator.embed(graph)
             xy = np.array(x + [y])

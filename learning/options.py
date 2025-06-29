@@ -11,8 +11,8 @@ import toml
 from learning.predictor.predictor_factory import get_available_predictors
 from util.error_message import get_path_error_msg
 from util.logging import mat_to_str
-from wlplan.feature_generation import (
-    get_available_feature_generators,
+from wlplan.feature_generator import (
+    get_available_feature_algorithms,
     get_available_pruning_methods,
 )
 
@@ -44,7 +44,7 @@ _DEFAULT_WLF_VALS = {
 }
 
 _DEFAULT_GNN_VALS = {
-    "gnn_policy": "v",
+    "policy": "v",
     "num_hidden": 64,
     "learning_rate": 0.001,
     "patience": 10,
@@ -86,7 +86,7 @@ def get_parser():
     # WLF options
     wlf_group = parser.add_argument_group("wlf options")
     wlf_group.add_argument("-f", "--features", type=str, default=None,
-                        choices=get_available_feature_generators(),
+                        choices=get_available_feature_algorithms(),
                         help=f"Feature generator to use. " + \
                             f"(default: {_DEFAULT_WLF_VALS['features']}).")
     wlf_group.add_argument("-fp", "--feature-pruning", type=str, default=None,
@@ -104,10 +104,10 @@ def get_parser():
 
     # GNN options
     gnn_group = parser.add_argument_group("gnn options")
-    gnn_group.add_argument("--gnn-policy", type=str,
+    gnn_group.add_argument("--policy", type=str,
                         choices=["v", "q", "p"],
                         help=f"If specified, GNN policy learning method: *v*-function, *q*-function, or distributional *p*. " + \
-                             f"(default: {_DEFAULT_GNN_VALS['gnn_policy']})")
+                             f"(default: {_DEFAULT_GNN_VALS['policy']})")
     gnn_group.add_argument("--num-hidden", type=int, default=None,
                         help=f"Hidden GNN dimension. " + \
                              f"(default: {_DEFAULT_GNN_VALS['num_hidden']})")
@@ -215,8 +215,5 @@ def parse_opts():
     # Set seeds
     random.seed(opts.random_seed)
     np.random.seed(opts.random_seed)
-
-    if opts.gnn_policy:
-        raise NotImplementedError
 
     return opts

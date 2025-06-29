@@ -7,7 +7,6 @@ import wlplan.planning
 from learning.dataset.container.base_dataset import Dataset
 from learning.dataset.creator.dataset_creator import DatasetCreator
 from planning.util import call_numeric_downward
-from wlplan.feature_generation import CCWLFeatures, Features
 from wlplan.planning import Atom, State
 
 

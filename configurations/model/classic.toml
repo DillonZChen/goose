@@ -1,10 +1,13 @@
 mode = "wlf"
-features = "wl"
+
 graph_representation = "ilg"
 iterations = 2
+
+features = "wl"
 optimisation = "rank-svm"
 feature_pruning = "i-mf"
+hash = "set"
+
 data_pruning = "equivalent-weighted"
 data_generation = "plan"
 facts = "fd"
-hash = "set"

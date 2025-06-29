@@ -5,10 +5,10 @@ from wlplan.planning import Domain
 
 
 class Dataset(ABC):
-    def __init__(self, wlplan_domain: Domain, data: list[ProblemDataset]):
-        self._domain = wlplan_domain
+    def __init__(self, domain: Domain, data: list[ProblemDataset]):
+        self._domain = domain
         self._data = data
-        self._wlplan_dataset = DomainDataset(wlplan_domain, data)
+        self._wlplan_dataset = DomainDataset(domain, data)
 
     @property
     def data(self) -> list[ProblemDataset]:
