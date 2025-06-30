@@ -68,7 +68,8 @@ class DatasetLabeller:
 
     def compute_labelled_problems_dataset(self) -> list[LabelledProblemData]:
         if self._cache and self._cache_file_exists:
-            raise NotImplementedError
+            with open(self._cache_file, "rb") as f:
+                ret = pickle.load(f)
         else:
             self._domain = parse_domain(self._domain_path)
             self._name_to_predicate = {p.name: p for p in self._domain.predicates}
@@ -89,7 +90,9 @@ class DatasetLabeller:
                 ret.append(LabelledProblemData(problem, states_and_successors_labelled))
 
         if self._cache and not self._cache_file_exists:
-            raise NotImplementedError
+            os.makedirs(os.path.dirname(self._cache_file), exist_ok=True)
+            with open(self._cache_file, "wb") as f:
+                pickle.dump(ret, f)
 
         return ret
 

@@ -14,10 +14,7 @@ from learning.predictor.linear_model.predictor_factory import get_available_pred
 from util.error_message import get_path_error_msg
 from util.logging import mat_to_str
 from util.paths import DATA_CACHE_DIR
-from wlplan.feature_generator import (
-    get_available_feature_algorithms,
-    get_available_pruning_methods,
-)
+from wlplan.feature_generator import get_available_feature_algorithms, get_available_pruning_methods
 
 _DESCRIPTION = """GOOSE trainer script.
   WLF models are primarily used to learn value functions for heuristic search.
@@ -135,7 +132,7 @@ def get_parser():
     data_group.add_argument("--cache", action="store_true",
                         help=f"Cache or use cached labelled data if generated from script.")
     data_group.add_argument("--clear-cache", action="store_true",
-                        help=f"Clear cache directory and exit.")
+                        help=f"Clear cache directory.")
     data_group.add_argument("-nd", "--num-data", type=int, default=None,
                         help=f"Number of training data to use. " + \
                              f"(default: None = all available data)")
@@ -176,8 +173,7 @@ def parse_opts():
     if opts.clear_cache:
         if os.path.exists(DATA_CACHE_DIR):
             os.system(f"rm -r {DATA_CACHE_DIR}")
-        logging.info(f"Cleared cache directory {DATA_CACHE_DIR}. Exiting.")
-        sys.exit()
+        logging.info(f"Cleared cache directory {DATA_CACHE_DIR}.")
 
     # Check domain directory is valid
     domain_directory = opts.domain_directory

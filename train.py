@@ -103,10 +103,8 @@ def train_gnn(opts: argparse.Namespace) -> None:
     logging.info(f"Detected {device}")
 
     # Parse dataset
-    with TimerContextManager("parsing training data"):
-        # dataset = DatasetLabeller(opts).compute_labelled_problems_dataset()  # TODO continue from this
-        dataset = get_dataset(opts)
-        logging.info(f"{len(dataset)=}")
+    with TimerContextManager("collecting training data"):
+        list_labelled_problem_data = DatasetLabeller(opts).compute_labelled_problems_dataset()
 
     # Initialise PyG dataset
     with TimerContextManager("converting to PyG dataset"):

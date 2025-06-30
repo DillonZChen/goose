@@ -5,18 +5,17 @@ from sklearn.model_selection import train_test_split
 from torch_geometric.data import Data
 from torch_geometric.loader import DataLoader
 
-from learning.dataset.container.base_dataset import Dataset
+from wlplan.data import DomainDataset
 from wlplan.graph_generator import GraphGenerator
 
 
 def get_data_loaders(
-    dataset: Dataset, graph_generator: GraphGenerator, batch_size: int
+    dataset: DomainDataset, labels: list[int], graph_generator: GraphGenerator, batch_size: int
 ) -> tuple[DataLoader, DataLoader]:
-    ys = dataset.y
-    graphs = graph_generator.to_graphs(dataset.wlplan_dataset)
+    graphs = graph_generator.to_graphs(dataset)
 
     pyg_dataset = []
-    for graph, y in zip(graphs, ys):
+    for graph, y in zip(graphs, labels):
         nodes = graph.node_colours
         edges = graph.edges
 
