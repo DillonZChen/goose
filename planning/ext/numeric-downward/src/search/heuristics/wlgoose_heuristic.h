@@ -1,7 +1,7 @@
 #ifndef HEURISTICS_WLGOOSE_HEURISTIC_H
 #define HEURISTICS_WLGOOSE_HEURISTIC_H
 
-#include "../ext/wlplan/include/feature_generation/feature_generator_loader.hpp"
+#include "../ext/wlplan/include/feature_generator/feature_generator_loader.hpp"
 #include "../ext/wlplan/include/planning/atom.hpp"
 #include "../ext/wlplan/include/planning/function.hpp"
 #include "../ext/wlplan/include/planning/predicate.hpp"
