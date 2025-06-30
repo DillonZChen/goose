@@ -1,5 +1,6 @@
 from typing import Optional
 
+from learning.predictor.linear_model.linear_model import LinearModel
 from learning.predictor.linear_model.rank_lp import LinearProgramRanker
 
 from .gpr import GaussianProcessRegressor
@@ -30,7 +31,7 @@ def is_rank_predictor(predictor_name: Optional[str]):
     return _LINEAR_MODELS[predictor_name].IS_RANK
 
 
-def get_predictor(predictor_name: str):
+def get_predictor(predictor_name: str) -> LinearModel:
     if predictor_name in _LINEAR_MODELS:
         return _LINEAR_MODELS[predictor_name]()
     else:

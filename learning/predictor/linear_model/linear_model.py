@@ -13,12 +13,6 @@ class LinearModel(ABC):
         self._class_name = self.__class__.__name__
         self._weights = None
 
-    def fit_evaluate(self, X, y, sample_weight):
-        with TimerContextManager("training model"):
-            self.fit(X, y, sample_weight)
-        with TimerContextManager("evaluating model"):
-            self.evaluate()
-
     def fit(self, X, y, sample_weight=None):
         if sample_weight is None:
             sample_weight = np.ones(len(y))

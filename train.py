@@ -2,14 +2,20 @@
 
 import argparse
 import logging
+import os
 
+import termcolor as tc
 import toml
+import torch
 
 from learning.dataset.dataset_factory import get_dataset
 from learning.dataset.pyg import get_data_loaders
 from learning.dataset.state_to_vec import embed_data
 from learning.options import parse_opts
 from learning.predictor.linear_model.predictor_factory import get_predictor
+from learning.predictor.neural_network.gnn import RGNN
+from learning.predictor.neural_network.optimise import optimise_weights
+from learning.predictor.neural_network.serialise import save_gnn_weights
 from util.distinguish_test import distinguish
 from util.logging import init_logger
 from util.pca_visualise import visualise
@@ -72,13 +78,19 @@ def train_wlf(opts: argparse.Namespace) -> None:
 
     # Optimisation
     predictor = get_predictor(opts.optimisation)
-    predictor.fit_evaluate(X, y, sample_weight=sample_weight)
+    with TimerContextManager("training model"):
+        predictor.fit(X, y, sample_weight)
+    with TimerContextManager("evaluating model"):
+        predictor.evaluate()
 
     # Save model
-    if opts.save_file:
+    save_file = opts.save_file
+    if save_file:
         with TimerContextManager("saving model"):
             wlf_generator.set_weights(predictor.get_weights())
-            wlf_generator.save(opts.save_file)
+            wlf_generator.save(save_file)
+        if os.path.exists(save_file):
+            logging.info(f"Saved WLF model successfully to {tc.colored(save_file, 'blue')}")
 
 
 def train_gnn(opts: argparse.Namespace) -> None:
@@ -88,25 +100,50 @@ def train_gnn(opts: argparse.Namespace) -> None:
         opts (argparse.Namespace): parsed arguments
     """
 
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    logging.info(f"Detected {device=}")
+
     # Parse dataset
     with TimerContextManager("parsing training data"):
         dataset = get_dataset(opts)
         logging.info(f"{len(dataset)=}")
 
-    graph_generator = init_graph_generator(
-        graph_representation=opts.graph_representation,
-        domain=_domain_from_opts(opts),
-        differentiate_constant_objects=True,
-    )
+    # Initialise PyG dataset
+    with TimerContextManager("converting to PyG dataset"):
+        graph_generator = init_graph_generator(
+            graph_representation=opts.graph_representation,
+            domain=_domain_from_opts(opts),
+            differentiate_constant_objects=True,
+        )
+        train_loader, val_loader = get_data_loaders(
+            dataset=dataset,
+            graph_generator=graph_generator,
+            batch_size=opts.batch_size,
+        )
 
-    train_loader, val_loader = get_data_loaders(
-        dataset=dataset,
-        graph_generator=graph_generator,
-        batch_size=opts.batch_size,
+    # Initialise GNN
+    model = RGNN(
+        n_relations=graph_generator.get_n_relations(),
+        in_feat=graph_generator.get_n_features(),
+        out_feat=1,
+        n_hid=opts.num_hidden,
+        n_layers=opts.iterations,
+        aggr="max",
+        pool="sum",
     )
+    model = model.to(device)
 
     # Optimisation
-    raise NotImplementedError
+    with TimerContextManager("optimising model"):
+        model_dict = optimise_weights(model, device, train_loader, val_loader, opts)
+
+    # Save model
+    save_file = opts.save_file
+    if save_file:
+        with TimerContextManager("saving_model"):
+            save_gnn_weights(model_dict)
+        if os.path.exists(save_file):
+            logging.info(f"Saved GNN model successfully to {tc.colored(save_file, 'blue')}")
 
 
 if __name__ == "__main__":

@@ -12,9 +12,11 @@ from wlplan.graph_generator import GraphGenerator
 def get_data_loaders(
     dataset: Dataset, graph_generator: GraphGenerator, batch_size: int
 ) -> tuple[DataLoader, DataLoader]:
+    ys = dataset.y
     graphs = graph_generator.to_graphs(dataset.wlplan_dataset)
+
     pyg_dataset = []
-    for graph in graphs:
+    for graph, y in zip(graphs, ys):
         nodes = graph.node_colours
         edges = graph.edges
 
@@ -23,13 +25,16 @@ def get_data_loaders(
         x[torch.arange(len(nodes)), nodes] = 1
 
         # edge_indices is list of (2, e)
-        edge_indices = [torch.zeros(2, len(e)) for e in edges]
-        for i, edge_group in enumerate(edges):
-            for j, (a, b) in enumerate(edge_group):
-                edge_indices[i][0, j] = a
-                edge_indices[i][1, j] = b
+        edge_indices_list = [[[], []] for _ in range(graph_generator.get_n_relations())]
+        for u, neighbours in enumerate(edges):
+            for r, v in neighbours:
+                edge_indices_list[r][0].append(u)
+                edge_indices_list[r][1].append(v)
+        edge_indices_list = [torch.tensor(edges, dtype=torch.long) for edges in edge_indices_list]
 
-        pyg_dataset.append(Data(x=x, edge_indices=edge_indices))
+        # Must use `edge_index` variable to correctly combine edge_indices_lists [(2, num_edges)]
+        data = Data(x=x, edge_index=edge_indices_list, y=y)
+        pyg_dataset.append(data)
 
     train_set, val_set = train_test_split(pyg_dataset, test_size=0.15, random_state=4550)
     logging.info(f"{len(train_set)=}")
