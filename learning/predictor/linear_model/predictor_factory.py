@@ -1,6 +1,6 @@
 from typing import Optional
 
-from learning.predictor.rank_lp import LinearProgramRanker
+from learning.predictor.linear_model.rank_lp import LinearProgramRanker
 
 from .gpr import GaussianProcessRegressor
 from .lasso import LassoRegression
@@ -9,7 +9,7 @@ from .rank_mip import MixedIntegerProgramRanker
 from .rank_svm import SupportVectorMachineRanker
 from .svr import SupportVectorRegression
 
-_PREDICTORS = {
+_LINEAR_MODELS = {
     "gpr": GaussianProcessRegressor,
     "svr": SupportVectorRegression,
     "lasso": LassoRegression,
@@ -21,17 +21,17 @@ _PREDICTORS = {
 
 
 def get_available_predictors():
-    return set(_PREDICTORS.keys())
+    return set(_LINEAR_MODELS.keys())
 
 
 def is_rank_predictor(predictor_name: Optional[str]):
     if predictor_name is None:
         return False
-    return _PREDICTORS[predictor_name].IS_RANK
+    return _LINEAR_MODELS[predictor_name].IS_RANK
 
 
 def get_predictor(predictor_name: str):
-    if predictor_name in _PREDICTORS:
-        return _PREDICTORS[predictor_name]()
+    if predictor_name in _LINEAR_MODELS:
+        return _LINEAR_MODELS[predictor_name]()
     else:
         raise ValueError(f"Unknown model {predictor_name}")

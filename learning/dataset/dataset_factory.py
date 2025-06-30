@@ -3,7 +3,7 @@ from argparse import Namespace
 
 import toml
 
-from learning.predictor.predictor_factory import is_rank_predictor
+from learning.predictor.linear_model.predictor_factory import is_rank_predictor
 from planning.util import is_domain_numeric
 
 from .container.base_dataset import Dataset

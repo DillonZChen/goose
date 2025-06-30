@@ -1,4 +1,4 @@
-from learning.predictor.mixed_integer_program import MixedIntegerProgram
+from learning.predictor.linear_model.mixed_integer_program import MixedIntegerProgram
 
 
 class MixedIntegerProgramRanker(MixedIntegerProgram):

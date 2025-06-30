@@ -5,7 +5,7 @@ from tqdm import tqdm
 
 from learning.dataset.container.base_dataset import Dataset
 from learning.dataset.container.ranking_dataset import RankingDataset
-from learning.predictor.predictor_factory import is_rank_predictor
+from learning.predictor.linear_model.predictor_factory import is_rank_predictor
 from wlplan.feature_generator import Features
 
 

@@ -3,10 +3,10 @@ import logging
 import numpy as np
 from sklearn.metrics import f1_score, mean_squared_error
 
-from .predictor import Predictor
+from learning.predictor.linear_model.linear_model import LinearModel
 
 
-class Regressor(Predictor):
+class Regressor(LinearModel):
     IS_RANK = False
 
     def _evaluate_impl(self):

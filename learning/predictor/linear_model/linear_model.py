@@ -7,7 +7,7 @@ from util.timer import TimerContextManager
 
 
 @abstract_class_attributes("IS_RANK")
-class Predictor(ABC):
+class LinearModel(ABC):
     def __init__(self) -> None:
         super().__init__()
         self._class_name = self.__class__.__name__

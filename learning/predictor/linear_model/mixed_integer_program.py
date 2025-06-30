@@ -7,7 +7,7 @@ from pulp import LpVariable as Var
 from pulp import lpDot, lpSum
 from tqdm import trange
 
-from learning.predictor.predictor import Predictor
+from learning.predictor.linear_model.linear_model import LinearModel
 
 # MIP_TIMEOUT = 60 * 10  # 10 minutes
 MIP_TIMEOUT = 3600 * 24  # 24 hours
@@ -61,7 +61,7 @@ def handle_redundant_pairs(X, y):
     return X, maybe_pair, maybe_sample_weight, bad_pair, bad_sample_weight
 
 
-class MixedIntegerProgram(Predictor):
+class MixedIntegerProgram(LinearModel):
     IS_RANK = True
 
     def _make_solver(self, timeout: float):

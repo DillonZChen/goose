@@ -6,9 +6,10 @@ import logging
 import toml
 
 from learning.dataset.dataset_factory import get_dataset
+from learning.dataset.pyg import get_data_loaders
 from learning.dataset.state_to_vec import embed_data
 from learning.options import parse_opts
-from learning.predictor.predictor_factory import get_predictor
+from learning.predictor.linear_model.predictor_factory import get_predictor
 from util.distinguish_test import distinguish
 from util.logging import init_logger
 from util.pca_visualise import visualise
@@ -92,13 +93,17 @@ def train_gnn(opts: argparse.Namespace) -> None:
         dataset = get_dataset(opts)
         logging.info(f"{len(dataset)=}")
 
-    # TODO in WLPlan: factory method for graph generator
     graph_generator = init_graph_generator(
         graph_representation=opts.graph_representation,
         domain=_domain_from_opts(opts),
         differentiate_constant_objects=True,
     )
-    graphs = graph_generator.to_graphs(dataset.wlplan_dataset)
+
+    train_loader, val_loader = get_data_loaders(
+        dataset=dataset,
+        graph_generator=graph_generator,
+        batch_size=opts.batch_size,
+    )
 
     # Optimisation
     raise NotImplementedError

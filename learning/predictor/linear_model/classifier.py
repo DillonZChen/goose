@@ -6,15 +6,14 @@ import numpy as np
 from sklearn import svm
 from sklearn.gaussian_process import GaussianProcessClassifier as GPC
 from sklearn.gaussian_process.kernels import DotProduct
-from sklearn.metrics import f1_score, mean_squared_error
 
 from learning.dataset.container.ranking_dataset import RankingGroup
-from learning.predictor.mixed_integer_program import handle_redundant_pairs
+from learning.predictor.linear_model.mixed_integer_program import handle_redundant_pairs
 
-from .predictor import Predictor
+from .linear_model import LinearModel
 
 
-class Classifier(Predictor):
+class Classifier(LinearModel):
     IS_RANK = True
 
     def _fit_impl(self, X, y: list[RankingGroup], sample_weight):

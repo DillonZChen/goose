@@ -14,7 +14,7 @@ class LassoRegression(Regressor):
     IS_RANK = False
 
     def _fit_impl(self, X, y, sample_weight):
-        model = Lasso(alpha=1., random_state=0, max_iter=10000)
+        model = Lasso(alpha=1.0, random_state=0, max_iter=10000)
         model.fit(X, y, sample_weight=sample_weight)
         self._weights = model.coef_
         self._X = X

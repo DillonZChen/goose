@@ -1,4 +1,4 @@
-from learning.predictor.classifier import Classifier
+from learning.predictor.linear_model.classifier import Classifier
 
 
 class GaussianProcessClassifierRanker(Classifier):
