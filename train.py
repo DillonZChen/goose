@@ -5,7 +5,6 @@ import logging
 import os
 
 import termcolor as tc
-import torch
 
 from learning.dataset import get_domain_from_opts
 from learning.dataset.creator.classic_labelled_dataset_creator import DatasetLabeller
@@ -93,6 +92,8 @@ def train_gnn(opts: argparse.Namespace) -> None:
     """
 
     # Torch and Pytorch Geometric imports are done here to avoid unnecessary imports when not using GNN
+    import torch
+
     from learning.dataset.pyg import get_data_loaders
     from learning.predictor.neural_network.gnn import RGNN
     from learning.predictor.neural_network.optimise import optimise_weights
@@ -156,4 +157,5 @@ if __name__ == "__main__":
             logging.info("Training using GNN features")
             train_gnn(opts)
         case _:
+            raise ValueError(f"Unknown value {opts.mode=}")
             raise ValueError(f"Unknown value {opts.mode=}")
