@@ -21,7 +21,7 @@ namespace wlgoose_heuristic {
    protected:
     py::scoped_interpreter guard{};
 
-    std::shared_ptr<feature_generation::Features> model;
+    std::shared_ptr<feature_generator::Features> model;
     std::vector<std::vector<std::shared_ptr<planning::Atom>>> fdr_pair_to_wlplan_atom;
 
     // some fluent values are static

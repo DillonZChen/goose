@@ -3,6 +3,9 @@
 
 plots/
 logs/
+.data_cache/
+.tmp/
+
 *.png
 *.jpg
 *.model
@@ -15,6 +18,9 @@ logs/
 *.csv
 *.zip
 
+###############################################################################
+# https://github.com/github/gitignore/blob/main/Python.gitignore
+###############################################################################
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

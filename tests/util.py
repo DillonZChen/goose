@@ -6,6 +6,7 @@ from subprocess import PIPE
 from typing import Any, Optional
 
 import pytest
+from fixtures import get_data_input_argument
 
 
 def get_command_prefix(request: pytest.FixtureRequest, script: str) -> str:
@@ -79,7 +80,7 @@ def train(
     model_path: str,
 ) -> None:
     script = get_command_prefix(request, script="train")
-    data_config = f"configurations/data/{benchmark_group}/{domain_name}.toml"
+    data_config = get_data_input_argument(benchmark_group=benchmark_group, domain_name=domain_name)
     model_config = f"configurations/model/{config_name}.toml"
 
     cmd = f"{script} {data_config} {model_config} -s {model_path}"

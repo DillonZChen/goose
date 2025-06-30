@@ -685,16 +685,16 @@ create_fast_downward_library(
 #         task_properties
 # )
 
-# create_fast_downward_library(
-#     NAME landmark_cut_heuristic
-#     HELP "The LM-cut heuristic"
-#     SOURCES
-#         heuristics/lm_cut_heuristic
-#         heuristics/lm_cut_landmarks
-#     DEPENDS
-#         priority_queues
-#         task_properties
-# )
+create_fast_downward_library(
+    NAME landmark_cut_heuristic
+    HELP "The LM-cut heuristic"
+    SOURCES
+        heuristics/lm_cut_heuristic
+        heuristics/lm_cut_landmarks
+    DEPENDS
+        priority_queues
+        task_properties
+)
 
 # create_fast_downward_library(
 #     NAME max_heuristic

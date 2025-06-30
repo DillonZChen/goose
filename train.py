@@ -5,9 +5,10 @@ import logging
 import os
 
 import termcolor as tc
-import toml
 import torch
 
+from learning.dataset import get_domain_from_opts
+from learning.dataset.creator.classic_labelled_dataset_creator import DatasetLabeller
 from learning.dataset.dataset_factory import get_dataset
 from learning.dataset.pyg import get_data_loaders
 from learning.dataset.state_to_vec import embed_data
@@ -22,11 +23,6 @@ from util.pca_visualise import visualise
 from util.timer import TimerContextManager
 from wlplan.feature_generator import init_feature_generator
 from wlplan.graph_generator import init_graph_generator
-from wlplan.planning import Domain, parse_domain
-
-
-def _domain_from_opts(opts: argparse.Namespace) -> Domain:
-    return parse_domain(toml.load(opts.data_config)["domain_pddl"])
 
 
 def train_wlf(opts: argparse.Namespace) -> None:
@@ -45,7 +41,7 @@ def train_wlf(opts: argparse.Namespace) -> None:
     wlf_generator = init_feature_generator(
         feature_algorithm=opts.features,
         graph_representation=opts.graph_representation,
-        domain=_domain_from_opts(opts),
+        domain=get_domain_from_opts(opts),
         iterations=opts.iterations,
         pruning=opts.feature_pruning,
         multiset_hash=bool(opts.hash == "mset"),
@@ -101,10 +97,11 @@ def train_gnn(opts: argparse.Namespace) -> None:
     """
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    logging.info(f"Detected {device=}")
+    logging.info(f"Detected {device}")
 
     # Parse dataset
     with TimerContextManager("parsing training data"):
+        # dataset = DatasetLabeller(opts).compute_labelled_problems_dataset()  # TODO continue from this
         dataset = get_dataset(opts)
         logging.info(f"{len(dataset)=}")
 
@@ -112,7 +109,7 @@ def train_gnn(opts: argparse.Namespace) -> None:
     with TimerContextManager("converting to PyG dataset"):
         graph_generator = init_graph_generator(
             graph_representation=opts.graph_representation,
-            domain=_domain_from_opts(opts),
+            domain=get_domain_from_opts(opts),
             differentiate_constant_objects=True,
         )
         train_loader, val_loader = get_data_loaders(

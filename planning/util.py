@@ -10,6 +10,10 @@ import pddl
 _CUR_DIR = os.path.dirname(os.path.abspath(__file__))
 PLANNERS_DIR = f"{_CUR_DIR}/ext"
 
+FD_DIR = f"{PLANNERS_DIR}/downward"
+NFD_DIR = f"{PLANNERS_DIR}/numeric-downward"
+PWL_DIR = f"{PLANNERS_DIR}/powerlifted"
+
 
 def is_domain_numeric(domain_pddl: str) -> bool:
     pddl_domain = pddl.parse_domain(domain_pddl)

@@ -16,7 +16,7 @@ namespace wlgoose_heuristic {
 
   class WlGooseHeuristic : public Heuristic {
    protected:
-    std::shared_ptr<feature_generation::Features> model;
+    std::shared_ptr<feature_generator::Features> model;
 
     std::map<FactPair, std::shared_ptr<planning::Atom>> fd_fact_to_wlplan_atom;
 

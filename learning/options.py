@@ -2,15 +2,18 @@ import argparse
 import logging
 import os
 import random
+import sys
 from typing import Any, Dict
 
 import numpy as np
 import termcolor as tc
 import toml
 
+from learning.dataset import get_domain_file_from_opts, get_training_dir_from_opts
 from learning.predictor.linear_model.predictor_factory import get_available_predictors
 from util.error_message import get_path_error_msg
 from util.logging import mat_to_str
+from util.paths import DATA_CACHE_DIR
 from wlplan.feature_generator import (
     get_available_feature_algorithms,
     get_available_pruning_methods,
@@ -63,8 +66,8 @@ def get_parser():
     )
 
     # Config options
-    parser.add_argument("data_config", type=str,
-                        help=f"Path to .toml data configuration file")
+    parser.add_argument("domain_directory", type=str,
+                        help=f"Path to domain directory. The directory must contain a `domain.pddl` domain file and a `training/` directory with `*.pddl` problem files. Optionally, the directory may also contain `training_plans/` directory with `*.plan` plan files corresponding to the problem files.")
     parser.add_argument("model_config", type=str, nargs='?', default=None,
                         help=f"Path to .toml model configuration file.\n" + \
                              f"If not provided, default model values are used. " + \
@@ -116,19 +119,23 @@ def get_parser():
                              f"(default: {_DEFAULT_GNN_VALS['learning_rate']})")
     gnn_group.add_argument("--patience", type=int, default=None,
                         help=f"Patience for learning rate scheduler. " + \
-                            f"(default: {_DEFAULT_GNN_VALS['patience']})")
+                             f"(default: {_DEFAULT_GNN_VALS['patience']})")
     gnn_group.add_argument("--reduction", type=float, default=None,
                         help=f"Reduction factor for learning rate scheduler. " + \
                             f"(default: {_DEFAULT_GNN_VALS['reduction']})")
     gnn_group.add_argument("--batch-size", type=int, default=None,
                         help=f"Batch size for training. " + \
-                            f"(default: {_DEFAULT_GNN_VALS['batch_size']})")
+                             f"(default: {_DEFAULT_GNN_VALS['batch_size']})")
     gnn_group.add_argument("--epochs", type=int, default=None,
                         help=f"Maximum number of epochs to train for. " + \
-                            f"(default: {_DEFAULT_GNN_VALS['epochs']})")
+                             f"(default: {_DEFAULT_GNN_VALS['epochs']})")
 
     # Data options
     data_group = parser.add_argument_group("data options")
+    data_group.add_argument("--cache", action="store_true",
+                        help=f"Cache or use cached labelled data if generated from script.")
+    data_group.add_argument("--clear-cache", action="store_true",
+                        help=f"Clear cache directory and exit.")
     data_group.add_argument("-nd", "--num-data", type=int, default=None,
                         help=f"Number of training data to use. " + \
                              f"(default: None = all available data)")
@@ -165,7 +172,25 @@ def parse_opts():
     parser = get_parser()
     opts = parser.parse_args()
 
-    assert os.path.exists(opts.data_config), get_path_error_msg(opts.data_config)
+    # Perform trivial tasks
+    if opts.clear_cache:
+        if os.path.exists(DATA_CACHE_DIR):
+            os.system(f"rm -r {DATA_CACHE_DIR}")
+        logging.info(f"Cleared cache directory {DATA_CACHE_DIR}. Exiting.")
+        sys.exit()
+
+    # Check domain directory is valid
+    domain_directory = opts.domain_directory
+    if not os.path.exists(domain_directory):
+        raise ValueError(f"{domain_directory=} does not exist.")
+    if not os.path.isdir(domain_directory):
+        raise ValueError(f"{domain_directory=} is not a directory.")
+    domain_path = get_domain_file_from_opts(opts)
+    if not os.path.exists(domain_path):
+        raise ValueError(f"A `domain.pddl` file is not found in {domain_directory=}.")
+    training_dir = get_training_dir_from_opts(opts)
+    if not os.path.exists(training_dir):
+        raise ValueError(f"A `training/` directory is not found in {domain_directory=}.")
 
     # Modify options based on parsed configuration
     if opts.model_config is not None:

@@ -1,8 +1,7 @@
 import logging
 from argparse import Namespace
 
-import toml
-
+from learning.dataset import get_domain_file_from_opts
 from learning.predictor.linear_model.predictor_factory import is_rank_predictor
 from planning.util import is_domain_numeric
 
@@ -22,7 +21,7 @@ def get_dataset(opts: Namespace) -> Dataset:
 
     is_rank = is_rank_predictor(opts.optimisation)
     data_generation = opts.data_generation
-    is_numeric = is_domain_numeric(toml.load(opts.data_config)["domain_pddl"])
+    is_numeric = is_domain_numeric(get_domain_file_from_opts(opts))
 
     if is_numeric and opts.facts != "nfd":
         logging.info("Changing facts option to 'nfd' for numeric planning.")

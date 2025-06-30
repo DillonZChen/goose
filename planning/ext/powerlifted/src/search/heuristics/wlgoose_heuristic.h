@@ -22,7 +22,7 @@
 class WlGooseHeuristic : public Heuristic {
 protected:
     std::unordered_map<int, planning::Predicate> pwl_index_to_predicate;
-    std::shared_ptr<feature_generation::Features> model;
+    std::shared_ptr<feature_generator::Features> model;
 
 public:
     WlGooseHeuristic(const Options &opts, const Task &task);
