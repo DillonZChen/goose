@@ -10,13 +10,9 @@ import torch
 from learning.dataset import get_domain_from_opts
 from learning.dataset.creator.classic_labelled_dataset_creator import DatasetLabeller
 from learning.dataset.dataset_factory import get_dataset
-from learning.dataset.pyg import get_data_loaders
 from learning.dataset.state_to_vec import embed_data
 from learning.options import parse_opts
 from learning.predictor.linear_model.predictor_factory import get_predictor
-from learning.predictor.neural_network.gnn import RGNN
-from learning.predictor.neural_network.optimise import optimise_weights
-from learning.predictor.neural_network.serialise import save_gnn_weights
 from util.distinguish_test import distinguish
 from util.logging import init_logger
 from util.pca_visualise import visualise
@@ -95,6 +91,12 @@ def train_gnn(opts: argparse.Namespace) -> None:
     Args:
         opts (argparse.Namespace): parsed arguments
     """
+
+    # Torch and Pytorch Geometric imports are done here to avoid unnecessary imports when not using GNN
+    from learning.dataset.pyg import get_data_loaders
+    from learning.predictor.neural_network.gnn import RGNN
+    from learning.predictor.neural_network.optimise import optimise_weights
+    from learning.predictor.neural_network.serialise import save_gnn_weights
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     logging.info(f"Detected {device}")

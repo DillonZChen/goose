@@ -10,7 +10,4 @@ scikit-learn==1.5.0
 setuptools>=78.1.1
 termcolor==2.4.0
 toml==0.10.2
-torch==2.7.1
-torch-geometric==2.6.1
-torch_scatter==2.1.2
 tqdm==4.66.4
