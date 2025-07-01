@@ -5,13 +5,17 @@ from sklearn.model_selection import train_test_split
 from torch_geometric.data import Data
 from torch_geometric.loader import DataLoader
 
+from learning.dataset.creator.classic_labelled_dataset_creator import LabelledDataset
 from wlplan.data import DomainDataset
 from wlplan.graph_generator import GraphGenerator
 
 
 def get_data_loaders(
-    dataset: DomainDataset, labels: list[int], graph_generator: GraphGenerator, batch_size: int
+    dataset: LabelledDataset, labels: list[int], graph_generator: GraphGenerator, batch_size: int
 ) -> tuple[DataLoader, DataLoader]:
+
+    raise NotImplementedError("TODO convert LabelledDataset to DomainDataset")
+
     graphs = graph_generator.to_graphs(dataset)
 
     pyg_dataset = []

@@ -51,6 +51,9 @@ class LabelledProblemData:
     states_and_successors_labelled: list[LabelledStateAndSuccessorsData]
 
 
+LabelledDataset = list[LabelledProblemData]
+
+
 class DatasetLabeller:
     def __init__(self, opts: argparse.Namespace):
         self._domain_path = get_domain_file_from_opts(opts)
@@ -66,7 +69,7 @@ class DatasetLabeller:
         self._cache_file = f"{DATA_CACHE_DIR}/{cache_file}.pkl"
         self._cache_file_exists = os.path.exists(self._cache_file)
 
-    def compute_labelled_problems_dataset(self) -> list[LabelledProblemData]:
+    def get_labelled_dataset(self) -> LabelledDataset:
         if self._cache and self._cache_file_exists:
             with open(self._cache_file, "rb") as f:
                 ret = pickle.load(f)

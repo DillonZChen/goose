@@ -104,7 +104,7 @@ def train_gnn(opts: argparse.Namespace) -> None:
 
     # Parse dataset
     with TimerContextManager("collecting training data"):
-        list_labelled_problem_data = DatasetLabeller(opts).compute_labelled_problems_dataset()
+        dataset = DatasetLabeller(opts).get_labelled_dataset()
 
     # Initialise PyG dataset
     with TimerContextManager("converting to PyG dataset"):
