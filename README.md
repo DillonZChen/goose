@@ -10,7 +10,7 @@
 GOOSE is a planning system that leverages graph learning. GOOSE currently supports the following planning variants:
 - [classical planning](https://github.com/aibasel/downward)
 - [lifted planning](https://github.com/abcorrea/powerlifted)
-- [numeric (non-temporal PDDL2.1) planning](https://github.com/Kurorororo/numeric-fast-downward)
+- [numeric planning](https://github.com/Kurorororo/numeric-fast-downward) (non-temporal PDDL2.1)
 
 The main branch and recent releases currently do not support **Graph Neural Networks** (GNNs). This is because we showed in our [ICAPS-24 paper](https://arxiv.org/abs/2403.16508) that GNNs are inefficient and not effective for learning value functions for heuristic search. Nevertheless, GNNs can still be accessed from the following branches and the corresponding planning modes they support.
 - `icaps24`: lifted planning
