@@ -1,4 +1,5 @@
 import logging
+from typing import Any
 
 import torch
 from sklearn.model_selection import train_test_split
@@ -12,9 +13,10 @@ from wlplan.graph_generator import GraphGenerator
 from wlplan.planning import Domain
 
 
-def _get_value_function_dataset(domain: Domain, dataset: LabelledDataset) -> DomainDataset:
+def _get_value_function_dataset(domain: Domain, dataset: LabelledDataset) -> tuple[DomainDataset, Any]:
     problem_dataset_list = []
     labels = []
+
     for data in dataset:
         problem = data.problem
         states = []
@@ -27,15 +29,16 @@ def _get_value_function_dataset(domain: Domain, dataset: LabelledDataset) -> Dom
                 if value is not None:
                     states.append(succ)
                     labels.append(value)
-
         problem_dataset_list.append(ProblemDataset(problem=problem, states=states))
     domain_dataset = DomainDataset(domain=domain, data=problem_dataset_list)
-    return domain_dataset
+
+    return domain_dataset, labels
 
 
-def _get_quality_function_dataset(domain: Domain, dataset: LabelledDataset) -> DomainDataset:
+def _get_quality_function_dataset(domain: Domain, dataset: LabelledDataset) -> tuple[DomainDataset, Any]:
     problem_dataset_list = []
     labels = []
+
     for data in dataset:
         problem = data.problem
         states = []
@@ -49,12 +52,37 @@ def _get_quality_function_dataset(domain: Domain, dataset: LabelledDataset) -> D
                 action = successors.action  # a
                 if succ_value is not None:
                     states.append(state)
-                    actions.append(action)
+                    actions.append([action])
                     labels.append(succ_value)
-
         problem_dataset_list.append(ProblemDataset(problem=problem, states=states, actions=actions))
     domain_dataset = DomainDataset(domain=domain, data=problem_dataset_list)
-    return domain_dataset
+
+    return domain_dataset, labels
+
+
+def _get_advantage_function_dataset(domain: Domain, dataset: LabelledDataset) -> tuple[DomainDataset, Any]:
+    problem_dataset_list = []
+    labels = []
+
+    for data in dataset:
+        problem = data.problem
+        states = []
+        actions = []
+        for state_and_successors in data.states_and_successors_labelled:
+            state = state_and_successors.state  # s
+            value = state_and_successors.value  # V(s)
+            for successors in state_and_successors.successors_labelled:
+                succ_state = successors.successor_state  # do nothing with the succ_state
+                succ_value = successors.value  # use the succ value as Q(s, a)
+                action = successors.action  # a
+                if succ_value is not None:
+                    states.append(state)
+                    actions.append([action])
+                    labels.append(succ_value - value)  # A(s, a) = Q(s, a) - V(s)
+        problem_dataset_list.append(ProblemDataset(problem=problem, states=states, actions=actions))
+    domain_dataset = DomainDataset(domain=domain, data=problem_dataset_list)
+
+    return domain_dataset, labels
 
 
 def get_data_loaders(
@@ -67,9 +95,11 @@ def get_data_loaders(
 
     match policy_type:
         case PolicyType.VALUE_FUNCTION.value:
-            domain_dataset = _get_value_function_dataset(domain, dataset)
+            domain_dataset, labels = _get_value_function_dataset(domain, dataset)
         case PolicyType.QUALITY_FUNCTION.value:
-            domain_dataset = _get_quality_function_dataset(domain, dataset)
+            domain_dataset, labels = _get_quality_function_dataset(domain, dataset)
+        case PolicyType.ADVANTAGE_FUNCTION.value:
+            domain_dataset, labels = _get_advantage_function_dataset(domain, dataset)
         case _:
             raise ValueError(f"Unknown policy type: {policy_type}")
 

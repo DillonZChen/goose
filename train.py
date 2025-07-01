@@ -101,6 +101,7 @@ def train_gnn(opts: argparse.Namespace) -> None:
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     logging.info(f"Detected {device}")
+    torch.manual_seed(opts.random_seed)
 
     # Parse dataset
     with TimerContextManager("collecting training data"):
