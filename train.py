@@ -94,7 +94,7 @@ def train_gnn(opts: argparse.Namespace) -> None:
     # Torch and Pytorch Geometric imports are done here to avoid unnecessary imports when not using GNN
     import torch
 
-    from learning.dataset.pyg import get_data_loaders
+    from learning.dataset.pyg_loader import get_data_loaders
     from learning.predictor.neural_network.gnn import RGNN
     from learning.predictor.neural_network.optimise import optimise_weights
     from learning.predictor.neural_network.serialise import save_gnn_weights
@@ -107,16 +107,19 @@ def train_gnn(opts: argparse.Namespace) -> None:
         dataset = DatasetLabeller(opts).get_labelled_dataset()
 
     # Initialise PyG dataset
+    domain = get_domain_from_opts(opts)
     with TimerContextManager("converting to PyG dataset"):
         graph_generator = init_graph_generator(
             graph_representation=opts.graph_representation,
-            domain=get_domain_from_opts(opts),
+            domain=domain,
             differentiate_constant_objects=True,
         )
         train_loader, val_loader = get_data_loaders(
+            domain=domain,
             dataset=dataset,
             graph_generator=graph_generator,
             batch_size=opts.batch_size,
+            policy_type=opts.policy_type,
         )
 
     # Initialise GNN

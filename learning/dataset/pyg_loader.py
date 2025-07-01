@@ -6,17 +6,38 @@ from torch_geometric.data import Data
 from torch_geometric.loader import DataLoader
 
 from learning.dataset.creator.classic_labelled_dataset_creator import LabelledDataset
-from wlplan.data import DomainDataset
+from wlplan.data import DomainDataset, ProblemDataset
 from wlplan.graph_generator import GraphGenerator
+from wlplan.planning import Domain
 
 
 def get_data_loaders(
-    dataset: LabelledDataset, labels: list[int], graph_generator: GraphGenerator, batch_size: int
+    domain: Domain,
+    dataset: LabelledDataset,
+    graph_generator: GraphGenerator,
+    batch_size: int,
+    policy_type: str,
 ) -> tuple[DataLoader, DataLoader]:
 
-    raise NotImplementedError("TODO convert LabelledDataset to DomainDataset")
+    problem_dataset_list = []
+    labels = []
+    for data in dataset:
+        problem = data.problem
+        states = []
+        for state_and_successors in data.states_and_successors_labelled:
+            states.append(state_and_successors.state)
+            labels.append(state_and_successors.value)
+            for successors in state_and_successors.successors_labelled:
+                succ = successors.successor_state
+                value = successors.value
+                if value is not None:
+                    states.append(succ)
+                    labels.append(value)
 
-    graphs = graph_generator.to_graphs(dataset)
+        problem_dataset_list.append(ProblemDataset(problem=problem, states=states))
+    domain_dataset = DomainDataset(domain=domain, data=problem_dataset_list)
+
+    graphs = graph_generator.to_graphs(domain_dataset)
 
     pyg_dataset = []
     for graph, y in zip(graphs, labels):

@@ -11,6 +11,7 @@ import toml
 
 from learning.dataset import get_domain_file_from_opts, get_training_dir_from_opts
 from learning.predictor.linear_model.predictor_factory import get_available_predictors
+from learning.predictor.neural_network.policy_type import get_policy_type_options
 from util.error_message import get_path_error_msg
 from util.logging import mat_to_str
 from util.paths import DATA_CACHE_DIR
@@ -44,7 +45,7 @@ _DEFAULT_WLF_VALS = {
 }
 
 _DEFAULT_GNN_VALS = {
-    "policy": "v",
+    "policy_type": "v",
     "num_hidden": 64,
     "learning_rate": 0.001,
     "patience": 10,
@@ -104,10 +105,10 @@ def get_parser():
 
     # GNN options
     gnn_group = parser.add_argument_group("gnn options")
-    gnn_group.add_argument("--policy", type=str,
-                        choices=["v", "q", "p"],
-                        help=f"If specified, GNN policy learning method: *v*-function, *q*-function, or distributional *p*. " + \
-                             f"(default: {_DEFAULT_GNN_VALS['policy']})")
+    gnn_group.add_argument("--policy-type", type=str,
+                        choices=get_policy_type_options(),
+                        help=f"If specified, GNN policy representation: *v*-function, *q*-function, or distributional *p*. " + \
+                             f"(default: {_DEFAULT_GNN_VALS['policy_type']})")
     gnn_group.add_argument("--num-hidden", type=int, default=None,
                         help=f"Hidden GNN dimension. " + \
                              f"(default: {_DEFAULT_GNN_VALS['num_hidden']})")
