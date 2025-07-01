@@ -2,6 +2,7 @@ import pytest
 
 from util import train_plan
 
+
 BENCHMARK_GROUP = "ipc23lt"
 CONFIG_NAME = "classic"
 PLANNER_NAME = "fd"

@@ -17,6 +17,7 @@ from util.logging import mat_to_str
 from util.paths import DATA_CACHE_DIR
 from wlplan.feature_generator import get_available_feature_algorithms, get_available_pruning_methods
 
+
 _DESCRIPTION = """GOOSE trainer script.
   WLF models are primarily used to learn value functions for heuristic search.
   GNN models are used to learn action policies as reactive controllers.

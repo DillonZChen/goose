@@ -1,6 +1,7 @@
 import os
 from itertools import product
 
+
 IPC23LT_DOMAINS = [
     "blocksworld",
     "childsnack",

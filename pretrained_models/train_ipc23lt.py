@@ -4,6 +4,7 @@ import os
 import subprocess
 from datetime import datetime
 
+
 CUR_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(CUR_DIR)
 

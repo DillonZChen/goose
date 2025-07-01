@@ -7,6 +7,7 @@ from typing import Optional
 
 import pddl
 
+
 _CUR_DIR = os.path.dirname(os.path.abspath(__file__))
 PLANNERS_DIR = f"{_CUR_DIR}/ext"
 

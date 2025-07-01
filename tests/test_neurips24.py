@@ -2,6 +2,7 @@ import pytest
 
 from util import train_plan
 
+
 BENCHMARK_GROUP = "neurips24"
 CONFIG_NAME = "numeric"
 PLANNER_NAME = "nfd"

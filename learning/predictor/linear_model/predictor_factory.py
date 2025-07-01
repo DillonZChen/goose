@@ -10,6 +10,7 @@ from .rank_mip import MixedIntegerProgramRanker
 from .rank_svm import SupportVectorMachineRanker
 from .svr import SupportVectorRegression
 
+
 _LINEAR_MODELS = {
     "gpr": GaussianProcessRegressor,
     "svr": SupportVectorRegression,

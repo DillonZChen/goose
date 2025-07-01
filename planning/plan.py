@@ -11,6 +11,7 @@ from pddl.logic.base import And, Formula, Not
 
 from planning.util import FD_DIR
 
+
 Plan = list[str]
 State = frozenset[Predicate]
 

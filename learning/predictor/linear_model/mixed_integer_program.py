@@ -3,11 +3,11 @@ import logging
 
 import numpy as np
 import pulp
-from pulp import LpVariable as Var
-from pulp import lpDot, lpSum
+from pulp import LpVariable as Var, lpDot, lpSum
 from tqdm import trange
 
 from learning.predictor.linear_model.linear_model import LinearModel
+
 
 # MIP_TIMEOUT = 60 * 10  # 10 minutes
 MIP_TIMEOUT = 3600 * 24  # 24 hours
