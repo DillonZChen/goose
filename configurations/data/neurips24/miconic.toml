@@ -1,3 +1,0 @@
-domain_pddl = 'benchmarks/neurips24/miconic/domain.pddl'
-tasks_dir = 'benchmarks/neurips24/miconic/training'
-plans_dir = 'benchmarks/neurips24/miconic/training_plans'

@@ -1,3 +1,0 @@
-domain_pddl = 'benchmarks/neurips24/childsnack/domain.pddl'
-tasks_dir = 'benchmarks/neurips24/childsnack/training'
-plans_dir = 'benchmarks/neurips24/childsnack/training_plans'

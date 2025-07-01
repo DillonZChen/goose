@@ -1,3 +1,0 @@
-domain_pddl = 'benchmarks/neurips24/satellite/domain.pddl'
-tasks_dir = 'benchmarks/neurips24/satellite/training'
-plans_dir = 'benchmarks/neurips24/satellite/training_plans'

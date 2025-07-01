@@ -1,3 +1,0 @@
-domain_pddl = 'benchmarks/ipc23lt/miconic/domain.pddl'
-tasks_dir = 'benchmarks/ipc23lt/miconic/training'
-plans_dir = 'benchmarks/ipc23lt/miconic/training_plans'

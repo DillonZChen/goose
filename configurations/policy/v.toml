@@ -3,7 +3,7 @@ mode = "gnn"
 graph_representation = "ilg"
 iterations = 2
 
-policy = "v"
+policy_type = "v"
 
 data_generation = "plan"
 facts = "all"
