@@ -129,8 +129,8 @@ def get_parser():
 
     # Data options
     data_group = parser.add_argument_group("data options")
-    data_group.add_argument("--cache", action="store_true",
-                        help=f"Cache or use cached labelled data if generated from script.")
+    data_group.add_argument("--no-cache", dest="cache", action="store_false",
+                        help=f"Do not cache processed data no use cached data.")
     data_group.add_argument("--clear-cache", action="store_true",
                         help=f"Clear cache directory.")
     data_group.add_argument("-nd", "--num-data", type=int, default=None,
