@@ -8,7 +8,7 @@
 
 namespace planning {
   struct Node {
-    const State state;
+    const SGState state;
     const std::pair<int, std::vector<int>> achieving_action;
     const int s_id;
     const int parent_s_id;

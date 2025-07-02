@@ -1,5 +1,6 @@
 import argparse
 import json
+import logging
 import os
 import pickle
 from dataclasses import dataclass
@@ -11,6 +12,7 @@ from tqdm import tqdm
 from learning.dataset import get_domain_file_from_opts, get_training_dir_from_opts
 from planning.solution import get_plan
 from util.paths import DATA_CACHE_DIR
+from util.statistics import log_quartiles
 from wlplan.planning import Action, Atom, Problem, State, parse_domain, parse_problem
 
 
@@ -52,6 +54,20 @@ class LabelledProblemData:
 
 
 LabelledDataset = list[LabelledProblemData]
+
+
+def log_dataset_statistics(dataset: LabelledDataset) -> None:
+    v_values = []
+    q_values = []
+    for data in dataset:
+        for states_and_successors in data.states_and_successors_labelled:
+            v_values.append(states_and_successors.value)
+            for successor in states_and_successors.successors_labelled:
+                if successor.value is not None:
+                    v_values.append(successor.value)
+                    q_values.append(successor.value)
+    log_quartiles(v_values, "V-value statistics")
+    log_quartiles(q_values, "Q-value statistics")
 
 
 class DatasetLabeller:

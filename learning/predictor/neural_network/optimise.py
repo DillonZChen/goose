@@ -61,7 +61,7 @@ def optimise_weights(
             lr = optimiser.param_groups[0]["lr"]
             t = time.time() - t
 
-            print(", ".join([f"{epoch=}", f"{t=:.2f}", f"{train_loss=:.4f}", f"{val_loss=:.4f}", f"{lr:.1e}"]))
+            print(", ".join([f"{epoch=}", f"{t=:.8f}", f"{train_loss=:.8f}", f"{val_loss=:.8f}", f"{lr=:.1e}"]))
 
             if lr < 1e-5:
                 print(f"Early stopping due to small {lr=:.1e}")

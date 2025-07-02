@@ -27,7 +27,7 @@ PYBIND11_MODULE(_succgen, m) {
 
   // Node
   py::class_<planning::Node>(planning_m, "Node")
-      .def(py::init<planning::State &, std::pair<int, std::vector<int>>, int, int>(),
+      .def(py::init<planning::SGState &, std::pair<int, std::vector<int>>, int, int>(),
            "state"_a,
            "achieving_action"_a,
            "s_id"_a,
@@ -38,29 +38,29 @@ PYBIND11_MODULE(_succgen, m) {
       .def_readonly("parent_s_id", &planning::Node::parent_s_id);
 
   // State
-  py::class_<planning::State>(planning_m, "State")
+  py::class_<planning::SGState>(planning_m, "SGState")
       .def(py::init<planning::Atoms &, planning::Values &>(), "atoms"_a, "values"_a)
-      .def("get_copy", &planning::State::get_copy)
-      .def("add_atom", &planning::State::add_atom, "atom"_a)
-      .def("del_atom", &planning::State::del_atom, "atom"_a)
-      .def("set_value", &planning::State::set_value, "index"_a, "value"_a)
+      .def("get_copy", &planning::SGState::get_copy)
+      .def("add_atom", &planning::SGState::add_atom, "atom"_a)
+      .def("del_atom", &planning::SGState::del_atom, "atom"_a)
+      .def("set_value", &planning::SGState::set_value, "index"_a, "value"_a)
       .def(
-          "apply_action", &planning::State::apply_action, "action"_a, "instantiation"_a, "atom_packer"_a, "nvars_map"_a)
-      .def_readonly("atoms", &planning::State::atoms)
-      .def_readonly("values", &planning::State::values);
+          "apply_action", &planning::SGState::apply_action, "action"_a, "instantiation"_a, "atom_packer"_a, "nvars_map"_a)
+      .def_readonly("atoms", &planning::SGState::atoms)
+      .def_readonly("values", &planning::SGState::values);
 
   // Goal
-  py::class_<planning::Goal>(planning_m, "Goal")
+  py::class_<planning::SGGoal>(planning_m, "SGGoal")
       .def(py::init<planning::Atoms &,
                     planning::Atoms &,
                     std::vector<std::shared_ptr<planning::GroundBooleanExpression>> &>(),
            "pos_goals"_a,
            "neg_goals"_a,
            "numeric_goals"_a)
-      .def("satisfied_by", &planning::Goal::satisfied_by, "state"_a)
-      .def_readonly("pos_goals", &planning::Goal::pos_goals)
-      .def_readonly("neg_goals", &planning::Goal::neg_goals)
-      .def_readonly("numeric_goals", &planning::Goal::numeric_goals);
+      .def("satisfied_by", &planning::SGGoal::satisfied_by, "state"_a)
+      .def_readonly("pos_goals", &planning::SGGoal::pos_goals)
+      .def_readonly("neg_goals", &planning::SGGoal::neg_goals)
+      .def_readonly("numeric_goals", &planning::SGGoal::numeric_goals);
 
   // Effects
   py::class_<planning::Effects>(planning_m, "Effects")

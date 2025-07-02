@@ -11,7 +11,7 @@ from learning.dataset import (
     get_training_plans_dir_from_opts,
 )
 from learning.dataset.container.base_dataset import Dataset
-from util.error_message import get_path_error_msg
+from util.filesystem import get_path_error_msg
 
 
 MAX_EXPANSIONS_PER_PROBLEM = 10000

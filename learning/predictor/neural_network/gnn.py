@@ -118,7 +118,7 @@ class RGNN(nn.Module):
         x = self.pool_fn(x, batch)
         return x
 
-    def forward(self, x: Tensor, edge_indices_list: List[Tensor], batch: Optional[Tensor]) -> Tensor:
+    def forward(self, x: Tensor, edge_indices_list: List[Tensor], batch: Optional[Tensor] = None) -> Tensor:
         x = self.graph_embedding(x, edge_indices_list, batch)
         h = self.mlp(x)
         h = h.squeeze(1)

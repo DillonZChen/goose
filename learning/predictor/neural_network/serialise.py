@@ -38,8 +38,6 @@ def load_gnn(save_file: str) -> tuple[RGNN, argparse.Namespace]:
     weights_dict = load_gnn_weights(save_file)
     opts = weights_dict.opts
     weights = weights_dict.weights
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = RGNN.init_from_opts(opts=opts)
     model.load_state_dict(weights)
-    model = model.to(device)
     return model, opts

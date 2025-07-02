@@ -1,25 +1,102 @@
 #!/usr/bin/env python
 
+import argparse
+import json
+import logging
 import os
+import random
 import subprocess
 
-from planning.options import parse_planning_opts
+import numpy as np
+import termcolor as tc
+
 from planning.util import PLANNERS_DIR
-from util.logging import init_logger
+from util.filesystem import file_exists
+from util.logging import init_logger, mat_to_str
+
+
+_DESCRIPTION = """GOOSE planner script.
+  WLF models represent value functions for heuristic search.
+  GNN models represent action policies as reactive controllers.
+"""
+
+
+# fmt: off
+def get_planning_parser():
+    parser = argparse.ArgumentParser(description=_DESCRIPTION, formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument("domain_pddl", type=str,
+                        help="Path to PDDL domain file or `fdr` if using an FDR input.")
+    parser.add_argument("problem_pddl", type=str,
+                        help="Path to PDDL problem file or FDR file.")
+    parser.add_argument("model_path", type=str,
+                        help="Path to the model file.")
+    parser.add_argument("-p", "--planner", type=str, default=None,
+                        choices=["pwl", "fd", "nfd", "policy"],
+                        help="Underlying planner. If not specified, it is automatically detected from the model.")
+    parser.add_argument("-t", "--timeout", type=int, default=3600,
+                        help="Timeout for search in seconds. Ignores all other preprocessing times.")
+    parser.add_argument("-o", "--plan-file", type=str, default="sas_plan",
+                        help="Location for output solution files.")
+    parser.add_argument("-r", "--random-seed", type=int, default=0,
+                        help="Random seed for policy algorithms.")
+    parser.add_argument("--intermediate-file", type=str, default="intermediate.tmp",
+                        help="Location for trash files.")
+    return parser
+# fmt: on
 
 
 def main():
     init_logger()
-    opts = parse_planning_opts()
+    parser = get_planning_parser()
+    opts = parser.parse_args()
 
     domain_pddl = opts.domain_pddl
     problem_pddl = opts.problem_pddl
     model_path = opts.model_path
 
-    planner = opts.planner
+    assert file_exists(domain_pddl) or domain_pddl == "fdr", domain_pddl
+    assert file_exists(problem_pddl), problem_pddl
+    assert file_exists(model_path), model_path
+
+    # Check model type
+    try:
+        with open(model_path, "r") as f:
+            model = json.load(f)
+        train_opts = model["opts"]
+        mode = "wlf"
+    except (json.JSONDecodeError, UnicodeDecodeError):
+
+        from learning.predictor.neural_network.serialise import load_gnn
+
+        model, train_opts = load_gnn(model_path)
+        mode = "gnn"
+
+    # Automatically detect planner if not specified
+    if opts.planner is None:
+        match mode:
+            case "gnn":
+                opts.planner = "policy"
+            case "wlf":
+                state_repr = train_opts["facts"]
+                if state_repr == "fd":
+                    opts.planner == "fd"
+                elif state_repr in {"all", "nostatic"}:
+                    opts.planner = "pwl"
+                elif state_repr == "nfd":
+                    opts.planner = "nfd"
+                else:
+                    raise ValueError(f"Unknown value {state_repr=}")
+            case _:
+                raise ValueError(f"Unknown value {mode=}")
+    if domain_pddl == "fdr":
+        assert opts.planner == "fd", "FDR input is only supported with Fast Downward `--planner=fd`"
+
+    # Log parsed options
+    logging.info(f"Processed options:\n{mat_to_str([[k, tc.colored(v, 'cyan')] for k, v in vars(opts).items()])}")
+
     timeout = str(opts.timeout)
 
-    match planner:
+    match opts.planner:
         case "pwl":
             cmd = [
                 "python3",
@@ -94,15 +171,23 @@ def main():
         case "policy":
 
             # Torch and Pytorch Geometric imports done here to avoid unnecessary imports when not using GNN
+            import torch
+
             from planning.policy.gnn_policy import GnnPolicyExecutor
+
+            random.seed(opts.random_seed)
+            np.random.seed(opts.random_seed)
+            torch.manual_seed(opts.random_seed)
 
             policy = GnnPolicyExecutor(
                 domain_file=domain_pddl,
                 problem_file=problem_pddl,
-                model_file=model_path,
+                gnn=model,
+                train_opts=train_opts,
                 debug=False,
             )
             plan = policy.execute()
+            policy.dump_stats()
 
         case _:
             raise NotImplementedError

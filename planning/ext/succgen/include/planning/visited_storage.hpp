@@ -32,7 +32,7 @@ namespace planning {
       throw std::out_of_range("Node not found");
     }
 
-    bool contains(const State &state) { return states_.contains(state); }
+    bool contains(const SGState &state) { return states_.contains(state); }
   };
 
 }  // namespace planning

@@ -3,7 +3,7 @@
 #include <algorithm>
 
 namespace planning {
-  unsigned StateHash::operator()(const State &s) const {
+  unsigned StateHash::operator()(const SGState &s) const {
     // Start with a hash seed
     unsigned hash = 17;
 
@@ -22,11 +22,11 @@ namespace planning {
     return hash;
   }
 
-  State::State(const Atoms &atoms, const Values &values) : atoms(atoms), values(values) {}
+  SGState::SGState(const Atoms &atoms, const Values &values) : atoms(atoms), values(values) {}
 
-  State State::get_copy() const { return State(atoms, values); }
+  SGState SGState::get_copy() const { return SGState(atoms, values); }
 
-  State State::apply_action(const Effects &action,
+  SGState SGState::apply_action(const Effects &action,
                             const std::vector<int> &instantiation,
                             AtomPacker &atom_packer,
                             const FluentIndexMap &nvars_map) {
@@ -60,8 +60,8 @@ namespace planning {
       new_values[i] = effect->apply(new_values[i], value);
     }
 
-    return State(new_atoms, new_values);
+    return SGState(new_atoms, new_values);
   }
 
-  bool State::operator==(const State &other) const { return (atoms == other.atoms) && (values == other.values); }
+  bool SGState::operator==(const SGState &other) const { return (atoms == other.atoms) && (values == other.values); }
 }  // namespace planning

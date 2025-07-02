@@ -1,4 +1,4 @@
-from _succgen.planning import State as SGState
+from _succgen.planning import SGState
 from pddl.logic.terms import Term
 from succgen.planning.instantiation import Instantiation
 
@@ -7,4 +7,4 @@ def pddl_terms_to_row(obj_to_i: dict[str, int], terms: list[Term]) -> Instantiat
     return tuple(obj_to_i[t.name] for t in terms)
 
 
-__all__ = ["pddl_terms_to_row", "SGState"]
+__all__ = ["pddl_terms_to_row"]

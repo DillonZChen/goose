@@ -65,10 +65,10 @@ cd -
 # Build planners
 for planner in $PLANNERS; do
     cd $PLANNERS_DIR/$planner
-    if [ "$arg" = "fresh" ]; then
+    if [[ "$arg" = "fresh" ]]; then
         rm -r builds
     fi
-    if [ -f "compile.sh" ]; then
+    if [[ -f "compile.sh" ]]; then
         ./compile.sh # numeric-downward
     else
         python3 build.py

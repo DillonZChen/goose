@@ -14,9 +14,9 @@ from succgen.planning.effects import AssignEffect, DecreaseEffect, Effects, Incr
 from succgen.planning.lifted_expressions import to_lifted_expr
 from succgen.planning.state import SGState
 from succgen.planning.task import SGTask
+from succgen.sgutil.logging import mat_to_str
+from succgen.sgutil.managers import TimerContextManager
 from succgen.sqlite_applicable_action_generator import SQLiteApplicableActionGenerator
-from succgen.util.logging import mat_to_str
-from succgen.util.managers import TimerContextManager
 
 
 class PolicyExecutor(ABC):
@@ -25,6 +25,7 @@ class PolicyExecutor(ABC):
         self._debug = debug
         self._bound = bound
 
+        self._t_total = 0
         self._t_eval_p = 0
         self._t_aag = 0
         self._t_sg = 0
@@ -98,19 +99,35 @@ class PolicyExecutor(ABC):
     def execute(self) -> Optional[Plan]:
         plan = []
         state = self._task.get_init_state()
+        logging.info("Starting policy execution...")
         while True:
             if self._is_goal(state):
                 logging.info("Solution found!")
-                return plan
+                break
             if self._bound > 0 and len(plan) >= self._bound:
                 logging.info(f"{self._bound=} reached. Terminating policy execution.")
-                return None
+                plan = None
+                break
             applicable_actions = self._get_applicable_actions(state)
             if len(applicable_actions) == 0:
                 logging.info("Deadend reached. Terminating policy execution.")
-                return None
+                plan = None
+                break
+
+            t = time.perf_counter()
             action = self.select_action(state, applicable_actions)
+            self._t_eval_p += time.perf_counter() - t
+
             state = self._get_successor_state(action, state)
+
+            plan.append(self._task.action_to_string(action))
+
+            n_steps = len(plan)
+            if n_steps > 0 and (n_steps & (n_steps - 1)) == 0:
+                logging.info(f"Reached {n_steps=}")
+
+        self._t_total = time.perf_counter() - self._start_time
+        self._plan_length = len(plan) if plan is not None else "na"
 
     @abstractmethod
     def select_action(self, state: SGState, actions: list[SGAction]) -> SGAction:
@@ -162,10 +179,8 @@ class PolicyExecutor(ABC):
 
         dividers = ("*", "*", "*")
 
-        t_aag_setup = self._aag.t_aag_processing
-        t_aag_exec = self._aag.t_aag_execution
-        t_aag_total = t_aag_setup + t_aag_exec
-        t_rem_search = self._t_search - (self._t_eval_p + t_aag_total + self._t_sg)
+        t_aag_total = self._aag.t_aag_processing + self._aag.t_aag_execution
+        t_rem_search = self._t_total - (self._t_eval_p + t_aag_total + self._t_sg)
 
         stats = [
             dividers,
@@ -173,13 +188,12 @@ class PolicyExecutor(ABC):
             dividers,
             ("time parsing", float_format(self._t_parsing)),
             dividers,
-            ("time policy evaluations", float_format(self._t_eval_p), percentage(self._t_eval_p, self._t_search)),
+            ("time policy evaluations", float_format(self._t_eval_p), percentage(self._t_eval_p, self._t_total)),
             # ("time applicable action generation", float_format(self._t_aag), percentage(self._t_aag, self._t_search)),
-            ("time action generation setup", float_format(t_aag_setup), percentage(t_aag_setup, self._t_search)),
-            ("time action generation execution", float_format(t_aag_exec), percentage(t_aag_exec, self._t_search)),
-            ("time successor generation", float_format(self._t_sg), percentage(self._t_sg, self._t_search)),
-            ("time other planning routines", float_format(t_rem_search), percentage(t_rem_search, self._t_search)),
-            ("total planning time", float_format(self._t_search), percentage(self._t_search, self._t_search)),
+            ("time action generation", float_format(t_aag_total), percentage(t_aag_total, self._t_total)),
+            ("time successor generation", float_format(self._t_sg), percentage(self._t_sg, self._t_total)),
+            ("time other planning routines", float_format(t_rem_search), percentage(t_rem_search, self._t_total)),
+            ("total planning time", float_format(self._t_total), percentage(self._t_total, self._t_total)),
             dividers,
         ]
 

@@ -14,8 +14,8 @@ from succgen.planning.action import SGAction
 from succgen.planning.state import SGState
 from succgen.planning.strings import NumericCondition, get_numeric_condition_symbol
 from succgen.planning.task import SGTask
-from succgen.util.logging import mat_to_str
-from succgen.util.managers import TimerContextManager
+from succgen.sgutil.logging import mat_to_str
+from succgen.sgutil.managers import TimerContextManager
 
 
 _PARAM = "x__"

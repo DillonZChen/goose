@@ -9,13 +9,13 @@
 
 namespace planning {
   class StateStorer {
-    std::unordered_set<State, StateHash> states;
+    std::unordered_set<SGState, StateHash> states;
 
    public:
     StateStorer() = default;
 
-    void add(const State &state) { states.insert(state); }
-    bool contains(const State &state) { return states.find(state) != states.end(); }
+    void add(const SGState &state) { states.insert(state); }
+    bool contains(const SGState &state) { return states.find(state) != states.end(); }
   };
 
 }  // namespace planning

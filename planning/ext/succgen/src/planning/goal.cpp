@@ -3,10 +3,10 @@
 #include <algorithm>
 
 namespace planning {
-  Goal::Goal(const Atoms &pos_goals, const Atoms &neg_goals, const std::vector<std::shared_ptr<GroundBooleanExpression>> &numeric_goals)
+  SGGoal::SGGoal(const Atoms &pos_goals, const Atoms &neg_goals, const std::vector<std::shared_ptr<GroundBooleanExpression>> &numeric_goals)
       : pos_goals(pos_goals), neg_goals(neg_goals), numeric_goals(numeric_goals) {}
 
-  bool Goal::satisfied_by(const State &state) {
+  bool SGGoal::satisfied_by(const SGState &state) {
     for (const auto &pos_goal : pos_goals) {
       if (!state.atoms.count(pos_goal)) {
         return false;

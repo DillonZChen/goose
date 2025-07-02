@@ -5,6 +5,7 @@ plots/
 logs/
 .data_cache/
 .tmp/
+sas_plan
 
 *.png
 *.jpg

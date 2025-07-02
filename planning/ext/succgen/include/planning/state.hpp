@@ -10,30 +10,30 @@
 
 namespace planning {
 
-  class State {
+  class SGState {
    public:
     Atoms atoms;
     Values values;
 
-    State(const Atoms &atoms, const Values &values);
+    SGState(const Atoms &atoms, const Values &values);
 
-    State get_copy() const;
+    SGState get_copy() const;
 
     void add_atom(int atom) { atoms.insert(atom); }
     void del_atom(int atom) { atoms.erase(atom); }
     void set_value(int index, double value) { values[index] = value; }
 
-    State apply_action(const Effects &action,
+    SGState apply_action(const Effects &action,
                        const std::vector<int> &instantiation,
                        AtomPacker &atom_packer,
                        const FluentIndexMap &nvars_map);
 
-    bool operator==(const State &other) const;
+    bool operator==(const SGState &other) const;
   };
 
   class StateHash {
    public:
-    unsigned operator()(const State &s) const;
+    unsigned operator()(const SGState &s) const;
   };
 
 }  // namespace planning

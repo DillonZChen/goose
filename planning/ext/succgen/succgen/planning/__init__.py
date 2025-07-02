@@ -17,7 +17,7 @@ from pddl.logic.functions import (
     NumericFunction,
     NumericValue,
 )
-from succgen.util.logging import mat_to_str
+from succgen.sgutil.logging import mat_to_str
 
 
 __all__ = ["get_plan", "Plan", "PDDLState", "Literal"]

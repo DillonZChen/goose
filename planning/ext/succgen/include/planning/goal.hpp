@@ -10,15 +10,15 @@
 
 namespace planning {
 
-  class Goal {
+  class SGGoal {
    public:
     const Atoms pos_goals;
     const Atoms neg_goals;
     const std::vector<std::shared_ptr<GroundBooleanExpression>> numeric_goals;
 
-    Goal(const Atoms &pos_goals, const Atoms &neg_goals, const std::vector<std::shared_ptr<GroundBooleanExpression>> &numeric_goals);
+    SGGoal(const Atoms &pos_goals, const Atoms &neg_goals, const std::vector<std::shared_ptr<GroundBooleanExpression>> &numeric_goals);
 
-    bool satisfied_by(const State &state);
+    bool satisfied_by(const SGState &state);
   };
 }  // namespace planning
 
