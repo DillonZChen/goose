@@ -5,6 +5,7 @@ import logging
 import os
 import subprocess
 
+from planning.policy import PolicyExecutor
 from planning.util import PLANNERS_DIR, is_domain_numeric
 from util.logging import init_logger
 
@@ -113,6 +114,13 @@ def main():
                 "--search",
                 f"eager_greedy({h_goose})",
             ]
+        case "policy":
+            policy = PolicyExecutor(
+                domain_file=domain_pddl,
+                problem_file=problem_pddl,
+                model_file=model_path,
+                debug=False,
+            )
         case _:
             raise NotImplementedError
 

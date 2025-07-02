@@ -9,7 +9,7 @@ import pymimir
 from tqdm import tqdm
 
 from learning.dataset import get_domain_file_from_opts, get_training_dir_from_opts
-from planning.plan import get_plan
+from planning.solution import get_plan
 from util.paths import DATA_CACHE_DIR
 from wlplan.planning import Action, Atom, Problem, State, parse_domain, parse_problem
 

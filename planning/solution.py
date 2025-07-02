@@ -1,13 +1,11 @@
 import logging
-import os
-import shutil
 import subprocess
-from typing import Optional, Union
+from typing import Optional
 
 import pddl
 from pddl.core import Domain, Problem
 from pddl.logic import Predicate
-from pddl.logic.base import And, Formula, Not
+from pddl.logic.base import Formula
 
 from planning.util import FD_DIR
 

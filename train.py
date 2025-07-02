@@ -124,26 +124,20 @@ def train_gnn(opts: argparse.Namespace) -> None:
         )
 
     # Initialise GNN
-    model = RGNN(
-        n_relations=graph_generator.get_n_relations(),
-        in_feat=graph_generator.get_n_features(),
-        out_feat=1,
-        n_hid=opts.num_hidden,
-        n_layers=opts.iterations,
-        aggr="max",
-        pool="sum",
-    )
+    opts._n_relations = graph_generator.get_n_relations()
+    opts._n_features = graph_generator.get_n_features()
+    model = RGNN.init_from_opts(opts)
     model = model.to(device)
 
     # Optimisation
     with TimerContextManager("optimising model"):
-        model_dict = optimise_weights(model, device, train_loader, val_loader, opts)
+        weights_dict = optimise_weights(model, device, train_loader, val_loader, opts)
 
     # Save model
     save_file = opts.save_file
     if save_file:
         with TimerContextManager("saving_model"):
-            save_gnn_weights(model_dict)
+            save_gnn_weights(weights_dict)
         if os.path.exists(save_file):
             logging.info(f"Saved GNN model successfully to {tc.colored(save_file, 'blue')}")
 
@@ -159,5 +153,4 @@ if __name__ == "__main__":
             logging.info("Training using GNN features")
             train_gnn(opts)
         case _:
-            raise ValueError(f"Unknown value {opts.mode=}")
             raise ValueError(f"Unknown value {opts.mode=}")

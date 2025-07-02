@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# Check number of arguments
+if [[ $# -eq 0 ]]; then
+    arg="all"
+elif [[ $# -eq 1 ]]; then
+    arg=$1
+else
+    echo "Usage: $0 [wlplan|succgen|planners|fd|nfd|pwl|all]"
+    exit 1
+fi
+
+# Check argument validity
+case "$arg" in
+wlplan | succgen | planners | fd | nfd | pwl | all)
+    # Valid argument, continue
+    ;;
+*)
+    echo "Usage: $0 [wlplan|succgen|planners|fd|nfd|pwl|all]"
+    exit 1
+    ;;
+esac
+
+# Planners
+PLANNERS_DIR="planning/ext"
+if [[ "$arg" = "fd" ]]; then
+    PLANNERS="downward"
+elif [[ "$arg" = "nfd" ]]; then
+    PLANNERS="numeric-downward"
+elif [[ "$arg" = "pwl" ]]; then
+    PLANNERS="powerlifted"
+elif [[ "$arg" = "planners" || "$arg" = "all" ]]; then
+    PLANNERS="downward numeric-downward powerlifted"
+else
+    PLANNERS=""
+fi
+
+# Exit on the first error
+set -e
+
+# Install Python wlplan interface
+if [[ "$arg" = "all" || "$arg" = "wlplan" ]]; then
+    cd wlplan/
+    mkdir -p _wlplan/
+    pip install . -v
+    cd -
+fi
+
+# Install Python succgen interface
+if [[ "$arg" = "all" || "$arg" = "succgen" ]]; then
+    cd $PLANNERS_DIR/succgen/
+    sh install.sh
+    cd -
+fi
+
+# Build C++ wlplan interface and planners
+cd wlplan/
+for planner in $PLANNERS; do
+    install_dir=../$PLANNERS_DIR/$planner/src/search/ext/wlplan
+    rm -rf $install_dir
+    python3 cmake_build.py $install_dir
+done
+cd -
+
+# Build planners
+for planner in $PLANNERS; do
+    cd $PLANNERS_DIR/$planner
+    if [ "$arg" = "fresh" ]; then
+        rm -r builds
+    fi
+    if [ -f "compile.sh" ]; then
+        ./compile.sh # numeric-downward
+    else
+        python3 build.py
+    fi
+    cd -
+done

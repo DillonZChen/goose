@@ -1,3 +1,4 @@
+import argparse
 from typing import List, Optional
 
 import torch
@@ -84,6 +85,18 @@ class RGNN(nn.Module):
                 raise ValueError(f"Unknown value {pool=}")
 
         self.initialise_layers()
+
+    @staticmethod
+    def init_from_opts(opts: argparse.Namespace) -> "RGNN":
+        return RGNN(
+            n_relations=opts._n_relations,
+            in_feat=opts._n_features,
+            out_feat=1,
+            n_hid=opts.num_hidden,
+            n_layers=opts.iterations,
+            aggr="max",
+            pool="sum",
+        )
 
     def initialise_layers(self) -> None:
         self.emb = torch.nn.Linear(self.in_feat, self.n_hid)

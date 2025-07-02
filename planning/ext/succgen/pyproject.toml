@@ -1,0 +1,37 @@
+[project]
+name = "succgen"
+description = "Lifted Successor Generator"
+authors = [{ name = "Dillon Z. Chen", email = "dillon.chen1@gmail.com" }]
+dynamic = ["dependencies", "license", "requires-python", "version"]
+
+[build-system]
+requires = [
+    "setuptools>=62.3.0,<80.0",
+    "pybind11>=2.10.0",
+    "ninja",
+    "wheel",
+    "cmake",
+    "numpy",
+    "packaging",
+    "typing-extensions>=4.10.0",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 99
+
+[tool.isort]
+profile = "black"
+line_length = 99
+indent = 4
+lines_after_imports = 2
+multi_line_output = 3
+include_trailing_comma = true
+combine_as_imports = true
+
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "[%(asctime)s %(filename)s::%(lineno)s %(levelname)s] %(message)s"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+testpaths = ["./tests"]

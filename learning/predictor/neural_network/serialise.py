@@ -4,15 +4,41 @@ from typing import Optional
 
 import torch
 
-from learning.predictor.neural_network.optimise import ModelDict
+from learning.predictor.neural_network.gnn import RGNN
+from learning.predictor.neural_network.optimise import WeightsDict
 
 
-def save_gnn_weights(model_dict: Optional[ModelDict]) -> None:
-    if model_dict is None:
+def save_gnn_weights(weights_dict: Optional[WeightsDict]) -> None:
+    if weights_dict is None:
         logging.critical("Trying to save empty model! Exiting save routine.")
-    save_file = model_dict.opts.save_file
+    save_file = weights_dict.opts.save_file
     save_dir = os.path.dirname(save_file)
     if len(save_dir) > 0:
         os.makedirs(save_dir, exist_ok=True)
-    torch.save(model_dict, save_file)
+    torch.save(weights_dict, save_file)
     print(f"Saved gnn weights to {save_file}")
+
+
+def load_gnn_weights(save_file: str) -> WeightsDict:
+    if not os.path.exists(save_file):
+        raise FileNotFoundError(f"Model file {save_file} does not exist.")
+
+    if torch.cuda.is_available():
+        weights_dict = torch.load(save_file, weights_only=False)
+    else:
+        weights_dict = torch.load(save_file, weights_only=False, map_location=torch.device("cpu"))
+
+    if not isinstance(weights_dict, WeightsDict):
+        raise TypeError(f"Expected ModelDict, got {type(weights_dict)}")
+    return weights_dict
+
+
+def load_gnn(save_file: str) -> RGNN:
+    weights_dict = load_gnn_weights(save_file)
+    opts = weights_dict.opts
+    weights = weights_dict.weights
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = RGNN.init_from_opts(opts=opts)
+    model.load_state_dict(weights)
+    model = model.to(device)
+    return model

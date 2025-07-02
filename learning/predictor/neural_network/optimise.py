@@ -10,7 +10,7 @@ from torch.utils.data import DataLoader
 
 
 @dataclass
-class ModelDict:
+class WeightsDict:
     weights: dict[str, torch.Tensor]
     epoch: int
     train_loss: float
@@ -24,7 +24,7 @@ def optimise_weights(
     train_loader: DataLoader,
     val_loader: DataLoader,
     opts: argparse.Namespace,
-) -> ModelDict:
+) -> WeightsDict:
 
     criterion = MSELoss()
     optimiser = torch.optim.Adam(model.parameters(), lr=opts.learning_rate)
@@ -50,7 +50,7 @@ def optimise_weights(
             combined_metric = (train_loss + 2 * val_loss) / 3
             if combined_metric < best_metric:
                 best_metric = combined_metric
-                model_dict = ModelDict(
+                model_dict = WeightsDict(
                     weights=model.state_dict(),
                     epoch=epoch,
                     train_loss=train_loss,
