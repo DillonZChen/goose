@@ -8,7 +8,7 @@ From: ubuntu:22.04
     wlplan /goose/
 
     *.py /goose/
-    build.sh /goose/
+    build /goose/
     requirements.txt /goose/
 
 %post
@@ -46,7 +46,7 @@ From: ubuntu:22.04
     pip3 install -r requirements.txt
 
     # Build components.
-    sh build.sh
+    ./build
 
     # Clean up.
     apt-get clean
