@@ -1,6 +1,3 @@
-from abc import abstractmethod
-from dataclasses import dataclass
-
 from _succgen.planning import (
     FluentValueMap,
     LiftedDivide,
@@ -23,12 +20,11 @@ from pddl.logic.functions import (
     Plus,
     Times,
 )
-
 from succgen.planning.strings import to_value
-from succgen.planning.task import Task
+from succgen.planning.task import SGTask
 
 
-def to_lifted_expr(expr: FunctionExpression, param_to_index: dict[str, int], task: Task) -> LiftedExpression:
+def to_lifted_expr(expr: FunctionExpression, param_to_index: dict[str, int], task: SGTask) -> LiftedExpression:
     if isinstance(expr, NumericValue):
         return LiftedValue(to_value(expr))
     elif isinstance(expr, NumericFunction):

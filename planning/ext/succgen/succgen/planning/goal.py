@@ -1,4 +1,4 @@
-from _succgen.planning import Goal
+from _succgen.planning import Goal as SGGoal
 
-from succgen.planning.ground_expressions import GroundBooleanExpression
-from succgen.planning.state import State
+
+__all__ = ["SGGoal"]

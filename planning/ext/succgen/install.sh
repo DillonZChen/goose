@@ -8,7 +8,7 @@ export MAKEFLAGS="-j$(nproc)"
 
 # Install the package from sources
 mkdir -p _succgen
-pip install . -v
+pip install -e . -v
 
 # Make sure required tools are installed
 pip install pybind11-stubgen

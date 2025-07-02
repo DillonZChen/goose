@@ -1,47 +1,30 @@
 import logging
+import sys
 import time
-from typing import Any, Optional
+from abc import ABC, abstractmethod
+from typing import Optional
 
 import pddl
-from _succgen.planning import AssignEffect, DecreaseEffect, Effects, IncreaseEffect
 from pddl.logic.base import And, Not
-from pddl.logic.functions import (
-    Assign,
-    Decrease,
-    EqualTo,
-    FunctionExpression,
-    Increase,
-    NumericFunction,
-    NumericValue,
-)
+from pddl.logic.functions import Assign, Decrease, FunctionExpression, Increase, NumericFunction
 from pddl.logic.predicates import Predicate
 from succgen.planning import Plan
-from succgen.planning.effects import Effects
+from succgen.planning.action import SGAction
+from succgen.planning.effects import AssignEffect, DecreaseEffect, Effects, IncreaseEffect
 from succgen.planning.lifted_expressions import to_lifted_expr
-from succgen.planning.node import SearchNode
-from succgen.planning.state import State
-from succgen.planning.task import Task
-from succgen.sqlite_applicable_action_generator import LnpAction, SQLiteApplicableActionGenerator
+from succgen.planning.state import SGState
+from succgen.planning.task import SGTask
+from succgen.sqlite_applicable_action_generator import SQLiteApplicableActionGenerator
 from succgen.util.logging import mat_to_str
 from succgen.util.managers import TimerContextManager
 
-from learning.predictor.neural_network.serialise import load_gnn
 
-
-class PolicyExecutor:
-    def __init__(
-        self,
-        domain_file: str,
-        problem_file: str,
-        model_file: str,
-        debug: bool = False,
-        bound: int = -1,
-    ):
+class PolicyExecutor(ABC):
+    def __init__(self, domain_file: str, problem_file: str, debug: bool = False, bound: int = -1):
 
         self._debug = debug
         self._bound = bound
 
-        # Statistics
         self._t_eval_p = 0
         self._t_aag = 0
         self._t_sg = 0
@@ -55,19 +38,12 @@ class PolicyExecutor:
 
         # TODO check if can support PDDL fragment
 
-        self._task = Task(domain, problem)
-        self._model = load_gnn(model_file)
-        # breakpoint()  # TODO from here
-
-        # Planning modules
+        self._task = SGTask(domain, problem)
         self._aag = SQLiteApplicableActionGenerator(self._task, debug=debug)
-        self._s_id_counter = 0
-
-        # PDDL information
         self._schema_to_effects: list[Effects] = []
-        self._initialise_schema()
+        self._init_schemata()
 
-    def _initialise_schema(self) -> None:
+    def _init_schemata(self) -> None:
         for schema in sorted(self._task.domain.actions, key=lambda s: s.name):
             adds = []
             dels = []
@@ -119,28 +95,34 @@ class PolicyExecutor:
 
             self._schema_to_effects.append(Effects(adds=adds, dels=dels, numeric_effects=numeric_effects))
 
-    def _get_new_counter(self) -> int:
-        ret = self._s_id_counter
-        self._s_id_counter += 1
-        return ret
+    def execute(self) -> Optional[Plan]:
+        plan = []
+        state = self._task.get_init_state()
+        while True:
+            if self._is_goal(state):
+                logging.info("Solution found!")
+                return plan
+            if self._bound > 0 and len(plan) >= self._bound:
+                logging.info(f"{self._bound=} reached. Terminating policy execution.")
+                return None
+            applicable_actions = self._get_applicable_actions(state)
+            if len(applicable_actions) == 0:
+                logging.info("Deadend reached. Terminating policy execution.")
+                return None
+            action = self.select_action(state, applicable_actions)
+            state = self._get_successor_state(action, state)
 
-    def _evaluate_policy(self, state: State, actions: list[LnpAction]) -> LnpAction:
-        if self._policy is None:
-            return None
+    @abstractmethod
+    def select_action(self, state: SGState, actions: list[SGAction]) -> SGAction:
+        raise NotImplementedError
 
-        t = time.perf_counter()
-        action = self._policy.generate(state, actions)
-        self._t_eval_p += time.perf_counter() - t
+    def _is_goal(self, state: SGState) -> bool:
+        return self._task.goal.satisfied_by(state)
 
-        return action
+    def _get_applicable_actions(self, state: SGState) -> list[SGAction]:
+        return self._aag.get_applicable_actions(state)
 
-    def _is_goal(self, state: State) -> bool:
-        ret = self._task.goal.satisfied_by(state)
-        if ret:
-            logging.info(f"Solution found!")
-        return ret
-
-    def _get_successor_state(self, action: LnpAction, state: State) -> State:
+    def _get_successor_state(self, action: SGAction, state: SGState) -> SGState:
         t = time.perf_counter()
         succ_state = state.apply_action(
             action=self._schema_to_effects[action[0]],
@@ -151,66 +133,24 @@ class PolicyExecutor:
         self._t_sg += time.perf_counter() - t
         return succ_state
 
-    def _get_applicable_actions(self, node: SearchNode) -> list[LnpAction]:
-        applicable_actions = self._aag.get_applicable_actions(node.state)
-        return applicable_actions
-
-    def _extract_plan(self, node: Optional[SearchNode]) -> Plan:
-        plan = []
-        while True:
-            if node is None or node.parent_s_id == -1:
-                break
-            plan.append(node.achieving_action)
-            node = self._vis.get(node.parent_s_id)
-
-        t = time.perf_counter()
-        self._t_search = t - self._search_start_time
-        self._t_plan = t - self._start_time
-
-        self._plan_length = len(plan)
-        plan = list(reversed(plan))
-        plan = [self._task.action_to_string(action) for action in plan]
-
-        return plan
-
-    def _get_init_node(self, init_state: State) -> SearchNode:
-        return SearchNode(
-            state=init_state, achieving_action=(0, ()), s_id=self._get_new_counter(), parent_s_id=-1, g=0
-        )
-
-    def execute_plan(self, plan: Plan) -> None:
+    def _debug_plan(self, plan: Plan) -> None:
         plan_i = 0
-        init_state = self._task.get_init_state()
-        node = self._get_init_node(init_state)
+        state = self._task.get_init_state()
         while True:
-            applicable_actions = self._get_applicable_actions(node)
-            actions_str = {self._task.action_to_string(a) for a in applicable_actions}
-            # for a in actions_str:
-            #     print(a)
-            assert plan[plan_i] in actions_str, f"Expected {plan[plan_i]} in {actions_str}"
+            applicable_actions = self._get_applicable_actions(state)
+            applicable_actions = {self._task.action_to_string(a): a for a in applicable_actions}
+            action = plan[plan_i]
+            logging.info(f"{plan_i}")
+            logging.info(f"{state=}")
+            logging.info(f"{action=}")
+            assert action in applicable_actions, f"Expected {action} in applicable actions"
+            action = applicable_actions[action]
+            state = self._get_successor_state(action, state)
             plan_i += 1
-            applicable_actions = [a for a in applicable_actions if self._task.action_to_string(a) == plan[plan_i - 1]]
-            assert len(applicable_actions) == 1, applicable_actions
-            action = applicable_actions[0]
-            succ_state = self._get_successor_state(action, node.state)
-            node = SearchNode(
-                state=succ_state,
-                achieving_action=action,
-                s_id=self._get_new_counter(),
-                parent_s_id=node.s_id,
-                g=node.g + 1,
-            )
-            h = self._evaluate_heuristic(succ_state)
-            # print("*" * 80)
-            # print(self._task.action_to_string(action))
-            # print()
-            # self._task.dump_state(succ_state)
-            print(f"{h=}")
             if plan_i == len(plan):
-                assert self._is_goal(succ_state), f"Expected goal state, got {succ_state}"
+                assert self._is_goal(state), f"Expected goal state, got {state}"
                 logging.info("Plan found")
-                exit(0)
-            continue
+                sys.exit()
 
     def dump_stats(self) -> None:
 

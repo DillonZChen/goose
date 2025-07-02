@@ -7,12 +7,21 @@ dynamic = ["version"]
 
 [tool.black]
 line-length = 119
-extend-exclude = "/(venv|.venv|planning/ext|wlplan|benchmarks)/"
+extend-exclude = "/(build|venv|.venv|planning/ext/downward|planning/ext/numeric-downward|planning/ext/powerlifted|wlplan|benchmarks)/"
 
 [tool.isort]
 profile = "black"
 line_length = 119
-skip = ["venv/", ".venv/", "planning/ext/", "wlplan/", "benchmarks/"]
+skip = [
+    "build/",
+    "venv/",
+    ".venv/",
+    "planning/ext/downward/",
+    "planning/ext/numeric-downward/",
+    "planning/ext/powerlifted/",
+    "wlplan/",
+    "benchmarks/",
+]
 indent = 4
 lines_after_imports = 2
 multi_line_output = 3

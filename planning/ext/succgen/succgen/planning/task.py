@@ -6,23 +6,21 @@ from pddl.core import Domain, Problem
 from pddl.logic.base import And, Not
 from pddl.logic.functions import Assign, Decrease, EqualTo, Increase, NumericFunction, NumericValue
 from pddl.logic.predicates import Predicate
-
 from succgen.planning import (
-    PDDLState,
     get_func_index_mappings,
     get_literals_list,
     get_obj_index_mappings,
     get_pred_index_mappings,
     get_schema_index_mappings,
 )
-from succgen.planning.action import LnpAction
-from succgen.planning.goal import Goal
+from succgen.planning.action import SGAction
+from succgen.planning.goal import SGGoal
 from succgen.planning.ground_expressions import to_ground_expr
-from succgen.planning.state import State, pddl_terms_to_row
+from succgen.planning.state import SGState, pddl_terms_to_row
 from succgen.planning.strings import to_value
 
 
-class Task:
+class SGTask:
     def __init__(self, domain: Domain, problem: Problem):
         self.domain = domain
         self.problem = problem
@@ -104,7 +102,7 @@ class Task:
                 numeric_goals.append(
                     to_ground_expr(goal, self.statics, self.fluent_index_map_pyt, self.func_to_i, self.obj_to_i)
                 )
-        self.goal = Goal(pos_goals=true_facts, neg_goals=false_facts, numeric_goals=numeric_goals)
+        self.goal = SGGoal(pos_goals=true_facts, neg_goals=false_facts, numeric_goals=numeric_goals)
 
     def _handle_statics(self) -> None:
         all_predicates = set(p.name for p in self.domain.predicates)
@@ -162,7 +160,7 @@ class Task:
                 raise ValueError(f"Unknown fact {fact} of type {type(fact)}")
         # self.statics: PDDLState = frozenset(sorted(statics, key=lambda x: str(x)))
 
-    def get_init_state(self) -> State:
+    def get_init_state(self) -> SGState:
         state = self.problem.init
 
         atoms = set()
@@ -186,12 +184,12 @@ class Task:
                 values[i] = to_value(value)
             else:
                 raise ValueError(f"Unknown fact {fact} of type {type(fact)}")
-        return State(atoms=atoms, values=values)
+        return SGState(atoms=atoms, values=values)
 
-    def dump_state(self, state: State) -> None:
+    def dump_state(self, state: SGState) -> None:
         print(self.state_to_string(state))
 
-    def state_to_string(self, state: State) -> str:
+    def state_to_string(self, state: SGState) -> str:
         atoms = []
         values = []
 
@@ -210,16 +208,16 @@ class Task:
 
         return "\n".join(sorted(atoms) + sorted(values))
 
-    def dump_action(self, action: LnpAction) -> None:
+    def dump_action(self, action: SGAction) -> None:
         print(self.action_to_string(action))
 
-    def action_to_string(self, action: LnpAction) -> str:
+    def action_to_string(self, action: SGAction) -> str:
         schema_name = self.i_to_schema[action[0]]
         obj_names = [self.i_to_obj[i] for i in action[1]]
 
         return "(" + " ".join([schema_name] + obj_names) + ")"
 
-    def action_to_readable(self, action: LnpAction) -> tuple[str, list[str]]:
+    def action_to_readable(self, action: SGAction) -> tuple[str, list[str]]:
         schema_name = self.i_to_schema[action[0]]
         obj_names = tuple(self.i_to_obj[i] for i in action[1])
         return (schema_name, obj_names)

@@ -1,7 +1,7 @@
 import random
 from abc import ABC, abstractmethod
 
-from succgen.planning.action import LnpAction
+from succgen.planning.action import SGAction
 from succgen.planning.state import State
 from succgen.planning.task import Task
 
@@ -10,7 +10,7 @@ class Policy(ABC):
     def __init__(self, task: Task):
         self._task = task
 
-    def generate(self, state: State, applicable_actions: list[LnpAction]) -> LnpAction:
+    def generate(self, state: State, applicable_actions: list[SGAction]) -> SGAction:
         # readable = {pred: set() for pred in self._task.schema_to_i.keys()}
         # for action in applicable_actions:
         #     predicate, args = self._task.action_to_readable(action)

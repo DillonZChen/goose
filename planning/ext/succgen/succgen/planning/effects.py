@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 from types import FunctionType
-from typing import Optional, SupportsFloat, Union
+from typing import SupportsFloat, Union
 
-from _succgen.planning import Effects
-
+from _succgen.planning import AssignEffect, DecreaseEffect, Effects, IncreaseEffect
 from succgen.planning.lifted_expressions import LiftedExpression
 
-__all__ = ["NumericEffect", "NumericEffects", "Effects"]
+
+__all__ = ["NumericEffect", "NumericEffects", "Effects", "AssignEffect", "IncreaseEffect", "DecreaseEffect"]
 
 
 @dataclass

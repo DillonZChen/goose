@@ -10,10 +10,10 @@ from pddl.logic.base import Not
 from pddl.logic.functions import Divide, EqualTo, Minus, NumericFunction, NumericValue, Plus, Times
 from pddl.logic.predicates import EqualTo as ObjectEqualTo
 from succgen.planning import Literal, PDDLState, get_condition_list
-from succgen.planning.action import LnpAction
-from succgen.planning.state import State
+from succgen.planning.action import SGAction
+from succgen.planning.state import SGState
 from succgen.planning.strings import NumericCondition, get_numeric_condition_symbol
-from succgen.planning.task import Task
+from succgen.planning.task import SGTask
 from succgen.util.logging import mat_to_str
 from succgen.util.managers import TimerContextManager
 
@@ -49,7 +49,7 @@ def to_table_name(input: Union[NumericFunction, Predicate, name], desc: str = ""
 
 
 class SQLiteApplicableActionGenerator:
-    def __init__(self, task: Task, debug: bool = False) -> None:
+    def __init__(self, task: SGTask, debug: bool = False) -> None:
         self._debug = debug
 
         self._task = task
@@ -354,7 +354,7 @@ class SQLiteApplicableActionGenerator:
         for q in self._clear_queries:
             self._cur.execute(q)
 
-    def _insert_state(self, state: State) -> None:
+    def _insert_state(self, state: SGState) -> None:
         # insert fluents
         # tt = time.perf_counter()
         # queries = [[] for _ in range(len(self._insert_queries_p))]
@@ -374,7 +374,7 @@ class SQLiteApplicableActionGenerator:
             self._cur.execute(query, values)
         # self._profiling["insert_value"] += time.perf_counter() - tt
 
-    def get_applicable_actions(self, state: State) -> list[LnpAction]:
+    def get_applicable_actions(self, state: SGState) -> list[SGAction]:
         # TODO inserting state is a bottleneck and redundant
         t = time.perf_counter()
         # tt = time.perf_counter()
@@ -440,4 +440,5 @@ class SQLiteApplicableActionGenerator:
         for k, v in self._profiling.items():
             mat.append([k, f"{v:.3f}", f"{v/total_time:.2%}"])
         mat.append(["Total", f"{total_time:.3f}", "100.00%"])
+        print(mat_to_str(mat))
         print(mat_to_str(mat))

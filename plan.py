@@ -5,7 +5,7 @@ import logging
 import os
 import subprocess
 
-from planning.policy import PolicyExecutor
+from planning.policy.gnn_policy import GnnPolicyExecutor
 from planning.util import PLANNERS_DIR, is_domain_numeric
 from util.logging import init_logger
 
@@ -57,7 +57,7 @@ def main():
                 "-i",
                 problem_pddl,
                 "-g",
-                "clique_kckp",
+                "clique_kckp",  # supports negative preconditions
                 "--time-limit",
                 timeout,
                 "-e",
@@ -69,6 +69,7 @@ def main():
                 "--plan-file",
                 opts.plan_file,
             ]
+            subprocess.check_call(cmd)
         case "fd":
             h_goose = f'wlgoose(model_file="{model_path}")'
 
@@ -95,6 +96,7 @@ def main():
                     "--search",
                     f"eager_greedy([{h_goose}])",
                 ]
+            subprocess.check_call(cmd)
         case "nfd":
             h_goose = f"wlgoose(model_path={model_path},domain_path={domain_pddl},problem_path={problem_pddl})"
 
@@ -114,17 +116,17 @@ def main():
                 "--search",
                 f"eager_greedy({h_goose})",
             ]
+            subprocess.check_call(cmd)
         case "policy":
-            policy = PolicyExecutor(
+            policy = GnnPolicyExecutor(
                 domain_file=domain_pddl,
                 problem_file=problem_pddl,
                 model_file=model_path,
                 debug=False,
             )
+            plan = policy.execute()
         case _:
             raise NotImplementedError
-
-    subprocess.check_call(cmd)
 
     if os.path.exists(opts.intermediate_file):
         os.remove(opts.intermediate_file)

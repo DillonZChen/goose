@@ -11,6 +11,7 @@ from pddl.logic.functions import BinaryFunction, NumericFunction, NumericValue
 from pddl.logic.predicates import EqualTo
 from pddl.logic.terms import Constant, Term
 
+
 TypeTag = Optional[name_type]
 
 

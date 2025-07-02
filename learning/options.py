@@ -2,7 +2,6 @@ import argparse
 import logging
 import os
 import random
-import sys
 from typing import Any, Dict
 
 import numpy as np

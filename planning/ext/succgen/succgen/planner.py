@@ -17,7 +17,6 @@ from pddl.logic.functions import (
     NumericValue,
 )
 from pddl.logic.predicates import Predicate
-
 from succgen.guidance_factory import get_heuristic, get_policy
 from succgen.planning import Plan
 from succgen.planning.effects import Effects
@@ -27,7 +26,7 @@ from succgen.planning.state import State
 from succgen.planning.task import Task
 from succgen.planning.visited_storage import VisitedStorage
 from succgen.priority_queue import PriorityQueue
-from succgen.sqlite_applicable_action_generator import LnpAction, SQLiteApplicableActionGenerator
+from succgen.sqlite_applicable_action_generator import SGAction, SQLiteApplicableActionGenerator
 from succgen.util.logging import mat_to_str
 from succgen.util.managers import TimerContextManager
 
@@ -167,7 +166,7 @@ class LiftedNumericPlanner:
 
         return h
 
-    def _evaluate_policy(self, state: State, actions: list[LnpAction]) -> LnpAction:
+    def _evaluate_policy(self, state: State, actions: list[SGAction]) -> SGAction:
         if self._policy is None:
             return None
 
@@ -188,7 +187,7 @@ class LiftedNumericPlanner:
             logging.info(f"Solution found!")
         return ret
 
-    def _get_successor_state(self, action: LnpAction, state: State) -> State:
+    def _get_successor_state(self, action: SGAction, state: State) -> State:
         t = time.perf_counter()
         succ_state = state.apply_action(
             action=self._schema_to_effects[action[0]],
@@ -199,7 +198,7 @@ class LiftedNumericPlanner:
         self._t_sg += time.perf_counter() - t
         return succ_state
 
-    def _get_applicable_actions(self, node: SearchNode) -> list[LnpAction]:
+    def _get_applicable_actions(self, node: SearchNode) -> list[SGAction]:
         applicable_actions = self._aag.get_applicable_actions(node.state)
         self._n_exp += 1
         return applicable_actions
@@ -334,7 +333,7 @@ class LiftedNumericPlanner:
                 #     print(self._task.action_to_string(a))
                 # breakpoint()
 
-            def handle_action(node: SearchNode, action: LnpAction, queue: PriorityQueue) -> None:
+            def handle_action(node: SearchNode, action: SGAction, queue: PriorityQueue) -> None:
                 succ_state = self._get_successor_state(action, node.state)
                 succ_node = SearchNode(
                     state=succ_state,

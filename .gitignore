@@ -17,6 +17,7 @@ logs/
 *.bak
 *.csv
 *.zip
+*.tmp
 
 ###############################################################################
 # https://github.com/github/gitignore/blob/main/Python.gitignore

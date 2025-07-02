@@ -3,7 +3,6 @@ from abc import ABC, abstractmethod
 import numpy as np
 
 from util.custom_decorators import abstract_class_attributes
-from util.timer import TimerContextManager
 
 
 @abstract_class_attributes("IS_RANK")
