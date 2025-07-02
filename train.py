@@ -10,7 +10,7 @@ from learning.dataset import get_domain_from_opts
 from learning.dataset.creator.classic_labelled_dataset_creator import DatasetLabeller
 from learning.dataset.dataset_factory import get_dataset
 from learning.dataset.state_to_vec import embed_data
-from learning.options import parse_opts
+from learning.options import parse_learning_opts
 from learning.predictor.linear_model.predictor_factory import get_predictor
 from util.distinguish_test import distinguish
 from util.logging import init_logger
@@ -91,7 +91,7 @@ def train_gnn(opts: argparse.Namespace) -> None:
         opts (argparse.Namespace): parsed arguments
     """
 
-    # Torch and Pytorch Geometric imports are done here to avoid unnecessary imports when not using GNN
+    # Torch and Pytorch Geometric imports done here to avoid unnecessary imports when not using GNN
     import torch
 
     from learning.dataset.pyg_loader import get_data_loaders
@@ -144,7 +144,7 @@ def train_gnn(opts: argparse.Namespace) -> None:
 
 if __name__ == "__main__":
     init_logger()
-    opts = parse_opts()
+    opts = parse_learning_opts()
     match opts.mode:
         case "wlf":
             logging.info("Training using WL features")

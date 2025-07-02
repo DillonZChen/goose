@@ -56,7 +56,7 @@ _DEFAULT_GNN_VALS = {
 
 
 # fmt: off
-def get_parser():
+def get_learning_parser():
     parser = argparse.ArgumentParser(
         description=_DESCRIPTION,
         epilog=_EPILOG,
@@ -166,8 +166,8 @@ def get_parser():
 # fmt: on
 
 
-def parse_opts():
-    parser = get_parser()
+def parse_learning_opts():
+    parser = get_learning_parser()
     opts = parser.parse_args()
 
     # Perform trivial tasks

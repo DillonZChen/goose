@@ -6,6 +6,7 @@ from typing_extensions import override
 
 from learning.predictor.neural_network.serialise import load_gnn
 from planning.policy.policy import PolicyExecutor
+from wlplan.planning import Action, State
 
 
 class GnnPolicyExecutor(PolicyExecutor):
@@ -24,4 +25,10 @@ class GnnPolicyExecutor(PolicyExecutor):
 
     @override
     def select_action(self, state: SGState, actions: list[SGAction]) -> SGAction:
+        # to wl state
+
+        state = self._task.dump_state(state)
+        print(f"{state=}")
+        for action in actions:
+            print(f"{action=}")
         raise NotImplementedError
