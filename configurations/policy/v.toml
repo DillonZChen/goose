@@ -1,9 +1,0 @@
-mode = "gnn"
-
-graph_representation = "ilg"
-iterations = 4
-
-policy_type = "v"
-
-data_generation = "plan"
-facts = "all"

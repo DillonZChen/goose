@@ -1,6 +1,5 @@
 import argparse
 import json
-import logging
 import os
 import pickle
 from dataclasses import dataclass
@@ -11,7 +10,6 @@ from tqdm import tqdm
 
 from learning.dataset import get_domain_file_from_opts, get_training_dir_from_opts
 from planning.solution import get_plan
-from util.paths import DATA_CACHE_DIR
 from util.statistics import log_quartiles
 from wlplan.planning import Action, Atom, Problem, State, parse_domain, parse_problem
 
@@ -80,14 +78,11 @@ class DatasetLabeller:
         self._problem_paths = problems
 
         self._cache = opts.cache
-        cache_file = os.path.normpath(opts.domain_directory).replace("/", "_").replace(".", "_")
-        cache_file += f"_numdata_{opts.num_data}"
-        self._cache_file = f"{DATA_CACHE_DIR}/{cache_file}.pkl"
-        self._cache_file_exists = os.path.exists(self._cache_file)
+        self._cache_exists = self._cache is not None and os.path.isfile(self._cache) and os.path.exists(self._cache)
 
     def get_labelled_dataset(self) -> LabelledDataset:
-        if self._cache and self._cache_file_exists:
-            with open(self._cache_file, "rb") as f:
+        if self._cache and self._cache_exists:
+            with open(self._cache, "rb") as f:
                 ret = pickle.load(f)
         else:
             self._domain = parse_domain(self._domain_path)
@@ -108,9 +103,11 @@ class DatasetLabeller:
 
                 ret.append(LabelledProblemData(problem, states_and_successors_labelled))
 
-        if self._cache and not self._cache_file_exists:
-            os.makedirs(os.path.dirname(self._cache_file), exist_ok=True)
-            with open(self._cache_file, "wb") as f:
+        if self._cache and not self._cache_exists:
+            cache_dir = os.path.dirname(self._cache)
+            if len(cache_dir) > 0:
+                os.makedirs(cache_dir, exist_ok=True)
+            with open(self._cache, "wb") as f:
                 pickle.dump(ret, f)
 
         return ret
@@ -145,8 +142,7 @@ class DatasetLabeller:
         state_str = " ".join(atom.to_pddl() for atom in state.atoms)
         problem_template = problem_template.replace("<REPLACE>", state_str)
 
-        new_problem_path = ".tmp/problem_from_state.pddl"
-        os.makedirs(os.path.dirname(new_problem_path), exist_ok=True)
+        new_problem_path = f"problem_from_state.pddl.tmp"
         with open(new_problem_path, "w") as f:
             f.write(problem_template)
         plan = get_plan(self._domain_path, new_problem_path)

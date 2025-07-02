@@ -20,7 +20,6 @@ from learning.predictor.neural_network.policy_type import get_policy_type_option
 from util.distinguish_test import distinguish
 from util.filesystem import get_path_error_msg
 from util.logging import init_logger, mat_to_str
-from util.paths import DATA_CACHE_DIR
 from util.pca_visualise import visualise
 from util.timer import TimerContextManager
 from wlplan.feature_generator import (
@@ -65,7 +64,7 @@ _DEFAULT_GNN_VALS = {
     "patience": 10,
     "reduction": 0.1,
     "batch_size": 16,
-    "epochs": 1000,
+    "epochs": 1024,
 }
 
 
@@ -144,10 +143,8 @@ def get_learning_parser():
 
     # Data options
     data_group = parser.add_argument_group("data options")
-    data_group.add_argument("--no-cache", dest="cache", action="store_false",
-                        help=f"Do not cache processed data no use cached data.")
-    data_group.add_argument("--clear-cache", action="store_true",
-                        help=f"Clear cache directory.")
+    data_group.add_argument("--cache", type=str, default=None,
+                        help=f"Path to labelled data or to place labelled data. If not specified, cache is not used.")
     data_group.add_argument("-nd", "--num-data", type=int, default=None,
                         help=f"Number of training data to use. " + \
                              f"(default: None = all available data)")
@@ -183,12 +180,6 @@ def get_learning_parser():
 def parse_learning_opts():
     parser = get_learning_parser()
     opts = parser.parse_args()
-
-    # Perform trivial tasks
-    if opts.clear_cache:
-        if os.path.exists(DATA_CACHE_DIR):
-            os.system(f"rm -r {DATA_CACHE_DIR}")
-        logging.info(f"Cleared cache directory {DATA_CACHE_DIR}.")
 
     # Check domain directory is valid
     domain_directory = opts.domain_directory

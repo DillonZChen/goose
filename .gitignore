@@ -14,6 +14,7 @@ sas_plan
 *.out.num
 *.sif
 *.plan
+*.pkl
 *.sas
 *.bak
 *.csv

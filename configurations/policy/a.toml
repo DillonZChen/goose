@@ -1,9 +1,0 @@
-mode = "gnn"
-
-graph_representation = "aoag"
-iterations = 4
-
-policy_type = "a"
-
-data_generation = "plan"
-facts = "all"
