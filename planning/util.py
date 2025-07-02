@@ -65,7 +65,7 @@ def call_numeric_downward(
     nfd_path = f"{PLANNERS_DIR}/numeric-downward"
     build_path = f"{nfd_path}/builds"
     if not os.path.exists(build_path):
-        print("Error: Numeric Fast Downward not built yet. You can build it with `sh build.sh`.")
+        print("Error: Numeric Fast Downward not built yet. You can build it with `./build nfd`.")
         print("Terminating...")
         exit(-1)
 
