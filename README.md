@@ -14,7 +14,7 @@ GOOSE is a planning system that leverages graph learning. GOOSE currently suppor
 
 The main branch and recent releases currently do not support **Graph Neural Networks** (GNNs). This is because we showed in our [ICAPS-24 paper](https://arxiv.org/abs/2403.16508) that GNNs are inefficient and not effective for learning value functions for heuristic search. Nevertheless, GNNs can still be accessed from the following branches and the corresponding planning modes they support.
 - `icaps24`: lifted planning
-- `aaai24`: domain-indepedent, ground and lifted planning
+- `aaai24`: domain-independent, ground and lifted planning
 - `neurips24`: numeric planning
 
 Instead, GOOSE uses **Weisfeiler-Leman Features** (WLFs) to construct embeddings of planning tasks for machine learning pipelines. The underlying code for doing so is located in the [WLPlan](https://github.com/DillonZChen/wlplan) library.
