@@ -16,7 +16,6 @@ class WeightsDict:
     epoch: int
     train_loss: float
     val_loss: float
-    opts: argparse.Namespace
 
 
 def optimise_weights(
@@ -56,7 +55,6 @@ def optimise_weights(
                     epoch=epoch,
                     train_loss=train_loss,
                     val_loss=val_loss,
-                    opts=opts,
                 )
 
             lr = optimiser.param_groups[0]["lr"]

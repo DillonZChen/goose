@@ -1,0 +1,10 @@
+mode = "wlf"
+
+graph_representation = "aoag"
+
+features = "wl"
+optimisation = "gpr"
+feature_pruning = "none"
+hash = "mset"
+
+facts = "all"

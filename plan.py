@@ -7,6 +7,7 @@ import os
 import random
 import subprocess
 import sys
+import zipfile
 
 import numpy as np
 import termcolor as tc
@@ -64,35 +65,27 @@ def main():
     assert file_exists(model_path), model_path
 
     # Check model type
-    try:
-        with open(model_path, "r") as f:
-            model = json.load(f)
-        train_opts = model["opts"]
-        mode = "wlf"
-    except (json.JSONDecodeError, UnicodeDecodeError):
-
-        from learning.predictor.neural_network.serialise import load_gnn
-
-        model, train_opts = load_gnn(model_path)
-        mode = "gnn"
+    with zipfile.ZipFile(model_path, "r") as zf:
+        zf.extractall()
+    params_file = f"{model_path}.params"
+    opts_file = f"{model_path}.opts"
+    train_opts = json.load(open(opts_file, "r"))
+    mode = train_opts["mode"]
 
     # Automatically detect planner if not specified
     if opts.planner is None:
-        match mode:
-            case "gnn":
-                opts.planner = "policy"
-            case "wlf":
-                state_repr = train_opts["facts"]
-                if state_repr == "fd":
-                    opts.planner == "fd"
-                elif state_repr in {"all", "nostatic"}:
-                    opts.planner = "pwl"
-                elif state_repr == "nfd":
-                    opts.planner = "nfd"
-                else:
-                    raise ValueError(f"Unknown value {state_repr=}")
-            case _:
-                raise ValueError(f"Unknown value {mode=}")
+        if mode == "wlf":
+            state_repr = train_opts["facts"]
+            if state_repr == "fd":
+                opts.planner == "fd"
+            elif state_repr in {"all", "nostatic"}:
+                opts.planner = "pwl"
+            elif state_repr == "nfd":
+                opts.planner = "nfd"
+            else:
+                raise ValueError(f"Unknown value {state_repr=}")
+        if mode["policy_type"] is not None:
+            opts.planner = "policy"
     if domain_pddl == "fdr":
         assert opts.planner == "fd", "FDR input is only supported with Fast Downward `--planner=fd`"
 
@@ -119,7 +112,7 @@ def main():
                 "-e",
                 "wlgoose",
                 "-m",
-                model_path,
+                params_file,
                 "--translator-output-file",
                 opts.intermediate_file,
                 "--plan-file",
@@ -127,7 +120,7 @@ def main():
             ]
             subprocess.check_call(cmd)
         case "fd":
-            h_goose = f'wlgoose(model_file="{model_path}")'
+            h_goose = f'wlgoose(model_file="{params_file}")'
 
             if domain_pddl == "fdr":
                 cmd = [
@@ -154,7 +147,7 @@ def main():
                 ]
             subprocess.check_call(cmd)
         case "nfd":
-            h_goose = f"wlgoose(model_path={model_path},domain_path={domain_pddl},problem_path={problem_pddl})"
+            h_goose = f"wlgoose(model_path={params_file},domain_path={domain_pddl},problem_path={problem_pddl})"
 
             cmd = [
                 "python2",  # nfd defines a pddl module which clashes with the pddl package
@@ -186,7 +179,10 @@ def main():
                 )
                 sys.exit(1)
 
+            from learning.predictor.neural_network.serialise import load_gnn
             from planning.policy.gnn_policy import GnnPolicyExecutor
+
+            model, train_opts = load_gnn(model_path)
 
             random.seed(opts.random_seed)
             np.random.seed(opts.random_seed)

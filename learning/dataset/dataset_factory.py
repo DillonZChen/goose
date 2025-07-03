@@ -18,6 +18,22 @@ from planning.util import is_domain_numeric
 from wlplan.data import DomainDataset
 
 
+def get_dataset(opts: Namespace) -> tuple[DomainDataset, Any]:
+    """Collects dataset based on the type of learner.
+
+    Args:
+        opts (Namespace): parsed arguments
+
+    Returns:
+        tuple[DomainDataset, Any]: WLPlan dataset and labels.
+    """
+
+    if opts.policy_type is not None:
+        return get_policy_dataset(opts)
+    else:
+        return get_heuristic_dataset(opts)
+
+
 def get_heuristic_dataset(opts: Namespace) -> tuple[DomainDataset, Any]:
     """Collects dataset for heuristic learners.
     State space datasets automatically remove WL-indistinguishable states with equivalent target values.

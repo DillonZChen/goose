@@ -6,14 +6,15 @@ import logging
 import os
 import random
 import sys
-from typing import Any, Dict
+import zipfile
+from typing import Any, Callable, Dict
 
 import numpy as np
 import termcolor as tc
 import toml
 
 from learning.dataset import get_domain_file_from_opts, get_domain_from_opts, get_training_dir_from_opts
-from learning.dataset.dataset_factory import get_heuristic_dataset, get_policy_dataset
+from learning.dataset.dataset_factory import get_dataset
 from learning.dataset.state_to_vec import embed_data
 from learning.predictor.linear_model.predictor_factory import get_available_predictors, get_predictor
 from learning.predictor.neural_network.policy_type import get_policy_type_options
@@ -38,10 +39,10 @@ _DESCRIPTION = """GOOSE trainer script.
 _EPILOG = """example usages:
 
 # Train and save a classical Blocksworld model
-python3 train.py benchmarks/ipc23lt/blocksworld/ configurations/model/classic.toml -s blocksworld.model
+python3 train.py benchmarks/ipc23lt/blocksworld/ configurations/classic.toml -s blocksworld.model
 
 # Train and save a numeric Childsnack model
-python3 train.py benchmarks/neurips24/childsnack/ configurations/model/numeric.toml -s numeric_childsnack.model
+python3 train.py benchmarks/neurips24/childsnack/ configurations/numeric.toml -s numeric_childsnack.model
 
 # Run a distinguishability test
 python3 train.py benchmarks/ipc23lt/blocksworld/ --distinguish-test
@@ -166,7 +167,7 @@ def get_learning_parser():
     parser.add_argument("-s", "--save-file", type=str, default=None,
                         help=f"Path to save the model to.")
     mutex_group = parser.add_mutually_exclusive_group()
-    mutex_group.add_argument("--visualise-pca", type=str, default=None,
+    mutex_group.add_argument("--visualise-pca", type=str, default=False,
                         help=f"Path to save visualisation of PCA on WL features, for example pca.png.")
     mutex_group.add_argument("--distinguish-test", action="store_true",
                         help=f"Run distinguishability test.")
@@ -195,6 +196,11 @@ def parse_learning_opts():
     if opts.model_config is not None:
         assert os.path.exists(opts.model_config), get_path_error_msg(opts.model_config)
         model_config = toml.load(opts.model_config)
+        # Replace "" strings with None
+        for key, value in model_config.items():
+            if value == "":
+                model_config[key] = None
+                logging.info(f"Replacing empty string value for {key} with None")
     else:
         model_config = {}
 
@@ -215,6 +221,8 @@ def parse_learning_opts():
             logging.info(f"WLF mode detected. Ignoring all GNN options.")
             handle_config_vals(relevant_args=_DEFAULT_WLF_VALS, irrelevant_args=_DEFAULT_GNN_VALS)
         case "gnn":
+            if opts.policy_type is None:
+                raise ValueError("Heuristic learning not supported for GNNs, please specify --policy-type.")
             logging.info(f"GNN mode detected. Ignoring all WLF options.")
             handle_config_vals(relevant_args=_DEFAULT_GNN_VALS, irrelevant_args=_DEFAULT_WLF_VALS)
         case _:
@@ -244,6 +252,24 @@ def parse_learning_opts():
     return opts
 
 
+def save(save_file: str, save_subroutine: Callable[[str], None]) -> None:
+    if save_file:
+        opts_file = save_file + ".opts"
+        param_file = save_file + ".params"
+        with TimerContextManager("saving model"):
+            # serialise opts
+            with open(opts_file, "w") as f:
+                json.dump(vars(opts), f, indent=4)
+            # serialise params
+            save_subroutine(param_file)
+            # zip opts and params
+            with zipfile.ZipFile(save_file, "w") as zipf:
+                zipf.write(opts_file)
+                zipf.write(param_file)
+        if os.path.exists(save_file):
+            logging.info(f"Saved model successfully to {tc.colored(save_file, 'blue')}")
+
+
 def train_wlf(opts: argparse.Namespace) -> None:
     """Trains a linear model using WLF features for learning value functions.
 
@@ -253,7 +279,7 @@ def train_wlf(opts: argparse.Namespace) -> None:
 
     # Parse dataset
     with TimerContextManager("collecting training data"):
-        domain_dataset, labels = get_heuristic_dataset(opts)
+        domain_dataset, labels = get_dataset(opts)
 
     # Process dataset
     wlf_generator = init_feature_generator(
@@ -281,7 +307,7 @@ def train_wlf(opts: argparse.Namespace) -> None:
 
     # [Optional] PCA visualisation
     pca_save_file = opts.visualise_pca
-    if pca_save_file is not None:
+    if pca_save_file:
         visualise(X, y, save_file=pca_save_file)
         return
 
@@ -300,19 +326,7 @@ def train_wlf(opts: argparse.Namespace) -> None:
         predictor.evaluate()
 
     # Save model
-    save_file = opts.save_file
-    if save_file:
-        with TimerContextManager("saving model"):
-            wlf_generator.set_weights(predictor.get_weights())
-            wlf_generator.save(save_file)
-            # add parsed opts to save_file
-            contents = json.loads(open(save_file, "r").read())
-            contents["opts"] = vars(opts)
-            with open(save_file, "w") as f:
-                json.dump(contents, f, indent=4)
-
-        if os.path.exists(save_file):
-            logging.info(f"Saved WLF model successfully to {tc.colored(save_file, 'blue')}")
+    save(save_file=opts.save_file, save_subroutine=lambda x: wlf_generator.save(x, predictor.get_weights()))
 
 
 def train_gnn(opts: argparse.Namespace) -> None:
@@ -344,7 +358,7 @@ def train_gnn(opts: argparse.Namespace) -> None:
 
     # Parse dataset
     with TimerContextManager("collecting training data"):
-        domain_dataset, labels = get_heuristic_dataset(opts)
+        domain_dataset, labels = get_dataset(opts)
 
     # Process dataset
     domain = get_domain_from_opts(opts)
@@ -373,12 +387,7 @@ def train_gnn(opts: argparse.Namespace) -> None:
         weights_dict = optimise_weights(model, device, train_loader, val_loader, opts)
 
     # Save model
-    save_file = opts.save_file
-    if save_file:
-        with TimerContextManager("saving_model"):
-            save_gnn_weights(weights_dict)
-        if os.path.exists(save_file):
-            logging.info(f"Saved GNN model successfully to {tc.colored(save_file, 'blue')}")
+    save(save_file=opts.save_file, save_subroutine=lambda x: save_gnn_weights.save(x, weights_dict))
 
 
 if __name__ == "__main__":

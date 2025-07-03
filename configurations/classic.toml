@@ -9,5 +9,4 @@ feature_pruning = "i-mf"
 hash = "set"
 
 data_pruning = "equivalent-weighted"
-data_generation = "plan"
 facts = "fd"

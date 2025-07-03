@@ -9,10 +9,10 @@ from learning.predictor.neural_network.gnn import RGNN
 from learning.predictor.neural_network.optimise import WeightsDict
 
 
-def save_gnn_weights(weights_dict: Optional[WeightsDict]) -> None:
+def save_gnn_weights(save_file: str, weights_dict: Optional[WeightsDict]) -> None:
     if weights_dict is None:
         logging.critical("Trying to save empty model! Exiting save routine.")
-    save_file = weights_dict.opts.save_file
+        return
     save_dir = os.path.dirname(save_file)
     if len(save_dir) > 0:
         os.makedirs(save_dir, exist_ok=True)

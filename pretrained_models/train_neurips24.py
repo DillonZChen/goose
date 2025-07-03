@@ -24,7 +24,7 @@ for domain in DOMAINS:
         "python3",
         f"{ROOT_DIR}/train.py",
         f"{ROOT_DIR}/configurations/data/neurips24/{domain}.toml",
-        f"{ROOT_DIR}/configurations/model/numeric.toml",
+        f"{ROOT_DIR}/configurations/numeric.toml",
         "-s",
         f"{CUR_DIR}/neurips24-{domain}.model",
     ]

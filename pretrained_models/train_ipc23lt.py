@@ -26,7 +26,7 @@ for domain in DOMAINS:
         "python3",
         f"{ROOT_DIR}/train.py",
         f"{ROOT_DIR}/configurations/data/ipc23lt/{domain}.toml",
-        f"{ROOT_DIR}/configurations/model/classic.toml",
+        f"{ROOT_DIR}/configurations/classic.toml",
         "-s",
         f"{CUR_DIR}/ipc23lt-{domain}.model",
     ]

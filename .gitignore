@@ -10,16 +10,18 @@ sas_plan
 *.png
 *.jpg
 *.model
+*.model.opts
+*.model.params
 *.out
 *.out.num
-*.sif
-*.plan
-*.pkl
 *.sas
+*.plan
 *.bak
-*.csv
-*.zip
 *.tmp
+*.sif
+*.zip
+*.pkl
+*.csv
 
 ###############################################################################
 # https://github.com/github/gitignore/blob/main/Python.gitignore

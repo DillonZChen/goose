@@ -9,5 +9,4 @@ feature_pruning = "none"
 hash = "set"
 
 data_pruning = "none"
-data_generation = "plan"
 facts = "nfd"

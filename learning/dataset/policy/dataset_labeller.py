@@ -1,5 +1,6 @@
 import argparse
 import json
+import logging
 import os
 import pickle
 from dataclasses import dataclass
@@ -94,6 +95,9 @@ class DatasetLabeller:
             self._mimir_name_to_schema = {s.name: s for s in self._mimir_domain.action_schemas}
 
             ret = []
+
+            if not self._cache:
+                logging.info("Tip: dataset can be computed and stored in via the flag --cache")
 
             for problem_path in tqdm(self._problem_paths):
                 plan = get_plan(self._domain_path, problem_path)

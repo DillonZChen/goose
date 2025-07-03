@@ -116,7 +116,7 @@ Call `goose.sif train -h` or `python3 train.py -h` for arguments, you will need 
 
 e.g.
 
-    ./train.py benchmarks/neurips24/childsnack configurations/model/numeric.toml -s numeric_childsnack.model
+    ./train.py benchmarks/neurips24/childsnack configurations/numeric.toml -s numeric_childsnack.model
 
 
 ### Planning
@@ -128,20 +128,20 @@ e.g.
 
 
 ### Recommended configurations
-For **classical** planning, train with the `configurations/model/classic.toml` configuration file.
+For **classical** planning, train with the `configurations/classic.toml` configuration file.
 e.g. with Blocksworld
 
     # Training
-    ./train.py benchmarks/ipc23lt/blocksworld configurations/model/classic.toml -s blocksworld.model
+    ./train.py benchmarks/ipc23lt/blocksworld configurations/classic.toml -s blocksworld.model
 
     # Planning
     ./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_01.pddl blocksworld.model
 
-For **numeric** planning, train with the `configurations/model/numeric.toml` configuration file.
+For **numeric** planning, train with the `configurations/numeric.toml` configuration file.
 e.g. with numeric Childsnack
 
     # Training
-    ./train.py benchmarks/neurips24/childsnack configurations/model/numeric.toml -s numeric_childsnack.model
+    ./train.py benchmarks/neurips24/childsnack configurations/numeric.toml -s numeric_childsnack.model
 
     # Planning
     ./plan.py benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model

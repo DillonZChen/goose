@@ -81,7 +81,7 @@ def train(
 ) -> None:
     script = get_command_prefix(request, script="train")
     data_config = get_data_input_argument(benchmark_group=benchmark_group, domain_name=domain_name)
-    model_config = f"configurations/model/{config_name}.toml"
+    model_config = f"configurations/{config_name}.toml"
 
     cmd = f"{script} {data_config} {model_config} -s {model_path}"
 
