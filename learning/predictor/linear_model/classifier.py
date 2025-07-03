@@ -7,7 +7,7 @@ from sklearn import svm
 from sklearn.gaussian_process import GaussianProcessClassifier as GPC
 from sklearn.gaussian_process.kernels import DotProduct
 
-from learning.dataset.container.ranking_dataset import RankingGroup
+from learning.dataset.heuristic.container.ranking_dataset import RankingGroup
 from learning.predictor.linear_model.mixed_integer_program import handle_redundant_pairs
 
 from .linear_model import LinearModel

@@ -10,7 +10,7 @@ from learning.dataset import (
     get_training_dir_from_opts,
     get_training_plans_dir_from_opts,
 )
-from learning.dataset.container.base_dataset import Dataset
+from learning.dataset.heuristic.container.base_dataset import Dataset
 from util.filesystem import get_path_error_msg
 
 

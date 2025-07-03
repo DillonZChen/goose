@@ -4,8 +4,8 @@ from typing import Optional
 import pymimir
 
 import wlplan
-from learning.dataset.container.cost_to_go_dataset import CostToGoDataset
-from learning.dataset.creator.classic_dataset_creator import ClassicDatasetCreator
+from learning.dataset.heuristic.container.cost_to_go_dataset import CostToGoDataset
+from learning.dataset.heuristic.creator.classic_dataset_creator import ClassicDatasetCreator
 from wlplan.data import DomainDataset, ProblemDataset
 from wlplan.feature_generator import init_feature_generator
 

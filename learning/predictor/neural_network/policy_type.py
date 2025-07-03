@@ -8,8 +8,9 @@ class PolicyType(Enum):
     QUALITY_FUNCTION = "q"
     # Predict advantage function: A(s, a) = Q(s, a) - V(s)
     ADVANTAGE_FUNCTION = "a"
-    # Predict distribution over actions: P(a | s)
-    DISTRIBUTION = "d"
+    # Predict distribution over actions: P(a | s); technically [0, 1] predictions on actions
+    POLICY_FUNCTION = "p"
+    POLICY_FUNCTION_X = "px"
 
 
 def get_policy_type_options():

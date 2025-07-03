@@ -1,4 +1,4 @@
-from learning.dataset.container.base_dataset import Dataset
+from learning.dataset.heuristic.container.base_dataset import Dataset
 from wlplan.data import ProblemDataset
 from wlplan.planning import Domain
 

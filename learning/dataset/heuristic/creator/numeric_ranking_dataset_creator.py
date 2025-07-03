@@ -1,6 +1,6 @@
 import wlplan
-from learning.dataset.container.base_dataset import Dataset
-from learning.dataset.container.ranking_dataset import RankingDataset, RankingGroup
+from learning.dataset.heuristic.container.base_dataset import Dataset
+from learning.dataset.heuristic.container.ranking_dataset import RankingDataset, RankingGroup
 from wlplan.data import ProblemDataset
 
 from .numeric_dataset_creator import NumericDatasetCreator

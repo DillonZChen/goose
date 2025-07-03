@@ -42,6 +42,8 @@ def get_planning_parser():
                         help="Bound for policy rollouts. If not specified or --bound=-1, then do not use bound.")
     parser.add_argument("-r", "--random-seed", type=int, default=0,
                         help="Random seed for policy algorithms.")
+    parser.add_argument("-d", "--debug", action="store_true",
+                        help="Debug mode.")
     parser.add_argument("--intermediate-file", type=str, default="intermediate.tmp",
                         help="Location for trash files.")
     return parser
@@ -195,7 +197,7 @@ def main():
                 problem_file=problem_pddl,
                 gnn=model,
                 train_opts=train_opts,
-                debug=False,
+                debug=opts.debug,
                 bound=opts.bound,
             )
             plan = policy.execute()

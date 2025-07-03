@@ -1,6 +1,6 @@
 import logging
 from dataclasses import dataclass
-from typing import Optional
+from typing import Any, Optional
 
 import torch
 from sklearn.model_selection import train_test_split
@@ -8,10 +8,9 @@ from torch import Tensor
 from torch_geometric.data import Data
 from torch_geometric.loader import DataLoader
 
-from learning.dataset.creator.classic_labelled_dataset_creator import LabelledDataset
-from learning.dataset.dataset_factory import get_policy_dataset
+from wlplan.data import DomainDataset
 from wlplan.graph_generator import Graph, GraphGenerator
-from wlplan.planning import Action, Domain, Problem, State
+from wlplan.planning import Action, Problem, State
 
 
 @dataclass
@@ -60,14 +59,12 @@ def wlplan_graph_to_pyg(graph_generator: GraphGenerator, graph: Graph) -> PyGGra
 
 
 def get_data_loaders(
-    domain: Domain,
-    dataset: LabelledDataset,
+    domain_dataset: DomainDataset,
+    labels: Any,
     graph_generator: GraphGenerator,
     batch_size: int,
-    policy_type: str,
 ) -> tuple[DataLoader, DataLoader]:
 
-    domain_dataset, labels = get_policy_dataset(policy_type=policy_type, dataset=dataset, domain=domain)
     graphs = graph_generator.to_graphs(domain_dataset)
 
     pyg_dataset = []

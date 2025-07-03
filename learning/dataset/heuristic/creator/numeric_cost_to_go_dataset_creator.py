@@ -1,6 +1,6 @@
 import wlplan
-from learning.dataset.container.base_dataset import Dataset
-from learning.dataset.container.cost_to_go_dataset import CostToGoDataset
+from learning.dataset.heuristic.container.base_dataset import Dataset
+from learning.dataset.heuristic.container.cost_to_go_dataset import CostToGoDataset
 from wlplan.data import ProblemDataset
 
 from .numeric_dataset_creator import NumericDatasetCreator

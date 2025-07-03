@@ -1,39 +1,37 @@
 from argparse import Namespace
+from typing import Any
 
 import numpy as np
 from tqdm import tqdm
 
-from learning.dataset.container.base_dataset import Dataset
-from learning.dataset.container.ranking_dataset import RankingDataset
 from learning.predictor.linear_model.predictor_factory import is_rank_predictor
+from wlplan.data import DomainDataset
 from wlplan.feature_generator import Features
 
 
-def embed_data(dataset: Dataset, wlf_generator: Features, opts: Namespace):
+def embed_data(domain_dataset: DomainDataset, labels: Any, wlf_generator: Features, opts: Namespace):
     if opts.data_pruning == "none":
-        X = wlf_generator.embed(dataset.wlplan_dataset)
+        X = wlf_generator.embed(domain_dataset)
         X = np.array(X).astype(float)
-        y = dataset.y
+        y = labels
         sample_weight = None
     elif opts.data_pruning == "equivalent-weighted":
-        X, y, sample_weight = get_data_weighted(dataset, wlf_generator, opts)
+        X, y, sample_weight = get_data_weighted(domain_dataset, labels, wlf_generator, opts)
     elif opts.data_pruning == "equivalent":
-        X, y, _ = get_data_weighted(dataset, wlf_generator, opts)
+        X, y, _ = get_data_weighted(domain_dataset, labels, wlf_generator, opts)
         sample_weight = None
     else:
         raise ValueError(f"Unknown data pruning method: {opts.data_pruning}")
     return X, y, sample_weight
 
 
-def get_data_weighted(dataset: Dataset, feature_generator: Features, opts: Namespace):
+def get_data_weighted(domain_dataset: DomainDataset, labels: Any, feature_generator: Features, opts: Namespace):
     if is_rank_predictor(opts.optimisation):
-        assert isinstance(dataset, RankingDataset)
-        dataset: RankingDataset = dataset
         unique_groups = {}
         sample_weight_dict = {}
         counter = 0
-        graphs = feature_generator.to_graphs(dataset.wlplan_dataset)
-        for ranking_group in tqdm(dataset.y, total=len(dataset.y)):
+        graphs = feature_generator.to_graphs(domain_dataset)
+        for ranking_group in tqdm(labels, total=len(labels)):
             gg = ranking_group.good_group
             mg = ranking_group.maybe_group
             bg = ranking_group.bad_group
@@ -70,8 +68,8 @@ def get_data_weighted(dataset: Dataset, feature_generator: Features, opts: Names
         return X, y, sample_weight
     else:
         unique_rows = {}
-        graphs = feature_generator.to_graphs(dataset.wlplan_dataset)
-        for graph, y in tqdm(zip(graphs, dataset.y), total=len(graphs)):
+        graphs = feature_generator.to_graphs(domain_dataset)
+        for graph, y in tqdm(zip(graphs, labels), total=len(graphs)):
             x = feature_generator.embed(graph)
             xy = np.array(x + [y])
             xy = tuple(xy)

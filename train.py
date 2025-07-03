@@ -13,8 +13,7 @@ import termcolor as tc
 import toml
 
 from learning.dataset import get_domain_file_from_opts, get_domain_from_opts, get_training_dir_from_opts
-from learning.dataset.creator.classic_labelled_dataset_creator import DatasetLabeller, log_dataset_statistics
-from learning.dataset.dataset_factory import get_dataset
+from learning.dataset.dataset_factory import get_heuristic_dataset, get_policy_dataset
 from learning.dataset.state_to_vec import embed_data
 from learning.predictor.linear_model.predictor_factory import get_available_predictors, get_predictor
 from learning.predictor.neural_network.policy_type import get_policy_type_options
@@ -59,7 +58,6 @@ _DEFAULT_WLF_VALS = {
 }
 
 _DEFAULT_GNN_VALS = {
-    "policy_type": "v",
     "num_hidden": 64,
     "learning_rate": 0.001,
     "patience": 10,
@@ -97,6 +95,10 @@ def get_learning_parser():
                         choices=["wlf", "gnn"],
                         help=f"Mode to use. " + \
                              f"(default: wlf).")
+    gen_group.add_argument("-p", "--policy-type", type=str, default=None,
+                        choices=get_policy_type_options(),
+                        help=f"If specified, policy representation via X-function for X in choices. " + \
+                             f"(default: None)")
 
     # WLF options
     wlf_group = parser.add_argument_group("wlf options")
@@ -119,10 +121,6 @@ def get_learning_parser():
 
     # GNN options
     gnn_group = parser.add_argument_group("gnn options")
-    gnn_group.add_argument("--policy-type", type=str,
-                        choices=get_policy_type_options(),
-                        help=f"If specified, GNN policy representation: *v*-function, *q*-function, or distributional *p*. " + \
-                             f"(default: {_DEFAULT_GNN_VALS['policy_type']})")
     gnn_group.add_argument("--num-hidden", type=int, default=None,
                         help=f"Hidden GNN dimension. " + \
                              f"(default: {_DEFAULT_GNN_VALS['num_hidden']})")
@@ -172,8 +170,6 @@ def get_learning_parser():
                         help=f"Path to save visualisation of PCA on WL features, for example pca.png.")
     mutex_group.add_argument("--distinguish-test", action="store_true",
                         help=f"Run distinguishability test.")
-    mutex_group.add_argument("--collect-only", action="store_true",
-                        help=f"Only collect features and exit.")
     return parser
 # fmt: on
 
@@ -236,6 +232,7 @@ def parse_learning_opts():
             raise ValueError("Distinguishability testing and PCA visualisation are only supported for WLF mode.")
         logging.info("Overriding options to use WLF and regression labels for non-training routine.")
         opts.__dict__["optimisation"] = "svr"
+        opts.__dict__["policy_type"] = None
 
     # Log parsed options
     logging.info(f"Processed options:\n{mat_to_str([[k, tc.colored(v, 'cyan')] for k, v in vars(opts).items()])}")
@@ -255,11 +252,10 @@ def train_wlf(opts: argparse.Namespace) -> None:
     """
 
     # Parse dataset
-    with TimerContextManager("parsing training data"):
-        dataset = get_dataset(opts)
-        logging.info(f"{len(dataset)=}")
+    with TimerContextManager("collecting training data"):
+        domain_dataset, labels = get_heuristic_dataset(opts)
 
-    # Collect colours
+    # Process dataset
     wlf_generator = init_feature_generator(
         feature_algorithm=opts.features,
         graph_representation=opts.graph_representation,
@@ -270,32 +266,34 @@ def train_wlf(opts: argparse.Namespace) -> None:
     )
     wlf_generator.print_init_colours()
     with TimerContextManager("collecting colours"):
-        wlf_generator.collect(dataset.wlplan_dataset)
+        wlf_generator.collect(domain_dataset)
     logging.info(f"n_colours_per_layer:")
     for i, n_colours in enumerate(wlf_generator.get_layer_to_n_colours()):
         logging.info(f"  {i}={n_colours}")
-    if opts.collect_only:
-        logging.info("Exiting after collecting colours.")
-        exit(0)
-
-    # Construct features
     with TimerContextManager("constructing features"):
-        X, y, sample_weight = embed_data(dataset=dataset, wlf_generator=wlf_generator, opts=opts)
+        X, y, sample_weight = embed_data(
+            domain_dataset=domain_dataset,
+            labels=labels,
+            wlf_generator=wlf_generator,
+            opts=opts,
+        )
     logging.info(f"{X.shape=}")
 
-    # PCA visualisation
+    # [Optional] PCA visualisation
     pca_save_file = opts.visualise_pca
     if pca_save_file is not None:
         visualise(X, y, save_file=pca_save_file)
         return
 
-    # Distinguishability testing
+    # [Optional] Distinguishability testing
     if opts.distinguish_test:
         distinguish(X, y)
         return
 
-    # Optimisation
+    # Initialise model
     predictor = get_predictor(opts.optimisation)
+
+    # Optimise model
     with TimerContextManager("training model"):
         predictor.fit(X, y, sample_weight)
     with TimerContextManager("evaluating model"):
@@ -346,10 +344,9 @@ def train_gnn(opts: argparse.Namespace) -> None:
 
     # Parse dataset
     with TimerContextManager("collecting training data"):
-        dataset = DatasetLabeller(opts).get_labelled_dataset()
-    log_dataset_statistics(dataset)
+        domain_dataset, labels = get_heuristic_dataset(opts)
 
-    # Initialise PyG dataset
+    # Process dataset
     domain = get_domain_from_opts(opts)
     with TimerContextManager("converting to PyG dataset"):
         graph_generator = init_graph_generator(
@@ -358,21 +355,20 @@ def train_gnn(opts: argparse.Namespace) -> None:
             differentiate_constant_objects=True,
         )
         train_loader, val_loader = get_data_loaders(
-            domain=domain,
-            dataset=dataset,
+            domain_dataset=domain_dataset,
+            labels=labels,
             graph_generator=graph_generator,
             batch_size=opts.batch_size,
-            policy_type=opts.policy_type,
         )
 
-    # Initialise GNN
+    # Initialise model
     opts._n_relations = graph_generator.get_n_relations()
     opts._n_features = graph_generator.get_n_features()
     model = RGNN.init_from_opts(opts)
     model = model.to(device)
     logging.info(f"{model.num_parameters=}")
 
-    # Optimisation
+    # Optimise model
     with TimerContextManager("optimising model"):
         weights_dict = optimise_weights(model, device, train_loader, val_loader, opts)
 

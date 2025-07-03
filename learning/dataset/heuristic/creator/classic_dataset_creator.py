@@ -5,8 +5,8 @@ from abc import abstractmethod
 import pymimir
 
 import wlplan
-from learning.dataset.container.base_dataset import Dataset
-from learning.dataset.creator.dataset_creator import DatasetCreator
+from learning.dataset.heuristic.container.base_dataset import Dataset
+from learning.dataset.heuristic.creator.dataset_creator import DatasetCreator
 from planning.util import get_downward_translation_atoms
 from wlplan.planning import Predicate, State
 

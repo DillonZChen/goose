@@ -4,8 +4,8 @@ from abc import abstractmethod
 
 import wlplan
 import wlplan.planning
-from learning.dataset.container.base_dataset import Dataset
-from learning.dataset.creator.dataset_creator import DatasetCreator
+from learning.dataset.heuristic.container.base_dataset import Dataset
+from learning.dataset.heuristic.creator.dataset_creator import DatasetCreator
 from planning.util import call_numeric_downward
 from wlplan.planning import Atom, State
 

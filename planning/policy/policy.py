@@ -99,6 +99,7 @@ class PolicyExecutor(ABC):
     def execute(self) -> Optional[Plan]:
         plan = []
         state = self._task.get_init_state()
+        cycle_detector = {}
         logging.info("Starting policy execution...")
         while True:
             if self._is_goal(state):
@@ -108,7 +109,18 @@ class PolicyExecutor(ABC):
                 logging.info(f"{self._bound=} reached. Terminating policy execution.")
                 plan = None
                 break
+
+            state_str = self._task.state_to_string(state)
+            if state_str not in cycle_detector:
+                cycle_detector[state_str] = set()
+
             applicable_actions = self._get_applicable_actions(state)
+            # applicable_actions = []
+            # for a in self._get_applicable_actions(state):
+            #     a_str = self._task.action_to_string(a)
+            #     if a_str not in cycle_detector[state_str]:
+            #         applicable_actions.append(a)
+
             if len(applicable_actions) == 0:
                 logging.info("Deadend reached. Terminating policy execution.")
                 plan = None
@@ -116,13 +128,17 @@ class PolicyExecutor(ABC):
 
             t = time.perf_counter()
             action = self.select_action(state, applicable_actions)
+            action_str = self._task.action_to_string(action)
             self._t_eval_p += time.perf_counter() - t
 
-            state = self._get_successor_state(action, state)
+            cycle_detector[state_str].add(action_str)
 
-            plan.append(self._task.action_to_string(action))
+            state = self._get_successor_state(action, state)
+            plan.append(action_str)
 
             n_steps = len(plan)
+            if self._debug:
+                print(f"{n_steps=}, action={action_str}")
             if n_steps > 0 and (n_steps & (n_steps - 1)) == 0:
                 logging.info(f"Reached {n_steps=}")
 

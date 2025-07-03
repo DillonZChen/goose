@@ -3,7 +3,7 @@ import json
 import os
 import pickle
 from dataclasses import dataclass
-from typing import Optional
+from typing import Any, Optional
 
 import pymimir
 from tqdm import tqdm
@@ -11,6 +11,7 @@ from tqdm import tqdm
 from learning.dataset import get_domain_file_from_opts, get_training_dir_from_opts
 from planning.solution import get_plan
 from util.statistics import log_quartiles
+from wlplan.data import DomainDataset, ProblemDataset
 from wlplan.planning import Action, Atom, Problem, State, parse_domain, parse_problem
 
 
@@ -71,6 +72,7 @@ def log_dataset_statistics(dataset: LabelledDataset) -> None:
 class DatasetLabeller:
     def __init__(self, opts: argparse.Namespace):
         self._domain_path = get_domain_file_from_opts(opts)
+        self._domain = parse_domain(self._domain_path)
         self._training_dir = get_training_dir_from_opts(opts)
 
         problems = sorted([f"{self._training_dir}/{f}" for f in os.listdir(self._training_dir) if f.endswith(".pddl")])
@@ -85,7 +87,6 @@ class DatasetLabeller:
             with open(self._cache, "rb") as f:
                 ret = pickle.load(f)
         else:
-            self._domain = parse_domain(self._domain_path)
             self._name_to_predicate = {p.name: p for p in self._domain.predicates}
             self._name_to_schema = {s.name: s for s in self._domain.schemata}
 
@@ -200,3 +201,105 @@ class DatasetLabeller:
             mimir_state = plan_action.apply(mimir_state)
 
         return states_and_successors_labelled
+
+    def get_value_function_dataset(self) -> tuple[DomainDataset, Any]:
+        dataset = self.get_labelled_dataset()
+        problem_dataset_list = []
+        labels = []
+
+        for data in dataset:
+            problem = data.problem
+            states = []
+            for state_and_successors in data.states_and_successors_labelled:
+                states.append(state_and_successors.state)  # s
+                labels.append(state_and_successors.value)  # V(s)
+                for successors in state_and_successors.successors_labelled:
+                    succ = successors.successor_state  # s
+                    value = successors.value  # V(s)
+                    if value is not None:
+                        states.append(succ)
+                        labels.append(value)
+            problem_dataset_list.append(ProblemDataset(problem=problem, states=states))
+        domain_dataset = DomainDataset(domain=self._domain, data=problem_dataset_list)
+
+        return domain_dataset, labels
+
+    def get_quality_function_dataset(self) -> tuple[DomainDataset, Any]:
+        dataset = self.get_labelled_dataset()
+        problem_dataset_list = []
+        labels = []
+
+        for data in dataset:
+            problem = data.problem
+            states = []
+            actions = []
+            for state_and_successors in data.states_and_successors_labelled:
+                state = state_and_successors.state  # s
+                value = state_and_successors.value  # do nothing with the current value
+                for successors in state_and_successors.successors_labelled:
+                    succ_state = successors.successor_state  # do nothing with the succ_state
+                    succ_value = successors.value  # use the succ value as Q(s, a)
+                    action = successors.action  # a
+                    if succ_value is not None:
+                        states.append(state)
+                        actions.append([action])
+                        labels.append(succ_value)
+            problem_dataset_list.append(ProblemDataset(problem=problem, states=states, actions=actions))
+        domain_dataset = DomainDataset(domain=self._domain, data=problem_dataset_list)
+
+        return domain_dataset, labels
+
+    def get_advantage_function_dataset(self) -> tuple[DomainDataset, Any]:
+        dataset = self.get_labelled_dataset()
+        problem_dataset_list = []
+        labels = []
+
+        for data in dataset:
+            problem = data.problem
+            states = []
+            actions = []
+            for state_and_successors in data.states_and_successors_labelled:
+                state = state_and_successors.state  # s
+                value = state_and_successors.value  # V(s)
+                for successors in state_and_successors.successors_labelled:
+                    succ_state = successors.successor_state  # do nothing with the succ_state
+                    succ_value = successors.value  # use the succ value as Q(s, a)
+                    action = successors.action  # a
+                    if succ_value is not None:
+                        states.append(state)
+                        actions.append([action])
+                        labels.append(succ_value - value)  # A(s, a) = Q(s, a) - V(s)
+            problem_dataset_list.append(ProblemDataset(problem=problem, states=states, actions=actions))
+        domain_dataset = DomainDataset(domain=self._domain, data=problem_dataset_list)
+
+        return domain_dataset, labels
+
+    def get_policy_function_dataset(self, est: bool) -> tuple[DomainDataset, Any]:
+        dataset = self.get_labelled_dataset()
+        problem_dataset_list = []
+        labels = []
+
+        for data in dataset:
+            problem = data.problem
+            states = []
+            actions = []
+            for state_and_successors in data.states_and_successors_labelled:
+                state = state_and_successors.state  # s
+                value = state_and_successors.value  # V(s)
+                for successors in state_and_successors.successors_labelled:
+                    succ_state = successors.successor_state  # do nothing with the succ_state
+                    succ_value = successors.value  # use the succ value as Q(s, a)
+                    action = successors.action  # a
+                    if succ_value is not None:
+                        label = int(succ_value < value)
+                    elif not est:
+                        continue
+                    else:
+                        label = 0  # [estimate]: if timeout computing plan, then not optimal
+                    states.append(state)
+                    actions.append([action])
+                    labels.append(label)
+            problem_dataset_list.append(ProblemDataset(problem=problem, states=states, actions=actions))
+        domain_dataset = DomainDataset(domain=self._domain, data=problem_dataset_list)
+
+        return domain_dataset, labels

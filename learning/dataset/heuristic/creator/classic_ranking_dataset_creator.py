@@ -1,8 +1,8 @@
 import pymimir
 
 import wlplan
-from learning.dataset.container.ranking_dataset import RankingDataset, RankingGroup
-from learning.dataset.creator.classic_dataset_creator import ClassicDatasetCreator
+from learning.dataset.heuristic.container.ranking_dataset import RankingDataset, RankingGroup
+from learning.dataset.heuristic.creator.classic_dataset_creator import ClassicDatasetCreator
 from wlplan.data import ProblemDataset
 
 
