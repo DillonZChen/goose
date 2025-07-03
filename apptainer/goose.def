@@ -1,0 +1,37 @@
+Bootstrap: localimage
+From: apptainer/goose-base.sif
+
+%files
+    learning /goose/
+    planning /goose/
+    util /goose/
+    wlplan /goose/
+
+    *.py /goose/
+    build /goose/
+    requirements.txt /goose/
+
+%runscript
+    #!/bin/bash
+
+    if [ "$#" -lt 1 ]; then
+        echo "Usage: ./goose.sif <train|plan> <args>"
+        exit 1
+    fi
+
+    command=$1
+    shift
+
+    if [ "$command" = "plan" ]; then
+        python3.10 /goose/plan.py "$@"
+    elif [ "$command" = "train" ]; then
+        python3.10 /goose/train.py "$@"
+    else
+        echo "Usage: ./goose.sif <train|plan> <args>"
+        exit 1
+    fi
+
+%labels
+    Name        goose
+    Description GOOSE: Graphs Optimised fOr Search Evaluation.
+    Authors     Dillon Chen <dillon.chen1@gmail.com>

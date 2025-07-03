@@ -98,6 +98,10 @@ class RGNN(nn.Module):
             pool="sum",
         )
 
+    @property
+    def num_parameters(self) -> int:
+        return sum(p.numel() for p in self.parameters() if p.requires_grad)
+
     def initialise_layers(self) -> None:
         self.emb = torch.nn.Linear(self.in_feat, self.n_hid)
         self.layers = torch.nn.ModuleList()

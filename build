@@ -1,12 +1,14 @@
 #!/bin/bash
 
+USAGE_DESCRIPTION="Usage $0 [wlplan|succgen|planners|fd|nfd|pwl|all]"
+
 # Check number of arguments
 if [[ $# -eq 0 ]]; then
     arg="all"
 elif [[ $# -eq 1 ]]; then
     arg=$1
 else
-    echo "Usage: $0 [wlplan|succgen|planners|fd|nfd|pwl|all]"
+    echo $USAGE_DESCRIPTION
     exit 1
 fi
 
@@ -16,7 +18,7 @@ wlplan | succgen | planners | fd | nfd | pwl | all)
     # Valid argument, continue
     ;;
 *)
-    echo "Usage: $0 [wlplan|succgen|planners|fd|nfd|pwl|all]"
+    echo $USAGE_DESCRIPTION
     exit 1
     ;;
 esac

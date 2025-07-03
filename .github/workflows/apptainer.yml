@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    
+
     if: github.repository == 'DillonZChen/goose'
     runs-on: ubuntu-22.04
 
@@ -29,7 +29,7 @@ jobs:
 
       - name: Build image
         run: |
-          apptainer build image.sif Apptainer
+          python3 apptainer/build.py
 
       - name: Login and deploy image
         if: (github.event_name != 'pull_request')
@@ -38,6 +38,6 @@ jobs:
 
           # We cannot use ${GITHUB_REPOSITORY} as the below command requires lowercase.
           # See https://github.com/apptainer/apptainer/issues/2272
-          apptainer push image.sif oras://ghcr.io/dillonzchen/goose:latest
+          apptainer push goose.sif oras://ghcr.io/dillonzchen/goose:latest
 
           # Image can now be pulled with "apptainer pull oras://ghcr.io/dillonzchen/goose:latest"

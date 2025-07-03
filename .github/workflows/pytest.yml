@@ -44,7 +44,7 @@ jobs:
 
       - name: Build image
         run: |
-          apptainer build goose.sif Apptainer
+            python3 apptainer/build.py
 
       - name: Install test dependencies
         run: python -m pip install -r tests/test-requirements.txt

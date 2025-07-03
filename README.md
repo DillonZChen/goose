@@ -74,7 +74,7 @@ Download the image from the internet
 Install [Apptainer](https://apptainer.org/) and then build the image
 
     sudo apt-get install apptainer
-    sudo apptainer build goose.sif Apptainer
+    python3 apptainer/build.py
 
 
 ### (3) Manual compilation

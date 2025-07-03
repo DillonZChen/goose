@@ -6,6 +6,7 @@ import logging
 import os
 import random
 import subprocess
+import sys
 
 import numpy as np
 import termcolor as tc
@@ -37,6 +38,8 @@ def get_planning_parser():
                         help="Timeout for search in seconds. Ignores all other preprocessing times.")
     parser.add_argument("-o", "--plan-file", type=str, default="sas_plan",
                         help="Location for output solution files.")
+    parser.add_argument("-b", "--bound", type=int, default=-1,
+                        help="Bound for policy rollouts. If not specified or --bound=-1, then do not use bound.")
     parser.add_argument("-r", "--random-seed", type=int, default=0,
                         help="Random seed for policy algorithms.")
     parser.add_argument("--intermediate-file", type=str, default="intermediate.tmp",
@@ -171,7 +174,15 @@ def main():
         case "policy":
 
             # Torch and Pytorch Geometric imports done here to avoid unnecessary imports when not using GNN
-            import torch
+            try:
+                import torch
+                import torch_geometric
+            except ModuleNotFoundError:
+                logging.info(
+                    "The current environment does not have PyTorch and PyTorch Geometric installed."
+                    + "Please install them to use GNN architectures. Exiting."
+                )
+                sys.exit(1)
 
             from planning.policy.gnn_policy import GnnPolicyExecutor
 
@@ -185,6 +196,7 @@ def main():
                 gnn=model,
                 train_opts=train_opts,
                 debug=False,
+                bound=opts.bound,
             )
             plan = policy.execute()
             policy.dump_stats()

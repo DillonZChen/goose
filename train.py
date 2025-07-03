@@ -5,6 +5,7 @@ import json
 import logging
 import os
 import random
+import sys
 from typing import Any, Dict
 
 import numpy as np
@@ -324,7 +325,15 @@ def train_gnn(opts: argparse.Namespace) -> None:
     """
 
     # Torch and Pytorch Geometric imports done here to avoid unnecessary imports when not using GNN
-    import torch
+    try:
+        import torch
+        import torch_geometric
+    except ModuleNotFoundError:
+        logging.info(
+            "The current environment does not have PyTorch and PyTorch Geometric installed."
+            + "Please install them to use GNN architectures. Exiting."
+        )
+        sys.exit(1)
 
     from learning.predictor.neural_network.gnn import RGNN
     from learning.predictor.neural_network.optimise import optimise_weights
@@ -361,6 +370,7 @@ def train_gnn(opts: argparse.Namespace) -> None:
     opts._n_features = graph_generator.get_n_features()
     model = RGNN.init_from_opts(opts)
     model = model.to(device)
+    logging.info(f"{model.num_parameters=}")
 
     # Optimisation
     with TimerContextManager("optimising model"):

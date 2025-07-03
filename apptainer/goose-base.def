@@ -17,7 +17,7 @@ From: ubuntu:22.04
 
     export DEBIAN_FRONTEND=noninteractive
 
-    # python packages
+    # Python packages
     apt-get install -y --no-install-recommends \
         python2 \
         python3.10 \
@@ -27,7 +27,7 @@ From: ubuntu:22.04
         python3-distutils \
         python3-setuptools
 
-    # cpp packages
+    # C++ packages
     apt-get install -y --no-install-recommends \
         build-essential \
         g++ \
@@ -35,46 +35,22 @@ From: ubuntu:22.04
         libboost-all-dev \
         git
 
-    ## Move into repo and build.
+    # Move into repo and build
     cd /goose
 
-    # Clear build directories.
-    rm -rf wlplan/build
-    rm -rf planning/ext/*/builds
-
-    # Python dependencies.
+    # Python dependencies
     pip3 install -r requirements.txt
 
-    # Build components.
+    # Clear build directories
+    rm -rf wlplan/build
+    rm -rf planning/ext/*/builds
+    rm -rf planning/ext/succgen/build
+
+    # Build all components
     ./build
 
-    # Clean up.
+    # Clean up
     apt-get clean
     rm -rf __pycache__/
     rm -rf /var/lib/apt/lists/*
     rm -rf wlplan/
-
-%runscript
-    #!/bin/bash
-
-    if [ "$#" -lt 1 ]; then
-        echo "Usage: ./goose.sif <train|plan> <args>"
-        exit 1
-    fi
-
-    command=$1
-    shift
-
-    if [ "$command" = "plan" ]; then
-        python3.10 /goose/plan.py "$@"
-    elif [ "$command" = "train" ]; then
-        python3.10 /goose/train.py "$@"
-    else
-        echo "Usage: ./goose.sif <train|plan> <args>"
-        exit 1
-    fi
-
-%labels
-    Name        goose
-    Description GOOSE: Graphs Optimised fOr Search Evaluation.
-    Authors     Dillon Chen <dillon.chen1@gmail.com>

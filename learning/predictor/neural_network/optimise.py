@@ -1,4 +1,5 @@
 import argparse
+import logging
 import time
 from dataclasses import dataclass
 from typing import Any
@@ -64,10 +65,18 @@ def optimise_weights(
             print(", ".join([f"{epoch=}", f"{t=:.8f}", f"{train_loss=:.8f}", f"{val_loss=:.8f}", f"{lr=:.1e}"]))
 
             if lr < 1e-5:
-                print(f"Early stopping due to small {lr=:.1e}")
+                logging.info(f"Early stopping due to small {lr=:.1e}")
                 break
+        logging.info(f"Stopping reaching bound of {opts.epochs} epochs")
     except KeyboardInterrupt:
-        print("Early stopping due to keyboard interrupt!")
+        logging.info(f"Early stopping due to keyboard interrupt!")
+
+    best_epoch = model_dict.epoch if model_dict else None
+    train_loss = model_dict.train_loss if model_dict else None
+    val_loss = model_dict.val_loss if model_dict else None
+    logging.info(f"{best_epoch=}")
+    logging.info(f"{train_loss=:.8f}")
+    logging.info(f"{val_loss=:.8f}")
 
     return model_dict
 
