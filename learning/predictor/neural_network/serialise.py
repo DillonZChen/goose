@@ -6,7 +6,7 @@ from typing import Optional
 import torch
 
 from learning.predictor.neural_network.gnn import RGNN
-from learning.predictor.neural_network.optimise import WeightsDict
+from learning.predictor.neural_network.weights_dict import WeightsDict
 
 
 def save_gnn_weights(save_file: str, weights_dict: Optional[WeightsDict]) -> None:

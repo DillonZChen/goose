@@ -1,21 +1,13 @@
 import argparse
 import logging
 import time
-from dataclasses import dataclass
-from typing import Any
 
 import torch
 from torch.nn import Module, MSELoss
 from torch.optim import Optimizer
 from torch.utils.data import DataLoader
 
-
-@dataclass
-class WeightsDict:
-    weights: dict[str, torch.Tensor]
-    epoch: int
-    train_loss: float
-    val_loss: float
+from learning.predictor.neural_network.weights_dict import WeightsDict
 
 
 def optimise_weights(
