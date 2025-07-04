@@ -342,7 +342,7 @@ def train_gnn(opts: argparse.Namespace) -> None:
         import torch_geometric
     except ModuleNotFoundError:
         logging.info(
-            "The current environment does not have PyTorch and PyTorch Geometric installed."
+            "The current environment does not have PyTorch and PyTorch Geometric installed. "
             + "Please install them to use GNN architectures. Exiting."
         )
         sys.exit(1)
