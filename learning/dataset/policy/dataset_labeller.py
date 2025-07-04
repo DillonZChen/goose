@@ -1,59 +1,23 @@
 import argparse
-import json
 import logging
 import os
 import pickle
-from dataclasses import dataclass
 from typing import Any, Optional
 
 import pymimir
 from tqdm import tqdm
 
 from learning.dataset import get_domain_file_from_opts, get_training_dir_from_opts
+from learning.dataset.policy.dataset_containers import (
+    LabelledDataset,
+    LabelledProblemData,
+    LabelledStateAndSuccessorsData,
+    LabelledSuccessorData,
+)
 from planning.solution import get_plan
 from util.statistics import log_quartiles
 from wlplan.data import DomainDataset, ProblemDataset
-from wlplan.planning import Action, Atom, Problem, State, parse_domain, parse_problem
-
-
-@dataclass
-class LabelledSuccessorData:
-    action: Action
-    successor_state: State
-    value: Optional[int]
-
-
-@dataclass
-class LabelledStateAndSuccessorsData:
-    state: State
-    value: int
-    successors_labelled: list[LabelledSuccessorData]
-
-    def __repr__(self):
-        return json.dumps(
-            {
-                "s": str(self.state),
-                "value": self.value,
-                "successors": [
-                    {
-                        "a": str(ss.action),
-                        "s'": str(ss.successor_state),
-                        "v": ss.value,
-                    }
-                    for ss in self.successors_labelled
-                ],
-            },
-            indent=2,
-        )
-
-
-@dataclass
-class LabelledProblemData:
-    problem: Problem
-    states_and_successors_labelled: list[LabelledStateAndSuccessorsData]
-
-
-LabelledDataset = list[LabelledProblemData]
+from wlplan.planning import Action, Atom, State, parse_domain, parse_problem
 
 
 def log_dataset_statistics(dataset: LabelledDataset) -> None:
