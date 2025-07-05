@@ -2,6 +2,7 @@ Bootstrap: docker
 From: nvidia/cuda:12.3.2-runtime-ubuntu22.04
 
 %files
+    enums /goose/
     learning /goose/
     planning /goose/
     util /goose/

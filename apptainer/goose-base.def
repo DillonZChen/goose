@@ -2,6 +2,7 @@ Bootstrap: docker
 From: ubuntu:22.04
 
 %files
+    enums /goose/
     learning /goose/
     planning /goose/
     util /goose/
