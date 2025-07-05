@@ -5,7 +5,6 @@ from util import train_plan
 
 BENCHMARK_GROUP = "neurips24"
 CONFIG_NAME = "numeric"
-PLANNER_NAME = "nfd"
 
 
 @pytest.mark.parametrize(
@@ -22,5 +21,4 @@ def test_neurips24(request: pytest.FixtureRequest, domain_name: str, problem_nam
         benchmark_group=BENCHMARK_GROUP,
         problem_name=problem_name,
         config_name=CONFIG_NAME,
-        planner_name=PLANNER_NAME,
     )

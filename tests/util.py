@@ -1,9 +1,8 @@
 import logging
 import os
-import re
 import subprocess
 from subprocess import PIPE
-from typing import Any, Optional
+from typing import Optional
 
 import pytest
 from fixtures import get_data_input_argument
@@ -46,9 +45,8 @@ def train_plan(
     benchmark_group: str,
     problem_name: str,
     config_name: str,
-    planner_name: str,
+    planner_name: Optional[str] = None,
     timeout: int = 60,
-    expanded_ub: Optional[int] = None,
 ) -> None:
     model_dir = "tests/models"
     os.makedirs(model_dir, exist_ok=True)
@@ -68,7 +66,6 @@ def train_plan(
         model_path=model_path,
         planner=planner_name,
         timeout=timeout,
-        expanded_ub=expanded_ub,
     )
 
 
@@ -94,68 +91,21 @@ def plan(
     benchmark_group: str,
     problem_name: str,
     model_path: str,
-    planner: str,
+    planner: Optional[str] = None,
     timeout: int = 60,
-    expanded_ub: Optional[int] = None,
 ) -> None:
     script = get_command_prefix(request, script="plan")
     domain_pddl = f"benchmarks/{benchmark_group}/{domain_name}/domain.pddl"
     problem_pddl = f"benchmarks/{benchmark_group}/{domain_name}/testing/p{problem_name}.pddl"
 
-    cmd = f"{script} {domain_pddl} {problem_pddl} {model_path} -t {timeout} -p {planner}"
+    cmd = f"{script} {domain_pddl} {problem_pddl} {model_path} -t {timeout}"
+    if planner is not None:
+        cmd += f" -p {planner}"
 
     output, err, rc = popen_command(cmd)
-    stats = parse_output(output, planner)
+    sol_found = "Solution found!" in output or "Goal found at" in output
     if rc != 0:
         logging.info(f"OUTPUT:\n{output}\n")
         logging.info(f"ERROR:\n{err}\n")
     assert rc == 0, cmd
-    if expanded_ub:
-        assert stats["expanded"] <= expanded_ub, (stats["expanded"], expanded_ub)
-
-
-def parse_output(output: str, planner: str) -> dict[str, Any]:
-    stats = {
-        "solved": False,
-        "time": float("inf"),
-        "plan_length": float("inf"),
-        "expanded": float("inf"),
-    }
-
-    if planner == "pwl":
-        for line in output.split("\n"):
-            if line.startswith("Goal found at"):
-                stats["solved"] = True
-                stats["time"] = float(line.split(" ")[-1])
-            elif line.startswith("Plan length"):
-                stats["plan_length"] = int(line.split(" ")[-2])
-            elif line.startswith("Expanded") and stats["expanded"] == float("inf"):
-                stats["expanded"] = int(line.split(" ")[-2])
-    elif planner in {"fd", "nfd"}:
-        if "Solution found!" in output:
-            stats["solved"] = True
-            output = output.split("Solution found!")[1]
-
-            match = re.search(r"Plan length: (\d+)", output)
-            if match:
-                stats["plan_length"] = int(match.group(1))
-
-            match = re.search(r"Total time: (\d+\.\d+)", output)
-            if match:
-                stats["time"] = float(match.group(1))
-
-            match = re.search(r"Expanded (\d+)", output)
-            if match:
-                stats["expanded"] = int(match.group(1))
-    else:
-        raise NotImplementedError
-
-    solved = stats["solved"]
-    time = stats["time"]
-    plan_length = stats["plan_length"]
-    expanded = stats["expanded"]
-    logging.info(f"{solved=}")
-    logging.info(f"{time=}")
-    logging.info(f"{plan_length=}")
-    logging.info(f"{expanded=}")
-    return stats
+    assert sol_found, cmd
