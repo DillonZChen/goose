@@ -1,4 +1,6 @@
+import argparse
 import logging
+import random
 import sys
 import time
 from abc import ABC, abstractmethod
@@ -18,9 +20,20 @@ from succgen.sgutil.logging import mat_to_str
 from succgen.sgutil.managers import TimerContextManager
 from succgen.sqlite_applicable_action_generator import SQLiteApplicableActionGenerator
 
+from enums.policy_type import PolicyType
+from wlplan.graph_generator import Graph, init_graph_generator
+from wlplan.planning import Action, Atom, State, to_wlplan_domain, to_wlplan_problem
+
 
 class PolicyExecutor(ABC):
-    def __init__(self, domain_file: str, problem_file: str, debug: bool = False, bound: int = -1):
+    def __init__(
+        self,
+        domain_path: str,
+        problem_path: str,
+        train_opts: argparse.Namespace,
+        debug: bool = False,
+        bound: int = -1,
+    ):
 
         self._debug = debug
         self._bound = bound
@@ -33,16 +46,44 @@ class PolicyExecutor(ABC):
         self._start_time = time.perf_counter()
 
         with TimerContextManager("parsing PDDL inputs") as timer:
-            domain = pddl.parse_domain(domain_file)
-            problem = pddl.parse_problem(problem_file)
+            domain = pddl.parse_domain(domain_path)
+            problem = pddl.parse_problem(problem_path)
         self._t_parsing = timer.get_time()
 
         # TODO check if can support PDDL fragment
 
+        # Planning components
         self._task = SGTask(domain, problem)
         self._aag = SQLiteApplicableActionGenerator(self._task, debug=debug)
         self._schema_to_effects: list[Effects] = []
         self._init_schemata()
+
+        # Policy type
+        self._policy_type = PolicyType.parse(train_opts.policy_type)
+        if self._policy_type in {PolicyType.VALUE_FUNCTION}:
+            self._predict_impl = self._select_v
+        elif self._policy_type in {
+            PolicyType.QUALITY_FUNCTION,
+            PolicyType.ADVANTAGE_FUNCTION,
+            PolicyType.POLICY_FUNCTION,
+        }:
+            self._predict_impl = self._select_q
+        else:
+            raise ValueError(f"Unknown value {self._policy_type=}")
+
+        # WLPlan components
+        self._domain = to_wlplan_domain(self._task.domain)
+        self._problem = to_wlplan_problem(self._task.domain, self._task.problem)
+
+        self._name_to_predicate = {p.name: p for p in self._domain.predicates}
+        self._name_to_schema = {s.name: s for s in self._domain.schemata}
+
+        self._graph_generator = init_graph_generator(
+            graph_representation=train_opts.graph_representation,
+            domain=self._domain,
+            differentiate_constant_objects=True,
+        )
+        self._graph_generator.set_problem(self._problem)
 
     def _init_schemata(self) -> None:
         for schema in sorted(self._task.domain.actions, key=lambda s: s.name):
@@ -146,8 +187,32 @@ class PolicyExecutor(ABC):
         self._plan_length = len(plan) if plan is not None else "na"
 
     @abstractmethod
-    def select_action(self, state: SGState, actions: list[SGAction]) -> SGAction:
+    def _predict_graph(self, graph: Graph) -> float:
         raise NotImplementedError
+
+    def _select_v(self, state: SGState, action: SGAction) -> float:  # does not use action
+        wl_state = self._sgstate_to_wlstate(state)
+        graph = self._graph_generator.to_graph(state=wl_state)
+        pred = self._predict_graph(graph)
+        return pred
+
+    def _select_q(self, state: SGState, action: SGAction) -> float:
+        wl_state = self._sgstate_to_wlstate(state)
+        wl_action = self._sgaction_to_wlaction(action)
+        graph = self._graph_generator.to_graph(state=wl_state, actions=[wl_action])
+        pred = self._predict_graph(graph)
+        return pred
+
+    def select_action(self, state: SGState, actions: list[SGAction]) -> SGAction:
+        best_pred = float("inf")
+        best_action = None
+        random.shuffle(actions)
+        for action in actions:
+            pred = self._predict_impl(state=self._get_successor_state(action, state), action=action)
+            if pred < best_pred:
+                best_pred = pred
+                best_action = action
+        return best_action
 
     def _is_goal(self, state: SGState) -> bool:
         return self._task.goal.satisfied_by(state)
@@ -165,6 +230,23 @@ class PolicyExecutor(ABC):
         )
         self._t_sg += time.perf_counter() - t
         return succ_state
+
+    def _sgstate_to_wlstate(self, state: SGState) -> State:
+        wl_state = []
+        for atom in state.atoms:
+            atom = self._task.atom_packer.unpack(atom)
+            predicate = self._name_to_predicate[self._task.i_to_pred[atom[0]]]
+            objects = [self._task.i_to_obj[i] for i in atom[1]]
+            atom = Atom(predicate=predicate, objects=objects)
+            wl_state.append(atom)
+        wl_state = State(atoms=wl_state)
+        return wl_state
+
+    def _sgaction_to_wlaction(self, action: SGAction) -> Action:
+        schema = self._name_to_schema[self._task.i_to_schema[action[0]]]
+        objects = [self._task.i_to_obj[i] for i in action[1]]
+        wl_action = Action(schema=schema, objects=objects)
+        return wl_action
 
     def _debug_plan(self, plan: Plan) -> None:
         plan_i = 0

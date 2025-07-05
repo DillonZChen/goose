@@ -5,6 +5,7 @@ from abc import abstractmethod
 import pymimir
 
 import wlplan
+from enums.state_representation import StateRepresentation
 from learning.dataset.heuristic.container.base_dataset import Dataset
 from learning.dataset.heuristic.creator.dataset_creator import DatasetCreator
 from planning.util import get_downward_translation_atoms
@@ -23,23 +24,22 @@ class ClassicDatasetCreator(DatasetCreator):
         self.name_to_predicate = self._get_predicates(keep_statics=(facts != "nostatic"))
         predicates = sorted(list(self.name_to_predicate.values()), key=lambda x: repr(x))
         predicates = repr([repr(x) for x in predicates]).replace("'", "")
-        logging.info(f"{facts=}")
         logging.info(f"{predicates=}")
 
         # facts in a state to keep
         self.atoms_to_keep = None
         self.facts = facts
-        if self.facts == "fd":
+        if self.facts == StateRepresentation.FD:
             self.keep_atom_f = lambda atom: atom.get_name() in self.atoms_to_keep
-        elif self.facts == "all":
+        elif self.facts == StateRepresentation.ALL:
             self.keep_atom_f = lambda _: True
-        elif self.facts == "nostatic":
+        elif self.facts == StateRepresentation.NO_STATIC:
             self.keep_atom_f = lambda atom: atom.predicate.name in self.name_to_predicate
         else:
             raise ValueError(f"Unknown facts option {self.facts}")
 
     def _update_atoms_to_keep(self, problem_pddl: str):
-        if self.facts == "fd":
+        if self.facts == StateRepresentation.FD:
             self.atoms_to_keep = get_downward_translation_atoms(
                 self.domain_pddl,
                 problem_pddl,

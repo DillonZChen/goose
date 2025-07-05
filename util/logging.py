@@ -1,8 +1,11 @@
+import argparse
 import logging
 import sys
 from typing import Optional
 
 import termcolor as tc
+
+from util.parseable_enum import ParseableEnum
 
 
 class RelativeSeconds(logging.Formatter):
@@ -40,7 +43,11 @@ def init_logger(log_level=logging.INFO) -> None:
     logging.root.handlers[0].setFormatter(formatter)
 
 
-def mat_to_str(mat: list[list], rjust: Optional[list[bool]] = None) -> str:
+def mat_to_str(
+    mat: list[list],
+    rjust: Optional[list[bool]] = None,
+    max_lengths: Optional[list[Optional[int]]] = None,
+) -> str:
     if not mat:
         logging.warning("Empty matrix")
         return ""
@@ -49,7 +56,11 @@ def mat_to_str(mat: list[list], rjust: Optional[list[bool]] = None) -> str:
     for i in range(len(mat)):
         row = list(mat[i]) + [""] * (max_row_length - len(mat[i]))
         mat[i] = row
-    max_lengths = [max(len(str(row[i])) + 1 for row in mat) for i in range(len(mat[0]))]
+    if max_lengths is None:
+        max_lengths = [None for _ in range(len(mat[0]))]
+    for i in range(len(mat[0])):
+        if max_lengths[i] is None:
+            max_lengths[i] = max(len(str(row[i])) + 1 for row in mat)
 
     ret = []
     for row in mat:
@@ -63,3 +74,14 @@ def mat_to_str(mat: list[list], rjust: Optional[list[bool]] = None) -> str:
                 row_ret.append(str(cell).ljust(max_lengths[i]))
         ret.append(" ".join(row_ret))
     return "\n".join(ret)
+
+
+def log_opts(desc: str, opts: argparse.Namespace) -> None:
+    coloured_mat = []
+    for k, v in vars(opts).items():
+        if isinstance(v, ParseableEnum):
+            v = v.value
+        v = tc.colored(v, "cyan")
+        coloured_mat.append([k, v])
+    mat_str = mat_to_str(mat=coloured_mat, max_lengths=[22, None])
+    logging.info(f"{desc.upper()} OPTIONS:\n{mat_str}")

@@ -2,7 +2,8 @@ import logging
 from argparse import Namespace
 from typing import Any
 
-from learning.dataset import get_domain_file_from_opts, get_domain_from_opts
+from enums.policy_type import PolicyType
+from learning.dataset import get_domain_file_from_opts
 from learning.dataset.heuristic.container.cost_to_go_dataset import CostToGoDataset
 from learning.dataset.heuristic.creator.classic_cost_to_go_dataset_creator import (
     ClassicCostToGoDatasetFromPlans,
@@ -13,7 +14,6 @@ from learning.dataset.heuristic.creator.numeric_cost_to_go_dataset_creator impor
 from learning.dataset.heuristic.creator.numeric_ranking_dataset_creator import NumericRankingDatasetFromPlans
 from learning.dataset.policy.dataset_labeller import DatasetLabeller
 from learning.predictor.linear_model.predictor_factory import is_rank_predictor
-from learning.predictor.neural_network.policy_type import PolicyType
 from planning.util import is_domain_numeric
 from wlplan.data import DomainDataset
 
@@ -28,7 +28,7 @@ def get_dataset(opts: Namespace) -> tuple[DomainDataset, Any]:
         tuple[DomainDataset, Any]: WLPlan dataset and labels.
     """
 
-    if opts.policy_type is not None:
+    if opts.policy_type.is_not_search():
         return get_policy_dataset(opts)
     else:
         return get_heuristic_dataset(opts)
@@ -106,15 +106,15 @@ def get_policy_dataset(opts: Namespace) -> tuple[DomainDataset, Any]:
 
     policy_type = opts.policy_type
     match policy_type:
-        case PolicyType.VALUE_FUNCTION.value:
+        case PolicyType.VALUE_FUNCTION:
             ret = dataset_getter.get_value_function_dataset()
-        case PolicyType.QUALITY_FUNCTION.value:
+        case PolicyType.QUALITY_FUNCTION:
             ret = dataset_getter.get_quality_function_dataset()
-        case PolicyType.ADVANTAGE_FUNCTION.value:
+        case PolicyType.ADVANTAGE_FUNCTION:
             ret = dataset_getter.get_advantage_function_dataset()
-        case PolicyType.POLICY_FUNCTION.value:
+        case PolicyType.POLICY_FUNCTION:
             ret = dataset_getter.get_policy_function_dataset(est=False)
-        case PolicyType.POLICY_FUNCTION_X.value:
+        case PolicyType.POLICY_FUNCTION_X:
             ret = dataset_getter.get_policy_function_dataset(est=True)
         case _:
             raise ValueError(f"Unknown policy type: {policy_type}")

@@ -10,11 +10,18 @@ import sys
 import zipfile
 
 import numpy as np
-import termcolor as tc
 
+from enums.mode import Mode
+from enums.planner import Planner
+from enums.serialisation import namespace_from_serialisable
+from enums.state_representation import StateRepresentation
+from planning.policy.wlf_policy import WlfPolicyExecutor
+from planning.search.downward import run_downward
+from planning.search.numeric_downward import run_numeric_downward
+from planning.search.powerlifted import run_powerlifted
 from planning.util import PLANNERS_DIR
 from util.filesystem import file_exists
-from util.logging import init_logger, mat_to_str
+from util.logging import init_logger, log_opts
 
 
 _DESCRIPTION = """GOOSE planner script.
@@ -26,14 +33,14 @@ _DESCRIPTION = """GOOSE planner script.
 # fmt: off
 def get_planning_parser():
     parser = argparse.ArgumentParser(description=_DESCRIPTION, formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument("domain_pddl", type=str,
+    parser.add_argument("domain_path", type=str,
                         help="Path to PDDL domain file or `fdr` if using an FDR input.")
-    parser.add_argument("problem_pddl", type=str,
+    parser.add_argument("problem_path", type=str,
                         help="Path to PDDL problem file or FDR file.")
     parser.add_argument("model_path", type=str,
                         help="Path to the model file.")
-    parser.add_argument("-p", "--planner", type=str, default=None,
-                        choices=["pwl", "fd", "nfd", "policy"],
+    parser.add_argument("-p", "--planner", type=Planner.parse, default=None,
+                        choices=Planner.choices(),
                         help="Underlying planner. If not specified, it is automatically detected from the model.")
     parser.add_argument("-t", "--timeout", type=int, default=3600,
                         help="Timeout for search in seconds. Ignores all other preprocessing times.")
@@ -56,151 +63,95 @@ def main():
     parser = get_planning_parser()
     opts = parser.parse_args()
 
-    domain_pddl = opts.domain_pddl
-    problem_pddl = opts.problem_pddl
+    domain_path = opts.domain_path
+    problem_path = opts.problem_path
     model_path = opts.model_path
 
-    assert file_exists(domain_pddl) or domain_pddl == "fdr", domain_pddl
-    assert file_exists(problem_pddl), problem_pddl
+    assert file_exists(domain_path) or domain_path == "fdr", domain_path
+    assert file_exists(problem_path), problem_path
     assert file_exists(model_path), model_path
 
-    # Check model type
+    # Load from model path
     with zipfile.ZipFile(model_path, "r") as zf:
         zf.extractall()
-    params_file = f"{model_path}.params"
-    opts_file = f"{model_path}.opts"
-    train_opts = json.load(open(opts_file, "r"))
-    mode = train_opts["mode"]
+    params_path = f"{model_path}.params"
+    opts_path = f"{model_path}.opts"
+    train_opts = json.load(open(opts_path, "r"))
+    train_opts = argparse.Namespace(**train_opts)
+    train_opts = namespace_from_serialisable(train_opts)
 
     # Automatically detect planner if not specified
+    def set_planner(planner: Planner):
+        opts.__dict__["planner"] = planner
+        logging.info(f"Automatically set planner to {planner.value}")
+
     if opts.planner is None:
-        if mode == "wlf":
-            state_repr = train_opts["facts"]
-            if state_repr == "fd":
-                opts.planner == "fd"
-            elif state_repr in {"all", "nostatic"}:
-                opts.planner = "pwl"
-            elif state_repr == "nfd":
-                opts.planner = "nfd"
-            else:
-                raise ValueError(f"Unknown value {state_repr=}")
-        if mode["policy_type"] is not None:
-            opts.planner = "policy"
-    if domain_pddl == "fdr":
-        assert opts.planner == "fd", "FDR input is only supported with Fast Downward `--planner=fd`"
+        if train_opts.policy_type.is_not_search():
+            set_planner(Planner.POLICY)
+        else:
+            match train_opts.facts:
+                case StateRepresentation.FD:
+                    set_planner(Planner.FD)
+                case StateRepresentation.NFD:
+                    set_planner(Planner.NFD)
+                case StateRepresentation.ALL | StateRepresentation.NO_STATIC:
+                    set_planner(Planner.PWL)
+                case _:
+                    raise ValueError(f"Unknown value {train_opts.facts=}")
+    if domain_path == "fdr":
+        assert opts.planner == Planner.FD, "FDR input is only supported with Fast Downward `--planner=fd`"
 
-    # Log parsed options
-    logging.info(f"Processed options:\n{mat_to_str([[k, tc.colored(v, 'cyan')] for k, v in vars(opts).items()])}")
+    # Log plan options
+    log_opts(desc="plan", opts=opts)
 
-    timeout = str(opts.timeout)
+    # Log train options
+    log_opts(desc="train", opts=train_opts)
 
     match opts.planner:
-        case "pwl":
-            cmd = [
-                "python3",
-                f"{PLANNERS_DIR}/powerlifted/powerlifted.py",
-                "-s",
-                "gbfs",
-                "-d",
-                domain_pddl,
-                "-i",
-                problem_pddl,
-                "-g",
-                "clique_kckp",  # supports negative preconditions
-                "--time-limit",
-                timeout,
-                "-e",
-                "wlgoose",
-                "-m",
-                params_file,
-                "--translator-output-file",
-                opts.intermediate_file,
-                "--plan-file",
-                opts.plan_file,
-            ]
-            subprocess.check_call(cmd)
-        case "fd":
-            h_goose = f'wlgoose(model_file="{params_file}")'
+        case Planner.PWL:
+            run_powerlifted(domain_path=domain_path, problem_path=problem_path, wlf_params_path=params_path, opts=opts)
+        case Planner.FD:
+            run_downward(domain_path=domain_path, problem_path=problem_path, wlf_params_path=params_path, opts=opts)
+        case Planner.NFD:
+            run_numeric_downward(
+                domain_path=domain_path, problem_path=problem_path, wlf_params_path=params_path, opts=opts
+            )
+        case Planner.POLICY:
+            kwargs = {
+                "domain_path": domain_path,
+                "problem_path": problem_path,
+                "params_path": params_path,
+                "train_opts": train_opts,
+                "debug": opts.debug,
+                "bound": opts.bound,
+            }
 
-            if domain_pddl == "fdr":
-                cmd = [
-                    "python3",
-                    f"{PLANNERS_DIR}/downward/fast-downward.py",
-                    problem_pddl,
-                    "--search",
-                    f"eager_greedy([{h_goose}])",
-                ]
-            else:
-                cmd = [
-                    "python3",
-                    f"{PLANNERS_DIR}/downward/fast-downward.py",
-                    "--sas-file",
-                    opts.intermediate_file,
-                    "--plan-file",
-                    opts.plan_file,
-                    "--search-time-limit",
-                    timeout,
-                    domain_pddl,
-                    problem_pddl,
-                    "--search",
-                    f"eager_greedy([{h_goose}])",
-                ]
-            subprocess.check_call(cmd)
-        case "nfd":
-            h_goose = f"wlgoose(model_path={params_file},domain_path={domain_pddl},problem_path={problem_pddl})"
+            match train_opts.mode:
+                case Mode.WLF:
+                    policy = WlfPolicyExecutor(**kwargs)
+                case Mode.GNN:
+                    # Torch and Pytorch Geometric imports done here to avoid unnecessary imports when not using GNN
+                    try:
+                        import torch
+                        import torch_geometric
+                    except ModuleNotFoundError:
+                        logging.info(
+                            "The current environment does not have PyTorch and PyTorch Geometric installed. "
+                            + "Please install them to use GNN architectures. Exiting."
+                        )
+                        sys.exit(1)
+                    from planning.policy.gnn_policy import GnnPolicyExecutor
 
-            cmd = [
-                "python2",  # nfd defines a pddl module which clashes with the pddl package
-                f"{PLANNERS_DIR}/numeric-downward/fast-downward.py",
-                "--build",
-                "release64",
-                "--sas_file",
-                opts.intermediate_file,
-                "--plan-file",
-                opts.plan_file,
-                "--search-time-limit",
-                timeout,
-                domain_pddl,
-                problem_pddl,
-                "--search",
-                f"eager_greedy({h_goose})",
-            ]
-            subprocess.check_call(cmd)
-        case "policy":
-
-            # Torch and Pytorch Geometric imports done here to avoid unnecessary imports when not using GNN
-            try:
-                import torch
-                import torch_geometric
-            except ModuleNotFoundError:
-                logging.info(
-                    "The current environment does not have PyTorch and PyTorch Geometric installed. "
-                    + "Please install them to use GNN architectures. Exiting."
-                )
-                sys.exit(1)
-
-            from learning.predictor.neural_network.serialise import load_gnn
-            from planning.policy.gnn_policy import GnnPolicyExecutor
-
-            model, train_opts = load_gnn(model_path)
+                    policy = GnnPolicyExecutor(**kwargs)
+                case _:
+                    raise ValueError(f"Unknown value {train_opts.mode=}")
 
             random.seed(opts.random_seed)
-            np.random.seed(opts.random_seed)
-            torch.manual_seed(opts.random_seed)
-
-            policy = GnnPolicyExecutor(
-                domain_file=domain_pddl,
-                problem_file=problem_pddl,
-                gnn=model,
-                train_opts=train_opts,
-                debug=opts.debug,
-                bound=opts.bound,
-            )
             plan = policy.execute()
             policy.dump_stats()
 
         case _:
-            raise NotImplementedError
+            raise ValueError(f"Unknown value {opts.planner=}")
 
     if os.path.exists(opts.intermediate_file):
         os.remove(opts.intermediate_file)

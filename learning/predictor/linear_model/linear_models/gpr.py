@@ -6,10 +6,10 @@ from sklearn.gaussian_process import GaussianProcessRegressor as GPR
 from sklearn.gaussian_process.kernels import DotProduct
 from termcolor import colored
 
-from .regressor import Regressor
+from learning.predictor.linear_model.unitary_regressor import UnitaryRegressor
 
 
-class GaussianProcessRegressor(Regressor):
+class GaussianProcessRegressor(UnitaryRegressor):
     """Linear GPR"""
 
     IS_RANK = False

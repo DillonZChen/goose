@@ -17,7 +17,6 @@ def save_gnn_weights(save_file: str, weights_dict: Optional[WeightsDict]) -> Non
     if len(save_dir) > 0:
         os.makedirs(save_dir, exist_ok=True)
     torch.save(weights_dict, save_file)
-    print(f"Saved gnn weights to {save_file}")
 
 
 def load_gnn_weights(save_file: str) -> WeightsDict:
@@ -29,15 +28,4 @@ def load_gnn_weights(save_file: str) -> WeightsDict:
     else:
         weights_dict = torch.load(save_file, weights_only=False, map_location=torch.device("cpu"))
 
-    if not isinstance(weights_dict, WeightsDict):
-        raise TypeError(f"Expected ModelDict, got {type(weights_dict)}")
     return weights_dict
-
-
-def load_gnn(save_file: str) -> tuple[RGNN, argparse.Namespace]:
-    weights_dict = load_gnn_weights(save_file)
-    opts = weights_dict.opts
-    weights = weights_dict.weights
-    model = RGNN.init_from_opts(opts=opts)
-    model.load_state_dict(weights)
-    return model, opts

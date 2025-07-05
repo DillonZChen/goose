@@ -29,30 +29,32 @@ def optimise_weights(
 
     model_dict = None
     best_metric = float("inf")
+    best_epoch = None
+    train_loss = None
+    val_loss = None
 
     try:
         for epoch in range(opts.epochs):
             t = time.time()
 
-            train_loss = train_step(model, device, train_loader, criterion, optimiser)
-            val_loss = val_step(model, device, val_loader, criterion)
-            scheduler.step(val_loss)
+            train_loss_loc = train_step(model, device, train_loader, criterion, optimiser)
+            val_loss_loc = val_step(model, device, val_loader, criterion)
+            scheduler.step(val_loss_loc)
 
             # take gnn weights corresponding to best combined metric
-            combined_metric = (train_loss + 2 * val_loss) / 3
+            combined_metric = (train_loss_loc + 2 * val_loss_loc) / 3
             if combined_metric < best_metric:
                 best_metric = combined_metric
-                model_dict = WeightsDict(
-                    weights=model.state_dict(),
-                    epoch=epoch,
-                    train_loss=train_loss,
-                    val_loss=val_loss,
-                )
+                model_dict = model.state_dict()
+                train_loss = train_loss_loc
+                val_loss = val_loss_loc
 
             lr = optimiser.param_groups[0]["lr"]
             t = time.time() - t
 
-            print(", ".join([f"{epoch=}", f"{t=:.8f}", f"{train_loss=:.8f}", f"{val_loss=:.8f}", f"{lr=:.1e}"]))
+            print(
+                ", ".join([f"{epoch=}", f"{t=:.8f}", f"{train_loss_loc=:.8f}", f"{val_loss_loc=:.8f}", f"{lr=:.1e}"])
+            )
 
             if lr < 1e-5:
                 logging.info(f"Early stopping due to small {lr=:.1e}")
@@ -61,9 +63,6 @@ def optimise_weights(
     except KeyboardInterrupt:
         logging.info(f"Early stopping due to keyboard interrupt!")
 
-    best_epoch = model_dict.epoch if model_dict else None
-    train_loss = model_dict.train_loss if model_dict else None
-    val_loss = model_dict.val_loss if model_dict else None
     logging.info(f"{best_epoch=}")
     logging.info(f"{train_loss=:.8f}")
     logging.info(f"{val_loss=:.8f}")

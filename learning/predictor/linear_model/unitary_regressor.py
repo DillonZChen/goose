@@ -6,7 +6,7 @@ from sklearn.metrics import f1_score, mean_squared_error
 from learning.predictor.linear_model.linear_model import LinearModel
 
 
-class Regressor(LinearModel):
+class UnitaryRegressor(LinearModel):
     IS_RANK = False
 
     def _evaluate_impl(self):

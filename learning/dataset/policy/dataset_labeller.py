@@ -49,6 +49,7 @@ class DatasetLabeller:
 
     def get_labelled_dataset(self) -> LabelledDataset:
         if self._cache and self._cache_exists:
+            logging.info("Loading dataset from existing cache.")
             with open(self._cache, "rb") as f:
                 ret = pickle.load(f)
         else:
@@ -62,6 +63,8 @@ class DatasetLabeller:
 
             if not self._cache:
                 logging.info("Tip: dataset can be computed and stored in via the flag --cache")
+            else:
+                logging.info(f"Cache {self._cache} does not exist. Computing from scratch.")
 
             for problem_path in tqdm(self._problem_paths):
                 plan = get_plan(self._domain_path, problem_path)

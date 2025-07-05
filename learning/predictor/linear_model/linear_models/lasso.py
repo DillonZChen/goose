@@ -3,13 +3,13 @@ import warnings
 from sklearn.exceptions import ConvergenceWarning
 from sklearn.linear_model import Lasso
 
-from .regressor import Regressor
+from learning.predictor.linear_model.unitary_regressor import UnitaryRegressor
 
 
 warnings.filterwarnings("ignore", category=ConvergenceWarning)
 
 
-class LassoRegression(Regressor):
+class LassoRegression(UnitaryRegressor):
     """L1 loss"""
 
     IS_RANK = False

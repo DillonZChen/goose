@@ -13,14 +13,21 @@ import numpy as np
 import termcolor as tc
 import toml
 
+from enums.mode import Mode
+from enums.policy_type import PolicyType
+from enums.serialisation import namespace_from_serialisable, namespace_to_serialisable
+from enums.state_representation import StateRepresentation
 from learning.dataset import get_domain_file_from_opts, get_domain_from_opts, get_training_dir_from_opts
 from learning.dataset.dataset_factory import get_dataset
 from learning.dataset.state_to_vec import embed_data
-from learning.predictor.linear_model.predictor_factory import get_available_predictors, get_predictor
-from learning.predictor.neural_network.policy_type import get_policy_type_options
+from learning.predictor.linear_model.predictor_factory import (
+    get_available_predictors,
+    get_predictor,
+    is_unitary_classifier,
+)
 from util.distinguish_test import distinguish
 from util.filesystem import get_path_error_msg
-from util.logging import init_logger, mat_to_str
+from util.logging import init_logger, log_opts
 from util.pca_visualise import visualise
 from util.timer import TimerContextManager
 from wlplan.feature_generator import (
@@ -92,14 +99,14 @@ def get_learning_parser():
     gen_group.add_argument("-l", "--iterations", type=int, default=2,
                         help=f"Number of WL iterations or GNN message passing layers. " + \
                              f"(default: 2)")
-    gen_group.add_argument("-m", "--mode", type=str, default="wlf",
-                        choices=["wlf", "gnn"],
-                        help=f"Mode to use. " + \
+    gen_group.add_argument("-m", "--mode", type=Mode.parse, default=Mode.WLF,
+                        choices=Mode.choices(),
+                        help=f"Model mode to use. " + \
                              f"(default: wlf).")
-    gen_group.add_argument("-p", "--policy-type", type=str, default=None,
-                        choices=get_policy_type_options(),
+    gen_group.add_argument("-p", "--policy-type", type=PolicyType.parse, default=PolicyType.SEARCH,
+                        choices=PolicyType.choices(),
                         help=f"If specified, policy representation via X-function for X in choices. " + \
-                             f"(default: None)")
+                             f"(default: None, i.e. learn search)")
 
     # WLF options
     wlf_group = parser.add_argument_group("wlf options")
@@ -156,8 +163,8 @@ def get_learning_parser():
                         choices=["none", "equivalent", "equivalent-weighted"],
                         help=f"Method for pruning data. " + \
                              f"(default: equivalent-weighted)")
-    data_group.add_argument("--facts", type=str, default="fd",
-                        choices=["fd", "nfd", "all", "nostatic"],
+    data_group.add_argument("--facts", type=StateRepresentation.parse, default=StateRepresentation.FD,
+                        choices=StateRepresentation.choices(),
                         help=f"Intended facts to keep e.g. Fast Downward *fd* grounds the task and prunes away statics as well as some unreachable facts. " + \
                              f"(default: fd)")
 
@@ -176,10 +183,20 @@ def get_learning_parser():
 
 
 def parse_learning_opts():
+    """Parses command line and config file options for training a model.
+    Checks validity of options and modifies any if necessary.
+
+    Raises:
+        ValueError: invalid option configuration
+
+    Returns:
+        argparse.Namespace: training options
+    """
+
     parser = get_learning_parser()
     opts = parser.parse_args()
 
-    # Check domain directory is valid
+    # Check parsed domain directory is valid
     domain_directory = opts.domain_directory
     if not os.path.exists(domain_directory):
         raise ValueError(f"{domain_directory=} does not exist.")
@@ -192,11 +209,18 @@ def parse_learning_opts():
     if not os.path.exists(training_dir):
         raise ValueError(f"A `training/` directory is not found in {domain_directory=}.")
 
-    # Modify options based on parsed configuration
+    # Subroutine for assigning namespace values
+    def assign_namespace_value(key: str, value: Any) -> None:
+        nonlocal opts
+        opts.__dict__[key] = value
+        # Ensure strings are converted into proper enum objects
+        opts = namespace_from_serialisable(opts)
+
+    # Modify options based on configuration file
     if opts.model_config is not None:
         assert os.path.exists(opts.model_config), get_path_error_msg(opts.model_config)
         model_config = toml.load(opts.model_config)
-        # Replace "" strings with None
+        # Replace "" strings with None. This is because .toml files have no option to specify Python None
         for key, value in model_config.items():
             if value == "":
                 model_config[key] = None
@@ -204,23 +228,26 @@ def parse_learning_opts():
     else:
         model_config = {}
 
-    if "mode" in model_config:
-        opts.__dict__["mode"] = model_config["mode"]
+    for key, val in model_config.items():
+        if key not in opts.__dict__:
+            raise ValueError(f"Unknown argument *{key}* in config file")
+        assign_namespace_value(key=key, value=model_config[key])
+        logging.info(f"Setting option specified in config file {key}: {val}")
 
     def handle_config_vals(relevant_args: Dict[str, Any], irrelevant_args: Dict[str, Any]) -> None:
         for key, default_value in relevant_args.items():
             if opts.__dict__[key] is None:
-                opts.__dict__[key] = default_value
+                assign_namespace_value(key=key, value=default_value)
         for key in irrelevant_args:
-            opts.__dict__[key] = None
+            assign_namespace_value(key=key, value=None)
             if key in model_config:
                 raise ValueError(f"Contradictory argument *{key}* in config file for {opts.mode=}")
 
     match opts.mode:
-        case "wlf":
+        case Mode.WLF:
             logging.info(f"WLF mode detected. Ignoring all GNN options.")
             handle_config_vals(relevant_args=_DEFAULT_WLF_VALS, irrelevant_args=_DEFAULT_GNN_VALS)
-        case "gnn":
+        case Mode.GNN:
             if opts.policy_type is None:
                 raise ValueError("Heuristic learning not supported for GNNs, please specify --policy-type.")
             logging.info(f"GNN mode detected. Ignoring all WLF options.")
@@ -228,22 +255,28 @@ def parse_learning_opts():
         case _:
             raise ValueError(f"Unknown value {opts.mode=}")
 
-    for key, val in model_config.items():
-        if key not in opts.__dict__:
-            raise ValueError(f"Unknown argument *{key}* in config file")
-        opts.__dict__[key] = model_config[key]
-        logging.info(f"Setting option specified in config file {key}: {val}")
-
     # Modify options based on distinguish or visualisation routine
     if opts.distinguish_test or opts.visualise_pca:
-        if opts.mode == "gnn":
+        if opts.mode == Mode.GNN:
             raise ValueError("Distinguishability testing and PCA visualisation are only supported for WLF mode.")
         logging.info("Overriding options to use WLF and regression labels for non-training routine.")
-        opts.__dict__["optimisation"] = "svr"
-        opts.__dict__["policy_type"] = None
+        assign_namespace_value(key="optimisation", value="svr")
+        assign_namespace_value(key="policy_type", value=PolicyType.SEARCH)
 
-    # Log parsed options
-    logging.info(f"Processed options:\n{mat_to_str([[k, tc.colored(v, 'cyan')] for k, v in vars(opts).items()])}")
+    # Modify predictor if policy mode is distribution
+    if (
+        opts.mode == Mode.WLF
+        and opts.policy_type.is_policy_function()
+        and not is_unitary_classifier(opts.optimisation)
+    ):
+        logging.info("Overriding optimisation for WLF policy function learner to use SVM optimisation.")
+        assign_namespace_value(key="optimisation", value="svm")
+
+    # Ensure strings are converted into proper enum objects
+    opts = namespace_from_serialisable(opts)
+
+    # Log train options
+    log_opts(desc="train", opts=opts)
 
     # Set seeds
     random.seed(opts.random_seed)
@@ -252,22 +285,38 @@ def parse_learning_opts():
     return opts
 
 
-def save(save_file: str, save_subroutine: Callable[[str], None]) -> None:
-    if save_file:
-        opts_file = save_file + ".opts"
-        param_file = save_file + ".params"
-        with TimerContextManager("saving model"):
-            # serialise opts
-            with open(opts_file, "w") as f:
-                json.dump(vars(opts), f, indent=4)
-            # serialise params
-            save_subroutine(param_file)
-            # zip opts and params
-            with zipfile.ZipFile(save_file, "w") as zipf:
-                zipf.write(opts_file)
-                zipf.write(param_file)
-        if os.path.exists(save_file):
-            logging.info(f"Saved model successfully to {tc.colored(save_file, 'blue')}")
+def save(opts: argparse.Namespace, save_subroutine: Callable[[str], None]) -> None:
+    """Save opts and model to file if specified in opts.save_file.
+
+    Args:
+        opts (argparse.Namespace): train options, containing save_file location
+        save_subroutine (Callable[[str], None]): subroutine for serialisaing model component
+    """
+
+    save_file = opts.save_file
+    if not save_file:
+        return
+
+    opts_file = save_file + ".opts"
+    param_file = save_file + ".params"
+
+    with TimerContextManager("saving model"):
+        # serialise opts
+        opts_content = namespace_to_serialisable(opts)
+        opts_content = vars(opts_content)
+        with open(opts_file, "w") as f:
+            json.dump(opts_content, f, indent=4)
+
+        # serialise params
+        save_subroutine(param_file)
+
+        # zip opts and params
+        with zipfile.ZipFile(save_file, "w") as zipf:
+            zipf.write(opts_file)
+            zipf.write(param_file)
+
+    if os.path.exists(save_file):
+        logging.info(f"Saved model successfully to {tc.colored(save_file, 'blue')}")
 
 
 def train_wlf(opts: argparse.Namespace) -> None:
@@ -326,7 +375,7 @@ def train_wlf(opts: argparse.Namespace) -> None:
         predictor.evaluate()
 
     # Save model
-    save(save_file=opts.save_file, save_subroutine=lambda x: wlf_generator.save(x, predictor.get_weights()))
+    save(opts=opts, save_subroutine=lambda x: wlf_generator.save(x, predictor.get_weights()))
 
 
 def train_gnn(opts: argparse.Namespace) -> None:
@@ -387,17 +436,17 @@ def train_gnn(opts: argparse.Namespace) -> None:
         weights_dict = optimise_weights(model, device, train_loader, val_loader, opts)
 
     # Save model
-    save(save_file=opts.save_file, save_subroutine=lambda x: save_gnn_weights.save(x, weights_dict))
+    save(opts=opts, save_subroutine=lambda x: save_gnn_weights(x, weights_dict))
 
 
 if __name__ == "__main__":
     init_logger()
     opts = parse_learning_opts()
     match opts.mode:
-        case "wlf":
+        case Mode.WLF:
             logging.info("Training using WL features")
             train_wlf(opts)
-        case "gnn":
+        case Mode.GNN:
             logging.info("Training using GNN features")
             train_gnn(opts)
         case _:
