@@ -5,11 +5,8 @@ import json
 import logging
 import os
 import random
-import subprocess
 import sys
 import zipfile
-
-import numpy as np
 
 from enums.mode import Mode
 from enums.planner import Planner
@@ -19,7 +16,6 @@ from planning.policy.wlf_policy import WlfPolicyExecutor
 from planning.search.downward import run_downward
 from planning.search.numeric_downward import run_numeric_downward
 from planning.search.powerlifted import run_powerlifted
-from planning.util import PLANNERS_DIR
 from util.filesystem import file_exists
 from util.logging import init_logger, log_opts
 

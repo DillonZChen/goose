@@ -78,7 +78,9 @@ class SGTask:
 
                 if pred in self.static_predicates:
                     if goal not in self.problem.init:
-                        raise ValueError(f"Problem unsolvable. Static goal {goal} not in initial state.")
+                        raise ValueError(
+                            f"Problem unsolvable. Static goal {goal} not in initial state."
+                        )
                     else:
                         continue
 
@@ -91,7 +93,9 @@ class SGTask:
 
                 if pred in self.static_predicates:
                     if goal in self.problem.init:
-                        raise ValueError(f"Problem unsolvable. Static negative goal {goal} in initial state.")
+                        raise ValueError(
+                            f"Problem unsolvable. Static negative goal {goal} in initial state."
+                        )
                     else:
                         continue
 
@@ -100,9 +104,17 @@ class SGTask:
                 false_facts.add(i)
             else:
                 numeric_goals.append(
-                    to_ground_expr(goal, self.statics, self.fluent_index_map_pyt, self.func_to_i, self.obj_to_i)
+                    to_ground_expr(
+                        goal,
+                        self.statics,
+                        self.fluent_index_map_pyt,
+                        self.func_to_i,
+                        self.obj_to_i,
+                    )
                 )
-        self.goal = SGGoal(pos_goals=true_facts, neg_goals=false_facts, numeric_goals=numeric_goals)
+        self.goal = SGGoal(
+            pos_goals=true_facts, neg_goals=false_facts, numeric_goals=numeric_goals
+        )
 
     def _handle_statics(self) -> None:
         all_predicates = set(p.name for p in self.domain.predicates)
@@ -130,8 +142,12 @@ class SGTask:
 
         self.static_predicates = [self.pred_to_i[p] for p in sorted(static_predicates)]
         self.static_functions = [self.func_to_i[f] for f in sorted(static_functions)]
-        self.fluent_predicates = [self.pred_to_i[p] for p in sorted(all_predicates - static_predicates)]
-        self.fluent_functions = [self.func_to_i[f] for f in sorted(all_functions - static_functions)]
+        self.fluent_predicates = [
+            self.pred_to_i[p] for p in sorted(all_predicates - static_predicates)
+        ]
+        self.fluent_functions = [
+            self.func_to_i[f] for f in sorted(all_functions - static_functions)
+        ]
 
         logging.debug(f"{self.static_predicates=}")
         logging.debug(f"{self.static_functions=}")
@@ -189,7 +205,7 @@ class SGTask:
     def dump_state(self, state: SGState) -> None:
         print(self.state_to_string(state))
 
-    def state_to_string(self, state: SGState) -> str:
+    def state_to_string(self, state: SGState, delimiter: str = "\n") -> str:
         atoms = []
         values = []
 
@@ -206,7 +222,7 @@ class SGTask:
             row = [self.i_to_obj[i] for i in func[1]]
             values.append(f"{table_name}({','.join(row)}) = {state_values[i]}")
 
-        return "\n".join(sorted(atoms) + sorted(values))
+        return delimiter.join(sorted(atoms) + sorted(values))
 
     def dump_action(self, action: SGAction) -> None:
         print(self.action_to_string(action))

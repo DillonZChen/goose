@@ -7,6 +7,7 @@ from abc import ABC, abstractmethod
 from typing import Optional
 
 import pddl
+import termcolor as tc
 from pddl.logic.base import And, Not
 from pddl.logic.functions import Assign, Decrease, FunctionExpression, Increase, NumericFunction
 from pddl.logic.predicates import Predicate
@@ -34,6 +35,8 @@ class PolicyExecutor(ABC):
         debug: bool = False,
         bound: int = -1,
     ):
+        if debug:
+            logging.getLogger().setLevel(logging.DEBUG)
 
         self._debug = debug
         self._bound = bound
@@ -151,9 +154,13 @@ class PolicyExecutor(ABC):
                 plan = None
                 break
 
-            state_str = self._task.state_to_string(state)
+            state_str = self._task.state_to_string(state, delimiter=", ")
             if state_str not in cycle_detector:
                 cycle_detector[state_str] = set()
+
+            debug_str = ""
+            debug_str += f"step {len(plan)}\n"
+            debug_str += f"\n{{{{{state_str}}}}}\n\n"
 
             applicable_actions = self._get_applicable_actions(state)
             # applicable_actions = []
@@ -168,20 +175,30 @@ class PolicyExecutor(ABC):
                 break
 
             t = time.perf_counter()
-            action = self.select_action(state, applicable_actions)
-            action_str = self._task.action_to_string(action)
+            scores = self.compute_scores(state, applicable_actions)
+
+            best_pred = min(scores.values())
+            best_action = random.choice([a for a, v in scores.items() if v == best_pred])
+            best_action_str = self._task.action_to_string(best_action)
+            for action, score in scores.items():
+                action_str = self._task.action_to_string(action)
+                if best_action_str == action_str:
+                    action_str = tc.colored(action_str, "green")
+                debug_str += f"{action_str}  {score:.4f}\n"
             self._t_eval_p += time.perf_counter() - t
 
-            cycle_detector[state_str].add(action_str)
+            cycle_detector[state_str].add(best_action_str)
 
-            state = self._get_successor_state(action, state)
-            plan.append(action_str)
+            state = self._get_successor_state(best_action, state)
+            plan.append(best_action_str)
 
             n_steps = len(plan)
-            if self._debug:
-                print(f"{n_steps=}, action={action_str}")
+            logging.debug(debug_str)
             if n_steps > 0 and (n_steps & (n_steps - 1)) == 0:
                 logging.info(f"Reached {n_steps=}")
+
+            # if self._debug:
+            #     breakpoint()
 
         self._t_total = time.perf_counter() - self._start_time
         self._plan_length = len(plan) if plan is not None else "na"
@@ -203,16 +220,8 @@ class PolicyExecutor(ABC):
         pred = self._predict_graph(graph)
         return pred
 
-    def select_action(self, state: SGState, actions: list[SGAction]) -> SGAction:
-        best_pred = float("inf")
-        best_action = None
-        random.shuffle(actions)
-        for action in actions:
-            pred = self._predict_impl(state=self._get_successor_state(action, state), action=action)
-            if pred < best_pred:
-                best_pred = pred
-                best_action = action
-        return best_action
+    def compute_scores(self, state: SGState, actions: list[SGAction]) -> dict[SGAction, float]:
+        return {a: self._predict_impl(state=self._get_successor_state(a, state), action=a) for a in actions}
 
     def _is_goal(self, state: SGState) -> bool:
         return self._task.goal.satisfied_by(state)
