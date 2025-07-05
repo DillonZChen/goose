@@ -1,6 +1,5 @@
 import argparse
 
-import torch
 from typing_extensions import override
 
 from planning.policy.policy import PolicyExecutor
