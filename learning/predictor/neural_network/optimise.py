@@ -3,7 +3,7 @@ import logging
 import time
 
 import torch
-from torch.nn import Module, MSELoss
+from torch.nn import BCELoss, BCEWithLogitsLoss, Module, MSELoss
 from torch.optim import Optimizer
 from torch.utils.data import DataLoader
 
@@ -18,7 +18,12 @@ def optimise_weights(
     opts: argparse.Namespace,
 ) -> WeightsDict:
 
-    criterion = MSELoss()
+    if opts.policy_type.is_policy_function():
+        logging.info("Optimising with BCELoss")
+        criterion = BCEWithLogitsLoss()
+    else:
+        logging.info("Optimising with MSELoss")
+        criterion = MSELoss()
     optimiser = torch.optim.Adam(model.parameters(), lr=opts.learning_rate)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
         optimiser,
@@ -82,11 +87,11 @@ def train_step(
 
     for data in train_loader:
         data = data.to(device)
-        h_true = data.y.float().to(device)
+        y_true = data.y.float().to(device)
         optimiser.zero_grad(set_to_none=True)
-        h_pred = model.forward(x=data.x, edge_indices_list=data.edge_index, batch=data.batch)
+        y_pred = model.forward(x=data.x, edge_indices_list=data.edge_index, batch=data.batch)
 
-        loss = criterion.forward(h_pred, h_true)
+        loss = criterion.forward(y_pred, y_true)
         loss.backward()
         optimiser.step()
         train_loss += loss.detach().cpu().item()
