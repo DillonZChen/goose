@@ -2,6 +2,7 @@ Bootstrap: localimage
 From: apptainer/goose-base.sif
 
 %files
+    enums /goose/
     learning /goose/
     planning /goose/
     util /goose/
