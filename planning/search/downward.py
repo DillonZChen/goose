@@ -58,6 +58,8 @@ def run_downward_standalone(domain_path: str, problem_path: str, opts) -> None:
             heuristics = [ff, wl]
         case Planner.FF_GC:
             heuristics = [ff, gc]
+        case Planner.FF_GC_WL:
+            heuristics = [ff, gc, wl]
         case _:
             raise NotImplementedError(f"{opts.planner=}")
     heuristics = ", ".join(heuristics)

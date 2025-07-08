@@ -16,6 +16,7 @@ class Planner(ParseableEnum):
     GC_WL = "gc-wl"
     FF_WL = "ff-wl"
     FF_GC = "ff-gc"
+    FF_GC_WL = "ff-gc-wl"
 
     @staticmethod
     def requires_model(planner: "Planner") -> bool:
@@ -37,6 +38,7 @@ class Planner(ParseableEnum):
             Planner.GC_WL,
             Planner.FF_WL,
             Planner.FF_GC,
+            Planner.FF_GC_WL,
         }
 
     @staticmethod
@@ -59,4 +61,5 @@ class Planner(ParseableEnum):
             Planner.GC_WL,
             Planner.FF_WL,
             Planner.FF_GC,
+            Planner.FF_GC_WL,
         }
