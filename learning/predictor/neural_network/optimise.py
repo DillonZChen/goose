@@ -3,10 +3,11 @@ import logging
 import time
 
 import torch
-from torch.nn import BCELoss, BCEWithLogitsLoss, Module, MSELoss
+from torch.nn import BCEWithLogitsLoss, Module, MSELoss
 from torch.optim import Optimizer
 from torch.utils.data import DataLoader
 
+from enums.policy_type import PolicyType
 from learning.predictor.neural_network.weights_dict import WeightsDict
 
 
@@ -18,7 +19,7 @@ def optimise_weights(
     opts: argparse.Namespace,
 ) -> WeightsDict:
 
-    if opts.policy_type.is_policy_function():
+    if PolicyType.is_policy_function(opts.policy_type):
         logging.info("Optimising with BCELoss")
         criterion = BCEWithLogitsLoss()
     else:

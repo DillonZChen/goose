@@ -9,4 +9,4 @@ feature_pruning = "i-mf"
 hash = "set"
 
 data_pruning = "equivalent-weighted"
-facts = "fd"
+state_representation = "downward"

@@ -7,4 +7,4 @@ optimisation = "gpr"
 feature_pruning = "none"
 hash = "mset"
 
-facts = "all"
+state_representation = "all"

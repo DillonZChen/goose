@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USAGE_DESCRIPTION="Usage $0 [wlplan|succgen|planners|fd|nfd|pwl|all]"
+USAGE_DESCRIPTION="Usage $0 [wlplan|succgen|planners|downward|numeric-downward|powerlifted|all]"
 
 # Check number of arguments
 if [[ $# -eq 0 ]]; then
@@ -14,7 +14,7 @@ fi
 
 # Check argument validity
 case "$arg" in
-wlplan | succgen | planners | fd | nfd | pwl | all)
+wlplan | succgen | planners | downward | numeric-downward | powerlifted | all)
     # Valid argument, continue
     ;;
 *)
@@ -25,11 +25,11 @@ esac
 
 # Planners
 PLANNERS_DIR="planning/ext"
-if [[ "$arg" = "fd" ]]; then
+if [[ "$arg" = "downward" ]]; then
     PLANNERS="downward"
-elif [[ "$arg" = "nfd" ]]; then
+elif [[ "$arg" = "numeric-downward" ]]; then
     PLANNERS="numeric-downward"
-elif [[ "$arg" = "pwl" ]]; then
+elif [[ "$arg" = "powerlifted" ]]; then
     PLANNERS="powerlifted"
 elif [[ "$arg" = "planners" || "$arg" = "all" ]]; then
     PLANNERS="downward numeric-downward powerlifted"

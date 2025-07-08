@@ -1,6 +1,7 @@
 import subprocess
 
-from planning.util import PLANNERS_DIR
+from util.paths import PLANNERS_DIR
+from util.shell import execute_cmd
 
 
 def run_powerlifted(domain_path: str, problem_path: str, wlf_params_path: str, opts) -> None:
@@ -26,4 +27,4 @@ def run_powerlifted(domain_path: str, problem_path: str, wlf_params_path: str, o
         "--plan-file",
         opts.plan_file,
     ]
-    subprocess.check_call(list(map(str, cmd)))
+    execute_cmd(cmd)

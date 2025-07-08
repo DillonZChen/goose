@@ -2,4 +2,4 @@ mode = "gnn"
 
 graph_representation = "aoag"
 
-facts = "all"
+state_representation = "all"

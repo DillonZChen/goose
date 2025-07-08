@@ -18,7 +18,7 @@ def namespace_from_serialisable(opts: argparse.Namespace) -> argparse.Namespace:
     for key, cls in [
         ("mode", Mode),
         ("policy_type", PolicyType),
-        ("facts", StateRepresentation),
+        ("state_representation", StateRepresentation),
     ]:
         val = opts.__dict__[key]
         if isinstance(val, str):

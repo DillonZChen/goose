@@ -1,6 +1,7 @@
 import subprocess
 
-from planning.util import PLANNERS_DIR
+from util.paths import PLANNERS_DIR
+from util.shell import execute_cmd
 
 
 def run_numeric_downward(domain_path: str, problem_path: str, wlf_params_path: str, opts) -> None:
@@ -22,4 +23,4 @@ def run_numeric_downward(domain_path: str, problem_path: str, wlf_params_path: s
         "--search",
         f"eager_greedy({h_goose})",
     ]
-    subprocess.check_call(list(map(str, cmd)))
+    execute_cmd(cmd)

@@ -23,7 +23,7 @@ CONFIGS_MAP = {
     "feature_pruning": ["none", "i-mf"],
     "data_pruning": ["equivalent-weighted"],
     "data_generation": ["plan"],
-    "facts": ["fd", "all"],
+    "state_representation": ["downward", "all"],
     "hash": ["set"],
 }
 CONFIGS = [dict(zip(CONFIGS_MAP.keys(), values)) for values in product(*CONFIGS_MAP.values())]

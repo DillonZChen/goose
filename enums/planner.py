@@ -2,8 +2,36 @@ from util.parseable_enum import ParseableEnum
 
 
 class Planner(ParseableEnum):
-    NONE = None
-    FD = "fd"
-    NFD = "nfd"
-    PWL = "pwl"
+    NONE = "none"
+    DOWNWARD = "downward"
+    NUMERIC_DOWNWARD = "numeric-downward"
+    POWERLIFTED = "powerlifted"
     POLICY = "policy"
+    DOWNWARD_FDR = "downward-fdr"
+    WL_FF = "wl-ff"
+
+    @staticmethod
+    def requires_model(planner: "Planner") -> bool:
+        return planner in {
+            Planner.DOWNWARD,
+            Planner.NUMERIC_DOWNWARD,
+            Planner.POWERLIFTED,
+            Planner.POLICY,
+            Planner.DOWNWARD_FDR,
+        }
+
+    @staticmethod
+    def supports_fdr(planner: "Planner") -> bool:
+        return planner in {
+            Planner.DOWNWARD_FDR,
+        }
+
+    @staticmethod
+    def supports_pddl(planner: "Planner") -> bool:
+        return planner in {
+            Planner.DOWNWARD,
+            Planner.NUMERIC_DOWNWARD,
+            Planner.POWERLIFTED,
+            Planner.POLICY,
+            Planner.WL_FF,
+        }

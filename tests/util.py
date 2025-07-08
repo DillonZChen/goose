@@ -5,6 +5,7 @@ from subprocess import PIPE
 from typing import Optional
 
 import pytest
+import termcolor as tc
 from fixtures import get_data_input_argument
 
 
@@ -19,6 +20,7 @@ def get_command_prefix(request: pytest.FixtureRequest, script: str) -> str:
 
 def execute_command(cmd: str) -> None:
     """Executes a shell command and asserts that it returns 0."""
+    cmd = tc.colored(cmd, "magenta")
     logging.info(f"Executing command\n\n\t{cmd}\n")
 
     rc = os.system(cmd)
@@ -47,6 +49,7 @@ def train_plan(
     config_name: str,
     planner_name: Optional[str] = None,
     timeout: int = 60,
+    fdr_input: bool = False,
 ) -> None:
     model_dir = "tests/models"
     os.makedirs(model_dir, exist_ok=True)
@@ -66,6 +69,7 @@ def train_plan(
         model_path=model_path,
         planner=planner_name,
         timeout=timeout,
+        fdr_input=fdr_input,
     )
 
 
@@ -93,14 +97,21 @@ def plan(
     model_path: str,
     planner: Optional[str] = None,
     timeout: int = 60,
+    fdr_input: bool = False,
 ) -> None:
     script = get_command_prefix(request, script="plan")
-    domain_pddl = f"benchmarks/{benchmark_group}/{domain_name}/domain.pddl"
-    problem_pddl = f"benchmarks/{benchmark_group}/{domain_name}/testing/p{problem_name}.pddl"
 
-    cmd = f"{script} {domain_pddl} {problem_pddl} {model_path} -t {timeout}"
+    if not fdr_input:
+        domain_pddl = f"benchmarks/{benchmark_group}/{domain_name}/domain.pddl"
+        problem_pddl = f"benchmarks/{benchmark_group}/{domain_name}/testing/p{problem_name}.pddl"
+        inputs = f"{domain_pddl} {problem_pddl}"
+    else:
+        problem_fdr = f"benchmarks/fdr-{benchmark_group}/{domain_name}/testing/p{problem_name}.sas"
+        inputs = f"{problem_fdr}"
+
+    cmd = f"{script} {inputs} {model_path} --timeout {timeout}"
     if planner is not None:
-        cmd += f" -p {planner}"
+        cmd += f" --planner {planner}"
 
     output, err, rc = popen_command(cmd)
     sol_found = "Solution found!" in output or "Goal found at" in output

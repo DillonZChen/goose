@@ -7,7 +7,7 @@ from pddl.core import Domain, Problem
 from pddl.logic import Predicate
 from pddl.logic.base import Formula
 
-from planning.util import FD_DIR
+from util.paths import PLANNERS_DIR
 
 
 Plan = list[str]
@@ -58,7 +58,7 @@ def get_plan(domain_path: str, problem_path: str, timeout: int = 1) -> Optional[
     plan_file = "plan.plan"
     timeout = int(timeout)
     cmd = [
-        f"{FD_DIR}/fast-downward.py",
+        f"{PLANNERS_DIR}/downward/fast-downward.py",
         "--sas-file",
         sas_file,
         "--plan-file",

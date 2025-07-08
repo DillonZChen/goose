@@ -17,8 +17,10 @@ class PolicyType(ParseableEnum):
     POLICY_FUNCTION = "p"
     POLICY_FUNCTION_X = "px"
 
-    def is_policy_function(self) -> bool:
-        return self is not None and self.value in {self.POLICY_FUNCTION.value, self.POLICY_FUNCTION_X.value}
+    @staticmethod
+    def is_policy_function(policy_type: "PolicyType") -> bool:
+        return policy_type in {PolicyType.POLICY_FUNCTION, PolicyType.POLICY_FUNCTION_X}
 
-    def is_not_search(self) -> bool:
-        return self != self.SEARCH
+    @staticmethod
+    def is_not_search(policy_type: "PolicyType") -> bool:
+        return policy_type != PolicyType.SEARCH

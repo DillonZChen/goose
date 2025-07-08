@@ -3,6 +3,7 @@ from argparse import Namespace
 from typing import Any
 
 from enums.policy_type import PolicyType
+from enums.state_representation import StateRepresentation
 from learning.dataset import get_domain_file_from_opts
 from learning.dataset.heuristic.container.cost_to_go_dataset import CostToGoDataset
 from learning.dataset.heuristic.creator.classic_cost_to_go_dataset_creator import (
@@ -28,7 +29,7 @@ def get_dataset(opts: Namespace) -> tuple[DomainDataset, Any]:
         tuple[DomainDataset, Any]: WLPlan dataset and labels.
     """
 
-    if opts.policy_type.is_not_search():
+    if PolicyType.is_not_search(opts.policy_type):
         return get_policy_dataset(opts)
     else:
         return get_heuristic_dataset(opts)
@@ -49,9 +50,10 @@ def get_heuristic_dataset(opts: Namespace) -> tuple[DomainDataset, Any]:
     data_generation = opts.data_generation
     is_numeric = is_domain_numeric(get_domain_file_from_opts(opts))
 
-    if is_numeric and opts.facts != "nfd":
-        logging.info("Changing facts option to 'nfd' for numeric planning.")
-        opts.facts = "nfd"
+    nfd = StateRepresentation.NUMERIC_DOWNWARD
+    if is_numeric and opts.state_representation != StateRepresentation.NUMERIC_DOWNWARD:
+        logging.info(f"Changing facts option to '{nfd}' for numeric planning.")
+        opts.__setattr__("state_representation", nfd)
 
     match (is_rank, data_generation, is_numeric):
         # Classic datasets

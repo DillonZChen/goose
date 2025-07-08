@@ -1,9 +1,9 @@
 import argparse
-import os
 from abc import abstractmethod
 
 import wlplan
 import wlplan.planning
+from enums.state_representation import StateRepresentation
 from learning.dataset.heuristic.container.base_dataset import Dataset
 from learning.dataset.heuristic.creator.dataset_creator import DatasetCreator
 from planning.util import call_numeric_downward
@@ -15,8 +15,9 @@ class NumericDatasetCreator(DatasetCreator):
 
     def __init__(self, opts: argparse.Namespace):
         super().__init__(opts)
-        if opts.facts != "nfd":
-            raise ValueError("Numeric configs must use Numeric Downward, so facts must be 'nfd'")
+        NFD = StateRepresentation.NUMERIC_DOWNWARD
+        if opts.state_representation != NFD:
+            raise ValueError(f"Numeric configs must use Numeric Downward, so facts must be '{NFD}'")
 
         self.name_to_predicate = {p.name: p for p in self._wlplan_domain.predicates}
         self.name_to_function = {f.name: f for f in self._wlplan_domain.functions}

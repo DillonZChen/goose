@@ -15,6 +15,7 @@
 
 namespace wl_utils {
   using PredArgsString = std::pair<std::string, std::vector<std::string>>;
+  using DownwardToWlplanAtomMapper = std::map<FactPair, std::shared_ptr<planning::Atom>>;
 
   PredArgsString fd_fact_to_pred_args(std::string &name);
   std::map<FactPair, std::pair<std::string, bool>> get_pddl_facts(FactsProxy facts);
@@ -22,10 +23,12 @@ namespace wl_utils {
   std::map<FactPair, PredArgsString>
   get_fd_fact_to_pred_args_map(const std::shared_ptr<AbstractTask> task);
 
-  std::pair<std::map<FactPair, std::shared_ptr<planning::Atom>>, planning::Problem>
+  std::pair<DownwardToWlplanAtomMapper, planning::Problem>
   construct_wlplan_problem(const planning::Domain &domain,
                            const std::map<FactPair, PredArgsString> &mapper,
                            const TaskProxy &task_proxy);
+
+  planning::State to_wlplan_state(const State &state, const DownwardToWlplanAtomMapper &mapper);
 
 }  // namespace wl_utils
 

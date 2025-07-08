@@ -18,28 +18,30 @@ class ClassicDatasetCreator(DatasetCreator):
     def __init__(self, opts: argparse.Namespace):
         super().__init__(opts)
 
-        facts = opts.facts
+        state_representation = opts.state_representation
 
         self.mimir_domain = pymimir.DomainParser(str(self.domain_pddl)).parse()
-        self.name_to_predicate = self._get_predicates(keep_statics=(facts != "nostatic"))
+        self.name_to_predicate = self._get_predicates(
+            keep_statics=(state_representation != StateRepresentation.NO_STATICS)
+        )
         predicates = sorted(list(self.name_to_predicate.values()), key=lambda x: repr(x))
         predicates = repr([repr(x) for x in predicates]).replace("'", "")
         logging.info(f"{predicates=}")
 
         # facts in a state to keep
         self.atoms_to_keep = None
-        self.facts = facts
-        if self.facts == StateRepresentation.FD:
+        self.state_representation = state_representation
+        if self.state_representation == StateRepresentation.DOWNWARD:
             self.keep_atom_f = lambda atom: atom.get_name() in self.atoms_to_keep
-        elif self.facts == StateRepresentation.ALL:
+        elif self.state_representation == StateRepresentation.ALL:
             self.keep_atom_f = lambda _: True
-        elif self.facts == StateRepresentation.NO_STATIC:
+        elif self.state_representation == StateRepresentation.NO_STATICS:
             self.keep_atom_f = lambda atom: atom.predicate.name in self.name_to_predicate
         else:
-            raise ValueError(f"Unknown facts option {self.facts}")
+            raise ValueError(f"Unknown value {state_representation=}")
 
     def _update_atoms_to_keep(self, problem_pddl: str):
-        if self.facts == StateRepresentation.FD:
+        if self.state_representation == StateRepresentation.DOWNWARD:
             self.atoms_to_keep = get_downward_translation_atoms(
                 self.domain_pddl,
                 problem_pddl,

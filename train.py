@@ -46,16 +46,16 @@ _DESCRIPTION = """GOOSE trainer script.
 _EPILOG = """example usages:
 
 # Train and save a classical Blocksworld model
-python3 train.py benchmarks/ipc23lt/blocksworld/ configurations/classic.toml -s blocksworld.model
+./train.py benchmarks/ipc23lt/blocksworld/ configurations/classic.toml -s blocksworld.model
 
 # Train and save a numeric Childsnack model
-python3 train.py benchmarks/neurips24/childsnack/ configurations/numeric.toml -s numeric_childsnack.model
+./train.py benchmarks/neurips24/childsnack/ configurations/numeric.toml -s numeric_childsnack.model
 
 # Run a distinguishability test
-python3 train.py benchmarks/ipc23lt/blocksworld/ --distinguish-test
+./train.py benchmarks/ipc23lt/blocksworld/ --distinguish-test
 
 # Save a PCA visualisation of features to file
-python3 train.py benchmarks/ipc23lt/blocksworld/ --visualise-pca blocksworld_pca.png
+./train.py benchmarks/ipc23lt/blocksworld/ --visualise-pca blocksworld_pca.png
 """
 
 _DEFAULT_WLF_VALS = {
@@ -86,20 +86,24 @@ def get_learning_parser():
     # Config options
     parser.add_argument("domain_directory", type=str,
                         help=f"Path to domain directory. The directory must contain a `domain.pddl` domain file and a `training/` directory with `*.pddl` problem files. Optionally, the directory may also contain `training_plans/` directory with `*.plan` plan files corresponding to the problem files.")
-    parser.add_argument("model_config", type=str, nargs='?', default=None,
+    parser.add_argument("model_config", type=str, nargs='?',
+                        default=None,
                         help=f"Path to .toml model configuration file.\n" + \
                              f"If not provided, default model values are used. " + \
                              f"Model configuration file overrides command line and default values. ")
 
     # General model options
     gen_group = parser.add_argument_group("general model options")
-    gen_group.add_argument("-g", "--graph-representation", type=str, default="ilg",
+    gen_group.add_argument("-g", "--graph-representation", type=str,
+                        default="ilg",
                         help=f"Feature generator to use. " + \
                              f"(default: ilg).")
-    gen_group.add_argument("-l", "--iterations", type=int, default=2,
+    gen_group.add_argument("-l", "--iterations", type=int,
+                        default=2,
                         help=f"Number of WL iterations or GNN message passing layers. " + \
                              f"(default: 2)")
-    gen_group.add_argument("-m", "--mode", type=Mode.parse, default=Mode.WLF,
+    gen_group.add_argument("-m", "--mode", type=Mode.parse,
+                        default=Mode.WLF,
                         choices=Mode.choices(),
                         help=f"Model mode to use. " + \
                              f"(default: wlf).")
@@ -110,71 +114,89 @@ def get_learning_parser():
 
     # WLF options
     wlf_group = parser.add_argument_group("wlf options")
-    wlf_group.add_argument("-f", "--features", type=str, default=None,
+    wlf_group.add_argument("-f", "--features", type=str,
+                        default=None,
                         choices=get_available_feature_algorithms(),
                         help=f"Feature generator to use. " + \
                             f"(default: {_DEFAULT_WLF_VALS['features']}).")
-    wlf_group.add_argument("-fp", "--feature-pruning", type=str, default=None,
+    wlf_group.add_argument("-fp", "--feature-pruning", type=str,
+                        default=None,
                         choices=get_available_pruning_methods(),
                         help=f"Pruning method to use for feature generation. " + \
                              f"(default: {_DEFAULT_WLF_VALS['feature_pruning']}).")
-    wlf_group.add_argument("--hash", type=str, default=None,
+    wlf_group.add_argument("--hash", type=str,
+                        default=None,
                         choices=["mset", "set"],
                         help=f"Whether to use multisets or sets for neighbour colours. " + \
                              f"(default: {_DEFAULT_WLF_VALS['hash']})")
-    wlf_group.add_argument("-o", "--optimisation", type=str, default=None,
+    wlf_group.add_argument("-o", "--optimisation", type=str,
+                        default=None,
                         choices=get_available_predictors(),
                         help=f"Optimisation algorithm to use for prediction. " + \
                              f"(default: {_DEFAULT_WLF_VALS['optimisation']}).")
 
     # GNN options
     gnn_group = parser.add_argument_group("gnn options")
-    gnn_group.add_argument("--num-hidden", type=int, default=None,
+    gnn_group.add_argument("--num-hidden", type=int,
+                        default=None,
                         help=f"Hidden GNN dimension. " + \
                              f"(default: {_DEFAULT_GNN_VALS['num_hidden']})")
-    gnn_group.add_argument("--learning-rate", type=float, default=None,
+    gnn_group.add_argument("--learning-rate", type=float,
+                        default=None,
                         help=f"Learning rate for Adam. " + \
                              f"(default: {_DEFAULT_GNN_VALS['learning_rate']})")
-    gnn_group.add_argument("--patience", type=int, default=None,
+    gnn_group.add_argument("--patience", type=int,
+                        default=None,
                         help=f"Patience for learning rate scheduler. " + \
                              f"(default: {_DEFAULT_GNN_VALS['patience']})")
-    gnn_group.add_argument("--reduction", type=float, default=None,
+    gnn_group.add_argument("--reduction", type=float,
+                        default=None,
                         help=f"Reduction factor for learning rate scheduler. " + \
                             f"(default: {_DEFAULT_GNN_VALS['reduction']})")
-    gnn_group.add_argument("--batch-size", type=int, default=None,
+    gnn_group.add_argument("--batch-size", type=int,
+                        default=None,
                         help=f"Batch size for training. " + \
                              f"(default: {_DEFAULT_GNN_VALS['batch_size']})")
-    gnn_group.add_argument("--epochs", type=int, default=None,
+    gnn_group.add_argument("--epochs", type=int,
+                        default=None,
                         help=f"Maximum number of epochs to train for. " + \
                              f"(default: {_DEFAULT_GNN_VALS['epochs']})")
 
     # Data options
     data_group = parser.add_argument_group("data options")
-    data_group.add_argument("--cache", type=str, default=None,
+    data_group.add_argument("--cache", type=str,
+                        default=None,
                         help=f"Path to labelled data or to place labelled data. If not specified, cache is not used.")
-    data_group.add_argument("-nd", "--num-data", type=int, default=None,
+    data_group.add_argument("-nd", "--num-data", type=int,
+                        default=None,
                         help=f"Number of training data to use. " + \
                              f"(default: None = all available data)")
-    data_group.add_argument("-dg", "--data-generation", type=str, default="plan",
+    data_group.add_argument("-dg", "--data-generation", type=str,
+                        default="plan",
                         choices=["plan", "state-space"],
                         help=f"Method for collecting data from training problems. " + \
                              f"(default: plan)")
-    data_group.add_argument("-dp", "--data-pruning", type=str, default="equivalent-weighted",
+    data_group.add_argument("-dp", "--data-pruning", type=str,
+                        default="equivalent-weighted",
                         choices=["none", "equivalent", "equivalent-weighted"],
                         help=f"Method for pruning data. " + \
                              f"(default: equivalent-weighted)")
-    data_group.add_argument("--facts", type=StateRepresentation.parse, default=StateRepresentation.FD,
+    data_group.add_argument("-sr", "--state-representation", type=StateRepresentation.parse,
+                        default=StateRepresentation.DOWNWARD,
                         choices=StateRepresentation.choices(),
-                        help=f"Intended facts to keep e.g. Fast Downward *fd* grounds the task and prunes away statics as well as some unreachable facts. " + \
+                        help=f"Intended facts to keep e.g. Fast Downward *downward* grounds the task and prunes away statics as well as some unreachable facts. " + \
                              f"(default: fd)")
 
     # Experiment options
-    parser.add_argument("-r", "--random-seed", type=int, default=2024,
+    parser.add_argument("-r", "--random-seed", type=int,
+                        default=2024,
                         help=f"Random seed for nondeterministic training algorithms.")
-    parser.add_argument("-s", "--save-file", type=str, default=None,
+    parser.add_argument("-s", "--save-file", type=str,
+                        default=None,
                         help=f"Path to save the model to.")
     mutex_group = parser.add_mutually_exclusive_group()
-    mutex_group.add_argument("--visualise-pca", type=str, default=False,
+    mutex_group.add_argument("--visualise-pca", type=str,
+                        default=False,
                         help=f"Path to save visualisation of PCA on WL features, for example pca.png.")
     mutex_group.add_argument("--distinguish-test", action="store_true",
                         help=f"Run distinguishability test.")
@@ -212,7 +234,7 @@ def parse_learning_opts():
     # Subroutine for assigning namespace values
     def assign_namespace_value(key: str, value: Any) -> None:
         nonlocal opts
-        opts.__dict__[key] = value
+        opts.__setattr__(key, value)
         # Ensure strings are converted into proper enum objects
         opts = namespace_from_serialisable(opts)
 
@@ -266,7 +288,7 @@ def parse_learning_opts():
     # Modify predictor if policy mode is distribution
     if (
         opts.mode == Mode.WLF
-        and opts.policy_type.is_policy_function()
+        and PolicyType.is_policy_function(opts.policy_type)
         and not is_unitary_classifier(opts.optimisation)
     ):
         logging.info("Overriding optimisation for WLF policy function learner to use SVM optimisation.")

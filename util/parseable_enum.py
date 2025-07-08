@@ -11,3 +11,6 @@ class ParseableEnum(Enum):
         if isinstance(value, cls):
             return value
         return cls(value)
+
+    def __str__(self):
+        return self.value

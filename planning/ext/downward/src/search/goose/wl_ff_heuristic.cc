@@ -4,7 +4,6 @@
 #include "../plugins/plugin.h"
 #include "../task_utils/task_properties.h"
 #include "../utils/logging.h"
-#include "wl_utils.hpp"
 
 #include <cassert>
 
@@ -53,7 +52,14 @@ namespace wl_ff_heuristic {
   int WLFFHeuristic::compute_heuristic(const State &ancestor_state) {
     State state = convert_ancestor_state(ancestor_state);
     int h_ff = ff_heuristic::FFHeuristic::compute_heuristic(state);
-    // TODO
+
+    int n = model->get_n_colours();
+    planning::State wlplan_state = wl_utils::to_wlplan_state(state, fd_fact_to_wlplan_atom);
+    model->collect(wlplan_state);
+    n = model->get_n_colours();
+
+    std::cout << n << " " << h_ff << std::endl;
+
     return h_ff;
   }
 

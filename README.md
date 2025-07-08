@@ -109,7 +109,7 @@ In case a virtual environment does not work, you can also try anaconda and speci
 
 ## Usage
 ### Training
-Call `goose.sif train -h` or `python3 train.py -h` for arguments, you will need the `-s` argument if you want to save the model.
+Call `goose.sif train -h` or `python3 train.py -h` for more detailed instructions. You will need the `-s` argument if you want to save the model.
 - See below for [recommended training configurations](#recommended-configurations).
 - To add your own datasets, follow the directory and file structure specified in `python3 train.py -h`.
 - If you own a CPLEX license and want to train LP models faster, [add it to PYTHONPATH](https://www.ibm.com/docs/en/icos/22.1.1?topic=cplex-setting-up-python-api) and use the manual installation.
@@ -120,7 +120,7 @@ e.g.
 
 
 ### Planning
-Call `goose.sif plan -h` or `python3 plan.py -h` for arguments.
+Call `goose.sif plan -h` or `python3 plan.py -h` for more detailed instructions.
 
 e.g.
 

@@ -151,4 +151,14 @@ namespace wl_utils {
     return {fd_fact_to_wlplan_atom, problem};
   }
 
+  planning::State to_wlplan_state(const State &state, const DownwardToWlplanAtomMapper &mapper) {
+    std::vector<std::shared_ptr<planning::Atom>> atoms;
+    for (const FactProxy &fact : state) {
+      if (mapper.count(fact.get_pair())) {
+        atoms.push_back(mapper.at(fact.get_pair()));
+      }
+    }
+    return planning::State(atoms);
+  }
+
 }  // namespace wl_utils

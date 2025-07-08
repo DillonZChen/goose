@@ -2,7 +2,6 @@
 
 #include "../plugins/plugin.h"
 #include "../utils/logging.h"
-#include "wl_utils.hpp"
 
 #include <algorithm>
 #include <iostream>
@@ -17,7 +16,7 @@ namespace wlgoose_heuristic {
                                      utils::Verbosity verbosity)
       : Heuristic(transform, cache_estimates, description, verbosity) {
     model = load_feature_generator(model_file);
-    
+
     // Some boilerplate to set up WLPlan domain and problem
     const planning::Domain domain = *(model->get_domain());
     const std::map<FactPair, wl_utils::PredArgsString> &mapper =
@@ -31,15 +30,9 @@ namespace wlgoose_heuristic {
   int WlGooseHeuristic::compute_heuristic(const State &ancestor_state) {
     State state = convert_ancestor_state(ancestor_state);
 
-    std::vector<std::shared_ptr<planning::Atom>> atoms;
+    planning::State wlplan_state = wl_utils::to_wlplan_state(state, fd_fact_to_wlplan_atom);
 
-    for (const FactProxy &fact : state) {
-      if (fd_fact_to_wlplan_atom.count(fact.get_pair())) {
-        atoms.push_back(fd_fact_to_wlplan_atom.at(fact.get_pair()));
-      }
-    }
-
-    double h = model->predict(planning::State(atoms));
+    double h = model->predict(wlplan_state);
     int h_round = static_cast<int>(std::round(h));
 
     return h_round;
