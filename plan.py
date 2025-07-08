@@ -14,7 +14,7 @@ from enums.policy_type import PolicyType
 from enums.serialisation import namespace_from_serialisable
 from enums.state_representation import StateRepresentation
 from planning.policy.wlf_policy import WlfPolicyExecutor
-from planning.search.downward import run_downward_fdr, run_downward_pddl
+from planning.search.downward import run_downward_fdr, run_downward_pddl, run_downward_standalone
 from planning.search.numeric_downward import run_numeric_downward
 from planning.search.powerlifted import run_powerlifted
 from util.filesystem import file_exists
@@ -35,10 +35,10 @@ _EPILOG = """example usages:
 ./plan.py benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas blocksworld.model
 
 # Plan with PDDL input without a trained model
-./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner wl-ff
+./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner ff-wl
 
 # Plan with FDR input without a trained model
-./plan.py benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas --planner wl-ff
+./plan.py benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas --planner ff-wl
 """
 
 
@@ -58,25 +58,42 @@ def get_planning_parser():
                         help="May be path to model file.")
 
     # Planning options
-    parser.add_argument("--planner", type=Planner.parse, default=Planner.NONE,
+    parser.add_argument("--planner", type=Planner.parse,
+                        default=Planner.NONE,
                         choices=Planner.choices(),
                         help="Underlying planner. If not specified, it is automatically detected from the model.")
-    parser.add_argument("--timeout", type=int, default=3600,
+    parser.add_argument("--timeout", type=int,
+                        default=3600,
                         help="Timeout for search in seconds. Ignores all other preprocessing times.")
-    parser.add_argument("--plan-file", type=str, default="sas_plan",
+    parser.add_argument("--plan-file", type=str,
+                        default="sas_plan",
                         help="Location for output solution files.")
-    parser.add_argument("--intermediate-file", type=str, default="intermediate.tmp",
+    parser.add_argument("--intermediate-file", type=str,
+                        default="intermediate.tmp",
                         help="Location for intermediate files.")
 
     # Policy options
     policy_group = parser.add_argument_group("policy options")
-    policy_group.add_argument("--bound", type=int, default=-1,
+    policy_group.add_argument("--bound", type=int,
+                        default=-1,
                         help="Bound for policy rollouts. If not specified or --bound=-1, then do not use bound.")
-    policy_group.add_argument("--random-seed", type=int, default=0,
+    policy_group.add_argument("--random-seed", type=int,
+                        default=0,
                         help="Random seed for policy algorithms.")
 
     parser.add_argument("--debug", action="store_true",
                         help="Debug mode.")
+
+    # Unsupervised WL options
+    wl_group = parser.add_argument_group("WL feature options")
+    wl_group.add_argument("--iterations", type=int,
+                        default=4,
+                        help=f"Number of iterations for WL features. " + \
+                             f"(default: 4)")
+    wl_group.add_argument("--graph-representation", type=str,
+                        default="ilg",
+                        help=f"Graph representation for WL features. " + \
+                             f"(default: ilg)")
 
     return parser
 # fmt: on
@@ -159,52 +176,56 @@ def main():
     log_opts(desc="plan", opts=opts)
 
     # Log train options
-    log_opts(desc="train", opts=train_opts)
+    if train_opts is not None:
+        log_opts(desc="train", opts=train_opts)
 
-    match opts.planner:
-        case Planner.POWERLIFTED:
-            run_powerlifted(domain_path=input1, problem_path=input2, wlf_params_path=params_path, opts=opts)
-        case Planner.DOWNWARD:
-            run_downward_pddl(domain_path=input1, problem_path=input2, wlf_params_path=params_path, opts=opts)
-        case Planner.DOWNWARD_FDR:
-            run_downward_fdr(sas_path=input1, wlf_params_path=params_path, opts=opts)
-        case Planner.NUMERIC_DOWNWARD:
-            run_numeric_downward(domain_path=input1, problem_path=input2, wlf_params_path=params_path, opts=opts)
-        case Planner.POLICY:
-            kwargs = {
-                "domain_path": input1,
-                "problem_path": input2,
-                "params_path": params_path,
-                "train_opts": train_opts,
-                "debug": opts.debug,
-                "bound": opts.bound,
-            }
+    if Planner.standalone_downward_planner(opts.planner):
+        run_downward_standalone(domain_path=input1, problem_path=input2, opts=opts)
+    else:
+        match opts.planner:
+            case Planner.DOWNWARD:
+                run_downward_pddl(domain_path=input1, problem_path=input2, wlf_params_path=params_path, opts=opts)
+            case Planner.DOWNWARD_FDR:
+                run_downward_fdr(sas_path=input1, wlf_params_path=params_path, opts=opts)
+            case Planner.NUMERIC_DOWNWARD:
+                run_numeric_downward(domain_path=input1, problem_path=input2, wlf_params_path=params_path, opts=opts)
+            case Planner.POWERLIFTED:
+                run_powerlifted(domain_path=input1, problem_path=input2, wlf_params_path=params_path, opts=opts)
+            case Planner.POLICY:
+                kwargs = {
+                    "domain_path": input1,
+                    "problem_path": input2,
+                    "params_path": params_path,
+                    "train_opts": train_opts,
+                    "debug": opts.debug,
+                    "bound": opts.bound,
+                }
 
-            match train_opts.mode:
-                case Mode.WLF:
-                    policy = WlfPolicyExecutor(**kwargs)
-                case Mode.GNN:
-                    # Torch and Pytorch Geometric imports done here to avoid unnecessary imports when not using GNN
-                    try:
-                        import torch
-                        import torch_geometric
-                    except ModuleNotFoundError:
-                        logging.info(
-                            "The current environment does not have PyTorch and PyTorch Geometric installed. "
-                            + "Please install them to use GNN architectures. Exiting."
-                        )
-                        sys.exit(1)
-                    from planning.policy.gnn_policy import GnnPolicyExecutor
+                match train_opts.mode:
+                    case Mode.WLF:
+                        policy = WlfPolicyExecutor(**kwargs)
+                    case Mode.GNN:
+                        # Torch and Pytorch Geometric imports done here to avoid unnecessary imports when not using GNN
+                        try:
+                            import torch
+                            import torch_geometric
+                        except ModuleNotFoundError:
+                            logging.info(
+                                "The current environment does not have PyTorch and PyTorch Geometric installed. "
+                                + "Please install them to use GNN architectures. Exiting."
+                            )
+                            sys.exit(1)
+                        from planning.policy.gnn_policy import GnnPolicyExecutor
 
-                    policy = GnnPolicyExecutor(**kwargs)
-                case _:
-                    raise ValueError(f"Unknown value {train_opts.mode=}")
+                        policy = GnnPolicyExecutor(**kwargs)
+                    case _:
+                        raise ValueError(f"Unknown value {train_opts.mode=}")
 
-            random.seed(opts.random_seed)
-            plan = policy.execute()
-            policy.dump_stats()
-        case _:
-            raise ValueError(f"Unknown value {opts.planner=}")
+                random.seed(opts.random_seed)
+                plan = policy.execute()
+                policy.dump_stats()
+            case _:
+                raise ValueError(f"Unknown value {opts.planner=}")
 
     if os.path.exists(opts.intermediate_file):
         os.remove(opts.intermediate_file)

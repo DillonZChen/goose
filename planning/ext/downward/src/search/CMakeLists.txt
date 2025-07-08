@@ -999,11 +999,10 @@ create_fast_downward_library(
 )
 
 create_fast_downward_library(
-    NAME wl_ff_heuristic
-    HELP "WL Novelty with FF"
+    NAME wl_novelty_heuristic
+    HELP "WL Novelty heuristic"
     SOURCES
-        goose/wl_ff_heuristic
+        goose/wl_novelty_heuristic
     DEPENDS
         wl_utils
-        ff_heuristic
 )

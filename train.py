@@ -97,7 +97,7 @@ def get_learning_parser():
     gen_group.add_argument("-g", "--graph-representation", type=str,
                         default="ilg",
                         help=f"Feature generator to use. " + \
-                             f"(default: ilg).")
+                             f"(default: ilg)")
     gen_group.add_argument("-l", "--iterations", type=int,
                         default=2,
                         help=f"Number of WL iterations or GNN message passing layers. " + \
@@ -106,7 +106,7 @@ def get_learning_parser():
                         default=Mode.WLF,
                         choices=Mode.choices(),
                         help=f"Model mode to use. " + \
-                             f"(default: wlf).")
+                             f"(default: wlf)")
     gen_group.add_argument("-p", "--policy-type", type=PolicyType.parse, default=PolicyType.SEARCH,
                         choices=PolicyType.choices(),
                         help=f"If specified, policy representation via X-function for X in choices. " + \
@@ -118,12 +118,12 @@ def get_learning_parser():
                         default=None,
                         choices=get_available_feature_algorithms(),
                         help=f"Feature generator to use. " + \
-                            f"(default: {_DEFAULT_WLF_VALS['features']}).")
+                            f"(default: {_DEFAULT_WLF_VALS['features']})")
     wlf_group.add_argument("-fp", "--feature-pruning", type=str,
                         default=None,
                         choices=get_available_pruning_methods(),
                         help=f"Pruning method to use for feature generation. " + \
-                             f"(default: {_DEFAULT_WLF_VALS['feature_pruning']}).")
+                             f"(default: {_DEFAULT_WLF_VALS['feature_pruning']})")
     wlf_group.add_argument("--hash", type=str,
                         default=None,
                         choices=["mset", "set"],
@@ -133,7 +133,7 @@ def get_learning_parser():
                         default=None,
                         choices=get_available_predictors(),
                         help=f"Optimisation algorithm to use for prediction. " + \
-                             f"(default: {_DEFAULT_WLF_VALS['optimisation']}).")
+                             f"(default: {_DEFAULT_WLF_VALS['optimisation']})")
 
     # GNN options
     gnn_group = parser.add_argument_group("gnn options")

@@ -8,7 +8,14 @@ class Planner(ParseableEnum):
     POWERLIFTED = "powerlifted"
     POLICY = "policy"
     DOWNWARD_FDR = "downward-fdr"
-    WL_FF = "wl-ff"
+
+    BLIND = "blind"
+    WL = "wl"
+    GC = "gc"
+    FF = "ff"
+    GC_WL = "gc-wl"
+    FF_WL = "ff-wl"
+    FF_GC = "ff-gc"
 
     @staticmethod
     def requires_model(planner: "Planner") -> bool:
@@ -18,6 +25,18 @@ class Planner(ParseableEnum):
             Planner.POWERLIFTED,
             Planner.POLICY,
             Planner.DOWNWARD_FDR,
+        }
+
+    @staticmethod
+    def standalone_downward_planner(planner: "Planner") -> bool:
+        return planner in {
+            Planner.BLIND,
+            Planner.WL,
+            Planner.GC,
+            Planner.FF,
+            Planner.GC_WL,
+            Planner.FF_WL,
+            Planner.FF_GC,
         }
 
     @staticmethod
@@ -33,5 +52,11 @@ class Planner(ParseableEnum):
             Planner.NUMERIC_DOWNWARD,
             Planner.POWERLIFTED,
             Planner.POLICY,
-            Planner.WL_FF,
+            Planner.BLIND,
+            Planner.WL,
+            Planner.GC,
+            Planner.FF,
+            Planner.GC_WL,
+            Planner.FF_WL,
+            Planner.FF_GC,
         }
