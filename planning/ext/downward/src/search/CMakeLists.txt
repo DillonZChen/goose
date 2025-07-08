@@ -589,27 +589,27 @@ if(USE_LP)
     endif()
 endif()
 
-# create_fast_downward_library(
-#     NAME relaxation_heuristic
-#     HELP "The base class for relaxation heuristics"
-#     SOURCES
-#         heuristics/array_pool
-#         heuristics/relaxation_heuristic
-#     DEPENDS
-#         default_value_axioms_task
-#     DEPENDENCY_ONLY
-# )
+create_fast_downward_library(
+    NAME relaxation_heuristic
+    HELP "The base class for relaxation heuristics"
+    SOURCES
+        heuristics/array_pool
+        heuristics/relaxation_heuristic
+    DEPENDS
+        default_value_axioms_task
+    DEPENDENCY_ONLY
+)
 
-# create_fast_downward_library(
-#     NAME additive_heuristic
-#     HELP "The additive heuristic"
-#     SOURCES
-#         heuristics/additive_heuristic
-#     DEPENDS
-#         priority_queues
-#         relaxation_heuristic
-#         task_properties
-# )
+create_fast_downward_library(
+    NAME additive_heuristic
+    HELP "The additive heuristic"
+    SOURCES
+        heuristics/additive_heuristic
+    DEPENDS
+        priority_queues
+        relaxation_heuristic
+        task_properties
+)
 
 create_fast_downward_library(
     NAME blind_search_heuristic
@@ -652,28 +652,21 @@ create_fast_downward_library(
     DEPENDENCY_ONLY
 )
 
-# create_fast_downward_library(
-#     NAME ff_heuristic
-#     HELP "The FF heuristic (an implementation of the RPG heuristic)"
-#     SOURCES
-#         heuristics/ff_heuristic
-#     DEPENDS
-#         additive_heuristic
-#         task_properties
-# )
-
-# create_fast_downward_library(
-#     NAME goal_count_heuristic
-#     HELP "The goal-counting heuristic"
-#     SOURCES
-#         heuristics/goal_count_heuristic
-# )
+create_fast_downward_library(
+    NAME ff_heuristic
+    HELP "The FF heuristic (an implementation of the RPG heuristic)"
+    SOURCES
+        heuristics/ff_heuristic
+    DEPENDS
+        additive_heuristic
+        task_properties
+)
 
 create_fast_downward_library(
-    NAME wlgoose_heuristic
-    HELP "The WL-GOOSE heuristic"
+    NAME goal_count_heuristic
+    HELP "The goal-counting heuristic"
     SOURCES
-        heuristics/wlgoose_heuristic
+        heuristics/goal_count_heuristic
 )
 
 # create_fast_downward_library(
@@ -983,4 +976,34 @@ create_fast_downward_library(
     SOURCES
         algorithms/sccs
     DEPENDENCY_ONLY
+)
+
+##############################################################################
+# GOOSE Content
+##############################################################################
+create_fast_downward_library(
+    NAME wl_utils
+    HELP "WL Utility functions"
+    SOURCES
+        goose/wl_utils
+    DEPENDENCY_ONLY
+)
+
+create_fast_downward_library(
+    NAME wlgoose_heuristic
+    HELP "The WL-GOOSE heuristic"
+    SOURCES
+        goose/wlgoose_heuristic
+    DEPENDS
+        wl_utils
+)
+
+create_fast_downward_library(
+    NAME wl_ff_heuristic
+    HELP "WL Novelty with FF"
+    SOURCES
+        goose/wl_ff_heuristic
+    DEPENDS
+        wl_utils
+        ff_heuristic
 )
