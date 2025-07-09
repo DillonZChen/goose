@@ -1,31 +1,28 @@
-#include "wlgoose_heuristic.h"
-#include "../task.h"
+#include "wl_utils.h"
 
-#include <cassert>
+#include <unordered_set>
+#include <vector>
 
-using namespace std;
+namespace wl_utils {
 
-WlGooseHeuristic::WlGooseHeuristic(const Options &opts, const Task &task)
+planning::Domain get_wlplan_domain(const Task &task)
 {
-    model = load_feature_generator(opts.get_goose_model_path());
-
-    const planning::Domain domain = *(model->get_domain());
-    std::unordered_map<std::string, planning::Predicate> name_to_predicate;
-    for (const auto &pred : domain.predicates) {
-        name_to_predicate[pred.name] = pred;
-    }
-
-    /* Construct a WLPlan Problem from Powerlifted */
-
-    // Preprocess predicates from PWL
+    std::vector<planning::Predicate> predicates;
     for (size_t i = 0; i < task.predicates.size(); i++) {
         std::string pred_name = task.predicates[i].get_name();
         // predicates that may get skipped are '=' and static predicates
-        if (name_to_predicate.find(pred_name) == name_to_predicate.end()) {
+        if (pred_name == "=") {
             continue;
         }
-        pwl_index_to_predicate[i] = name_to_predicate.at(pred_name);
+        predicates.push_back(planning::Predicate(pred_name, task.predicates[i].getArity()));
     }
+    return planning::Domain("domain", predicates);
+}
+
+planning::Problem get_wlplan_problem(const planning::Domain &domain, const Task &task)
+{   
+    std::unordered_map<int, planning::Predicate> pwl_index_to_predicate =
+        get_pwl_index_to_predicate(domain, task);
 
     // Collect objects
     std::vector<std::string> objects;
@@ -66,12 +63,37 @@ WlGooseHeuristic::WlGooseHeuristic(const Options &opts, const Task &task)
 
     // Construct WLPlan problem and set for model
     planning::Problem problem = planning::Problem(domain, objects, positive_goals, negative_goals);
-    model->set_problem(problem);
+
+    return problem;
 }
 
-
-int WlGooseHeuristic::compute_heuristic(const DBState &s, const Task &task)
+std::unordered_map<int, planning::Predicate>
+get_pwl_index_to_predicate(const planning::Domain &domain, const Task &task)
 {
+    std::unordered_map<int, planning::Predicate> pwl_index_to_predicate;
+
+    std::unordered_map<std::string, planning::Predicate> name_to_predicate;
+    for (const auto &pred : domain.predicates) {
+        name_to_predicate[pred.name] = pred;
+    }
+
+    for (size_t i = 0; i < task.predicates.size(); i++) {
+        std::string pred_name = task.predicates[i].get_name();
+        if (name_to_predicate.find(pred_name) == name_to_predicate.end()) {
+            continue;
+        }
+        pwl_index_to_predicate[i] = name_to_predicate.at(pred_name);
+    }
+
+    return pwl_index_to_predicate;
+}
+
+planning::State
+to_wlplan_state(const DBState &s,
+                const Task &task,
+                const std::unordered_map<int, planning::Predicate> &pwl_index_to_predicate)
+{
+
     std::vector<planning::Atom> atoms;  // list of wlplan atoms
 
     const auto &nullary_atoms = s.get_nullary_atoms();
@@ -84,7 +106,7 @@ int WlGooseHeuristic::compute_heuristic(const DBState &s, const Task &task)
     for (const auto &kv : pwl_index_to_predicate) {
         int i = kv.first;
         planning::Predicate predicate = kv.second;
-        unordered_set<GroundAtom, TupleHash> tuples = predicate_indices[i].tuples;
+        std::unordered_set<GroundAtom, TupleHash> tuples = predicate_indices[i].tuples;
         for (const auto &tuple : tuples) {
             std::vector<std::string> object_names;
             for (const auto &obj : tuple) {
@@ -94,13 +116,7 @@ int WlGooseHeuristic::compute_heuristic(const DBState &s, const Task &task)
         }
     }
 
-    double h = model->predict(planning::State(atoms));
-    int h_round = static_cast<int>(std::round(h));
-
-    return h_round;
+    return planning::State(atoms);
 }
 
-void WlGooseHeuristic::print_statistics()
-{
-    // TODO
-}
+}  // namespace wl_utils

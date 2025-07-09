@@ -42,24 +42,13 @@ def run_downward_standalone(domain_path: str, problem_path: str, opts) -> None:
     blind = "blind()"
     gc = "goalcount()"
     ff = "ff()"
-    wl = f'wlnov(iterations={opts.iterations},graph="{opts.graph_representation}")'
     match opts.planner:
-        case Planner.BLIND:
+        case Planner.DOWNWARD_BLIND:
             heuristics = [blind]
-        case Planner.WL:
-            heuristics = [wl]
-        case Planner.GC:
+        case Planner.DOWNWARD_GC:
             heuristics = [gc]
-        case Planner.FF:
+        case Planner.DOWNWARD_FF:
             heuristics = [ff]
-        case Planner.GC_WL:
-            heuristics = [gc, wl]
-        case Planner.FF_WL:
-            heuristics = [ff, wl]
-        case Planner.FF_GC:
-            heuristics = [ff, gc]
-        case Planner.FF_GC_WL:
-            heuristics = [ff, gc, wl]
         case _:
             raise NotImplementedError(f"{opts.planner=}")
     heuristics = ", ".join(heuristics)

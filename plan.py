@@ -16,7 +16,7 @@ from enums.state_representation import StateRepresentation
 from planning.policy.wlf_policy import WlfPolicyExecutor
 from planning.search.downward import run_downward_fdr, run_downward_pddl, run_downward_standalone
 from planning.search.numeric_downward import run_numeric_downward
-from planning.search.powerlifted import run_powerlifted
+from planning.search.powerlifted import run_powerlifted, run_powerlifted_standalone
 from util.filesystem import file_exists
 from util.logging import init_logger, log_opts
 
@@ -181,6 +181,8 @@ def main():
 
     if Planner.standalone_downward_planner(opts.planner):
         run_downward_standalone(domain_path=input1, problem_path=input2, opts=opts)
+    elif Planner.standalone_powerlifted_planner(opts.planner):
+        run_powerlifted_standalone(domain_path=input1, problem_path=input2, opts=opts)
     else:
         match opts.planner:
             case Planner.DOWNWARD:

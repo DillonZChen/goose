@@ -21,7 +21,8 @@ SEARCH_CHOICES = ["astar",
                   "iw2gc",
                   "lazy",
                   "lazy-po",
-                  "lazy-prune"]
+                  "lazy-prune",
+                  "wlns"]
 
 EVALUATOR_CHOICES = ["blind",
                      "goalcount",

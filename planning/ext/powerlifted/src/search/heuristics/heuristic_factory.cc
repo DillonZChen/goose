@@ -6,7 +6,7 @@
 #include "goalcount.h"
 #include "hmax_heuristic.h"
 #include "rff_heuristic.h"
-#include "wlgoose_heuristic.h"
+#include "../goose/wlgoose_heuristic.h"
 
 #include "datalog_transformation_options.h"
 

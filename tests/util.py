@@ -89,6 +89,14 @@ def train(
     execute_command(cmd)
 
 
+def get_domain_pddl(benchmark_group: str, domain_name: str) -> str:
+    return f"benchmarks/{benchmark_group}/{domain_name}/domain.pddl"
+
+
+def get_problem_pddl(benchmark_group: str, domain_name: str, problem_name: str) -> str:
+    return f"benchmarks/{benchmark_group}/{domain_name}/testing/p{problem_name}.pddl"
+
+
 def plan(
     request: pytest.FixtureRequest,
     domain_name: str,
@@ -102,8 +110,8 @@ def plan(
     script = get_command_prefix(request, script="plan")
 
     if not fdr_input:
-        domain_pddl = f"benchmarks/{benchmark_group}/{domain_name}/domain.pddl"
-        problem_pddl = f"benchmarks/{benchmark_group}/{domain_name}/testing/p{problem_name}.pddl"
+        domain_pddl = get_domain_pddl(benchmark_group, domain_name)
+        problem_pddl = get_problem_pddl(benchmark_group, domain_name, problem_name)
         inputs = f"{domain_pddl} {problem_pddl}"
     else:
         problem_fdr = f"benchmarks/fdr-{benchmark_group}/{domain_name}/testing/p{problem_name}.sas"

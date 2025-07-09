@@ -134,7 +134,9 @@ add_executable(search
         datalog/transformations/remove_equivalent_rules.h datalog/transformations/connected_components.h
         datalog/transformations/variable_projection.h datalog/transformations/variable_renaming.h heuristics/hmax_heuristic.cc heuristics/hmax_heuristic.h
         parallel_hashmap/phmap.h
-        heuristics/wlgoose_heuristic.h heuristics/wlgoose_heuristic.cc)
+        goose/wlgoose_heuristic.h goose/wlgoose_heuristic.cc
+        goose/wl_utils.h goose/wl_utils.cc
+        goose/dual_queue_wlns.h goose/dual_queue_wlns.cc)
 
 target_link_libraries(search PRIVATE wlplan)
 target_link_libraries(search LINK_PUBLIC ${Boost_LIBRARIES})

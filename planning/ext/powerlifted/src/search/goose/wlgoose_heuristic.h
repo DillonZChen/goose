@@ -1,8 +1,8 @@
-#ifndef SEARCH_HEURISTICS_WLGOOSE_HEURISTIC_H_
-#define SEARCH_HEURISTICS_WLGOOSE_HEURISTIC_H_
+#ifndef SEARCH_GOOSE_WLGOOSE_HEURISTIC_H_
+#define SEARCH_GOOSE_WLGOOSE_HEURISTIC_H_
 
-#include "datalog_transformation_options.h"
-#include "heuristic.h"
+#include "../heuristics/datalog_transformation_options.h"
+#include "../heuristics/heuristic.h"
 
 #include "../action.h"
 #include "../options.h"
@@ -11,10 +11,7 @@
 #include "../datalog/grounder/weighted_grounder.h"
 
 #include "../ext/wlplan/include/feature_generator/feature_generator_loader.hpp"
-#include "../ext/wlplan/include/planning/atom.hpp"
 #include "../ext/wlplan/include/planning/predicate.hpp"
-#include "../ext/wlplan/include/planning/problem.hpp"
-#include "../ext/wlplan/include/planning/state.hpp"
 
 #include <memory>
 
@@ -32,4 +29,4 @@ public:
     int compute_heuristic(const DBState &s, const Task &task) override;
 };
 
-#endif  // SEARCH_HEURISTICS_WLGOOSE_HEURISTIC_H_
+#endif  // SEARCH_GOOSE_WLGOOSE_HEURISTIC_H_
