@@ -1,4 +1,4 @@
-#include "dual_queue_wlns.h"
+#include "dqqbs.h"
 #include "../search_engines/search.h"
 #include "../search_engines/utils.h"
 
@@ -11,8 +11,7 @@
 #include "../successor_generators/successor_generator.h"
 #include "../utils/timer.h"
 
-#include "../ext/wlplan/include/feature_generator/feature_generators/wl.hpp"
-#include "../ext/wlplan/include/planning/predicate.hpp"
+#include "qb_heuristic.h"
 #include "wl_utils.h"
 
 #include <algorithm>
@@ -25,21 +24,19 @@
 using namespace std;
 
 template <class PackedStateT>
-utils::ExitCode DualQueueWLNS<PackedStateT>::search(const Task &task,
-                                                    SuccessorGenerator &generator,
-                                                    Heuristic &heuristic)
+utils::ExitCode DualQueueQBSearch<PackedStateT>::search(const Task &task,
+                                                        SuccessorGenerator &generator,
+                                                        Heuristic &heuristic)
 {
-    // set up novelty components first
-    const planning::Domain domain = wl_utils::get_wlplan_domain(task);
-    planning::Problem problem = wl_utils::get_wlplan_problem(domain, task);
-    std::unordered_map<int, planning::Predicate> pwl_index_to_predicate =
-        wl_utils::get_pwl_index_to_predicate(domain, task);
-    std::shared_ptr<feature_generator::Features> model =
-        std::make_shared<feature_generator::WLFeatures>(domain, "ilg", 2, "none", true);
-    model->set_problem(problem);
-    model->be_quiet();
+    // Cast the heuristic to QbHeuristic
+    QbHeuristic* qbh_raw = dynamic_cast<QbHeuristic*>(&heuristic);
+    if (!qbh_raw) {
+        cerr << "DualQueueQBSearch requires a QbHeuristic!" << endl;
+        exit(1);
+    }
 
-    std::map<int, int> feat_to_lowest_h;
+    // Create shared_ptr from the cast pointer
+    std::shared_ptr<QbHeuristic> qbh_ptr(qbh_raw, [](QbHeuristic*){});
 
     cout << "Starting dual queue WL-novelty search (no re-openings)" << endl;
     clock_t timer_start = clock();
@@ -54,7 +51,8 @@ utils::ExitCode DualQueueWLNS<PackedStateT>::search(const Task &task,
     SearchNode &root_node = space.insert_or_get_previous_node(
         packer.pack(task.initial_state), LiftedOperatorId::no_operator, StateID::no_state);
     utils::Timer t;
-    heuristic_layer = heuristic.compute_heuristic(task.initial_state, task);
+    qbh_raw->compute_heuristic(task.initial_state, task);
+    heuristic_layer = qbh_raw->return_cached_original_heuristic();
     t.stop();
     cout << "Time to evaluate initial state: " << t() << endl;
     root_node.open(0, heuristic_layer);
@@ -150,26 +148,10 @@ utils::ExitCode DualQueueWLNS<PackedStateT>::search(const Task &task,
             auto &child_node =
                 space.insert_or_get_previous_node(packer.pack(s), op_id, node.state_id);
             int dist = g + action.get_cost();
-            int new_h = heuristic.compute_heuristic(s, task);
 
             // begin GOOSE time
-            int nov_h = 0;  // always non-positive
-            planning::State wl_state = wl_utils::to_wlplan_state(s, task, pwl_index_to_predicate);
-            model->collect(wl_state);
-            std::vector<double> embed = model->embed_state(wl_state);  // TODO optimise this
-            for (int i = 0; i < (int)embed.size(); i++) {
-                if (embed[i] == 0) {  // feature not present, their values do not matter
-                    continue;
-                }
-                if (feat_to_lowest_h.count(i) == 0) {
-                    feat_to_lowest_h[i] = new_h;
-                    nov_h -= 1;
-                }
-                else if (new_h < feat_to_lowest_h[i]) {
-                    feat_to_lowest_h[i] = new_h;
-                    nov_h -= 1;
-                }
-            }
+            int nov_h = qbh_ptr->compute_heuristic(s, task);
+            int new_h = qbh_ptr->return_cached_original_heuristic();
             // end GOOSE time
 
             statistics.inc_evaluations();
@@ -206,12 +188,12 @@ utils::ExitCode DualQueueWLNS<PackedStateT>::search(const Task &task,
 }
 
 template <class PackedStateT>
-void DualQueueWLNS<PackedStateT>::print_statistics() const
+void DualQueueQBSearch<PackedStateT>::print_statistics() const
 {
     statistics.print_detailed_statistics();
     space.print_statistics();
 }
 
 // explicit template instantiations
-template class DualQueueWLNS<SparsePackedState>;
-template class DualQueueWLNS<ExtensionalPackedState>;  //
+template class DualQueueQBSearch<SparsePackedState>;
+template class DualQueueQBSearch<ExtensionalPackedState>;  //

@@ -22,7 +22,7 @@ SEARCH_CHOICES = ["astar",
                   "lazy",
                   "lazy-po",
                   "lazy-prune",
-                  "wlns"]
+                  "dqs"]
 
 EVALUATOR_CHOICES = ["blind",
                      "goalcount",
@@ -30,7 +30,9 @@ EVALUATOR_CHOICES = ["blind",
                      "hmax",
                      "ff",
                      "rff",
-                     "wlgoose"]
+                     "wlgoose",
+                     "qbwlgc",
+                     "qbwlff",]
 
 SUCCESSOR_GENERATOR_CHOICES = ['yannakakis',
                                'join',

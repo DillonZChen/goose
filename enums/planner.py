@@ -16,7 +16,12 @@ class Planner(ParseableEnum):
     POWERLIFTED_BLIND = "powerlifted(blind)"
     POWERLIFTED_GC = "powerlifted(gc)"
     POWERLIFTED_FF = "powerlifted(ff)"
-    POWERLIFTED_WLNS_FF = "powerlifted(wlns-ff)"
+    POWERLIFTED_ALT_BFWS_GC = "powerlifted(alt-bfws-gc)"
+    POWERLIFTED_ALT_BFWS_FF = "powerlifted(alt-bfws-ff)"
+    POWERLIFTED_QBWLGC = "powerlifted(qbwlgc)"
+    POWERLIFTED_QBWLFF = "powerlifted(qbwlff)"
+    POWERLIFTED_DQS_QBWLGC = "powerlifted(dqs-qbwlgc)"
+    POWERLIFTED_DQS_QBWLFF = "powerlifted(dqs-qbwlff)"
 
     @staticmethod
     def requires_model(planner: "Planner") -> bool:
@@ -38,7 +43,12 @@ class Planner(ParseableEnum):
             Planner.POWERLIFTED_BLIND,
             Planner.POWERLIFTED_GC,
             Planner.POWERLIFTED_FF,
-            Planner.POWERLIFTED_WLNS_FF,
+            Planner.POWERLIFTED_ALT_BFWS_GC,
+            Planner.POWERLIFTED_ALT_BFWS_FF,
+            Planner.POWERLIFTED_QBWLGC,
+            Planner.POWERLIFTED_QBWLFF,
+            Planner.POWERLIFTED_DQS_QBWLGC,
+            Planner.POWERLIFTED_DQS_QBWLFF,
         }
 
     @staticmethod
@@ -60,5 +70,10 @@ class Planner(ParseableEnum):
             Planner.POWERLIFTED_BLIND,
             Planner.POWERLIFTED_GC,
             Planner.POWERLIFTED_FF,
-            Planner.POWERLIFTED_WLNS_FF,
+            Planner.POWERLIFTED_ALT_BFWS_GC,
+            Planner.POWERLIFTED_ALT_BFWS_FF,
+            Planner.POWERLIFTED_QBWLGC,
+            Planner.POWERLIFTED_QBWLFF,
+            Planner.POWERLIFTED_DQS_QBWLGC,
+            Planner.POWERLIFTED_DQS_QBWLFF,
         }

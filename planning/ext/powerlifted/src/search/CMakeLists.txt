@@ -136,7 +136,9 @@ add_executable(search
         parallel_hashmap/phmap.h
         goose/wlgoose_heuristic.h goose/wlgoose_heuristic.cc
         goose/wl_utils.h goose/wl_utils.cc
-        goose/dual_queue_wlns.h goose/dual_queue_wlns.cc)
+        goose/qb_heuristic.h goose/qb_heuristic.cc
+        goose/qb_wl_heuristic.h goose/qb_wl_heuristic.cc
+        goose/dqqbs.h goose/dqqbs.cc)
 
 target_link_libraries(search PRIVATE wlplan)
 target_link_libraries(search LINK_PUBLIC ${Boost_LIBRARIES})

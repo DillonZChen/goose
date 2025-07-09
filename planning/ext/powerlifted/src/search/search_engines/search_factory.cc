@@ -6,11 +6,10 @@
 #include "breadth_first_search.h"
 #include "breadth_first_width_search.h"
 #include "dual_queue_bfws.h"
-#include "../goose/dual_queue_wlns.h"
 #include "greedy_best_first_search.h"
 #include "lazy_search.h"
 #include "search.h"
-
+#include "../goose/dqqbs.h"
 #include "../states/extensional_states.h"
 #include "../states/sparse_states.h"
 
@@ -29,9 +28,9 @@ SearchFactory::create(const Options &opt, const std::string& method, const std::
         if (using_ext_state) return new BreadthFirstSearch<ExtensionalPackedState>();
         else return new BreadthFirstSearch<SparsePackedState>();
     }
-    else if (boost::iequals(method, "wlns")) {
-        if (using_ext_state) return new DualQueueWLNS<ExtensionalPackedState>();
-        else return new DualQueueWLNS<SparsePackedState>();
+    else if (boost::iequals(method, "dqs")) {
+        if (using_ext_state) return new DualQueueQBSearch<ExtensionalPackedState>();
+        else return new DualQueueQBSearch<SparsePackedState>();
     }
     else if (boost::iequals(method, "bfws1")) {
         if (using_ext_state) return new BreadthFirstWidthSearch<ExtensionalPackedState>(1, opt, StandardNovelty::R_0);

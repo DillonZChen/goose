@@ -30,19 +30,44 @@ def run_powerlifted(domain_path: str, problem_path: str, wlf_params_path: str, o
 
 
 def run_powerlifted_standalone(domain_path: str, problem_path: str, opts) -> None:
+    BLIND = "blind"
+    GC = "goalcount"
+    FF = "ff"
+
+    QBWLGC = "qbwlgc"
+    QBWLFF = "qbwlff"
+
+    GBFS = "gbfs"
+    DQS = "dqs"
+
     match opts.planner:
         case Planner.POWERLIFTED_BLIND:
-            heuristic = "blind"
-            search = "gbfs"
+            heuristic = BLIND
+            search = GBFS
         case Planner.POWERLIFTED_GC:
-            heuristic = "goalcount"
-            search = "gbfs"
+            heuristic = GC
+            search = GBFS
         case Planner.POWERLIFTED_FF:
-            heuristic = "ff"
-            search = "gbfs"
-        case Planner.POWERLIFTED_WLNS_FF:
-            heuristic = "ff"
-            search = "wlns"
+            heuristic = FF
+            search = GBFS
+        case Planner.POWERLIFTED_ALT_BFWS_GC:
+            heuristic = GC
+            search = "alt-bfws1"
+        case Planner.POWERLIFTED_ALT_BFWS_FF:
+            heuristic = FF
+            search = "alt-bfws1"
+        case Planner.POWERLIFTED_QBWLGC:
+            heuristic = QBWLGC
+            search = GBFS
+        case Planner.POWERLIFTED_QBWLFF:
+            heuristic = QBWLFF
+            search = GBFS
+        case Planner.POWERLIFTED_DQS_QBWLGC:
+            heuristic = QBWLGC
+            search = DQS
+        case Planner.POWERLIFTED_DQS_QBWLFF:
+            heuristic = QBWLFF
+            search = DQS
         case _:
             raise NotImplementedError(f"{opts.planner=}")
 

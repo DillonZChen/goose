@@ -1,11 +1,11 @@
-#ifndef GOOSE_DUAL_QUEUE_WLNS_H_
-#define GOOSE_DUAL_QUEUE_WLNS_H_
+#ifndef GOOSE_DQQBS_H_
+#define GOOSE_DQQBS_H_
 
 #include "../search_engines/search.h"
 #include "../search_engines/search_space.h"
 
 template <class PackedStateT>
-class DualQueueWLNS : public SearchBase {
+class DualQueueQBSearch : public SearchBase {
 protected:
     SearchSpace<PackedStateT> space;
 
@@ -18,4 +18,4 @@ public:
     void print_statistics() const override;
 };
 
-#endif //GOOSE_DUAL_QUEUE_WLNS_H_
+#endif //GOOSE_DQQBS_H_

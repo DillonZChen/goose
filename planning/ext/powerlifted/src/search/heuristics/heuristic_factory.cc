@@ -1,23 +1,24 @@
 #include "heuristic_factory.h"
 
+#include "../goose/qb_wl_heuristic.h"
+#include "../goose/wlgoose_heuristic.h"
 #include "add_heuristic.h"
 #include "blind_heuristic.h"
 #include "ff_heuristic.h"
 #include "goalcount.h"
 #include "hmax_heuristic.h"
 #include "rff_heuristic.h"
-#include "../goose/wlgoose_heuristic.h"
 
 #include "datalog_transformation_options.h"
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 #include <boost/algorithm/string.hpp>
 
 Heuristic *HeuristicFactory::create(const Options &opt, const Task &task)
 {
-    const std::string& method = opt.get_evaluator();
+    const std::string &method = opt.get_evaluator();
 
     std::cout << "Creating heuristic factory..." << std::endl;
 
@@ -42,13 +43,23 @@ Heuristic *HeuristicFactory::create(const Options &opt, const Task &task)
     else if (boost::iequals(method, "wlgoose")) {
         return new WlGooseHeuristic(opt, task);
     }
+    else if (boost::iequals(method, "qbwlgc")) {
+        std::shared_ptr<Heuristic> h = std::make_shared<Goalcount>();
+        return new QbWlHeuristic(opt, task, h);
+    }
+    else if (boost::iequals(method, "qbwlff")) {
+        std::shared_ptr<Heuristic> h =
+            std::make_shared<FFHeuristic>(task, DatalogTransformationOptions());
+        return new QbWlHeuristic(opt, task, h);
+    }
     else {
         std::cerr << "Invalid heuristic \"" << method << "\"" << std::endl;
         exit(-1);
     }
 }
 
-Heuristic *HeuristicFactory::create_delete_free_heuristic(const std::string &method, const Task &task)
+Heuristic *HeuristicFactory::create_delete_free_heuristic(const std::string &method,
+                                                          const Task &task)
 {
     if (boost::iequals(method, "add")) {
         return new AdditiveHeuristic(task);
