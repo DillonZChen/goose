@@ -33,12 +33,13 @@ int QbWlHeuristic::compute_heuristic(const DBState &s, const Task &task)
         if (embed[i] == 0) {  // feature not present, their values do not matter
             continue;
         }
-        if (feat_to_lowest_h.count(i) == 0) {
-            feat_to_lowest_h[i] = cached_heuristic;
+        std::pair<int, int> feat = std::make_pair(i, (int)embed[i]);
+        if (feat_to_lowest_h.count(feat) == 0) {
+            feat_to_lowest_h[feat] = cached_heuristic;
             nov_h -= 1;
         }
-        else if (cached_heuristic < feat_to_lowest_h[i]) {
-            feat_to_lowest_h[i] = cached_heuristic;
+        else if (cached_heuristic < feat_to_lowest_h[feat]) {
+            feat_to_lowest_h[feat] = cached_heuristic;
             nov_h -= 1;
         }
     }
@@ -48,5 +49,5 @@ int QbWlHeuristic::compute_heuristic(const DBState &s, const Task &task)
 
 void QbWlHeuristic::print_statistics()
 {
-    // TODO
+    std::cout << "Number of collected features: " << feat_to_lowest_h.size() << std::endl;
 }

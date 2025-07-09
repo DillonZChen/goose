@@ -18,7 +18,7 @@ class QbHeuristic : public Heuristic {
 protected:
     std::shared_ptr<Heuristic> original_heuristic;
     int cached_heuristic;
-    std::map<int, int> feat_to_lowest_h;
+    std::map<std::pair<int, int>, int> feat_to_lowest_h;
 
 public:
     QbHeuristic(const Options &opts, const Task &task, std::shared_ptr<Heuristic> heuristic);
