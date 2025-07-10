@@ -43,12 +43,9 @@ int QbWlHeuristic::compute_heuristic(const DBState &s, const Task &task)
         }
     }
 
-    if (nov_h < 0) {
-        return nov_h;
-    }
-    else {
-        return non_h;
-    }
+    int h = nov_h < 0 ? nov_h : non_h;
+
+    return h;
 }
 
 void QbWlHeuristic::print_statistics()

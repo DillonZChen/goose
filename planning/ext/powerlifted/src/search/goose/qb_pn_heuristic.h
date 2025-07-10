@@ -18,8 +18,7 @@
 class QbPnHeuristic : public QbHeuristic {
 protected:
     std::map<int, int> nullary_mapping;
-    std::vector<NoveltySet> atom_mapping;  // atom_mapping[relation][tuple] = lowest_h
-    int atom_counter;
+    std::vector<NoveltySet> atom_to_lowest_h;  // atom_to_lowest_h[relation][tuple] = lowest_h
 
 public:
     QbPnHeuristic(const Options &opts, const Task &task, std::shared_ptr<Heuristic> heuristic);

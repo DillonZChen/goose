@@ -11,7 +11,11 @@ QbPnHeuristic::QbPnHeuristic(const Options &opts,
     : QbHeuristic(opts, task, heuristic)
 {
     size_t n_relations = task.initial_state.get_relations().size();
-    atom_mapping.resize(n_relations);
+    atom_to_lowest_h.resize(n_relations);
+
+    for (size_t i = 0; i < n_relations; ++i) {
+        atom_to_lowest_h[i] = NoveltySet();
+    }
 }
 
 int QbPnHeuristic::compute_heuristic(const DBState &s, const Task &task)
@@ -28,8 +32,8 @@ int QbPnHeuristic::compute_heuristic(const DBState &s, const Task &task)
             continue;
         bool in_map = nullary_mapping.count(i) > 0;
         if (!in_map || nullary_mapping[i] < cached_heuristic) {
-            nov_h -= 1;
             nullary_mapping[i] = cached_heuristic;
+            nov_h -= 1;
         }
         else if (in_map && nullary_mapping[i] > cached_heuristic) {
             non_h += 1;
@@ -38,31 +42,28 @@ int QbPnHeuristic::compute_heuristic(const DBState &s, const Task &task)
 
     // n-ary
     for (const Relation &relation : s.get_relations()) {
-        int pred_symbol_idx = relation.predicate_symbol;
-        for (const GroundAtom &tuple : relation.tuples) {
-            bool in_map = atom_mapping[pred_symbol_idx].count(tuple) > 0;
-            if (!in_map || atom_mapping[pred_symbol_idx][tuple] < cached_heuristic) {
+        int i = relation.predicate_symbol;
+        for (const GroundAtom &f : relation.tuples) {
+            bool in_map = atom_to_lowest_h[i].count(f) > 0;
+            if (!in_map || cached_heuristic < atom_to_lowest_h[i][f]) {
+                atom_to_lowest_h[i][f] = cached_heuristic;
                 nov_h -= 1;
-                atom_mapping[pred_symbol_idx][tuple] = cached_heuristic;
             }
-            else if (in_map && atom_mapping[pred_symbol_idx][tuple] > cached_heuristic) {
+            else if (in_map && cached_heuristic > atom_to_lowest_h[i][f]) {
                 non_h += 1;
             }
         }
     }
 
-    if (nov_h < 0) {
-        return nov_h;
-    }
-    else {
-        return non_h;
-    }
+    int h = nov_h < 0 ? nov_h : non_h;
+
+    return h;
 }
 
 void QbPnHeuristic::print_statistics()
 {
     int size = nullary_mapping.size();
-    for (const auto &entry : atom_mapping) {
+    for (const auto &entry : atom_to_lowest_h) {
         size += entry.size();
     }
     std::cout << "Number of collected features: " << size << std::endl;
