@@ -18,15 +18,21 @@ int QbPnHeuristic::compute_heuristic(const DBState &s, const Task &task)
 {
     cached_heuristic = original_heuristic->compute_heuristic(s, task);
 
-    int nov_h = 0;  // always non-positive
+    int nov_h = 0;  // always non-positive; eqn. 2 katz. et al 2017
+    int non_h = 0;  // always non-negative; eqn. 3 katz. et al 2017
 
     // nullary
     const vector<bool> &nullary_atoms = s.get_nullary_atoms();
     for (size_t i = 0; i < nullary_atoms.size(); ++i) {
-        if (nullary_atoms[i] &&
-            (nullary_mapping.count(i) == 0 || nullary_mapping[i] < cached_heuristic)) {
+        if (!nullary_atoms[i])
+            continue;
+        bool in_map = nullary_mapping.count(i) > 0;
+        if (!in_map || nullary_mapping[i] < cached_heuristic) {
             nov_h -= 1;
             nullary_mapping[i] = cached_heuristic;
+        }
+        else if (in_map && nullary_mapping[i] > cached_heuristic) {
+            non_h += 1;
         }
     }
 
@@ -34,15 +40,23 @@ int QbPnHeuristic::compute_heuristic(const DBState &s, const Task &task)
     for (const Relation &relation : s.get_relations()) {
         int pred_symbol_idx = relation.predicate_symbol;
         for (const GroundAtom &tuple : relation.tuples) {
-            if (atom_mapping[pred_symbol_idx].count(tuple) == 0 ||
-                atom_mapping[pred_symbol_idx][tuple] < cached_heuristic) {
+            bool in_map = atom_mapping[pred_symbol_idx].count(tuple) > 0;
+            if (!in_map || atom_mapping[pred_symbol_idx][tuple] < cached_heuristic) {
                 nov_h -= 1;
                 atom_mapping[pred_symbol_idx][tuple] = cached_heuristic;
+            }
+            else if (in_map && atom_mapping[pred_symbol_idx][tuple] > cached_heuristic) {
+                non_h += 1;
             }
         }
     }
 
-    return nov_h;
+    if (nov_h < 0) {
+        return nov_h;
+    }
+    else {
+        return non_h;
+    }
 }
 
 void QbPnHeuristic::print_statistics()

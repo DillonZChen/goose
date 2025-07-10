@@ -22,7 +22,9 @@ int QbWlHeuristic::compute_heuristic(const DBState &s, const Task &task)
 {
     cached_heuristic = original_heuristic->compute_heuristic(s, task);
 
-    int nov_h = 0;  // always non-positive
+    int nov_h = 0;  // always non-positive; eqn. 2 katz. et al 2017
+    int non_h = 0;  // always non-negative; eqn. 3 katz. et al 2017
+
     planning::State wl_state = wl_utils::to_wlplan_state(s, task, pwl_index_to_predicate);
     model->collect(wl_state);
     std::vector<double> embed = model->embed_state(wl_state);  // TODO optimise this
@@ -31,13 +33,22 @@ int QbWlHeuristic::compute_heuristic(const DBState &s, const Task &task)
             continue;
         }
         std::pair<int, int> feat = std::make_pair(i, (int)embed[i]);
-        if (feat_to_lowest_h.count(feat) == 0 || cached_heuristic < feat_to_lowest_h[feat]) {
+        bool in_map = feat_to_lowest_h.count(feat) > 0;
+        if (!in_map || cached_heuristic < feat_to_lowest_h[feat]) {
             feat_to_lowest_h[feat] = cached_heuristic;
             nov_h -= 1;
         }
+        else if (in_map && cached_heuristic > feat_to_lowest_h[feat]) {
+            non_h += 1;
+        }
     }
 
-    return nov_h;
+    if (nov_h < 0) {
+        return nov_h;
+    }
+    else {
+        return non_h;
+    }
 }
 
 void QbWlHeuristic::print_statistics()
