@@ -20,7 +20,22 @@ namespace qb_heuristic {
   int QbPnHeuristic::compute_heuristic(const State &ancestor_state) {
     int h = original_heuristic->compute_heuristic(ancestor_state);
 
-    return h;
+    int nov_h = 0;
+    int non_h = 0;
+
+    State state = convert_ancestor_state(ancestor_state);
+    for (const FactProxy &fact : state) {
+      FactPair pair = fact.get_pair();
+      bool in_map = fact_pair_to_lowest_h.count(pair) > 0;
+      if (!in_map || h < fact_pair_to_lowest_h[pair]) {
+        fact_pair_to_lowest_h[pair] = h;
+        nov_h -= 1;
+      } else if (in_map && h > fact_pair_to_lowest_h[pair]) {
+        non_h += 1;
+      }
+    }
+
+    return nov_h < 0 ? nov_h : non_h;
   }
 
   class QbPnHeuristicFeature : public plugins::TypedFeature<Evaluator, QbPnHeuristic> {

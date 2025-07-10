@@ -3,12 +3,14 @@
 
 #include "../heuristic.h"
 
+#include <map>
 #include <memory>
 
 namespace qb_heuristic {
   class QbHeuristic : public Heuristic {
    protected:
     const std::shared_ptr<Heuristic> original_heuristic;
+
     virtual int compute_heuristic(const State &ancestor_state) = 0;
 
    public:

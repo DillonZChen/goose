@@ -8,6 +8,8 @@
 namespace qb_heuristic {
   class QbPnHeuristic : public QbHeuristic {
    protected:
+    std::map<FactPair, int> fact_pair_to_lowest_h;
+
     virtual int compute_heuristic(const State &ancestor_state) override;
 
    public:

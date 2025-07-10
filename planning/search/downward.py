@@ -44,9 +44,9 @@ def run_downward_standalone(domain_path: str, problem_path: str, opts) -> None:
     ADD = "add()"
     FF = "ff()"
 
-    QBWLGC = "qbwl(h=gc)"
-    QBWLADD = "qbwladd"
-    QBWLFF = "qbwlff"
+    QBWLGC = 'qbwl(h="gc")'
+    QBWLADD = 'qbwl(h="add")'
+    QBWLFF = 'qbwl(h="ff")'
 
     QBPNGC = 'qbpn(h="gc")'
     QBPNADD = 'qbpn(h="add")'
@@ -67,6 +67,12 @@ def run_downward_standalone(domain_path: str, problem_path: str, opts) -> None:
             heuristics = [QBPNADD]
         case Planner.DOWNWARD_QBPNFF:
             heuristics = [QBPNFF]
+        case Planner.DOWNWARD_QBWLGC:
+            heuristics = [QBWLGC]
+        case Planner.DOWNWARD_QBWLADD:
+            heuristics = [QBWLADD]
+        case Planner.DOWNWARD_QBWLFF:
+            heuristics = [QBWLFF]
         case _:
             raise NotImplementedError(f"{opts.planner=}")
     heuristics = ", ".join(heuristics)
