@@ -1,5 +1,5 @@
-Bootstrap: docker
-From: nvidia/cuda:12.3.2-runtime-ubuntu22.04
+Bootstrap: localimage
+From: apptainer/docker-ubuntu22_04-cuda.sif
 
 %files
     enums /goose/
@@ -13,29 +13,6 @@ From: nvidia/cuda:12.3.2-runtime-ubuntu22.04
     requirements.txt /goose/
 
 %post
-    # Install all necessary dependencies.
-    apt-get update
-
-    export DEBIAN_FRONTEND=noninteractive
-
-    # Python packages
-    apt-get install -y --no-install-recommends \
-        python2 \
-        python3.10 \
-        python3-tk \
-        python3-pip \
-        python3-dev \
-        python3-distutils \
-        python3-setuptools
-
-    # C++ packages
-    apt-get install -y --no-install-recommends \
-        build-essential \
-        g++ \
-        cmake \
-        libboost-all-dev \
-        git
-
     # Move into repo and build
     cd /goose
 
