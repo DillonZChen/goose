@@ -65,5 +65,5 @@ void QbPnHeuristic::print_statistics()
     for (const auto &entry : atom_mapping) {
         size += entry.size();
     }
-    std::cout << "Number of collected atoms: " << size << std::endl;
+    std::cout << "Number of collected features: " << size << std::endl;
 }
