@@ -21,6 +21,9 @@ QbWlHeuristic::QbWlHeuristic(const Options &opts,
 int QbWlHeuristic::compute_heuristic(const DBState &s, const Task &task)
 {
     cached_heuristic = original_heuristic->compute_heuristic(s, task);
+    if (cached_heuristic == UNSOLVABLE_STATE) {
+        return UNSOLVABLE_STATE;
+    }
 
     int nov_h = 0;  // always non-positive; eqn. 2 katz. et al 2017
     int non_h = 0;  // always non-negative; eqn. 3 katz. et al 2017

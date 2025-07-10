@@ -55,6 +55,9 @@ namespace qb_heuristic {
 
   int QbWlHeuristic::compute_heuristic(const State &ancestor_state) {
     int h = original_heuristic->compute_heuristic(ancestor_state);
+    if (h == DEAD_END) {
+        return DEAD_END;
+    }
 
     int nov_h = 0;
     int non_h = 0;
