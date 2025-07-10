@@ -39,16 +39,34 @@ def run_downward_fdr(sas_path: str, wlf_params_path: str, opts) -> None:
 
 
 def run_downward_standalone(domain_path: str, problem_path: str, opts) -> None:
-    blind = "blind()"
-    gc = "goalcount()"
-    ff = "ff()"
+    BLIND = "blind()"
+    GC = "goalcount()"
+    ADD = "add()"
+    FF = "ff()"
+
+    QBWLGC = "qbwl(h=gc)"
+    QBWLADD = "qbwladd"
+    QBWLFF = "qbwlff"
+
+    QBPNGC = 'qbpn(h="gc")'
+    QBPNADD = 'qbpn(h="add")'
+    QBPNFF = 'qbpn(h="ff")'
+
     match opts.planner:
         case Planner.DOWNWARD_BLIND:
-            heuristics = [blind]
+            heuristics = [BLIND]
         case Planner.DOWNWARD_GC:
-            heuristics = [gc]
+            heuristics = [GC]
+        case Planner.DOWNWARD_ADD:
+            heuristics = [ADD]
         case Planner.DOWNWARD_FF:
-            heuristics = [ff]
+            heuristics = [FF]
+        case Planner.DOWNWARD_QBPNGC:
+            heuristics = [QBPNGC]
+        case Planner.DOWNWARD_QBPNADD:
+            heuristics = [QBPNADD]
+        case Planner.DOWNWARD_QBPNFF:
+            heuristics = [QBPNFF]
         case _:
             raise NotImplementedError(f"{opts.planner=}")
     heuristics = ", ".join(heuristics)

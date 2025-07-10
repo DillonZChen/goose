@@ -999,10 +999,28 @@ create_fast_downward_library(
 )
 
 create_fast_downward_library(
-    NAME wl_novelty_heuristic
-    HELP "WL Novelty heuristic"
+    NAME qb_heuristic
+    HELP "Quantified-Both heuristic"
     SOURCES
-        goose/wl_novelty_heuristic
+        goose/qb_heuristic
+    DEPENDENCY_ONLY
+)
+
+create_fast_downward_library(
+    NAME qb_wl_heuristic
+    HELP "Quantified-Both heuristic with WL features"
+    SOURCES
+        goose/qb_wl_heuristic
     DEPENDS
+        qb_heuristic
         wl_utils
+)
+
+create_fast_downward_library(
+    NAME qb_pn_heuristic
+    HELP "Quantified-Both heuristic with atom features"
+    SOURCES
+        goose/qb_pn_heuristic
+    DEPENDS
+        qb_heuristic
 )

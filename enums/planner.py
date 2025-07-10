@@ -11,7 +11,14 @@ class Planner(ParseableEnum):
 
     DOWNWARD_BLIND = "downward(blind)"
     DOWNWARD_GC = "downward(gc)"
+    DOWNWARD_ADD = "downward(add)"
     DOWNWARD_FF = "downward(ff)"
+    DOWNWARD_QBWLGC = "downward(qbwlgc)"
+    DOWNWARD_QBWLADD = "downward(qbwladd)"
+    DOWNWARD_QBWLFF = "downward(qbwlff)"
+    DOWNWARD_QBPNGC = "downward(qbpngc)"
+    DOWNWARD_QBPNADD = "downward(qbpnadd)"
+    DOWNWARD_QBPNFF = "downward(qbpnff)"
 
     POWERLIFTED_BLIND = "powerlifted(blind)"
     POWERLIFTED_GC = "powerlifted(gc)"
@@ -36,7 +43,14 @@ class Planner(ParseableEnum):
         ret = {
             Planner.DOWNWARD_BLIND,
             Planner.DOWNWARD_GC,
+            Planner.DOWNWARD_ADD,
             Planner.DOWNWARD_FF,
+            Planner.DOWNWARD_QBWLGC,
+            Planner.DOWNWARD_QBWLADD,
+            Planner.DOWNWARD_QBWLFF,
+            Planner.DOWNWARD_QBPNGC,
+            Planner.DOWNWARD_QBPNADD,
+            Planner.DOWNWARD_QBPNFF,
         }
         if values:
             ret = {planner.value for planner in ret}
