@@ -78,9 +78,7 @@ class SGTask:
 
                 if pred in self.static_predicates:
                     if goal not in self.problem.init:
-                        raise ValueError(
-                            f"Problem unsolvable. Static goal {goal} not in initial state."
-                        )
+                        raise ValueError(f"Problem unsolvable. Static goal {goal} not in initial state.")
                     else:
                         continue
 
@@ -93,9 +91,7 @@ class SGTask:
 
                 if pred in self.static_predicates:
                     if goal in self.problem.init:
-                        raise ValueError(
-                            f"Problem unsolvable. Static negative goal {goal} in initial state."
-                        )
+                        raise ValueError(f"Problem unsolvable. Static negative goal {goal} in initial state.")
                     else:
                         continue
 
@@ -112,9 +108,7 @@ class SGTask:
                         self.obj_to_i,
                     )
                 )
-        self.goal = SGGoal(
-            pos_goals=true_facts, neg_goals=false_facts, numeric_goals=numeric_goals
-        )
+        self.goal = SGGoal(pos_goals=true_facts, neg_goals=false_facts, numeric_goals=numeric_goals)
 
     def _handle_statics(self) -> None:
         all_predicates = set(p.name for p in self.domain.predicates)
@@ -142,12 +136,8 @@ class SGTask:
 
         self.static_predicates = [self.pred_to_i[p] for p in sorted(static_predicates)]
         self.static_functions = [self.func_to_i[f] for f in sorted(static_functions)]
-        self.fluent_predicates = [
-            self.pred_to_i[p] for p in sorted(all_predicates - static_predicates)
-        ]
-        self.fluent_functions = [
-            self.func_to_i[f] for f in sorted(all_functions - static_functions)
-        ]
+        self.fluent_predicates = [self.pred_to_i[p] for p in sorted(all_predicates - static_predicates)]
+        self.fluent_functions = [self.func_to_i[f] for f in sorted(all_functions - static_functions)]
 
         logging.debug(f"{self.static_predicates=}")
         logging.debug(f"{self.static_functions=}")

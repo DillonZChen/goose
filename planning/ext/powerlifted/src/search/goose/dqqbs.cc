@@ -134,10 +134,6 @@ utils::ExitCode DualQueueQBSearch<PackedStateT>::search(const Task &task,
         assert(sid.id() >= 0 && (unsigned)sid.id() < space.size());
 
         DBState state = packer.unpack(space.get_state(sid));
-        if (check_goal(task, generator, timer_start, state, node, space)) {
-            heuristic.print_statistics();
-            return utils::ExitCode::SUCCESS;
-        }
 
         const auto applicable = generator.get_applicable_actions(action_schemas, state);
         statistics.inc_generated(applicable.size());
@@ -145,8 +141,13 @@ utils::ExitCode DualQueueQBSearch<PackedStateT>::search(const Task &task,
         for (const LiftedOperatorId &op_id : applicable) {
             const auto &action = action_schemas[op_id.get_index()];
             DBState s = generator.generate_successor(op_id, action, state);
-            auto &child_node =
-                space.insert_or_get_previous_node(packer.pack(s), op_id, node.state_id);
+            auto& child_node = space.insert_or_get_previous_node(packer.pack(s), op_id, node.state_id);
+
+            if (check_goal(task, generator, timer_start, s, child_node, space)) {
+                heuristic.print_statistics();
+                return utils::ExitCode::SUCCESS;
+            }
+
             int dist = g + action.get_cost();
 
             // begin GOOSE time

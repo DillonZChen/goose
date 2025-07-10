@@ -1,7 +1,6 @@
 import pytest
 from fixtures import CONFIGS, get_data_input_argument
-
-from util import execute_command, get_command_prefix
+from test_utils import execute_command, get_command_prefix
 
 
 @pytest.mark.parametrize("domain_name", ["blocksworld", "childsnack", "satellite"])

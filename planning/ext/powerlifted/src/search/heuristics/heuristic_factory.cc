@@ -1,6 +1,7 @@
 #include "heuristic_factory.h"
 
 #include "../goose/qb_wl_heuristic.h"
+#include "../goose/qb_pn_heuristic.h"
 #include "../goose/wlgoose_heuristic.h"
 #include "add_heuristic.h"
 #include "blind_heuristic.h"
@@ -47,10 +48,29 @@ Heuristic *HeuristicFactory::create(const Options &opt, const Task &task)
         std::shared_ptr<Heuristic> h = std::make_shared<Goalcount>();
         return new QbWlHeuristic(opt, task, h);
     }
+    else if (boost::iequals(method, "qbwladd")) {
+        std::shared_ptr<Heuristic> h =
+            std::make_shared<AdditiveHeuristic>(task, DatalogTransformationOptions());
+        return new QbWlHeuristic(opt, task, h);
+    }
     else if (boost::iequals(method, "qbwlff")) {
         std::shared_ptr<Heuristic> h =
             std::make_shared<FFHeuristic>(task, DatalogTransformationOptions());
         return new QbWlHeuristic(opt, task, h);
+    }
+    else if (boost::iequals(method, "qbpngc")) {
+        std::shared_ptr<Heuristic> h = std::make_shared<Goalcount>();
+        return new QbPnHeuristic(opt, task, h);
+    }
+    else if (boost::iequals(method, "qbpnadd")) {
+        std::shared_ptr<Heuristic> h =
+            std::make_shared<AdditiveHeuristic>(task, DatalogTransformationOptions());
+        return new QbPnHeuristic(opt, task, h);
+    }
+    else if (boost::iequals(method, "qbpnff")) {
+        std::shared_ptr<Heuristic> h =
+            std::make_shared<FFHeuristic>(task, DatalogTransformationOptions());
+        return new QbPnHeuristic(opt, task, h);
     }
     else {
         std::cerr << "Invalid heuristic \"" << method << "\"" << std::endl;

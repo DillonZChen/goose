@@ -1,6 +1,5 @@
 import pytest
-
-from util import train_plan
+from test_utils import train_plan
 
 
 BENCHMARK_GROUP = "neurips24"

@@ -2,9 +2,6 @@
 #include "wl_utils.h"
 
 #include "../ext/wlplan/include/feature_generator/feature_generators/wl.hpp"
-#include "../ext/wlplan/include/planning/predicate.hpp"
-
-#include <cassert>
 
 using namespace std;
 
@@ -34,11 +31,7 @@ int QbWlHeuristic::compute_heuristic(const DBState &s, const Task &task)
             continue;
         }
         std::pair<int, int> feat = std::make_pair(i, (int)embed[i]);
-        if (feat_to_lowest_h.count(feat) == 0) {
-            feat_to_lowest_h[feat] = cached_heuristic;
-            nov_h -= 1;
-        }
-        else if (cached_heuristic < feat_to_lowest_h[feat]) {
+        if (feat_to_lowest_h.count(feat) == 0 || cached_heuristic < feat_to_lowest_h[feat]) {
             feat_to_lowest_h[feat] = cached_heuristic;
             nov_h -= 1;
         }

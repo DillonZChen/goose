@@ -1,7 +1,6 @@
 import pytest
 from fixtures import get_data_input_argument
-
-from util import execute_command, get_command_prefix
+from test_utils import execute_command, get_command_prefix
 
 
 def test_distinguishability_test(request: pytest.FixtureRequest):

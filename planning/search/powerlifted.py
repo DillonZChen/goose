@@ -32,10 +32,16 @@ def run_powerlifted(domain_path: str, problem_path: str, wlf_params_path: str, o
 def run_powerlifted_standalone(domain_path: str, problem_path: str, opts) -> None:
     BLIND = "blind"
     GC = "goalcount"
+    ADD = "add"
     FF = "ff"
 
     QBWLGC = "qbwlgc"
+    QBWLADD = "qbwladd"
     QBWLFF = "qbwlff"
+
+    QBPNGC = "qbpngc"
+    QBPNADD = "qbpnadd"
+    QBPNFF = "qbpnff"
 
     GBFS = "gbfs"
     DQS = "dqs"
@@ -47,27 +53,51 @@ def run_powerlifted_standalone(domain_path: str, problem_path: str, opts) -> Non
         case Planner.POWERLIFTED_GC:
             heuristic = GC
             search = GBFS
+        case Planner.POWERLIFTED_ADD:
+            heuristic = ADD
+            search = GBFS
         case Planner.POWERLIFTED_FF:
             heuristic = FF
             search = GBFS
-        case Planner.POWERLIFTED_ALT_BFWS_GC:
-            heuristic = GC
-            search = "alt-bfws1"
-        case Planner.POWERLIFTED_ALT_BFWS_FF:
-            heuristic = FF
-            search = "alt-bfws1"
         case Planner.POWERLIFTED_QBWLGC:
             heuristic = QBWLGC
+            search = GBFS
+        case Planner.POWERLIFTED_QBWLADD:
+            heuristic = QBWLADD
             search = GBFS
         case Planner.POWERLIFTED_QBWLFF:
             heuristic = QBWLFF
             search = GBFS
+        case Planner.POWERLIFTED_QBPNGC:
+            heuristic = QBPNGC
+            search = GBFS
+        case Planner.POWERLIFTED_QBPNADD:
+            heuristic = QBPNADD
+            search = GBFS
+        case Planner.POWERLIFTED_QBPNFF:
+            heuristic = QBPNFF
+            search = GBFS
         case Planner.POWERLIFTED_DQS_QBWLGC:
             heuristic = QBWLGC
+            search = DQS
+        case Planner.POWERLIFTED_DQS_QBWLADD:
+            heuristic = QBWLADD
             search = DQS
         case Planner.POWERLIFTED_DQS_QBWLFF:
             heuristic = QBWLFF
             search = DQS
+        case Planner.POWERLIFTED_DQS_QBPNGC:
+            heuristic = QBPNGC
+            search = DQS
+        case Planner.POWERLIFTED_DQS_QBPNADD:
+            heuristic = QBPNADD
+            search = DQS
+        case Planner.POWERLIFTED_DQS_QBPNFF:
+            heuristic = QBPNFF
+            search = DQS
+        case Planner.POWERLIFTED_ALT_BFWS_FF:
+            heuristic = FF
+            search = "alt-bfws1"
         case _:
             raise NotImplementedError(f"{opts.planner=}")
 

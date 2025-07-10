@@ -21,6 +21,7 @@ class QbWlHeuristic : public QbHeuristic {
 protected:
     std::unordered_map<int, planning::Predicate> pwl_index_to_predicate;
     std::shared_ptr<feature_generator::Features> model;
+    std::map<std::pair<int, int>, int> feat_to_lowest_h;
 
 public:
     QbWlHeuristic(const Options &opts, const Task &task, std::shared_ptr<Heuristic> heuristic);
