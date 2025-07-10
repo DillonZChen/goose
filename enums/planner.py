@@ -19,6 +19,9 @@ class Planner(ParseableEnum):
     DOWNWARD_QBPNGC = "downward(qbpngc)"
     DOWNWARD_QBPNADD = "downward(qbpnadd)"
     DOWNWARD_QBPNFF = "downward(qbpnff)"
+    DOWNWARD_QBPNWLGC = "downward(qbpnwlgc)"
+    DOWNWARD_QBPNWLADD = "downward(qbpnwladd)"
+    DOWNWARD_QBPNWLFF = "downward(qbpnwlff)"
 
     POWERLIFTED_BLIND = "powerlifted(blind)"
     POWERLIFTED_GC = "powerlifted(gc)"
@@ -30,6 +33,10 @@ class Planner(ParseableEnum):
     POWERLIFTED_QBPNGC = "powerlifted(qbpngc)"
     POWERLIFTED_QBPNADD = "powerlifted(qbpnadd)"
     POWERLIFTED_QBPNFF = "powerlifted(qbpnff)"
+    POWERLIFTED_QBPNWLGC = "powerlifted(qbpnwlgc)"
+    POWERLIFTED_QBPNWLADD = "powerlifted(qbpnwladd)"
+    POWERLIFTED_QBPNWLFF = "powerlifted(qbpnwlff)"
+
     POWERLIFTED_DQS_QBWLGC = "powerlifted(dqs-qbwlgc)"
     POWERLIFTED_DQS_QBWLADD = "powerlifted(dqs-qbwladd)"
     POWERLIFTED_DQS_QBWLFF = "powerlifted(dqs-qbwlff)"
@@ -51,6 +58,9 @@ class Planner(ParseableEnum):
             Planner.DOWNWARD_QBPNGC,
             Planner.DOWNWARD_QBPNADD,
             Planner.DOWNWARD_QBPNFF,
+            Planner.DOWNWARD_QBPNWLGC,
+            Planner.DOWNWARD_QBPNWLADD,
+            Planner.DOWNWARD_QBPNWLFF,
         }
         if values:
             ret = {planner.value for planner in ret}
@@ -69,6 +79,9 @@ class Planner(ParseableEnum):
             Planner.POWERLIFTED_QBPNGC,
             Planner.POWERLIFTED_QBPNADD,
             Planner.POWERLIFTED_QBPNFF,
+            Planner.POWERLIFTED_QBPNWLGC,
+            Planner.POWERLIFTED_QBPNWLADD,
+            Planner.POWERLIFTED_QBPNWLFF,
             Planner.POWERLIFTED_DQS_QBWLGC,
             Planner.POWERLIFTED_DQS_QBWLADD,
             Planner.POWERLIFTED_DQS_QBWLFF,

@@ -1,4 +1,4 @@
-#include "qb_wl_heuristic.h"
+#include "qb_pnwl_heuristic.h"
 
 #include "../ext/wlplan/include/feature_generator/feature_generators/wl.hpp"
 #include "../heuristics/additive_heuristic.h"
@@ -11,11 +11,11 @@
 using namespace std;
 
 namespace qb_heuristic {
-  QbWlHeuristic::QbWlHeuristic(const std::shared_ptr<AbstractTask> &transform,
-                               bool cache_estimates,
-                               const std::string &description,
-                               utils::Verbosity verbosity,
-                               const std::shared_ptr<Heuristic> &heuristic)
+  QbPnWlHeuristic::QbPnWlHeuristic(const std::shared_ptr<AbstractTask> &transform,
+                                   bool cache_estimates,
+                                   const std::string &description,
+                                   utils::Verbosity verbosity,
+                                   const std::shared_ptr<Heuristic> &heuristic)
       : QbHeuristic(transform, cache_estimates, description, verbosity, heuristic) {
     // Construct predicates
     std::cout << "Collecting predicates..." << std::endl;
@@ -50,16 +50,18 @@ namespace qb_heuristic {
     model->set_problem(problem);
     model->be_quiet();
 
-    std::cout << "WL Novelty Heuristic intialised!" << std::endl;
+    std::cout << "PNWL Novelty Heuristic intialised!" << std::endl;
   }
 
-  int QbWlHeuristic::compute_heuristic(const State &ancestor_state) {
+  int QbPnWlHeuristic::compute_heuristic(const State &ancestor_state) {
     int h = original_heuristic->compute_heuristic(ancestor_state);
 
     int nov_h = 0;
     int non_h = 0;
 
     State state = convert_ancestor_state(ancestor_state);
+
+    // WL part
     planning::State wl_state = wl_utils::to_wlplan_state(state, fd_fact_to_wlplan_atom);
     model->collect(wl_state);
     std::vector<double> embed = model->embed_state(wl_state);  // TODO optimise this
@@ -77,16 +79,28 @@ namespace qb_heuristic {
       }
     }
 
+    // PN part
+    for (const FactProxy &fact : state) {
+      FactPair pair = fact.get_pair();
+      bool in_map = fact_pair_to_lowest_h.count(pair) > 0;
+      if (!in_map || h < fact_pair_to_lowest_h[pair]) {
+        fact_pair_to_lowest_h[pair] = h;
+        nov_h -= 1;
+      } else if (in_map && h > fact_pair_to_lowest_h[pair]) {
+        non_h += 1;
+      }
+    }
+
     return nov_h < 0 ? nov_h : non_h;
   }
 
-  class QbWlHeuristicFeature : public plugins::TypedFeature<Evaluator, QbWlHeuristic> {
+  class QbPnWlHeuristicFeature : public plugins::TypedFeature<Evaluator, QbPnWlHeuristic> {
    public:
-    QbWlHeuristicFeature() : TypedFeature("qbwl") {
+    QbPnWlHeuristicFeature() : TypedFeature("qbpnwl") {
       document_title("Goal count heuristic");
 
       add_option<std::string>("h", "base heuristic to use, choose from {gc, add, ff}", "ff");
-      add_heuristic_options_to_feature(*this, "qbwl");
+      add_heuristic_options_to_feature(*this, "qbpnwl");
 
       document_language_support("action costs", "ignored by design");
       document_language_support("conditional effects", "supported");
@@ -98,8 +112,8 @@ namespace qb_heuristic {
       document_property("preferred operators", "no");
     }
 
-    virtual shared_ptr<QbWlHeuristic> create_component(const plugins::Options &opts,
-                                                       const utils::Context &) const override {
+    virtual shared_ptr<QbPnWlHeuristic> create_component(const plugins::Options &opts,
+                                                         const utils::Context &) const override {
 
       std::string base_h_name = opts.get<std::string>("h");
       std::cout << "Initialising base heuristic h=" << base_h_name << std::endl;
@@ -127,14 +141,14 @@ namespace qb_heuristic {
       }
       std::cout << "Base heuristic initialised" << std::endl;
 
-      return std::make_shared<QbWlHeuristic>(opts.get<shared_ptr<AbstractTask>>("transform"),
-                                             opts.get<bool>("cache_estimates"),
-                                             opts.get<std::string>("description"),
-                                             opts.get<utils::Verbosity>("verbosity"),
+      return std::make_shared<QbPnWlHeuristic>(opts.get<shared_ptr<AbstractTask>>("transform"),
+                                               opts.get<bool>("cache_estimates"),
+                                               opts.get<std::string>("description"),
+                                               opts.get<utils::Verbosity>("verbosity"),
 
-                                             heuristic);
+                                               heuristic);
     }
   };
 
-  static plugins::FeaturePlugin<QbWlHeuristicFeature> _plugin;
+  static plugins::FeaturePlugin<QbPnWlHeuristicFeature> _plugin;
 }  // namespace qb_heuristic

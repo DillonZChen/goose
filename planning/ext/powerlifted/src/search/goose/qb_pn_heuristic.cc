@@ -31,11 +31,11 @@ int QbPnHeuristic::compute_heuristic(const DBState &s, const Task &task)
         if (!nullary_atoms[i])
             continue;
         bool in_map = nullary_mapping.count(i) > 0;
-        if (!in_map || nullary_mapping[i] < cached_heuristic) {
+        if (!in_map || cached_heuristic < nullary_mapping[i]) {
             nullary_mapping[i] = cached_heuristic;
             nov_h -= 1;
         }
-        else if (in_map && nullary_mapping[i] > cached_heuristic) {
+        else if (in_map && cached_heuristic > nullary_mapping[i]) {
             non_h += 1;
         }
     }

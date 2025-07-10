@@ -43,6 +43,10 @@ def run_powerlifted_standalone(domain_path: str, problem_path: str, opts) -> Non
     QBPNADD = "qbpnadd"
     QBPNFF = "qbpnff"
 
+    QBPNWLGC = "qbpnwlgc"
+    QBPNWLADD = "qbpnwladd"
+    QBPNWLFF = "qbpnwlff"
+
     GBFS = "gbfs"
     DQS = "dqs"
 
@@ -76,6 +80,15 @@ def run_powerlifted_standalone(domain_path: str, problem_path: str, opts) -> Non
             search = GBFS
         case Planner.POWERLIFTED_QBPNFF:
             heuristic = QBPNFF
+            search = GBFS
+        case Planner.POWERLIFTED_QBPNWLGC:
+            heuristic = QBPNWLGC
+            search = GBFS
+        case Planner.POWERLIFTED_QBPNWLADD:
+            heuristic = QBPNWLADD
+            search = GBFS
+        case Planner.POWERLIFTED_QBPNWLFF:
+            heuristic = QBPNWLFF
             search = GBFS
         case Planner.POWERLIFTED_DQS_QBWLGC:
             heuristic = QBWLGC

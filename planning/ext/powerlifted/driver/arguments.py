@@ -36,7 +36,10 @@ EVALUATOR_CHOICES = ["blind",
                      "qbwlff",
                      "qbpngc",
                      "qbpnadd",
-                     "qbpnff",]
+                     "qbpnff",
+                     "qbpnwlgc",
+                     "qbpnwladd",
+                     "qbpnwlff",]
 
 SUCCESSOR_GENERATOR_CHOICES = ['yannakakis',
                                'join',

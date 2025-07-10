@@ -2,6 +2,7 @@
 
 #include "../goose/qb_wl_heuristic.h"
 #include "../goose/qb_pn_heuristic.h"
+#include "../goose/qb_pnwl_heuristic.h"
 #include "../goose/wlgoose_heuristic.h"
 #include "add_heuristic.h"
 #include "blind_heuristic.h"
@@ -71,6 +72,20 @@ Heuristic *HeuristicFactory::create(const Options &opt, const Task &task)
         std::shared_ptr<Heuristic> h =
             std::make_shared<FFHeuristic>(task, DatalogTransformationOptions());
         return new QbPnHeuristic(opt, task, h);
+    }
+    else if (boost::iequals(method, "qbpnwlgc")) {
+        std::shared_ptr<Heuristic> h = std::make_shared<Goalcount>();
+        return new QbPnWlHeuristic(opt, task, h);
+    }
+    else if (boost::iequals(method, "qbpnwladd")) {
+        std::shared_ptr<Heuristic> h =
+            std::make_shared<AdditiveHeuristic>(task, DatalogTransformationOptions());
+        return new QbPnWlHeuristic(opt, task, h);
+    }
+    else if (boost::iequals(method, "qbpnwlff")) {
+        std::shared_ptr<Heuristic> h =
+            std::make_shared<FFHeuristic>(task, DatalogTransformationOptions());
+        return new QbPnWlHeuristic(opt, task, h);
     }
     else {
         std::cerr << "Invalid heuristic \"" << method << "\"" << std::endl;
