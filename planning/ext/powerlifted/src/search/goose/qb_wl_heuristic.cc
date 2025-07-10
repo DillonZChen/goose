@@ -13,7 +13,7 @@ QbWlHeuristic::QbWlHeuristic(const Options &opts,
     const planning::Domain domain = wl_utils::get_wlplan_domain(task);
     planning::Problem problem = wl_utils::get_wlplan_problem(domain, task);
     pwl_index_to_predicate = wl_utils::get_pwl_index_to_predicate(domain, task);
-    model = std::make_shared<feature_generator::WLFeatures>(domain, "ilg", 4, "none", true);
+    model = std::make_shared<feature_generator::WLFeatures>(domain, "ilg", 2, "none", true);
     model->set_problem(problem);
     model->be_quiet();
 }
