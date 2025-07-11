@@ -1,0 +1,72671 @@
+begin_version
+3
+end_version
+begin_metric
+0
+end_metric
+126
+begin_variable
+var0
+-1
+100
+Atom lift-at(f1)
+Atom lift-at(f10)
+Atom lift-at(f100)
+Atom lift-at(f11)
+Atom lift-at(f12)
+Atom lift-at(f13)
+Atom lift-at(f14)
+Atom lift-at(f15)
+Atom lift-at(f16)
+Atom lift-at(f17)
+Atom lift-at(f18)
+Atom lift-at(f19)
+Atom lift-at(f2)
+Atom lift-at(f20)
+Atom lift-at(f21)
+Atom lift-at(f22)
+Atom lift-at(f23)
+Atom lift-at(f24)
+Atom lift-at(f25)
+Atom lift-at(f26)
+Atom lift-at(f27)
+Atom lift-at(f28)
+Atom lift-at(f29)
+Atom lift-at(f3)
+Atom lift-at(f30)
+Atom lift-at(f31)
+Atom lift-at(f32)
+Atom lift-at(f33)
+Atom lift-at(f34)
+Atom lift-at(f35)
+Atom lift-at(f36)
+Atom lift-at(f37)
+Atom lift-at(f38)
+Atom lift-at(f39)
+Atom lift-at(f4)
+Atom lift-at(f40)
+Atom lift-at(f41)
+Atom lift-at(f42)
+Atom lift-at(f43)
+Atom lift-at(f44)
+Atom lift-at(f45)
+Atom lift-at(f46)
+Atom lift-at(f47)
+Atom lift-at(f48)
+Atom lift-at(f49)
+Atom lift-at(f5)
+Atom lift-at(f50)
+Atom lift-at(f51)
+Atom lift-at(f52)
+Atom lift-at(f53)
+Atom lift-at(f54)
+Atom lift-at(f55)
+Atom lift-at(f56)
+Atom lift-at(f57)
+Atom lift-at(f58)
+Atom lift-at(f59)
+Atom lift-at(f6)
+Atom lift-at(f60)
+Atom lift-at(f61)
+Atom lift-at(f62)
+Atom lift-at(f63)
+Atom lift-at(f64)
+Atom lift-at(f65)
+Atom lift-at(f66)
+Atom lift-at(f67)
+Atom lift-at(f68)
+Atom lift-at(f69)
+Atom lift-at(f7)
+Atom lift-at(f70)
+Atom lift-at(f71)
+Atom lift-at(f72)
+Atom lift-at(f73)
+Atom lift-at(f74)
+Atom lift-at(f75)
+Atom lift-at(f76)
+Atom lift-at(f77)
+Atom lift-at(f78)
+Atom lift-at(f79)
+Atom lift-at(f8)
+Atom lift-at(f80)
+Atom lift-at(f81)
+Atom lift-at(f82)
+Atom lift-at(f83)
+Atom lift-at(f84)
+Atom lift-at(f85)
+Atom lift-at(f86)
+Atom lift-at(f87)
+Atom lift-at(f88)
+Atom lift-at(f89)
+Atom lift-at(f9)
+Atom lift-at(f90)
+Atom lift-at(f91)
+Atom lift-at(f92)
+Atom lift-at(f93)
+Atom lift-at(f94)
+Atom lift-at(f95)
+Atom lift-at(f96)
+Atom lift-at(f97)
+Atom lift-at(f98)
+Atom lift-at(f99)
+end_variable
+begin_variable
+var1
+-1
+3
+Atom boarded(p99)
+Atom origin(p99, f47)
+Atom served(p99)
+end_variable
+begin_variable
+var2
+-1
+3
+Atom boarded(p98)
+Atom origin(p98, f72)
+Atom served(p98)
+end_variable
+begin_variable
+var3
+-1
+3
+Atom boarded(p97)
+Atom origin(p97, f32)
+Atom served(p97)
+end_variable
+begin_variable
+var4
+-1
+3
+Atom boarded(p96)
+Atom origin(p96, f64)
+Atom served(p96)
+end_variable
+begin_variable
+var5
+-1
+3
+Atom boarded(p95)
+Atom origin(p95, f35)
+Atom served(p95)
+end_variable
+begin_variable
+var6
+-1
+3
+Atom boarded(p94)
+Atom origin(p94, f75)
+Atom served(p94)
+end_variable
+begin_variable
+var7
+-1
+3
+Atom boarded(p93)
+Atom origin(p93, f96)
+Atom served(p93)
+end_variable
+begin_variable
+var8
+-1
+3
+Atom boarded(p92)
+Atom origin(p92, f89)
+Atom served(p92)
+end_variable
+begin_variable
+var9
+-1
+3
+Atom boarded(p91)
+Atom origin(p91, f11)
+Atom served(p91)
+end_variable
+begin_variable
+var10
+-1
+3
+Atom boarded(p90)
+Atom origin(p90, f98)
+Atom served(p90)
+end_variable
+begin_variable
+var11
+-1
+3
+Atom boarded(p9)
+Atom origin(p9, f54)
+Atom served(p9)
+end_variable
+begin_variable
+var12
+-1
+3
+Atom boarded(p89)
+Atom origin(p89, f93)
+Atom served(p89)
+end_variable
+begin_variable
+var13
+-1
+3
+Atom boarded(p88)
+Atom origin(p88, f72)
+Atom served(p88)
+end_variable
+begin_variable
+var14
+-1
+3
+Atom boarded(p87)
+Atom origin(p87, f14)
+Atom served(p87)
+end_variable
+begin_variable
+var15
+-1
+3
+Atom boarded(p86)
+Atom origin(p86, f24)
+Atom served(p86)
+end_variable
+begin_variable
+var16
+-1
+3
+Atom boarded(p85)
+Atom origin(p85, f2)
+Atom served(p85)
+end_variable
+begin_variable
+var17
+-1
+3
+Atom boarded(p84)
+Atom origin(p84, f42)
+Atom served(p84)
+end_variable
+begin_variable
+var18
+-1
+3
+Atom boarded(p83)
+Atom origin(p83, f27)
+Atom served(p83)
+end_variable
+begin_variable
+var19
+-1
+3
+Atom boarded(p82)
+Atom origin(p82, f54)
+Atom served(p82)
+end_variable
+begin_variable
+var20
+-1
+3
+Atom boarded(p81)
+Atom origin(p81, f92)
+Atom served(p81)
+end_variable
+begin_variable
+var21
+-1
+3
+Atom boarded(p80)
+Atom origin(p80, f42)
+Atom served(p80)
+end_variable
+begin_variable
+var22
+-1
+3
+Atom boarded(p8)
+Atom origin(p8, f20)
+Atom served(p8)
+end_variable
+begin_variable
+var23
+-1
+3
+Atom boarded(p79)
+Atom origin(p79, f58)
+Atom served(p79)
+end_variable
+begin_variable
+var24
+-1
+3
+Atom boarded(p78)
+Atom origin(p78, f92)
+Atom served(p78)
+end_variable
+begin_variable
+var25
+-1
+3
+Atom boarded(p77)
+Atom origin(p77, f92)
+Atom served(p77)
+end_variable
+begin_variable
+var26
+-1
+3
+Atom boarded(p76)
+Atom origin(p76, f22)
+Atom served(p76)
+end_variable
+begin_variable
+var27
+-1
+3
+Atom boarded(p75)
+Atom origin(p75, f89)
+Atom served(p75)
+end_variable
+begin_variable
+var28
+-1
+3
+Atom boarded(p74)
+Atom origin(p74, f61)
+Atom served(p74)
+end_variable
+begin_variable
+var29
+-1
+3
+Atom boarded(p73)
+Atom origin(p73, f20)
+Atom served(p73)
+end_variable
+begin_variable
+var30
+-1
+3
+Atom boarded(p72)
+Atom origin(p72, f18)
+Atom served(p72)
+end_variable
+begin_variable
+var31
+-1
+3
+Atom boarded(p71)
+Atom origin(p71, f46)
+Atom served(p71)
+end_variable
+begin_variable
+var32
+-1
+3
+Atom boarded(p70)
+Atom origin(p70, f21)
+Atom served(p70)
+end_variable
+begin_variable
+var33
+-1
+3
+Atom boarded(p7)
+Atom origin(p7, f26)
+Atom served(p7)
+end_variable
+begin_variable
+var34
+-1
+3
+Atom boarded(p69)
+Atom origin(p69, f7)
+Atom served(p69)
+end_variable
+begin_variable
+var35
+-1
+3
+Atom boarded(p68)
+Atom origin(p68, f82)
+Atom served(p68)
+end_variable
+begin_variable
+var36
+-1
+3
+Atom boarded(p67)
+Atom origin(p67, f84)
+Atom served(p67)
+end_variable
+begin_variable
+var37
+-1
+3
+Atom boarded(p66)
+Atom origin(p66, f90)
+Atom served(p66)
+end_variable
+begin_variable
+var38
+-1
+3
+Atom boarded(p65)
+Atom origin(p65, f65)
+Atom served(p65)
+end_variable
+begin_variable
+var39
+-1
+3
+Atom boarded(p64)
+Atom origin(p64, f23)
+Atom served(p64)
+end_variable
+begin_variable
+var40
+-1
+3
+Atom boarded(p63)
+Atom origin(p63, f25)
+Atom served(p63)
+end_variable
+begin_variable
+var41
+-1
+3
+Atom boarded(p62)
+Atom origin(p62, f21)
+Atom served(p62)
+end_variable
+begin_variable
+var42
+-1
+3
+Atom boarded(p61)
+Atom origin(p61, f37)
+Atom served(p61)
+end_variable
+begin_variable
+var43
+-1
+3
+Atom boarded(p60)
+Atom origin(p60, f17)
+Atom served(p60)
+end_variable
+begin_variable
+var44
+-1
+3
+Atom boarded(p6)
+Atom origin(p6, f69)
+Atom served(p6)
+end_variable
+begin_variable
+var45
+-1
+3
+Atom boarded(p59)
+Atom origin(p59, f51)
+Atom served(p59)
+end_variable
+begin_variable
+var46
+-1
+3
+Atom boarded(p58)
+Atom origin(p58, f85)
+Atom served(p58)
+end_variable
+begin_variable
+var47
+-1
+3
+Atom boarded(p57)
+Atom origin(p57, f83)
+Atom served(p57)
+end_variable
+begin_variable
+var48
+-1
+3
+Atom boarded(p56)
+Atom origin(p56, f75)
+Atom served(p56)
+end_variable
+begin_variable
+var49
+-1
+3
+Atom boarded(p55)
+Atom origin(p55, f10)
+Atom served(p55)
+end_variable
+begin_variable
+var50
+-1
+3
+Atom boarded(p54)
+Atom origin(p54, f66)
+Atom served(p54)
+end_variable
+begin_variable
+var51
+-1
+3
+Atom boarded(p53)
+Atom origin(p53, f2)
+Atom served(p53)
+end_variable
+begin_variable
+var52
+-1
+3
+Atom boarded(p52)
+Atom origin(p52, f98)
+Atom served(p52)
+end_variable
+begin_variable
+var53
+-1
+3
+Atom boarded(p51)
+Atom origin(p51, f80)
+Atom served(p51)
+end_variable
+begin_variable
+var54
+-1
+3
+Atom boarded(p50)
+Atom origin(p50, f98)
+Atom served(p50)
+end_variable
+begin_variable
+var55
+-1
+3
+Atom boarded(p5)
+Atom origin(p5, f84)
+Atom served(p5)
+end_variable
+begin_variable
+var56
+-1
+3
+Atom boarded(p49)
+Atom origin(p49, f70)
+Atom served(p49)
+end_variable
+begin_variable
+var57
+-1
+3
+Atom boarded(p48)
+Atom origin(p48, f34)
+Atom served(p48)
+end_variable
+begin_variable
+var58
+-1
+3
+Atom boarded(p47)
+Atom origin(p47, f99)
+Atom served(p47)
+end_variable
+begin_variable
+var59
+-1
+3
+Atom boarded(p46)
+Atom origin(p46, f90)
+Atom served(p46)
+end_variable
+begin_variable
+var60
+-1
+3
+Atom boarded(p45)
+Atom origin(p45, f30)
+Atom served(p45)
+end_variable
+begin_variable
+var61
+-1
+3
+Atom boarded(p44)
+Atom origin(p44, f32)
+Atom served(p44)
+end_variable
+begin_variable
+var62
+-1
+3
+Atom boarded(p43)
+Atom origin(p43, f25)
+Atom served(p43)
+end_variable
+begin_variable
+var63
+-1
+3
+Atom boarded(p42)
+Atom origin(p42, f24)
+Atom served(p42)
+end_variable
+begin_variable
+var64
+-1
+3
+Atom boarded(p41)
+Atom origin(p41, f7)
+Atom served(p41)
+end_variable
+begin_variable
+var65
+-1
+3
+Atom boarded(p40)
+Atom origin(p40, f20)
+Atom served(p40)
+end_variable
+begin_variable
+var66
+-1
+3
+Atom boarded(p4)
+Atom origin(p4, f45)
+Atom served(p4)
+end_variable
+begin_variable
+var67
+-1
+3
+Atom boarded(p39)
+Atom origin(p39, f80)
+Atom served(p39)
+end_variable
+begin_variable
+var68
+-1
+3
+Atom boarded(p38)
+Atom origin(p38, f46)
+Atom served(p38)
+end_variable
+begin_variable
+var69
+-1
+3
+Atom boarded(p37)
+Atom origin(p37, f83)
+Atom served(p37)
+end_variable
+begin_variable
+var70
+-1
+3
+Atom boarded(p36)
+Atom origin(p36, f69)
+Atom served(p36)
+end_variable
+begin_variable
+var71
+-1
+3
+Atom boarded(p35)
+Atom origin(p35, f70)
+Atom served(p35)
+end_variable
+begin_variable
+var72
+-1
+3
+Atom boarded(p34)
+Atom origin(p34, f86)
+Atom served(p34)
+end_variable
+begin_variable
+var73
+-1
+3
+Atom boarded(p33)
+Atom origin(p33, f66)
+Atom served(p33)
+end_variable
+begin_variable
+var74
+-1
+3
+Atom boarded(p32)
+Atom origin(p32, f31)
+Atom served(p32)
+end_variable
+begin_variable
+var75
+-1
+3
+Atom boarded(p31)
+Atom origin(p31, f65)
+Atom served(p31)
+end_variable
+begin_variable
+var76
+-1
+3
+Atom boarded(p30)
+Atom origin(p30, f24)
+Atom served(p30)
+end_variable
+begin_variable
+var77
+-1
+3
+Atom boarded(p3)
+Atom origin(p3, f78)
+Atom served(p3)
+end_variable
+begin_variable
+var78
+-1
+3
+Atom boarded(p29)
+Atom origin(p29, f8)
+Atom served(p29)
+end_variable
+begin_variable
+var79
+-1
+3
+Atom boarded(p28)
+Atom origin(p28, f29)
+Atom served(p28)
+end_variable
+begin_variable
+var80
+-1
+3
+Atom boarded(p27)
+Atom origin(p27, f100)
+Atom served(p27)
+end_variable
+begin_variable
+var81
+-1
+3
+Atom boarded(p26)
+Atom origin(p26, f23)
+Atom served(p26)
+end_variable
+begin_variable
+var82
+-1
+3
+Atom boarded(p25)
+Atom origin(p25, f29)
+Atom served(p25)
+end_variable
+begin_variable
+var83
+-1
+3
+Atom boarded(p24)
+Atom origin(p24, f66)
+Atom served(p24)
+end_variable
+begin_variable
+var84
+-1
+3
+Atom boarded(p23)
+Atom origin(p23, f92)
+Atom served(p23)
+end_variable
+begin_variable
+var85
+-1
+3
+Atom boarded(p22)
+Atom origin(p22, f1)
+Atom served(p22)
+end_variable
+begin_variable
+var86
+-1
+3
+Atom boarded(p21)
+Atom origin(p21, f94)
+Atom served(p21)
+end_variable
+begin_variable
+var87
+-1
+3
+Atom boarded(p20)
+Atom origin(p20, f29)
+Atom served(p20)
+end_variable
+begin_variable
+var88
+-1
+3
+Atom boarded(p2)
+Atom origin(p2, f52)
+Atom served(p2)
+end_variable
+begin_variable
+var89
+-1
+3
+Atom boarded(p19)
+Atom origin(p19, f70)
+Atom served(p19)
+end_variable
+begin_variable
+var90
+-1
+3
+Atom boarded(p18)
+Atom origin(p18, f62)
+Atom served(p18)
+end_variable
+begin_variable
+var91
+-1
+3
+Atom boarded(p17)
+Atom origin(p17, f72)
+Atom served(p17)
+end_variable
+begin_variable
+var92
+-1
+3
+Atom boarded(p16)
+Atom origin(p16, f79)
+Atom served(p16)
+end_variable
+begin_variable
+var93
+-1
+3
+Atom boarded(p15)
+Atom origin(p15, f22)
+Atom served(p15)
+end_variable
+begin_variable
+var94
+-1
+3
+Atom boarded(p14)
+Atom origin(p14, f93)
+Atom served(p14)
+end_variable
+begin_variable
+var95
+-1
+3
+Atom boarded(p13)
+Atom origin(p13, f50)
+Atom served(p13)
+end_variable
+begin_variable
+var96
+-1
+3
+Atom boarded(p125)
+Atom origin(p125, f39)
+Atom served(p125)
+end_variable
+begin_variable
+var97
+-1
+3
+Atom boarded(p124)
+Atom origin(p124, f27)
+Atom served(p124)
+end_variable
+begin_variable
+var98
+-1
+3
+Atom boarded(p123)
+Atom origin(p123, f46)
+Atom served(p123)
+end_variable
+begin_variable
+var99
+-1
+3
+Atom boarded(p122)
+Atom origin(p122, f49)
+Atom served(p122)
+end_variable
+begin_variable
+var100
+-1
+3
+Atom boarded(p121)
+Atom origin(p121, f72)
+Atom served(p121)
+end_variable
+begin_variable
+var101
+-1
+3
+Atom boarded(p120)
+Atom origin(p120, f24)
+Atom served(p120)
+end_variable
+begin_variable
+var102
+-1
+3
+Atom boarded(p12)
+Atom origin(p12, f79)
+Atom served(p12)
+end_variable
+begin_variable
+var103
+-1
+3
+Atom boarded(p119)
+Atom origin(p119, f14)
+Atom served(p119)
+end_variable
+begin_variable
+var104
+-1
+3
+Atom boarded(p118)
+Atom origin(p118, f3)
+Atom served(p118)
+end_variable
+begin_variable
+var105
+-1
+3
+Atom boarded(p117)
+Atom origin(p117, f22)
+Atom served(p117)
+end_variable
+begin_variable
+var106
+-1
+3
+Atom boarded(p116)
+Atom origin(p116, f86)
+Atom served(p116)
+end_variable
+begin_variable
+var107
+-1
+3
+Atom boarded(p115)
+Atom origin(p115, f28)
+Atom served(p115)
+end_variable
+begin_variable
+var108
+-1
+3
+Atom boarded(p114)
+Atom origin(p114, f97)
+Atom served(p114)
+end_variable
+begin_variable
+var109
+-1
+3
+Atom boarded(p113)
+Atom origin(p113, f4)
+Atom served(p113)
+end_variable
+begin_variable
+var110
+-1
+3
+Atom boarded(p112)
+Atom origin(p112, f33)
+Atom served(p112)
+end_variable
+begin_variable
+var111
+-1
+3
+Atom boarded(p111)
+Atom origin(p111, f81)
+Atom served(p111)
+end_variable
+begin_variable
+var112
+-1
+3
+Atom boarded(p110)
+Atom origin(p110, f87)
+Atom served(p110)
+end_variable
+begin_variable
+var113
+-1
+3
+Atom boarded(p11)
+Atom origin(p11, f14)
+Atom served(p11)
+end_variable
+begin_variable
+var114
+-1
+3
+Atom boarded(p109)
+Atom origin(p109, f57)
+Atom served(p109)
+end_variable
+begin_variable
+var115
+-1
+3
+Atom boarded(p108)
+Atom origin(p108, f5)
+Atom served(p108)
+end_variable
+begin_variable
+var116
+-1
+3
+Atom boarded(p107)
+Atom origin(p107, f21)
+Atom served(p107)
+end_variable
+begin_variable
+var117
+-1
+3
+Atom boarded(p106)
+Atom origin(p106, f5)
+Atom served(p106)
+end_variable
+begin_variable
+var118
+-1
+3
+Atom boarded(p105)
+Atom origin(p105, f64)
+Atom served(p105)
+end_variable
+begin_variable
+var119
+-1
+3
+Atom boarded(p104)
+Atom origin(p104, f33)
+Atom served(p104)
+end_variable
+begin_variable
+var120
+-1
+3
+Atom boarded(p103)
+Atom origin(p103, f2)
+Atom served(p103)
+end_variable
+begin_variable
+var121
+-1
+3
+Atom boarded(p102)
+Atom origin(p102, f68)
+Atom served(p102)
+end_variable
+begin_variable
+var122
+-1
+3
+Atom boarded(p101)
+Atom origin(p101, f82)
+Atom served(p101)
+end_variable
+begin_variable
+var123
+-1
+3
+Atom boarded(p100)
+Atom origin(p100, f64)
+Atom served(p100)
+end_variable
+begin_variable
+var124
+-1
+3
+Atom boarded(p10)
+Atom origin(p10, f52)
+Atom served(p10)
+end_variable
+begin_variable
+var125
+-1
+3
+Atom boarded(p1)
+Atom origin(p1, f21)
+Atom served(p1)
+end_variable
+0
+begin_state
+39
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+end_state
+begin_goal
+125
+1 2
+2 2
+3 2
+4 2
+5 2
+6 2
+7 2
+8 2
+9 2
+10 2
+11 2
+12 2
+13 2
+14 2
+15 2
+16 2
+17 2
+18 2
+19 2
+20 2
+21 2
+22 2
+23 2
+24 2
+25 2
+26 2
+27 2
+28 2
+29 2
+30 2
+31 2
+32 2
+33 2
+34 2
+35 2
+36 2
+37 2
+38 2
+39 2
+40 2
+41 2
+42 2
+43 2
+44 2
+45 2
+46 2
+47 2
+48 2
+49 2
+50 2
+51 2
+52 2
+53 2
+54 2
+55 2
+56 2
+57 2
+58 2
+59 2
+60 2
+61 2
+62 2
+63 2
+64 2
+65 2
+66 2
+67 2
+68 2
+69 2
+70 2
+71 2
+72 2
+73 2
+74 2
+75 2
+76 2
+77 2
+78 2
+79 2
+80 2
+81 2
+82 2
+83 2
+84 2
+85 2
+86 2
+87 2
+88 2
+89 2
+90 2
+91 2
+92 2
+93 2
+94 2
+95 2
+96 2
+97 2
+98 2
+99 2
+100 2
+101 2
+102 2
+103 2
+104 2
+105 2
+106 2
+107 2
+108 2
+109 2
+110 2
+111 2
+112 2
+113 2
+114 2
+115 2
+116 2
+117 2
+118 2
+119 2
+120 2
+121 2
+122 2
+123 2
+124 2
+125 2
+end_goal
+10150
+begin_operator
+board f1 p22
+1
+0 0
+1
+0 85 1 0
+1
+end_operator
+begin_operator
+board f10 p55
+1
+0 1
+1
+0 49 1 0
+1
+end_operator
+begin_operator
+board f100 p27
+1
+0 2
+1
+0 80 1 0
+1
+end_operator
+begin_operator
+board f11 p91
+1
+0 3
+1
+0 9 1 0
+1
+end_operator
+begin_operator
+board f14 p11
+1
+0 6
+1
+0 113 1 0
+1
+end_operator
+begin_operator
+board f14 p119
+1
+0 6
+1
+0 103 1 0
+1
+end_operator
+begin_operator
+board f14 p87
+1
+0 6
+1
+0 14 1 0
+1
+end_operator
+begin_operator
+board f17 p60
+1
+0 9
+1
+0 43 1 0
+1
+end_operator
+begin_operator
+board f18 p72
+1
+0 10
+1
+0 30 1 0
+1
+end_operator
+begin_operator
+board f2 p103
+1
+0 12
+1
+0 120 1 0
+1
+end_operator
+begin_operator
+board f2 p53
+1
+0 12
+1
+0 51 1 0
+1
+end_operator
+begin_operator
+board f2 p85
+1
+0 12
+1
+0 16 1 0
+1
+end_operator
+begin_operator
+board f20 p40
+1
+0 13
+1
+0 65 1 0
+1
+end_operator
+begin_operator
+board f20 p73
+1
+0 13
+1
+0 29 1 0
+1
+end_operator
+begin_operator
+board f20 p8
+1
+0 13
+1
+0 22 1 0
+1
+end_operator
+begin_operator
+board f21 p1
+1
+0 14
+1
+0 125 1 0
+1
+end_operator
+begin_operator
+board f21 p107
+1
+0 14
+1
+0 116 1 0
+1
+end_operator
+begin_operator
+board f21 p62
+1
+0 14
+1
+0 41 1 0
+1
+end_operator
+begin_operator
+board f21 p70
+1
+0 14
+1
+0 32 1 0
+1
+end_operator
+begin_operator
+board f22 p117
+1
+0 15
+1
+0 105 1 0
+1
+end_operator
+begin_operator
+board f22 p15
+1
+0 15
+1
+0 93 1 0
+1
+end_operator
+begin_operator
+board f22 p76
+1
+0 15
+1
+0 26 1 0
+1
+end_operator
+begin_operator
+board f23 p26
+1
+0 16
+1
+0 81 1 0
+1
+end_operator
+begin_operator
+board f23 p64
+1
+0 16
+1
+0 39 1 0
+1
+end_operator
+begin_operator
+board f24 p120
+1
+0 17
+1
+0 101 1 0
+1
+end_operator
+begin_operator
+board f24 p30
+1
+0 17
+1
+0 76 1 0
+1
+end_operator
+begin_operator
+board f24 p42
+1
+0 17
+1
+0 63 1 0
+1
+end_operator
+begin_operator
+board f24 p86
+1
+0 17
+1
+0 15 1 0
+1
+end_operator
+begin_operator
+board f25 p43
+1
+0 18
+1
+0 62 1 0
+1
+end_operator
+begin_operator
+board f25 p63
+1
+0 18
+1
+0 40 1 0
+1
+end_operator
+begin_operator
+board f26 p7
+1
+0 19
+1
+0 33 1 0
+1
+end_operator
+begin_operator
+board f27 p124
+1
+0 20
+1
+0 97 1 0
+1
+end_operator
+begin_operator
+board f27 p83
+1
+0 20
+1
+0 18 1 0
+1
+end_operator
+begin_operator
+board f28 p115
+1
+0 21
+1
+0 107 1 0
+1
+end_operator
+begin_operator
+board f29 p20
+1
+0 22
+1
+0 87 1 0
+1
+end_operator
+begin_operator
+board f29 p25
+1
+0 22
+1
+0 82 1 0
+1
+end_operator
+begin_operator
+board f29 p28
+1
+0 22
+1
+0 79 1 0
+1
+end_operator
+begin_operator
+board f3 p118
+1
+0 23
+1
+0 104 1 0
+1
+end_operator
+begin_operator
+board f30 p45
+1
+0 24
+1
+0 60 1 0
+1
+end_operator
+begin_operator
+board f31 p32
+1
+0 25
+1
+0 74 1 0
+1
+end_operator
+begin_operator
+board f32 p44
+1
+0 26
+1
+0 61 1 0
+1
+end_operator
+begin_operator
+board f32 p97
+1
+0 26
+1
+0 3 1 0
+1
+end_operator
+begin_operator
+board f33 p104
+1
+0 27
+1
+0 119 1 0
+1
+end_operator
+begin_operator
+board f33 p112
+1
+0 27
+1
+0 110 1 0
+1
+end_operator
+begin_operator
+board f34 p48
+1
+0 28
+1
+0 57 1 0
+1
+end_operator
+begin_operator
+board f35 p95
+1
+0 29
+1
+0 5 1 0
+1
+end_operator
+begin_operator
+board f37 p61
+1
+0 31
+1
+0 42 1 0
+1
+end_operator
+begin_operator
+board f39 p125
+1
+0 33
+1
+0 96 1 0
+1
+end_operator
+begin_operator
+board f4 p113
+1
+0 34
+1
+0 109 1 0
+1
+end_operator
+begin_operator
+board f42 p80
+1
+0 37
+1
+0 21 1 0
+1
+end_operator
+begin_operator
+board f42 p84
+1
+0 37
+1
+0 17 1 0
+1
+end_operator
+begin_operator
+board f45 p4
+1
+0 40
+1
+0 66 1 0
+1
+end_operator
+begin_operator
+board f46 p123
+1
+0 41
+1
+0 98 1 0
+1
+end_operator
+begin_operator
+board f46 p38
+1
+0 41
+1
+0 68 1 0
+1
+end_operator
+begin_operator
+board f46 p71
+1
+0 41
+1
+0 31 1 0
+1
+end_operator
+begin_operator
+board f47 p99
+1
+0 42
+1
+0 1 1 0
+1
+end_operator
+begin_operator
+board f49 p122
+1
+0 44
+1
+0 99 1 0
+1
+end_operator
+begin_operator
+board f5 p106
+1
+0 45
+1
+0 117 1 0
+1
+end_operator
+begin_operator
+board f5 p108
+1
+0 45
+1
+0 115 1 0
+1
+end_operator
+begin_operator
+board f50 p13
+1
+0 46
+1
+0 95 1 0
+1
+end_operator
+begin_operator
+board f51 p59
+1
+0 47
+1
+0 45 1 0
+1
+end_operator
+begin_operator
+board f52 p10
+1
+0 48
+1
+0 124 1 0
+1
+end_operator
+begin_operator
+board f52 p2
+1
+0 48
+1
+0 88 1 0
+1
+end_operator
+begin_operator
+board f54 p82
+1
+0 50
+1
+0 19 1 0
+1
+end_operator
+begin_operator
+board f54 p9
+1
+0 50
+1
+0 11 1 0
+1
+end_operator
+begin_operator
+board f57 p109
+1
+0 53
+1
+0 114 1 0
+1
+end_operator
+begin_operator
+board f58 p79
+1
+0 54
+1
+0 23 1 0
+1
+end_operator
+begin_operator
+board f61 p74
+1
+0 58
+1
+0 28 1 0
+1
+end_operator
+begin_operator
+board f62 p18
+1
+0 59
+1
+0 90 1 0
+1
+end_operator
+begin_operator
+board f64 p100
+1
+0 61
+1
+0 123 1 0
+1
+end_operator
+begin_operator
+board f64 p105
+1
+0 61
+1
+0 118 1 0
+1
+end_operator
+begin_operator
+board f64 p96
+1
+0 61
+1
+0 4 1 0
+1
+end_operator
+begin_operator
+board f65 p31
+1
+0 62
+1
+0 75 1 0
+1
+end_operator
+begin_operator
+board f65 p65
+1
+0 62
+1
+0 38 1 0
+1
+end_operator
+begin_operator
+board f66 p24
+1
+0 63
+1
+0 83 1 0
+1
+end_operator
+begin_operator
+board f66 p33
+1
+0 63
+1
+0 73 1 0
+1
+end_operator
+begin_operator
+board f66 p54
+1
+0 63
+1
+0 50 1 0
+1
+end_operator
+begin_operator
+board f68 p102
+1
+0 65
+1
+0 121 1 0
+1
+end_operator
+begin_operator
+board f69 p36
+1
+0 66
+1
+0 70 1 0
+1
+end_operator
+begin_operator
+board f69 p6
+1
+0 66
+1
+0 44 1 0
+1
+end_operator
+begin_operator
+board f7 p41
+1
+0 67
+1
+0 64 1 0
+1
+end_operator
+begin_operator
+board f7 p69
+1
+0 67
+1
+0 34 1 0
+1
+end_operator
+begin_operator
+board f70 p19
+1
+0 68
+1
+0 89 1 0
+1
+end_operator
+begin_operator
+board f70 p35
+1
+0 68
+1
+0 71 1 0
+1
+end_operator
+begin_operator
+board f70 p49
+1
+0 68
+1
+0 56 1 0
+1
+end_operator
+begin_operator
+board f72 p121
+1
+0 70
+1
+0 100 1 0
+1
+end_operator
+begin_operator
+board f72 p17
+1
+0 70
+1
+0 91 1 0
+1
+end_operator
+begin_operator
+board f72 p88
+1
+0 70
+1
+0 13 1 0
+1
+end_operator
+begin_operator
+board f72 p98
+1
+0 70
+1
+0 2 1 0
+1
+end_operator
+begin_operator
+board f75 p56
+1
+0 73
+1
+0 48 1 0
+1
+end_operator
+begin_operator
+board f75 p94
+1
+0 73
+1
+0 6 1 0
+1
+end_operator
+begin_operator
+board f78 p3
+1
+0 76
+1
+0 77 1 0
+1
+end_operator
+begin_operator
+board f79 p12
+1
+0 77
+1
+0 102 1 0
+1
+end_operator
+begin_operator
+board f79 p16
+1
+0 77
+1
+0 92 1 0
+1
+end_operator
+begin_operator
+board f8 p29
+1
+0 78
+1
+0 78 1 0
+1
+end_operator
+begin_operator
+board f80 p39
+1
+0 79
+1
+0 67 1 0
+1
+end_operator
+begin_operator
+board f80 p51
+1
+0 79
+1
+0 53 1 0
+1
+end_operator
+begin_operator
+board f81 p111
+1
+0 80
+1
+0 111 1 0
+1
+end_operator
+begin_operator
+board f82 p101
+1
+0 81
+1
+0 122 1 0
+1
+end_operator
+begin_operator
+board f82 p68
+1
+0 81
+1
+0 35 1 0
+1
+end_operator
+begin_operator
+board f83 p37
+1
+0 82
+1
+0 69 1 0
+1
+end_operator
+begin_operator
+board f83 p57
+1
+0 82
+1
+0 47 1 0
+1
+end_operator
+begin_operator
+board f84 p5
+1
+0 83
+1
+0 55 1 0
+1
+end_operator
+begin_operator
+board f84 p67
+1
+0 83
+1
+0 36 1 0
+1
+end_operator
+begin_operator
+board f85 p58
+1
+0 84
+1
+0 46 1 0
+1
+end_operator
+begin_operator
+board f86 p116
+1
+0 85
+1
+0 106 1 0
+1
+end_operator
+begin_operator
+board f86 p34
+1
+0 85
+1
+0 72 1 0
+1
+end_operator
+begin_operator
+board f87 p110
+1
+0 86
+1
+0 112 1 0
+1
+end_operator
+begin_operator
+board f89 p75
+1
+0 88
+1
+0 27 1 0
+1
+end_operator
+begin_operator
+board f89 p92
+1
+0 88
+1
+0 8 1 0
+1
+end_operator
+begin_operator
+board f90 p46
+1
+0 90
+1
+0 59 1 0
+1
+end_operator
+begin_operator
+board f90 p66
+1
+0 90
+1
+0 37 1 0
+1
+end_operator
+begin_operator
+board f92 p23
+1
+0 92
+1
+0 84 1 0
+1
+end_operator
+begin_operator
+board f92 p77
+1
+0 92
+1
+0 25 1 0
+1
+end_operator
+begin_operator
+board f92 p78
+1
+0 92
+1
+0 24 1 0
+1
+end_operator
+begin_operator
+board f92 p81
+1
+0 92
+1
+0 20 1 0
+1
+end_operator
+begin_operator
+board f93 p14
+1
+0 93
+1
+0 94 1 0
+1
+end_operator
+begin_operator
+board f93 p89
+1
+0 93
+1
+0 12 1 0
+1
+end_operator
+begin_operator
+board f94 p21
+1
+0 94
+1
+0 86 1 0
+1
+end_operator
+begin_operator
+board f96 p93
+1
+0 96
+1
+0 7 1 0
+1
+end_operator
+begin_operator
+board f97 p114
+1
+0 97
+1
+0 108 1 0
+1
+end_operator
+begin_operator
+board f98 p50
+1
+0 98
+1
+0 54 1 0
+1
+end_operator
+begin_operator
+board f98 p52
+1
+0 98
+1
+0 52 1 0
+1
+end_operator
+begin_operator
+board f98 p90
+1
+0 98
+1
+0 10 1 0
+1
+end_operator
+begin_operator
+board f99 p47
+1
+0 99
+1
+0 58 1 0
+1
+end_operator
+begin_operator
+depart f1 p112
+1
+0 0
+1
+0 110 0 2
+1
+end_operator
+begin_operator
+depart f1 p9
+1
+0 0
+1
+0 11 0 2
+1
+end_operator
+begin_operator
+depart f10 p23
+1
+0 1
+1
+0 84 0 2
+1
+end_operator
+begin_operator
+depart f12 p109
+1
+0 4
+1
+0 114 0 2
+1
+end_operator
+begin_operator
+depart f12 p91
+1
+0 4
+1
+0 9 0 2
+1
+end_operator
+begin_operator
+depart f13 p37
+1
+0 5
+1
+0 69 0 2
+1
+end_operator
+begin_operator
+depart f13 p86
+1
+0 5
+1
+0 15 0 2
+1
+end_operator
+begin_operator
+depart f14 p20
+1
+0 6
+1
+0 87 0 2
+1
+end_operator
+begin_operator
+depart f14 p55
+1
+0 6
+1
+0 49 0 2
+1
+end_operator
+begin_operator
+depart f16 p46
+1
+0 8
+1
+0 59 0 2
+1
+end_operator
+begin_operator
+depart f17 p104
+1
+0 9
+1
+0 119 0 2
+1
+end_operator
+begin_operator
+depart f17 p17
+1
+0 9
+1
+0 91 0 2
+1
+end_operator
+begin_operator
+depart f19 p1
+1
+0 11
+1
+0 125 0 2
+1
+end_operator
+begin_operator
+depart f19 p44
+1
+0 11
+1
+0 61 0 2
+1
+end_operator
+begin_operator
+depart f19 p93
+1
+0 11
+1
+0 7 0 2
+1
+end_operator
+begin_operator
+depart f2 p113
+1
+0 12
+1
+0 109 0 2
+1
+end_operator
+begin_operator
+depart f2 p120
+1
+0 12
+1
+0 101 0 2
+1
+end_operator
+begin_operator
+depart f2 p84
+1
+0 12
+1
+0 17 0 2
+1
+end_operator
+begin_operator
+depart f21 p106
+1
+0 14
+1
+0 117 0 2
+1
+end_operator
+begin_operator
+depart f23 p21
+1
+0 16
+1
+0 86 0 2
+1
+end_operator
+begin_operator
+depart f23 p70
+1
+0 16
+1
+0 32 0 2
+1
+end_operator
+begin_operator
+depart f24 p100
+1
+0 17
+1
+0 123 0 2
+1
+end_operator
+begin_operator
+depart f24 p74
+1
+0 17
+1
+0 28 0 2
+1
+end_operator
+begin_operator
+depart f26 p27
+1
+0 19
+1
+0 80 0 2
+1
+end_operator
+begin_operator
+depart f27 p107
+1
+0 20
+1
+0 116 0 2
+1
+end_operator
+begin_operator
+depart f27 p2
+1
+0 20
+1
+0 88 0 2
+1
+end_operator
+begin_operator
+depart f28 p15
+1
+0 21
+1
+0 93 0 2
+1
+end_operator
+begin_operator
+depart f29 p12
+1
+0 22
+1
+0 102 0 2
+1
+end_operator
+begin_operator
+depart f29 p125
+1
+0 22
+1
+0 96 0 2
+1
+end_operator
+begin_operator
+depart f29 p67
+1
+0 22
+1
+0 36 0 2
+1
+end_operator
+begin_operator
+depart f33 p4
+1
+0 27
+1
+0 66 0 2
+1
+end_operator
+begin_operator
+depart f33 p94
+1
+0 27
+1
+0 6 0 2
+1
+end_operator
+begin_operator
+depart f34 p102
+1
+0 28
+1
+0 121 0 2
+1
+end_operator
+begin_operator
+depart f34 p99
+1
+0 28
+1
+0 1 0 2
+1
+end_operator
+begin_operator
+depart f35 p108
+1
+0 29
+1
+0 115 0 2
+1
+end_operator
+begin_operator
+depart f36 p22
+1
+0 30
+1
+0 85 0 2
+1
+end_operator
+begin_operator
+depart f36 p48
+1
+0 30
+1
+0 57 0 2
+1
+end_operator
+begin_operator
+depart f37 p19
+1
+0 31
+1
+0 89 0 2
+1
+end_operator
+begin_operator
+depart f37 p57
+1
+0 31
+1
+0 47 0 2
+1
+end_operator
+begin_operator
+depart f38 p65
+1
+0 32
+1
+0 38 0 2
+1
+end_operator
+begin_operator
+depart f39 p88
+1
+0 33
+1
+0 13 0 2
+1
+end_operator
+begin_operator
+depart f4 p3
+1
+0 34
+1
+0 77 0 2
+1
+end_operator
+begin_operator
+depart f4 p42
+1
+0 34
+1
+0 63 0 2
+1
+end_operator
+begin_operator
+depart f40 p62
+1
+0 35
+1
+0 41 0 2
+1
+end_operator
+begin_operator
+depart f40 p79
+1
+0 35
+1
+0 23 0 2
+1
+end_operator
+begin_operator
+depart f40 p98
+1
+0 35
+1
+0 2 0 2
+1
+end_operator
+begin_operator
+depart f41 p116
+1
+0 36
+1
+0 106 0 2
+1
+end_operator
+begin_operator
+depart f41 p58
+1
+0 36
+1
+0 46 0 2
+1
+end_operator
+begin_operator
+depart f43 p34
+1
+0 38
+1
+0 72 0 2
+1
+end_operator
+begin_operator
+depart f43 p89
+1
+0 38
+1
+0 12 0 2
+1
+end_operator
+begin_operator
+depart f44 p50
+1
+0 39
+1
+0 54 0 2
+1
+end_operator
+begin_operator
+depart f44 p59
+1
+0 39
+1
+0 45 0 2
+1
+end_operator
+begin_operator
+depart f44 p72
+1
+0 39
+1
+0 30 0 2
+1
+end_operator
+begin_operator
+depart f47 p14
+1
+0 42
+1
+0 94 0 2
+1
+end_operator
+begin_operator
+depart f47 p80
+1
+0 42
+1
+0 21 0 2
+1
+end_operator
+begin_operator
+depart f48 p121
+1
+0 43
+1
+0 100 0 2
+1
+end_operator
+begin_operator
+depart f48 p26
+1
+0 43
+1
+0 81 0 2
+1
+end_operator
+begin_operator
+depart f48 p40
+1
+0 43
+1
+0 65 0 2
+1
+end_operator
+begin_operator
+depart f48 p71
+1
+0 43
+1
+0 31 0 2
+1
+end_operator
+begin_operator
+depart f5 p47
+1
+0 45
+1
+0 58 0 2
+1
+end_operator
+begin_operator
+depart f50 p118
+1
+0 46
+1
+0 104 0 2
+1
+end_operator
+begin_operator
+depart f50 p16
+1
+0 46
+1
+0 92 0 2
+1
+end_operator
+begin_operator
+depart f50 p56
+1
+0 46
+1
+0 48 0 2
+1
+end_operator
+begin_operator
+depart f52 p36
+1
+0 48
+1
+0 70 0 2
+1
+end_operator
+begin_operator
+depart f52 p54
+1
+0 48
+1
+0 50 0 2
+1
+end_operator
+begin_operator
+depart f52 p68
+1
+0 48
+1
+0 35 0 2
+1
+end_operator
+begin_operator
+depart f55 p115
+1
+0 51
+1
+0 107 0 2
+1
+end_operator
+begin_operator
+depart f56 p5
+1
+0 52
+1
+0 55 0 2
+1
+end_operator
+begin_operator
+depart f56 p77
+1
+0 52
+1
+0 25 0 2
+1
+end_operator
+begin_operator
+depart f56 p95
+1
+0 52
+1
+0 5 0 2
+1
+end_operator
+begin_operator
+depart f57 p66
+1
+0 53
+1
+0 37 0 2
+1
+end_operator
+begin_operator
+depart f58 p8
+1
+0 54
+1
+0 22 0 2
+1
+end_operator
+begin_operator
+depart f59 p69
+1
+0 55
+1
+0 34 0 2
+1
+end_operator
+begin_operator
+depart f60 p10
+1
+0 57
+1
+0 124 0 2
+1
+end_operator
+begin_operator
+depart f62 p78
+1
+0 59
+1
+0 24 0 2
+1
+end_operator
+begin_operator
+depart f63 p11
+1
+0 60
+1
+0 113 0 2
+1
+end_operator
+begin_operator
+depart f63 p13
+1
+0 60
+1
+0 95 0 2
+1
+end_operator
+begin_operator
+depart f64 p114
+1
+0 61
+1
+0 108 0 2
+1
+end_operator
+begin_operator
+depart f64 p61
+1
+0 61
+1
+0 42 0 2
+1
+end_operator
+begin_operator
+depart f66 p123
+1
+0 63
+1
+0 98 0 2
+1
+end_operator
+begin_operator
+depart f66 p25
+1
+0 63
+1
+0 82 0 2
+1
+end_operator
+begin_operator
+depart f66 p35
+1
+0 63
+1
+0 71 0 2
+1
+end_operator
+begin_operator
+depart f66 p92
+1
+0 63
+1
+0 8 0 2
+1
+end_operator
+begin_operator
+depart f67 p49
+1
+0 64
+1
+0 56 0 2
+1
+end_operator
+begin_operator
+depart f68 p39
+1
+0 65
+1
+0 67 0 2
+1
+end_operator
+begin_operator
+depart f69 p32
+1
+0 66
+1
+0 74 0 2
+1
+end_operator
+begin_operator
+depart f69 p97
+1
+0 66
+1
+0 3 0 2
+1
+end_operator
+begin_operator
+depart f7 p101
+1
+0 67
+1
+0 122 0 2
+1
+end_operator
+begin_operator
+depart f7 p105
+1
+0 67
+1
+0 118 0 2
+1
+end_operator
+begin_operator
+depart f7 p124
+1
+0 67
+1
+0 97 0 2
+1
+end_operator
+begin_operator
+depart f7 p24
+1
+0 67
+1
+0 83 0 2
+1
+end_operator
+begin_operator
+depart f7 p45
+1
+0 67
+1
+0 60 0 2
+1
+end_operator
+begin_operator
+depart f71 p110
+1
+0 69
+1
+0 112 0 2
+1
+end_operator
+begin_operator
+depart f71 p111
+1
+0 69
+1
+0 111 0 2
+1
+end_operator
+begin_operator
+depart f71 p33
+1
+0 69
+1
+0 73 0 2
+1
+end_operator
+begin_operator
+depart f75 p76
+1
+0 73
+1
+0 26 0 2
+1
+end_operator
+begin_operator
+depart f75 p82
+1
+0 73
+1
+0 19 0 2
+1
+end_operator
+begin_operator
+depart f77 p119
+1
+0 75
+1
+0 103 0 2
+1
+end_operator
+begin_operator
+depart f77 p122
+1
+0 75
+1
+0 99 0 2
+1
+end_operator
+begin_operator
+depart f77 p6
+1
+0 75
+1
+0 44 0 2
+1
+end_operator
+begin_operator
+depart f77 p63
+1
+0 75
+1
+0 40 0 2
+1
+end_operator
+begin_operator
+depart f79 p31
+1
+0 77
+1
+0 75 0 2
+1
+end_operator
+begin_operator
+depart f82 p73
+1
+0 81
+1
+0 29 0 2
+1
+end_operator
+begin_operator
+depart f83 p18
+1
+0 82
+1
+0 90 0 2
+1
+end_operator
+begin_operator
+depart f84 p7
+1
+0 83
+1
+0 33 0 2
+1
+end_operator
+begin_operator
+depart f85 p30
+1
+0 84
+1
+0 76 0 2
+1
+end_operator
+begin_operator
+depart f85 p83
+1
+0 84
+1
+0 18 0 2
+1
+end_operator
+begin_operator
+depart f86 p38
+1
+0 85
+1
+0 68 0 2
+1
+end_operator
+begin_operator
+depart f86 p53
+1
+0 85
+1
+0 51 0 2
+1
+end_operator
+begin_operator
+depart f87 p81
+1
+0 86
+1
+0 20 0 2
+1
+end_operator
+begin_operator
+depart f88 p87
+1
+0 87
+1
+0 14 0 2
+1
+end_operator
+begin_operator
+depart f88 p90
+1
+0 87
+1
+0 10 0 2
+1
+end_operator
+begin_operator
+depart f89 p103
+1
+0 88
+1
+0 120 0 2
+1
+end_operator
+begin_operator
+depart f91 p52
+1
+0 91
+1
+0 52 0 2
+1
+end_operator
+begin_operator
+depart f92 p41
+1
+0 92
+1
+0 64 0 2
+1
+end_operator
+begin_operator
+depart f92 p75
+1
+0 92
+1
+0 27 0 2
+1
+end_operator
+begin_operator
+depart f93 p43
+1
+0 93
+1
+0 62 0 2
+1
+end_operator
+begin_operator
+depart f95 p51
+1
+0 95
+1
+0 53 0 2
+1
+end_operator
+begin_operator
+depart f95 p85
+1
+0 95
+1
+0 16 0 2
+1
+end_operator
+begin_operator
+depart f96 p64
+1
+0 96
+1
+0 39 0 2
+1
+end_operator
+begin_operator
+depart f97 p60
+1
+0 97
+1
+0 43 0 2
+1
+end_operator
+begin_operator
+depart f97 p96
+1
+0 97
+1
+0 4 0 2
+1
+end_operator
+begin_operator
+depart f98 p117
+1
+0 98
+1
+0 105 0 2
+1
+end_operator
+begin_operator
+depart f98 p28
+1
+0 98
+1
+0 79 0 2
+1
+end_operator
+begin_operator
+depart f99 p29
+1
+0 99
+1
+0 78 0 2
+1
+end_operator
+begin_operator
+down f10 f1
+0
+1
+0 0 1 0
+1
+end_operator
+begin_operator
+down f10 f2
+0
+1
+0 0 1 12
+1
+end_operator
+begin_operator
+down f10 f3
+0
+1
+0 0 1 23
+1
+end_operator
+begin_operator
+down f10 f4
+0
+1
+0 0 1 34
+1
+end_operator
+begin_operator
+down f10 f5
+0
+1
+0 0 1 45
+1
+end_operator
+begin_operator
+down f10 f6
+0
+1
+0 0 1 56
+1
+end_operator
+begin_operator
+down f10 f7
+0
+1
+0 0 1 67
+1
+end_operator
+begin_operator
+down f10 f8
+0
+1
+0 0 1 78
+1
+end_operator
+begin_operator
+down f10 f9
+0
+1
+0 0 1 89
+1
+end_operator
+begin_operator
+down f100 f1
+0
+1
+0 0 2 0
+1
+end_operator
+begin_operator
+down f100 f10
+0
+1
+0 0 2 1
+1
+end_operator
+begin_operator
+down f100 f11
+0
+1
+0 0 2 3
+1
+end_operator
+begin_operator
+down f100 f12
+0
+1
+0 0 2 4
+1
+end_operator
+begin_operator
+down f100 f13
+0
+1
+0 0 2 5
+1
+end_operator
+begin_operator
+down f100 f14
+0
+1
+0 0 2 6
+1
+end_operator
+begin_operator
+down f100 f15
+0
+1
+0 0 2 7
+1
+end_operator
+begin_operator
+down f100 f16
+0
+1
+0 0 2 8
+1
+end_operator
+begin_operator
+down f100 f17
+0
+1
+0 0 2 9
+1
+end_operator
+begin_operator
+down f100 f18
+0
+1
+0 0 2 10
+1
+end_operator
+begin_operator
+down f100 f19
+0
+1
+0 0 2 11
+1
+end_operator
+begin_operator
+down f100 f2
+0
+1
+0 0 2 12
+1
+end_operator
+begin_operator
+down f100 f20
+0
+1
+0 0 2 13
+1
+end_operator
+begin_operator
+down f100 f21
+0
+1
+0 0 2 14
+1
+end_operator
+begin_operator
+down f100 f22
+0
+1
+0 0 2 15
+1
+end_operator
+begin_operator
+down f100 f23
+0
+1
+0 0 2 16
+1
+end_operator
+begin_operator
+down f100 f24
+0
+1
+0 0 2 17
+1
+end_operator
+begin_operator
+down f100 f25
+0
+1
+0 0 2 18
+1
+end_operator
+begin_operator
+down f100 f26
+0
+1
+0 0 2 19
+1
+end_operator
+begin_operator
+down f100 f27
+0
+1
+0 0 2 20
+1
+end_operator
+begin_operator
+down f100 f28
+0
+1
+0 0 2 21
+1
+end_operator
+begin_operator
+down f100 f29
+0
+1
+0 0 2 22
+1
+end_operator
+begin_operator
+down f100 f3
+0
+1
+0 0 2 23
+1
+end_operator
+begin_operator
+down f100 f30
+0
+1
+0 0 2 24
+1
+end_operator
+begin_operator
+down f100 f31
+0
+1
+0 0 2 25
+1
+end_operator
+begin_operator
+down f100 f32
+0
+1
+0 0 2 26
+1
+end_operator
+begin_operator
+down f100 f33
+0
+1
+0 0 2 27
+1
+end_operator
+begin_operator
+down f100 f34
+0
+1
+0 0 2 28
+1
+end_operator
+begin_operator
+down f100 f35
+0
+1
+0 0 2 29
+1
+end_operator
+begin_operator
+down f100 f36
+0
+1
+0 0 2 30
+1
+end_operator
+begin_operator
+down f100 f37
+0
+1
+0 0 2 31
+1
+end_operator
+begin_operator
+down f100 f38
+0
+1
+0 0 2 32
+1
+end_operator
+begin_operator
+down f100 f39
+0
+1
+0 0 2 33
+1
+end_operator
+begin_operator
+down f100 f4
+0
+1
+0 0 2 34
+1
+end_operator
+begin_operator
+down f100 f40
+0
+1
+0 0 2 35
+1
+end_operator
+begin_operator
+down f100 f41
+0
+1
+0 0 2 36
+1
+end_operator
+begin_operator
+down f100 f42
+0
+1
+0 0 2 37
+1
+end_operator
+begin_operator
+down f100 f43
+0
+1
+0 0 2 38
+1
+end_operator
+begin_operator
+down f100 f44
+0
+1
+0 0 2 39
+1
+end_operator
+begin_operator
+down f100 f45
+0
+1
+0 0 2 40
+1
+end_operator
+begin_operator
+down f100 f46
+0
+1
+0 0 2 41
+1
+end_operator
+begin_operator
+down f100 f47
+0
+1
+0 0 2 42
+1
+end_operator
+begin_operator
+down f100 f48
+0
+1
+0 0 2 43
+1
+end_operator
+begin_operator
+down f100 f49
+0
+1
+0 0 2 44
+1
+end_operator
+begin_operator
+down f100 f5
+0
+1
+0 0 2 45
+1
+end_operator
+begin_operator
+down f100 f50
+0
+1
+0 0 2 46
+1
+end_operator
+begin_operator
+down f100 f51
+0
+1
+0 0 2 47
+1
+end_operator
+begin_operator
+down f100 f52
+0
+1
+0 0 2 48
+1
+end_operator
+begin_operator
+down f100 f53
+0
+1
+0 0 2 49
+1
+end_operator
+begin_operator
+down f100 f54
+0
+1
+0 0 2 50
+1
+end_operator
+begin_operator
+down f100 f55
+0
+1
+0 0 2 51
+1
+end_operator
+begin_operator
+down f100 f56
+0
+1
+0 0 2 52
+1
+end_operator
+begin_operator
+down f100 f57
+0
+1
+0 0 2 53
+1
+end_operator
+begin_operator
+down f100 f58
+0
+1
+0 0 2 54
+1
+end_operator
+begin_operator
+down f100 f59
+0
+1
+0 0 2 55
+1
+end_operator
+begin_operator
+down f100 f6
+0
+1
+0 0 2 56
+1
+end_operator
+begin_operator
+down f100 f60
+0
+1
+0 0 2 57
+1
+end_operator
+begin_operator
+down f100 f61
+0
+1
+0 0 2 58
+1
+end_operator
+begin_operator
+down f100 f62
+0
+1
+0 0 2 59
+1
+end_operator
+begin_operator
+down f100 f63
+0
+1
+0 0 2 60
+1
+end_operator
+begin_operator
+down f100 f64
+0
+1
+0 0 2 61
+1
+end_operator
+begin_operator
+down f100 f65
+0
+1
+0 0 2 62
+1
+end_operator
+begin_operator
+down f100 f66
+0
+1
+0 0 2 63
+1
+end_operator
+begin_operator
+down f100 f67
+0
+1
+0 0 2 64
+1
+end_operator
+begin_operator
+down f100 f68
+0
+1
+0 0 2 65
+1
+end_operator
+begin_operator
+down f100 f69
+0
+1
+0 0 2 66
+1
+end_operator
+begin_operator
+down f100 f7
+0
+1
+0 0 2 67
+1
+end_operator
+begin_operator
+down f100 f70
+0
+1
+0 0 2 68
+1
+end_operator
+begin_operator
+down f100 f71
+0
+1
+0 0 2 69
+1
+end_operator
+begin_operator
+down f100 f72
+0
+1
+0 0 2 70
+1
+end_operator
+begin_operator
+down f100 f73
+0
+1
+0 0 2 71
+1
+end_operator
+begin_operator
+down f100 f74
+0
+1
+0 0 2 72
+1
+end_operator
+begin_operator
+down f100 f75
+0
+1
+0 0 2 73
+1
+end_operator
+begin_operator
+down f100 f76
+0
+1
+0 0 2 74
+1
+end_operator
+begin_operator
+down f100 f77
+0
+1
+0 0 2 75
+1
+end_operator
+begin_operator
+down f100 f78
+0
+1
+0 0 2 76
+1
+end_operator
+begin_operator
+down f100 f79
+0
+1
+0 0 2 77
+1
+end_operator
+begin_operator
+down f100 f8
+0
+1
+0 0 2 78
+1
+end_operator
+begin_operator
+down f100 f80
+0
+1
+0 0 2 79
+1
+end_operator
+begin_operator
+down f100 f81
+0
+1
+0 0 2 80
+1
+end_operator
+begin_operator
+down f100 f82
+0
+1
+0 0 2 81
+1
+end_operator
+begin_operator
+down f100 f83
+0
+1
+0 0 2 82
+1
+end_operator
+begin_operator
+down f100 f84
+0
+1
+0 0 2 83
+1
+end_operator
+begin_operator
+down f100 f85
+0
+1
+0 0 2 84
+1
+end_operator
+begin_operator
+down f100 f86
+0
+1
+0 0 2 85
+1
+end_operator
+begin_operator
+down f100 f87
+0
+1
+0 0 2 86
+1
+end_operator
+begin_operator
+down f100 f88
+0
+1
+0 0 2 87
+1
+end_operator
+begin_operator
+down f100 f89
+0
+1
+0 0 2 88
+1
+end_operator
+begin_operator
+down f100 f9
+0
+1
+0 0 2 89
+1
+end_operator
+begin_operator
+down f100 f90
+0
+1
+0 0 2 90
+1
+end_operator
+begin_operator
+down f100 f91
+0
+1
+0 0 2 91
+1
+end_operator
+begin_operator
+down f100 f92
+0
+1
+0 0 2 92
+1
+end_operator
+begin_operator
+down f100 f93
+0
+1
+0 0 2 93
+1
+end_operator
+begin_operator
+down f100 f94
+0
+1
+0 0 2 94
+1
+end_operator
+begin_operator
+down f100 f95
+0
+1
+0 0 2 95
+1
+end_operator
+begin_operator
+down f100 f96
+0
+1
+0 0 2 96
+1
+end_operator
+begin_operator
+down f100 f97
+0
+1
+0 0 2 97
+1
+end_operator
+begin_operator
+down f100 f98
+0
+1
+0 0 2 98
+1
+end_operator
+begin_operator
+down f100 f99
+0
+1
+0 0 2 99
+1
+end_operator
+begin_operator
+down f11 f1
+0
+1
+0 0 3 0
+1
+end_operator
+begin_operator
+down f11 f10
+0
+1
+0 0 3 1
+1
+end_operator
+begin_operator
+down f11 f2
+0
+1
+0 0 3 12
+1
+end_operator
+begin_operator
+down f11 f3
+0
+1
+0 0 3 23
+1
+end_operator
+begin_operator
+down f11 f4
+0
+1
+0 0 3 34
+1
+end_operator
+begin_operator
+down f11 f5
+0
+1
+0 0 3 45
+1
+end_operator
+begin_operator
+down f11 f6
+0
+1
+0 0 3 56
+1
+end_operator
+begin_operator
+down f11 f7
+0
+1
+0 0 3 67
+1
+end_operator
+begin_operator
+down f11 f8
+0
+1
+0 0 3 78
+1
+end_operator
+begin_operator
+down f11 f9
+0
+1
+0 0 3 89
+1
+end_operator
+begin_operator
+down f12 f1
+0
+1
+0 0 4 0
+1
+end_operator
+begin_operator
+down f12 f10
+0
+1
+0 0 4 1
+1
+end_operator
+begin_operator
+down f12 f11
+0
+1
+0 0 4 3
+1
+end_operator
+begin_operator
+down f12 f2
+0
+1
+0 0 4 12
+1
+end_operator
+begin_operator
+down f12 f3
+0
+1
+0 0 4 23
+1
+end_operator
+begin_operator
+down f12 f4
+0
+1
+0 0 4 34
+1
+end_operator
+begin_operator
+down f12 f5
+0
+1
+0 0 4 45
+1
+end_operator
+begin_operator
+down f12 f6
+0
+1
+0 0 4 56
+1
+end_operator
+begin_operator
+down f12 f7
+0
+1
+0 0 4 67
+1
+end_operator
+begin_operator
+down f12 f8
+0
+1
+0 0 4 78
+1
+end_operator
+begin_operator
+down f12 f9
+0
+1
+0 0 4 89
+1
+end_operator
+begin_operator
+down f13 f1
+0
+1
+0 0 5 0
+1
+end_operator
+begin_operator
+down f13 f10
+0
+1
+0 0 5 1
+1
+end_operator
+begin_operator
+down f13 f11
+0
+1
+0 0 5 3
+1
+end_operator
+begin_operator
+down f13 f12
+0
+1
+0 0 5 4
+1
+end_operator
+begin_operator
+down f13 f2
+0
+1
+0 0 5 12
+1
+end_operator
+begin_operator
+down f13 f3
+0
+1
+0 0 5 23
+1
+end_operator
+begin_operator
+down f13 f4
+0
+1
+0 0 5 34
+1
+end_operator
+begin_operator
+down f13 f5
+0
+1
+0 0 5 45
+1
+end_operator
+begin_operator
+down f13 f6
+0
+1
+0 0 5 56
+1
+end_operator
+begin_operator
+down f13 f7
+0
+1
+0 0 5 67
+1
+end_operator
+begin_operator
+down f13 f8
+0
+1
+0 0 5 78
+1
+end_operator
+begin_operator
+down f13 f9
+0
+1
+0 0 5 89
+1
+end_operator
+begin_operator
+down f14 f1
+0
+1
+0 0 6 0
+1
+end_operator
+begin_operator
+down f14 f10
+0
+1
+0 0 6 1
+1
+end_operator
+begin_operator
+down f14 f11
+0
+1
+0 0 6 3
+1
+end_operator
+begin_operator
+down f14 f12
+0
+1
+0 0 6 4
+1
+end_operator
+begin_operator
+down f14 f13
+0
+1
+0 0 6 5
+1
+end_operator
+begin_operator
+down f14 f2
+0
+1
+0 0 6 12
+1
+end_operator
+begin_operator
+down f14 f3
+0
+1
+0 0 6 23
+1
+end_operator
+begin_operator
+down f14 f4
+0
+1
+0 0 6 34
+1
+end_operator
+begin_operator
+down f14 f5
+0
+1
+0 0 6 45
+1
+end_operator
+begin_operator
+down f14 f6
+0
+1
+0 0 6 56
+1
+end_operator
+begin_operator
+down f14 f7
+0
+1
+0 0 6 67
+1
+end_operator
+begin_operator
+down f14 f8
+0
+1
+0 0 6 78
+1
+end_operator
+begin_operator
+down f14 f9
+0
+1
+0 0 6 89
+1
+end_operator
+begin_operator
+down f15 f1
+0
+1
+0 0 7 0
+1
+end_operator
+begin_operator
+down f15 f10
+0
+1
+0 0 7 1
+1
+end_operator
+begin_operator
+down f15 f11
+0
+1
+0 0 7 3
+1
+end_operator
+begin_operator
+down f15 f12
+0
+1
+0 0 7 4
+1
+end_operator
+begin_operator
+down f15 f13
+0
+1
+0 0 7 5
+1
+end_operator
+begin_operator
+down f15 f14
+0
+1
+0 0 7 6
+1
+end_operator
+begin_operator
+down f15 f2
+0
+1
+0 0 7 12
+1
+end_operator
+begin_operator
+down f15 f3
+0
+1
+0 0 7 23
+1
+end_operator
+begin_operator
+down f15 f4
+0
+1
+0 0 7 34
+1
+end_operator
+begin_operator
+down f15 f5
+0
+1
+0 0 7 45
+1
+end_operator
+begin_operator
+down f15 f6
+0
+1
+0 0 7 56
+1
+end_operator
+begin_operator
+down f15 f7
+0
+1
+0 0 7 67
+1
+end_operator
+begin_operator
+down f15 f8
+0
+1
+0 0 7 78
+1
+end_operator
+begin_operator
+down f15 f9
+0
+1
+0 0 7 89
+1
+end_operator
+begin_operator
+down f16 f1
+0
+1
+0 0 8 0
+1
+end_operator
+begin_operator
+down f16 f10
+0
+1
+0 0 8 1
+1
+end_operator
+begin_operator
+down f16 f11
+0
+1
+0 0 8 3
+1
+end_operator
+begin_operator
+down f16 f12
+0
+1
+0 0 8 4
+1
+end_operator
+begin_operator
+down f16 f13
+0
+1
+0 0 8 5
+1
+end_operator
+begin_operator
+down f16 f14
+0
+1
+0 0 8 6
+1
+end_operator
+begin_operator
+down f16 f15
+0
+1
+0 0 8 7
+1
+end_operator
+begin_operator
+down f16 f2
+0
+1
+0 0 8 12
+1
+end_operator
+begin_operator
+down f16 f3
+0
+1
+0 0 8 23
+1
+end_operator
+begin_operator
+down f16 f4
+0
+1
+0 0 8 34
+1
+end_operator
+begin_operator
+down f16 f5
+0
+1
+0 0 8 45
+1
+end_operator
+begin_operator
+down f16 f6
+0
+1
+0 0 8 56
+1
+end_operator
+begin_operator
+down f16 f7
+0
+1
+0 0 8 67
+1
+end_operator
+begin_operator
+down f16 f8
+0
+1
+0 0 8 78
+1
+end_operator
+begin_operator
+down f16 f9
+0
+1
+0 0 8 89
+1
+end_operator
+begin_operator
+down f17 f1
+0
+1
+0 0 9 0
+1
+end_operator
+begin_operator
+down f17 f10
+0
+1
+0 0 9 1
+1
+end_operator
+begin_operator
+down f17 f11
+0
+1
+0 0 9 3
+1
+end_operator
+begin_operator
+down f17 f12
+0
+1
+0 0 9 4
+1
+end_operator
+begin_operator
+down f17 f13
+0
+1
+0 0 9 5
+1
+end_operator
+begin_operator
+down f17 f14
+0
+1
+0 0 9 6
+1
+end_operator
+begin_operator
+down f17 f15
+0
+1
+0 0 9 7
+1
+end_operator
+begin_operator
+down f17 f16
+0
+1
+0 0 9 8
+1
+end_operator
+begin_operator
+down f17 f2
+0
+1
+0 0 9 12
+1
+end_operator
+begin_operator
+down f17 f3
+0
+1
+0 0 9 23
+1
+end_operator
+begin_operator
+down f17 f4
+0
+1
+0 0 9 34
+1
+end_operator
+begin_operator
+down f17 f5
+0
+1
+0 0 9 45
+1
+end_operator
+begin_operator
+down f17 f6
+0
+1
+0 0 9 56
+1
+end_operator
+begin_operator
+down f17 f7
+0
+1
+0 0 9 67
+1
+end_operator
+begin_operator
+down f17 f8
+0
+1
+0 0 9 78
+1
+end_operator
+begin_operator
+down f17 f9
+0
+1
+0 0 9 89
+1
+end_operator
+begin_operator
+down f18 f1
+0
+1
+0 0 10 0
+1
+end_operator
+begin_operator
+down f18 f10
+0
+1
+0 0 10 1
+1
+end_operator
+begin_operator
+down f18 f11
+0
+1
+0 0 10 3
+1
+end_operator
+begin_operator
+down f18 f12
+0
+1
+0 0 10 4
+1
+end_operator
+begin_operator
+down f18 f13
+0
+1
+0 0 10 5
+1
+end_operator
+begin_operator
+down f18 f14
+0
+1
+0 0 10 6
+1
+end_operator
+begin_operator
+down f18 f15
+0
+1
+0 0 10 7
+1
+end_operator
+begin_operator
+down f18 f16
+0
+1
+0 0 10 8
+1
+end_operator
+begin_operator
+down f18 f17
+0
+1
+0 0 10 9
+1
+end_operator
+begin_operator
+down f18 f2
+0
+1
+0 0 10 12
+1
+end_operator
+begin_operator
+down f18 f3
+0
+1
+0 0 10 23
+1
+end_operator
+begin_operator
+down f18 f4
+0
+1
+0 0 10 34
+1
+end_operator
+begin_operator
+down f18 f5
+0
+1
+0 0 10 45
+1
+end_operator
+begin_operator
+down f18 f6
+0
+1
+0 0 10 56
+1
+end_operator
+begin_operator
+down f18 f7
+0
+1
+0 0 10 67
+1
+end_operator
+begin_operator
+down f18 f8
+0
+1
+0 0 10 78
+1
+end_operator
+begin_operator
+down f18 f9
+0
+1
+0 0 10 89
+1
+end_operator
+begin_operator
+down f19 f1
+0
+1
+0 0 11 0
+1
+end_operator
+begin_operator
+down f19 f10
+0
+1
+0 0 11 1
+1
+end_operator
+begin_operator
+down f19 f11
+0
+1
+0 0 11 3
+1
+end_operator
+begin_operator
+down f19 f12
+0
+1
+0 0 11 4
+1
+end_operator
+begin_operator
+down f19 f13
+0
+1
+0 0 11 5
+1
+end_operator
+begin_operator
+down f19 f14
+0
+1
+0 0 11 6
+1
+end_operator
+begin_operator
+down f19 f15
+0
+1
+0 0 11 7
+1
+end_operator
+begin_operator
+down f19 f16
+0
+1
+0 0 11 8
+1
+end_operator
+begin_operator
+down f19 f17
+0
+1
+0 0 11 9
+1
+end_operator
+begin_operator
+down f19 f18
+0
+1
+0 0 11 10
+1
+end_operator
+begin_operator
+down f19 f2
+0
+1
+0 0 11 12
+1
+end_operator
+begin_operator
+down f19 f3
+0
+1
+0 0 11 23
+1
+end_operator
+begin_operator
+down f19 f4
+0
+1
+0 0 11 34
+1
+end_operator
+begin_operator
+down f19 f5
+0
+1
+0 0 11 45
+1
+end_operator
+begin_operator
+down f19 f6
+0
+1
+0 0 11 56
+1
+end_operator
+begin_operator
+down f19 f7
+0
+1
+0 0 11 67
+1
+end_operator
+begin_operator
+down f19 f8
+0
+1
+0 0 11 78
+1
+end_operator
+begin_operator
+down f19 f9
+0
+1
+0 0 11 89
+1
+end_operator
+begin_operator
+down f2 f1
+0
+1
+0 0 12 0
+1
+end_operator
+begin_operator
+down f20 f1
+0
+1
+0 0 13 0
+1
+end_operator
+begin_operator
+down f20 f10
+0
+1
+0 0 13 1
+1
+end_operator
+begin_operator
+down f20 f11
+0
+1
+0 0 13 3
+1
+end_operator
+begin_operator
+down f20 f12
+0
+1
+0 0 13 4
+1
+end_operator
+begin_operator
+down f20 f13
+0
+1
+0 0 13 5
+1
+end_operator
+begin_operator
+down f20 f14
+0
+1
+0 0 13 6
+1
+end_operator
+begin_operator
+down f20 f15
+0
+1
+0 0 13 7
+1
+end_operator
+begin_operator
+down f20 f16
+0
+1
+0 0 13 8
+1
+end_operator
+begin_operator
+down f20 f17
+0
+1
+0 0 13 9
+1
+end_operator
+begin_operator
+down f20 f18
+0
+1
+0 0 13 10
+1
+end_operator
+begin_operator
+down f20 f19
+0
+1
+0 0 13 11
+1
+end_operator
+begin_operator
+down f20 f2
+0
+1
+0 0 13 12
+1
+end_operator
+begin_operator
+down f20 f3
+0
+1
+0 0 13 23
+1
+end_operator
+begin_operator
+down f20 f4
+0
+1
+0 0 13 34
+1
+end_operator
+begin_operator
+down f20 f5
+0
+1
+0 0 13 45
+1
+end_operator
+begin_operator
+down f20 f6
+0
+1
+0 0 13 56
+1
+end_operator
+begin_operator
+down f20 f7
+0
+1
+0 0 13 67
+1
+end_operator
+begin_operator
+down f20 f8
+0
+1
+0 0 13 78
+1
+end_operator
+begin_operator
+down f20 f9
+0
+1
+0 0 13 89
+1
+end_operator
+begin_operator
+down f21 f1
+0
+1
+0 0 14 0
+1
+end_operator
+begin_operator
+down f21 f10
+0
+1
+0 0 14 1
+1
+end_operator
+begin_operator
+down f21 f11
+0
+1
+0 0 14 3
+1
+end_operator
+begin_operator
+down f21 f12
+0
+1
+0 0 14 4
+1
+end_operator
+begin_operator
+down f21 f13
+0
+1
+0 0 14 5
+1
+end_operator
+begin_operator
+down f21 f14
+0
+1
+0 0 14 6
+1
+end_operator
+begin_operator
+down f21 f15
+0
+1
+0 0 14 7
+1
+end_operator
+begin_operator
+down f21 f16
+0
+1
+0 0 14 8
+1
+end_operator
+begin_operator
+down f21 f17
+0
+1
+0 0 14 9
+1
+end_operator
+begin_operator
+down f21 f18
+0
+1
+0 0 14 10
+1
+end_operator
+begin_operator
+down f21 f19
+0
+1
+0 0 14 11
+1
+end_operator
+begin_operator
+down f21 f2
+0
+1
+0 0 14 12
+1
+end_operator
+begin_operator
+down f21 f20
+0
+1
+0 0 14 13
+1
+end_operator
+begin_operator
+down f21 f3
+0
+1
+0 0 14 23
+1
+end_operator
+begin_operator
+down f21 f4
+0
+1
+0 0 14 34
+1
+end_operator
+begin_operator
+down f21 f5
+0
+1
+0 0 14 45
+1
+end_operator
+begin_operator
+down f21 f6
+0
+1
+0 0 14 56
+1
+end_operator
+begin_operator
+down f21 f7
+0
+1
+0 0 14 67
+1
+end_operator
+begin_operator
+down f21 f8
+0
+1
+0 0 14 78
+1
+end_operator
+begin_operator
+down f21 f9
+0
+1
+0 0 14 89
+1
+end_operator
+begin_operator
+down f22 f1
+0
+1
+0 0 15 0
+1
+end_operator
+begin_operator
+down f22 f10
+0
+1
+0 0 15 1
+1
+end_operator
+begin_operator
+down f22 f11
+0
+1
+0 0 15 3
+1
+end_operator
+begin_operator
+down f22 f12
+0
+1
+0 0 15 4
+1
+end_operator
+begin_operator
+down f22 f13
+0
+1
+0 0 15 5
+1
+end_operator
+begin_operator
+down f22 f14
+0
+1
+0 0 15 6
+1
+end_operator
+begin_operator
+down f22 f15
+0
+1
+0 0 15 7
+1
+end_operator
+begin_operator
+down f22 f16
+0
+1
+0 0 15 8
+1
+end_operator
+begin_operator
+down f22 f17
+0
+1
+0 0 15 9
+1
+end_operator
+begin_operator
+down f22 f18
+0
+1
+0 0 15 10
+1
+end_operator
+begin_operator
+down f22 f19
+0
+1
+0 0 15 11
+1
+end_operator
+begin_operator
+down f22 f2
+0
+1
+0 0 15 12
+1
+end_operator
+begin_operator
+down f22 f20
+0
+1
+0 0 15 13
+1
+end_operator
+begin_operator
+down f22 f21
+0
+1
+0 0 15 14
+1
+end_operator
+begin_operator
+down f22 f3
+0
+1
+0 0 15 23
+1
+end_operator
+begin_operator
+down f22 f4
+0
+1
+0 0 15 34
+1
+end_operator
+begin_operator
+down f22 f5
+0
+1
+0 0 15 45
+1
+end_operator
+begin_operator
+down f22 f6
+0
+1
+0 0 15 56
+1
+end_operator
+begin_operator
+down f22 f7
+0
+1
+0 0 15 67
+1
+end_operator
+begin_operator
+down f22 f8
+0
+1
+0 0 15 78
+1
+end_operator
+begin_operator
+down f22 f9
+0
+1
+0 0 15 89
+1
+end_operator
+begin_operator
+down f23 f1
+0
+1
+0 0 16 0
+1
+end_operator
+begin_operator
+down f23 f10
+0
+1
+0 0 16 1
+1
+end_operator
+begin_operator
+down f23 f11
+0
+1
+0 0 16 3
+1
+end_operator
+begin_operator
+down f23 f12
+0
+1
+0 0 16 4
+1
+end_operator
+begin_operator
+down f23 f13
+0
+1
+0 0 16 5
+1
+end_operator
+begin_operator
+down f23 f14
+0
+1
+0 0 16 6
+1
+end_operator
+begin_operator
+down f23 f15
+0
+1
+0 0 16 7
+1
+end_operator
+begin_operator
+down f23 f16
+0
+1
+0 0 16 8
+1
+end_operator
+begin_operator
+down f23 f17
+0
+1
+0 0 16 9
+1
+end_operator
+begin_operator
+down f23 f18
+0
+1
+0 0 16 10
+1
+end_operator
+begin_operator
+down f23 f19
+0
+1
+0 0 16 11
+1
+end_operator
+begin_operator
+down f23 f2
+0
+1
+0 0 16 12
+1
+end_operator
+begin_operator
+down f23 f20
+0
+1
+0 0 16 13
+1
+end_operator
+begin_operator
+down f23 f21
+0
+1
+0 0 16 14
+1
+end_operator
+begin_operator
+down f23 f22
+0
+1
+0 0 16 15
+1
+end_operator
+begin_operator
+down f23 f3
+0
+1
+0 0 16 23
+1
+end_operator
+begin_operator
+down f23 f4
+0
+1
+0 0 16 34
+1
+end_operator
+begin_operator
+down f23 f5
+0
+1
+0 0 16 45
+1
+end_operator
+begin_operator
+down f23 f6
+0
+1
+0 0 16 56
+1
+end_operator
+begin_operator
+down f23 f7
+0
+1
+0 0 16 67
+1
+end_operator
+begin_operator
+down f23 f8
+0
+1
+0 0 16 78
+1
+end_operator
+begin_operator
+down f23 f9
+0
+1
+0 0 16 89
+1
+end_operator
+begin_operator
+down f24 f1
+0
+1
+0 0 17 0
+1
+end_operator
+begin_operator
+down f24 f10
+0
+1
+0 0 17 1
+1
+end_operator
+begin_operator
+down f24 f11
+0
+1
+0 0 17 3
+1
+end_operator
+begin_operator
+down f24 f12
+0
+1
+0 0 17 4
+1
+end_operator
+begin_operator
+down f24 f13
+0
+1
+0 0 17 5
+1
+end_operator
+begin_operator
+down f24 f14
+0
+1
+0 0 17 6
+1
+end_operator
+begin_operator
+down f24 f15
+0
+1
+0 0 17 7
+1
+end_operator
+begin_operator
+down f24 f16
+0
+1
+0 0 17 8
+1
+end_operator
+begin_operator
+down f24 f17
+0
+1
+0 0 17 9
+1
+end_operator
+begin_operator
+down f24 f18
+0
+1
+0 0 17 10
+1
+end_operator
+begin_operator
+down f24 f19
+0
+1
+0 0 17 11
+1
+end_operator
+begin_operator
+down f24 f2
+0
+1
+0 0 17 12
+1
+end_operator
+begin_operator
+down f24 f20
+0
+1
+0 0 17 13
+1
+end_operator
+begin_operator
+down f24 f21
+0
+1
+0 0 17 14
+1
+end_operator
+begin_operator
+down f24 f22
+0
+1
+0 0 17 15
+1
+end_operator
+begin_operator
+down f24 f23
+0
+1
+0 0 17 16
+1
+end_operator
+begin_operator
+down f24 f3
+0
+1
+0 0 17 23
+1
+end_operator
+begin_operator
+down f24 f4
+0
+1
+0 0 17 34
+1
+end_operator
+begin_operator
+down f24 f5
+0
+1
+0 0 17 45
+1
+end_operator
+begin_operator
+down f24 f6
+0
+1
+0 0 17 56
+1
+end_operator
+begin_operator
+down f24 f7
+0
+1
+0 0 17 67
+1
+end_operator
+begin_operator
+down f24 f8
+0
+1
+0 0 17 78
+1
+end_operator
+begin_operator
+down f24 f9
+0
+1
+0 0 17 89
+1
+end_operator
+begin_operator
+down f25 f1
+0
+1
+0 0 18 0
+1
+end_operator
+begin_operator
+down f25 f10
+0
+1
+0 0 18 1
+1
+end_operator
+begin_operator
+down f25 f11
+0
+1
+0 0 18 3
+1
+end_operator
+begin_operator
+down f25 f12
+0
+1
+0 0 18 4
+1
+end_operator
+begin_operator
+down f25 f13
+0
+1
+0 0 18 5
+1
+end_operator
+begin_operator
+down f25 f14
+0
+1
+0 0 18 6
+1
+end_operator
+begin_operator
+down f25 f15
+0
+1
+0 0 18 7
+1
+end_operator
+begin_operator
+down f25 f16
+0
+1
+0 0 18 8
+1
+end_operator
+begin_operator
+down f25 f17
+0
+1
+0 0 18 9
+1
+end_operator
+begin_operator
+down f25 f18
+0
+1
+0 0 18 10
+1
+end_operator
+begin_operator
+down f25 f19
+0
+1
+0 0 18 11
+1
+end_operator
+begin_operator
+down f25 f2
+0
+1
+0 0 18 12
+1
+end_operator
+begin_operator
+down f25 f20
+0
+1
+0 0 18 13
+1
+end_operator
+begin_operator
+down f25 f21
+0
+1
+0 0 18 14
+1
+end_operator
+begin_operator
+down f25 f22
+0
+1
+0 0 18 15
+1
+end_operator
+begin_operator
+down f25 f23
+0
+1
+0 0 18 16
+1
+end_operator
+begin_operator
+down f25 f24
+0
+1
+0 0 18 17
+1
+end_operator
+begin_operator
+down f25 f3
+0
+1
+0 0 18 23
+1
+end_operator
+begin_operator
+down f25 f4
+0
+1
+0 0 18 34
+1
+end_operator
+begin_operator
+down f25 f5
+0
+1
+0 0 18 45
+1
+end_operator
+begin_operator
+down f25 f6
+0
+1
+0 0 18 56
+1
+end_operator
+begin_operator
+down f25 f7
+0
+1
+0 0 18 67
+1
+end_operator
+begin_operator
+down f25 f8
+0
+1
+0 0 18 78
+1
+end_operator
+begin_operator
+down f25 f9
+0
+1
+0 0 18 89
+1
+end_operator
+begin_operator
+down f26 f1
+0
+1
+0 0 19 0
+1
+end_operator
+begin_operator
+down f26 f10
+0
+1
+0 0 19 1
+1
+end_operator
+begin_operator
+down f26 f11
+0
+1
+0 0 19 3
+1
+end_operator
+begin_operator
+down f26 f12
+0
+1
+0 0 19 4
+1
+end_operator
+begin_operator
+down f26 f13
+0
+1
+0 0 19 5
+1
+end_operator
+begin_operator
+down f26 f14
+0
+1
+0 0 19 6
+1
+end_operator
+begin_operator
+down f26 f15
+0
+1
+0 0 19 7
+1
+end_operator
+begin_operator
+down f26 f16
+0
+1
+0 0 19 8
+1
+end_operator
+begin_operator
+down f26 f17
+0
+1
+0 0 19 9
+1
+end_operator
+begin_operator
+down f26 f18
+0
+1
+0 0 19 10
+1
+end_operator
+begin_operator
+down f26 f19
+0
+1
+0 0 19 11
+1
+end_operator
+begin_operator
+down f26 f2
+0
+1
+0 0 19 12
+1
+end_operator
+begin_operator
+down f26 f20
+0
+1
+0 0 19 13
+1
+end_operator
+begin_operator
+down f26 f21
+0
+1
+0 0 19 14
+1
+end_operator
+begin_operator
+down f26 f22
+0
+1
+0 0 19 15
+1
+end_operator
+begin_operator
+down f26 f23
+0
+1
+0 0 19 16
+1
+end_operator
+begin_operator
+down f26 f24
+0
+1
+0 0 19 17
+1
+end_operator
+begin_operator
+down f26 f25
+0
+1
+0 0 19 18
+1
+end_operator
+begin_operator
+down f26 f3
+0
+1
+0 0 19 23
+1
+end_operator
+begin_operator
+down f26 f4
+0
+1
+0 0 19 34
+1
+end_operator
+begin_operator
+down f26 f5
+0
+1
+0 0 19 45
+1
+end_operator
+begin_operator
+down f26 f6
+0
+1
+0 0 19 56
+1
+end_operator
+begin_operator
+down f26 f7
+0
+1
+0 0 19 67
+1
+end_operator
+begin_operator
+down f26 f8
+0
+1
+0 0 19 78
+1
+end_operator
+begin_operator
+down f26 f9
+0
+1
+0 0 19 89
+1
+end_operator
+begin_operator
+down f27 f1
+0
+1
+0 0 20 0
+1
+end_operator
+begin_operator
+down f27 f10
+0
+1
+0 0 20 1
+1
+end_operator
+begin_operator
+down f27 f11
+0
+1
+0 0 20 3
+1
+end_operator
+begin_operator
+down f27 f12
+0
+1
+0 0 20 4
+1
+end_operator
+begin_operator
+down f27 f13
+0
+1
+0 0 20 5
+1
+end_operator
+begin_operator
+down f27 f14
+0
+1
+0 0 20 6
+1
+end_operator
+begin_operator
+down f27 f15
+0
+1
+0 0 20 7
+1
+end_operator
+begin_operator
+down f27 f16
+0
+1
+0 0 20 8
+1
+end_operator
+begin_operator
+down f27 f17
+0
+1
+0 0 20 9
+1
+end_operator
+begin_operator
+down f27 f18
+0
+1
+0 0 20 10
+1
+end_operator
+begin_operator
+down f27 f19
+0
+1
+0 0 20 11
+1
+end_operator
+begin_operator
+down f27 f2
+0
+1
+0 0 20 12
+1
+end_operator
+begin_operator
+down f27 f20
+0
+1
+0 0 20 13
+1
+end_operator
+begin_operator
+down f27 f21
+0
+1
+0 0 20 14
+1
+end_operator
+begin_operator
+down f27 f22
+0
+1
+0 0 20 15
+1
+end_operator
+begin_operator
+down f27 f23
+0
+1
+0 0 20 16
+1
+end_operator
+begin_operator
+down f27 f24
+0
+1
+0 0 20 17
+1
+end_operator
+begin_operator
+down f27 f25
+0
+1
+0 0 20 18
+1
+end_operator
+begin_operator
+down f27 f26
+0
+1
+0 0 20 19
+1
+end_operator
+begin_operator
+down f27 f3
+0
+1
+0 0 20 23
+1
+end_operator
+begin_operator
+down f27 f4
+0
+1
+0 0 20 34
+1
+end_operator
+begin_operator
+down f27 f5
+0
+1
+0 0 20 45
+1
+end_operator
+begin_operator
+down f27 f6
+0
+1
+0 0 20 56
+1
+end_operator
+begin_operator
+down f27 f7
+0
+1
+0 0 20 67
+1
+end_operator
+begin_operator
+down f27 f8
+0
+1
+0 0 20 78
+1
+end_operator
+begin_operator
+down f27 f9
+0
+1
+0 0 20 89
+1
+end_operator
+begin_operator
+down f28 f1
+0
+1
+0 0 21 0
+1
+end_operator
+begin_operator
+down f28 f10
+0
+1
+0 0 21 1
+1
+end_operator
+begin_operator
+down f28 f11
+0
+1
+0 0 21 3
+1
+end_operator
+begin_operator
+down f28 f12
+0
+1
+0 0 21 4
+1
+end_operator
+begin_operator
+down f28 f13
+0
+1
+0 0 21 5
+1
+end_operator
+begin_operator
+down f28 f14
+0
+1
+0 0 21 6
+1
+end_operator
+begin_operator
+down f28 f15
+0
+1
+0 0 21 7
+1
+end_operator
+begin_operator
+down f28 f16
+0
+1
+0 0 21 8
+1
+end_operator
+begin_operator
+down f28 f17
+0
+1
+0 0 21 9
+1
+end_operator
+begin_operator
+down f28 f18
+0
+1
+0 0 21 10
+1
+end_operator
+begin_operator
+down f28 f19
+0
+1
+0 0 21 11
+1
+end_operator
+begin_operator
+down f28 f2
+0
+1
+0 0 21 12
+1
+end_operator
+begin_operator
+down f28 f20
+0
+1
+0 0 21 13
+1
+end_operator
+begin_operator
+down f28 f21
+0
+1
+0 0 21 14
+1
+end_operator
+begin_operator
+down f28 f22
+0
+1
+0 0 21 15
+1
+end_operator
+begin_operator
+down f28 f23
+0
+1
+0 0 21 16
+1
+end_operator
+begin_operator
+down f28 f24
+0
+1
+0 0 21 17
+1
+end_operator
+begin_operator
+down f28 f25
+0
+1
+0 0 21 18
+1
+end_operator
+begin_operator
+down f28 f26
+0
+1
+0 0 21 19
+1
+end_operator
+begin_operator
+down f28 f27
+0
+1
+0 0 21 20
+1
+end_operator
+begin_operator
+down f28 f3
+0
+1
+0 0 21 23
+1
+end_operator
+begin_operator
+down f28 f4
+0
+1
+0 0 21 34
+1
+end_operator
+begin_operator
+down f28 f5
+0
+1
+0 0 21 45
+1
+end_operator
+begin_operator
+down f28 f6
+0
+1
+0 0 21 56
+1
+end_operator
+begin_operator
+down f28 f7
+0
+1
+0 0 21 67
+1
+end_operator
+begin_operator
+down f28 f8
+0
+1
+0 0 21 78
+1
+end_operator
+begin_operator
+down f28 f9
+0
+1
+0 0 21 89
+1
+end_operator
+begin_operator
+down f29 f1
+0
+1
+0 0 22 0
+1
+end_operator
+begin_operator
+down f29 f10
+0
+1
+0 0 22 1
+1
+end_operator
+begin_operator
+down f29 f11
+0
+1
+0 0 22 3
+1
+end_operator
+begin_operator
+down f29 f12
+0
+1
+0 0 22 4
+1
+end_operator
+begin_operator
+down f29 f13
+0
+1
+0 0 22 5
+1
+end_operator
+begin_operator
+down f29 f14
+0
+1
+0 0 22 6
+1
+end_operator
+begin_operator
+down f29 f15
+0
+1
+0 0 22 7
+1
+end_operator
+begin_operator
+down f29 f16
+0
+1
+0 0 22 8
+1
+end_operator
+begin_operator
+down f29 f17
+0
+1
+0 0 22 9
+1
+end_operator
+begin_operator
+down f29 f18
+0
+1
+0 0 22 10
+1
+end_operator
+begin_operator
+down f29 f19
+0
+1
+0 0 22 11
+1
+end_operator
+begin_operator
+down f29 f2
+0
+1
+0 0 22 12
+1
+end_operator
+begin_operator
+down f29 f20
+0
+1
+0 0 22 13
+1
+end_operator
+begin_operator
+down f29 f21
+0
+1
+0 0 22 14
+1
+end_operator
+begin_operator
+down f29 f22
+0
+1
+0 0 22 15
+1
+end_operator
+begin_operator
+down f29 f23
+0
+1
+0 0 22 16
+1
+end_operator
+begin_operator
+down f29 f24
+0
+1
+0 0 22 17
+1
+end_operator
+begin_operator
+down f29 f25
+0
+1
+0 0 22 18
+1
+end_operator
+begin_operator
+down f29 f26
+0
+1
+0 0 22 19
+1
+end_operator
+begin_operator
+down f29 f27
+0
+1
+0 0 22 20
+1
+end_operator
+begin_operator
+down f29 f28
+0
+1
+0 0 22 21
+1
+end_operator
+begin_operator
+down f29 f3
+0
+1
+0 0 22 23
+1
+end_operator
+begin_operator
+down f29 f4
+0
+1
+0 0 22 34
+1
+end_operator
+begin_operator
+down f29 f5
+0
+1
+0 0 22 45
+1
+end_operator
+begin_operator
+down f29 f6
+0
+1
+0 0 22 56
+1
+end_operator
+begin_operator
+down f29 f7
+0
+1
+0 0 22 67
+1
+end_operator
+begin_operator
+down f29 f8
+0
+1
+0 0 22 78
+1
+end_operator
+begin_operator
+down f29 f9
+0
+1
+0 0 22 89
+1
+end_operator
+begin_operator
+down f3 f1
+0
+1
+0 0 23 0
+1
+end_operator
+begin_operator
+down f3 f2
+0
+1
+0 0 23 12
+1
+end_operator
+begin_operator
+down f30 f1
+0
+1
+0 0 24 0
+1
+end_operator
+begin_operator
+down f30 f10
+0
+1
+0 0 24 1
+1
+end_operator
+begin_operator
+down f30 f11
+0
+1
+0 0 24 3
+1
+end_operator
+begin_operator
+down f30 f12
+0
+1
+0 0 24 4
+1
+end_operator
+begin_operator
+down f30 f13
+0
+1
+0 0 24 5
+1
+end_operator
+begin_operator
+down f30 f14
+0
+1
+0 0 24 6
+1
+end_operator
+begin_operator
+down f30 f15
+0
+1
+0 0 24 7
+1
+end_operator
+begin_operator
+down f30 f16
+0
+1
+0 0 24 8
+1
+end_operator
+begin_operator
+down f30 f17
+0
+1
+0 0 24 9
+1
+end_operator
+begin_operator
+down f30 f18
+0
+1
+0 0 24 10
+1
+end_operator
+begin_operator
+down f30 f19
+0
+1
+0 0 24 11
+1
+end_operator
+begin_operator
+down f30 f2
+0
+1
+0 0 24 12
+1
+end_operator
+begin_operator
+down f30 f20
+0
+1
+0 0 24 13
+1
+end_operator
+begin_operator
+down f30 f21
+0
+1
+0 0 24 14
+1
+end_operator
+begin_operator
+down f30 f22
+0
+1
+0 0 24 15
+1
+end_operator
+begin_operator
+down f30 f23
+0
+1
+0 0 24 16
+1
+end_operator
+begin_operator
+down f30 f24
+0
+1
+0 0 24 17
+1
+end_operator
+begin_operator
+down f30 f25
+0
+1
+0 0 24 18
+1
+end_operator
+begin_operator
+down f30 f26
+0
+1
+0 0 24 19
+1
+end_operator
+begin_operator
+down f30 f27
+0
+1
+0 0 24 20
+1
+end_operator
+begin_operator
+down f30 f28
+0
+1
+0 0 24 21
+1
+end_operator
+begin_operator
+down f30 f29
+0
+1
+0 0 24 22
+1
+end_operator
+begin_operator
+down f30 f3
+0
+1
+0 0 24 23
+1
+end_operator
+begin_operator
+down f30 f4
+0
+1
+0 0 24 34
+1
+end_operator
+begin_operator
+down f30 f5
+0
+1
+0 0 24 45
+1
+end_operator
+begin_operator
+down f30 f6
+0
+1
+0 0 24 56
+1
+end_operator
+begin_operator
+down f30 f7
+0
+1
+0 0 24 67
+1
+end_operator
+begin_operator
+down f30 f8
+0
+1
+0 0 24 78
+1
+end_operator
+begin_operator
+down f30 f9
+0
+1
+0 0 24 89
+1
+end_operator
+begin_operator
+down f31 f1
+0
+1
+0 0 25 0
+1
+end_operator
+begin_operator
+down f31 f10
+0
+1
+0 0 25 1
+1
+end_operator
+begin_operator
+down f31 f11
+0
+1
+0 0 25 3
+1
+end_operator
+begin_operator
+down f31 f12
+0
+1
+0 0 25 4
+1
+end_operator
+begin_operator
+down f31 f13
+0
+1
+0 0 25 5
+1
+end_operator
+begin_operator
+down f31 f14
+0
+1
+0 0 25 6
+1
+end_operator
+begin_operator
+down f31 f15
+0
+1
+0 0 25 7
+1
+end_operator
+begin_operator
+down f31 f16
+0
+1
+0 0 25 8
+1
+end_operator
+begin_operator
+down f31 f17
+0
+1
+0 0 25 9
+1
+end_operator
+begin_operator
+down f31 f18
+0
+1
+0 0 25 10
+1
+end_operator
+begin_operator
+down f31 f19
+0
+1
+0 0 25 11
+1
+end_operator
+begin_operator
+down f31 f2
+0
+1
+0 0 25 12
+1
+end_operator
+begin_operator
+down f31 f20
+0
+1
+0 0 25 13
+1
+end_operator
+begin_operator
+down f31 f21
+0
+1
+0 0 25 14
+1
+end_operator
+begin_operator
+down f31 f22
+0
+1
+0 0 25 15
+1
+end_operator
+begin_operator
+down f31 f23
+0
+1
+0 0 25 16
+1
+end_operator
+begin_operator
+down f31 f24
+0
+1
+0 0 25 17
+1
+end_operator
+begin_operator
+down f31 f25
+0
+1
+0 0 25 18
+1
+end_operator
+begin_operator
+down f31 f26
+0
+1
+0 0 25 19
+1
+end_operator
+begin_operator
+down f31 f27
+0
+1
+0 0 25 20
+1
+end_operator
+begin_operator
+down f31 f28
+0
+1
+0 0 25 21
+1
+end_operator
+begin_operator
+down f31 f29
+0
+1
+0 0 25 22
+1
+end_operator
+begin_operator
+down f31 f3
+0
+1
+0 0 25 23
+1
+end_operator
+begin_operator
+down f31 f30
+0
+1
+0 0 25 24
+1
+end_operator
+begin_operator
+down f31 f4
+0
+1
+0 0 25 34
+1
+end_operator
+begin_operator
+down f31 f5
+0
+1
+0 0 25 45
+1
+end_operator
+begin_operator
+down f31 f6
+0
+1
+0 0 25 56
+1
+end_operator
+begin_operator
+down f31 f7
+0
+1
+0 0 25 67
+1
+end_operator
+begin_operator
+down f31 f8
+0
+1
+0 0 25 78
+1
+end_operator
+begin_operator
+down f31 f9
+0
+1
+0 0 25 89
+1
+end_operator
+begin_operator
+down f32 f1
+0
+1
+0 0 26 0
+1
+end_operator
+begin_operator
+down f32 f10
+0
+1
+0 0 26 1
+1
+end_operator
+begin_operator
+down f32 f11
+0
+1
+0 0 26 3
+1
+end_operator
+begin_operator
+down f32 f12
+0
+1
+0 0 26 4
+1
+end_operator
+begin_operator
+down f32 f13
+0
+1
+0 0 26 5
+1
+end_operator
+begin_operator
+down f32 f14
+0
+1
+0 0 26 6
+1
+end_operator
+begin_operator
+down f32 f15
+0
+1
+0 0 26 7
+1
+end_operator
+begin_operator
+down f32 f16
+0
+1
+0 0 26 8
+1
+end_operator
+begin_operator
+down f32 f17
+0
+1
+0 0 26 9
+1
+end_operator
+begin_operator
+down f32 f18
+0
+1
+0 0 26 10
+1
+end_operator
+begin_operator
+down f32 f19
+0
+1
+0 0 26 11
+1
+end_operator
+begin_operator
+down f32 f2
+0
+1
+0 0 26 12
+1
+end_operator
+begin_operator
+down f32 f20
+0
+1
+0 0 26 13
+1
+end_operator
+begin_operator
+down f32 f21
+0
+1
+0 0 26 14
+1
+end_operator
+begin_operator
+down f32 f22
+0
+1
+0 0 26 15
+1
+end_operator
+begin_operator
+down f32 f23
+0
+1
+0 0 26 16
+1
+end_operator
+begin_operator
+down f32 f24
+0
+1
+0 0 26 17
+1
+end_operator
+begin_operator
+down f32 f25
+0
+1
+0 0 26 18
+1
+end_operator
+begin_operator
+down f32 f26
+0
+1
+0 0 26 19
+1
+end_operator
+begin_operator
+down f32 f27
+0
+1
+0 0 26 20
+1
+end_operator
+begin_operator
+down f32 f28
+0
+1
+0 0 26 21
+1
+end_operator
+begin_operator
+down f32 f29
+0
+1
+0 0 26 22
+1
+end_operator
+begin_operator
+down f32 f3
+0
+1
+0 0 26 23
+1
+end_operator
+begin_operator
+down f32 f30
+0
+1
+0 0 26 24
+1
+end_operator
+begin_operator
+down f32 f31
+0
+1
+0 0 26 25
+1
+end_operator
+begin_operator
+down f32 f4
+0
+1
+0 0 26 34
+1
+end_operator
+begin_operator
+down f32 f5
+0
+1
+0 0 26 45
+1
+end_operator
+begin_operator
+down f32 f6
+0
+1
+0 0 26 56
+1
+end_operator
+begin_operator
+down f32 f7
+0
+1
+0 0 26 67
+1
+end_operator
+begin_operator
+down f32 f8
+0
+1
+0 0 26 78
+1
+end_operator
+begin_operator
+down f32 f9
+0
+1
+0 0 26 89
+1
+end_operator
+begin_operator
+down f33 f1
+0
+1
+0 0 27 0
+1
+end_operator
+begin_operator
+down f33 f10
+0
+1
+0 0 27 1
+1
+end_operator
+begin_operator
+down f33 f11
+0
+1
+0 0 27 3
+1
+end_operator
+begin_operator
+down f33 f12
+0
+1
+0 0 27 4
+1
+end_operator
+begin_operator
+down f33 f13
+0
+1
+0 0 27 5
+1
+end_operator
+begin_operator
+down f33 f14
+0
+1
+0 0 27 6
+1
+end_operator
+begin_operator
+down f33 f15
+0
+1
+0 0 27 7
+1
+end_operator
+begin_operator
+down f33 f16
+0
+1
+0 0 27 8
+1
+end_operator
+begin_operator
+down f33 f17
+0
+1
+0 0 27 9
+1
+end_operator
+begin_operator
+down f33 f18
+0
+1
+0 0 27 10
+1
+end_operator
+begin_operator
+down f33 f19
+0
+1
+0 0 27 11
+1
+end_operator
+begin_operator
+down f33 f2
+0
+1
+0 0 27 12
+1
+end_operator
+begin_operator
+down f33 f20
+0
+1
+0 0 27 13
+1
+end_operator
+begin_operator
+down f33 f21
+0
+1
+0 0 27 14
+1
+end_operator
+begin_operator
+down f33 f22
+0
+1
+0 0 27 15
+1
+end_operator
+begin_operator
+down f33 f23
+0
+1
+0 0 27 16
+1
+end_operator
+begin_operator
+down f33 f24
+0
+1
+0 0 27 17
+1
+end_operator
+begin_operator
+down f33 f25
+0
+1
+0 0 27 18
+1
+end_operator
+begin_operator
+down f33 f26
+0
+1
+0 0 27 19
+1
+end_operator
+begin_operator
+down f33 f27
+0
+1
+0 0 27 20
+1
+end_operator
+begin_operator
+down f33 f28
+0
+1
+0 0 27 21
+1
+end_operator
+begin_operator
+down f33 f29
+0
+1
+0 0 27 22
+1
+end_operator
+begin_operator
+down f33 f3
+0
+1
+0 0 27 23
+1
+end_operator
+begin_operator
+down f33 f30
+0
+1
+0 0 27 24
+1
+end_operator
+begin_operator
+down f33 f31
+0
+1
+0 0 27 25
+1
+end_operator
+begin_operator
+down f33 f32
+0
+1
+0 0 27 26
+1
+end_operator
+begin_operator
+down f33 f4
+0
+1
+0 0 27 34
+1
+end_operator
+begin_operator
+down f33 f5
+0
+1
+0 0 27 45
+1
+end_operator
+begin_operator
+down f33 f6
+0
+1
+0 0 27 56
+1
+end_operator
+begin_operator
+down f33 f7
+0
+1
+0 0 27 67
+1
+end_operator
+begin_operator
+down f33 f8
+0
+1
+0 0 27 78
+1
+end_operator
+begin_operator
+down f33 f9
+0
+1
+0 0 27 89
+1
+end_operator
+begin_operator
+down f34 f1
+0
+1
+0 0 28 0
+1
+end_operator
+begin_operator
+down f34 f10
+0
+1
+0 0 28 1
+1
+end_operator
+begin_operator
+down f34 f11
+0
+1
+0 0 28 3
+1
+end_operator
+begin_operator
+down f34 f12
+0
+1
+0 0 28 4
+1
+end_operator
+begin_operator
+down f34 f13
+0
+1
+0 0 28 5
+1
+end_operator
+begin_operator
+down f34 f14
+0
+1
+0 0 28 6
+1
+end_operator
+begin_operator
+down f34 f15
+0
+1
+0 0 28 7
+1
+end_operator
+begin_operator
+down f34 f16
+0
+1
+0 0 28 8
+1
+end_operator
+begin_operator
+down f34 f17
+0
+1
+0 0 28 9
+1
+end_operator
+begin_operator
+down f34 f18
+0
+1
+0 0 28 10
+1
+end_operator
+begin_operator
+down f34 f19
+0
+1
+0 0 28 11
+1
+end_operator
+begin_operator
+down f34 f2
+0
+1
+0 0 28 12
+1
+end_operator
+begin_operator
+down f34 f20
+0
+1
+0 0 28 13
+1
+end_operator
+begin_operator
+down f34 f21
+0
+1
+0 0 28 14
+1
+end_operator
+begin_operator
+down f34 f22
+0
+1
+0 0 28 15
+1
+end_operator
+begin_operator
+down f34 f23
+0
+1
+0 0 28 16
+1
+end_operator
+begin_operator
+down f34 f24
+0
+1
+0 0 28 17
+1
+end_operator
+begin_operator
+down f34 f25
+0
+1
+0 0 28 18
+1
+end_operator
+begin_operator
+down f34 f26
+0
+1
+0 0 28 19
+1
+end_operator
+begin_operator
+down f34 f27
+0
+1
+0 0 28 20
+1
+end_operator
+begin_operator
+down f34 f28
+0
+1
+0 0 28 21
+1
+end_operator
+begin_operator
+down f34 f29
+0
+1
+0 0 28 22
+1
+end_operator
+begin_operator
+down f34 f3
+0
+1
+0 0 28 23
+1
+end_operator
+begin_operator
+down f34 f30
+0
+1
+0 0 28 24
+1
+end_operator
+begin_operator
+down f34 f31
+0
+1
+0 0 28 25
+1
+end_operator
+begin_operator
+down f34 f32
+0
+1
+0 0 28 26
+1
+end_operator
+begin_operator
+down f34 f33
+0
+1
+0 0 28 27
+1
+end_operator
+begin_operator
+down f34 f4
+0
+1
+0 0 28 34
+1
+end_operator
+begin_operator
+down f34 f5
+0
+1
+0 0 28 45
+1
+end_operator
+begin_operator
+down f34 f6
+0
+1
+0 0 28 56
+1
+end_operator
+begin_operator
+down f34 f7
+0
+1
+0 0 28 67
+1
+end_operator
+begin_operator
+down f34 f8
+0
+1
+0 0 28 78
+1
+end_operator
+begin_operator
+down f34 f9
+0
+1
+0 0 28 89
+1
+end_operator
+begin_operator
+down f35 f1
+0
+1
+0 0 29 0
+1
+end_operator
+begin_operator
+down f35 f10
+0
+1
+0 0 29 1
+1
+end_operator
+begin_operator
+down f35 f11
+0
+1
+0 0 29 3
+1
+end_operator
+begin_operator
+down f35 f12
+0
+1
+0 0 29 4
+1
+end_operator
+begin_operator
+down f35 f13
+0
+1
+0 0 29 5
+1
+end_operator
+begin_operator
+down f35 f14
+0
+1
+0 0 29 6
+1
+end_operator
+begin_operator
+down f35 f15
+0
+1
+0 0 29 7
+1
+end_operator
+begin_operator
+down f35 f16
+0
+1
+0 0 29 8
+1
+end_operator
+begin_operator
+down f35 f17
+0
+1
+0 0 29 9
+1
+end_operator
+begin_operator
+down f35 f18
+0
+1
+0 0 29 10
+1
+end_operator
+begin_operator
+down f35 f19
+0
+1
+0 0 29 11
+1
+end_operator
+begin_operator
+down f35 f2
+0
+1
+0 0 29 12
+1
+end_operator
+begin_operator
+down f35 f20
+0
+1
+0 0 29 13
+1
+end_operator
+begin_operator
+down f35 f21
+0
+1
+0 0 29 14
+1
+end_operator
+begin_operator
+down f35 f22
+0
+1
+0 0 29 15
+1
+end_operator
+begin_operator
+down f35 f23
+0
+1
+0 0 29 16
+1
+end_operator
+begin_operator
+down f35 f24
+0
+1
+0 0 29 17
+1
+end_operator
+begin_operator
+down f35 f25
+0
+1
+0 0 29 18
+1
+end_operator
+begin_operator
+down f35 f26
+0
+1
+0 0 29 19
+1
+end_operator
+begin_operator
+down f35 f27
+0
+1
+0 0 29 20
+1
+end_operator
+begin_operator
+down f35 f28
+0
+1
+0 0 29 21
+1
+end_operator
+begin_operator
+down f35 f29
+0
+1
+0 0 29 22
+1
+end_operator
+begin_operator
+down f35 f3
+0
+1
+0 0 29 23
+1
+end_operator
+begin_operator
+down f35 f30
+0
+1
+0 0 29 24
+1
+end_operator
+begin_operator
+down f35 f31
+0
+1
+0 0 29 25
+1
+end_operator
+begin_operator
+down f35 f32
+0
+1
+0 0 29 26
+1
+end_operator
+begin_operator
+down f35 f33
+0
+1
+0 0 29 27
+1
+end_operator
+begin_operator
+down f35 f34
+0
+1
+0 0 29 28
+1
+end_operator
+begin_operator
+down f35 f4
+0
+1
+0 0 29 34
+1
+end_operator
+begin_operator
+down f35 f5
+0
+1
+0 0 29 45
+1
+end_operator
+begin_operator
+down f35 f6
+0
+1
+0 0 29 56
+1
+end_operator
+begin_operator
+down f35 f7
+0
+1
+0 0 29 67
+1
+end_operator
+begin_operator
+down f35 f8
+0
+1
+0 0 29 78
+1
+end_operator
+begin_operator
+down f35 f9
+0
+1
+0 0 29 89
+1
+end_operator
+begin_operator
+down f36 f1
+0
+1
+0 0 30 0
+1
+end_operator
+begin_operator
+down f36 f10
+0
+1
+0 0 30 1
+1
+end_operator
+begin_operator
+down f36 f11
+0
+1
+0 0 30 3
+1
+end_operator
+begin_operator
+down f36 f12
+0
+1
+0 0 30 4
+1
+end_operator
+begin_operator
+down f36 f13
+0
+1
+0 0 30 5
+1
+end_operator
+begin_operator
+down f36 f14
+0
+1
+0 0 30 6
+1
+end_operator
+begin_operator
+down f36 f15
+0
+1
+0 0 30 7
+1
+end_operator
+begin_operator
+down f36 f16
+0
+1
+0 0 30 8
+1
+end_operator
+begin_operator
+down f36 f17
+0
+1
+0 0 30 9
+1
+end_operator
+begin_operator
+down f36 f18
+0
+1
+0 0 30 10
+1
+end_operator
+begin_operator
+down f36 f19
+0
+1
+0 0 30 11
+1
+end_operator
+begin_operator
+down f36 f2
+0
+1
+0 0 30 12
+1
+end_operator
+begin_operator
+down f36 f20
+0
+1
+0 0 30 13
+1
+end_operator
+begin_operator
+down f36 f21
+0
+1
+0 0 30 14
+1
+end_operator
+begin_operator
+down f36 f22
+0
+1
+0 0 30 15
+1
+end_operator
+begin_operator
+down f36 f23
+0
+1
+0 0 30 16
+1
+end_operator
+begin_operator
+down f36 f24
+0
+1
+0 0 30 17
+1
+end_operator
+begin_operator
+down f36 f25
+0
+1
+0 0 30 18
+1
+end_operator
+begin_operator
+down f36 f26
+0
+1
+0 0 30 19
+1
+end_operator
+begin_operator
+down f36 f27
+0
+1
+0 0 30 20
+1
+end_operator
+begin_operator
+down f36 f28
+0
+1
+0 0 30 21
+1
+end_operator
+begin_operator
+down f36 f29
+0
+1
+0 0 30 22
+1
+end_operator
+begin_operator
+down f36 f3
+0
+1
+0 0 30 23
+1
+end_operator
+begin_operator
+down f36 f30
+0
+1
+0 0 30 24
+1
+end_operator
+begin_operator
+down f36 f31
+0
+1
+0 0 30 25
+1
+end_operator
+begin_operator
+down f36 f32
+0
+1
+0 0 30 26
+1
+end_operator
+begin_operator
+down f36 f33
+0
+1
+0 0 30 27
+1
+end_operator
+begin_operator
+down f36 f34
+0
+1
+0 0 30 28
+1
+end_operator
+begin_operator
+down f36 f35
+0
+1
+0 0 30 29
+1
+end_operator
+begin_operator
+down f36 f4
+0
+1
+0 0 30 34
+1
+end_operator
+begin_operator
+down f36 f5
+0
+1
+0 0 30 45
+1
+end_operator
+begin_operator
+down f36 f6
+0
+1
+0 0 30 56
+1
+end_operator
+begin_operator
+down f36 f7
+0
+1
+0 0 30 67
+1
+end_operator
+begin_operator
+down f36 f8
+0
+1
+0 0 30 78
+1
+end_operator
+begin_operator
+down f36 f9
+0
+1
+0 0 30 89
+1
+end_operator
+begin_operator
+down f37 f1
+0
+1
+0 0 31 0
+1
+end_operator
+begin_operator
+down f37 f10
+0
+1
+0 0 31 1
+1
+end_operator
+begin_operator
+down f37 f11
+0
+1
+0 0 31 3
+1
+end_operator
+begin_operator
+down f37 f12
+0
+1
+0 0 31 4
+1
+end_operator
+begin_operator
+down f37 f13
+0
+1
+0 0 31 5
+1
+end_operator
+begin_operator
+down f37 f14
+0
+1
+0 0 31 6
+1
+end_operator
+begin_operator
+down f37 f15
+0
+1
+0 0 31 7
+1
+end_operator
+begin_operator
+down f37 f16
+0
+1
+0 0 31 8
+1
+end_operator
+begin_operator
+down f37 f17
+0
+1
+0 0 31 9
+1
+end_operator
+begin_operator
+down f37 f18
+0
+1
+0 0 31 10
+1
+end_operator
+begin_operator
+down f37 f19
+0
+1
+0 0 31 11
+1
+end_operator
+begin_operator
+down f37 f2
+0
+1
+0 0 31 12
+1
+end_operator
+begin_operator
+down f37 f20
+0
+1
+0 0 31 13
+1
+end_operator
+begin_operator
+down f37 f21
+0
+1
+0 0 31 14
+1
+end_operator
+begin_operator
+down f37 f22
+0
+1
+0 0 31 15
+1
+end_operator
+begin_operator
+down f37 f23
+0
+1
+0 0 31 16
+1
+end_operator
+begin_operator
+down f37 f24
+0
+1
+0 0 31 17
+1
+end_operator
+begin_operator
+down f37 f25
+0
+1
+0 0 31 18
+1
+end_operator
+begin_operator
+down f37 f26
+0
+1
+0 0 31 19
+1
+end_operator
+begin_operator
+down f37 f27
+0
+1
+0 0 31 20
+1
+end_operator
+begin_operator
+down f37 f28
+0
+1
+0 0 31 21
+1
+end_operator
+begin_operator
+down f37 f29
+0
+1
+0 0 31 22
+1
+end_operator
+begin_operator
+down f37 f3
+0
+1
+0 0 31 23
+1
+end_operator
+begin_operator
+down f37 f30
+0
+1
+0 0 31 24
+1
+end_operator
+begin_operator
+down f37 f31
+0
+1
+0 0 31 25
+1
+end_operator
+begin_operator
+down f37 f32
+0
+1
+0 0 31 26
+1
+end_operator
+begin_operator
+down f37 f33
+0
+1
+0 0 31 27
+1
+end_operator
+begin_operator
+down f37 f34
+0
+1
+0 0 31 28
+1
+end_operator
+begin_operator
+down f37 f35
+0
+1
+0 0 31 29
+1
+end_operator
+begin_operator
+down f37 f36
+0
+1
+0 0 31 30
+1
+end_operator
+begin_operator
+down f37 f4
+0
+1
+0 0 31 34
+1
+end_operator
+begin_operator
+down f37 f5
+0
+1
+0 0 31 45
+1
+end_operator
+begin_operator
+down f37 f6
+0
+1
+0 0 31 56
+1
+end_operator
+begin_operator
+down f37 f7
+0
+1
+0 0 31 67
+1
+end_operator
+begin_operator
+down f37 f8
+0
+1
+0 0 31 78
+1
+end_operator
+begin_operator
+down f37 f9
+0
+1
+0 0 31 89
+1
+end_operator
+begin_operator
+down f38 f1
+0
+1
+0 0 32 0
+1
+end_operator
+begin_operator
+down f38 f10
+0
+1
+0 0 32 1
+1
+end_operator
+begin_operator
+down f38 f11
+0
+1
+0 0 32 3
+1
+end_operator
+begin_operator
+down f38 f12
+0
+1
+0 0 32 4
+1
+end_operator
+begin_operator
+down f38 f13
+0
+1
+0 0 32 5
+1
+end_operator
+begin_operator
+down f38 f14
+0
+1
+0 0 32 6
+1
+end_operator
+begin_operator
+down f38 f15
+0
+1
+0 0 32 7
+1
+end_operator
+begin_operator
+down f38 f16
+0
+1
+0 0 32 8
+1
+end_operator
+begin_operator
+down f38 f17
+0
+1
+0 0 32 9
+1
+end_operator
+begin_operator
+down f38 f18
+0
+1
+0 0 32 10
+1
+end_operator
+begin_operator
+down f38 f19
+0
+1
+0 0 32 11
+1
+end_operator
+begin_operator
+down f38 f2
+0
+1
+0 0 32 12
+1
+end_operator
+begin_operator
+down f38 f20
+0
+1
+0 0 32 13
+1
+end_operator
+begin_operator
+down f38 f21
+0
+1
+0 0 32 14
+1
+end_operator
+begin_operator
+down f38 f22
+0
+1
+0 0 32 15
+1
+end_operator
+begin_operator
+down f38 f23
+0
+1
+0 0 32 16
+1
+end_operator
+begin_operator
+down f38 f24
+0
+1
+0 0 32 17
+1
+end_operator
+begin_operator
+down f38 f25
+0
+1
+0 0 32 18
+1
+end_operator
+begin_operator
+down f38 f26
+0
+1
+0 0 32 19
+1
+end_operator
+begin_operator
+down f38 f27
+0
+1
+0 0 32 20
+1
+end_operator
+begin_operator
+down f38 f28
+0
+1
+0 0 32 21
+1
+end_operator
+begin_operator
+down f38 f29
+0
+1
+0 0 32 22
+1
+end_operator
+begin_operator
+down f38 f3
+0
+1
+0 0 32 23
+1
+end_operator
+begin_operator
+down f38 f30
+0
+1
+0 0 32 24
+1
+end_operator
+begin_operator
+down f38 f31
+0
+1
+0 0 32 25
+1
+end_operator
+begin_operator
+down f38 f32
+0
+1
+0 0 32 26
+1
+end_operator
+begin_operator
+down f38 f33
+0
+1
+0 0 32 27
+1
+end_operator
+begin_operator
+down f38 f34
+0
+1
+0 0 32 28
+1
+end_operator
+begin_operator
+down f38 f35
+0
+1
+0 0 32 29
+1
+end_operator
+begin_operator
+down f38 f36
+0
+1
+0 0 32 30
+1
+end_operator
+begin_operator
+down f38 f37
+0
+1
+0 0 32 31
+1
+end_operator
+begin_operator
+down f38 f4
+0
+1
+0 0 32 34
+1
+end_operator
+begin_operator
+down f38 f5
+0
+1
+0 0 32 45
+1
+end_operator
+begin_operator
+down f38 f6
+0
+1
+0 0 32 56
+1
+end_operator
+begin_operator
+down f38 f7
+0
+1
+0 0 32 67
+1
+end_operator
+begin_operator
+down f38 f8
+0
+1
+0 0 32 78
+1
+end_operator
+begin_operator
+down f38 f9
+0
+1
+0 0 32 89
+1
+end_operator
+begin_operator
+down f39 f1
+0
+1
+0 0 33 0
+1
+end_operator
+begin_operator
+down f39 f10
+0
+1
+0 0 33 1
+1
+end_operator
+begin_operator
+down f39 f11
+0
+1
+0 0 33 3
+1
+end_operator
+begin_operator
+down f39 f12
+0
+1
+0 0 33 4
+1
+end_operator
+begin_operator
+down f39 f13
+0
+1
+0 0 33 5
+1
+end_operator
+begin_operator
+down f39 f14
+0
+1
+0 0 33 6
+1
+end_operator
+begin_operator
+down f39 f15
+0
+1
+0 0 33 7
+1
+end_operator
+begin_operator
+down f39 f16
+0
+1
+0 0 33 8
+1
+end_operator
+begin_operator
+down f39 f17
+0
+1
+0 0 33 9
+1
+end_operator
+begin_operator
+down f39 f18
+0
+1
+0 0 33 10
+1
+end_operator
+begin_operator
+down f39 f19
+0
+1
+0 0 33 11
+1
+end_operator
+begin_operator
+down f39 f2
+0
+1
+0 0 33 12
+1
+end_operator
+begin_operator
+down f39 f20
+0
+1
+0 0 33 13
+1
+end_operator
+begin_operator
+down f39 f21
+0
+1
+0 0 33 14
+1
+end_operator
+begin_operator
+down f39 f22
+0
+1
+0 0 33 15
+1
+end_operator
+begin_operator
+down f39 f23
+0
+1
+0 0 33 16
+1
+end_operator
+begin_operator
+down f39 f24
+0
+1
+0 0 33 17
+1
+end_operator
+begin_operator
+down f39 f25
+0
+1
+0 0 33 18
+1
+end_operator
+begin_operator
+down f39 f26
+0
+1
+0 0 33 19
+1
+end_operator
+begin_operator
+down f39 f27
+0
+1
+0 0 33 20
+1
+end_operator
+begin_operator
+down f39 f28
+0
+1
+0 0 33 21
+1
+end_operator
+begin_operator
+down f39 f29
+0
+1
+0 0 33 22
+1
+end_operator
+begin_operator
+down f39 f3
+0
+1
+0 0 33 23
+1
+end_operator
+begin_operator
+down f39 f30
+0
+1
+0 0 33 24
+1
+end_operator
+begin_operator
+down f39 f31
+0
+1
+0 0 33 25
+1
+end_operator
+begin_operator
+down f39 f32
+0
+1
+0 0 33 26
+1
+end_operator
+begin_operator
+down f39 f33
+0
+1
+0 0 33 27
+1
+end_operator
+begin_operator
+down f39 f34
+0
+1
+0 0 33 28
+1
+end_operator
+begin_operator
+down f39 f35
+0
+1
+0 0 33 29
+1
+end_operator
+begin_operator
+down f39 f36
+0
+1
+0 0 33 30
+1
+end_operator
+begin_operator
+down f39 f37
+0
+1
+0 0 33 31
+1
+end_operator
+begin_operator
+down f39 f38
+0
+1
+0 0 33 32
+1
+end_operator
+begin_operator
+down f39 f4
+0
+1
+0 0 33 34
+1
+end_operator
+begin_operator
+down f39 f5
+0
+1
+0 0 33 45
+1
+end_operator
+begin_operator
+down f39 f6
+0
+1
+0 0 33 56
+1
+end_operator
+begin_operator
+down f39 f7
+0
+1
+0 0 33 67
+1
+end_operator
+begin_operator
+down f39 f8
+0
+1
+0 0 33 78
+1
+end_operator
+begin_operator
+down f39 f9
+0
+1
+0 0 33 89
+1
+end_operator
+begin_operator
+down f4 f1
+0
+1
+0 0 34 0
+1
+end_operator
+begin_operator
+down f4 f2
+0
+1
+0 0 34 12
+1
+end_operator
+begin_operator
+down f4 f3
+0
+1
+0 0 34 23
+1
+end_operator
+begin_operator
+down f40 f1
+0
+1
+0 0 35 0
+1
+end_operator
+begin_operator
+down f40 f10
+0
+1
+0 0 35 1
+1
+end_operator
+begin_operator
+down f40 f11
+0
+1
+0 0 35 3
+1
+end_operator
+begin_operator
+down f40 f12
+0
+1
+0 0 35 4
+1
+end_operator
+begin_operator
+down f40 f13
+0
+1
+0 0 35 5
+1
+end_operator
+begin_operator
+down f40 f14
+0
+1
+0 0 35 6
+1
+end_operator
+begin_operator
+down f40 f15
+0
+1
+0 0 35 7
+1
+end_operator
+begin_operator
+down f40 f16
+0
+1
+0 0 35 8
+1
+end_operator
+begin_operator
+down f40 f17
+0
+1
+0 0 35 9
+1
+end_operator
+begin_operator
+down f40 f18
+0
+1
+0 0 35 10
+1
+end_operator
+begin_operator
+down f40 f19
+0
+1
+0 0 35 11
+1
+end_operator
+begin_operator
+down f40 f2
+0
+1
+0 0 35 12
+1
+end_operator
+begin_operator
+down f40 f20
+0
+1
+0 0 35 13
+1
+end_operator
+begin_operator
+down f40 f21
+0
+1
+0 0 35 14
+1
+end_operator
+begin_operator
+down f40 f22
+0
+1
+0 0 35 15
+1
+end_operator
+begin_operator
+down f40 f23
+0
+1
+0 0 35 16
+1
+end_operator
+begin_operator
+down f40 f24
+0
+1
+0 0 35 17
+1
+end_operator
+begin_operator
+down f40 f25
+0
+1
+0 0 35 18
+1
+end_operator
+begin_operator
+down f40 f26
+0
+1
+0 0 35 19
+1
+end_operator
+begin_operator
+down f40 f27
+0
+1
+0 0 35 20
+1
+end_operator
+begin_operator
+down f40 f28
+0
+1
+0 0 35 21
+1
+end_operator
+begin_operator
+down f40 f29
+0
+1
+0 0 35 22
+1
+end_operator
+begin_operator
+down f40 f3
+0
+1
+0 0 35 23
+1
+end_operator
+begin_operator
+down f40 f30
+0
+1
+0 0 35 24
+1
+end_operator
+begin_operator
+down f40 f31
+0
+1
+0 0 35 25
+1
+end_operator
+begin_operator
+down f40 f32
+0
+1
+0 0 35 26
+1
+end_operator
+begin_operator
+down f40 f33
+0
+1
+0 0 35 27
+1
+end_operator
+begin_operator
+down f40 f34
+0
+1
+0 0 35 28
+1
+end_operator
+begin_operator
+down f40 f35
+0
+1
+0 0 35 29
+1
+end_operator
+begin_operator
+down f40 f36
+0
+1
+0 0 35 30
+1
+end_operator
+begin_operator
+down f40 f37
+0
+1
+0 0 35 31
+1
+end_operator
+begin_operator
+down f40 f38
+0
+1
+0 0 35 32
+1
+end_operator
+begin_operator
+down f40 f39
+0
+1
+0 0 35 33
+1
+end_operator
+begin_operator
+down f40 f4
+0
+1
+0 0 35 34
+1
+end_operator
+begin_operator
+down f40 f5
+0
+1
+0 0 35 45
+1
+end_operator
+begin_operator
+down f40 f6
+0
+1
+0 0 35 56
+1
+end_operator
+begin_operator
+down f40 f7
+0
+1
+0 0 35 67
+1
+end_operator
+begin_operator
+down f40 f8
+0
+1
+0 0 35 78
+1
+end_operator
+begin_operator
+down f40 f9
+0
+1
+0 0 35 89
+1
+end_operator
+begin_operator
+down f41 f1
+0
+1
+0 0 36 0
+1
+end_operator
+begin_operator
+down f41 f10
+0
+1
+0 0 36 1
+1
+end_operator
+begin_operator
+down f41 f11
+0
+1
+0 0 36 3
+1
+end_operator
+begin_operator
+down f41 f12
+0
+1
+0 0 36 4
+1
+end_operator
+begin_operator
+down f41 f13
+0
+1
+0 0 36 5
+1
+end_operator
+begin_operator
+down f41 f14
+0
+1
+0 0 36 6
+1
+end_operator
+begin_operator
+down f41 f15
+0
+1
+0 0 36 7
+1
+end_operator
+begin_operator
+down f41 f16
+0
+1
+0 0 36 8
+1
+end_operator
+begin_operator
+down f41 f17
+0
+1
+0 0 36 9
+1
+end_operator
+begin_operator
+down f41 f18
+0
+1
+0 0 36 10
+1
+end_operator
+begin_operator
+down f41 f19
+0
+1
+0 0 36 11
+1
+end_operator
+begin_operator
+down f41 f2
+0
+1
+0 0 36 12
+1
+end_operator
+begin_operator
+down f41 f20
+0
+1
+0 0 36 13
+1
+end_operator
+begin_operator
+down f41 f21
+0
+1
+0 0 36 14
+1
+end_operator
+begin_operator
+down f41 f22
+0
+1
+0 0 36 15
+1
+end_operator
+begin_operator
+down f41 f23
+0
+1
+0 0 36 16
+1
+end_operator
+begin_operator
+down f41 f24
+0
+1
+0 0 36 17
+1
+end_operator
+begin_operator
+down f41 f25
+0
+1
+0 0 36 18
+1
+end_operator
+begin_operator
+down f41 f26
+0
+1
+0 0 36 19
+1
+end_operator
+begin_operator
+down f41 f27
+0
+1
+0 0 36 20
+1
+end_operator
+begin_operator
+down f41 f28
+0
+1
+0 0 36 21
+1
+end_operator
+begin_operator
+down f41 f29
+0
+1
+0 0 36 22
+1
+end_operator
+begin_operator
+down f41 f3
+0
+1
+0 0 36 23
+1
+end_operator
+begin_operator
+down f41 f30
+0
+1
+0 0 36 24
+1
+end_operator
+begin_operator
+down f41 f31
+0
+1
+0 0 36 25
+1
+end_operator
+begin_operator
+down f41 f32
+0
+1
+0 0 36 26
+1
+end_operator
+begin_operator
+down f41 f33
+0
+1
+0 0 36 27
+1
+end_operator
+begin_operator
+down f41 f34
+0
+1
+0 0 36 28
+1
+end_operator
+begin_operator
+down f41 f35
+0
+1
+0 0 36 29
+1
+end_operator
+begin_operator
+down f41 f36
+0
+1
+0 0 36 30
+1
+end_operator
+begin_operator
+down f41 f37
+0
+1
+0 0 36 31
+1
+end_operator
+begin_operator
+down f41 f38
+0
+1
+0 0 36 32
+1
+end_operator
+begin_operator
+down f41 f39
+0
+1
+0 0 36 33
+1
+end_operator
+begin_operator
+down f41 f4
+0
+1
+0 0 36 34
+1
+end_operator
+begin_operator
+down f41 f40
+0
+1
+0 0 36 35
+1
+end_operator
+begin_operator
+down f41 f5
+0
+1
+0 0 36 45
+1
+end_operator
+begin_operator
+down f41 f6
+0
+1
+0 0 36 56
+1
+end_operator
+begin_operator
+down f41 f7
+0
+1
+0 0 36 67
+1
+end_operator
+begin_operator
+down f41 f8
+0
+1
+0 0 36 78
+1
+end_operator
+begin_operator
+down f41 f9
+0
+1
+0 0 36 89
+1
+end_operator
+begin_operator
+down f42 f1
+0
+1
+0 0 37 0
+1
+end_operator
+begin_operator
+down f42 f10
+0
+1
+0 0 37 1
+1
+end_operator
+begin_operator
+down f42 f11
+0
+1
+0 0 37 3
+1
+end_operator
+begin_operator
+down f42 f12
+0
+1
+0 0 37 4
+1
+end_operator
+begin_operator
+down f42 f13
+0
+1
+0 0 37 5
+1
+end_operator
+begin_operator
+down f42 f14
+0
+1
+0 0 37 6
+1
+end_operator
+begin_operator
+down f42 f15
+0
+1
+0 0 37 7
+1
+end_operator
+begin_operator
+down f42 f16
+0
+1
+0 0 37 8
+1
+end_operator
+begin_operator
+down f42 f17
+0
+1
+0 0 37 9
+1
+end_operator
+begin_operator
+down f42 f18
+0
+1
+0 0 37 10
+1
+end_operator
+begin_operator
+down f42 f19
+0
+1
+0 0 37 11
+1
+end_operator
+begin_operator
+down f42 f2
+0
+1
+0 0 37 12
+1
+end_operator
+begin_operator
+down f42 f20
+0
+1
+0 0 37 13
+1
+end_operator
+begin_operator
+down f42 f21
+0
+1
+0 0 37 14
+1
+end_operator
+begin_operator
+down f42 f22
+0
+1
+0 0 37 15
+1
+end_operator
+begin_operator
+down f42 f23
+0
+1
+0 0 37 16
+1
+end_operator
+begin_operator
+down f42 f24
+0
+1
+0 0 37 17
+1
+end_operator
+begin_operator
+down f42 f25
+0
+1
+0 0 37 18
+1
+end_operator
+begin_operator
+down f42 f26
+0
+1
+0 0 37 19
+1
+end_operator
+begin_operator
+down f42 f27
+0
+1
+0 0 37 20
+1
+end_operator
+begin_operator
+down f42 f28
+0
+1
+0 0 37 21
+1
+end_operator
+begin_operator
+down f42 f29
+0
+1
+0 0 37 22
+1
+end_operator
+begin_operator
+down f42 f3
+0
+1
+0 0 37 23
+1
+end_operator
+begin_operator
+down f42 f30
+0
+1
+0 0 37 24
+1
+end_operator
+begin_operator
+down f42 f31
+0
+1
+0 0 37 25
+1
+end_operator
+begin_operator
+down f42 f32
+0
+1
+0 0 37 26
+1
+end_operator
+begin_operator
+down f42 f33
+0
+1
+0 0 37 27
+1
+end_operator
+begin_operator
+down f42 f34
+0
+1
+0 0 37 28
+1
+end_operator
+begin_operator
+down f42 f35
+0
+1
+0 0 37 29
+1
+end_operator
+begin_operator
+down f42 f36
+0
+1
+0 0 37 30
+1
+end_operator
+begin_operator
+down f42 f37
+0
+1
+0 0 37 31
+1
+end_operator
+begin_operator
+down f42 f38
+0
+1
+0 0 37 32
+1
+end_operator
+begin_operator
+down f42 f39
+0
+1
+0 0 37 33
+1
+end_operator
+begin_operator
+down f42 f4
+0
+1
+0 0 37 34
+1
+end_operator
+begin_operator
+down f42 f40
+0
+1
+0 0 37 35
+1
+end_operator
+begin_operator
+down f42 f41
+0
+1
+0 0 37 36
+1
+end_operator
+begin_operator
+down f42 f5
+0
+1
+0 0 37 45
+1
+end_operator
+begin_operator
+down f42 f6
+0
+1
+0 0 37 56
+1
+end_operator
+begin_operator
+down f42 f7
+0
+1
+0 0 37 67
+1
+end_operator
+begin_operator
+down f42 f8
+0
+1
+0 0 37 78
+1
+end_operator
+begin_operator
+down f42 f9
+0
+1
+0 0 37 89
+1
+end_operator
+begin_operator
+down f43 f1
+0
+1
+0 0 38 0
+1
+end_operator
+begin_operator
+down f43 f10
+0
+1
+0 0 38 1
+1
+end_operator
+begin_operator
+down f43 f11
+0
+1
+0 0 38 3
+1
+end_operator
+begin_operator
+down f43 f12
+0
+1
+0 0 38 4
+1
+end_operator
+begin_operator
+down f43 f13
+0
+1
+0 0 38 5
+1
+end_operator
+begin_operator
+down f43 f14
+0
+1
+0 0 38 6
+1
+end_operator
+begin_operator
+down f43 f15
+0
+1
+0 0 38 7
+1
+end_operator
+begin_operator
+down f43 f16
+0
+1
+0 0 38 8
+1
+end_operator
+begin_operator
+down f43 f17
+0
+1
+0 0 38 9
+1
+end_operator
+begin_operator
+down f43 f18
+0
+1
+0 0 38 10
+1
+end_operator
+begin_operator
+down f43 f19
+0
+1
+0 0 38 11
+1
+end_operator
+begin_operator
+down f43 f2
+0
+1
+0 0 38 12
+1
+end_operator
+begin_operator
+down f43 f20
+0
+1
+0 0 38 13
+1
+end_operator
+begin_operator
+down f43 f21
+0
+1
+0 0 38 14
+1
+end_operator
+begin_operator
+down f43 f22
+0
+1
+0 0 38 15
+1
+end_operator
+begin_operator
+down f43 f23
+0
+1
+0 0 38 16
+1
+end_operator
+begin_operator
+down f43 f24
+0
+1
+0 0 38 17
+1
+end_operator
+begin_operator
+down f43 f25
+0
+1
+0 0 38 18
+1
+end_operator
+begin_operator
+down f43 f26
+0
+1
+0 0 38 19
+1
+end_operator
+begin_operator
+down f43 f27
+0
+1
+0 0 38 20
+1
+end_operator
+begin_operator
+down f43 f28
+0
+1
+0 0 38 21
+1
+end_operator
+begin_operator
+down f43 f29
+0
+1
+0 0 38 22
+1
+end_operator
+begin_operator
+down f43 f3
+0
+1
+0 0 38 23
+1
+end_operator
+begin_operator
+down f43 f30
+0
+1
+0 0 38 24
+1
+end_operator
+begin_operator
+down f43 f31
+0
+1
+0 0 38 25
+1
+end_operator
+begin_operator
+down f43 f32
+0
+1
+0 0 38 26
+1
+end_operator
+begin_operator
+down f43 f33
+0
+1
+0 0 38 27
+1
+end_operator
+begin_operator
+down f43 f34
+0
+1
+0 0 38 28
+1
+end_operator
+begin_operator
+down f43 f35
+0
+1
+0 0 38 29
+1
+end_operator
+begin_operator
+down f43 f36
+0
+1
+0 0 38 30
+1
+end_operator
+begin_operator
+down f43 f37
+0
+1
+0 0 38 31
+1
+end_operator
+begin_operator
+down f43 f38
+0
+1
+0 0 38 32
+1
+end_operator
+begin_operator
+down f43 f39
+0
+1
+0 0 38 33
+1
+end_operator
+begin_operator
+down f43 f4
+0
+1
+0 0 38 34
+1
+end_operator
+begin_operator
+down f43 f40
+0
+1
+0 0 38 35
+1
+end_operator
+begin_operator
+down f43 f41
+0
+1
+0 0 38 36
+1
+end_operator
+begin_operator
+down f43 f42
+0
+1
+0 0 38 37
+1
+end_operator
+begin_operator
+down f43 f5
+0
+1
+0 0 38 45
+1
+end_operator
+begin_operator
+down f43 f6
+0
+1
+0 0 38 56
+1
+end_operator
+begin_operator
+down f43 f7
+0
+1
+0 0 38 67
+1
+end_operator
+begin_operator
+down f43 f8
+0
+1
+0 0 38 78
+1
+end_operator
+begin_operator
+down f43 f9
+0
+1
+0 0 38 89
+1
+end_operator
+begin_operator
+down f44 f1
+0
+1
+0 0 39 0
+1
+end_operator
+begin_operator
+down f44 f10
+0
+1
+0 0 39 1
+1
+end_operator
+begin_operator
+down f44 f11
+0
+1
+0 0 39 3
+1
+end_operator
+begin_operator
+down f44 f12
+0
+1
+0 0 39 4
+1
+end_operator
+begin_operator
+down f44 f13
+0
+1
+0 0 39 5
+1
+end_operator
+begin_operator
+down f44 f14
+0
+1
+0 0 39 6
+1
+end_operator
+begin_operator
+down f44 f15
+0
+1
+0 0 39 7
+1
+end_operator
+begin_operator
+down f44 f16
+0
+1
+0 0 39 8
+1
+end_operator
+begin_operator
+down f44 f17
+0
+1
+0 0 39 9
+1
+end_operator
+begin_operator
+down f44 f18
+0
+1
+0 0 39 10
+1
+end_operator
+begin_operator
+down f44 f19
+0
+1
+0 0 39 11
+1
+end_operator
+begin_operator
+down f44 f2
+0
+1
+0 0 39 12
+1
+end_operator
+begin_operator
+down f44 f20
+0
+1
+0 0 39 13
+1
+end_operator
+begin_operator
+down f44 f21
+0
+1
+0 0 39 14
+1
+end_operator
+begin_operator
+down f44 f22
+0
+1
+0 0 39 15
+1
+end_operator
+begin_operator
+down f44 f23
+0
+1
+0 0 39 16
+1
+end_operator
+begin_operator
+down f44 f24
+0
+1
+0 0 39 17
+1
+end_operator
+begin_operator
+down f44 f25
+0
+1
+0 0 39 18
+1
+end_operator
+begin_operator
+down f44 f26
+0
+1
+0 0 39 19
+1
+end_operator
+begin_operator
+down f44 f27
+0
+1
+0 0 39 20
+1
+end_operator
+begin_operator
+down f44 f28
+0
+1
+0 0 39 21
+1
+end_operator
+begin_operator
+down f44 f29
+0
+1
+0 0 39 22
+1
+end_operator
+begin_operator
+down f44 f3
+0
+1
+0 0 39 23
+1
+end_operator
+begin_operator
+down f44 f30
+0
+1
+0 0 39 24
+1
+end_operator
+begin_operator
+down f44 f31
+0
+1
+0 0 39 25
+1
+end_operator
+begin_operator
+down f44 f32
+0
+1
+0 0 39 26
+1
+end_operator
+begin_operator
+down f44 f33
+0
+1
+0 0 39 27
+1
+end_operator
+begin_operator
+down f44 f34
+0
+1
+0 0 39 28
+1
+end_operator
+begin_operator
+down f44 f35
+0
+1
+0 0 39 29
+1
+end_operator
+begin_operator
+down f44 f36
+0
+1
+0 0 39 30
+1
+end_operator
+begin_operator
+down f44 f37
+0
+1
+0 0 39 31
+1
+end_operator
+begin_operator
+down f44 f38
+0
+1
+0 0 39 32
+1
+end_operator
+begin_operator
+down f44 f39
+0
+1
+0 0 39 33
+1
+end_operator
+begin_operator
+down f44 f4
+0
+1
+0 0 39 34
+1
+end_operator
+begin_operator
+down f44 f40
+0
+1
+0 0 39 35
+1
+end_operator
+begin_operator
+down f44 f41
+0
+1
+0 0 39 36
+1
+end_operator
+begin_operator
+down f44 f42
+0
+1
+0 0 39 37
+1
+end_operator
+begin_operator
+down f44 f43
+0
+1
+0 0 39 38
+1
+end_operator
+begin_operator
+down f44 f5
+0
+1
+0 0 39 45
+1
+end_operator
+begin_operator
+down f44 f6
+0
+1
+0 0 39 56
+1
+end_operator
+begin_operator
+down f44 f7
+0
+1
+0 0 39 67
+1
+end_operator
+begin_operator
+down f44 f8
+0
+1
+0 0 39 78
+1
+end_operator
+begin_operator
+down f44 f9
+0
+1
+0 0 39 89
+1
+end_operator
+begin_operator
+down f45 f1
+0
+1
+0 0 40 0
+1
+end_operator
+begin_operator
+down f45 f10
+0
+1
+0 0 40 1
+1
+end_operator
+begin_operator
+down f45 f11
+0
+1
+0 0 40 3
+1
+end_operator
+begin_operator
+down f45 f12
+0
+1
+0 0 40 4
+1
+end_operator
+begin_operator
+down f45 f13
+0
+1
+0 0 40 5
+1
+end_operator
+begin_operator
+down f45 f14
+0
+1
+0 0 40 6
+1
+end_operator
+begin_operator
+down f45 f15
+0
+1
+0 0 40 7
+1
+end_operator
+begin_operator
+down f45 f16
+0
+1
+0 0 40 8
+1
+end_operator
+begin_operator
+down f45 f17
+0
+1
+0 0 40 9
+1
+end_operator
+begin_operator
+down f45 f18
+0
+1
+0 0 40 10
+1
+end_operator
+begin_operator
+down f45 f19
+0
+1
+0 0 40 11
+1
+end_operator
+begin_operator
+down f45 f2
+0
+1
+0 0 40 12
+1
+end_operator
+begin_operator
+down f45 f20
+0
+1
+0 0 40 13
+1
+end_operator
+begin_operator
+down f45 f21
+0
+1
+0 0 40 14
+1
+end_operator
+begin_operator
+down f45 f22
+0
+1
+0 0 40 15
+1
+end_operator
+begin_operator
+down f45 f23
+0
+1
+0 0 40 16
+1
+end_operator
+begin_operator
+down f45 f24
+0
+1
+0 0 40 17
+1
+end_operator
+begin_operator
+down f45 f25
+0
+1
+0 0 40 18
+1
+end_operator
+begin_operator
+down f45 f26
+0
+1
+0 0 40 19
+1
+end_operator
+begin_operator
+down f45 f27
+0
+1
+0 0 40 20
+1
+end_operator
+begin_operator
+down f45 f28
+0
+1
+0 0 40 21
+1
+end_operator
+begin_operator
+down f45 f29
+0
+1
+0 0 40 22
+1
+end_operator
+begin_operator
+down f45 f3
+0
+1
+0 0 40 23
+1
+end_operator
+begin_operator
+down f45 f30
+0
+1
+0 0 40 24
+1
+end_operator
+begin_operator
+down f45 f31
+0
+1
+0 0 40 25
+1
+end_operator
+begin_operator
+down f45 f32
+0
+1
+0 0 40 26
+1
+end_operator
+begin_operator
+down f45 f33
+0
+1
+0 0 40 27
+1
+end_operator
+begin_operator
+down f45 f34
+0
+1
+0 0 40 28
+1
+end_operator
+begin_operator
+down f45 f35
+0
+1
+0 0 40 29
+1
+end_operator
+begin_operator
+down f45 f36
+0
+1
+0 0 40 30
+1
+end_operator
+begin_operator
+down f45 f37
+0
+1
+0 0 40 31
+1
+end_operator
+begin_operator
+down f45 f38
+0
+1
+0 0 40 32
+1
+end_operator
+begin_operator
+down f45 f39
+0
+1
+0 0 40 33
+1
+end_operator
+begin_operator
+down f45 f4
+0
+1
+0 0 40 34
+1
+end_operator
+begin_operator
+down f45 f40
+0
+1
+0 0 40 35
+1
+end_operator
+begin_operator
+down f45 f41
+0
+1
+0 0 40 36
+1
+end_operator
+begin_operator
+down f45 f42
+0
+1
+0 0 40 37
+1
+end_operator
+begin_operator
+down f45 f43
+0
+1
+0 0 40 38
+1
+end_operator
+begin_operator
+down f45 f44
+0
+1
+0 0 40 39
+1
+end_operator
+begin_operator
+down f45 f5
+0
+1
+0 0 40 45
+1
+end_operator
+begin_operator
+down f45 f6
+0
+1
+0 0 40 56
+1
+end_operator
+begin_operator
+down f45 f7
+0
+1
+0 0 40 67
+1
+end_operator
+begin_operator
+down f45 f8
+0
+1
+0 0 40 78
+1
+end_operator
+begin_operator
+down f45 f9
+0
+1
+0 0 40 89
+1
+end_operator
+begin_operator
+down f46 f1
+0
+1
+0 0 41 0
+1
+end_operator
+begin_operator
+down f46 f10
+0
+1
+0 0 41 1
+1
+end_operator
+begin_operator
+down f46 f11
+0
+1
+0 0 41 3
+1
+end_operator
+begin_operator
+down f46 f12
+0
+1
+0 0 41 4
+1
+end_operator
+begin_operator
+down f46 f13
+0
+1
+0 0 41 5
+1
+end_operator
+begin_operator
+down f46 f14
+0
+1
+0 0 41 6
+1
+end_operator
+begin_operator
+down f46 f15
+0
+1
+0 0 41 7
+1
+end_operator
+begin_operator
+down f46 f16
+0
+1
+0 0 41 8
+1
+end_operator
+begin_operator
+down f46 f17
+0
+1
+0 0 41 9
+1
+end_operator
+begin_operator
+down f46 f18
+0
+1
+0 0 41 10
+1
+end_operator
+begin_operator
+down f46 f19
+0
+1
+0 0 41 11
+1
+end_operator
+begin_operator
+down f46 f2
+0
+1
+0 0 41 12
+1
+end_operator
+begin_operator
+down f46 f20
+0
+1
+0 0 41 13
+1
+end_operator
+begin_operator
+down f46 f21
+0
+1
+0 0 41 14
+1
+end_operator
+begin_operator
+down f46 f22
+0
+1
+0 0 41 15
+1
+end_operator
+begin_operator
+down f46 f23
+0
+1
+0 0 41 16
+1
+end_operator
+begin_operator
+down f46 f24
+0
+1
+0 0 41 17
+1
+end_operator
+begin_operator
+down f46 f25
+0
+1
+0 0 41 18
+1
+end_operator
+begin_operator
+down f46 f26
+0
+1
+0 0 41 19
+1
+end_operator
+begin_operator
+down f46 f27
+0
+1
+0 0 41 20
+1
+end_operator
+begin_operator
+down f46 f28
+0
+1
+0 0 41 21
+1
+end_operator
+begin_operator
+down f46 f29
+0
+1
+0 0 41 22
+1
+end_operator
+begin_operator
+down f46 f3
+0
+1
+0 0 41 23
+1
+end_operator
+begin_operator
+down f46 f30
+0
+1
+0 0 41 24
+1
+end_operator
+begin_operator
+down f46 f31
+0
+1
+0 0 41 25
+1
+end_operator
+begin_operator
+down f46 f32
+0
+1
+0 0 41 26
+1
+end_operator
+begin_operator
+down f46 f33
+0
+1
+0 0 41 27
+1
+end_operator
+begin_operator
+down f46 f34
+0
+1
+0 0 41 28
+1
+end_operator
+begin_operator
+down f46 f35
+0
+1
+0 0 41 29
+1
+end_operator
+begin_operator
+down f46 f36
+0
+1
+0 0 41 30
+1
+end_operator
+begin_operator
+down f46 f37
+0
+1
+0 0 41 31
+1
+end_operator
+begin_operator
+down f46 f38
+0
+1
+0 0 41 32
+1
+end_operator
+begin_operator
+down f46 f39
+0
+1
+0 0 41 33
+1
+end_operator
+begin_operator
+down f46 f4
+0
+1
+0 0 41 34
+1
+end_operator
+begin_operator
+down f46 f40
+0
+1
+0 0 41 35
+1
+end_operator
+begin_operator
+down f46 f41
+0
+1
+0 0 41 36
+1
+end_operator
+begin_operator
+down f46 f42
+0
+1
+0 0 41 37
+1
+end_operator
+begin_operator
+down f46 f43
+0
+1
+0 0 41 38
+1
+end_operator
+begin_operator
+down f46 f44
+0
+1
+0 0 41 39
+1
+end_operator
+begin_operator
+down f46 f45
+0
+1
+0 0 41 40
+1
+end_operator
+begin_operator
+down f46 f5
+0
+1
+0 0 41 45
+1
+end_operator
+begin_operator
+down f46 f6
+0
+1
+0 0 41 56
+1
+end_operator
+begin_operator
+down f46 f7
+0
+1
+0 0 41 67
+1
+end_operator
+begin_operator
+down f46 f8
+0
+1
+0 0 41 78
+1
+end_operator
+begin_operator
+down f46 f9
+0
+1
+0 0 41 89
+1
+end_operator
+begin_operator
+down f47 f1
+0
+1
+0 0 42 0
+1
+end_operator
+begin_operator
+down f47 f10
+0
+1
+0 0 42 1
+1
+end_operator
+begin_operator
+down f47 f11
+0
+1
+0 0 42 3
+1
+end_operator
+begin_operator
+down f47 f12
+0
+1
+0 0 42 4
+1
+end_operator
+begin_operator
+down f47 f13
+0
+1
+0 0 42 5
+1
+end_operator
+begin_operator
+down f47 f14
+0
+1
+0 0 42 6
+1
+end_operator
+begin_operator
+down f47 f15
+0
+1
+0 0 42 7
+1
+end_operator
+begin_operator
+down f47 f16
+0
+1
+0 0 42 8
+1
+end_operator
+begin_operator
+down f47 f17
+0
+1
+0 0 42 9
+1
+end_operator
+begin_operator
+down f47 f18
+0
+1
+0 0 42 10
+1
+end_operator
+begin_operator
+down f47 f19
+0
+1
+0 0 42 11
+1
+end_operator
+begin_operator
+down f47 f2
+0
+1
+0 0 42 12
+1
+end_operator
+begin_operator
+down f47 f20
+0
+1
+0 0 42 13
+1
+end_operator
+begin_operator
+down f47 f21
+0
+1
+0 0 42 14
+1
+end_operator
+begin_operator
+down f47 f22
+0
+1
+0 0 42 15
+1
+end_operator
+begin_operator
+down f47 f23
+0
+1
+0 0 42 16
+1
+end_operator
+begin_operator
+down f47 f24
+0
+1
+0 0 42 17
+1
+end_operator
+begin_operator
+down f47 f25
+0
+1
+0 0 42 18
+1
+end_operator
+begin_operator
+down f47 f26
+0
+1
+0 0 42 19
+1
+end_operator
+begin_operator
+down f47 f27
+0
+1
+0 0 42 20
+1
+end_operator
+begin_operator
+down f47 f28
+0
+1
+0 0 42 21
+1
+end_operator
+begin_operator
+down f47 f29
+0
+1
+0 0 42 22
+1
+end_operator
+begin_operator
+down f47 f3
+0
+1
+0 0 42 23
+1
+end_operator
+begin_operator
+down f47 f30
+0
+1
+0 0 42 24
+1
+end_operator
+begin_operator
+down f47 f31
+0
+1
+0 0 42 25
+1
+end_operator
+begin_operator
+down f47 f32
+0
+1
+0 0 42 26
+1
+end_operator
+begin_operator
+down f47 f33
+0
+1
+0 0 42 27
+1
+end_operator
+begin_operator
+down f47 f34
+0
+1
+0 0 42 28
+1
+end_operator
+begin_operator
+down f47 f35
+0
+1
+0 0 42 29
+1
+end_operator
+begin_operator
+down f47 f36
+0
+1
+0 0 42 30
+1
+end_operator
+begin_operator
+down f47 f37
+0
+1
+0 0 42 31
+1
+end_operator
+begin_operator
+down f47 f38
+0
+1
+0 0 42 32
+1
+end_operator
+begin_operator
+down f47 f39
+0
+1
+0 0 42 33
+1
+end_operator
+begin_operator
+down f47 f4
+0
+1
+0 0 42 34
+1
+end_operator
+begin_operator
+down f47 f40
+0
+1
+0 0 42 35
+1
+end_operator
+begin_operator
+down f47 f41
+0
+1
+0 0 42 36
+1
+end_operator
+begin_operator
+down f47 f42
+0
+1
+0 0 42 37
+1
+end_operator
+begin_operator
+down f47 f43
+0
+1
+0 0 42 38
+1
+end_operator
+begin_operator
+down f47 f44
+0
+1
+0 0 42 39
+1
+end_operator
+begin_operator
+down f47 f45
+0
+1
+0 0 42 40
+1
+end_operator
+begin_operator
+down f47 f46
+0
+1
+0 0 42 41
+1
+end_operator
+begin_operator
+down f47 f5
+0
+1
+0 0 42 45
+1
+end_operator
+begin_operator
+down f47 f6
+0
+1
+0 0 42 56
+1
+end_operator
+begin_operator
+down f47 f7
+0
+1
+0 0 42 67
+1
+end_operator
+begin_operator
+down f47 f8
+0
+1
+0 0 42 78
+1
+end_operator
+begin_operator
+down f47 f9
+0
+1
+0 0 42 89
+1
+end_operator
+begin_operator
+down f48 f1
+0
+1
+0 0 43 0
+1
+end_operator
+begin_operator
+down f48 f10
+0
+1
+0 0 43 1
+1
+end_operator
+begin_operator
+down f48 f11
+0
+1
+0 0 43 3
+1
+end_operator
+begin_operator
+down f48 f12
+0
+1
+0 0 43 4
+1
+end_operator
+begin_operator
+down f48 f13
+0
+1
+0 0 43 5
+1
+end_operator
+begin_operator
+down f48 f14
+0
+1
+0 0 43 6
+1
+end_operator
+begin_operator
+down f48 f15
+0
+1
+0 0 43 7
+1
+end_operator
+begin_operator
+down f48 f16
+0
+1
+0 0 43 8
+1
+end_operator
+begin_operator
+down f48 f17
+0
+1
+0 0 43 9
+1
+end_operator
+begin_operator
+down f48 f18
+0
+1
+0 0 43 10
+1
+end_operator
+begin_operator
+down f48 f19
+0
+1
+0 0 43 11
+1
+end_operator
+begin_operator
+down f48 f2
+0
+1
+0 0 43 12
+1
+end_operator
+begin_operator
+down f48 f20
+0
+1
+0 0 43 13
+1
+end_operator
+begin_operator
+down f48 f21
+0
+1
+0 0 43 14
+1
+end_operator
+begin_operator
+down f48 f22
+0
+1
+0 0 43 15
+1
+end_operator
+begin_operator
+down f48 f23
+0
+1
+0 0 43 16
+1
+end_operator
+begin_operator
+down f48 f24
+0
+1
+0 0 43 17
+1
+end_operator
+begin_operator
+down f48 f25
+0
+1
+0 0 43 18
+1
+end_operator
+begin_operator
+down f48 f26
+0
+1
+0 0 43 19
+1
+end_operator
+begin_operator
+down f48 f27
+0
+1
+0 0 43 20
+1
+end_operator
+begin_operator
+down f48 f28
+0
+1
+0 0 43 21
+1
+end_operator
+begin_operator
+down f48 f29
+0
+1
+0 0 43 22
+1
+end_operator
+begin_operator
+down f48 f3
+0
+1
+0 0 43 23
+1
+end_operator
+begin_operator
+down f48 f30
+0
+1
+0 0 43 24
+1
+end_operator
+begin_operator
+down f48 f31
+0
+1
+0 0 43 25
+1
+end_operator
+begin_operator
+down f48 f32
+0
+1
+0 0 43 26
+1
+end_operator
+begin_operator
+down f48 f33
+0
+1
+0 0 43 27
+1
+end_operator
+begin_operator
+down f48 f34
+0
+1
+0 0 43 28
+1
+end_operator
+begin_operator
+down f48 f35
+0
+1
+0 0 43 29
+1
+end_operator
+begin_operator
+down f48 f36
+0
+1
+0 0 43 30
+1
+end_operator
+begin_operator
+down f48 f37
+0
+1
+0 0 43 31
+1
+end_operator
+begin_operator
+down f48 f38
+0
+1
+0 0 43 32
+1
+end_operator
+begin_operator
+down f48 f39
+0
+1
+0 0 43 33
+1
+end_operator
+begin_operator
+down f48 f4
+0
+1
+0 0 43 34
+1
+end_operator
+begin_operator
+down f48 f40
+0
+1
+0 0 43 35
+1
+end_operator
+begin_operator
+down f48 f41
+0
+1
+0 0 43 36
+1
+end_operator
+begin_operator
+down f48 f42
+0
+1
+0 0 43 37
+1
+end_operator
+begin_operator
+down f48 f43
+0
+1
+0 0 43 38
+1
+end_operator
+begin_operator
+down f48 f44
+0
+1
+0 0 43 39
+1
+end_operator
+begin_operator
+down f48 f45
+0
+1
+0 0 43 40
+1
+end_operator
+begin_operator
+down f48 f46
+0
+1
+0 0 43 41
+1
+end_operator
+begin_operator
+down f48 f47
+0
+1
+0 0 43 42
+1
+end_operator
+begin_operator
+down f48 f5
+0
+1
+0 0 43 45
+1
+end_operator
+begin_operator
+down f48 f6
+0
+1
+0 0 43 56
+1
+end_operator
+begin_operator
+down f48 f7
+0
+1
+0 0 43 67
+1
+end_operator
+begin_operator
+down f48 f8
+0
+1
+0 0 43 78
+1
+end_operator
+begin_operator
+down f48 f9
+0
+1
+0 0 43 89
+1
+end_operator
+begin_operator
+down f49 f1
+0
+1
+0 0 44 0
+1
+end_operator
+begin_operator
+down f49 f10
+0
+1
+0 0 44 1
+1
+end_operator
+begin_operator
+down f49 f11
+0
+1
+0 0 44 3
+1
+end_operator
+begin_operator
+down f49 f12
+0
+1
+0 0 44 4
+1
+end_operator
+begin_operator
+down f49 f13
+0
+1
+0 0 44 5
+1
+end_operator
+begin_operator
+down f49 f14
+0
+1
+0 0 44 6
+1
+end_operator
+begin_operator
+down f49 f15
+0
+1
+0 0 44 7
+1
+end_operator
+begin_operator
+down f49 f16
+0
+1
+0 0 44 8
+1
+end_operator
+begin_operator
+down f49 f17
+0
+1
+0 0 44 9
+1
+end_operator
+begin_operator
+down f49 f18
+0
+1
+0 0 44 10
+1
+end_operator
+begin_operator
+down f49 f19
+0
+1
+0 0 44 11
+1
+end_operator
+begin_operator
+down f49 f2
+0
+1
+0 0 44 12
+1
+end_operator
+begin_operator
+down f49 f20
+0
+1
+0 0 44 13
+1
+end_operator
+begin_operator
+down f49 f21
+0
+1
+0 0 44 14
+1
+end_operator
+begin_operator
+down f49 f22
+0
+1
+0 0 44 15
+1
+end_operator
+begin_operator
+down f49 f23
+0
+1
+0 0 44 16
+1
+end_operator
+begin_operator
+down f49 f24
+0
+1
+0 0 44 17
+1
+end_operator
+begin_operator
+down f49 f25
+0
+1
+0 0 44 18
+1
+end_operator
+begin_operator
+down f49 f26
+0
+1
+0 0 44 19
+1
+end_operator
+begin_operator
+down f49 f27
+0
+1
+0 0 44 20
+1
+end_operator
+begin_operator
+down f49 f28
+0
+1
+0 0 44 21
+1
+end_operator
+begin_operator
+down f49 f29
+0
+1
+0 0 44 22
+1
+end_operator
+begin_operator
+down f49 f3
+0
+1
+0 0 44 23
+1
+end_operator
+begin_operator
+down f49 f30
+0
+1
+0 0 44 24
+1
+end_operator
+begin_operator
+down f49 f31
+0
+1
+0 0 44 25
+1
+end_operator
+begin_operator
+down f49 f32
+0
+1
+0 0 44 26
+1
+end_operator
+begin_operator
+down f49 f33
+0
+1
+0 0 44 27
+1
+end_operator
+begin_operator
+down f49 f34
+0
+1
+0 0 44 28
+1
+end_operator
+begin_operator
+down f49 f35
+0
+1
+0 0 44 29
+1
+end_operator
+begin_operator
+down f49 f36
+0
+1
+0 0 44 30
+1
+end_operator
+begin_operator
+down f49 f37
+0
+1
+0 0 44 31
+1
+end_operator
+begin_operator
+down f49 f38
+0
+1
+0 0 44 32
+1
+end_operator
+begin_operator
+down f49 f39
+0
+1
+0 0 44 33
+1
+end_operator
+begin_operator
+down f49 f4
+0
+1
+0 0 44 34
+1
+end_operator
+begin_operator
+down f49 f40
+0
+1
+0 0 44 35
+1
+end_operator
+begin_operator
+down f49 f41
+0
+1
+0 0 44 36
+1
+end_operator
+begin_operator
+down f49 f42
+0
+1
+0 0 44 37
+1
+end_operator
+begin_operator
+down f49 f43
+0
+1
+0 0 44 38
+1
+end_operator
+begin_operator
+down f49 f44
+0
+1
+0 0 44 39
+1
+end_operator
+begin_operator
+down f49 f45
+0
+1
+0 0 44 40
+1
+end_operator
+begin_operator
+down f49 f46
+0
+1
+0 0 44 41
+1
+end_operator
+begin_operator
+down f49 f47
+0
+1
+0 0 44 42
+1
+end_operator
+begin_operator
+down f49 f48
+0
+1
+0 0 44 43
+1
+end_operator
+begin_operator
+down f49 f5
+0
+1
+0 0 44 45
+1
+end_operator
+begin_operator
+down f49 f6
+0
+1
+0 0 44 56
+1
+end_operator
+begin_operator
+down f49 f7
+0
+1
+0 0 44 67
+1
+end_operator
+begin_operator
+down f49 f8
+0
+1
+0 0 44 78
+1
+end_operator
+begin_operator
+down f49 f9
+0
+1
+0 0 44 89
+1
+end_operator
+begin_operator
+down f5 f1
+0
+1
+0 0 45 0
+1
+end_operator
+begin_operator
+down f5 f2
+0
+1
+0 0 45 12
+1
+end_operator
+begin_operator
+down f5 f3
+0
+1
+0 0 45 23
+1
+end_operator
+begin_operator
+down f5 f4
+0
+1
+0 0 45 34
+1
+end_operator
+begin_operator
+down f50 f1
+0
+1
+0 0 46 0
+1
+end_operator
+begin_operator
+down f50 f10
+0
+1
+0 0 46 1
+1
+end_operator
+begin_operator
+down f50 f11
+0
+1
+0 0 46 3
+1
+end_operator
+begin_operator
+down f50 f12
+0
+1
+0 0 46 4
+1
+end_operator
+begin_operator
+down f50 f13
+0
+1
+0 0 46 5
+1
+end_operator
+begin_operator
+down f50 f14
+0
+1
+0 0 46 6
+1
+end_operator
+begin_operator
+down f50 f15
+0
+1
+0 0 46 7
+1
+end_operator
+begin_operator
+down f50 f16
+0
+1
+0 0 46 8
+1
+end_operator
+begin_operator
+down f50 f17
+0
+1
+0 0 46 9
+1
+end_operator
+begin_operator
+down f50 f18
+0
+1
+0 0 46 10
+1
+end_operator
+begin_operator
+down f50 f19
+0
+1
+0 0 46 11
+1
+end_operator
+begin_operator
+down f50 f2
+0
+1
+0 0 46 12
+1
+end_operator
+begin_operator
+down f50 f20
+0
+1
+0 0 46 13
+1
+end_operator
+begin_operator
+down f50 f21
+0
+1
+0 0 46 14
+1
+end_operator
+begin_operator
+down f50 f22
+0
+1
+0 0 46 15
+1
+end_operator
+begin_operator
+down f50 f23
+0
+1
+0 0 46 16
+1
+end_operator
+begin_operator
+down f50 f24
+0
+1
+0 0 46 17
+1
+end_operator
+begin_operator
+down f50 f25
+0
+1
+0 0 46 18
+1
+end_operator
+begin_operator
+down f50 f26
+0
+1
+0 0 46 19
+1
+end_operator
+begin_operator
+down f50 f27
+0
+1
+0 0 46 20
+1
+end_operator
+begin_operator
+down f50 f28
+0
+1
+0 0 46 21
+1
+end_operator
+begin_operator
+down f50 f29
+0
+1
+0 0 46 22
+1
+end_operator
+begin_operator
+down f50 f3
+0
+1
+0 0 46 23
+1
+end_operator
+begin_operator
+down f50 f30
+0
+1
+0 0 46 24
+1
+end_operator
+begin_operator
+down f50 f31
+0
+1
+0 0 46 25
+1
+end_operator
+begin_operator
+down f50 f32
+0
+1
+0 0 46 26
+1
+end_operator
+begin_operator
+down f50 f33
+0
+1
+0 0 46 27
+1
+end_operator
+begin_operator
+down f50 f34
+0
+1
+0 0 46 28
+1
+end_operator
+begin_operator
+down f50 f35
+0
+1
+0 0 46 29
+1
+end_operator
+begin_operator
+down f50 f36
+0
+1
+0 0 46 30
+1
+end_operator
+begin_operator
+down f50 f37
+0
+1
+0 0 46 31
+1
+end_operator
+begin_operator
+down f50 f38
+0
+1
+0 0 46 32
+1
+end_operator
+begin_operator
+down f50 f39
+0
+1
+0 0 46 33
+1
+end_operator
+begin_operator
+down f50 f4
+0
+1
+0 0 46 34
+1
+end_operator
+begin_operator
+down f50 f40
+0
+1
+0 0 46 35
+1
+end_operator
+begin_operator
+down f50 f41
+0
+1
+0 0 46 36
+1
+end_operator
+begin_operator
+down f50 f42
+0
+1
+0 0 46 37
+1
+end_operator
+begin_operator
+down f50 f43
+0
+1
+0 0 46 38
+1
+end_operator
+begin_operator
+down f50 f44
+0
+1
+0 0 46 39
+1
+end_operator
+begin_operator
+down f50 f45
+0
+1
+0 0 46 40
+1
+end_operator
+begin_operator
+down f50 f46
+0
+1
+0 0 46 41
+1
+end_operator
+begin_operator
+down f50 f47
+0
+1
+0 0 46 42
+1
+end_operator
+begin_operator
+down f50 f48
+0
+1
+0 0 46 43
+1
+end_operator
+begin_operator
+down f50 f49
+0
+1
+0 0 46 44
+1
+end_operator
+begin_operator
+down f50 f5
+0
+1
+0 0 46 45
+1
+end_operator
+begin_operator
+down f50 f6
+0
+1
+0 0 46 56
+1
+end_operator
+begin_operator
+down f50 f7
+0
+1
+0 0 46 67
+1
+end_operator
+begin_operator
+down f50 f8
+0
+1
+0 0 46 78
+1
+end_operator
+begin_operator
+down f50 f9
+0
+1
+0 0 46 89
+1
+end_operator
+begin_operator
+down f51 f1
+0
+1
+0 0 47 0
+1
+end_operator
+begin_operator
+down f51 f10
+0
+1
+0 0 47 1
+1
+end_operator
+begin_operator
+down f51 f11
+0
+1
+0 0 47 3
+1
+end_operator
+begin_operator
+down f51 f12
+0
+1
+0 0 47 4
+1
+end_operator
+begin_operator
+down f51 f13
+0
+1
+0 0 47 5
+1
+end_operator
+begin_operator
+down f51 f14
+0
+1
+0 0 47 6
+1
+end_operator
+begin_operator
+down f51 f15
+0
+1
+0 0 47 7
+1
+end_operator
+begin_operator
+down f51 f16
+0
+1
+0 0 47 8
+1
+end_operator
+begin_operator
+down f51 f17
+0
+1
+0 0 47 9
+1
+end_operator
+begin_operator
+down f51 f18
+0
+1
+0 0 47 10
+1
+end_operator
+begin_operator
+down f51 f19
+0
+1
+0 0 47 11
+1
+end_operator
+begin_operator
+down f51 f2
+0
+1
+0 0 47 12
+1
+end_operator
+begin_operator
+down f51 f20
+0
+1
+0 0 47 13
+1
+end_operator
+begin_operator
+down f51 f21
+0
+1
+0 0 47 14
+1
+end_operator
+begin_operator
+down f51 f22
+0
+1
+0 0 47 15
+1
+end_operator
+begin_operator
+down f51 f23
+0
+1
+0 0 47 16
+1
+end_operator
+begin_operator
+down f51 f24
+0
+1
+0 0 47 17
+1
+end_operator
+begin_operator
+down f51 f25
+0
+1
+0 0 47 18
+1
+end_operator
+begin_operator
+down f51 f26
+0
+1
+0 0 47 19
+1
+end_operator
+begin_operator
+down f51 f27
+0
+1
+0 0 47 20
+1
+end_operator
+begin_operator
+down f51 f28
+0
+1
+0 0 47 21
+1
+end_operator
+begin_operator
+down f51 f29
+0
+1
+0 0 47 22
+1
+end_operator
+begin_operator
+down f51 f3
+0
+1
+0 0 47 23
+1
+end_operator
+begin_operator
+down f51 f30
+0
+1
+0 0 47 24
+1
+end_operator
+begin_operator
+down f51 f31
+0
+1
+0 0 47 25
+1
+end_operator
+begin_operator
+down f51 f32
+0
+1
+0 0 47 26
+1
+end_operator
+begin_operator
+down f51 f33
+0
+1
+0 0 47 27
+1
+end_operator
+begin_operator
+down f51 f34
+0
+1
+0 0 47 28
+1
+end_operator
+begin_operator
+down f51 f35
+0
+1
+0 0 47 29
+1
+end_operator
+begin_operator
+down f51 f36
+0
+1
+0 0 47 30
+1
+end_operator
+begin_operator
+down f51 f37
+0
+1
+0 0 47 31
+1
+end_operator
+begin_operator
+down f51 f38
+0
+1
+0 0 47 32
+1
+end_operator
+begin_operator
+down f51 f39
+0
+1
+0 0 47 33
+1
+end_operator
+begin_operator
+down f51 f4
+0
+1
+0 0 47 34
+1
+end_operator
+begin_operator
+down f51 f40
+0
+1
+0 0 47 35
+1
+end_operator
+begin_operator
+down f51 f41
+0
+1
+0 0 47 36
+1
+end_operator
+begin_operator
+down f51 f42
+0
+1
+0 0 47 37
+1
+end_operator
+begin_operator
+down f51 f43
+0
+1
+0 0 47 38
+1
+end_operator
+begin_operator
+down f51 f44
+0
+1
+0 0 47 39
+1
+end_operator
+begin_operator
+down f51 f45
+0
+1
+0 0 47 40
+1
+end_operator
+begin_operator
+down f51 f46
+0
+1
+0 0 47 41
+1
+end_operator
+begin_operator
+down f51 f47
+0
+1
+0 0 47 42
+1
+end_operator
+begin_operator
+down f51 f48
+0
+1
+0 0 47 43
+1
+end_operator
+begin_operator
+down f51 f49
+0
+1
+0 0 47 44
+1
+end_operator
+begin_operator
+down f51 f5
+0
+1
+0 0 47 45
+1
+end_operator
+begin_operator
+down f51 f50
+0
+1
+0 0 47 46
+1
+end_operator
+begin_operator
+down f51 f6
+0
+1
+0 0 47 56
+1
+end_operator
+begin_operator
+down f51 f7
+0
+1
+0 0 47 67
+1
+end_operator
+begin_operator
+down f51 f8
+0
+1
+0 0 47 78
+1
+end_operator
+begin_operator
+down f51 f9
+0
+1
+0 0 47 89
+1
+end_operator
+begin_operator
+down f52 f1
+0
+1
+0 0 48 0
+1
+end_operator
+begin_operator
+down f52 f10
+0
+1
+0 0 48 1
+1
+end_operator
+begin_operator
+down f52 f11
+0
+1
+0 0 48 3
+1
+end_operator
+begin_operator
+down f52 f12
+0
+1
+0 0 48 4
+1
+end_operator
+begin_operator
+down f52 f13
+0
+1
+0 0 48 5
+1
+end_operator
+begin_operator
+down f52 f14
+0
+1
+0 0 48 6
+1
+end_operator
+begin_operator
+down f52 f15
+0
+1
+0 0 48 7
+1
+end_operator
+begin_operator
+down f52 f16
+0
+1
+0 0 48 8
+1
+end_operator
+begin_operator
+down f52 f17
+0
+1
+0 0 48 9
+1
+end_operator
+begin_operator
+down f52 f18
+0
+1
+0 0 48 10
+1
+end_operator
+begin_operator
+down f52 f19
+0
+1
+0 0 48 11
+1
+end_operator
+begin_operator
+down f52 f2
+0
+1
+0 0 48 12
+1
+end_operator
+begin_operator
+down f52 f20
+0
+1
+0 0 48 13
+1
+end_operator
+begin_operator
+down f52 f21
+0
+1
+0 0 48 14
+1
+end_operator
+begin_operator
+down f52 f22
+0
+1
+0 0 48 15
+1
+end_operator
+begin_operator
+down f52 f23
+0
+1
+0 0 48 16
+1
+end_operator
+begin_operator
+down f52 f24
+0
+1
+0 0 48 17
+1
+end_operator
+begin_operator
+down f52 f25
+0
+1
+0 0 48 18
+1
+end_operator
+begin_operator
+down f52 f26
+0
+1
+0 0 48 19
+1
+end_operator
+begin_operator
+down f52 f27
+0
+1
+0 0 48 20
+1
+end_operator
+begin_operator
+down f52 f28
+0
+1
+0 0 48 21
+1
+end_operator
+begin_operator
+down f52 f29
+0
+1
+0 0 48 22
+1
+end_operator
+begin_operator
+down f52 f3
+0
+1
+0 0 48 23
+1
+end_operator
+begin_operator
+down f52 f30
+0
+1
+0 0 48 24
+1
+end_operator
+begin_operator
+down f52 f31
+0
+1
+0 0 48 25
+1
+end_operator
+begin_operator
+down f52 f32
+0
+1
+0 0 48 26
+1
+end_operator
+begin_operator
+down f52 f33
+0
+1
+0 0 48 27
+1
+end_operator
+begin_operator
+down f52 f34
+0
+1
+0 0 48 28
+1
+end_operator
+begin_operator
+down f52 f35
+0
+1
+0 0 48 29
+1
+end_operator
+begin_operator
+down f52 f36
+0
+1
+0 0 48 30
+1
+end_operator
+begin_operator
+down f52 f37
+0
+1
+0 0 48 31
+1
+end_operator
+begin_operator
+down f52 f38
+0
+1
+0 0 48 32
+1
+end_operator
+begin_operator
+down f52 f39
+0
+1
+0 0 48 33
+1
+end_operator
+begin_operator
+down f52 f4
+0
+1
+0 0 48 34
+1
+end_operator
+begin_operator
+down f52 f40
+0
+1
+0 0 48 35
+1
+end_operator
+begin_operator
+down f52 f41
+0
+1
+0 0 48 36
+1
+end_operator
+begin_operator
+down f52 f42
+0
+1
+0 0 48 37
+1
+end_operator
+begin_operator
+down f52 f43
+0
+1
+0 0 48 38
+1
+end_operator
+begin_operator
+down f52 f44
+0
+1
+0 0 48 39
+1
+end_operator
+begin_operator
+down f52 f45
+0
+1
+0 0 48 40
+1
+end_operator
+begin_operator
+down f52 f46
+0
+1
+0 0 48 41
+1
+end_operator
+begin_operator
+down f52 f47
+0
+1
+0 0 48 42
+1
+end_operator
+begin_operator
+down f52 f48
+0
+1
+0 0 48 43
+1
+end_operator
+begin_operator
+down f52 f49
+0
+1
+0 0 48 44
+1
+end_operator
+begin_operator
+down f52 f5
+0
+1
+0 0 48 45
+1
+end_operator
+begin_operator
+down f52 f50
+0
+1
+0 0 48 46
+1
+end_operator
+begin_operator
+down f52 f51
+0
+1
+0 0 48 47
+1
+end_operator
+begin_operator
+down f52 f6
+0
+1
+0 0 48 56
+1
+end_operator
+begin_operator
+down f52 f7
+0
+1
+0 0 48 67
+1
+end_operator
+begin_operator
+down f52 f8
+0
+1
+0 0 48 78
+1
+end_operator
+begin_operator
+down f52 f9
+0
+1
+0 0 48 89
+1
+end_operator
+begin_operator
+down f53 f1
+0
+1
+0 0 49 0
+1
+end_operator
+begin_operator
+down f53 f10
+0
+1
+0 0 49 1
+1
+end_operator
+begin_operator
+down f53 f11
+0
+1
+0 0 49 3
+1
+end_operator
+begin_operator
+down f53 f12
+0
+1
+0 0 49 4
+1
+end_operator
+begin_operator
+down f53 f13
+0
+1
+0 0 49 5
+1
+end_operator
+begin_operator
+down f53 f14
+0
+1
+0 0 49 6
+1
+end_operator
+begin_operator
+down f53 f15
+0
+1
+0 0 49 7
+1
+end_operator
+begin_operator
+down f53 f16
+0
+1
+0 0 49 8
+1
+end_operator
+begin_operator
+down f53 f17
+0
+1
+0 0 49 9
+1
+end_operator
+begin_operator
+down f53 f18
+0
+1
+0 0 49 10
+1
+end_operator
+begin_operator
+down f53 f19
+0
+1
+0 0 49 11
+1
+end_operator
+begin_operator
+down f53 f2
+0
+1
+0 0 49 12
+1
+end_operator
+begin_operator
+down f53 f20
+0
+1
+0 0 49 13
+1
+end_operator
+begin_operator
+down f53 f21
+0
+1
+0 0 49 14
+1
+end_operator
+begin_operator
+down f53 f22
+0
+1
+0 0 49 15
+1
+end_operator
+begin_operator
+down f53 f23
+0
+1
+0 0 49 16
+1
+end_operator
+begin_operator
+down f53 f24
+0
+1
+0 0 49 17
+1
+end_operator
+begin_operator
+down f53 f25
+0
+1
+0 0 49 18
+1
+end_operator
+begin_operator
+down f53 f26
+0
+1
+0 0 49 19
+1
+end_operator
+begin_operator
+down f53 f27
+0
+1
+0 0 49 20
+1
+end_operator
+begin_operator
+down f53 f28
+0
+1
+0 0 49 21
+1
+end_operator
+begin_operator
+down f53 f29
+0
+1
+0 0 49 22
+1
+end_operator
+begin_operator
+down f53 f3
+0
+1
+0 0 49 23
+1
+end_operator
+begin_operator
+down f53 f30
+0
+1
+0 0 49 24
+1
+end_operator
+begin_operator
+down f53 f31
+0
+1
+0 0 49 25
+1
+end_operator
+begin_operator
+down f53 f32
+0
+1
+0 0 49 26
+1
+end_operator
+begin_operator
+down f53 f33
+0
+1
+0 0 49 27
+1
+end_operator
+begin_operator
+down f53 f34
+0
+1
+0 0 49 28
+1
+end_operator
+begin_operator
+down f53 f35
+0
+1
+0 0 49 29
+1
+end_operator
+begin_operator
+down f53 f36
+0
+1
+0 0 49 30
+1
+end_operator
+begin_operator
+down f53 f37
+0
+1
+0 0 49 31
+1
+end_operator
+begin_operator
+down f53 f38
+0
+1
+0 0 49 32
+1
+end_operator
+begin_operator
+down f53 f39
+0
+1
+0 0 49 33
+1
+end_operator
+begin_operator
+down f53 f4
+0
+1
+0 0 49 34
+1
+end_operator
+begin_operator
+down f53 f40
+0
+1
+0 0 49 35
+1
+end_operator
+begin_operator
+down f53 f41
+0
+1
+0 0 49 36
+1
+end_operator
+begin_operator
+down f53 f42
+0
+1
+0 0 49 37
+1
+end_operator
+begin_operator
+down f53 f43
+0
+1
+0 0 49 38
+1
+end_operator
+begin_operator
+down f53 f44
+0
+1
+0 0 49 39
+1
+end_operator
+begin_operator
+down f53 f45
+0
+1
+0 0 49 40
+1
+end_operator
+begin_operator
+down f53 f46
+0
+1
+0 0 49 41
+1
+end_operator
+begin_operator
+down f53 f47
+0
+1
+0 0 49 42
+1
+end_operator
+begin_operator
+down f53 f48
+0
+1
+0 0 49 43
+1
+end_operator
+begin_operator
+down f53 f49
+0
+1
+0 0 49 44
+1
+end_operator
+begin_operator
+down f53 f5
+0
+1
+0 0 49 45
+1
+end_operator
+begin_operator
+down f53 f50
+0
+1
+0 0 49 46
+1
+end_operator
+begin_operator
+down f53 f51
+0
+1
+0 0 49 47
+1
+end_operator
+begin_operator
+down f53 f52
+0
+1
+0 0 49 48
+1
+end_operator
+begin_operator
+down f53 f6
+0
+1
+0 0 49 56
+1
+end_operator
+begin_operator
+down f53 f7
+0
+1
+0 0 49 67
+1
+end_operator
+begin_operator
+down f53 f8
+0
+1
+0 0 49 78
+1
+end_operator
+begin_operator
+down f53 f9
+0
+1
+0 0 49 89
+1
+end_operator
+begin_operator
+down f54 f1
+0
+1
+0 0 50 0
+1
+end_operator
+begin_operator
+down f54 f10
+0
+1
+0 0 50 1
+1
+end_operator
+begin_operator
+down f54 f11
+0
+1
+0 0 50 3
+1
+end_operator
+begin_operator
+down f54 f12
+0
+1
+0 0 50 4
+1
+end_operator
+begin_operator
+down f54 f13
+0
+1
+0 0 50 5
+1
+end_operator
+begin_operator
+down f54 f14
+0
+1
+0 0 50 6
+1
+end_operator
+begin_operator
+down f54 f15
+0
+1
+0 0 50 7
+1
+end_operator
+begin_operator
+down f54 f16
+0
+1
+0 0 50 8
+1
+end_operator
+begin_operator
+down f54 f17
+0
+1
+0 0 50 9
+1
+end_operator
+begin_operator
+down f54 f18
+0
+1
+0 0 50 10
+1
+end_operator
+begin_operator
+down f54 f19
+0
+1
+0 0 50 11
+1
+end_operator
+begin_operator
+down f54 f2
+0
+1
+0 0 50 12
+1
+end_operator
+begin_operator
+down f54 f20
+0
+1
+0 0 50 13
+1
+end_operator
+begin_operator
+down f54 f21
+0
+1
+0 0 50 14
+1
+end_operator
+begin_operator
+down f54 f22
+0
+1
+0 0 50 15
+1
+end_operator
+begin_operator
+down f54 f23
+0
+1
+0 0 50 16
+1
+end_operator
+begin_operator
+down f54 f24
+0
+1
+0 0 50 17
+1
+end_operator
+begin_operator
+down f54 f25
+0
+1
+0 0 50 18
+1
+end_operator
+begin_operator
+down f54 f26
+0
+1
+0 0 50 19
+1
+end_operator
+begin_operator
+down f54 f27
+0
+1
+0 0 50 20
+1
+end_operator
+begin_operator
+down f54 f28
+0
+1
+0 0 50 21
+1
+end_operator
+begin_operator
+down f54 f29
+0
+1
+0 0 50 22
+1
+end_operator
+begin_operator
+down f54 f3
+0
+1
+0 0 50 23
+1
+end_operator
+begin_operator
+down f54 f30
+0
+1
+0 0 50 24
+1
+end_operator
+begin_operator
+down f54 f31
+0
+1
+0 0 50 25
+1
+end_operator
+begin_operator
+down f54 f32
+0
+1
+0 0 50 26
+1
+end_operator
+begin_operator
+down f54 f33
+0
+1
+0 0 50 27
+1
+end_operator
+begin_operator
+down f54 f34
+0
+1
+0 0 50 28
+1
+end_operator
+begin_operator
+down f54 f35
+0
+1
+0 0 50 29
+1
+end_operator
+begin_operator
+down f54 f36
+0
+1
+0 0 50 30
+1
+end_operator
+begin_operator
+down f54 f37
+0
+1
+0 0 50 31
+1
+end_operator
+begin_operator
+down f54 f38
+0
+1
+0 0 50 32
+1
+end_operator
+begin_operator
+down f54 f39
+0
+1
+0 0 50 33
+1
+end_operator
+begin_operator
+down f54 f4
+0
+1
+0 0 50 34
+1
+end_operator
+begin_operator
+down f54 f40
+0
+1
+0 0 50 35
+1
+end_operator
+begin_operator
+down f54 f41
+0
+1
+0 0 50 36
+1
+end_operator
+begin_operator
+down f54 f42
+0
+1
+0 0 50 37
+1
+end_operator
+begin_operator
+down f54 f43
+0
+1
+0 0 50 38
+1
+end_operator
+begin_operator
+down f54 f44
+0
+1
+0 0 50 39
+1
+end_operator
+begin_operator
+down f54 f45
+0
+1
+0 0 50 40
+1
+end_operator
+begin_operator
+down f54 f46
+0
+1
+0 0 50 41
+1
+end_operator
+begin_operator
+down f54 f47
+0
+1
+0 0 50 42
+1
+end_operator
+begin_operator
+down f54 f48
+0
+1
+0 0 50 43
+1
+end_operator
+begin_operator
+down f54 f49
+0
+1
+0 0 50 44
+1
+end_operator
+begin_operator
+down f54 f5
+0
+1
+0 0 50 45
+1
+end_operator
+begin_operator
+down f54 f50
+0
+1
+0 0 50 46
+1
+end_operator
+begin_operator
+down f54 f51
+0
+1
+0 0 50 47
+1
+end_operator
+begin_operator
+down f54 f52
+0
+1
+0 0 50 48
+1
+end_operator
+begin_operator
+down f54 f53
+0
+1
+0 0 50 49
+1
+end_operator
+begin_operator
+down f54 f6
+0
+1
+0 0 50 56
+1
+end_operator
+begin_operator
+down f54 f7
+0
+1
+0 0 50 67
+1
+end_operator
+begin_operator
+down f54 f8
+0
+1
+0 0 50 78
+1
+end_operator
+begin_operator
+down f54 f9
+0
+1
+0 0 50 89
+1
+end_operator
+begin_operator
+down f55 f1
+0
+1
+0 0 51 0
+1
+end_operator
+begin_operator
+down f55 f10
+0
+1
+0 0 51 1
+1
+end_operator
+begin_operator
+down f55 f11
+0
+1
+0 0 51 3
+1
+end_operator
+begin_operator
+down f55 f12
+0
+1
+0 0 51 4
+1
+end_operator
+begin_operator
+down f55 f13
+0
+1
+0 0 51 5
+1
+end_operator
+begin_operator
+down f55 f14
+0
+1
+0 0 51 6
+1
+end_operator
+begin_operator
+down f55 f15
+0
+1
+0 0 51 7
+1
+end_operator
+begin_operator
+down f55 f16
+0
+1
+0 0 51 8
+1
+end_operator
+begin_operator
+down f55 f17
+0
+1
+0 0 51 9
+1
+end_operator
+begin_operator
+down f55 f18
+0
+1
+0 0 51 10
+1
+end_operator
+begin_operator
+down f55 f19
+0
+1
+0 0 51 11
+1
+end_operator
+begin_operator
+down f55 f2
+0
+1
+0 0 51 12
+1
+end_operator
+begin_operator
+down f55 f20
+0
+1
+0 0 51 13
+1
+end_operator
+begin_operator
+down f55 f21
+0
+1
+0 0 51 14
+1
+end_operator
+begin_operator
+down f55 f22
+0
+1
+0 0 51 15
+1
+end_operator
+begin_operator
+down f55 f23
+0
+1
+0 0 51 16
+1
+end_operator
+begin_operator
+down f55 f24
+0
+1
+0 0 51 17
+1
+end_operator
+begin_operator
+down f55 f25
+0
+1
+0 0 51 18
+1
+end_operator
+begin_operator
+down f55 f26
+0
+1
+0 0 51 19
+1
+end_operator
+begin_operator
+down f55 f27
+0
+1
+0 0 51 20
+1
+end_operator
+begin_operator
+down f55 f28
+0
+1
+0 0 51 21
+1
+end_operator
+begin_operator
+down f55 f29
+0
+1
+0 0 51 22
+1
+end_operator
+begin_operator
+down f55 f3
+0
+1
+0 0 51 23
+1
+end_operator
+begin_operator
+down f55 f30
+0
+1
+0 0 51 24
+1
+end_operator
+begin_operator
+down f55 f31
+0
+1
+0 0 51 25
+1
+end_operator
+begin_operator
+down f55 f32
+0
+1
+0 0 51 26
+1
+end_operator
+begin_operator
+down f55 f33
+0
+1
+0 0 51 27
+1
+end_operator
+begin_operator
+down f55 f34
+0
+1
+0 0 51 28
+1
+end_operator
+begin_operator
+down f55 f35
+0
+1
+0 0 51 29
+1
+end_operator
+begin_operator
+down f55 f36
+0
+1
+0 0 51 30
+1
+end_operator
+begin_operator
+down f55 f37
+0
+1
+0 0 51 31
+1
+end_operator
+begin_operator
+down f55 f38
+0
+1
+0 0 51 32
+1
+end_operator
+begin_operator
+down f55 f39
+0
+1
+0 0 51 33
+1
+end_operator
+begin_operator
+down f55 f4
+0
+1
+0 0 51 34
+1
+end_operator
+begin_operator
+down f55 f40
+0
+1
+0 0 51 35
+1
+end_operator
+begin_operator
+down f55 f41
+0
+1
+0 0 51 36
+1
+end_operator
+begin_operator
+down f55 f42
+0
+1
+0 0 51 37
+1
+end_operator
+begin_operator
+down f55 f43
+0
+1
+0 0 51 38
+1
+end_operator
+begin_operator
+down f55 f44
+0
+1
+0 0 51 39
+1
+end_operator
+begin_operator
+down f55 f45
+0
+1
+0 0 51 40
+1
+end_operator
+begin_operator
+down f55 f46
+0
+1
+0 0 51 41
+1
+end_operator
+begin_operator
+down f55 f47
+0
+1
+0 0 51 42
+1
+end_operator
+begin_operator
+down f55 f48
+0
+1
+0 0 51 43
+1
+end_operator
+begin_operator
+down f55 f49
+0
+1
+0 0 51 44
+1
+end_operator
+begin_operator
+down f55 f5
+0
+1
+0 0 51 45
+1
+end_operator
+begin_operator
+down f55 f50
+0
+1
+0 0 51 46
+1
+end_operator
+begin_operator
+down f55 f51
+0
+1
+0 0 51 47
+1
+end_operator
+begin_operator
+down f55 f52
+0
+1
+0 0 51 48
+1
+end_operator
+begin_operator
+down f55 f53
+0
+1
+0 0 51 49
+1
+end_operator
+begin_operator
+down f55 f54
+0
+1
+0 0 51 50
+1
+end_operator
+begin_operator
+down f55 f6
+0
+1
+0 0 51 56
+1
+end_operator
+begin_operator
+down f55 f7
+0
+1
+0 0 51 67
+1
+end_operator
+begin_operator
+down f55 f8
+0
+1
+0 0 51 78
+1
+end_operator
+begin_operator
+down f55 f9
+0
+1
+0 0 51 89
+1
+end_operator
+begin_operator
+down f56 f1
+0
+1
+0 0 52 0
+1
+end_operator
+begin_operator
+down f56 f10
+0
+1
+0 0 52 1
+1
+end_operator
+begin_operator
+down f56 f11
+0
+1
+0 0 52 3
+1
+end_operator
+begin_operator
+down f56 f12
+0
+1
+0 0 52 4
+1
+end_operator
+begin_operator
+down f56 f13
+0
+1
+0 0 52 5
+1
+end_operator
+begin_operator
+down f56 f14
+0
+1
+0 0 52 6
+1
+end_operator
+begin_operator
+down f56 f15
+0
+1
+0 0 52 7
+1
+end_operator
+begin_operator
+down f56 f16
+0
+1
+0 0 52 8
+1
+end_operator
+begin_operator
+down f56 f17
+0
+1
+0 0 52 9
+1
+end_operator
+begin_operator
+down f56 f18
+0
+1
+0 0 52 10
+1
+end_operator
+begin_operator
+down f56 f19
+0
+1
+0 0 52 11
+1
+end_operator
+begin_operator
+down f56 f2
+0
+1
+0 0 52 12
+1
+end_operator
+begin_operator
+down f56 f20
+0
+1
+0 0 52 13
+1
+end_operator
+begin_operator
+down f56 f21
+0
+1
+0 0 52 14
+1
+end_operator
+begin_operator
+down f56 f22
+0
+1
+0 0 52 15
+1
+end_operator
+begin_operator
+down f56 f23
+0
+1
+0 0 52 16
+1
+end_operator
+begin_operator
+down f56 f24
+0
+1
+0 0 52 17
+1
+end_operator
+begin_operator
+down f56 f25
+0
+1
+0 0 52 18
+1
+end_operator
+begin_operator
+down f56 f26
+0
+1
+0 0 52 19
+1
+end_operator
+begin_operator
+down f56 f27
+0
+1
+0 0 52 20
+1
+end_operator
+begin_operator
+down f56 f28
+0
+1
+0 0 52 21
+1
+end_operator
+begin_operator
+down f56 f29
+0
+1
+0 0 52 22
+1
+end_operator
+begin_operator
+down f56 f3
+0
+1
+0 0 52 23
+1
+end_operator
+begin_operator
+down f56 f30
+0
+1
+0 0 52 24
+1
+end_operator
+begin_operator
+down f56 f31
+0
+1
+0 0 52 25
+1
+end_operator
+begin_operator
+down f56 f32
+0
+1
+0 0 52 26
+1
+end_operator
+begin_operator
+down f56 f33
+0
+1
+0 0 52 27
+1
+end_operator
+begin_operator
+down f56 f34
+0
+1
+0 0 52 28
+1
+end_operator
+begin_operator
+down f56 f35
+0
+1
+0 0 52 29
+1
+end_operator
+begin_operator
+down f56 f36
+0
+1
+0 0 52 30
+1
+end_operator
+begin_operator
+down f56 f37
+0
+1
+0 0 52 31
+1
+end_operator
+begin_operator
+down f56 f38
+0
+1
+0 0 52 32
+1
+end_operator
+begin_operator
+down f56 f39
+0
+1
+0 0 52 33
+1
+end_operator
+begin_operator
+down f56 f4
+0
+1
+0 0 52 34
+1
+end_operator
+begin_operator
+down f56 f40
+0
+1
+0 0 52 35
+1
+end_operator
+begin_operator
+down f56 f41
+0
+1
+0 0 52 36
+1
+end_operator
+begin_operator
+down f56 f42
+0
+1
+0 0 52 37
+1
+end_operator
+begin_operator
+down f56 f43
+0
+1
+0 0 52 38
+1
+end_operator
+begin_operator
+down f56 f44
+0
+1
+0 0 52 39
+1
+end_operator
+begin_operator
+down f56 f45
+0
+1
+0 0 52 40
+1
+end_operator
+begin_operator
+down f56 f46
+0
+1
+0 0 52 41
+1
+end_operator
+begin_operator
+down f56 f47
+0
+1
+0 0 52 42
+1
+end_operator
+begin_operator
+down f56 f48
+0
+1
+0 0 52 43
+1
+end_operator
+begin_operator
+down f56 f49
+0
+1
+0 0 52 44
+1
+end_operator
+begin_operator
+down f56 f5
+0
+1
+0 0 52 45
+1
+end_operator
+begin_operator
+down f56 f50
+0
+1
+0 0 52 46
+1
+end_operator
+begin_operator
+down f56 f51
+0
+1
+0 0 52 47
+1
+end_operator
+begin_operator
+down f56 f52
+0
+1
+0 0 52 48
+1
+end_operator
+begin_operator
+down f56 f53
+0
+1
+0 0 52 49
+1
+end_operator
+begin_operator
+down f56 f54
+0
+1
+0 0 52 50
+1
+end_operator
+begin_operator
+down f56 f55
+0
+1
+0 0 52 51
+1
+end_operator
+begin_operator
+down f56 f6
+0
+1
+0 0 52 56
+1
+end_operator
+begin_operator
+down f56 f7
+0
+1
+0 0 52 67
+1
+end_operator
+begin_operator
+down f56 f8
+0
+1
+0 0 52 78
+1
+end_operator
+begin_operator
+down f56 f9
+0
+1
+0 0 52 89
+1
+end_operator
+begin_operator
+down f57 f1
+0
+1
+0 0 53 0
+1
+end_operator
+begin_operator
+down f57 f10
+0
+1
+0 0 53 1
+1
+end_operator
+begin_operator
+down f57 f11
+0
+1
+0 0 53 3
+1
+end_operator
+begin_operator
+down f57 f12
+0
+1
+0 0 53 4
+1
+end_operator
+begin_operator
+down f57 f13
+0
+1
+0 0 53 5
+1
+end_operator
+begin_operator
+down f57 f14
+0
+1
+0 0 53 6
+1
+end_operator
+begin_operator
+down f57 f15
+0
+1
+0 0 53 7
+1
+end_operator
+begin_operator
+down f57 f16
+0
+1
+0 0 53 8
+1
+end_operator
+begin_operator
+down f57 f17
+0
+1
+0 0 53 9
+1
+end_operator
+begin_operator
+down f57 f18
+0
+1
+0 0 53 10
+1
+end_operator
+begin_operator
+down f57 f19
+0
+1
+0 0 53 11
+1
+end_operator
+begin_operator
+down f57 f2
+0
+1
+0 0 53 12
+1
+end_operator
+begin_operator
+down f57 f20
+0
+1
+0 0 53 13
+1
+end_operator
+begin_operator
+down f57 f21
+0
+1
+0 0 53 14
+1
+end_operator
+begin_operator
+down f57 f22
+0
+1
+0 0 53 15
+1
+end_operator
+begin_operator
+down f57 f23
+0
+1
+0 0 53 16
+1
+end_operator
+begin_operator
+down f57 f24
+0
+1
+0 0 53 17
+1
+end_operator
+begin_operator
+down f57 f25
+0
+1
+0 0 53 18
+1
+end_operator
+begin_operator
+down f57 f26
+0
+1
+0 0 53 19
+1
+end_operator
+begin_operator
+down f57 f27
+0
+1
+0 0 53 20
+1
+end_operator
+begin_operator
+down f57 f28
+0
+1
+0 0 53 21
+1
+end_operator
+begin_operator
+down f57 f29
+0
+1
+0 0 53 22
+1
+end_operator
+begin_operator
+down f57 f3
+0
+1
+0 0 53 23
+1
+end_operator
+begin_operator
+down f57 f30
+0
+1
+0 0 53 24
+1
+end_operator
+begin_operator
+down f57 f31
+0
+1
+0 0 53 25
+1
+end_operator
+begin_operator
+down f57 f32
+0
+1
+0 0 53 26
+1
+end_operator
+begin_operator
+down f57 f33
+0
+1
+0 0 53 27
+1
+end_operator
+begin_operator
+down f57 f34
+0
+1
+0 0 53 28
+1
+end_operator
+begin_operator
+down f57 f35
+0
+1
+0 0 53 29
+1
+end_operator
+begin_operator
+down f57 f36
+0
+1
+0 0 53 30
+1
+end_operator
+begin_operator
+down f57 f37
+0
+1
+0 0 53 31
+1
+end_operator
+begin_operator
+down f57 f38
+0
+1
+0 0 53 32
+1
+end_operator
+begin_operator
+down f57 f39
+0
+1
+0 0 53 33
+1
+end_operator
+begin_operator
+down f57 f4
+0
+1
+0 0 53 34
+1
+end_operator
+begin_operator
+down f57 f40
+0
+1
+0 0 53 35
+1
+end_operator
+begin_operator
+down f57 f41
+0
+1
+0 0 53 36
+1
+end_operator
+begin_operator
+down f57 f42
+0
+1
+0 0 53 37
+1
+end_operator
+begin_operator
+down f57 f43
+0
+1
+0 0 53 38
+1
+end_operator
+begin_operator
+down f57 f44
+0
+1
+0 0 53 39
+1
+end_operator
+begin_operator
+down f57 f45
+0
+1
+0 0 53 40
+1
+end_operator
+begin_operator
+down f57 f46
+0
+1
+0 0 53 41
+1
+end_operator
+begin_operator
+down f57 f47
+0
+1
+0 0 53 42
+1
+end_operator
+begin_operator
+down f57 f48
+0
+1
+0 0 53 43
+1
+end_operator
+begin_operator
+down f57 f49
+0
+1
+0 0 53 44
+1
+end_operator
+begin_operator
+down f57 f5
+0
+1
+0 0 53 45
+1
+end_operator
+begin_operator
+down f57 f50
+0
+1
+0 0 53 46
+1
+end_operator
+begin_operator
+down f57 f51
+0
+1
+0 0 53 47
+1
+end_operator
+begin_operator
+down f57 f52
+0
+1
+0 0 53 48
+1
+end_operator
+begin_operator
+down f57 f53
+0
+1
+0 0 53 49
+1
+end_operator
+begin_operator
+down f57 f54
+0
+1
+0 0 53 50
+1
+end_operator
+begin_operator
+down f57 f55
+0
+1
+0 0 53 51
+1
+end_operator
+begin_operator
+down f57 f56
+0
+1
+0 0 53 52
+1
+end_operator
+begin_operator
+down f57 f6
+0
+1
+0 0 53 56
+1
+end_operator
+begin_operator
+down f57 f7
+0
+1
+0 0 53 67
+1
+end_operator
+begin_operator
+down f57 f8
+0
+1
+0 0 53 78
+1
+end_operator
+begin_operator
+down f57 f9
+0
+1
+0 0 53 89
+1
+end_operator
+begin_operator
+down f58 f1
+0
+1
+0 0 54 0
+1
+end_operator
+begin_operator
+down f58 f10
+0
+1
+0 0 54 1
+1
+end_operator
+begin_operator
+down f58 f11
+0
+1
+0 0 54 3
+1
+end_operator
+begin_operator
+down f58 f12
+0
+1
+0 0 54 4
+1
+end_operator
+begin_operator
+down f58 f13
+0
+1
+0 0 54 5
+1
+end_operator
+begin_operator
+down f58 f14
+0
+1
+0 0 54 6
+1
+end_operator
+begin_operator
+down f58 f15
+0
+1
+0 0 54 7
+1
+end_operator
+begin_operator
+down f58 f16
+0
+1
+0 0 54 8
+1
+end_operator
+begin_operator
+down f58 f17
+0
+1
+0 0 54 9
+1
+end_operator
+begin_operator
+down f58 f18
+0
+1
+0 0 54 10
+1
+end_operator
+begin_operator
+down f58 f19
+0
+1
+0 0 54 11
+1
+end_operator
+begin_operator
+down f58 f2
+0
+1
+0 0 54 12
+1
+end_operator
+begin_operator
+down f58 f20
+0
+1
+0 0 54 13
+1
+end_operator
+begin_operator
+down f58 f21
+0
+1
+0 0 54 14
+1
+end_operator
+begin_operator
+down f58 f22
+0
+1
+0 0 54 15
+1
+end_operator
+begin_operator
+down f58 f23
+0
+1
+0 0 54 16
+1
+end_operator
+begin_operator
+down f58 f24
+0
+1
+0 0 54 17
+1
+end_operator
+begin_operator
+down f58 f25
+0
+1
+0 0 54 18
+1
+end_operator
+begin_operator
+down f58 f26
+0
+1
+0 0 54 19
+1
+end_operator
+begin_operator
+down f58 f27
+0
+1
+0 0 54 20
+1
+end_operator
+begin_operator
+down f58 f28
+0
+1
+0 0 54 21
+1
+end_operator
+begin_operator
+down f58 f29
+0
+1
+0 0 54 22
+1
+end_operator
+begin_operator
+down f58 f3
+0
+1
+0 0 54 23
+1
+end_operator
+begin_operator
+down f58 f30
+0
+1
+0 0 54 24
+1
+end_operator
+begin_operator
+down f58 f31
+0
+1
+0 0 54 25
+1
+end_operator
+begin_operator
+down f58 f32
+0
+1
+0 0 54 26
+1
+end_operator
+begin_operator
+down f58 f33
+0
+1
+0 0 54 27
+1
+end_operator
+begin_operator
+down f58 f34
+0
+1
+0 0 54 28
+1
+end_operator
+begin_operator
+down f58 f35
+0
+1
+0 0 54 29
+1
+end_operator
+begin_operator
+down f58 f36
+0
+1
+0 0 54 30
+1
+end_operator
+begin_operator
+down f58 f37
+0
+1
+0 0 54 31
+1
+end_operator
+begin_operator
+down f58 f38
+0
+1
+0 0 54 32
+1
+end_operator
+begin_operator
+down f58 f39
+0
+1
+0 0 54 33
+1
+end_operator
+begin_operator
+down f58 f4
+0
+1
+0 0 54 34
+1
+end_operator
+begin_operator
+down f58 f40
+0
+1
+0 0 54 35
+1
+end_operator
+begin_operator
+down f58 f41
+0
+1
+0 0 54 36
+1
+end_operator
+begin_operator
+down f58 f42
+0
+1
+0 0 54 37
+1
+end_operator
+begin_operator
+down f58 f43
+0
+1
+0 0 54 38
+1
+end_operator
+begin_operator
+down f58 f44
+0
+1
+0 0 54 39
+1
+end_operator
+begin_operator
+down f58 f45
+0
+1
+0 0 54 40
+1
+end_operator
+begin_operator
+down f58 f46
+0
+1
+0 0 54 41
+1
+end_operator
+begin_operator
+down f58 f47
+0
+1
+0 0 54 42
+1
+end_operator
+begin_operator
+down f58 f48
+0
+1
+0 0 54 43
+1
+end_operator
+begin_operator
+down f58 f49
+0
+1
+0 0 54 44
+1
+end_operator
+begin_operator
+down f58 f5
+0
+1
+0 0 54 45
+1
+end_operator
+begin_operator
+down f58 f50
+0
+1
+0 0 54 46
+1
+end_operator
+begin_operator
+down f58 f51
+0
+1
+0 0 54 47
+1
+end_operator
+begin_operator
+down f58 f52
+0
+1
+0 0 54 48
+1
+end_operator
+begin_operator
+down f58 f53
+0
+1
+0 0 54 49
+1
+end_operator
+begin_operator
+down f58 f54
+0
+1
+0 0 54 50
+1
+end_operator
+begin_operator
+down f58 f55
+0
+1
+0 0 54 51
+1
+end_operator
+begin_operator
+down f58 f56
+0
+1
+0 0 54 52
+1
+end_operator
+begin_operator
+down f58 f57
+0
+1
+0 0 54 53
+1
+end_operator
+begin_operator
+down f58 f6
+0
+1
+0 0 54 56
+1
+end_operator
+begin_operator
+down f58 f7
+0
+1
+0 0 54 67
+1
+end_operator
+begin_operator
+down f58 f8
+0
+1
+0 0 54 78
+1
+end_operator
+begin_operator
+down f58 f9
+0
+1
+0 0 54 89
+1
+end_operator
+begin_operator
+down f59 f1
+0
+1
+0 0 55 0
+1
+end_operator
+begin_operator
+down f59 f10
+0
+1
+0 0 55 1
+1
+end_operator
+begin_operator
+down f59 f11
+0
+1
+0 0 55 3
+1
+end_operator
+begin_operator
+down f59 f12
+0
+1
+0 0 55 4
+1
+end_operator
+begin_operator
+down f59 f13
+0
+1
+0 0 55 5
+1
+end_operator
+begin_operator
+down f59 f14
+0
+1
+0 0 55 6
+1
+end_operator
+begin_operator
+down f59 f15
+0
+1
+0 0 55 7
+1
+end_operator
+begin_operator
+down f59 f16
+0
+1
+0 0 55 8
+1
+end_operator
+begin_operator
+down f59 f17
+0
+1
+0 0 55 9
+1
+end_operator
+begin_operator
+down f59 f18
+0
+1
+0 0 55 10
+1
+end_operator
+begin_operator
+down f59 f19
+0
+1
+0 0 55 11
+1
+end_operator
+begin_operator
+down f59 f2
+0
+1
+0 0 55 12
+1
+end_operator
+begin_operator
+down f59 f20
+0
+1
+0 0 55 13
+1
+end_operator
+begin_operator
+down f59 f21
+0
+1
+0 0 55 14
+1
+end_operator
+begin_operator
+down f59 f22
+0
+1
+0 0 55 15
+1
+end_operator
+begin_operator
+down f59 f23
+0
+1
+0 0 55 16
+1
+end_operator
+begin_operator
+down f59 f24
+0
+1
+0 0 55 17
+1
+end_operator
+begin_operator
+down f59 f25
+0
+1
+0 0 55 18
+1
+end_operator
+begin_operator
+down f59 f26
+0
+1
+0 0 55 19
+1
+end_operator
+begin_operator
+down f59 f27
+0
+1
+0 0 55 20
+1
+end_operator
+begin_operator
+down f59 f28
+0
+1
+0 0 55 21
+1
+end_operator
+begin_operator
+down f59 f29
+0
+1
+0 0 55 22
+1
+end_operator
+begin_operator
+down f59 f3
+0
+1
+0 0 55 23
+1
+end_operator
+begin_operator
+down f59 f30
+0
+1
+0 0 55 24
+1
+end_operator
+begin_operator
+down f59 f31
+0
+1
+0 0 55 25
+1
+end_operator
+begin_operator
+down f59 f32
+0
+1
+0 0 55 26
+1
+end_operator
+begin_operator
+down f59 f33
+0
+1
+0 0 55 27
+1
+end_operator
+begin_operator
+down f59 f34
+0
+1
+0 0 55 28
+1
+end_operator
+begin_operator
+down f59 f35
+0
+1
+0 0 55 29
+1
+end_operator
+begin_operator
+down f59 f36
+0
+1
+0 0 55 30
+1
+end_operator
+begin_operator
+down f59 f37
+0
+1
+0 0 55 31
+1
+end_operator
+begin_operator
+down f59 f38
+0
+1
+0 0 55 32
+1
+end_operator
+begin_operator
+down f59 f39
+0
+1
+0 0 55 33
+1
+end_operator
+begin_operator
+down f59 f4
+0
+1
+0 0 55 34
+1
+end_operator
+begin_operator
+down f59 f40
+0
+1
+0 0 55 35
+1
+end_operator
+begin_operator
+down f59 f41
+0
+1
+0 0 55 36
+1
+end_operator
+begin_operator
+down f59 f42
+0
+1
+0 0 55 37
+1
+end_operator
+begin_operator
+down f59 f43
+0
+1
+0 0 55 38
+1
+end_operator
+begin_operator
+down f59 f44
+0
+1
+0 0 55 39
+1
+end_operator
+begin_operator
+down f59 f45
+0
+1
+0 0 55 40
+1
+end_operator
+begin_operator
+down f59 f46
+0
+1
+0 0 55 41
+1
+end_operator
+begin_operator
+down f59 f47
+0
+1
+0 0 55 42
+1
+end_operator
+begin_operator
+down f59 f48
+0
+1
+0 0 55 43
+1
+end_operator
+begin_operator
+down f59 f49
+0
+1
+0 0 55 44
+1
+end_operator
+begin_operator
+down f59 f5
+0
+1
+0 0 55 45
+1
+end_operator
+begin_operator
+down f59 f50
+0
+1
+0 0 55 46
+1
+end_operator
+begin_operator
+down f59 f51
+0
+1
+0 0 55 47
+1
+end_operator
+begin_operator
+down f59 f52
+0
+1
+0 0 55 48
+1
+end_operator
+begin_operator
+down f59 f53
+0
+1
+0 0 55 49
+1
+end_operator
+begin_operator
+down f59 f54
+0
+1
+0 0 55 50
+1
+end_operator
+begin_operator
+down f59 f55
+0
+1
+0 0 55 51
+1
+end_operator
+begin_operator
+down f59 f56
+0
+1
+0 0 55 52
+1
+end_operator
+begin_operator
+down f59 f57
+0
+1
+0 0 55 53
+1
+end_operator
+begin_operator
+down f59 f58
+0
+1
+0 0 55 54
+1
+end_operator
+begin_operator
+down f59 f6
+0
+1
+0 0 55 56
+1
+end_operator
+begin_operator
+down f59 f7
+0
+1
+0 0 55 67
+1
+end_operator
+begin_operator
+down f59 f8
+0
+1
+0 0 55 78
+1
+end_operator
+begin_operator
+down f59 f9
+0
+1
+0 0 55 89
+1
+end_operator
+begin_operator
+down f6 f1
+0
+1
+0 0 56 0
+1
+end_operator
+begin_operator
+down f6 f2
+0
+1
+0 0 56 12
+1
+end_operator
+begin_operator
+down f6 f3
+0
+1
+0 0 56 23
+1
+end_operator
+begin_operator
+down f6 f4
+0
+1
+0 0 56 34
+1
+end_operator
+begin_operator
+down f6 f5
+0
+1
+0 0 56 45
+1
+end_operator
+begin_operator
+down f60 f1
+0
+1
+0 0 57 0
+1
+end_operator
+begin_operator
+down f60 f10
+0
+1
+0 0 57 1
+1
+end_operator
+begin_operator
+down f60 f11
+0
+1
+0 0 57 3
+1
+end_operator
+begin_operator
+down f60 f12
+0
+1
+0 0 57 4
+1
+end_operator
+begin_operator
+down f60 f13
+0
+1
+0 0 57 5
+1
+end_operator
+begin_operator
+down f60 f14
+0
+1
+0 0 57 6
+1
+end_operator
+begin_operator
+down f60 f15
+0
+1
+0 0 57 7
+1
+end_operator
+begin_operator
+down f60 f16
+0
+1
+0 0 57 8
+1
+end_operator
+begin_operator
+down f60 f17
+0
+1
+0 0 57 9
+1
+end_operator
+begin_operator
+down f60 f18
+0
+1
+0 0 57 10
+1
+end_operator
+begin_operator
+down f60 f19
+0
+1
+0 0 57 11
+1
+end_operator
+begin_operator
+down f60 f2
+0
+1
+0 0 57 12
+1
+end_operator
+begin_operator
+down f60 f20
+0
+1
+0 0 57 13
+1
+end_operator
+begin_operator
+down f60 f21
+0
+1
+0 0 57 14
+1
+end_operator
+begin_operator
+down f60 f22
+0
+1
+0 0 57 15
+1
+end_operator
+begin_operator
+down f60 f23
+0
+1
+0 0 57 16
+1
+end_operator
+begin_operator
+down f60 f24
+0
+1
+0 0 57 17
+1
+end_operator
+begin_operator
+down f60 f25
+0
+1
+0 0 57 18
+1
+end_operator
+begin_operator
+down f60 f26
+0
+1
+0 0 57 19
+1
+end_operator
+begin_operator
+down f60 f27
+0
+1
+0 0 57 20
+1
+end_operator
+begin_operator
+down f60 f28
+0
+1
+0 0 57 21
+1
+end_operator
+begin_operator
+down f60 f29
+0
+1
+0 0 57 22
+1
+end_operator
+begin_operator
+down f60 f3
+0
+1
+0 0 57 23
+1
+end_operator
+begin_operator
+down f60 f30
+0
+1
+0 0 57 24
+1
+end_operator
+begin_operator
+down f60 f31
+0
+1
+0 0 57 25
+1
+end_operator
+begin_operator
+down f60 f32
+0
+1
+0 0 57 26
+1
+end_operator
+begin_operator
+down f60 f33
+0
+1
+0 0 57 27
+1
+end_operator
+begin_operator
+down f60 f34
+0
+1
+0 0 57 28
+1
+end_operator
+begin_operator
+down f60 f35
+0
+1
+0 0 57 29
+1
+end_operator
+begin_operator
+down f60 f36
+0
+1
+0 0 57 30
+1
+end_operator
+begin_operator
+down f60 f37
+0
+1
+0 0 57 31
+1
+end_operator
+begin_operator
+down f60 f38
+0
+1
+0 0 57 32
+1
+end_operator
+begin_operator
+down f60 f39
+0
+1
+0 0 57 33
+1
+end_operator
+begin_operator
+down f60 f4
+0
+1
+0 0 57 34
+1
+end_operator
+begin_operator
+down f60 f40
+0
+1
+0 0 57 35
+1
+end_operator
+begin_operator
+down f60 f41
+0
+1
+0 0 57 36
+1
+end_operator
+begin_operator
+down f60 f42
+0
+1
+0 0 57 37
+1
+end_operator
+begin_operator
+down f60 f43
+0
+1
+0 0 57 38
+1
+end_operator
+begin_operator
+down f60 f44
+0
+1
+0 0 57 39
+1
+end_operator
+begin_operator
+down f60 f45
+0
+1
+0 0 57 40
+1
+end_operator
+begin_operator
+down f60 f46
+0
+1
+0 0 57 41
+1
+end_operator
+begin_operator
+down f60 f47
+0
+1
+0 0 57 42
+1
+end_operator
+begin_operator
+down f60 f48
+0
+1
+0 0 57 43
+1
+end_operator
+begin_operator
+down f60 f49
+0
+1
+0 0 57 44
+1
+end_operator
+begin_operator
+down f60 f5
+0
+1
+0 0 57 45
+1
+end_operator
+begin_operator
+down f60 f50
+0
+1
+0 0 57 46
+1
+end_operator
+begin_operator
+down f60 f51
+0
+1
+0 0 57 47
+1
+end_operator
+begin_operator
+down f60 f52
+0
+1
+0 0 57 48
+1
+end_operator
+begin_operator
+down f60 f53
+0
+1
+0 0 57 49
+1
+end_operator
+begin_operator
+down f60 f54
+0
+1
+0 0 57 50
+1
+end_operator
+begin_operator
+down f60 f55
+0
+1
+0 0 57 51
+1
+end_operator
+begin_operator
+down f60 f56
+0
+1
+0 0 57 52
+1
+end_operator
+begin_operator
+down f60 f57
+0
+1
+0 0 57 53
+1
+end_operator
+begin_operator
+down f60 f58
+0
+1
+0 0 57 54
+1
+end_operator
+begin_operator
+down f60 f59
+0
+1
+0 0 57 55
+1
+end_operator
+begin_operator
+down f60 f6
+0
+1
+0 0 57 56
+1
+end_operator
+begin_operator
+down f60 f7
+0
+1
+0 0 57 67
+1
+end_operator
+begin_operator
+down f60 f8
+0
+1
+0 0 57 78
+1
+end_operator
+begin_operator
+down f60 f9
+0
+1
+0 0 57 89
+1
+end_operator
+begin_operator
+down f61 f1
+0
+1
+0 0 58 0
+1
+end_operator
+begin_operator
+down f61 f10
+0
+1
+0 0 58 1
+1
+end_operator
+begin_operator
+down f61 f11
+0
+1
+0 0 58 3
+1
+end_operator
+begin_operator
+down f61 f12
+0
+1
+0 0 58 4
+1
+end_operator
+begin_operator
+down f61 f13
+0
+1
+0 0 58 5
+1
+end_operator
+begin_operator
+down f61 f14
+0
+1
+0 0 58 6
+1
+end_operator
+begin_operator
+down f61 f15
+0
+1
+0 0 58 7
+1
+end_operator
+begin_operator
+down f61 f16
+0
+1
+0 0 58 8
+1
+end_operator
+begin_operator
+down f61 f17
+0
+1
+0 0 58 9
+1
+end_operator
+begin_operator
+down f61 f18
+0
+1
+0 0 58 10
+1
+end_operator
+begin_operator
+down f61 f19
+0
+1
+0 0 58 11
+1
+end_operator
+begin_operator
+down f61 f2
+0
+1
+0 0 58 12
+1
+end_operator
+begin_operator
+down f61 f20
+0
+1
+0 0 58 13
+1
+end_operator
+begin_operator
+down f61 f21
+0
+1
+0 0 58 14
+1
+end_operator
+begin_operator
+down f61 f22
+0
+1
+0 0 58 15
+1
+end_operator
+begin_operator
+down f61 f23
+0
+1
+0 0 58 16
+1
+end_operator
+begin_operator
+down f61 f24
+0
+1
+0 0 58 17
+1
+end_operator
+begin_operator
+down f61 f25
+0
+1
+0 0 58 18
+1
+end_operator
+begin_operator
+down f61 f26
+0
+1
+0 0 58 19
+1
+end_operator
+begin_operator
+down f61 f27
+0
+1
+0 0 58 20
+1
+end_operator
+begin_operator
+down f61 f28
+0
+1
+0 0 58 21
+1
+end_operator
+begin_operator
+down f61 f29
+0
+1
+0 0 58 22
+1
+end_operator
+begin_operator
+down f61 f3
+0
+1
+0 0 58 23
+1
+end_operator
+begin_operator
+down f61 f30
+0
+1
+0 0 58 24
+1
+end_operator
+begin_operator
+down f61 f31
+0
+1
+0 0 58 25
+1
+end_operator
+begin_operator
+down f61 f32
+0
+1
+0 0 58 26
+1
+end_operator
+begin_operator
+down f61 f33
+0
+1
+0 0 58 27
+1
+end_operator
+begin_operator
+down f61 f34
+0
+1
+0 0 58 28
+1
+end_operator
+begin_operator
+down f61 f35
+0
+1
+0 0 58 29
+1
+end_operator
+begin_operator
+down f61 f36
+0
+1
+0 0 58 30
+1
+end_operator
+begin_operator
+down f61 f37
+0
+1
+0 0 58 31
+1
+end_operator
+begin_operator
+down f61 f38
+0
+1
+0 0 58 32
+1
+end_operator
+begin_operator
+down f61 f39
+0
+1
+0 0 58 33
+1
+end_operator
+begin_operator
+down f61 f4
+0
+1
+0 0 58 34
+1
+end_operator
+begin_operator
+down f61 f40
+0
+1
+0 0 58 35
+1
+end_operator
+begin_operator
+down f61 f41
+0
+1
+0 0 58 36
+1
+end_operator
+begin_operator
+down f61 f42
+0
+1
+0 0 58 37
+1
+end_operator
+begin_operator
+down f61 f43
+0
+1
+0 0 58 38
+1
+end_operator
+begin_operator
+down f61 f44
+0
+1
+0 0 58 39
+1
+end_operator
+begin_operator
+down f61 f45
+0
+1
+0 0 58 40
+1
+end_operator
+begin_operator
+down f61 f46
+0
+1
+0 0 58 41
+1
+end_operator
+begin_operator
+down f61 f47
+0
+1
+0 0 58 42
+1
+end_operator
+begin_operator
+down f61 f48
+0
+1
+0 0 58 43
+1
+end_operator
+begin_operator
+down f61 f49
+0
+1
+0 0 58 44
+1
+end_operator
+begin_operator
+down f61 f5
+0
+1
+0 0 58 45
+1
+end_operator
+begin_operator
+down f61 f50
+0
+1
+0 0 58 46
+1
+end_operator
+begin_operator
+down f61 f51
+0
+1
+0 0 58 47
+1
+end_operator
+begin_operator
+down f61 f52
+0
+1
+0 0 58 48
+1
+end_operator
+begin_operator
+down f61 f53
+0
+1
+0 0 58 49
+1
+end_operator
+begin_operator
+down f61 f54
+0
+1
+0 0 58 50
+1
+end_operator
+begin_operator
+down f61 f55
+0
+1
+0 0 58 51
+1
+end_operator
+begin_operator
+down f61 f56
+0
+1
+0 0 58 52
+1
+end_operator
+begin_operator
+down f61 f57
+0
+1
+0 0 58 53
+1
+end_operator
+begin_operator
+down f61 f58
+0
+1
+0 0 58 54
+1
+end_operator
+begin_operator
+down f61 f59
+0
+1
+0 0 58 55
+1
+end_operator
+begin_operator
+down f61 f6
+0
+1
+0 0 58 56
+1
+end_operator
+begin_operator
+down f61 f60
+0
+1
+0 0 58 57
+1
+end_operator
+begin_operator
+down f61 f7
+0
+1
+0 0 58 67
+1
+end_operator
+begin_operator
+down f61 f8
+0
+1
+0 0 58 78
+1
+end_operator
+begin_operator
+down f61 f9
+0
+1
+0 0 58 89
+1
+end_operator
+begin_operator
+down f62 f1
+0
+1
+0 0 59 0
+1
+end_operator
+begin_operator
+down f62 f10
+0
+1
+0 0 59 1
+1
+end_operator
+begin_operator
+down f62 f11
+0
+1
+0 0 59 3
+1
+end_operator
+begin_operator
+down f62 f12
+0
+1
+0 0 59 4
+1
+end_operator
+begin_operator
+down f62 f13
+0
+1
+0 0 59 5
+1
+end_operator
+begin_operator
+down f62 f14
+0
+1
+0 0 59 6
+1
+end_operator
+begin_operator
+down f62 f15
+0
+1
+0 0 59 7
+1
+end_operator
+begin_operator
+down f62 f16
+0
+1
+0 0 59 8
+1
+end_operator
+begin_operator
+down f62 f17
+0
+1
+0 0 59 9
+1
+end_operator
+begin_operator
+down f62 f18
+0
+1
+0 0 59 10
+1
+end_operator
+begin_operator
+down f62 f19
+0
+1
+0 0 59 11
+1
+end_operator
+begin_operator
+down f62 f2
+0
+1
+0 0 59 12
+1
+end_operator
+begin_operator
+down f62 f20
+0
+1
+0 0 59 13
+1
+end_operator
+begin_operator
+down f62 f21
+0
+1
+0 0 59 14
+1
+end_operator
+begin_operator
+down f62 f22
+0
+1
+0 0 59 15
+1
+end_operator
+begin_operator
+down f62 f23
+0
+1
+0 0 59 16
+1
+end_operator
+begin_operator
+down f62 f24
+0
+1
+0 0 59 17
+1
+end_operator
+begin_operator
+down f62 f25
+0
+1
+0 0 59 18
+1
+end_operator
+begin_operator
+down f62 f26
+0
+1
+0 0 59 19
+1
+end_operator
+begin_operator
+down f62 f27
+0
+1
+0 0 59 20
+1
+end_operator
+begin_operator
+down f62 f28
+0
+1
+0 0 59 21
+1
+end_operator
+begin_operator
+down f62 f29
+0
+1
+0 0 59 22
+1
+end_operator
+begin_operator
+down f62 f3
+0
+1
+0 0 59 23
+1
+end_operator
+begin_operator
+down f62 f30
+0
+1
+0 0 59 24
+1
+end_operator
+begin_operator
+down f62 f31
+0
+1
+0 0 59 25
+1
+end_operator
+begin_operator
+down f62 f32
+0
+1
+0 0 59 26
+1
+end_operator
+begin_operator
+down f62 f33
+0
+1
+0 0 59 27
+1
+end_operator
+begin_operator
+down f62 f34
+0
+1
+0 0 59 28
+1
+end_operator
+begin_operator
+down f62 f35
+0
+1
+0 0 59 29
+1
+end_operator
+begin_operator
+down f62 f36
+0
+1
+0 0 59 30
+1
+end_operator
+begin_operator
+down f62 f37
+0
+1
+0 0 59 31
+1
+end_operator
+begin_operator
+down f62 f38
+0
+1
+0 0 59 32
+1
+end_operator
+begin_operator
+down f62 f39
+0
+1
+0 0 59 33
+1
+end_operator
+begin_operator
+down f62 f4
+0
+1
+0 0 59 34
+1
+end_operator
+begin_operator
+down f62 f40
+0
+1
+0 0 59 35
+1
+end_operator
+begin_operator
+down f62 f41
+0
+1
+0 0 59 36
+1
+end_operator
+begin_operator
+down f62 f42
+0
+1
+0 0 59 37
+1
+end_operator
+begin_operator
+down f62 f43
+0
+1
+0 0 59 38
+1
+end_operator
+begin_operator
+down f62 f44
+0
+1
+0 0 59 39
+1
+end_operator
+begin_operator
+down f62 f45
+0
+1
+0 0 59 40
+1
+end_operator
+begin_operator
+down f62 f46
+0
+1
+0 0 59 41
+1
+end_operator
+begin_operator
+down f62 f47
+0
+1
+0 0 59 42
+1
+end_operator
+begin_operator
+down f62 f48
+0
+1
+0 0 59 43
+1
+end_operator
+begin_operator
+down f62 f49
+0
+1
+0 0 59 44
+1
+end_operator
+begin_operator
+down f62 f5
+0
+1
+0 0 59 45
+1
+end_operator
+begin_operator
+down f62 f50
+0
+1
+0 0 59 46
+1
+end_operator
+begin_operator
+down f62 f51
+0
+1
+0 0 59 47
+1
+end_operator
+begin_operator
+down f62 f52
+0
+1
+0 0 59 48
+1
+end_operator
+begin_operator
+down f62 f53
+0
+1
+0 0 59 49
+1
+end_operator
+begin_operator
+down f62 f54
+0
+1
+0 0 59 50
+1
+end_operator
+begin_operator
+down f62 f55
+0
+1
+0 0 59 51
+1
+end_operator
+begin_operator
+down f62 f56
+0
+1
+0 0 59 52
+1
+end_operator
+begin_operator
+down f62 f57
+0
+1
+0 0 59 53
+1
+end_operator
+begin_operator
+down f62 f58
+0
+1
+0 0 59 54
+1
+end_operator
+begin_operator
+down f62 f59
+0
+1
+0 0 59 55
+1
+end_operator
+begin_operator
+down f62 f6
+0
+1
+0 0 59 56
+1
+end_operator
+begin_operator
+down f62 f60
+0
+1
+0 0 59 57
+1
+end_operator
+begin_operator
+down f62 f61
+0
+1
+0 0 59 58
+1
+end_operator
+begin_operator
+down f62 f7
+0
+1
+0 0 59 67
+1
+end_operator
+begin_operator
+down f62 f8
+0
+1
+0 0 59 78
+1
+end_operator
+begin_operator
+down f62 f9
+0
+1
+0 0 59 89
+1
+end_operator
+begin_operator
+down f63 f1
+0
+1
+0 0 60 0
+1
+end_operator
+begin_operator
+down f63 f10
+0
+1
+0 0 60 1
+1
+end_operator
+begin_operator
+down f63 f11
+0
+1
+0 0 60 3
+1
+end_operator
+begin_operator
+down f63 f12
+0
+1
+0 0 60 4
+1
+end_operator
+begin_operator
+down f63 f13
+0
+1
+0 0 60 5
+1
+end_operator
+begin_operator
+down f63 f14
+0
+1
+0 0 60 6
+1
+end_operator
+begin_operator
+down f63 f15
+0
+1
+0 0 60 7
+1
+end_operator
+begin_operator
+down f63 f16
+0
+1
+0 0 60 8
+1
+end_operator
+begin_operator
+down f63 f17
+0
+1
+0 0 60 9
+1
+end_operator
+begin_operator
+down f63 f18
+0
+1
+0 0 60 10
+1
+end_operator
+begin_operator
+down f63 f19
+0
+1
+0 0 60 11
+1
+end_operator
+begin_operator
+down f63 f2
+0
+1
+0 0 60 12
+1
+end_operator
+begin_operator
+down f63 f20
+0
+1
+0 0 60 13
+1
+end_operator
+begin_operator
+down f63 f21
+0
+1
+0 0 60 14
+1
+end_operator
+begin_operator
+down f63 f22
+0
+1
+0 0 60 15
+1
+end_operator
+begin_operator
+down f63 f23
+0
+1
+0 0 60 16
+1
+end_operator
+begin_operator
+down f63 f24
+0
+1
+0 0 60 17
+1
+end_operator
+begin_operator
+down f63 f25
+0
+1
+0 0 60 18
+1
+end_operator
+begin_operator
+down f63 f26
+0
+1
+0 0 60 19
+1
+end_operator
+begin_operator
+down f63 f27
+0
+1
+0 0 60 20
+1
+end_operator
+begin_operator
+down f63 f28
+0
+1
+0 0 60 21
+1
+end_operator
+begin_operator
+down f63 f29
+0
+1
+0 0 60 22
+1
+end_operator
+begin_operator
+down f63 f3
+0
+1
+0 0 60 23
+1
+end_operator
+begin_operator
+down f63 f30
+0
+1
+0 0 60 24
+1
+end_operator
+begin_operator
+down f63 f31
+0
+1
+0 0 60 25
+1
+end_operator
+begin_operator
+down f63 f32
+0
+1
+0 0 60 26
+1
+end_operator
+begin_operator
+down f63 f33
+0
+1
+0 0 60 27
+1
+end_operator
+begin_operator
+down f63 f34
+0
+1
+0 0 60 28
+1
+end_operator
+begin_operator
+down f63 f35
+0
+1
+0 0 60 29
+1
+end_operator
+begin_operator
+down f63 f36
+0
+1
+0 0 60 30
+1
+end_operator
+begin_operator
+down f63 f37
+0
+1
+0 0 60 31
+1
+end_operator
+begin_operator
+down f63 f38
+0
+1
+0 0 60 32
+1
+end_operator
+begin_operator
+down f63 f39
+0
+1
+0 0 60 33
+1
+end_operator
+begin_operator
+down f63 f4
+0
+1
+0 0 60 34
+1
+end_operator
+begin_operator
+down f63 f40
+0
+1
+0 0 60 35
+1
+end_operator
+begin_operator
+down f63 f41
+0
+1
+0 0 60 36
+1
+end_operator
+begin_operator
+down f63 f42
+0
+1
+0 0 60 37
+1
+end_operator
+begin_operator
+down f63 f43
+0
+1
+0 0 60 38
+1
+end_operator
+begin_operator
+down f63 f44
+0
+1
+0 0 60 39
+1
+end_operator
+begin_operator
+down f63 f45
+0
+1
+0 0 60 40
+1
+end_operator
+begin_operator
+down f63 f46
+0
+1
+0 0 60 41
+1
+end_operator
+begin_operator
+down f63 f47
+0
+1
+0 0 60 42
+1
+end_operator
+begin_operator
+down f63 f48
+0
+1
+0 0 60 43
+1
+end_operator
+begin_operator
+down f63 f49
+0
+1
+0 0 60 44
+1
+end_operator
+begin_operator
+down f63 f5
+0
+1
+0 0 60 45
+1
+end_operator
+begin_operator
+down f63 f50
+0
+1
+0 0 60 46
+1
+end_operator
+begin_operator
+down f63 f51
+0
+1
+0 0 60 47
+1
+end_operator
+begin_operator
+down f63 f52
+0
+1
+0 0 60 48
+1
+end_operator
+begin_operator
+down f63 f53
+0
+1
+0 0 60 49
+1
+end_operator
+begin_operator
+down f63 f54
+0
+1
+0 0 60 50
+1
+end_operator
+begin_operator
+down f63 f55
+0
+1
+0 0 60 51
+1
+end_operator
+begin_operator
+down f63 f56
+0
+1
+0 0 60 52
+1
+end_operator
+begin_operator
+down f63 f57
+0
+1
+0 0 60 53
+1
+end_operator
+begin_operator
+down f63 f58
+0
+1
+0 0 60 54
+1
+end_operator
+begin_operator
+down f63 f59
+0
+1
+0 0 60 55
+1
+end_operator
+begin_operator
+down f63 f6
+0
+1
+0 0 60 56
+1
+end_operator
+begin_operator
+down f63 f60
+0
+1
+0 0 60 57
+1
+end_operator
+begin_operator
+down f63 f61
+0
+1
+0 0 60 58
+1
+end_operator
+begin_operator
+down f63 f62
+0
+1
+0 0 60 59
+1
+end_operator
+begin_operator
+down f63 f7
+0
+1
+0 0 60 67
+1
+end_operator
+begin_operator
+down f63 f8
+0
+1
+0 0 60 78
+1
+end_operator
+begin_operator
+down f63 f9
+0
+1
+0 0 60 89
+1
+end_operator
+begin_operator
+down f64 f1
+0
+1
+0 0 61 0
+1
+end_operator
+begin_operator
+down f64 f10
+0
+1
+0 0 61 1
+1
+end_operator
+begin_operator
+down f64 f11
+0
+1
+0 0 61 3
+1
+end_operator
+begin_operator
+down f64 f12
+0
+1
+0 0 61 4
+1
+end_operator
+begin_operator
+down f64 f13
+0
+1
+0 0 61 5
+1
+end_operator
+begin_operator
+down f64 f14
+0
+1
+0 0 61 6
+1
+end_operator
+begin_operator
+down f64 f15
+0
+1
+0 0 61 7
+1
+end_operator
+begin_operator
+down f64 f16
+0
+1
+0 0 61 8
+1
+end_operator
+begin_operator
+down f64 f17
+0
+1
+0 0 61 9
+1
+end_operator
+begin_operator
+down f64 f18
+0
+1
+0 0 61 10
+1
+end_operator
+begin_operator
+down f64 f19
+0
+1
+0 0 61 11
+1
+end_operator
+begin_operator
+down f64 f2
+0
+1
+0 0 61 12
+1
+end_operator
+begin_operator
+down f64 f20
+0
+1
+0 0 61 13
+1
+end_operator
+begin_operator
+down f64 f21
+0
+1
+0 0 61 14
+1
+end_operator
+begin_operator
+down f64 f22
+0
+1
+0 0 61 15
+1
+end_operator
+begin_operator
+down f64 f23
+0
+1
+0 0 61 16
+1
+end_operator
+begin_operator
+down f64 f24
+0
+1
+0 0 61 17
+1
+end_operator
+begin_operator
+down f64 f25
+0
+1
+0 0 61 18
+1
+end_operator
+begin_operator
+down f64 f26
+0
+1
+0 0 61 19
+1
+end_operator
+begin_operator
+down f64 f27
+0
+1
+0 0 61 20
+1
+end_operator
+begin_operator
+down f64 f28
+0
+1
+0 0 61 21
+1
+end_operator
+begin_operator
+down f64 f29
+0
+1
+0 0 61 22
+1
+end_operator
+begin_operator
+down f64 f3
+0
+1
+0 0 61 23
+1
+end_operator
+begin_operator
+down f64 f30
+0
+1
+0 0 61 24
+1
+end_operator
+begin_operator
+down f64 f31
+0
+1
+0 0 61 25
+1
+end_operator
+begin_operator
+down f64 f32
+0
+1
+0 0 61 26
+1
+end_operator
+begin_operator
+down f64 f33
+0
+1
+0 0 61 27
+1
+end_operator
+begin_operator
+down f64 f34
+0
+1
+0 0 61 28
+1
+end_operator
+begin_operator
+down f64 f35
+0
+1
+0 0 61 29
+1
+end_operator
+begin_operator
+down f64 f36
+0
+1
+0 0 61 30
+1
+end_operator
+begin_operator
+down f64 f37
+0
+1
+0 0 61 31
+1
+end_operator
+begin_operator
+down f64 f38
+0
+1
+0 0 61 32
+1
+end_operator
+begin_operator
+down f64 f39
+0
+1
+0 0 61 33
+1
+end_operator
+begin_operator
+down f64 f4
+0
+1
+0 0 61 34
+1
+end_operator
+begin_operator
+down f64 f40
+0
+1
+0 0 61 35
+1
+end_operator
+begin_operator
+down f64 f41
+0
+1
+0 0 61 36
+1
+end_operator
+begin_operator
+down f64 f42
+0
+1
+0 0 61 37
+1
+end_operator
+begin_operator
+down f64 f43
+0
+1
+0 0 61 38
+1
+end_operator
+begin_operator
+down f64 f44
+0
+1
+0 0 61 39
+1
+end_operator
+begin_operator
+down f64 f45
+0
+1
+0 0 61 40
+1
+end_operator
+begin_operator
+down f64 f46
+0
+1
+0 0 61 41
+1
+end_operator
+begin_operator
+down f64 f47
+0
+1
+0 0 61 42
+1
+end_operator
+begin_operator
+down f64 f48
+0
+1
+0 0 61 43
+1
+end_operator
+begin_operator
+down f64 f49
+0
+1
+0 0 61 44
+1
+end_operator
+begin_operator
+down f64 f5
+0
+1
+0 0 61 45
+1
+end_operator
+begin_operator
+down f64 f50
+0
+1
+0 0 61 46
+1
+end_operator
+begin_operator
+down f64 f51
+0
+1
+0 0 61 47
+1
+end_operator
+begin_operator
+down f64 f52
+0
+1
+0 0 61 48
+1
+end_operator
+begin_operator
+down f64 f53
+0
+1
+0 0 61 49
+1
+end_operator
+begin_operator
+down f64 f54
+0
+1
+0 0 61 50
+1
+end_operator
+begin_operator
+down f64 f55
+0
+1
+0 0 61 51
+1
+end_operator
+begin_operator
+down f64 f56
+0
+1
+0 0 61 52
+1
+end_operator
+begin_operator
+down f64 f57
+0
+1
+0 0 61 53
+1
+end_operator
+begin_operator
+down f64 f58
+0
+1
+0 0 61 54
+1
+end_operator
+begin_operator
+down f64 f59
+0
+1
+0 0 61 55
+1
+end_operator
+begin_operator
+down f64 f6
+0
+1
+0 0 61 56
+1
+end_operator
+begin_operator
+down f64 f60
+0
+1
+0 0 61 57
+1
+end_operator
+begin_operator
+down f64 f61
+0
+1
+0 0 61 58
+1
+end_operator
+begin_operator
+down f64 f62
+0
+1
+0 0 61 59
+1
+end_operator
+begin_operator
+down f64 f63
+0
+1
+0 0 61 60
+1
+end_operator
+begin_operator
+down f64 f7
+0
+1
+0 0 61 67
+1
+end_operator
+begin_operator
+down f64 f8
+0
+1
+0 0 61 78
+1
+end_operator
+begin_operator
+down f64 f9
+0
+1
+0 0 61 89
+1
+end_operator
+begin_operator
+down f65 f1
+0
+1
+0 0 62 0
+1
+end_operator
+begin_operator
+down f65 f10
+0
+1
+0 0 62 1
+1
+end_operator
+begin_operator
+down f65 f11
+0
+1
+0 0 62 3
+1
+end_operator
+begin_operator
+down f65 f12
+0
+1
+0 0 62 4
+1
+end_operator
+begin_operator
+down f65 f13
+0
+1
+0 0 62 5
+1
+end_operator
+begin_operator
+down f65 f14
+0
+1
+0 0 62 6
+1
+end_operator
+begin_operator
+down f65 f15
+0
+1
+0 0 62 7
+1
+end_operator
+begin_operator
+down f65 f16
+0
+1
+0 0 62 8
+1
+end_operator
+begin_operator
+down f65 f17
+0
+1
+0 0 62 9
+1
+end_operator
+begin_operator
+down f65 f18
+0
+1
+0 0 62 10
+1
+end_operator
+begin_operator
+down f65 f19
+0
+1
+0 0 62 11
+1
+end_operator
+begin_operator
+down f65 f2
+0
+1
+0 0 62 12
+1
+end_operator
+begin_operator
+down f65 f20
+0
+1
+0 0 62 13
+1
+end_operator
+begin_operator
+down f65 f21
+0
+1
+0 0 62 14
+1
+end_operator
+begin_operator
+down f65 f22
+0
+1
+0 0 62 15
+1
+end_operator
+begin_operator
+down f65 f23
+0
+1
+0 0 62 16
+1
+end_operator
+begin_operator
+down f65 f24
+0
+1
+0 0 62 17
+1
+end_operator
+begin_operator
+down f65 f25
+0
+1
+0 0 62 18
+1
+end_operator
+begin_operator
+down f65 f26
+0
+1
+0 0 62 19
+1
+end_operator
+begin_operator
+down f65 f27
+0
+1
+0 0 62 20
+1
+end_operator
+begin_operator
+down f65 f28
+0
+1
+0 0 62 21
+1
+end_operator
+begin_operator
+down f65 f29
+0
+1
+0 0 62 22
+1
+end_operator
+begin_operator
+down f65 f3
+0
+1
+0 0 62 23
+1
+end_operator
+begin_operator
+down f65 f30
+0
+1
+0 0 62 24
+1
+end_operator
+begin_operator
+down f65 f31
+0
+1
+0 0 62 25
+1
+end_operator
+begin_operator
+down f65 f32
+0
+1
+0 0 62 26
+1
+end_operator
+begin_operator
+down f65 f33
+0
+1
+0 0 62 27
+1
+end_operator
+begin_operator
+down f65 f34
+0
+1
+0 0 62 28
+1
+end_operator
+begin_operator
+down f65 f35
+0
+1
+0 0 62 29
+1
+end_operator
+begin_operator
+down f65 f36
+0
+1
+0 0 62 30
+1
+end_operator
+begin_operator
+down f65 f37
+0
+1
+0 0 62 31
+1
+end_operator
+begin_operator
+down f65 f38
+0
+1
+0 0 62 32
+1
+end_operator
+begin_operator
+down f65 f39
+0
+1
+0 0 62 33
+1
+end_operator
+begin_operator
+down f65 f4
+0
+1
+0 0 62 34
+1
+end_operator
+begin_operator
+down f65 f40
+0
+1
+0 0 62 35
+1
+end_operator
+begin_operator
+down f65 f41
+0
+1
+0 0 62 36
+1
+end_operator
+begin_operator
+down f65 f42
+0
+1
+0 0 62 37
+1
+end_operator
+begin_operator
+down f65 f43
+0
+1
+0 0 62 38
+1
+end_operator
+begin_operator
+down f65 f44
+0
+1
+0 0 62 39
+1
+end_operator
+begin_operator
+down f65 f45
+0
+1
+0 0 62 40
+1
+end_operator
+begin_operator
+down f65 f46
+0
+1
+0 0 62 41
+1
+end_operator
+begin_operator
+down f65 f47
+0
+1
+0 0 62 42
+1
+end_operator
+begin_operator
+down f65 f48
+0
+1
+0 0 62 43
+1
+end_operator
+begin_operator
+down f65 f49
+0
+1
+0 0 62 44
+1
+end_operator
+begin_operator
+down f65 f5
+0
+1
+0 0 62 45
+1
+end_operator
+begin_operator
+down f65 f50
+0
+1
+0 0 62 46
+1
+end_operator
+begin_operator
+down f65 f51
+0
+1
+0 0 62 47
+1
+end_operator
+begin_operator
+down f65 f52
+0
+1
+0 0 62 48
+1
+end_operator
+begin_operator
+down f65 f53
+0
+1
+0 0 62 49
+1
+end_operator
+begin_operator
+down f65 f54
+0
+1
+0 0 62 50
+1
+end_operator
+begin_operator
+down f65 f55
+0
+1
+0 0 62 51
+1
+end_operator
+begin_operator
+down f65 f56
+0
+1
+0 0 62 52
+1
+end_operator
+begin_operator
+down f65 f57
+0
+1
+0 0 62 53
+1
+end_operator
+begin_operator
+down f65 f58
+0
+1
+0 0 62 54
+1
+end_operator
+begin_operator
+down f65 f59
+0
+1
+0 0 62 55
+1
+end_operator
+begin_operator
+down f65 f6
+0
+1
+0 0 62 56
+1
+end_operator
+begin_operator
+down f65 f60
+0
+1
+0 0 62 57
+1
+end_operator
+begin_operator
+down f65 f61
+0
+1
+0 0 62 58
+1
+end_operator
+begin_operator
+down f65 f62
+0
+1
+0 0 62 59
+1
+end_operator
+begin_operator
+down f65 f63
+0
+1
+0 0 62 60
+1
+end_operator
+begin_operator
+down f65 f64
+0
+1
+0 0 62 61
+1
+end_operator
+begin_operator
+down f65 f7
+0
+1
+0 0 62 67
+1
+end_operator
+begin_operator
+down f65 f8
+0
+1
+0 0 62 78
+1
+end_operator
+begin_operator
+down f65 f9
+0
+1
+0 0 62 89
+1
+end_operator
+begin_operator
+down f66 f1
+0
+1
+0 0 63 0
+1
+end_operator
+begin_operator
+down f66 f10
+0
+1
+0 0 63 1
+1
+end_operator
+begin_operator
+down f66 f11
+0
+1
+0 0 63 3
+1
+end_operator
+begin_operator
+down f66 f12
+0
+1
+0 0 63 4
+1
+end_operator
+begin_operator
+down f66 f13
+0
+1
+0 0 63 5
+1
+end_operator
+begin_operator
+down f66 f14
+0
+1
+0 0 63 6
+1
+end_operator
+begin_operator
+down f66 f15
+0
+1
+0 0 63 7
+1
+end_operator
+begin_operator
+down f66 f16
+0
+1
+0 0 63 8
+1
+end_operator
+begin_operator
+down f66 f17
+0
+1
+0 0 63 9
+1
+end_operator
+begin_operator
+down f66 f18
+0
+1
+0 0 63 10
+1
+end_operator
+begin_operator
+down f66 f19
+0
+1
+0 0 63 11
+1
+end_operator
+begin_operator
+down f66 f2
+0
+1
+0 0 63 12
+1
+end_operator
+begin_operator
+down f66 f20
+0
+1
+0 0 63 13
+1
+end_operator
+begin_operator
+down f66 f21
+0
+1
+0 0 63 14
+1
+end_operator
+begin_operator
+down f66 f22
+0
+1
+0 0 63 15
+1
+end_operator
+begin_operator
+down f66 f23
+0
+1
+0 0 63 16
+1
+end_operator
+begin_operator
+down f66 f24
+0
+1
+0 0 63 17
+1
+end_operator
+begin_operator
+down f66 f25
+0
+1
+0 0 63 18
+1
+end_operator
+begin_operator
+down f66 f26
+0
+1
+0 0 63 19
+1
+end_operator
+begin_operator
+down f66 f27
+0
+1
+0 0 63 20
+1
+end_operator
+begin_operator
+down f66 f28
+0
+1
+0 0 63 21
+1
+end_operator
+begin_operator
+down f66 f29
+0
+1
+0 0 63 22
+1
+end_operator
+begin_operator
+down f66 f3
+0
+1
+0 0 63 23
+1
+end_operator
+begin_operator
+down f66 f30
+0
+1
+0 0 63 24
+1
+end_operator
+begin_operator
+down f66 f31
+0
+1
+0 0 63 25
+1
+end_operator
+begin_operator
+down f66 f32
+0
+1
+0 0 63 26
+1
+end_operator
+begin_operator
+down f66 f33
+0
+1
+0 0 63 27
+1
+end_operator
+begin_operator
+down f66 f34
+0
+1
+0 0 63 28
+1
+end_operator
+begin_operator
+down f66 f35
+0
+1
+0 0 63 29
+1
+end_operator
+begin_operator
+down f66 f36
+0
+1
+0 0 63 30
+1
+end_operator
+begin_operator
+down f66 f37
+0
+1
+0 0 63 31
+1
+end_operator
+begin_operator
+down f66 f38
+0
+1
+0 0 63 32
+1
+end_operator
+begin_operator
+down f66 f39
+0
+1
+0 0 63 33
+1
+end_operator
+begin_operator
+down f66 f4
+0
+1
+0 0 63 34
+1
+end_operator
+begin_operator
+down f66 f40
+0
+1
+0 0 63 35
+1
+end_operator
+begin_operator
+down f66 f41
+0
+1
+0 0 63 36
+1
+end_operator
+begin_operator
+down f66 f42
+0
+1
+0 0 63 37
+1
+end_operator
+begin_operator
+down f66 f43
+0
+1
+0 0 63 38
+1
+end_operator
+begin_operator
+down f66 f44
+0
+1
+0 0 63 39
+1
+end_operator
+begin_operator
+down f66 f45
+0
+1
+0 0 63 40
+1
+end_operator
+begin_operator
+down f66 f46
+0
+1
+0 0 63 41
+1
+end_operator
+begin_operator
+down f66 f47
+0
+1
+0 0 63 42
+1
+end_operator
+begin_operator
+down f66 f48
+0
+1
+0 0 63 43
+1
+end_operator
+begin_operator
+down f66 f49
+0
+1
+0 0 63 44
+1
+end_operator
+begin_operator
+down f66 f5
+0
+1
+0 0 63 45
+1
+end_operator
+begin_operator
+down f66 f50
+0
+1
+0 0 63 46
+1
+end_operator
+begin_operator
+down f66 f51
+0
+1
+0 0 63 47
+1
+end_operator
+begin_operator
+down f66 f52
+0
+1
+0 0 63 48
+1
+end_operator
+begin_operator
+down f66 f53
+0
+1
+0 0 63 49
+1
+end_operator
+begin_operator
+down f66 f54
+0
+1
+0 0 63 50
+1
+end_operator
+begin_operator
+down f66 f55
+0
+1
+0 0 63 51
+1
+end_operator
+begin_operator
+down f66 f56
+0
+1
+0 0 63 52
+1
+end_operator
+begin_operator
+down f66 f57
+0
+1
+0 0 63 53
+1
+end_operator
+begin_operator
+down f66 f58
+0
+1
+0 0 63 54
+1
+end_operator
+begin_operator
+down f66 f59
+0
+1
+0 0 63 55
+1
+end_operator
+begin_operator
+down f66 f6
+0
+1
+0 0 63 56
+1
+end_operator
+begin_operator
+down f66 f60
+0
+1
+0 0 63 57
+1
+end_operator
+begin_operator
+down f66 f61
+0
+1
+0 0 63 58
+1
+end_operator
+begin_operator
+down f66 f62
+0
+1
+0 0 63 59
+1
+end_operator
+begin_operator
+down f66 f63
+0
+1
+0 0 63 60
+1
+end_operator
+begin_operator
+down f66 f64
+0
+1
+0 0 63 61
+1
+end_operator
+begin_operator
+down f66 f65
+0
+1
+0 0 63 62
+1
+end_operator
+begin_operator
+down f66 f7
+0
+1
+0 0 63 67
+1
+end_operator
+begin_operator
+down f66 f8
+0
+1
+0 0 63 78
+1
+end_operator
+begin_operator
+down f66 f9
+0
+1
+0 0 63 89
+1
+end_operator
+begin_operator
+down f67 f1
+0
+1
+0 0 64 0
+1
+end_operator
+begin_operator
+down f67 f10
+0
+1
+0 0 64 1
+1
+end_operator
+begin_operator
+down f67 f11
+0
+1
+0 0 64 3
+1
+end_operator
+begin_operator
+down f67 f12
+0
+1
+0 0 64 4
+1
+end_operator
+begin_operator
+down f67 f13
+0
+1
+0 0 64 5
+1
+end_operator
+begin_operator
+down f67 f14
+0
+1
+0 0 64 6
+1
+end_operator
+begin_operator
+down f67 f15
+0
+1
+0 0 64 7
+1
+end_operator
+begin_operator
+down f67 f16
+0
+1
+0 0 64 8
+1
+end_operator
+begin_operator
+down f67 f17
+0
+1
+0 0 64 9
+1
+end_operator
+begin_operator
+down f67 f18
+0
+1
+0 0 64 10
+1
+end_operator
+begin_operator
+down f67 f19
+0
+1
+0 0 64 11
+1
+end_operator
+begin_operator
+down f67 f2
+0
+1
+0 0 64 12
+1
+end_operator
+begin_operator
+down f67 f20
+0
+1
+0 0 64 13
+1
+end_operator
+begin_operator
+down f67 f21
+0
+1
+0 0 64 14
+1
+end_operator
+begin_operator
+down f67 f22
+0
+1
+0 0 64 15
+1
+end_operator
+begin_operator
+down f67 f23
+0
+1
+0 0 64 16
+1
+end_operator
+begin_operator
+down f67 f24
+0
+1
+0 0 64 17
+1
+end_operator
+begin_operator
+down f67 f25
+0
+1
+0 0 64 18
+1
+end_operator
+begin_operator
+down f67 f26
+0
+1
+0 0 64 19
+1
+end_operator
+begin_operator
+down f67 f27
+0
+1
+0 0 64 20
+1
+end_operator
+begin_operator
+down f67 f28
+0
+1
+0 0 64 21
+1
+end_operator
+begin_operator
+down f67 f29
+0
+1
+0 0 64 22
+1
+end_operator
+begin_operator
+down f67 f3
+0
+1
+0 0 64 23
+1
+end_operator
+begin_operator
+down f67 f30
+0
+1
+0 0 64 24
+1
+end_operator
+begin_operator
+down f67 f31
+0
+1
+0 0 64 25
+1
+end_operator
+begin_operator
+down f67 f32
+0
+1
+0 0 64 26
+1
+end_operator
+begin_operator
+down f67 f33
+0
+1
+0 0 64 27
+1
+end_operator
+begin_operator
+down f67 f34
+0
+1
+0 0 64 28
+1
+end_operator
+begin_operator
+down f67 f35
+0
+1
+0 0 64 29
+1
+end_operator
+begin_operator
+down f67 f36
+0
+1
+0 0 64 30
+1
+end_operator
+begin_operator
+down f67 f37
+0
+1
+0 0 64 31
+1
+end_operator
+begin_operator
+down f67 f38
+0
+1
+0 0 64 32
+1
+end_operator
+begin_operator
+down f67 f39
+0
+1
+0 0 64 33
+1
+end_operator
+begin_operator
+down f67 f4
+0
+1
+0 0 64 34
+1
+end_operator
+begin_operator
+down f67 f40
+0
+1
+0 0 64 35
+1
+end_operator
+begin_operator
+down f67 f41
+0
+1
+0 0 64 36
+1
+end_operator
+begin_operator
+down f67 f42
+0
+1
+0 0 64 37
+1
+end_operator
+begin_operator
+down f67 f43
+0
+1
+0 0 64 38
+1
+end_operator
+begin_operator
+down f67 f44
+0
+1
+0 0 64 39
+1
+end_operator
+begin_operator
+down f67 f45
+0
+1
+0 0 64 40
+1
+end_operator
+begin_operator
+down f67 f46
+0
+1
+0 0 64 41
+1
+end_operator
+begin_operator
+down f67 f47
+0
+1
+0 0 64 42
+1
+end_operator
+begin_operator
+down f67 f48
+0
+1
+0 0 64 43
+1
+end_operator
+begin_operator
+down f67 f49
+0
+1
+0 0 64 44
+1
+end_operator
+begin_operator
+down f67 f5
+0
+1
+0 0 64 45
+1
+end_operator
+begin_operator
+down f67 f50
+0
+1
+0 0 64 46
+1
+end_operator
+begin_operator
+down f67 f51
+0
+1
+0 0 64 47
+1
+end_operator
+begin_operator
+down f67 f52
+0
+1
+0 0 64 48
+1
+end_operator
+begin_operator
+down f67 f53
+0
+1
+0 0 64 49
+1
+end_operator
+begin_operator
+down f67 f54
+0
+1
+0 0 64 50
+1
+end_operator
+begin_operator
+down f67 f55
+0
+1
+0 0 64 51
+1
+end_operator
+begin_operator
+down f67 f56
+0
+1
+0 0 64 52
+1
+end_operator
+begin_operator
+down f67 f57
+0
+1
+0 0 64 53
+1
+end_operator
+begin_operator
+down f67 f58
+0
+1
+0 0 64 54
+1
+end_operator
+begin_operator
+down f67 f59
+0
+1
+0 0 64 55
+1
+end_operator
+begin_operator
+down f67 f6
+0
+1
+0 0 64 56
+1
+end_operator
+begin_operator
+down f67 f60
+0
+1
+0 0 64 57
+1
+end_operator
+begin_operator
+down f67 f61
+0
+1
+0 0 64 58
+1
+end_operator
+begin_operator
+down f67 f62
+0
+1
+0 0 64 59
+1
+end_operator
+begin_operator
+down f67 f63
+0
+1
+0 0 64 60
+1
+end_operator
+begin_operator
+down f67 f64
+0
+1
+0 0 64 61
+1
+end_operator
+begin_operator
+down f67 f65
+0
+1
+0 0 64 62
+1
+end_operator
+begin_operator
+down f67 f66
+0
+1
+0 0 64 63
+1
+end_operator
+begin_operator
+down f67 f7
+0
+1
+0 0 64 67
+1
+end_operator
+begin_operator
+down f67 f8
+0
+1
+0 0 64 78
+1
+end_operator
+begin_operator
+down f67 f9
+0
+1
+0 0 64 89
+1
+end_operator
+begin_operator
+down f68 f1
+0
+1
+0 0 65 0
+1
+end_operator
+begin_operator
+down f68 f10
+0
+1
+0 0 65 1
+1
+end_operator
+begin_operator
+down f68 f11
+0
+1
+0 0 65 3
+1
+end_operator
+begin_operator
+down f68 f12
+0
+1
+0 0 65 4
+1
+end_operator
+begin_operator
+down f68 f13
+0
+1
+0 0 65 5
+1
+end_operator
+begin_operator
+down f68 f14
+0
+1
+0 0 65 6
+1
+end_operator
+begin_operator
+down f68 f15
+0
+1
+0 0 65 7
+1
+end_operator
+begin_operator
+down f68 f16
+0
+1
+0 0 65 8
+1
+end_operator
+begin_operator
+down f68 f17
+0
+1
+0 0 65 9
+1
+end_operator
+begin_operator
+down f68 f18
+0
+1
+0 0 65 10
+1
+end_operator
+begin_operator
+down f68 f19
+0
+1
+0 0 65 11
+1
+end_operator
+begin_operator
+down f68 f2
+0
+1
+0 0 65 12
+1
+end_operator
+begin_operator
+down f68 f20
+0
+1
+0 0 65 13
+1
+end_operator
+begin_operator
+down f68 f21
+0
+1
+0 0 65 14
+1
+end_operator
+begin_operator
+down f68 f22
+0
+1
+0 0 65 15
+1
+end_operator
+begin_operator
+down f68 f23
+0
+1
+0 0 65 16
+1
+end_operator
+begin_operator
+down f68 f24
+0
+1
+0 0 65 17
+1
+end_operator
+begin_operator
+down f68 f25
+0
+1
+0 0 65 18
+1
+end_operator
+begin_operator
+down f68 f26
+0
+1
+0 0 65 19
+1
+end_operator
+begin_operator
+down f68 f27
+0
+1
+0 0 65 20
+1
+end_operator
+begin_operator
+down f68 f28
+0
+1
+0 0 65 21
+1
+end_operator
+begin_operator
+down f68 f29
+0
+1
+0 0 65 22
+1
+end_operator
+begin_operator
+down f68 f3
+0
+1
+0 0 65 23
+1
+end_operator
+begin_operator
+down f68 f30
+0
+1
+0 0 65 24
+1
+end_operator
+begin_operator
+down f68 f31
+0
+1
+0 0 65 25
+1
+end_operator
+begin_operator
+down f68 f32
+0
+1
+0 0 65 26
+1
+end_operator
+begin_operator
+down f68 f33
+0
+1
+0 0 65 27
+1
+end_operator
+begin_operator
+down f68 f34
+0
+1
+0 0 65 28
+1
+end_operator
+begin_operator
+down f68 f35
+0
+1
+0 0 65 29
+1
+end_operator
+begin_operator
+down f68 f36
+0
+1
+0 0 65 30
+1
+end_operator
+begin_operator
+down f68 f37
+0
+1
+0 0 65 31
+1
+end_operator
+begin_operator
+down f68 f38
+0
+1
+0 0 65 32
+1
+end_operator
+begin_operator
+down f68 f39
+0
+1
+0 0 65 33
+1
+end_operator
+begin_operator
+down f68 f4
+0
+1
+0 0 65 34
+1
+end_operator
+begin_operator
+down f68 f40
+0
+1
+0 0 65 35
+1
+end_operator
+begin_operator
+down f68 f41
+0
+1
+0 0 65 36
+1
+end_operator
+begin_operator
+down f68 f42
+0
+1
+0 0 65 37
+1
+end_operator
+begin_operator
+down f68 f43
+0
+1
+0 0 65 38
+1
+end_operator
+begin_operator
+down f68 f44
+0
+1
+0 0 65 39
+1
+end_operator
+begin_operator
+down f68 f45
+0
+1
+0 0 65 40
+1
+end_operator
+begin_operator
+down f68 f46
+0
+1
+0 0 65 41
+1
+end_operator
+begin_operator
+down f68 f47
+0
+1
+0 0 65 42
+1
+end_operator
+begin_operator
+down f68 f48
+0
+1
+0 0 65 43
+1
+end_operator
+begin_operator
+down f68 f49
+0
+1
+0 0 65 44
+1
+end_operator
+begin_operator
+down f68 f5
+0
+1
+0 0 65 45
+1
+end_operator
+begin_operator
+down f68 f50
+0
+1
+0 0 65 46
+1
+end_operator
+begin_operator
+down f68 f51
+0
+1
+0 0 65 47
+1
+end_operator
+begin_operator
+down f68 f52
+0
+1
+0 0 65 48
+1
+end_operator
+begin_operator
+down f68 f53
+0
+1
+0 0 65 49
+1
+end_operator
+begin_operator
+down f68 f54
+0
+1
+0 0 65 50
+1
+end_operator
+begin_operator
+down f68 f55
+0
+1
+0 0 65 51
+1
+end_operator
+begin_operator
+down f68 f56
+0
+1
+0 0 65 52
+1
+end_operator
+begin_operator
+down f68 f57
+0
+1
+0 0 65 53
+1
+end_operator
+begin_operator
+down f68 f58
+0
+1
+0 0 65 54
+1
+end_operator
+begin_operator
+down f68 f59
+0
+1
+0 0 65 55
+1
+end_operator
+begin_operator
+down f68 f6
+0
+1
+0 0 65 56
+1
+end_operator
+begin_operator
+down f68 f60
+0
+1
+0 0 65 57
+1
+end_operator
+begin_operator
+down f68 f61
+0
+1
+0 0 65 58
+1
+end_operator
+begin_operator
+down f68 f62
+0
+1
+0 0 65 59
+1
+end_operator
+begin_operator
+down f68 f63
+0
+1
+0 0 65 60
+1
+end_operator
+begin_operator
+down f68 f64
+0
+1
+0 0 65 61
+1
+end_operator
+begin_operator
+down f68 f65
+0
+1
+0 0 65 62
+1
+end_operator
+begin_operator
+down f68 f66
+0
+1
+0 0 65 63
+1
+end_operator
+begin_operator
+down f68 f67
+0
+1
+0 0 65 64
+1
+end_operator
+begin_operator
+down f68 f7
+0
+1
+0 0 65 67
+1
+end_operator
+begin_operator
+down f68 f8
+0
+1
+0 0 65 78
+1
+end_operator
+begin_operator
+down f68 f9
+0
+1
+0 0 65 89
+1
+end_operator
+begin_operator
+down f69 f1
+0
+1
+0 0 66 0
+1
+end_operator
+begin_operator
+down f69 f10
+0
+1
+0 0 66 1
+1
+end_operator
+begin_operator
+down f69 f11
+0
+1
+0 0 66 3
+1
+end_operator
+begin_operator
+down f69 f12
+0
+1
+0 0 66 4
+1
+end_operator
+begin_operator
+down f69 f13
+0
+1
+0 0 66 5
+1
+end_operator
+begin_operator
+down f69 f14
+0
+1
+0 0 66 6
+1
+end_operator
+begin_operator
+down f69 f15
+0
+1
+0 0 66 7
+1
+end_operator
+begin_operator
+down f69 f16
+0
+1
+0 0 66 8
+1
+end_operator
+begin_operator
+down f69 f17
+0
+1
+0 0 66 9
+1
+end_operator
+begin_operator
+down f69 f18
+0
+1
+0 0 66 10
+1
+end_operator
+begin_operator
+down f69 f19
+0
+1
+0 0 66 11
+1
+end_operator
+begin_operator
+down f69 f2
+0
+1
+0 0 66 12
+1
+end_operator
+begin_operator
+down f69 f20
+0
+1
+0 0 66 13
+1
+end_operator
+begin_operator
+down f69 f21
+0
+1
+0 0 66 14
+1
+end_operator
+begin_operator
+down f69 f22
+0
+1
+0 0 66 15
+1
+end_operator
+begin_operator
+down f69 f23
+0
+1
+0 0 66 16
+1
+end_operator
+begin_operator
+down f69 f24
+0
+1
+0 0 66 17
+1
+end_operator
+begin_operator
+down f69 f25
+0
+1
+0 0 66 18
+1
+end_operator
+begin_operator
+down f69 f26
+0
+1
+0 0 66 19
+1
+end_operator
+begin_operator
+down f69 f27
+0
+1
+0 0 66 20
+1
+end_operator
+begin_operator
+down f69 f28
+0
+1
+0 0 66 21
+1
+end_operator
+begin_operator
+down f69 f29
+0
+1
+0 0 66 22
+1
+end_operator
+begin_operator
+down f69 f3
+0
+1
+0 0 66 23
+1
+end_operator
+begin_operator
+down f69 f30
+0
+1
+0 0 66 24
+1
+end_operator
+begin_operator
+down f69 f31
+0
+1
+0 0 66 25
+1
+end_operator
+begin_operator
+down f69 f32
+0
+1
+0 0 66 26
+1
+end_operator
+begin_operator
+down f69 f33
+0
+1
+0 0 66 27
+1
+end_operator
+begin_operator
+down f69 f34
+0
+1
+0 0 66 28
+1
+end_operator
+begin_operator
+down f69 f35
+0
+1
+0 0 66 29
+1
+end_operator
+begin_operator
+down f69 f36
+0
+1
+0 0 66 30
+1
+end_operator
+begin_operator
+down f69 f37
+0
+1
+0 0 66 31
+1
+end_operator
+begin_operator
+down f69 f38
+0
+1
+0 0 66 32
+1
+end_operator
+begin_operator
+down f69 f39
+0
+1
+0 0 66 33
+1
+end_operator
+begin_operator
+down f69 f4
+0
+1
+0 0 66 34
+1
+end_operator
+begin_operator
+down f69 f40
+0
+1
+0 0 66 35
+1
+end_operator
+begin_operator
+down f69 f41
+0
+1
+0 0 66 36
+1
+end_operator
+begin_operator
+down f69 f42
+0
+1
+0 0 66 37
+1
+end_operator
+begin_operator
+down f69 f43
+0
+1
+0 0 66 38
+1
+end_operator
+begin_operator
+down f69 f44
+0
+1
+0 0 66 39
+1
+end_operator
+begin_operator
+down f69 f45
+0
+1
+0 0 66 40
+1
+end_operator
+begin_operator
+down f69 f46
+0
+1
+0 0 66 41
+1
+end_operator
+begin_operator
+down f69 f47
+0
+1
+0 0 66 42
+1
+end_operator
+begin_operator
+down f69 f48
+0
+1
+0 0 66 43
+1
+end_operator
+begin_operator
+down f69 f49
+0
+1
+0 0 66 44
+1
+end_operator
+begin_operator
+down f69 f5
+0
+1
+0 0 66 45
+1
+end_operator
+begin_operator
+down f69 f50
+0
+1
+0 0 66 46
+1
+end_operator
+begin_operator
+down f69 f51
+0
+1
+0 0 66 47
+1
+end_operator
+begin_operator
+down f69 f52
+0
+1
+0 0 66 48
+1
+end_operator
+begin_operator
+down f69 f53
+0
+1
+0 0 66 49
+1
+end_operator
+begin_operator
+down f69 f54
+0
+1
+0 0 66 50
+1
+end_operator
+begin_operator
+down f69 f55
+0
+1
+0 0 66 51
+1
+end_operator
+begin_operator
+down f69 f56
+0
+1
+0 0 66 52
+1
+end_operator
+begin_operator
+down f69 f57
+0
+1
+0 0 66 53
+1
+end_operator
+begin_operator
+down f69 f58
+0
+1
+0 0 66 54
+1
+end_operator
+begin_operator
+down f69 f59
+0
+1
+0 0 66 55
+1
+end_operator
+begin_operator
+down f69 f6
+0
+1
+0 0 66 56
+1
+end_operator
+begin_operator
+down f69 f60
+0
+1
+0 0 66 57
+1
+end_operator
+begin_operator
+down f69 f61
+0
+1
+0 0 66 58
+1
+end_operator
+begin_operator
+down f69 f62
+0
+1
+0 0 66 59
+1
+end_operator
+begin_operator
+down f69 f63
+0
+1
+0 0 66 60
+1
+end_operator
+begin_operator
+down f69 f64
+0
+1
+0 0 66 61
+1
+end_operator
+begin_operator
+down f69 f65
+0
+1
+0 0 66 62
+1
+end_operator
+begin_operator
+down f69 f66
+0
+1
+0 0 66 63
+1
+end_operator
+begin_operator
+down f69 f67
+0
+1
+0 0 66 64
+1
+end_operator
+begin_operator
+down f69 f68
+0
+1
+0 0 66 65
+1
+end_operator
+begin_operator
+down f69 f7
+0
+1
+0 0 66 67
+1
+end_operator
+begin_operator
+down f69 f8
+0
+1
+0 0 66 78
+1
+end_operator
+begin_operator
+down f69 f9
+0
+1
+0 0 66 89
+1
+end_operator
+begin_operator
+down f7 f1
+0
+1
+0 0 67 0
+1
+end_operator
+begin_operator
+down f7 f2
+0
+1
+0 0 67 12
+1
+end_operator
+begin_operator
+down f7 f3
+0
+1
+0 0 67 23
+1
+end_operator
+begin_operator
+down f7 f4
+0
+1
+0 0 67 34
+1
+end_operator
+begin_operator
+down f7 f5
+0
+1
+0 0 67 45
+1
+end_operator
+begin_operator
+down f7 f6
+0
+1
+0 0 67 56
+1
+end_operator
+begin_operator
+down f70 f1
+0
+1
+0 0 68 0
+1
+end_operator
+begin_operator
+down f70 f10
+0
+1
+0 0 68 1
+1
+end_operator
+begin_operator
+down f70 f11
+0
+1
+0 0 68 3
+1
+end_operator
+begin_operator
+down f70 f12
+0
+1
+0 0 68 4
+1
+end_operator
+begin_operator
+down f70 f13
+0
+1
+0 0 68 5
+1
+end_operator
+begin_operator
+down f70 f14
+0
+1
+0 0 68 6
+1
+end_operator
+begin_operator
+down f70 f15
+0
+1
+0 0 68 7
+1
+end_operator
+begin_operator
+down f70 f16
+0
+1
+0 0 68 8
+1
+end_operator
+begin_operator
+down f70 f17
+0
+1
+0 0 68 9
+1
+end_operator
+begin_operator
+down f70 f18
+0
+1
+0 0 68 10
+1
+end_operator
+begin_operator
+down f70 f19
+0
+1
+0 0 68 11
+1
+end_operator
+begin_operator
+down f70 f2
+0
+1
+0 0 68 12
+1
+end_operator
+begin_operator
+down f70 f20
+0
+1
+0 0 68 13
+1
+end_operator
+begin_operator
+down f70 f21
+0
+1
+0 0 68 14
+1
+end_operator
+begin_operator
+down f70 f22
+0
+1
+0 0 68 15
+1
+end_operator
+begin_operator
+down f70 f23
+0
+1
+0 0 68 16
+1
+end_operator
+begin_operator
+down f70 f24
+0
+1
+0 0 68 17
+1
+end_operator
+begin_operator
+down f70 f25
+0
+1
+0 0 68 18
+1
+end_operator
+begin_operator
+down f70 f26
+0
+1
+0 0 68 19
+1
+end_operator
+begin_operator
+down f70 f27
+0
+1
+0 0 68 20
+1
+end_operator
+begin_operator
+down f70 f28
+0
+1
+0 0 68 21
+1
+end_operator
+begin_operator
+down f70 f29
+0
+1
+0 0 68 22
+1
+end_operator
+begin_operator
+down f70 f3
+0
+1
+0 0 68 23
+1
+end_operator
+begin_operator
+down f70 f30
+0
+1
+0 0 68 24
+1
+end_operator
+begin_operator
+down f70 f31
+0
+1
+0 0 68 25
+1
+end_operator
+begin_operator
+down f70 f32
+0
+1
+0 0 68 26
+1
+end_operator
+begin_operator
+down f70 f33
+0
+1
+0 0 68 27
+1
+end_operator
+begin_operator
+down f70 f34
+0
+1
+0 0 68 28
+1
+end_operator
+begin_operator
+down f70 f35
+0
+1
+0 0 68 29
+1
+end_operator
+begin_operator
+down f70 f36
+0
+1
+0 0 68 30
+1
+end_operator
+begin_operator
+down f70 f37
+0
+1
+0 0 68 31
+1
+end_operator
+begin_operator
+down f70 f38
+0
+1
+0 0 68 32
+1
+end_operator
+begin_operator
+down f70 f39
+0
+1
+0 0 68 33
+1
+end_operator
+begin_operator
+down f70 f4
+0
+1
+0 0 68 34
+1
+end_operator
+begin_operator
+down f70 f40
+0
+1
+0 0 68 35
+1
+end_operator
+begin_operator
+down f70 f41
+0
+1
+0 0 68 36
+1
+end_operator
+begin_operator
+down f70 f42
+0
+1
+0 0 68 37
+1
+end_operator
+begin_operator
+down f70 f43
+0
+1
+0 0 68 38
+1
+end_operator
+begin_operator
+down f70 f44
+0
+1
+0 0 68 39
+1
+end_operator
+begin_operator
+down f70 f45
+0
+1
+0 0 68 40
+1
+end_operator
+begin_operator
+down f70 f46
+0
+1
+0 0 68 41
+1
+end_operator
+begin_operator
+down f70 f47
+0
+1
+0 0 68 42
+1
+end_operator
+begin_operator
+down f70 f48
+0
+1
+0 0 68 43
+1
+end_operator
+begin_operator
+down f70 f49
+0
+1
+0 0 68 44
+1
+end_operator
+begin_operator
+down f70 f5
+0
+1
+0 0 68 45
+1
+end_operator
+begin_operator
+down f70 f50
+0
+1
+0 0 68 46
+1
+end_operator
+begin_operator
+down f70 f51
+0
+1
+0 0 68 47
+1
+end_operator
+begin_operator
+down f70 f52
+0
+1
+0 0 68 48
+1
+end_operator
+begin_operator
+down f70 f53
+0
+1
+0 0 68 49
+1
+end_operator
+begin_operator
+down f70 f54
+0
+1
+0 0 68 50
+1
+end_operator
+begin_operator
+down f70 f55
+0
+1
+0 0 68 51
+1
+end_operator
+begin_operator
+down f70 f56
+0
+1
+0 0 68 52
+1
+end_operator
+begin_operator
+down f70 f57
+0
+1
+0 0 68 53
+1
+end_operator
+begin_operator
+down f70 f58
+0
+1
+0 0 68 54
+1
+end_operator
+begin_operator
+down f70 f59
+0
+1
+0 0 68 55
+1
+end_operator
+begin_operator
+down f70 f6
+0
+1
+0 0 68 56
+1
+end_operator
+begin_operator
+down f70 f60
+0
+1
+0 0 68 57
+1
+end_operator
+begin_operator
+down f70 f61
+0
+1
+0 0 68 58
+1
+end_operator
+begin_operator
+down f70 f62
+0
+1
+0 0 68 59
+1
+end_operator
+begin_operator
+down f70 f63
+0
+1
+0 0 68 60
+1
+end_operator
+begin_operator
+down f70 f64
+0
+1
+0 0 68 61
+1
+end_operator
+begin_operator
+down f70 f65
+0
+1
+0 0 68 62
+1
+end_operator
+begin_operator
+down f70 f66
+0
+1
+0 0 68 63
+1
+end_operator
+begin_operator
+down f70 f67
+0
+1
+0 0 68 64
+1
+end_operator
+begin_operator
+down f70 f68
+0
+1
+0 0 68 65
+1
+end_operator
+begin_operator
+down f70 f69
+0
+1
+0 0 68 66
+1
+end_operator
+begin_operator
+down f70 f7
+0
+1
+0 0 68 67
+1
+end_operator
+begin_operator
+down f70 f8
+0
+1
+0 0 68 78
+1
+end_operator
+begin_operator
+down f70 f9
+0
+1
+0 0 68 89
+1
+end_operator
+begin_operator
+down f71 f1
+0
+1
+0 0 69 0
+1
+end_operator
+begin_operator
+down f71 f10
+0
+1
+0 0 69 1
+1
+end_operator
+begin_operator
+down f71 f11
+0
+1
+0 0 69 3
+1
+end_operator
+begin_operator
+down f71 f12
+0
+1
+0 0 69 4
+1
+end_operator
+begin_operator
+down f71 f13
+0
+1
+0 0 69 5
+1
+end_operator
+begin_operator
+down f71 f14
+0
+1
+0 0 69 6
+1
+end_operator
+begin_operator
+down f71 f15
+0
+1
+0 0 69 7
+1
+end_operator
+begin_operator
+down f71 f16
+0
+1
+0 0 69 8
+1
+end_operator
+begin_operator
+down f71 f17
+0
+1
+0 0 69 9
+1
+end_operator
+begin_operator
+down f71 f18
+0
+1
+0 0 69 10
+1
+end_operator
+begin_operator
+down f71 f19
+0
+1
+0 0 69 11
+1
+end_operator
+begin_operator
+down f71 f2
+0
+1
+0 0 69 12
+1
+end_operator
+begin_operator
+down f71 f20
+0
+1
+0 0 69 13
+1
+end_operator
+begin_operator
+down f71 f21
+0
+1
+0 0 69 14
+1
+end_operator
+begin_operator
+down f71 f22
+0
+1
+0 0 69 15
+1
+end_operator
+begin_operator
+down f71 f23
+0
+1
+0 0 69 16
+1
+end_operator
+begin_operator
+down f71 f24
+0
+1
+0 0 69 17
+1
+end_operator
+begin_operator
+down f71 f25
+0
+1
+0 0 69 18
+1
+end_operator
+begin_operator
+down f71 f26
+0
+1
+0 0 69 19
+1
+end_operator
+begin_operator
+down f71 f27
+0
+1
+0 0 69 20
+1
+end_operator
+begin_operator
+down f71 f28
+0
+1
+0 0 69 21
+1
+end_operator
+begin_operator
+down f71 f29
+0
+1
+0 0 69 22
+1
+end_operator
+begin_operator
+down f71 f3
+0
+1
+0 0 69 23
+1
+end_operator
+begin_operator
+down f71 f30
+0
+1
+0 0 69 24
+1
+end_operator
+begin_operator
+down f71 f31
+0
+1
+0 0 69 25
+1
+end_operator
+begin_operator
+down f71 f32
+0
+1
+0 0 69 26
+1
+end_operator
+begin_operator
+down f71 f33
+0
+1
+0 0 69 27
+1
+end_operator
+begin_operator
+down f71 f34
+0
+1
+0 0 69 28
+1
+end_operator
+begin_operator
+down f71 f35
+0
+1
+0 0 69 29
+1
+end_operator
+begin_operator
+down f71 f36
+0
+1
+0 0 69 30
+1
+end_operator
+begin_operator
+down f71 f37
+0
+1
+0 0 69 31
+1
+end_operator
+begin_operator
+down f71 f38
+0
+1
+0 0 69 32
+1
+end_operator
+begin_operator
+down f71 f39
+0
+1
+0 0 69 33
+1
+end_operator
+begin_operator
+down f71 f4
+0
+1
+0 0 69 34
+1
+end_operator
+begin_operator
+down f71 f40
+0
+1
+0 0 69 35
+1
+end_operator
+begin_operator
+down f71 f41
+0
+1
+0 0 69 36
+1
+end_operator
+begin_operator
+down f71 f42
+0
+1
+0 0 69 37
+1
+end_operator
+begin_operator
+down f71 f43
+0
+1
+0 0 69 38
+1
+end_operator
+begin_operator
+down f71 f44
+0
+1
+0 0 69 39
+1
+end_operator
+begin_operator
+down f71 f45
+0
+1
+0 0 69 40
+1
+end_operator
+begin_operator
+down f71 f46
+0
+1
+0 0 69 41
+1
+end_operator
+begin_operator
+down f71 f47
+0
+1
+0 0 69 42
+1
+end_operator
+begin_operator
+down f71 f48
+0
+1
+0 0 69 43
+1
+end_operator
+begin_operator
+down f71 f49
+0
+1
+0 0 69 44
+1
+end_operator
+begin_operator
+down f71 f5
+0
+1
+0 0 69 45
+1
+end_operator
+begin_operator
+down f71 f50
+0
+1
+0 0 69 46
+1
+end_operator
+begin_operator
+down f71 f51
+0
+1
+0 0 69 47
+1
+end_operator
+begin_operator
+down f71 f52
+0
+1
+0 0 69 48
+1
+end_operator
+begin_operator
+down f71 f53
+0
+1
+0 0 69 49
+1
+end_operator
+begin_operator
+down f71 f54
+0
+1
+0 0 69 50
+1
+end_operator
+begin_operator
+down f71 f55
+0
+1
+0 0 69 51
+1
+end_operator
+begin_operator
+down f71 f56
+0
+1
+0 0 69 52
+1
+end_operator
+begin_operator
+down f71 f57
+0
+1
+0 0 69 53
+1
+end_operator
+begin_operator
+down f71 f58
+0
+1
+0 0 69 54
+1
+end_operator
+begin_operator
+down f71 f59
+0
+1
+0 0 69 55
+1
+end_operator
+begin_operator
+down f71 f6
+0
+1
+0 0 69 56
+1
+end_operator
+begin_operator
+down f71 f60
+0
+1
+0 0 69 57
+1
+end_operator
+begin_operator
+down f71 f61
+0
+1
+0 0 69 58
+1
+end_operator
+begin_operator
+down f71 f62
+0
+1
+0 0 69 59
+1
+end_operator
+begin_operator
+down f71 f63
+0
+1
+0 0 69 60
+1
+end_operator
+begin_operator
+down f71 f64
+0
+1
+0 0 69 61
+1
+end_operator
+begin_operator
+down f71 f65
+0
+1
+0 0 69 62
+1
+end_operator
+begin_operator
+down f71 f66
+0
+1
+0 0 69 63
+1
+end_operator
+begin_operator
+down f71 f67
+0
+1
+0 0 69 64
+1
+end_operator
+begin_operator
+down f71 f68
+0
+1
+0 0 69 65
+1
+end_operator
+begin_operator
+down f71 f69
+0
+1
+0 0 69 66
+1
+end_operator
+begin_operator
+down f71 f7
+0
+1
+0 0 69 67
+1
+end_operator
+begin_operator
+down f71 f70
+0
+1
+0 0 69 68
+1
+end_operator
+begin_operator
+down f71 f8
+0
+1
+0 0 69 78
+1
+end_operator
+begin_operator
+down f71 f9
+0
+1
+0 0 69 89
+1
+end_operator
+begin_operator
+down f72 f1
+0
+1
+0 0 70 0
+1
+end_operator
+begin_operator
+down f72 f10
+0
+1
+0 0 70 1
+1
+end_operator
+begin_operator
+down f72 f11
+0
+1
+0 0 70 3
+1
+end_operator
+begin_operator
+down f72 f12
+0
+1
+0 0 70 4
+1
+end_operator
+begin_operator
+down f72 f13
+0
+1
+0 0 70 5
+1
+end_operator
+begin_operator
+down f72 f14
+0
+1
+0 0 70 6
+1
+end_operator
+begin_operator
+down f72 f15
+0
+1
+0 0 70 7
+1
+end_operator
+begin_operator
+down f72 f16
+0
+1
+0 0 70 8
+1
+end_operator
+begin_operator
+down f72 f17
+0
+1
+0 0 70 9
+1
+end_operator
+begin_operator
+down f72 f18
+0
+1
+0 0 70 10
+1
+end_operator
+begin_operator
+down f72 f19
+0
+1
+0 0 70 11
+1
+end_operator
+begin_operator
+down f72 f2
+0
+1
+0 0 70 12
+1
+end_operator
+begin_operator
+down f72 f20
+0
+1
+0 0 70 13
+1
+end_operator
+begin_operator
+down f72 f21
+0
+1
+0 0 70 14
+1
+end_operator
+begin_operator
+down f72 f22
+0
+1
+0 0 70 15
+1
+end_operator
+begin_operator
+down f72 f23
+0
+1
+0 0 70 16
+1
+end_operator
+begin_operator
+down f72 f24
+0
+1
+0 0 70 17
+1
+end_operator
+begin_operator
+down f72 f25
+0
+1
+0 0 70 18
+1
+end_operator
+begin_operator
+down f72 f26
+0
+1
+0 0 70 19
+1
+end_operator
+begin_operator
+down f72 f27
+0
+1
+0 0 70 20
+1
+end_operator
+begin_operator
+down f72 f28
+0
+1
+0 0 70 21
+1
+end_operator
+begin_operator
+down f72 f29
+0
+1
+0 0 70 22
+1
+end_operator
+begin_operator
+down f72 f3
+0
+1
+0 0 70 23
+1
+end_operator
+begin_operator
+down f72 f30
+0
+1
+0 0 70 24
+1
+end_operator
+begin_operator
+down f72 f31
+0
+1
+0 0 70 25
+1
+end_operator
+begin_operator
+down f72 f32
+0
+1
+0 0 70 26
+1
+end_operator
+begin_operator
+down f72 f33
+0
+1
+0 0 70 27
+1
+end_operator
+begin_operator
+down f72 f34
+0
+1
+0 0 70 28
+1
+end_operator
+begin_operator
+down f72 f35
+0
+1
+0 0 70 29
+1
+end_operator
+begin_operator
+down f72 f36
+0
+1
+0 0 70 30
+1
+end_operator
+begin_operator
+down f72 f37
+0
+1
+0 0 70 31
+1
+end_operator
+begin_operator
+down f72 f38
+0
+1
+0 0 70 32
+1
+end_operator
+begin_operator
+down f72 f39
+0
+1
+0 0 70 33
+1
+end_operator
+begin_operator
+down f72 f4
+0
+1
+0 0 70 34
+1
+end_operator
+begin_operator
+down f72 f40
+0
+1
+0 0 70 35
+1
+end_operator
+begin_operator
+down f72 f41
+0
+1
+0 0 70 36
+1
+end_operator
+begin_operator
+down f72 f42
+0
+1
+0 0 70 37
+1
+end_operator
+begin_operator
+down f72 f43
+0
+1
+0 0 70 38
+1
+end_operator
+begin_operator
+down f72 f44
+0
+1
+0 0 70 39
+1
+end_operator
+begin_operator
+down f72 f45
+0
+1
+0 0 70 40
+1
+end_operator
+begin_operator
+down f72 f46
+0
+1
+0 0 70 41
+1
+end_operator
+begin_operator
+down f72 f47
+0
+1
+0 0 70 42
+1
+end_operator
+begin_operator
+down f72 f48
+0
+1
+0 0 70 43
+1
+end_operator
+begin_operator
+down f72 f49
+0
+1
+0 0 70 44
+1
+end_operator
+begin_operator
+down f72 f5
+0
+1
+0 0 70 45
+1
+end_operator
+begin_operator
+down f72 f50
+0
+1
+0 0 70 46
+1
+end_operator
+begin_operator
+down f72 f51
+0
+1
+0 0 70 47
+1
+end_operator
+begin_operator
+down f72 f52
+0
+1
+0 0 70 48
+1
+end_operator
+begin_operator
+down f72 f53
+0
+1
+0 0 70 49
+1
+end_operator
+begin_operator
+down f72 f54
+0
+1
+0 0 70 50
+1
+end_operator
+begin_operator
+down f72 f55
+0
+1
+0 0 70 51
+1
+end_operator
+begin_operator
+down f72 f56
+0
+1
+0 0 70 52
+1
+end_operator
+begin_operator
+down f72 f57
+0
+1
+0 0 70 53
+1
+end_operator
+begin_operator
+down f72 f58
+0
+1
+0 0 70 54
+1
+end_operator
+begin_operator
+down f72 f59
+0
+1
+0 0 70 55
+1
+end_operator
+begin_operator
+down f72 f6
+0
+1
+0 0 70 56
+1
+end_operator
+begin_operator
+down f72 f60
+0
+1
+0 0 70 57
+1
+end_operator
+begin_operator
+down f72 f61
+0
+1
+0 0 70 58
+1
+end_operator
+begin_operator
+down f72 f62
+0
+1
+0 0 70 59
+1
+end_operator
+begin_operator
+down f72 f63
+0
+1
+0 0 70 60
+1
+end_operator
+begin_operator
+down f72 f64
+0
+1
+0 0 70 61
+1
+end_operator
+begin_operator
+down f72 f65
+0
+1
+0 0 70 62
+1
+end_operator
+begin_operator
+down f72 f66
+0
+1
+0 0 70 63
+1
+end_operator
+begin_operator
+down f72 f67
+0
+1
+0 0 70 64
+1
+end_operator
+begin_operator
+down f72 f68
+0
+1
+0 0 70 65
+1
+end_operator
+begin_operator
+down f72 f69
+0
+1
+0 0 70 66
+1
+end_operator
+begin_operator
+down f72 f7
+0
+1
+0 0 70 67
+1
+end_operator
+begin_operator
+down f72 f70
+0
+1
+0 0 70 68
+1
+end_operator
+begin_operator
+down f72 f71
+0
+1
+0 0 70 69
+1
+end_operator
+begin_operator
+down f72 f8
+0
+1
+0 0 70 78
+1
+end_operator
+begin_operator
+down f72 f9
+0
+1
+0 0 70 89
+1
+end_operator
+begin_operator
+down f73 f1
+0
+1
+0 0 71 0
+1
+end_operator
+begin_operator
+down f73 f10
+0
+1
+0 0 71 1
+1
+end_operator
+begin_operator
+down f73 f11
+0
+1
+0 0 71 3
+1
+end_operator
+begin_operator
+down f73 f12
+0
+1
+0 0 71 4
+1
+end_operator
+begin_operator
+down f73 f13
+0
+1
+0 0 71 5
+1
+end_operator
+begin_operator
+down f73 f14
+0
+1
+0 0 71 6
+1
+end_operator
+begin_operator
+down f73 f15
+0
+1
+0 0 71 7
+1
+end_operator
+begin_operator
+down f73 f16
+0
+1
+0 0 71 8
+1
+end_operator
+begin_operator
+down f73 f17
+0
+1
+0 0 71 9
+1
+end_operator
+begin_operator
+down f73 f18
+0
+1
+0 0 71 10
+1
+end_operator
+begin_operator
+down f73 f19
+0
+1
+0 0 71 11
+1
+end_operator
+begin_operator
+down f73 f2
+0
+1
+0 0 71 12
+1
+end_operator
+begin_operator
+down f73 f20
+0
+1
+0 0 71 13
+1
+end_operator
+begin_operator
+down f73 f21
+0
+1
+0 0 71 14
+1
+end_operator
+begin_operator
+down f73 f22
+0
+1
+0 0 71 15
+1
+end_operator
+begin_operator
+down f73 f23
+0
+1
+0 0 71 16
+1
+end_operator
+begin_operator
+down f73 f24
+0
+1
+0 0 71 17
+1
+end_operator
+begin_operator
+down f73 f25
+0
+1
+0 0 71 18
+1
+end_operator
+begin_operator
+down f73 f26
+0
+1
+0 0 71 19
+1
+end_operator
+begin_operator
+down f73 f27
+0
+1
+0 0 71 20
+1
+end_operator
+begin_operator
+down f73 f28
+0
+1
+0 0 71 21
+1
+end_operator
+begin_operator
+down f73 f29
+0
+1
+0 0 71 22
+1
+end_operator
+begin_operator
+down f73 f3
+0
+1
+0 0 71 23
+1
+end_operator
+begin_operator
+down f73 f30
+0
+1
+0 0 71 24
+1
+end_operator
+begin_operator
+down f73 f31
+0
+1
+0 0 71 25
+1
+end_operator
+begin_operator
+down f73 f32
+0
+1
+0 0 71 26
+1
+end_operator
+begin_operator
+down f73 f33
+0
+1
+0 0 71 27
+1
+end_operator
+begin_operator
+down f73 f34
+0
+1
+0 0 71 28
+1
+end_operator
+begin_operator
+down f73 f35
+0
+1
+0 0 71 29
+1
+end_operator
+begin_operator
+down f73 f36
+0
+1
+0 0 71 30
+1
+end_operator
+begin_operator
+down f73 f37
+0
+1
+0 0 71 31
+1
+end_operator
+begin_operator
+down f73 f38
+0
+1
+0 0 71 32
+1
+end_operator
+begin_operator
+down f73 f39
+0
+1
+0 0 71 33
+1
+end_operator
+begin_operator
+down f73 f4
+0
+1
+0 0 71 34
+1
+end_operator
+begin_operator
+down f73 f40
+0
+1
+0 0 71 35
+1
+end_operator
+begin_operator
+down f73 f41
+0
+1
+0 0 71 36
+1
+end_operator
+begin_operator
+down f73 f42
+0
+1
+0 0 71 37
+1
+end_operator
+begin_operator
+down f73 f43
+0
+1
+0 0 71 38
+1
+end_operator
+begin_operator
+down f73 f44
+0
+1
+0 0 71 39
+1
+end_operator
+begin_operator
+down f73 f45
+0
+1
+0 0 71 40
+1
+end_operator
+begin_operator
+down f73 f46
+0
+1
+0 0 71 41
+1
+end_operator
+begin_operator
+down f73 f47
+0
+1
+0 0 71 42
+1
+end_operator
+begin_operator
+down f73 f48
+0
+1
+0 0 71 43
+1
+end_operator
+begin_operator
+down f73 f49
+0
+1
+0 0 71 44
+1
+end_operator
+begin_operator
+down f73 f5
+0
+1
+0 0 71 45
+1
+end_operator
+begin_operator
+down f73 f50
+0
+1
+0 0 71 46
+1
+end_operator
+begin_operator
+down f73 f51
+0
+1
+0 0 71 47
+1
+end_operator
+begin_operator
+down f73 f52
+0
+1
+0 0 71 48
+1
+end_operator
+begin_operator
+down f73 f53
+0
+1
+0 0 71 49
+1
+end_operator
+begin_operator
+down f73 f54
+0
+1
+0 0 71 50
+1
+end_operator
+begin_operator
+down f73 f55
+0
+1
+0 0 71 51
+1
+end_operator
+begin_operator
+down f73 f56
+0
+1
+0 0 71 52
+1
+end_operator
+begin_operator
+down f73 f57
+0
+1
+0 0 71 53
+1
+end_operator
+begin_operator
+down f73 f58
+0
+1
+0 0 71 54
+1
+end_operator
+begin_operator
+down f73 f59
+0
+1
+0 0 71 55
+1
+end_operator
+begin_operator
+down f73 f6
+0
+1
+0 0 71 56
+1
+end_operator
+begin_operator
+down f73 f60
+0
+1
+0 0 71 57
+1
+end_operator
+begin_operator
+down f73 f61
+0
+1
+0 0 71 58
+1
+end_operator
+begin_operator
+down f73 f62
+0
+1
+0 0 71 59
+1
+end_operator
+begin_operator
+down f73 f63
+0
+1
+0 0 71 60
+1
+end_operator
+begin_operator
+down f73 f64
+0
+1
+0 0 71 61
+1
+end_operator
+begin_operator
+down f73 f65
+0
+1
+0 0 71 62
+1
+end_operator
+begin_operator
+down f73 f66
+0
+1
+0 0 71 63
+1
+end_operator
+begin_operator
+down f73 f67
+0
+1
+0 0 71 64
+1
+end_operator
+begin_operator
+down f73 f68
+0
+1
+0 0 71 65
+1
+end_operator
+begin_operator
+down f73 f69
+0
+1
+0 0 71 66
+1
+end_operator
+begin_operator
+down f73 f7
+0
+1
+0 0 71 67
+1
+end_operator
+begin_operator
+down f73 f70
+0
+1
+0 0 71 68
+1
+end_operator
+begin_operator
+down f73 f71
+0
+1
+0 0 71 69
+1
+end_operator
+begin_operator
+down f73 f72
+0
+1
+0 0 71 70
+1
+end_operator
+begin_operator
+down f73 f8
+0
+1
+0 0 71 78
+1
+end_operator
+begin_operator
+down f73 f9
+0
+1
+0 0 71 89
+1
+end_operator
+begin_operator
+down f74 f1
+0
+1
+0 0 72 0
+1
+end_operator
+begin_operator
+down f74 f10
+0
+1
+0 0 72 1
+1
+end_operator
+begin_operator
+down f74 f11
+0
+1
+0 0 72 3
+1
+end_operator
+begin_operator
+down f74 f12
+0
+1
+0 0 72 4
+1
+end_operator
+begin_operator
+down f74 f13
+0
+1
+0 0 72 5
+1
+end_operator
+begin_operator
+down f74 f14
+0
+1
+0 0 72 6
+1
+end_operator
+begin_operator
+down f74 f15
+0
+1
+0 0 72 7
+1
+end_operator
+begin_operator
+down f74 f16
+0
+1
+0 0 72 8
+1
+end_operator
+begin_operator
+down f74 f17
+0
+1
+0 0 72 9
+1
+end_operator
+begin_operator
+down f74 f18
+0
+1
+0 0 72 10
+1
+end_operator
+begin_operator
+down f74 f19
+0
+1
+0 0 72 11
+1
+end_operator
+begin_operator
+down f74 f2
+0
+1
+0 0 72 12
+1
+end_operator
+begin_operator
+down f74 f20
+0
+1
+0 0 72 13
+1
+end_operator
+begin_operator
+down f74 f21
+0
+1
+0 0 72 14
+1
+end_operator
+begin_operator
+down f74 f22
+0
+1
+0 0 72 15
+1
+end_operator
+begin_operator
+down f74 f23
+0
+1
+0 0 72 16
+1
+end_operator
+begin_operator
+down f74 f24
+0
+1
+0 0 72 17
+1
+end_operator
+begin_operator
+down f74 f25
+0
+1
+0 0 72 18
+1
+end_operator
+begin_operator
+down f74 f26
+0
+1
+0 0 72 19
+1
+end_operator
+begin_operator
+down f74 f27
+0
+1
+0 0 72 20
+1
+end_operator
+begin_operator
+down f74 f28
+0
+1
+0 0 72 21
+1
+end_operator
+begin_operator
+down f74 f29
+0
+1
+0 0 72 22
+1
+end_operator
+begin_operator
+down f74 f3
+0
+1
+0 0 72 23
+1
+end_operator
+begin_operator
+down f74 f30
+0
+1
+0 0 72 24
+1
+end_operator
+begin_operator
+down f74 f31
+0
+1
+0 0 72 25
+1
+end_operator
+begin_operator
+down f74 f32
+0
+1
+0 0 72 26
+1
+end_operator
+begin_operator
+down f74 f33
+0
+1
+0 0 72 27
+1
+end_operator
+begin_operator
+down f74 f34
+0
+1
+0 0 72 28
+1
+end_operator
+begin_operator
+down f74 f35
+0
+1
+0 0 72 29
+1
+end_operator
+begin_operator
+down f74 f36
+0
+1
+0 0 72 30
+1
+end_operator
+begin_operator
+down f74 f37
+0
+1
+0 0 72 31
+1
+end_operator
+begin_operator
+down f74 f38
+0
+1
+0 0 72 32
+1
+end_operator
+begin_operator
+down f74 f39
+0
+1
+0 0 72 33
+1
+end_operator
+begin_operator
+down f74 f4
+0
+1
+0 0 72 34
+1
+end_operator
+begin_operator
+down f74 f40
+0
+1
+0 0 72 35
+1
+end_operator
+begin_operator
+down f74 f41
+0
+1
+0 0 72 36
+1
+end_operator
+begin_operator
+down f74 f42
+0
+1
+0 0 72 37
+1
+end_operator
+begin_operator
+down f74 f43
+0
+1
+0 0 72 38
+1
+end_operator
+begin_operator
+down f74 f44
+0
+1
+0 0 72 39
+1
+end_operator
+begin_operator
+down f74 f45
+0
+1
+0 0 72 40
+1
+end_operator
+begin_operator
+down f74 f46
+0
+1
+0 0 72 41
+1
+end_operator
+begin_operator
+down f74 f47
+0
+1
+0 0 72 42
+1
+end_operator
+begin_operator
+down f74 f48
+0
+1
+0 0 72 43
+1
+end_operator
+begin_operator
+down f74 f49
+0
+1
+0 0 72 44
+1
+end_operator
+begin_operator
+down f74 f5
+0
+1
+0 0 72 45
+1
+end_operator
+begin_operator
+down f74 f50
+0
+1
+0 0 72 46
+1
+end_operator
+begin_operator
+down f74 f51
+0
+1
+0 0 72 47
+1
+end_operator
+begin_operator
+down f74 f52
+0
+1
+0 0 72 48
+1
+end_operator
+begin_operator
+down f74 f53
+0
+1
+0 0 72 49
+1
+end_operator
+begin_operator
+down f74 f54
+0
+1
+0 0 72 50
+1
+end_operator
+begin_operator
+down f74 f55
+0
+1
+0 0 72 51
+1
+end_operator
+begin_operator
+down f74 f56
+0
+1
+0 0 72 52
+1
+end_operator
+begin_operator
+down f74 f57
+0
+1
+0 0 72 53
+1
+end_operator
+begin_operator
+down f74 f58
+0
+1
+0 0 72 54
+1
+end_operator
+begin_operator
+down f74 f59
+0
+1
+0 0 72 55
+1
+end_operator
+begin_operator
+down f74 f6
+0
+1
+0 0 72 56
+1
+end_operator
+begin_operator
+down f74 f60
+0
+1
+0 0 72 57
+1
+end_operator
+begin_operator
+down f74 f61
+0
+1
+0 0 72 58
+1
+end_operator
+begin_operator
+down f74 f62
+0
+1
+0 0 72 59
+1
+end_operator
+begin_operator
+down f74 f63
+0
+1
+0 0 72 60
+1
+end_operator
+begin_operator
+down f74 f64
+0
+1
+0 0 72 61
+1
+end_operator
+begin_operator
+down f74 f65
+0
+1
+0 0 72 62
+1
+end_operator
+begin_operator
+down f74 f66
+0
+1
+0 0 72 63
+1
+end_operator
+begin_operator
+down f74 f67
+0
+1
+0 0 72 64
+1
+end_operator
+begin_operator
+down f74 f68
+0
+1
+0 0 72 65
+1
+end_operator
+begin_operator
+down f74 f69
+0
+1
+0 0 72 66
+1
+end_operator
+begin_operator
+down f74 f7
+0
+1
+0 0 72 67
+1
+end_operator
+begin_operator
+down f74 f70
+0
+1
+0 0 72 68
+1
+end_operator
+begin_operator
+down f74 f71
+0
+1
+0 0 72 69
+1
+end_operator
+begin_operator
+down f74 f72
+0
+1
+0 0 72 70
+1
+end_operator
+begin_operator
+down f74 f73
+0
+1
+0 0 72 71
+1
+end_operator
+begin_operator
+down f74 f8
+0
+1
+0 0 72 78
+1
+end_operator
+begin_operator
+down f74 f9
+0
+1
+0 0 72 89
+1
+end_operator
+begin_operator
+down f75 f1
+0
+1
+0 0 73 0
+1
+end_operator
+begin_operator
+down f75 f10
+0
+1
+0 0 73 1
+1
+end_operator
+begin_operator
+down f75 f11
+0
+1
+0 0 73 3
+1
+end_operator
+begin_operator
+down f75 f12
+0
+1
+0 0 73 4
+1
+end_operator
+begin_operator
+down f75 f13
+0
+1
+0 0 73 5
+1
+end_operator
+begin_operator
+down f75 f14
+0
+1
+0 0 73 6
+1
+end_operator
+begin_operator
+down f75 f15
+0
+1
+0 0 73 7
+1
+end_operator
+begin_operator
+down f75 f16
+0
+1
+0 0 73 8
+1
+end_operator
+begin_operator
+down f75 f17
+0
+1
+0 0 73 9
+1
+end_operator
+begin_operator
+down f75 f18
+0
+1
+0 0 73 10
+1
+end_operator
+begin_operator
+down f75 f19
+0
+1
+0 0 73 11
+1
+end_operator
+begin_operator
+down f75 f2
+0
+1
+0 0 73 12
+1
+end_operator
+begin_operator
+down f75 f20
+0
+1
+0 0 73 13
+1
+end_operator
+begin_operator
+down f75 f21
+0
+1
+0 0 73 14
+1
+end_operator
+begin_operator
+down f75 f22
+0
+1
+0 0 73 15
+1
+end_operator
+begin_operator
+down f75 f23
+0
+1
+0 0 73 16
+1
+end_operator
+begin_operator
+down f75 f24
+0
+1
+0 0 73 17
+1
+end_operator
+begin_operator
+down f75 f25
+0
+1
+0 0 73 18
+1
+end_operator
+begin_operator
+down f75 f26
+0
+1
+0 0 73 19
+1
+end_operator
+begin_operator
+down f75 f27
+0
+1
+0 0 73 20
+1
+end_operator
+begin_operator
+down f75 f28
+0
+1
+0 0 73 21
+1
+end_operator
+begin_operator
+down f75 f29
+0
+1
+0 0 73 22
+1
+end_operator
+begin_operator
+down f75 f3
+0
+1
+0 0 73 23
+1
+end_operator
+begin_operator
+down f75 f30
+0
+1
+0 0 73 24
+1
+end_operator
+begin_operator
+down f75 f31
+0
+1
+0 0 73 25
+1
+end_operator
+begin_operator
+down f75 f32
+0
+1
+0 0 73 26
+1
+end_operator
+begin_operator
+down f75 f33
+0
+1
+0 0 73 27
+1
+end_operator
+begin_operator
+down f75 f34
+0
+1
+0 0 73 28
+1
+end_operator
+begin_operator
+down f75 f35
+0
+1
+0 0 73 29
+1
+end_operator
+begin_operator
+down f75 f36
+0
+1
+0 0 73 30
+1
+end_operator
+begin_operator
+down f75 f37
+0
+1
+0 0 73 31
+1
+end_operator
+begin_operator
+down f75 f38
+0
+1
+0 0 73 32
+1
+end_operator
+begin_operator
+down f75 f39
+0
+1
+0 0 73 33
+1
+end_operator
+begin_operator
+down f75 f4
+0
+1
+0 0 73 34
+1
+end_operator
+begin_operator
+down f75 f40
+0
+1
+0 0 73 35
+1
+end_operator
+begin_operator
+down f75 f41
+0
+1
+0 0 73 36
+1
+end_operator
+begin_operator
+down f75 f42
+0
+1
+0 0 73 37
+1
+end_operator
+begin_operator
+down f75 f43
+0
+1
+0 0 73 38
+1
+end_operator
+begin_operator
+down f75 f44
+0
+1
+0 0 73 39
+1
+end_operator
+begin_operator
+down f75 f45
+0
+1
+0 0 73 40
+1
+end_operator
+begin_operator
+down f75 f46
+0
+1
+0 0 73 41
+1
+end_operator
+begin_operator
+down f75 f47
+0
+1
+0 0 73 42
+1
+end_operator
+begin_operator
+down f75 f48
+0
+1
+0 0 73 43
+1
+end_operator
+begin_operator
+down f75 f49
+0
+1
+0 0 73 44
+1
+end_operator
+begin_operator
+down f75 f5
+0
+1
+0 0 73 45
+1
+end_operator
+begin_operator
+down f75 f50
+0
+1
+0 0 73 46
+1
+end_operator
+begin_operator
+down f75 f51
+0
+1
+0 0 73 47
+1
+end_operator
+begin_operator
+down f75 f52
+0
+1
+0 0 73 48
+1
+end_operator
+begin_operator
+down f75 f53
+0
+1
+0 0 73 49
+1
+end_operator
+begin_operator
+down f75 f54
+0
+1
+0 0 73 50
+1
+end_operator
+begin_operator
+down f75 f55
+0
+1
+0 0 73 51
+1
+end_operator
+begin_operator
+down f75 f56
+0
+1
+0 0 73 52
+1
+end_operator
+begin_operator
+down f75 f57
+0
+1
+0 0 73 53
+1
+end_operator
+begin_operator
+down f75 f58
+0
+1
+0 0 73 54
+1
+end_operator
+begin_operator
+down f75 f59
+0
+1
+0 0 73 55
+1
+end_operator
+begin_operator
+down f75 f6
+0
+1
+0 0 73 56
+1
+end_operator
+begin_operator
+down f75 f60
+0
+1
+0 0 73 57
+1
+end_operator
+begin_operator
+down f75 f61
+0
+1
+0 0 73 58
+1
+end_operator
+begin_operator
+down f75 f62
+0
+1
+0 0 73 59
+1
+end_operator
+begin_operator
+down f75 f63
+0
+1
+0 0 73 60
+1
+end_operator
+begin_operator
+down f75 f64
+0
+1
+0 0 73 61
+1
+end_operator
+begin_operator
+down f75 f65
+0
+1
+0 0 73 62
+1
+end_operator
+begin_operator
+down f75 f66
+0
+1
+0 0 73 63
+1
+end_operator
+begin_operator
+down f75 f67
+0
+1
+0 0 73 64
+1
+end_operator
+begin_operator
+down f75 f68
+0
+1
+0 0 73 65
+1
+end_operator
+begin_operator
+down f75 f69
+0
+1
+0 0 73 66
+1
+end_operator
+begin_operator
+down f75 f7
+0
+1
+0 0 73 67
+1
+end_operator
+begin_operator
+down f75 f70
+0
+1
+0 0 73 68
+1
+end_operator
+begin_operator
+down f75 f71
+0
+1
+0 0 73 69
+1
+end_operator
+begin_operator
+down f75 f72
+0
+1
+0 0 73 70
+1
+end_operator
+begin_operator
+down f75 f73
+0
+1
+0 0 73 71
+1
+end_operator
+begin_operator
+down f75 f74
+0
+1
+0 0 73 72
+1
+end_operator
+begin_operator
+down f75 f8
+0
+1
+0 0 73 78
+1
+end_operator
+begin_operator
+down f75 f9
+0
+1
+0 0 73 89
+1
+end_operator
+begin_operator
+down f76 f1
+0
+1
+0 0 74 0
+1
+end_operator
+begin_operator
+down f76 f10
+0
+1
+0 0 74 1
+1
+end_operator
+begin_operator
+down f76 f11
+0
+1
+0 0 74 3
+1
+end_operator
+begin_operator
+down f76 f12
+0
+1
+0 0 74 4
+1
+end_operator
+begin_operator
+down f76 f13
+0
+1
+0 0 74 5
+1
+end_operator
+begin_operator
+down f76 f14
+0
+1
+0 0 74 6
+1
+end_operator
+begin_operator
+down f76 f15
+0
+1
+0 0 74 7
+1
+end_operator
+begin_operator
+down f76 f16
+0
+1
+0 0 74 8
+1
+end_operator
+begin_operator
+down f76 f17
+0
+1
+0 0 74 9
+1
+end_operator
+begin_operator
+down f76 f18
+0
+1
+0 0 74 10
+1
+end_operator
+begin_operator
+down f76 f19
+0
+1
+0 0 74 11
+1
+end_operator
+begin_operator
+down f76 f2
+0
+1
+0 0 74 12
+1
+end_operator
+begin_operator
+down f76 f20
+0
+1
+0 0 74 13
+1
+end_operator
+begin_operator
+down f76 f21
+0
+1
+0 0 74 14
+1
+end_operator
+begin_operator
+down f76 f22
+0
+1
+0 0 74 15
+1
+end_operator
+begin_operator
+down f76 f23
+0
+1
+0 0 74 16
+1
+end_operator
+begin_operator
+down f76 f24
+0
+1
+0 0 74 17
+1
+end_operator
+begin_operator
+down f76 f25
+0
+1
+0 0 74 18
+1
+end_operator
+begin_operator
+down f76 f26
+0
+1
+0 0 74 19
+1
+end_operator
+begin_operator
+down f76 f27
+0
+1
+0 0 74 20
+1
+end_operator
+begin_operator
+down f76 f28
+0
+1
+0 0 74 21
+1
+end_operator
+begin_operator
+down f76 f29
+0
+1
+0 0 74 22
+1
+end_operator
+begin_operator
+down f76 f3
+0
+1
+0 0 74 23
+1
+end_operator
+begin_operator
+down f76 f30
+0
+1
+0 0 74 24
+1
+end_operator
+begin_operator
+down f76 f31
+0
+1
+0 0 74 25
+1
+end_operator
+begin_operator
+down f76 f32
+0
+1
+0 0 74 26
+1
+end_operator
+begin_operator
+down f76 f33
+0
+1
+0 0 74 27
+1
+end_operator
+begin_operator
+down f76 f34
+0
+1
+0 0 74 28
+1
+end_operator
+begin_operator
+down f76 f35
+0
+1
+0 0 74 29
+1
+end_operator
+begin_operator
+down f76 f36
+0
+1
+0 0 74 30
+1
+end_operator
+begin_operator
+down f76 f37
+0
+1
+0 0 74 31
+1
+end_operator
+begin_operator
+down f76 f38
+0
+1
+0 0 74 32
+1
+end_operator
+begin_operator
+down f76 f39
+0
+1
+0 0 74 33
+1
+end_operator
+begin_operator
+down f76 f4
+0
+1
+0 0 74 34
+1
+end_operator
+begin_operator
+down f76 f40
+0
+1
+0 0 74 35
+1
+end_operator
+begin_operator
+down f76 f41
+0
+1
+0 0 74 36
+1
+end_operator
+begin_operator
+down f76 f42
+0
+1
+0 0 74 37
+1
+end_operator
+begin_operator
+down f76 f43
+0
+1
+0 0 74 38
+1
+end_operator
+begin_operator
+down f76 f44
+0
+1
+0 0 74 39
+1
+end_operator
+begin_operator
+down f76 f45
+0
+1
+0 0 74 40
+1
+end_operator
+begin_operator
+down f76 f46
+0
+1
+0 0 74 41
+1
+end_operator
+begin_operator
+down f76 f47
+0
+1
+0 0 74 42
+1
+end_operator
+begin_operator
+down f76 f48
+0
+1
+0 0 74 43
+1
+end_operator
+begin_operator
+down f76 f49
+0
+1
+0 0 74 44
+1
+end_operator
+begin_operator
+down f76 f5
+0
+1
+0 0 74 45
+1
+end_operator
+begin_operator
+down f76 f50
+0
+1
+0 0 74 46
+1
+end_operator
+begin_operator
+down f76 f51
+0
+1
+0 0 74 47
+1
+end_operator
+begin_operator
+down f76 f52
+0
+1
+0 0 74 48
+1
+end_operator
+begin_operator
+down f76 f53
+0
+1
+0 0 74 49
+1
+end_operator
+begin_operator
+down f76 f54
+0
+1
+0 0 74 50
+1
+end_operator
+begin_operator
+down f76 f55
+0
+1
+0 0 74 51
+1
+end_operator
+begin_operator
+down f76 f56
+0
+1
+0 0 74 52
+1
+end_operator
+begin_operator
+down f76 f57
+0
+1
+0 0 74 53
+1
+end_operator
+begin_operator
+down f76 f58
+0
+1
+0 0 74 54
+1
+end_operator
+begin_operator
+down f76 f59
+0
+1
+0 0 74 55
+1
+end_operator
+begin_operator
+down f76 f6
+0
+1
+0 0 74 56
+1
+end_operator
+begin_operator
+down f76 f60
+0
+1
+0 0 74 57
+1
+end_operator
+begin_operator
+down f76 f61
+0
+1
+0 0 74 58
+1
+end_operator
+begin_operator
+down f76 f62
+0
+1
+0 0 74 59
+1
+end_operator
+begin_operator
+down f76 f63
+0
+1
+0 0 74 60
+1
+end_operator
+begin_operator
+down f76 f64
+0
+1
+0 0 74 61
+1
+end_operator
+begin_operator
+down f76 f65
+0
+1
+0 0 74 62
+1
+end_operator
+begin_operator
+down f76 f66
+0
+1
+0 0 74 63
+1
+end_operator
+begin_operator
+down f76 f67
+0
+1
+0 0 74 64
+1
+end_operator
+begin_operator
+down f76 f68
+0
+1
+0 0 74 65
+1
+end_operator
+begin_operator
+down f76 f69
+0
+1
+0 0 74 66
+1
+end_operator
+begin_operator
+down f76 f7
+0
+1
+0 0 74 67
+1
+end_operator
+begin_operator
+down f76 f70
+0
+1
+0 0 74 68
+1
+end_operator
+begin_operator
+down f76 f71
+0
+1
+0 0 74 69
+1
+end_operator
+begin_operator
+down f76 f72
+0
+1
+0 0 74 70
+1
+end_operator
+begin_operator
+down f76 f73
+0
+1
+0 0 74 71
+1
+end_operator
+begin_operator
+down f76 f74
+0
+1
+0 0 74 72
+1
+end_operator
+begin_operator
+down f76 f75
+0
+1
+0 0 74 73
+1
+end_operator
+begin_operator
+down f76 f8
+0
+1
+0 0 74 78
+1
+end_operator
+begin_operator
+down f76 f9
+0
+1
+0 0 74 89
+1
+end_operator
+begin_operator
+down f77 f1
+0
+1
+0 0 75 0
+1
+end_operator
+begin_operator
+down f77 f10
+0
+1
+0 0 75 1
+1
+end_operator
+begin_operator
+down f77 f11
+0
+1
+0 0 75 3
+1
+end_operator
+begin_operator
+down f77 f12
+0
+1
+0 0 75 4
+1
+end_operator
+begin_operator
+down f77 f13
+0
+1
+0 0 75 5
+1
+end_operator
+begin_operator
+down f77 f14
+0
+1
+0 0 75 6
+1
+end_operator
+begin_operator
+down f77 f15
+0
+1
+0 0 75 7
+1
+end_operator
+begin_operator
+down f77 f16
+0
+1
+0 0 75 8
+1
+end_operator
+begin_operator
+down f77 f17
+0
+1
+0 0 75 9
+1
+end_operator
+begin_operator
+down f77 f18
+0
+1
+0 0 75 10
+1
+end_operator
+begin_operator
+down f77 f19
+0
+1
+0 0 75 11
+1
+end_operator
+begin_operator
+down f77 f2
+0
+1
+0 0 75 12
+1
+end_operator
+begin_operator
+down f77 f20
+0
+1
+0 0 75 13
+1
+end_operator
+begin_operator
+down f77 f21
+0
+1
+0 0 75 14
+1
+end_operator
+begin_operator
+down f77 f22
+0
+1
+0 0 75 15
+1
+end_operator
+begin_operator
+down f77 f23
+0
+1
+0 0 75 16
+1
+end_operator
+begin_operator
+down f77 f24
+0
+1
+0 0 75 17
+1
+end_operator
+begin_operator
+down f77 f25
+0
+1
+0 0 75 18
+1
+end_operator
+begin_operator
+down f77 f26
+0
+1
+0 0 75 19
+1
+end_operator
+begin_operator
+down f77 f27
+0
+1
+0 0 75 20
+1
+end_operator
+begin_operator
+down f77 f28
+0
+1
+0 0 75 21
+1
+end_operator
+begin_operator
+down f77 f29
+0
+1
+0 0 75 22
+1
+end_operator
+begin_operator
+down f77 f3
+0
+1
+0 0 75 23
+1
+end_operator
+begin_operator
+down f77 f30
+0
+1
+0 0 75 24
+1
+end_operator
+begin_operator
+down f77 f31
+0
+1
+0 0 75 25
+1
+end_operator
+begin_operator
+down f77 f32
+0
+1
+0 0 75 26
+1
+end_operator
+begin_operator
+down f77 f33
+0
+1
+0 0 75 27
+1
+end_operator
+begin_operator
+down f77 f34
+0
+1
+0 0 75 28
+1
+end_operator
+begin_operator
+down f77 f35
+0
+1
+0 0 75 29
+1
+end_operator
+begin_operator
+down f77 f36
+0
+1
+0 0 75 30
+1
+end_operator
+begin_operator
+down f77 f37
+0
+1
+0 0 75 31
+1
+end_operator
+begin_operator
+down f77 f38
+0
+1
+0 0 75 32
+1
+end_operator
+begin_operator
+down f77 f39
+0
+1
+0 0 75 33
+1
+end_operator
+begin_operator
+down f77 f4
+0
+1
+0 0 75 34
+1
+end_operator
+begin_operator
+down f77 f40
+0
+1
+0 0 75 35
+1
+end_operator
+begin_operator
+down f77 f41
+0
+1
+0 0 75 36
+1
+end_operator
+begin_operator
+down f77 f42
+0
+1
+0 0 75 37
+1
+end_operator
+begin_operator
+down f77 f43
+0
+1
+0 0 75 38
+1
+end_operator
+begin_operator
+down f77 f44
+0
+1
+0 0 75 39
+1
+end_operator
+begin_operator
+down f77 f45
+0
+1
+0 0 75 40
+1
+end_operator
+begin_operator
+down f77 f46
+0
+1
+0 0 75 41
+1
+end_operator
+begin_operator
+down f77 f47
+0
+1
+0 0 75 42
+1
+end_operator
+begin_operator
+down f77 f48
+0
+1
+0 0 75 43
+1
+end_operator
+begin_operator
+down f77 f49
+0
+1
+0 0 75 44
+1
+end_operator
+begin_operator
+down f77 f5
+0
+1
+0 0 75 45
+1
+end_operator
+begin_operator
+down f77 f50
+0
+1
+0 0 75 46
+1
+end_operator
+begin_operator
+down f77 f51
+0
+1
+0 0 75 47
+1
+end_operator
+begin_operator
+down f77 f52
+0
+1
+0 0 75 48
+1
+end_operator
+begin_operator
+down f77 f53
+0
+1
+0 0 75 49
+1
+end_operator
+begin_operator
+down f77 f54
+0
+1
+0 0 75 50
+1
+end_operator
+begin_operator
+down f77 f55
+0
+1
+0 0 75 51
+1
+end_operator
+begin_operator
+down f77 f56
+0
+1
+0 0 75 52
+1
+end_operator
+begin_operator
+down f77 f57
+0
+1
+0 0 75 53
+1
+end_operator
+begin_operator
+down f77 f58
+0
+1
+0 0 75 54
+1
+end_operator
+begin_operator
+down f77 f59
+0
+1
+0 0 75 55
+1
+end_operator
+begin_operator
+down f77 f6
+0
+1
+0 0 75 56
+1
+end_operator
+begin_operator
+down f77 f60
+0
+1
+0 0 75 57
+1
+end_operator
+begin_operator
+down f77 f61
+0
+1
+0 0 75 58
+1
+end_operator
+begin_operator
+down f77 f62
+0
+1
+0 0 75 59
+1
+end_operator
+begin_operator
+down f77 f63
+0
+1
+0 0 75 60
+1
+end_operator
+begin_operator
+down f77 f64
+0
+1
+0 0 75 61
+1
+end_operator
+begin_operator
+down f77 f65
+0
+1
+0 0 75 62
+1
+end_operator
+begin_operator
+down f77 f66
+0
+1
+0 0 75 63
+1
+end_operator
+begin_operator
+down f77 f67
+0
+1
+0 0 75 64
+1
+end_operator
+begin_operator
+down f77 f68
+0
+1
+0 0 75 65
+1
+end_operator
+begin_operator
+down f77 f69
+0
+1
+0 0 75 66
+1
+end_operator
+begin_operator
+down f77 f7
+0
+1
+0 0 75 67
+1
+end_operator
+begin_operator
+down f77 f70
+0
+1
+0 0 75 68
+1
+end_operator
+begin_operator
+down f77 f71
+0
+1
+0 0 75 69
+1
+end_operator
+begin_operator
+down f77 f72
+0
+1
+0 0 75 70
+1
+end_operator
+begin_operator
+down f77 f73
+0
+1
+0 0 75 71
+1
+end_operator
+begin_operator
+down f77 f74
+0
+1
+0 0 75 72
+1
+end_operator
+begin_operator
+down f77 f75
+0
+1
+0 0 75 73
+1
+end_operator
+begin_operator
+down f77 f76
+0
+1
+0 0 75 74
+1
+end_operator
+begin_operator
+down f77 f8
+0
+1
+0 0 75 78
+1
+end_operator
+begin_operator
+down f77 f9
+0
+1
+0 0 75 89
+1
+end_operator
+begin_operator
+down f78 f1
+0
+1
+0 0 76 0
+1
+end_operator
+begin_operator
+down f78 f10
+0
+1
+0 0 76 1
+1
+end_operator
+begin_operator
+down f78 f11
+0
+1
+0 0 76 3
+1
+end_operator
+begin_operator
+down f78 f12
+0
+1
+0 0 76 4
+1
+end_operator
+begin_operator
+down f78 f13
+0
+1
+0 0 76 5
+1
+end_operator
+begin_operator
+down f78 f14
+0
+1
+0 0 76 6
+1
+end_operator
+begin_operator
+down f78 f15
+0
+1
+0 0 76 7
+1
+end_operator
+begin_operator
+down f78 f16
+0
+1
+0 0 76 8
+1
+end_operator
+begin_operator
+down f78 f17
+0
+1
+0 0 76 9
+1
+end_operator
+begin_operator
+down f78 f18
+0
+1
+0 0 76 10
+1
+end_operator
+begin_operator
+down f78 f19
+0
+1
+0 0 76 11
+1
+end_operator
+begin_operator
+down f78 f2
+0
+1
+0 0 76 12
+1
+end_operator
+begin_operator
+down f78 f20
+0
+1
+0 0 76 13
+1
+end_operator
+begin_operator
+down f78 f21
+0
+1
+0 0 76 14
+1
+end_operator
+begin_operator
+down f78 f22
+0
+1
+0 0 76 15
+1
+end_operator
+begin_operator
+down f78 f23
+0
+1
+0 0 76 16
+1
+end_operator
+begin_operator
+down f78 f24
+0
+1
+0 0 76 17
+1
+end_operator
+begin_operator
+down f78 f25
+0
+1
+0 0 76 18
+1
+end_operator
+begin_operator
+down f78 f26
+0
+1
+0 0 76 19
+1
+end_operator
+begin_operator
+down f78 f27
+0
+1
+0 0 76 20
+1
+end_operator
+begin_operator
+down f78 f28
+0
+1
+0 0 76 21
+1
+end_operator
+begin_operator
+down f78 f29
+0
+1
+0 0 76 22
+1
+end_operator
+begin_operator
+down f78 f3
+0
+1
+0 0 76 23
+1
+end_operator
+begin_operator
+down f78 f30
+0
+1
+0 0 76 24
+1
+end_operator
+begin_operator
+down f78 f31
+0
+1
+0 0 76 25
+1
+end_operator
+begin_operator
+down f78 f32
+0
+1
+0 0 76 26
+1
+end_operator
+begin_operator
+down f78 f33
+0
+1
+0 0 76 27
+1
+end_operator
+begin_operator
+down f78 f34
+0
+1
+0 0 76 28
+1
+end_operator
+begin_operator
+down f78 f35
+0
+1
+0 0 76 29
+1
+end_operator
+begin_operator
+down f78 f36
+0
+1
+0 0 76 30
+1
+end_operator
+begin_operator
+down f78 f37
+0
+1
+0 0 76 31
+1
+end_operator
+begin_operator
+down f78 f38
+0
+1
+0 0 76 32
+1
+end_operator
+begin_operator
+down f78 f39
+0
+1
+0 0 76 33
+1
+end_operator
+begin_operator
+down f78 f4
+0
+1
+0 0 76 34
+1
+end_operator
+begin_operator
+down f78 f40
+0
+1
+0 0 76 35
+1
+end_operator
+begin_operator
+down f78 f41
+0
+1
+0 0 76 36
+1
+end_operator
+begin_operator
+down f78 f42
+0
+1
+0 0 76 37
+1
+end_operator
+begin_operator
+down f78 f43
+0
+1
+0 0 76 38
+1
+end_operator
+begin_operator
+down f78 f44
+0
+1
+0 0 76 39
+1
+end_operator
+begin_operator
+down f78 f45
+0
+1
+0 0 76 40
+1
+end_operator
+begin_operator
+down f78 f46
+0
+1
+0 0 76 41
+1
+end_operator
+begin_operator
+down f78 f47
+0
+1
+0 0 76 42
+1
+end_operator
+begin_operator
+down f78 f48
+0
+1
+0 0 76 43
+1
+end_operator
+begin_operator
+down f78 f49
+0
+1
+0 0 76 44
+1
+end_operator
+begin_operator
+down f78 f5
+0
+1
+0 0 76 45
+1
+end_operator
+begin_operator
+down f78 f50
+0
+1
+0 0 76 46
+1
+end_operator
+begin_operator
+down f78 f51
+0
+1
+0 0 76 47
+1
+end_operator
+begin_operator
+down f78 f52
+0
+1
+0 0 76 48
+1
+end_operator
+begin_operator
+down f78 f53
+0
+1
+0 0 76 49
+1
+end_operator
+begin_operator
+down f78 f54
+0
+1
+0 0 76 50
+1
+end_operator
+begin_operator
+down f78 f55
+0
+1
+0 0 76 51
+1
+end_operator
+begin_operator
+down f78 f56
+0
+1
+0 0 76 52
+1
+end_operator
+begin_operator
+down f78 f57
+0
+1
+0 0 76 53
+1
+end_operator
+begin_operator
+down f78 f58
+0
+1
+0 0 76 54
+1
+end_operator
+begin_operator
+down f78 f59
+0
+1
+0 0 76 55
+1
+end_operator
+begin_operator
+down f78 f6
+0
+1
+0 0 76 56
+1
+end_operator
+begin_operator
+down f78 f60
+0
+1
+0 0 76 57
+1
+end_operator
+begin_operator
+down f78 f61
+0
+1
+0 0 76 58
+1
+end_operator
+begin_operator
+down f78 f62
+0
+1
+0 0 76 59
+1
+end_operator
+begin_operator
+down f78 f63
+0
+1
+0 0 76 60
+1
+end_operator
+begin_operator
+down f78 f64
+0
+1
+0 0 76 61
+1
+end_operator
+begin_operator
+down f78 f65
+0
+1
+0 0 76 62
+1
+end_operator
+begin_operator
+down f78 f66
+0
+1
+0 0 76 63
+1
+end_operator
+begin_operator
+down f78 f67
+0
+1
+0 0 76 64
+1
+end_operator
+begin_operator
+down f78 f68
+0
+1
+0 0 76 65
+1
+end_operator
+begin_operator
+down f78 f69
+0
+1
+0 0 76 66
+1
+end_operator
+begin_operator
+down f78 f7
+0
+1
+0 0 76 67
+1
+end_operator
+begin_operator
+down f78 f70
+0
+1
+0 0 76 68
+1
+end_operator
+begin_operator
+down f78 f71
+0
+1
+0 0 76 69
+1
+end_operator
+begin_operator
+down f78 f72
+0
+1
+0 0 76 70
+1
+end_operator
+begin_operator
+down f78 f73
+0
+1
+0 0 76 71
+1
+end_operator
+begin_operator
+down f78 f74
+0
+1
+0 0 76 72
+1
+end_operator
+begin_operator
+down f78 f75
+0
+1
+0 0 76 73
+1
+end_operator
+begin_operator
+down f78 f76
+0
+1
+0 0 76 74
+1
+end_operator
+begin_operator
+down f78 f77
+0
+1
+0 0 76 75
+1
+end_operator
+begin_operator
+down f78 f8
+0
+1
+0 0 76 78
+1
+end_operator
+begin_operator
+down f78 f9
+0
+1
+0 0 76 89
+1
+end_operator
+begin_operator
+down f79 f1
+0
+1
+0 0 77 0
+1
+end_operator
+begin_operator
+down f79 f10
+0
+1
+0 0 77 1
+1
+end_operator
+begin_operator
+down f79 f11
+0
+1
+0 0 77 3
+1
+end_operator
+begin_operator
+down f79 f12
+0
+1
+0 0 77 4
+1
+end_operator
+begin_operator
+down f79 f13
+0
+1
+0 0 77 5
+1
+end_operator
+begin_operator
+down f79 f14
+0
+1
+0 0 77 6
+1
+end_operator
+begin_operator
+down f79 f15
+0
+1
+0 0 77 7
+1
+end_operator
+begin_operator
+down f79 f16
+0
+1
+0 0 77 8
+1
+end_operator
+begin_operator
+down f79 f17
+0
+1
+0 0 77 9
+1
+end_operator
+begin_operator
+down f79 f18
+0
+1
+0 0 77 10
+1
+end_operator
+begin_operator
+down f79 f19
+0
+1
+0 0 77 11
+1
+end_operator
+begin_operator
+down f79 f2
+0
+1
+0 0 77 12
+1
+end_operator
+begin_operator
+down f79 f20
+0
+1
+0 0 77 13
+1
+end_operator
+begin_operator
+down f79 f21
+0
+1
+0 0 77 14
+1
+end_operator
+begin_operator
+down f79 f22
+0
+1
+0 0 77 15
+1
+end_operator
+begin_operator
+down f79 f23
+0
+1
+0 0 77 16
+1
+end_operator
+begin_operator
+down f79 f24
+0
+1
+0 0 77 17
+1
+end_operator
+begin_operator
+down f79 f25
+0
+1
+0 0 77 18
+1
+end_operator
+begin_operator
+down f79 f26
+0
+1
+0 0 77 19
+1
+end_operator
+begin_operator
+down f79 f27
+0
+1
+0 0 77 20
+1
+end_operator
+begin_operator
+down f79 f28
+0
+1
+0 0 77 21
+1
+end_operator
+begin_operator
+down f79 f29
+0
+1
+0 0 77 22
+1
+end_operator
+begin_operator
+down f79 f3
+0
+1
+0 0 77 23
+1
+end_operator
+begin_operator
+down f79 f30
+0
+1
+0 0 77 24
+1
+end_operator
+begin_operator
+down f79 f31
+0
+1
+0 0 77 25
+1
+end_operator
+begin_operator
+down f79 f32
+0
+1
+0 0 77 26
+1
+end_operator
+begin_operator
+down f79 f33
+0
+1
+0 0 77 27
+1
+end_operator
+begin_operator
+down f79 f34
+0
+1
+0 0 77 28
+1
+end_operator
+begin_operator
+down f79 f35
+0
+1
+0 0 77 29
+1
+end_operator
+begin_operator
+down f79 f36
+0
+1
+0 0 77 30
+1
+end_operator
+begin_operator
+down f79 f37
+0
+1
+0 0 77 31
+1
+end_operator
+begin_operator
+down f79 f38
+0
+1
+0 0 77 32
+1
+end_operator
+begin_operator
+down f79 f39
+0
+1
+0 0 77 33
+1
+end_operator
+begin_operator
+down f79 f4
+0
+1
+0 0 77 34
+1
+end_operator
+begin_operator
+down f79 f40
+0
+1
+0 0 77 35
+1
+end_operator
+begin_operator
+down f79 f41
+0
+1
+0 0 77 36
+1
+end_operator
+begin_operator
+down f79 f42
+0
+1
+0 0 77 37
+1
+end_operator
+begin_operator
+down f79 f43
+0
+1
+0 0 77 38
+1
+end_operator
+begin_operator
+down f79 f44
+0
+1
+0 0 77 39
+1
+end_operator
+begin_operator
+down f79 f45
+0
+1
+0 0 77 40
+1
+end_operator
+begin_operator
+down f79 f46
+0
+1
+0 0 77 41
+1
+end_operator
+begin_operator
+down f79 f47
+0
+1
+0 0 77 42
+1
+end_operator
+begin_operator
+down f79 f48
+0
+1
+0 0 77 43
+1
+end_operator
+begin_operator
+down f79 f49
+0
+1
+0 0 77 44
+1
+end_operator
+begin_operator
+down f79 f5
+0
+1
+0 0 77 45
+1
+end_operator
+begin_operator
+down f79 f50
+0
+1
+0 0 77 46
+1
+end_operator
+begin_operator
+down f79 f51
+0
+1
+0 0 77 47
+1
+end_operator
+begin_operator
+down f79 f52
+0
+1
+0 0 77 48
+1
+end_operator
+begin_operator
+down f79 f53
+0
+1
+0 0 77 49
+1
+end_operator
+begin_operator
+down f79 f54
+0
+1
+0 0 77 50
+1
+end_operator
+begin_operator
+down f79 f55
+0
+1
+0 0 77 51
+1
+end_operator
+begin_operator
+down f79 f56
+0
+1
+0 0 77 52
+1
+end_operator
+begin_operator
+down f79 f57
+0
+1
+0 0 77 53
+1
+end_operator
+begin_operator
+down f79 f58
+0
+1
+0 0 77 54
+1
+end_operator
+begin_operator
+down f79 f59
+0
+1
+0 0 77 55
+1
+end_operator
+begin_operator
+down f79 f6
+0
+1
+0 0 77 56
+1
+end_operator
+begin_operator
+down f79 f60
+0
+1
+0 0 77 57
+1
+end_operator
+begin_operator
+down f79 f61
+0
+1
+0 0 77 58
+1
+end_operator
+begin_operator
+down f79 f62
+0
+1
+0 0 77 59
+1
+end_operator
+begin_operator
+down f79 f63
+0
+1
+0 0 77 60
+1
+end_operator
+begin_operator
+down f79 f64
+0
+1
+0 0 77 61
+1
+end_operator
+begin_operator
+down f79 f65
+0
+1
+0 0 77 62
+1
+end_operator
+begin_operator
+down f79 f66
+0
+1
+0 0 77 63
+1
+end_operator
+begin_operator
+down f79 f67
+0
+1
+0 0 77 64
+1
+end_operator
+begin_operator
+down f79 f68
+0
+1
+0 0 77 65
+1
+end_operator
+begin_operator
+down f79 f69
+0
+1
+0 0 77 66
+1
+end_operator
+begin_operator
+down f79 f7
+0
+1
+0 0 77 67
+1
+end_operator
+begin_operator
+down f79 f70
+0
+1
+0 0 77 68
+1
+end_operator
+begin_operator
+down f79 f71
+0
+1
+0 0 77 69
+1
+end_operator
+begin_operator
+down f79 f72
+0
+1
+0 0 77 70
+1
+end_operator
+begin_operator
+down f79 f73
+0
+1
+0 0 77 71
+1
+end_operator
+begin_operator
+down f79 f74
+0
+1
+0 0 77 72
+1
+end_operator
+begin_operator
+down f79 f75
+0
+1
+0 0 77 73
+1
+end_operator
+begin_operator
+down f79 f76
+0
+1
+0 0 77 74
+1
+end_operator
+begin_operator
+down f79 f77
+0
+1
+0 0 77 75
+1
+end_operator
+begin_operator
+down f79 f78
+0
+1
+0 0 77 76
+1
+end_operator
+begin_operator
+down f79 f8
+0
+1
+0 0 77 78
+1
+end_operator
+begin_operator
+down f79 f9
+0
+1
+0 0 77 89
+1
+end_operator
+begin_operator
+down f8 f1
+0
+1
+0 0 78 0
+1
+end_operator
+begin_operator
+down f8 f2
+0
+1
+0 0 78 12
+1
+end_operator
+begin_operator
+down f8 f3
+0
+1
+0 0 78 23
+1
+end_operator
+begin_operator
+down f8 f4
+0
+1
+0 0 78 34
+1
+end_operator
+begin_operator
+down f8 f5
+0
+1
+0 0 78 45
+1
+end_operator
+begin_operator
+down f8 f6
+0
+1
+0 0 78 56
+1
+end_operator
+begin_operator
+down f8 f7
+0
+1
+0 0 78 67
+1
+end_operator
+begin_operator
+down f80 f1
+0
+1
+0 0 79 0
+1
+end_operator
+begin_operator
+down f80 f10
+0
+1
+0 0 79 1
+1
+end_operator
+begin_operator
+down f80 f11
+0
+1
+0 0 79 3
+1
+end_operator
+begin_operator
+down f80 f12
+0
+1
+0 0 79 4
+1
+end_operator
+begin_operator
+down f80 f13
+0
+1
+0 0 79 5
+1
+end_operator
+begin_operator
+down f80 f14
+0
+1
+0 0 79 6
+1
+end_operator
+begin_operator
+down f80 f15
+0
+1
+0 0 79 7
+1
+end_operator
+begin_operator
+down f80 f16
+0
+1
+0 0 79 8
+1
+end_operator
+begin_operator
+down f80 f17
+0
+1
+0 0 79 9
+1
+end_operator
+begin_operator
+down f80 f18
+0
+1
+0 0 79 10
+1
+end_operator
+begin_operator
+down f80 f19
+0
+1
+0 0 79 11
+1
+end_operator
+begin_operator
+down f80 f2
+0
+1
+0 0 79 12
+1
+end_operator
+begin_operator
+down f80 f20
+0
+1
+0 0 79 13
+1
+end_operator
+begin_operator
+down f80 f21
+0
+1
+0 0 79 14
+1
+end_operator
+begin_operator
+down f80 f22
+0
+1
+0 0 79 15
+1
+end_operator
+begin_operator
+down f80 f23
+0
+1
+0 0 79 16
+1
+end_operator
+begin_operator
+down f80 f24
+0
+1
+0 0 79 17
+1
+end_operator
+begin_operator
+down f80 f25
+0
+1
+0 0 79 18
+1
+end_operator
+begin_operator
+down f80 f26
+0
+1
+0 0 79 19
+1
+end_operator
+begin_operator
+down f80 f27
+0
+1
+0 0 79 20
+1
+end_operator
+begin_operator
+down f80 f28
+0
+1
+0 0 79 21
+1
+end_operator
+begin_operator
+down f80 f29
+0
+1
+0 0 79 22
+1
+end_operator
+begin_operator
+down f80 f3
+0
+1
+0 0 79 23
+1
+end_operator
+begin_operator
+down f80 f30
+0
+1
+0 0 79 24
+1
+end_operator
+begin_operator
+down f80 f31
+0
+1
+0 0 79 25
+1
+end_operator
+begin_operator
+down f80 f32
+0
+1
+0 0 79 26
+1
+end_operator
+begin_operator
+down f80 f33
+0
+1
+0 0 79 27
+1
+end_operator
+begin_operator
+down f80 f34
+0
+1
+0 0 79 28
+1
+end_operator
+begin_operator
+down f80 f35
+0
+1
+0 0 79 29
+1
+end_operator
+begin_operator
+down f80 f36
+0
+1
+0 0 79 30
+1
+end_operator
+begin_operator
+down f80 f37
+0
+1
+0 0 79 31
+1
+end_operator
+begin_operator
+down f80 f38
+0
+1
+0 0 79 32
+1
+end_operator
+begin_operator
+down f80 f39
+0
+1
+0 0 79 33
+1
+end_operator
+begin_operator
+down f80 f4
+0
+1
+0 0 79 34
+1
+end_operator
+begin_operator
+down f80 f40
+0
+1
+0 0 79 35
+1
+end_operator
+begin_operator
+down f80 f41
+0
+1
+0 0 79 36
+1
+end_operator
+begin_operator
+down f80 f42
+0
+1
+0 0 79 37
+1
+end_operator
+begin_operator
+down f80 f43
+0
+1
+0 0 79 38
+1
+end_operator
+begin_operator
+down f80 f44
+0
+1
+0 0 79 39
+1
+end_operator
+begin_operator
+down f80 f45
+0
+1
+0 0 79 40
+1
+end_operator
+begin_operator
+down f80 f46
+0
+1
+0 0 79 41
+1
+end_operator
+begin_operator
+down f80 f47
+0
+1
+0 0 79 42
+1
+end_operator
+begin_operator
+down f80 f48
+0
+1
+0 0 79 43
+1
+end_operator
+begin_operator
+down f80 f49
+0
+1
+0 0 79 44
+1
+end_operator
+begin_operator
+down f80 f5
+0
+1
+0 0 79 45
+1
+end_operator
+begin_operator
+down f80 f50
+0
+1
+0 0 79 46
+1
+end_operator
+begin_operator
+down f80 f51
+0
+1
+0 0 79 47
+1
+end_operator
+begin_operator
+down f80 f52
+0
+1
+0 0 79 48
+1
+end_operator
+begin_operator
+down f80 f53
+0
+1
+0 0 79 49
+1
+end_operator
+begin_operator
+down f80 f54
+0
+1
+0 0 79 50
+1
+end_operator
+begin_operator
+down f80 f55
+0
+1
+0 0 79 51
+1
+end_operator
+begin_operator
+down f80 f56
+0
+1
+0 0 79 52
+1
+end_operator
+begin_operator
+down f80 f57
+0
+1
+0 0 79 53
+1
+end_operator
+begin_operator
+down f80 f58
+0
+1
+0 0 79 54
+1
+end_operator
+begin_operator
+down f80 f59
+0
+1
+0 0 79 55
+1
+end_operator
+begin_operator
+down f80 f6
+0
+1
+0 0 79 56
+1
+end_operator
+begin_operator
+down f80 f60
+0
+1
+0 0 79 57
+1
+end_operator
+begin_operator
+down f80 f61
+0
+1
+0 0 79 58
+1
+end_operator
+begin_operator
+down f80 f62
+0
+1
+0 0 79 59
+1
+end_operator
+begin_operator
+down f80 f63
+0
+1
+0 0 79 60
+1
+end_operator
+begin_operator
+down f80 f64
+0
+1
+0 0 79 61
+1
+end_operator
+begin_operator
+down f80 f65
+0
+1
+0 0 79 62
+1
+end_operator
+begin_operator
+down f80 f66
+0
+1
+0 0 79 63
+1
+end_operator
+begin_operator
+down f80 f67
+0
+1
+0 0 79 64
+1
+end_operator
+begin_operator
+down f80 f68
+0
+1
+0 0 79 65
+1
+end_operator
+begin_operator
+down f80 f69
+0
+1
+0 0 79 66
+1
+end_operator
+begin_operator
+down f80 f7
+0
+1
+0 0 79 67
+1
+end_operator
+begin_operator
+down f80 f70
+0
+1
+0 0 79 68
+1
+end_operator
+begin_operator
+down f80 f71
+0
+1
+0 0 79 69
+1
+end_operator
+begin_operator
+down f80 f72
+0
+1
+0 0 79 70
+1
+end_operator
+begin_operator
+down f80 f73
+0
+1
+0 0 79 71
+1
+end_operator
+begin_operator
+down f80 f74
+0
+1
+0 0 79 72
+1
+end_operator
+begin_operator
+down f80 f75
+0
+1
+0 0 79 73
+1
+end_operator
+begin_operator
+down f80 f76
+0
+1
+0 0 79 74
+1
+end_operator
+begin_operator
+down f80 f77
+0
+1
+0 0 79 75
+1
+end_operator
+begin_operator
+down f80 f78
+0
+1
+0 0 79 76
+1
+end_operator
+begin_operator
+down f80 f79
+0
+1
+0 0 79 77
+1
+end_operator
+begin_operator
+down f80 f8
+0
+1
+0 0 79 78
+1
+end_operator
+begin_operator
+down f80 f9
+0
+1
+0 0 79 89
+1
+end_operator
+begin_operator
+down f81 f1
+0
+1
+0 0 80 0
+1
+end_operator
+begin_operator
+down f81 f10
+0
+1
+0 0 80 1
+1
+end_operator
+begin_operator
+down f81 f11
+0
+1
+0 0 80 3
+1
+end_operator
+begin_operator
+down f81 f12
+0
+1
+0 0 80 4
+1
+end_operator
+begin_operator
+down f81 f13
+0
+1
+0 0 80 5
+1
+end_operator
+begin_operator
+down f81 f14
+0
+1
+0 0 80 6
+1
+end_operator
+begin_operator
+down f81 f15
+0
+1
+0 0 80 7
+1
+end_operator
+begin_operator
+down f81 f16
+0
+1
+0 0 80 8
+1
+end_operator
+begin_operator
+down f81 f17
+0
+1
+0 0 80 9
+1
+end_operator
+begin_operator
+down f81 f18
+0
+1
+0 0 80 10
+1
+end_operator
+begin_operator
+down f81 f19
+0
+1
+0 0 80 11
+1
+end_operator
+begin_operator
+down f81 f2
+0
+1
+0 0 80 12
+1
+end_operator
+begin_operator
+down f81 f20
+0
+1
+0 0 80 13
+1
+end_operator
+begin_operator
+down f81 f21
+0
+1
+0 0 80 14
+1
+end_operator
+begin_operator
+down f81 f22
+0
+1
+0 0 80 15
+1
+end_operator
+begin_operator
+down f81 f23
+0
+1
+0 0 80 16
+1
+end_operator
+begin_operator
+down f81 f24
+0
+1
+0 0 80 17
+1
+end_operator
+begin_operator
+down f81 f25
+0
+1
+0 0 80 18
+1
+end_operator
+begin_operator
+down f81 f26
+0
+1
+0 0 80 19
+1
+end_operator
+begin_operator
+down f81 f27
+0
+1
+0 0 80 20
+1
+end_operator
+begin_operator
+down f81 f28
+0
+1
+0 0 80 21
+1
+end_operator
+begin_operator
+down f81 f29
+0
+1
+0 0 80 22
+1
+end_operator
+begin_operator
+down f81 f3
+0
+1
+0 0 80 23
+1
+end_operator
+begin_operator
+down f81 f30
+0
+1
+0 0 80 24
+1
+end_operator
+begin_operator
+down f81 f31
+0
+1
+0 0 80 25
+1
+end_operator
+begin_operator
+down f81 f32
+0
+1
+0 0 80 26
+1
+end_operator
+begin_operator
+down f81 f33
+0
+1
+0 0 80 27
+1
+end_operator
+begin_operator
+down f81 f34
+0
+1
+0 0 80 28
+1
+end_operator
+begin_operator
+down f81 f35
+0
+1
+0 0 80 29
+1
+end_operator
+begin_operator
+down f81 f36
+0
+1
+0 0 80 30
+1
+end_operator
+begin_operator
+down f81 f37
+0
+1
+0 0 80 31
+1
+end_operator
+begin_operator
+down f81 f38
+0
+1
+0 0 80 32
+1
+end_operator
+begin_operator
+down f81 f39
+0
+1
+0 0 80 33
+1
+end_operator
+begin_operator
+down f81 f4
+0
+1
+0 0 80 34
+1
+end_operator
+begin_operator
+down f81 f40
+0
+1
+0 0 80 35
+1
+end_operator
+begin_operator
+down f81 f41
+0
+1
+0 0 80 36
+1
+end_operator
+begin_operator
+down f81 f42
+0
+1
+0 0 80 37
+1
+end_operator
+begin_operator
+down f81 f43
+0
+1
+0 0 80 38
+1
+end_operator
+begin_operator
+down f81 f44
+0
+1
+0 0 80 39
+1
+end_operator
+begin_operator
+down f81 f45
+0
+1
+0 0 80 40
+1
+end_operator
+begin_operator
+down f81 f46
+0
+1
+0 0 80 41
+1
+end_operator
+begin_operator
+down f81 f47
+0
+1
+0 0 80 42
+1
+end_operator
+begin_operator
+down f81 f48
+0
+1
+0 0 80 43
+1
+end_operator
+begin_operator
+down f81 f49
+0
+1
+0 0 80 44
+1
+end_operator
+begin_operator
+down f81 f5
+0
+1
+0 0 80 45
+1
+end_operator
+begin_operator
+down f81 f50
+0
+1
+0 0 80 46
+1
+end_operator
+begin_operator
+down f81 f51
+0
+1
+0 0 80 47
+1
+end_operator
+begin_operator
+down f81 f52
+0
+1
+0 0 80 48
+1
+end_operator
+begin_operator
+down f81 f53
+0
+1
+0 0 80 49
+1
+end_operator
+begin_operator
+down f81 f54
+0
+1
+0 0 80 50
+1
+end_operator
+begin_operator
+down f81 f55
+0
+1
+0 0 80 51
+1
+end_operator
+begin_operator
+down f81 f56
+0
+1
+0 0 80 52
+1
+end_operator
+begin_operator
+down f81 f57
+0
+1
+0 0 80 53
+1
+end_operator
+begin_operator
+down f81 f58
+0
+1
+0 0 80 54
+1
+end_operator
+begin_operator
+down f81 f59
+0
+1
+0 0 80 55
+1
+end_operator
+begin_operator
+down f81 f6
+0
+1
+0 0 80 56
+1
+end_operator
+begin_operator
+down f81 f60
+0
+1
+0 0 80 57
+1
+end_operator
+begin_operator
+down f81 f61
+0
+1
+0 0 80 58
+1
+end_operator
+begin_operator
+down f81 f62
+0
+1
+0 0 80 59
+1
+end_operator
+begin_operator
+down f81 f63
+0
+1
+0 0 80 60
+1
+end_operator
+begin_operator
+down f81 f64
+0
+1
+0 0 80 61
+1
+end_operator
+begin_operator
+down f81 f65
+0
+1
+0 0 80 62
+1
+end_operator
+begin_operator
+down f81 f66
+0
+1
+0 0 80 63
+1
+end_operator
+begin_operator
+down f81 f67
+0
+1
+0 0 80 64
+1
+end_operator
+begin_operator
+down f81 f68
+0
+1
+0 0 80 65
+1
+end_operator
+begin_operator
+down f81 f69
+0
+1
+0 0 80 66
+1
+end_operator
+begin_operator
+down f81 f7
+0
+1
+0 0 80 67
+1
+end_operator
+begin_operator
+down f81 f70
+0
+1
+0 0 80 68
+1
+end_operator
+begin_operator
+down f81 f71
+0
+1
+0 0 80 69
+1
+end_operator
+begin_operator
+down f81 f72
+0
+1
+0 0 80 70
+1
+end_operator
+begin_operator
+down f81 f73
+0
+1
+0 0 80 71
+1
+end_operator
+begin_operator
+down f81 f74
+0
+1
+0 0 80 72
+1
+end_operator
+begin_operator
+down f81 f75
+0
+1
+0 0 80 73
+1
+end_operator
+begin_operator
+down f81 f76
+0
+1
+0 0 80 74
+1
+end_operator
+begin_operator
+down f81 f77
+0
+1
+0 0 80 75
+1
+end_operator
+begin_operator
+down f81 f78
+0
+1
+0 0 80 76
+1
+end_operator
+begin_operator
+down f81 f79
+0
+1
+0 0 80 77
+1
+end_operator
+begin_operator
+down f81 f8
+0
+1
+0 0 80 78
+1
+end_operator
+begin_operator
+down f81 f80
+0
+1
+0 0 80 79
+1
+end_operator
+begin_operator
+down f81 f9
+0
+1
+0 0 80 89
+1
+end_operator
+begin_operator
+down f82 f1
+0
+1
+0 0 81 0
+1
+end_operator
+begin_operator
+down f82 f10
+0
+1
+0 0 81 1
+1
+end_operator
+begin_operator
+down f82 f11
+0
+1
+0 0 81 3
+1
+end_operator
+begin_operator
+down f82 f12
+0
+1
+0 0 81 4
+1
+end_operator
+begin_operator
+down f82 f13
+0
+1
+0 0 81 5
+1
+end_operator
+begin_operator
+down f82 f14
+0
+1
+0 0 81 6
+1
+end_operator
+begin_operator
+down f82 f15
+0
+1
+0 0 81 7
+1
+end_operator
+begin_operator
+down f82 f16
+0
+1
+0 0 81 8
+1
+end_operator
+begin_operator
+down f82 f17
+0
+1
+0 0 81 9
+1
+end_operator
+begin_operator
+down f82 f18
+0
+1
+0 0 81 10
+1
+end_operator
+begin_operator
+down f82 f19
+0
+1
+0 0 81 11
+1
+end_operator
+begin_operator
+down f82 f2
+0
+1
+0 0 81 12
+1
+end_operator
+begin_operator
+down f82 f20
+0
+1
+0 0 81 13
+1
+end_operator
+begin_operator
+down f82 f21
+0
+1
+0 0 81 14
+1
+end_operator
+begin_operator
+down f82 f22
+0
+1
+0 0 81 15
+1
+end_operator
+begin_operator
+down f82 f23
+0
+1
+0 0 81 16
+1
+end_operator
+begin_operator
+down f82 f24
+0
+1
+0 0 81 17
+1
+end_operator
+begin_operator
+down f82 f25
+0
+1
+0 0 81 18
+1
+end_operator
+begin_operator
+down f82 f26
+0
+1
+0 0 81 19
+1
+end_operator
+begin_operator
+down f82 f27
+0
+1
+0 0 81 20
+1
+end_operator
+begin_operator
+down f82 f28
+0
+1
+0 0 81 21
+1
+end_operator
+begin_operator
+down f82 f29
+0
+1
+0 0 81 22
+1
+end_operator
+begin_operator
+down f82 f3
+0
+1
+0 0 81 23
+1
+end_operator
+begin_operator
+down f82 f30
+0
+1
+0 0 81 24
+1
+end_operator
+begin_operator
+down f82 f31
+0
+1
+0 0 81 25
+1
+end_operator
+begin_operator
+down f82 f32
+0
+1
+0 0 81 26
+1
+end_operator
+begin_operator
+down f82 f33
+0
+1
+0 0 81 27
+1
+end_operator
+begin_operator
+down f82 f34
+0
+1
+0 0 81 28
+1
+end_operator
+begin_operator
+down f82 f35
+0
+1
+0 0 81 29
+1
+end_operator
+begin_operator
+down f82 f36
+0
+1
+0 0 81 30
+1
+end_operator
+begin_operator
+down f82 f37
+0
+1
+0 0 81 31
+1
+end_operator
+begin_operator
+down f82 f38
+0
+1
+0 0 81 32
+1
+end_operator
+begin_operator
+down f82 f39
+0
+1
+0 0 81 33
+1
+end_operator
+begin_operator
+down f82 f4
+0
+1
+0 0 81 34
+1
+end_operator
+begin_operator
+down f82 f40
+0
+1
+0 0 81 35
+1
+end_operator
+begin_operator
+down f82 f41
+0
+1
+0 0 81 36
+1
+end_operator
+begin_operator
+down f82 f42
+0
+1
+0 0 81 37
+1
+end_operator
+begin_operator
+down f82 f43
+0
+1
+0 0 81 38
+1
+end_operator
+begin_operator
+down f82 f44
+0
+1
+0 0 81 39
+1
+end_operator
+begin_operator
+down f82 f45
+0
+1
+0 0 81 40
+1
+end_operator
+begin_operator
+down f82 f46
+0
+1
+0 0 81 41
+1
+end_operator
+begin_operator
+down f82 f47
+0
+1
+0 0 81 42
+1
+end_operator
+begin_operator
+down f82 f48
+0
+1
+0 0 81 43
+1
+end_operator
+begin_operator
+down f82 f49
+0
+1
+0 0 81 44
+1
+end_operator
+begin_operator
+down f82 f5
+0
+1
+0 0 81 45
+1
+end_operator
+begin_operator
+down f82 f50
+0
+1
+0 0 81 46
+1
+end_operator
+begin_operator
+down f82 f51
+0
+1
+0 0 81 47
+1
+end_operator
+begin_operator
+down f82 f52
+0
+1
+0 0 81 48
+1
+end_operator
+begin_operator
+down f82 f53
+0
+1
+0 0 81 49
+1
+end_operator
+begin_operator
+down f82 f54
+0
+1
+0 0 81 50
+1
+end_operator
+begin_operator
+down f82 f55
+0
+1
+0 0 81 51
+1
+end_operator
+begin_operator
+down f82 f56
+0
+1
+0 0 81 52
+1
+end_operator
+begin_operator
+down f82 f57
+0
+1
+0 0 81 53
+1
+end_operator
+begin_operator
+down f82 f58
+0
+1
+0 0 81 54
+1
+end_operator
+begin_operator
+down f82 f59
+0
+1
+0 0 81 55
+1
+end_operator
+begin_operator
+down f82 f6
+0
+1
+0 0 81 56
+1
+end_operator
+begin_operator
+down f82 f60
+0
+1
+0 0 81 57
+1
+end_operator
+begin_operator
+down f82 f61
+0
+1
+0 0 81 58
+1
+end_operator
+begin_operator
+down f82 f62
+0
+1
+0 0 81 59
+1
+end_operator
+begin_operator
+down f82 f63
+0
+1
+0 0 81 60
+1
+end_operator
+begin_operator
+down f82 f64
+0
+1
+0 0 81 61
+1
+end_operator
+begin_operator
+down f82 f65
+0
+1
+0 0 81 62
+1
+end_operator
+begin_operator
+down f82 f66
+0
+1
+0 0 81 63
+1
+end_operator
+begin_operator
+down f82 f67
+0
+1
+0 0 81 64
+1
+end_operator
+begin_operator
+down f82 f68
+0
+1
+0 0 81 65
+1
+end_operator
+begin_operator
+down f82 f69
+0
+1
+0 0 81 66
+1
+end_operator
+begin_operator
+down f82 f7
+0
+1
+0 0 81 67
+1
+end_operator
+begin_operator
+down f82 f70
+0
+1
+0 0 81 68
+1
+end_operator
+begin_operator
+down f82 f71
+0
+1
+0 0 81 69
+1
+end_operator
+begin_operator
+down f82 f72
+0
+1
+0 0 81 70
+1
+end_operator
+begin_operator
+down f82 f73
+0
+1
+0 0 81 71
+1
+end_operator
+begin_operator
+down f82 f74
+0
+1
+0 0 81 72
+1
+end_operator
+begin_operator
+down f82 f75
+0
+1
+0 0 81 73
+1
+end_operator
+begin_operator
+down f82 f76
+0
+1
+0 0 81 74
+1
+end_operator
+begin_operator
+down f82 f77
+0
+1
+0 0 81 75
+1
+end_operator
+begin_operator
+down f82 f78
+0
+1
+0 0 81 76
+1
+end_operator
+begin_operator
+down f82 f79
+0
+1
+0 0 81 77
+1
+end_operator
+begin_operator
+down f82 f8
+0
+1
+0 0 81 78
+1
+end_operator
+begin_operator
+down f82 f80
+0
+1
+0 0 81 79
+1
+end_operator
+begin_operator
+down f82 f81
+0
+1
+0 0 81 80
+1
+end_operator
+begin_operator
+down f82 f9
+0
+1
+0 0 81 89
+1
+end_operator
+begin_operator
+down f83 f1
+0
+1
+0 0 82 0
+1
+end_operator
+begin_operator
+down f83 f10
+0
+1
+0 0 82 1
+1
+end_operator
+begin_operator
+down f83 f11
+0
+1
+0 0 82 3
+1
+end_operator
+begin_operator
+down f83 f12
+0
+1
+0 0 82 4
+1
+end_operator
+begin_operator
+down f83 f13
+0
+1
+0 0 82 5
+1
+end_operator
+begin_operator
+down f83 f14
+0
+1
+0 0 82 6
+1
+end_operator
+begin_operator
+down f83 f15
+0
+1
+0 0 82 7
+1
+end_operator
+begin_operator
+down f83 f16
+0
+1
+0 0 82 8
+1
+end_operator
+begin_operator
+down f83 f17
+0
+1
+0 0 82 9
+1
+end_operator
+begin_operator
+down f83 f18
+0
+1
+0 0 82 10
+1
+end_operator
+begin_operator
+down f83 f19
+0
+1
+0 0 82 11
+1
+end_operator
+begin_operator
+down f83 f2
+0
+1
+0 0 82 12
+1
+end_operator
+begin_operator
+down f83 f20
+0
+1
+0 0 82 13
+1
+end_operator
+begin_operator
+down f83 f21
+0
+1
+0 0 82 14
+1
+end_operator
+begin_operator
+down f83 f22
+0
+1
+0 0 82 15
+1
+end_operator
+begin_operator
+down f83 f23
+0
+1
+0 0 82 16
+1
+end_operator
+begin_operator
+down f83 f24
+0
+1
+0 0 82 17
+1
+end_operator
+begin_operator
+down f83 f25
+0
+1
+0 0 82 18
+1
+end_operator
+begin_operator
+down f83 f26
+0
+1
+0 0 82 19
+1
+end_operator
+begin_operator
+down f83 f27
+0
+1
+0 0 82 20
+1
+end_operator
+begin_operator
+down f83 f28
+0
+1
+0 0 82 21
+1
+end_operator
+begin_operator
+down f83 f29
+0
+1
+0 0 82 22
+1
+end_operator
+begin_operator
+down f83 f3
+0
+1
+0 0 82 23
+1
+end_operator
+begin_operator
+down f83 f30
+0
+1
+0 0 82 24
+1
+end_operator
+begin_operator
+down f83 f31
+0
+1
+0 0 82 25
+1
+end_operator
+begin_operator
+down f83 f32
+0
+1
+0 0 82 26
+1
+end_operator
+begin_operator
+down f83 f33
+0
+1
+0 0 82 27
+1
+end_operator
+begin_operator
+down f83 f34
+0
+1
+0 0 82 28
+1
+end_operator
+begin_operator
+down f83 f35
+0
+1
+0 0 82 29
+1
+end_operator
+begin_operator
+down f83 f36
+0
+1
+0 0 82 30
+1
+end_operator
+begin_operator
+down f83 f37
+0
+1
+0 0 82 31
+1
+end_operator
+begin_operator
+down f83 f38
+0
+1
+0 0 82 32
+1
+end_operator
+begin_operator
+down f83 f39
+0
+1
+0 0 82 33
+1
+end_operator
+begin_operator
+down f83 f4
+0
+1
+0 0 82 34
+1
+end_operator
+begin_operator
+down f83 f40
+0
+1
+0 0 82 35
+1
+end_operator
+begin_operator
+down f83 f41
+0
+1
+0 0 82 36
+1
+end_operator
+begin_operator
+down f83 f42
+0
+1
+0 0 82 37
+1
+end_operator
+begin_operator
+down f83 f43
+0
+1
+0 0 82 38
+1
+end_operator
+begin_operator
+down f83 f44
+0
+1
+0 0 82 39
+1
+end_operator
+begin_operator
+down f83 f45
+0
+1
+0 0 82 40
+1
+end_operator
+begin_operator
+down f83 f46
+0
+1
+0 0 82 41
+1
+end_operator
+begin_operator
+down f83 f47
+0
+1
+0 0 82 42
+1
+end_operator
+begin_operator
+down f83 f48
+0
+1
+0 0 82 43
+1
+end_operator
+begin_operator
+down f83 f49
+0
+1
+0 0 82 44
+1
+end_operator
+begin_operator
+down f83 f5
+0
+1
+0 0 82 45
+1
+end_operator
+begin_operator
+down f83 f50
+0
+1
+0 0 82 46
+1
+end_operator
+begin_operator
+down f83 f51
+0
+1
+0 0 82 47
+1
+end_operator
+begin_operator
+down f83 f52
+0
+1
+0 0 82 48
+1
+end_operator
+begin_operator
+down f83 f53
+0
+1
+0 0 82 49
+1
+end_operator
+begin_operator
+down f83 f54
+0
+1
+0 0 82 50
+1
+end_operator
+begin_operator
+down f83 f55
+0
+1
+0 0 82 51
+1
+end_operator
+begin_operator
+down f83 f56
+0
+1
+0 0 82 52
+1
+end_operator
+begin_operator
+down f83 f57
+0
+1
+0 0 82 53
+1
+end_operator
+begin_operator
+down f83 f58
+0
+1
+0 0 82 54
+1
+end_operator
+begin_operator
+down f83 f59
+0
+1
+0 0 82 55
+1
+end_operator
+begin_operator
+down f83 f6
+0
+1
+0 0 82 56
+1
+end_operator
+begin_operator
+down f83 f60
+0
+1
+0 0 82 57
+1
+end_operator
+begin_operator
+down f83 f61
+0
+1
+0 0 82 58
+1
+end_operator
+begin_operator
+down f83 f62
+0
+1
+0 0 82 59
+1
+end_operator
+begin_operator
+down f83 f63
+0
+1
+0 0 82 60
+1
+end_operator
+begin_operator
+down f83 f64
+0
+1
+0 0 82 61
+1
+end_operator
+begin_operator
+down f83 f65
+0
+1
+0 0 82 62
+1
+end_operator
+begin_operator
+down f83 f66
+0
+1
+0 0 82 63
+1
+end_operator
+begin_operator
+down f83 f67
+0
+1
+0 0 82 64
+1
+end_operator
+begin_operator
+down f83 f68
+0
+1
+0 0 82 65
+1
+end_operator
+begin_operator
+down f83 f69
+0
+1
+0 0 82 66
+1
+end_operator
+begin_operator
+down f83 f7
+0
+1
+0 0 82 67
+1
+end_operator
+begin_operator
+down f83 f70
+0
+1
+0 0 82 68
+1
+end_operator
+begin_operator
+down f83 f71
+0
+1
+0 0 82 69
+1
+end_operator
+begin_operator
+down f83 f72
+0
+1
+0 0 82 70
+1
+end_operator
+begin_operator
+down f83 f73
+0
+1
+0 0 82 71
+1
+end_operator
+begin_operator
+down f83 f74
+0
+1
+0 0 82 72
+1
+end_operator
+begin_operator
+down f83 f75
+0
+1
+0 0 82 73
+1
+end_operator
+begin_operator
+down f83 f76
+0
+1
+0 0 82 74
+1
+end_operator
+begin_operator
+down f83 f77
+0
+1
+0 0 82 75
+1
+end_operator
+begin_operator
+down f83 f78
+0
+1
+0 0 82 76
+1
+end_operator
+begin_operator
+down f83 f79
+0
+1
+0 0 82 77
+1
+end_operator
+begin_operator
+down f83 f8
+0
+1
+0 0 82 78
+1
+end_operator
+begin_operator
+down f83 f80
+0
+1
+0 0 82 79
+1
+end_operator
+begin_operator
+down f83 f81
+0
+1
+0 0 82 80
+1
+end_operator
+begin_operator
+down f83 f82
+0
+1
+0 0 82 81
+1
+end_operator
+begin_operator
+down f83 f9
+0
+1
+0 0 82 89
+1
+end_operator
+begin_operator
+down f84 f1
+0
+1
+0 0 83 0
+1
+end_operator
+begin_operator
+down f84 f10
+0
+1
+0 0 83 1
+1
+end_operator
+begin_operator
+down f84 f11
+0
+1
+0 0 83 3
+1
+end_operator
+begin_operator
+down f84 f12
+0
+1
+0 0 83 4
+1
+end_operator
+begin_operator
+down f84 f13
+0
+1
+0 0 83 5
+1
+end_operator
+begin_operator
+down f84 f14
+0
+1
+0 0 83 6
+1
+end_operator
+begin_operator
+down f84 f15
+0
+1
+0 0 83 7
+1
+end_operator
+begin_operator
+down f84 f16
+0
+1
+0 0 83 8
+1
+end_operator
+begin_operator
+down f84 f17
+0
+1
+0 0 83 9
+1
+end_operator
+begin_operator
+down f84 f18
+0
+1
+0 0 83 10
+1
+end_operator
+begin_operator
+down f84 f19
+0
+1
+0 0 83 11
+1
+end_operator
+begin_operator
+down f84 f2
+0
+1
+0 0 83 12
+1
+end_operator
+begin_operator
+down f84 f20
+0
+1
+0 0 83 13
+1
+end_operator
+begin_operator
+down f84 f21
+0
+1
+0 0 83 14
+1
+end_operator
+begin_operator
+down f84 f22
+0
+1
+0 0 83 15
+1
+end_operator
+begin_operator
+down f84 f23
+0
+1
+0 0 83 16
+1
+end_operator
+begin_operator
+down f84 f24
+0
+1
+0 0 83 17
+1
+end_operator
+begin_operator
+down f84 f25
+0
+1
+0 0 83 18
+1
+end_operator
+begin_operator
+down f84 f26
+0
+1
+0 0 83 19
+1
+end_operator
+begin_operator
+down f84 f27
+0
+1
+0 0 83 20
+1
+end_operator
+begin_operator
+down f84 f28
+0
+1
+0 0 83 21
+1
+end_operator
+begin_operator
+down f84 f29
+0
+1
+0 0 83 22
+1
+end_operator
+begin_operator
+down f84 f3
+0
+1
+0 0 83 23
+1
+end_operator
+begin_operator
+down f84 f30
+0
+1
+0 0 83 24
+1
+end_operator
+begin_operator
+down f84 f31
+0
+1
+0 0 83 25
+1
+end_operator
+begin_operator
+down f84 f32
+0
+1
+0 0 83 26
+1
+end_operator
+begin_operator
+down f84 f33
+0
+1
+0 0 83 27
+1
+end_operator
+begin_operator
+down f84 f34
+0
+1
+0 0 83 28
+1
+end_operator
+begin_operator
+down f84 f35
+0
+1
+0 0 83 29
+1
+end_operator
+begin_operator
+down f84 f36
+0
+1
+0 0 83 30
+1
+end_operator
+begin_operator
+down f84 f37
+0
+1
+0 0 83 31
+1
+end_operator
+begin_operator
+down f84 f38
+0
+1
+0 0 83 32
+1
+end_operator
+begin_operator
+down f84 f39
+0
+1
+0 0 83 33
+1
+end_operator
+begin_operator
+down f84 f4
+0
+1
+0 0 83 34
+1
+end_operator
+begin_operator
+down f84 f40
+0
+1
+0 0 83 35
+1
+end_operator
+begin_operator
+down f84 f41
+0
+1
+0 0 83 36
+1
+end_operator
+begin_operator
+down f84 f42
+0
+1
+0 0 83 37
+1
+end_operator
+begin_operator
+down f84 f43
+0
+1
+0 0 83 38
+1
+end_operator
+begin_operator
+down f84 f44
+0
+1
+0 0 83 39
+1
+end_operator
+begin_operator
+down f84 f45
+0
+1
+0 0 83 40
+1
+end_operator
+begin_operator
+down f84 f46
+0
+1
+0 0 83 41
+1
+end_operator
+begin_operator
+down f84 f47
+0
+1
+0 0 83 42
+1
+end_operator
+begin_operator
+down f84 f48
+0
+1
+0 0 83 43
+1
+end_operator
+begin_operator
+down f84 f49
+0
+1
+0 0 83 44
+1
+end_operator
+begin_operator
+down f84 f5
+0
+1
+0 0 83 45
+1
+end_operator
+begin_operator
+down f84 f50
+0
+1
+0 0 83 46
+1
+end_operator
+begin_operator
+down f84 f51
+0
+1
+0 0 83 47
+1
+end_operator
+begin_operator
+down f84 f52
+0
+1
+0 0 83 48
+1
+end_operator
+begin_operator
+down f84 f53
+0
+1
+0 0 83 49
+1
+end_operator
+begin_operator
+down f84 f54
+0
+1
+0 0 83 50
+1
+end_operator
+begin_operator
+down f84 f55
+0
+1
+0 0 83 51
+1
+end_operator
+begin_operator
+down f84 f56
+0
+1
+0 0 83 52
+1
+end_operator
+begin_operator
+down f84 f57
+0
+1
+0 0 83 53
+1
+end_operator
+begin_operator
+down f84 f58
+0
+1
+0 0 83 54
+1
+end_operator
+begin_operator
+down f84 f59
+0
+1
+0 0 83 55
+1
+end_operator
+begin_operator
+down f84 f6
+0
+1
+0 0 83 56
+1
+end_operator
+begin_operator
+down f84 f60
+0
+1
+0 0 83 57
+1
+end_operator
+begin_operator
+down f84 f61
+0
+1
+0 0 83 58
+1
+end_operator
+begin_operator
+down f84 f62
+0
+1
+0 0 83 59
+1
+end_operator
+begin_operator
+down f84 f63
+0
+1
+0 0 83 60
+1
+end_operator
+begin_operator
+down f84 f64
+0
+1
+0 0 83 61
+1
+end_operator
+begin_operator
+down f84 f65
+0
+1
+0 0 83 62
+1
+end_operator
+begin_operator
+down f84 f66
+0
+1
+0 0 83 63
+1
+end_operator
+begin_operator
+down f84 f67
+0
+1
+0 0 83 64
+1
+end_operator
+begin_operator
+down f84 f68
+0
+1
+0 0 83 65
+1
+end_operator
+begin_operator
+down f84 f69
+0
+1
+0 0 83 66
+1
+end_operator
+begin_operator
+down f84 f7
+0
+1
+0 0 83 67
+1
+end_operator
+begin_operator
+down f84 f70
+0
+1
+0 0 83 68
+1
+end_operator
+begin_operator
+down f84 f71
+0
+1
+0 0 83 69
+1
+end_operator
+begin_operator
+down f84 f72
+0
+1
+0 0 83 70
+1
+end_operator
+begin_operator
+down f84 f73
+0
+1
+0 0 83 71
+1
+end_operator
+begin_operator
+down f84 f74
+0
+1
+0 0 83 72
+1
+end_operator
+begin_operator
+down f84 f75
+0
+1
+0 0 83 73
+1
+end_operator
+begin_operator
+down f84 f76
+0
+1
+0 0 83 74
+1
+end_operator
+begin_operator
+down f84 f77
+0
+1
+0 0 83 75
+1
+end_operator
+begin_operator
+down f84 f78
+0
+1
+0 0 83 76
+1
+end_operator
+begin_operator
+down f84 f79
+0
+1
+0 0 83 77
+1
+end_operator
+begin_operator
+down f84 f8
+0
+1
+0 0 83 78
+1
+end_operator
+begin_operator
+down f84 f80
+0
+1
+0 0 83 79
+1
+end_operator
+begin_operator
+down f84 f81
+0
+1
+0 0 83 80
+1
+end_operator
+begin_operator
+down f84 f82
+0
+1
+0 0 83 81
+1
+end_operator
+begin_operator
+down f84 f83
+0
+1
+0 0 83 82
+1
+end_operator
+begin_operator
+down f84 f9
+0
+1
+0 0 83 89
+1
+end_operator
+begin_operator
+down f85 f1
+0
+1
+0 0 84 0
+1
+end_operator
+begin_operator
+down f85 f10
+0
+1
+0 0 84 1
+1
+end_operator
+begin_operator
+down f85 f11
+0
+1
+0 0 84 3
+1
+end_operator
+begin_operator
+down f85 f12
+0
+1
+0 0 84 4
+1
+end_operator
+begin_operator
+down f85 f13
+0
+1
+0 0 84 5
+1
+end_operator
+begin_operator
+down f85 f14
+0
+1
+0 0 84 6
+1
+end_operator
+begin_operator
+down f85 f15
+0
+1
+0 0 84 7
+1
+end_operator
+begin_operator
+down f85 f16
+0
+1
+0 0 84 8
+1
+end_operator
+begin_operator
+down f85 f17
+0
+1
+0 0 84 9
+1
+end_operator
+begin_operator
+down f85 f18
+0
+1
+0 0 84 10
+1
+end_operator
+begin_operator
+down f85 f19
+0
+1
+0 0 84 11
+1
+end_operator
+begin_operator
+down f85 f2
+0
+1
+0 0 84 12
+1
+end_operator
+begin_operator
+down f85 f20
+0
+1
+0 0 84 13
+1
+end_operator
+begin_operator
+down f85 f21
+0
+1
+0 0 84 14
+1
+end_operator
+begin_operator
+down f85 f22
+0
+1
+0 0 84 15
+1
+end_operator
+begin_operator
+down f85 f23
+0
+1
+0 0 84 16
+1
+end_operator
+begin_operator
+down f85 f24
+0
+1
+0 0 84 17
+1
+end_operator
+begin_operator
+down f85 f25
+0
+1
+0 0 84 18
+1
+end_operator
+begin_operator
+down f85 f26
+0
+1
+0 0 84 19
+1
+end_operator
+begin_operator
+down f85 f27
+0
+1
+0 0 84 20
+1
+end_operator
+begin_operator
+down f85 f28
+0
+1
+0 0 84 21
+1
+end_operator
+begin_operator
+down f85 f29
+0
+1
+0 0 84 22
+1
+end_operator
+begin_operator
+down f85 f3
+0
+1
+0 0 84 23
+1
+end_operator
+begin_operator
+down f85 f30
+0
+1
+0 0 84 24
+1
+end_operator
+begin_operator
+down f85 f31
+0
+1
+0 0 84 25
+1
+end_operator
+begin_operator
+down f85 f32
+0
+1
+0 0 84 26
+1
+end_operator
+begin_operator
+down f85 f33
+0
+1
+0 0 84 27
+1
+end_operator
+begin_operator
+down f85 f34
+0
+1
+0 0 84 28
+1
+end_operator
+begin_operator
+down f85 f35
+0
+1
+0 0 84 29
+1
+end_operator
+begin_operator
+down f85 f36
+0
+1
+0 0 84 30
+1
+end_operator
+begin_operator
+down f85 f37
+0
+1
+0 0 84 31
+1
+end_operator
+begin_operator
+down f85 f38
+0
+1
+0 0 84 32
+1
+end_operator
+begin_operator
+down f85 f39
+0
+1
+0 0 84 33
+1
+end_operator
+begin_operator
+down f85 f4
+0
+1
+0 0 84 34
+1
+end_operator
+begin_operator
+down f85 f40
+0
+1
+0 0 84 35
+1
+end_operator
+begin_operator
+down f85 f41
+0
+1
+0 0 84 36
+1
+end_operator
+begin_operator
+down f85 f42
+0
+1
+0 0 84 37
+1
+end_operator
+begin_operator
+down f85 f43
+0
+1
+0 0 84 38
+1
+end_operator
+begin_operator
+down f85 f44
+0
+1
+0 0 84 39
+1
+end_operator
+begin_operator
+down f85 f45
+0
+1
+0 0 84 40
+1
+end_operator
+begin_operator
+down f85 f46
+0
+1
+0 0 84 41
+1
+end_operator
+begin_operator
+down f85 f47
+0
+1
+0 0 84 42
+1
+end_operator
+begin_operator
+down f85 f48
+0
+1
+0 0 84 43
+1
+end_operator
+begin_operator
+down f85 f49
+0
+1
+0 0 84 44
+1
+end_operator
+begin_operator
+down f85 f5
+0
+1
+0 0 84 45
+1
+end_operator
+begin_operator
+down f85 f50
+0
+1
+0 0 84 46
+1
+end_operator
+begin_operator
+down f85 f51
+0
+1
+0 0 84 47
+1
+end_operator
+begin_operator
+down f85 f52
+0
+1
+0 0 84 48
+1
+end_operator
+begin_operator
+down f85 f53
+0
+1
+0 0 84 49
+1
+end_operator
+begin_operator
+down f85 f54
+0
+1
+0 0 84 50
+1
+end_operator
+begin_operator
+down f85 f55
+0
+1
+0 0 84 51
+1
+end_operator
+begin_operator
+down f85 f56
+0
+1
+0 0 84 52
+1
+end_operator
+begin_operator
+down f85 f57
+0
+1
+0 0 84 53
+1
+end_operator
+begin_operator
+down f85 f58
+0
+1
+0 0 84 54
+1
+end_operator
+begin_operator
+down f85 f59
+0
+1
+0 0 84 55
+1
+end_operator
+begin_operator
+down f85 f6
+0
+1
+0 0 84 56
+1
+end_operator
+begin_operator
+down f85 f60
+0
+1
+0 0 84 57
+1
+end_operator
+begin_operator
+down f85 f61
+0
+1
+0 0 84 58
+1
+end_operator
+begin_operator
+down f85 f62
+0
+1
+0 0 84 59
+1
+end_operator
+begin_operator
+down f85 f63
+0
+1
+0 0 84 60
+1
+end_operator
+begin_operator
+down f85 f64
+0
+1
+0 0 84 61
+1
+end_operator
+begin_operator
+down f85 f65
+0
+1
+0 0 84 62
+1
+end_operator
+begin_operator
+down f85 f66
+0
+1
+0 0 84 63
+1
+end_operator
+begin_operator
+down f85 f67
+0
+1
+0 0 84 64
+1
+end_operator
+begin_operator
+down f85 f68
+0
+1
+0 0 84 65
+1
+end_operator
+begin_operator
+down f85 f69
+0
+1
+0 0 84 66
+1
+end_operator
+begin_operator
+down f85 f7
+0
+1
+0 0 84 67
+1
+end_operator
+begin_operator
+down f85 f70
+0
+1
+0 0 84 68
+1
+end_operator
+begin_operator
+down f85 f71
+0
+1
+0 0 84 69
+1
+end_operator
+begin_operator
+down f85 f72
+0
+1
+0 0 84 70
+1
+end_operator
+begin_operator
+down f85 f73
+0
+1
+0 0 84 71
+1
+end_operator
+begin_operator
+down f85 f74
+0
+1
+0 0 84 72
+1
+end_operator
+begin_operator
+down f85 f75
+0
+1
+0 0 84 73
+1
+end_operator
+begin_operator
+down f85 f76
+0
+1
+0 0 84 74
+1
+end_operator
+begin_operator
+down f85 f77
+0
+1
+0 0 84 75
+1
+end_operator
+begin_operator
+down f85 f78
+0
+1
+0 0 84 76
+1
+end_operator
+begin_operator
+down f85 f79
+0
+1
+0 0 84 77
+1
+end_operator
+begin_operator
+down f85 f8
+0
+1
+0 0 84 78
+1
+end_operator
+begin_operator
+down f85 f80
+0
+1
+0 0 84 79
+1
+end_operator
+begin_operator
+down f85 f81
+0
+1
+0 0 84 80
+1
+end_operator
+begin_operator
+down f85 f82
+0
+1
+0 0 84 81
+1
+end_operator
+begin_operator
+down f85 f83
+0
+1
+0 0 84 82
+1
+end_operator
+begin_operator
+down f85 f84
+0
+1
+0 0 84 83
+1
+end_operator
+begin_operator
+down f85 f9
+0
+1
+0 0 84 89
+1
+end_operator
+begin_operator
+down f86 f1
+0
+1
+0 0 85 0
+1
+end_operator
+begin_operator
+down f86 f10
+0
+1
+0 0 85 1
+1
+end_operator
+begin_operator
+down f86 f11
+0
+1
+0 0 85 3
+1
+end_operator
+begin_operator
+down f86 f12
+0
+1
+0 0 85 4
+1
+end_operator
+begin_operator
+down f86 f13
+0
+1
+0 0 85 5
+1
+end_operator
+begin_operator
+down f86 f14
+0
+1
+0 0 85 6
+1
+end_operator
+begin_operator
+down f86 f15
+0
+1
+0 0 85 7
+1
+end_operator
+begin_operator
+down f86 f16
+0
+1
+0 0 85 8
+1
+end_operator
+begin_operator
+down f86 f17
+0
+1
+0 0 85 9
+1
+end_operator
+begin_operator
+down f86 f18
+0
+1
+0 0 85 10
+1
+end_operator
+begin_operator
+down f86 f19
+0
+1
+0 0 85 11
+1
+end_operator
+begin_operator
+down f86 f2
+0
+1
+0 0 85 12
+1
+end_operator
+begin_operator
+down f86 f20
+0
+1
+0 0 85 13
+1
+end_operator
+begin_operator
+down f86 f21
+0
+1
+0 0 85 14
+1
+end_operator
+begin_operator
+down f86 f22
+0
+1
+0 0 85 15
+1
+end_operator
+begin_operator
+down f86 f23
+0
+1
+0 0 85 16
+1
+end_operator
+begin_operator
+down f86 f24
+0
+1
+0 0 85 17
+1
+end_operator
+begin_operator
+down f86 f25
+0
+1
+0 0 85 18
+1
+end_operator
+begin_operator
+down f86 f26
+0
+1
+0 0 85 19
+1
+end_operator
+begin_operator
+down f86 f27
+0
+1
+0 0 85 20
+1
+end_operator
+begin_operator
+down f86 f28
+0
+1
+0 0 85 21
+1
+end_operator
+begin_operator
+down f86 f29
+0
+1
+0 0 85 22
+1
+end_operator
+begin_operator
+down f86 f3
+0
+1
+0 0 85 23
+1
+end_operator
+begin_operator
+down f86 f30
+0
+1
+0 0 85 24
+1
+end_operator
+begin_operator
+down f86 f31
+0
+1
+0 0 85 25
+1
+end_operator
+begin_operator
+down f86 f32
+0
+1
+0 0 85 26
+1
+end_operator
+begin_operator
+down f86 f33
+0
+1
+0 0 85 27
+1
+end_operator
+begin_operator
+down f86 f34
+0
+1
+0 0 85 28
+1
+end_operator
+begin_operator
+down f86 f35
+0
+1
+0 0 85 29
+1
+end_operator
+begin_operator
+down f86 f36
+0
+1
+0 0 85 30
+1
+end_operator
+begin_operator
+down f86 f37
+0
+1
+0 0 85 31
+1
+end_operator
+begin_operator
+down f86 f38
+0
+1
+0 0 85 32
+1
+end_operator
+begin_operator
+down f86 f39
+0
+1
+0 0 85 33
+1
+end_operator
+begin_operator
+down f86 f4
+0
+1
+0 0 85 34
+1
+end_operator
+begin_operator
+down f86 f40
+0
+1
+0 0 85 35
+1
+end_operator
+begin_operator
+down f86 f41
+0
+1
+0 0 85 36
+1
+end_operator
+begin_operator
+down f86 f42
+0
+1
+0 0 85 37
+1
+end_operator
+begin_operator
+down f86 f43
+0
+1
+0 0 85 38
+1
+end_operator
+begin_operator
+down f86 f44
+0
+1
+0 0 85 39
+1
+end_operator
+begin_operator
+down f86 f45
+0
+1
+0 0 85 40
+1
+end_operator
+begin_operator
+down f86 f46
+0
+1
+0 0 85 41
+1
+end_operator
+begin_operator
+down f86 f47
+0
+1
+0 0 85 42
+1
+end_operator
+begin_operator
+down f86 f48
+0
+1
+0 0 85 43
+1
+end_operator
+begin_operator
+down f86 f49
+0
+1
+0 0 85 44
+1
+end_operator
+begin_operator
+down f86 f5
+0
+1
+0 0 85 45
+1
+end_operator
+begin_operator
+down f86 f50
+0
+1
+0 0 85 46
+1
+end_operator
+begin_operator
+down f86 f51
+0
+1
+0 0 85 47
+1
+end_operator
+begin_operator
+down f86 f52
+0
+1
+0 0 85 48
+1
+end_operator
+begin_operator
+down f86 f53
+0
+1
+0 0 85 49
+1
+end_operator
+begin_operator
+down f86 f54
+0
+1
+0 0 85 50
+1
+end_operator
+begin_operator
+down f86 f55
+0
+1
+0 0 85 51
+1
+end_operator
+begin_operator
+down f86 f56
+0
+1
+0 0 85 52
+1
+end_operator
+begin_operator
+down f86 f57
+0
+1
+0 0 85 53
+1
+end_operator
+begin_operator
+down f86 f58
+0
+1
+0 0 85 54
+1
+end_operator
+begin_operator
+down f86 f59
+0
+1
+0 0 85 55
+1
+end_operator
+begin_operator
+down f86 f6
+0
+1
+0 0 85 56
+1
+end_operator
+begin_operator
+down f86 f60
+0
+1
+0 0 85 57
+1
+end_operator
+begin_operator
+down f86 f61
+0
+1
+0 0 85 58
+1
+end_operator
+begin_operator
+down f86 f62
+0
+1
+0 0 85 59
+1
+end_operator
+begin_operator
+down f86 f63
+0
+1
+0 0 85 60
+1
+end_operator
+begin_operator
+down f86 f64
+0
+1
+0 0 85 61
+1
+end_operator
+begin_operator
+down f86 f65
+0
+1
+0 0 85 62
+1
+end_operator
+begin_operator
+down f86 f66
+0
+1
+0 0 85 63
+1
+end_operator
+begin_operator
+down f86 f67
+0
+1
+0 0 85 64
+1
+end_operator
+begin_operator
+down f86 f68
+0
+1
+0 0 85 65
+1
+end_operator
+begin_operator
+down f86 f69
+0
+1
+0 0 85 66
+1
+end_operator
+begin_operator
+down f86 f7
+0
+1
+0 0 85 67
+1
+end_operator
+begin_operator
+down f86 f70
+0
+1
+0 0 85 68
+1
+end_operator
+begin_operator
+down f86 f71
+0
+1
+0 0 85 69
+1
+end_operator
+begin_operator
+down f86 f72
+0
+1
+0 0 85 70
+1
+end_operator
+begin_operator
+down f86 f73
+0
+1
+0 0 85 71
+1
+end_operator
+begin_operator
+down f86 f74
+0
+1
+0 0 85 72
+1
+end_operator
+begin_operator
+down f86 f75
+0
+1
+0 0 85 73
+1
+end_operator
+begin_operator
+down f86 f76
+0
+1
+0 0 85 74
+1
+end_operator
+begin_operator
+down f86 f77
+0
+1
+0 0 85 75
+1
+end_operator
+begin_operator
+down f86 f78
+0
+1
+0 0 85 76
+1
+end_operator
+begin_operator
+down f86 f79
+0
+1
+0 0 85 77
+1
+end_operator
+begin_operator
+down f86 f8
+0
+1
+0 0 85 78
+1
+end_operator
+begin_operator
+down f86 f80
+0
+1
+0 0 85 79
+1
+end_operator
+begin_operator
+down f86 f81
+0
+1
+0 0 85 80
+1
+end_operator
+begin_operator
+down f86 f82
+0
+1
+0 0 85 81
+1
+end_operator
+begin_operator
+down f86 f83
+0
+1
+0 0 85 82
+1
+end_operator
+begin_operator
+down f86 f84
+0
+1
+0 0 85 83
+1
+end_operator
+begin_operator
+down f86 f85
+0
+1
+0 0 85 84
+1
+end_operator
+begin_operator
+down f86 f9
+0
+1
+0 0 85 89
+1
+end_operator
+begin_operator
+down f87 f1
+0
+1
+0 0 86 0
+1
+end_operator
+begin_operator
+down f87 f10
+0
+1
+0 0 86 1
+1
+end_operator
+begin_operator
+down f87 f11
+0
+1
+0 0 86 3
+1
+end_operator
+begin_operator
+down f87 f12
+0
+1
+0 0 86 4
+1
+end_operator
+begin_operator
+down f87 f13
+0
+1
+0 0 86 5
+1
+end_operator
+begin_operator
+down f87 f14
+0
+1
+0 0 86 6
+1
+end_operator
+begin_operator
+down f87 f15
+0
+1
+0 0 86 7
+1
+end_operator
+begin_operator
+down f87 f16
+0
+1
+0 0 86 8
+1
+end_operator
+begin_operator
+down f87 f17
+0
+1
+0 0 86 9
+1
+end_operator
+begin_operator
+down f87 f18
+0
+1
+0 0 86 10
+1
+end_operator
+begin_operator
+down f87 f19
+0
+1
+0 0 86 11
+1
+end_operator
+begin_operator
+down f87 f2
+0
+1
+0 0 86 12
+1
+end_operator
+begin_operator
+down f87 f20
+0
+1
+0 0 86 13
+1
+end_operator
+begin_operator
+down f87 f21
+0
+1
+0 0 86 14
+1
+end_operator
+begin_operator
+down f87 f22
+0
+1
+0 0 86 15
+1
+end_operator
+begin_operator
+down f87 f23
+0
+1
+0 0 86 16
+1
+end_operator
+begin_operator
+down f87 f24
+0
+1
+0 0 86 17
+1
+end_operator
+begin_operator
+down f87 f25
+0
+1
+0 0 86 18
+1
+end_operator
+begin_operator
+down f87 f26
+0
+1
+0 0 86 19
+1
+end_operator
+begin_operator
+down f87 f27
+0
+1
+0 0 86 20
+1
+end_operator
+begin_operator
+down f87 f28
+0
+1
+0 0 86 21
+1
+end_operator
+begin_operator
+down f87 f29
+0
+1
+0 0 86 22
+1
+end_operator
+begin_operator
+down f87 f3
+0
+1
+0 0 86 23
+1
+end_operator
+begin_operator
+down f87 f30
+0
+1
+0 0 86 24
+1
+end_operator
+begin_operator
+down f87 f31
+0
+1
+0 0 86 25
+1
+end_operator
+begin_operator
+down f87 f32
+0
+1
+0 0 86 26
+1
+end_operator
+begin_operator
+down f87 f33
+0
+1
+0 0 86 27
+1
+end_operator
+begin_operator
+down f87 f34
+0
+1
+0 0 86 28
+1
+end_operator
+begin_operator
+down f87 f35
+0
+1
+0 0 86 29
+1
+end_operator
+begin_operator
+down f87 f36
+0
+1
+0 0 86 30
+1
+end_operator
+begin_operator
+down f87 f37
+0
+1
+0 0 86 31
+1
+end_operator
+begin_operator
+down f87 f38
+0
+1
+0 0 86 32
+1
+end_operator
+begin_operator
+down f87 f39
+0
+1
+0 0 86 33
+1
+end_operator
+begin_operator
+down f87 f4
+0
+1
+0 0 86 34
+1
+end_operator
+begin_operator
+down f87 f40
+0
+1
+0 0 86 35
+1
+end_operator
+begin_operator
+down f87 f41
+0
+1
+0 0 86 36
+1
+end_operator
+begin_operator
+down f87 f42
+0
+1
+0 0 86 37
+1
+end_operator
+begin_operator
+down f87 f43
+0
+1
+0 0 86 38
+1
+end_operator
+begin_operator
+down f87 f44
+0
+1
+0 0 86 39
+1
+end_operator
+begin_operator
+down f87 f45
+0
+1
+0 0 86 40
+1
+end_operator
+begin_operator
+down f87 f46
+0
+1
+0 0 86 41
+1
+end_operator
+begin_operator
+down f87 f47
+0
+1
+0 0 86 42
+1
+end_operator
+begin_operator
+down f87 f48
+0
+1
+0 0 86 43
+1
+end_operator
+begin_operator
+down f87 f49
+0
+1
+0 0 86 44
+1
+end_operator
+begin_operator
+down f87 f5
+0
+1
+0 0 86 45
+1
+end_operator
+begin_operator
+down f87 f50
+0
+1
+0 0 86 46
+1
+end_operator
+begin_operator
+down f87 f51
+0
+1
+0 0 86 47
+1
+end_operator
+begin_operator
+down f87 f52
+0
+1
+0 0 86 48
+1
+end_operator
+begin_operator
+down f87 f53
+0
+1
+0 0 86 49
+1
+end_operator
+begin_operator
+down f87 f54
+0
+1
+0 0 86 50
+1
+end_operator
+begin_operator
+down f87 f55
+0
+1
+0 0 86 51
+1
+end_operator
+begin_operator
+down f87 f56
+0
+1
+0 0 86 52
+1
+end_operator
+begin_operator
+down f87 f57
+0
+1
+0 0 86 53
+1
+end_operator
+begin_operator
+down f87 f58
+0
+1
+0 0 86 54
+1
+end_operator
+begin_operator
+down f87 f59
+0
+1
+0 0 86 55
+1
+end_operator
+begin_operator
+down f87 f6
+0
+1
+0 0 86 56
+1
+end_operator
+begin_operator
+down f87 f60
+0
+1
+0 0 86 57
+1
+end_operator
+begin_operator
+down f87 f61
+0
+1
+0 0 86 58
+1
+end_operator
+begin_operator
+down f87 f62
+0
+1
+0 0 86 59
+1
+end_operator
+begin_operator
+down f87 f63
+0
+1
+0 0 86 60
+1
+end_operator
+begin_operator
+down f87 f64
+0
+1
+0 0 86 61
+1
+end_operator
+begin_operator
+down f87 f65
+0
+1
+0 0 86 62
+1
+end_operator
+begin_operator
+down f87 f66
+0
+1
+0 0 86 63
+1
+end_operator
+begin_operator
+down f87 f67
+0
+1
+0 0 86 64
+1
+end_operator
+begin_operator
+down f87 f68
+0
+1
+0 0 86 65
+1
+end_operator
+begin_operator
+down f87 f69
+0
+1
+0 0 86 66
+1
+end_operator
+begin_operator
+down f87 f7
+0
+1
+0 0 86 67
+1
+end_operator
+begin_operator
+down f87 f70
+0
+1
+0 0 86 68
+1
+end_operator
+begin_operator
+down f87 f71
+0
+1
+0 0 86 69
+1
+end_operator
+begin_operator
+down f87 f72
+0
+1
+0 0 86 70
+1
+end_operator
+begin_operator
+down f87 f73
+0
+1
+0 0 86 71
+1
+end_operator
+begin_operator
+down f87 f74
+0
+1
+0 0 86 72
+1
+end_operator
+begin_operator
+down f87 f75
+0
+1
+0 0 86 73
+1
+end_operator
+begin_operator
+down f87 f76
+0
+1
+0 0 86 74
+1
+end_operator
+begin_operator
+down f87 f77
+0
+1
+0 0 86 75
+1
+end_operator
+begin_operator
+down f87 f78
+0
+1
+0 0 86 76
+1
+end_operator
+begin_operator
+down f87 f79
+0
+1
+0 0 86 77
+1
+end_operator
+begin_operator
+down f87 f8
+0
+1
+0 0 86 78
+1
+end_operator
+begin_operator
+down f87 f80
+0
+1
+0 0 86 79
+1
+end_operator
+begin_operator
+down f87 f81
+0
+1
+0 0 86 80
+1
+end_operator
+begin_operator
+down f87 f82
+0
+1
+0 0 86 81
+1
+end_operator
+begin_operator
+down f87 f83
+0
+1
+0 0 86 82
+1
+end_operator
+begin_operator
+down f87 f84
+0
+1
+0 0 86 83
+1
+end_operator
+begin_operator
+down f87 f85
+0
+1
+0 0 86 84
+1
+end_operator
+begin_operator
+down f87 f86
+0
+1
+0 0 86 85
+1
+end_operator
+begin_operator
+down f87 f9
+0
+1
+0 0 86 89
+1
+end_operator
+begin_operator
+down f88 f1
+0
+1
+0 0 87 0
+1
+end_operator
+begin_operator
+down f88 f10
+0
+1
+0 0 87 1
+1
+end_operator
+begin_operator
+down f88 f11
+0
+1
+0 0 87 3
+1
+end_operator
+begin_operator
+down f88 f12
+0
+1
+0 0 87 4
+1
+end_operator
+begin_operator
+down f88 f13
+0
+1
+0 0 87 5
+1
+end_operator
+begin_operator
+down f88 f14
+0
+1
+0 0 87 6
+1
+end_operator
+begin_operator
+down f88 f15
+0
+1
+0 0 87 7
+1
+end_operator
+begin_operator
+down f88 f16
+0
+1
+0 0 87 8
+1
+end_operator
+begin_operator
+down f88 f17
+0
+1
+0 0 87 9
+1
+end_operator
+begin_operator
+down f88 f18
+0
+1
+0 0 87 10
+1
+end_operator
+begin_operator
+down f88 f19
+0
+1
+0 0 87 11
+1
+end_operator
+begin_operator
+down f88 f2
+0
+1
+0 0 87 12
+1
+end_operator
+begin_operator
+down f88 f20
+0
+1
+0 0 87 13
+1
+end_operator
+begin_operator
+down f88 f21
+0
+1
+0 0 87 14
+1
+end_operator
+begin_operator
+down f88 f22
+0
+1
+0 0 87 15
+1
+end_operator
+begin_operator
+down f88 f23
+0
+1
+0 0 87 16
+1
+end_operator
+begin_operator
+down f88 f24
+0
+1
+0 0 87 17
+1
+end_operator
+begin_operator
+down f88 f25
+0
+1
+0 0 87 18
+1
+end_operator
+begin_operator
+down f88 f26
+0
+1
+0 0 87 19
+1
+end_operator
+begin_operator
+down f88 f27
+0
+1
+0 0 87 20
+1
+end_operator
+begin_operator
+down f88 f28
+0
+1
+0 0 87 21
+1
+end_operator
+begin_operator
+down f88 f29
+0
+1
+0 0 87 22
+1
+end_operator
+begin_operator
+down f88 f3
+0
+1
+0 0 87 23
+1
+end_operator
+begin_operator
+down f88 f30
+0
+1
+0 0 87 24
+1
+end_operator
+begin_operator
+down f88 f31
+0
+1
+0 0 87 25
+1
+end_operator
+begin_operator
+down f88 f32
+0
+1
+0 0 87 26
+1
+end_operator
+begin_operator
+down f88 f33
+0
+1
+0 0 87 27
+1
+end_operator
+begin_operator
+down f88 f34
+0
+1
+0 0 87 28
+1
+end_operator
+begin_operator
+down f88 f35
+0
+1
+0 0 87 29
+1
+end_operator
+begin_operator
+down f88 f36
+0
+1
+0 0 87 30
+1
+end_operator
+begin_operator
+down f88 f37
+0
+1
+0 0 87 31
+1
+end_operator
+begin_operator
+down f88 f38
+0
+1
+0 0 87 32
+1
+end_operator
+begin_operator
+down f88 f39
+0
+1
+0 0 87 33
+1
+end_operator
+begin_operator
+down f88 f4
+0
+1
+0 0 87 34
+1
+end_operator
+begin_operator
+down f88 f40
+0
+1
+0 0 87 35
+1
+end_operator
+begin_operator
+down f88 f41
+0
+1
+0 0 87 36
+1
+end_operator
+begin_operator
+down f88 f42
+0
+1
+0 0 87 37
+1
+end_operator
+begin_operator
+down f88 f43
+0
+1
+0 0 87 38
+1
+end_operator
+begin_operator
+down f88 f44
+0
+1
+0 0 87 39
+1
+end_operator
+begin_operator
+down f88 f45
+0
+1
+0 0 87 40
+1
+end_operator
+begin_operator
+down f88 f46
+0
+1
+0 0 87 41
+1
+end_operator
+begin_operator
+down f88 f47
+0
+1
+0 0 87 42
+1
+end_operator
+begin_operator
+down f88 f48
+0
+1
+0 0 87 43
+1
+end_operator
+begin_operator
+down f88 f49
+0
+1
+0 0 87 44
+1
+end_operator
+begin_operator
+down f88 f5
+0
+1
+0 0 87 45
+1
+end_operator
+begin_operator
+down f88 f50
+0
+1
+0 0 87 46
+1
+end_operator
+begin_operator
+down f88 f51
+0
+1
+0 0 87 47
+1
+end_operator
+begin_operator
+down f88 f52
+0
+1
+0 0 87 48
+1
+end_operator
+begin_operator
+down f88 f53
+0
+1
+0 0 87 49
+1
+end_operator
+begin_operator
+down f88 f54
+0
+1
+0 0 87 50
+1
+end_operator
+begin_operator
+down f88 f55
+0
+1
+0 0 87 51
+1
+end_operator
+begin_operator
+down f88 f56
+0
+1
+0 0 87 52
+1
+end_operator
+begin_operator
+down f88 f57
+0
+1
+0 0 87 53
+1
+end_operator
+begin_operator
+down f88 f58
+0
+1
+0 0 87 54
+1
+end_operator
+begin_operator
+down f88 f59
+0
+1
+0 0 87 55
+1
+end_operator
+begin_operator
+down f88 f6
+0
+1
+0 0 87 56
+1
+end_operator
+begin_operator
+down f88 f60
+0
+1
+0 0 87 57
+1
+end_operator
+begin_operator
+down f88 f61
+0
+1
+0 0 87 58
+1
+end_operator
+begin_operator
+down f88 f62
+0
+1
+0 0 87 59
+1
+end_operator
+begin_operator
+down f88 f63
+0
+1
+0 0 87 60
+1
+end_operator
+begin_operator
+down f88 f64
+0
+1
+0 0 87 61
+1
+end_operator
+begin_operator
+down f88 f65
+0
+1
+0 0 87 62
+1
+end_operator
+begin_operator
+down f88 f66
+0
+1
+0 0 87 63
+1
+end_operator
+begin_operator
+down f88 f67
+0
+1
+0 0 87 64
+1
+end_operator
+begin_operator
+down f88 f68
+0
+1
+0 0 87 65
+1
+end_operator
+begin_operator
+down f88 f69
+0
+1
+0 0 87 66
+1
+end_operator
+begin_operator
+down f88 f7
+0
+1
+0 0 87 67
+1
+end_operator
+begin_operator
+down f88 f70
+0
+1
+0 0 87 68
+1
+end_operator
+begin_operator
+down f88 f71
+0
+1
+0 0 87 69
+1
+end_operator
+begin_operator
+down f88 f72
+0
+1
+0 0 87 70
+1
+end_operator
+begin_operator
+down f88 f73
+0
+1
+0 0 87 71
+1
+end_operator
+begin_operator
+down f88 f74
+0
+1
+0 0 87 72
+1
+end_operator
+begin_operator
+down f88 f75
+0
+1
+0 0 87 73
+1
+end_operator
+begin_operator
+down f88 f76
+0
+1
+0 0 87 74
+1
+end_operator
+begin_operator
+down f88 f77
+0
+1
+0 0 87 75
+1
+end_operator
+begin_operator
+down f88 f78
+0
+1
+0 0 87 76
+1
+end_operator
+begin_operator
+down f88 f79
+0
+1
+0 0 87 77
+1
+end_operator
+begin_operator
+down f88 f8
+0
+1
+0 0 87 78
+1
+end_operator
+begin_operator
+down f88 f80
+0
+1
+0 0 87 79
+1
+end_operator
+begin_operator
+down f88 f81
+0
+1
+0 0 87 80
+1
+end_operator
+begin_operator
+down f88 f82
+0
+1
+0 0 87 81
+1
+end_operator
+begin_operator
+down f88 f83
+0
+1
+0 0 87 82
+1
+end_operator
+begin_operator
+down f88 f84
+0
+1
+0 0 87 83
+1
+end_operator
+begin_operator
+down f88 f85
+0
+1
+0 0 87 84
+1
+end_operator
+begin_operator
+down f88 f86
+0
+1
+0 0 87 85
+1
+end_operator
+begin_operator
+down f88 f87
+0
+1
+0 0 87 86
+1
+end_operator
+begin_operator
+down f88 f9
+0
+1
+0 0 87 89
+1
+end_operator
+begin_operator
+down f89 f1
+0
+1
+0 0 88 0
+1
+end_operator
+begin_operator
+down f89 f10
+0
+1
+0 0 88 1
+1
+end_operator
+begin_operator
+down f89 f11
+0
+1
+0 0 88 3
+1
+end_operator
+begin_operator
+down f89 f12
+0
+1
+0 0 88 4
+1
+end_operator
+begin_operator
+down f89 f13
+0
+1
+0 0 88 5
+1
+end_operator
+begin_operator
+down f89 f14
+0
+1
+0 0 88 6
+1
+end_operator
+begin_operator
+down f89 f15
+0
+1
+0 0 88 7
+1
+end_operator
+begin_operator
+down f89 f16
+0
+1
+0 0 88 8
+1
+end_operator
+begin_operator
+down f89 f17
+0
+1
+0 0 88 9
+1
+end_operator
+begin_operator
+down f89 f18
+0
+1
+0 0 88 10
+1
+end_operator
+begin_operator
+down f89 f19
+0
+1
+0 0 88 11
+1
+end_operator
+begin_operator
+down f89 f2
+0
+1
+0 0 88 12
+1
+end_operator
+begin_operator
+down f89 f20
+0
+1
+0 0 88 13
+1
+end_operator
+begin_operator
+down f89 f21
+0
+1
+0 0 88 14
+1
+end_operator
+begin_operator
+down f89 f22
+0
+1
+0 0 88 15
+1
+end_operator
+begin_operator
+down f89 f23
+0
+1
+0 0 88 16
+1
+end_operator
+begin_operator
+down f89 f24
+0
+1
+0 0 88 17
+1
+end_operator
+begin_operator
+down f89 f25
+0
+1
+0 0 88 18
+1
+end_operator
+begin_operator
+down f89 f26
+0
+1
+0 0 88 19
+1
+end_operator
+begin_operator
+down f89 f27
+0
+1
+0 0 88 20
+1
+end_operator
+begin_operator
+down f89 f28
+0
+1
+0 0 88 21
+1
+end_operator
+begin_operator
+down f89 f29
+0
+1
+0 0 88 22
+1
+end_operator
+begin_operator
+down f89 f3
+0
+1
+0 0 88 23
+1
+end_operator
+begin_operator
+down f89 f30
+0
+1
+0 0 88 24
+1
+end_operator
+begin_operator
+down f89 f31
+0
+1
+0 0 88 25
+1
+end_operator
+begin_operator
+down f89 f32
+0
+1
+0 0 88 26
+1
+end_operator
+begin_operator
+down f89 f33
+0
+1
+0 0 88 27
+1
+end_operator
+begin_operator
+down f89 f34
+0
+1
+0 0 88 28
+1
+end_operator
+begin_operator
+down f89 f35
+0
+1
+0 0 88 29
+1
+end_operator
+begin_operator
+down f89 f36
+0
+1
+0 0 88 30
+1
+end_operator
+begin_operator
+down f89 f37
+0
+1
+0 0 88 31
+1
+end_operator
+begin_operator
+down f89 f38
+0
+1
+0 0 88 32
+1
+end_operator
+begin_operator
+down f89 f39
+0
+1
+0 0 88 33
+1
+end_operator
+begin_operator
+down f89 f4
+0
+1
+0 0 88 34
+1
+end_operator
+begin_operator
+down f89 f40
+0
+1
+0 0 88 35
+1
+end_operator
+begin_operator
+down f89 f41
+0
+1
+0 0 88 36
+1
+end_operator
+begin_operator
+down f89 f42
+0
+1
+0 0 88 37
+1
+end_operator
+begin_operator
+down f89 f43
+0
+1
+0 0 88 38
+1
+end_operator
+begin_operator
+down f89 f44
+0
+1
+0 0 88 39
+1
+end_operator
+begin_operator
+down f89 f45
+0
+1
+0 0 88 40
+1
+end_operator
+begin_operator
+down f89 f46
+0
+1
+0 0 88 41
+1
+end_operator
+begin_operator
+down f89 f47
+0
+1
+0 0 88 42
+1
+end_operator
+begin_operator
+down f89 f48
+0
+1
+0 0 88 43
+1
+end_operator
+begin_operator
+down f89 f49
+0
+1
+0 0 88 44
+1
+end_operator
+begin_operator
+down f89 f5
+0
+1
+0 0 88 45
+1
+end_operator
+begin_operator
+down f89 f50
+0
+1
+0 0 88 46
+1
+end_operator
+begin_operator
+down f89 f51
+0
+1
+0 0 88 47
+1
+end_operator
+begin_operator
+down f89 f52
+0
+1
+0 0 88 48
+1
+end_operator
+begin_operator
+down f89 f53
+0
+1
+0 0 88 49
+1
+end_operator
+begin_operator
+down f89 f54
+0
+1
+0 0 88 50
+1
+end_operator
+begin_operator
+down f89 f55
+0
+1
+0 0 88 51
+1
+end_operator
+begin_operator
+down f89 f56
+0
+1
+0 0 88 52
+1
+end_operator
+begin_operator
+down f89 f57
+0
+1
+0 0 88 53
+1
+end_operator
+begin_operator
+down f89 f58
+0
+1
+0 0 88 54
+1
+end_operator
+begin_operator
+down f89 f59
+0
+1
+0 0 88 55
+1
+end_operator
+begin_operator
+down f89 f6
+0
+1
+0 0 88 56
+1
+end_operator
+begin_operator
+down f89 f60
+0
+1
+0 0 88 57
+1
+end_operator
+begin_operator
+down f89 f61
+0
+1
+0 0 88 58
+1
+end_operator
+begin_operator
+down f89 f62
+0
+1
+0 0 88 59
+1
+end_operator
+begin_operator
+down f89 f63
+0
+1
+0 0 88 60
+1
+end_operator
+begin_operator
+down f89 f64
+0
+1
+0 0 88 61
+1
+end_operator
+begin_operator
+down f89 f65
+0
+1
+0 0 88 62
+1
+end_operator
+begin_operator
+down f89 f66
+0
+1
+0 0 88 63
+1
+end_operator
+begin_operator
+down f89 f67
+0
+1
+0 0 88 64
+1
+end_operator
+begin_operator
+down f89 f68
+0
+1
+0 0 88 65
+1
+end_operator
+begin_operator
+down f89 f69
+0
+1
+0 0 88 66
+1
+end_operator
+begin_operator
+down f89 f7
+0
+1
+0 0 88 67
+1
+end_operator
+begin_operator
+down f89 f70
+0
+1
+0 0 88 68
+1
+end_operator
+begin_operator
+down f89 f71
+0
+1
+0 0 88 69
+1
+end_operator
+begin_operator
+down f89 f72
+0
+1
+0 0 88 70
+1
+end_operator
+begin_operator
+down f89 f73
+0
+1
+0 0 88 71
+1
+end_operator
+begin_operator
+down f89 f74
+0
+1
+0 0 88 72
+1
+end_operator
+begin_operator
+down f89 f75
+0
+1
+0 0 88 73
+1
+end_operator
+begin_operator
+down f89 f76
+0
+1
+0 0 88 74
+1
+end_operator
+begin_operator
+down f89 f77
+0
+1
+0 0 88 75
+1
+end_operator
+begin_operator
+down f89 f78
+0
+1
+0 0 88 76
+1
+end_operator
+begin_operator
+down f89 f79
+0
+1
+0 0 88 77
+1
+end_operator
+begin_operator
+down f89 f8
+0
+1
+0 0 88 78
+1
+end_operator
+begin_operator
+down f89 f80
+0
+1
+0 0 88 79
+1
+end_operator
+begin_operator
+down f89 f81
+0
+1
+0 0 88 80
+1
+end_operator
+begin_operator
+down f89 f82
+0
+1
+0 0 88 81
+1
+end_operator
+begin_operator
+down f89 f83
+0
+1
+0 0 88 82
+1
+end_operator
+begin_operator
+down f89 f84
+0
+1
+0 0 88 83
+1
+end_operator
+begin_operator
+down f89 f85
+0
+1
+0 0 88 84
+1
+end_operator
+begin_operator
+down f89 f86
+0
+1
+0 0 88 85
+1
+end_operator
+begin_operator
+down f89 f87
+0
+1
+0 0 88 86
+1
+end_operator
+begin_operator
+down f89 f88
+0
+1
+0 0 88 87
+1
+end_operator
+begin_operator
+down f89 f9
+0
+1
+0 0 88 89
+1
+end_operator
+begin_operator
+down f9 f1
+0
+1
+0 0 89 0
+1
+end_operator
+begin_operator
+down f9 f2
+0
+1
+0 0 89 12
+1
+end_operator
+begin_operator
+down f9 f3
+0
+1
+0 0 89 23
+1
+end_operator
+begin_operator
+down f9 f4
+0
+1
+0 0 89 34
+1
+end_operator
+begin_operator
+down f9 f5
+0
+1
+0 0 89 45
+1
+end_operator
+begin_operator
+down f9 f6
+0
+1
+0 0 89 56
+1
+end_operator
+begin_operator
+down f9 f7
+0
+1
+0 0 89 67
+1
+end_operator
+begin_operator
+down f9 f8
+0
+1
+0 0 89 78
+1
+end_operator
+begin_operator
+down f90 f1
+0
+1
+0 0 90 0
+1
+end_operator
+begin_operator
+down f90 f10
+0
+1
+0 0 90 1
+1
+end_operator
+begin_operator
+down f90 f11
+0
+1
+0 0 90 3
+1
+end_operator
+begin_operator
+down f90 f12
+0
+1
+0 0 90 4
+1
+end_operator
+begin_operator
+down f90 f13
+0
+1
+0 0 90 5
+1
+end_operator
+begin_operator
+down f90 f14
+0
+1
+0 0 90 6
+1
+end_operator
+begin_operator
+down f90 f15
+0
+1
+0 0 90 7
+1
+end_operator
+begin_operator
+down f90 f16
+0
+1
+0 0 90 8
+1
+end_operator
+begin_operator
+down f90 f17
+0
+1
+0 0 90 9
+1
+end_operator
+begin_operator
+down f90 f18
+0
+1
+0 0 90 10
+1
+end_operator
+begin_operator
+down f90 f19
+0
+1
+0 0 90 11
+1
+end_operator
+begin_operator
+down f90 f2
+0
+1
+0 0 90 12
+1
+end_operator
+begin_operator
+down f90 f20
+0
+1
+0 0 90 13
+1
+end_operator
+begin_operator
+down f90 f21
+0
+1
+0 0 90 14
+1
+end_operator
+begin_operator
+down f90 f22
+0
+1
+0 0 90 15
+1
+end_operator
+begin_operator
+down f90 f23
+0
+1
+0 0 90 16
+1
+end_operator
+begin_operator
+down f90 f24
+0
+1
+0 0 90 17
+1
+end_operator
+begin_operator
+down f90 f25
+0
+1
+0 0 90 18
+1
+end_operator
+begin_operator
+down f90 f26
+0
+1
+0 0 90 19
+1
+end_operator
+begin_operator
+down f90 f27
+0
+1
+0 0 90 20
+1
+end_operator
+begin_operator
+down f90 f28
+0
+1
+0 0 90 21
+1
+end_operator
+begin_operator
+down f90 f29
+0
+1
+0 0 90 22
+1
+end_operator
+begin_operator
+down f90 f3
+0
+1
+0 0 90 23
+1
+end_operator
+begin_operator
+down f90 f30
+0
+1
+0 0 90 24
+1
+end_operator
+begin_operator
+down f90 f31
+0
+1
+0 0 90 25
+1
+end_operator
+begin_operator
+down f90 f32
+0
+1
+0 0 90 26
+1
+end_operator
+begin_operator
+down f90 f33
+0
+1
+0 0 90 27
+1
+end_operator
+begin_operator
+down f90 f34
+0
+1
+0 0 90 28
+1
+end_operator
+begin_operator
+down f90 f35
+0
+1
+0 0 90 29
+1
+end_operator
+begin_operator
+down f90 f36
+0
+1
+0 0 90 30
+1
+end_operator
+begin_operator
+down f90 f37
+0
+1
+0 0 90 31
+1
+end_operator
+begin_operator
+down f90 f38
+0
+1
+0 0 90 32
+1
+end_operator
+begin_operator
+down f90 f39
+0
+1
+0 0 90 33
+1
+end_operator
+begin_operator
+down f90 f4
+0
+1
+0 0 90 34
+1
+end_operator
+begin_operator
+down f90 f40
+0
+1
+0 0 90 35
+1
+end_operator
+begin_operator
+down f90 f41
+0
+1
+0 0 90 36
+1
+end_operator
+begin_operator
+down f90 f42
+0
+1
+0 0 90 37
+1
+end_operator
+begin_operator
+down f90 f43
+0
+1
+0 0 90 38
+1
+end_operator
+begin_operator
+down f90 f44
+0
+1
+0 0 90 39
+1
+end_operator
+begin_operator
+down f90 f45
+0
+1
+0 0 90 40
+1
+end_operator
+begin_operator
+down f90 f46
+0
+1
+0 0 90 41
+1
+end_operator
+begin_operator
+down f90 f47
+0
+1
+0 0 90 42
+1
+end_operator
+begin_operator
+down f90 f48
+0
+1
+0 0 90 43
+1
+end_operator
+begin_operator
+down f90 f49
+0
+1
+0 0 90 44
+1
+end_operator
+begin_operator
+down f90 f5
+0
+1
+0 0 90 45
+1
+end_operator
+begin_operator
+down f90 f50
+0
+1
+0 0 90 46
+1
+end_operator
+begin_operator
+down f90 f51
+0
+1
+0 0 90 47
+1
+end_operator
+begin_operator
+down f90 f52
+0
+1
+0 0 90 48
+1
+end_operator
+begin_operator
+down f90 f53
+0
+1
+0 0 90 49
+1
+end_operator
+begin_operator
+down f90 f54
+0
+1
+0 0 90 50
+1
+end_operator
+begin_operator
+down f90 f55
+0
+1
+0 0 90 51
+1
+end_operator
+begin_operator
+down f90 f56
+0
+1
+0 0 90 52
+1
+end_operator
+begin_operator
+down f90 f57
+0
+1
+0 0 90 53
+1
+end_operator
+begin_operator
+down f90 f58
+0
+1
+0 0 90 54
+1
+end_operator
+begin_operator
+down f90 f59
+0
+1
+0 0 90 55
+1
+end_operator
+begin_operator
+down f90 f6
+0
+1
+0 0 90 56
+1
+end_operator
+begin_operator
+down f90 f60
+0
+1
+0 0 90 57
+1
+end_operator
+begin_operator
+down f90 f61
+0
+1
+0 0 90 58
+1
+end_operator
+begin_operator
+down f90 f62
+0
+1
+0 0 90 59
+1
+end_operator
+begin_operator
+down f90 f63
+0
+1
+0 0 90 60
+1
+end_operator
+begin_operator
+down f90 f64
+0
+1
+0 0 90 61
+1
+end_operator
+begin_operator
+down f90 f65
+0
+1
+0 0 90 62
+1
+end_operator
+begin_operator
+down f90 f66
+0
+1
+0 0 90 63
+1
+end_operator
+begin_operator
+down f90 f67
+0
+1
+0 0 90 64
+1
+end_operator
+begin_operator
+down f90 f68
+0
+1
+0 0 90 65
+1
+end_operator
+begin_operator
+down f90 f69
+0
+1
+0 0 90 66
+1
+end_operator
+begin_operator
+down f90 f7
+0
+1
+0 0 90 67
+1
+end_operator
+begin_operator
+down f90 f70
+0
+1
+0 0 90 68
+1
+end_operator
+begin_operator
+down f90 f71
+0
+1
+0 0 90 69
+1
+end_operator
+begin_operator
+down f90 f72
+0
+1
+0 0 90 70
+1
+end_operator
+begin_operator
+down f90 f73
+0
+1
+0 0 90 71
+1
+end_operator
+begin_operator
+down f90 f74
+0
+1
+0 0 90 72
+1
+end_operator
+begin_operator
+down f90 f75
+0
+1
+0 0 90 73
+1
+end_operator
+begin_operator
+down f90 f76
+0
+1
+0 0 90 74
+1
+end_operator
+begin_operator
+down f90 f77
+0
+1
+0 0 90 75
+1
+end_operator
+begin_operator
+down f90 f78
+0
+1
+0 0 90 76
+1
+end_operator
+begin_operator
+down f90 f79
+0
+1
+0 0 90 77
+1
+end_operator
+begin_operator
+down f90 f8
+0
+1
+0 0 90 78
+1
+end_operator
+begin_operator
+down f90 f80
+0
+1
+0 0 90 79
+1
+end_operator
+begin_operator
+down f90 f81
+0
+1
+0 0 90 80
+1
+end_operator
+begin_operator
+down f90 f82
+0
+1
+0 0 90 81
+1
+end_operator
+begin_operator
+down f90 f83
+0
+1
+0 0 90 82
+1
+end_operator
+begin_operator
+down f90 f84
+0
+1
+0 0 90 83
+1
+end_operator
+begin_operator
+down f90 f85
+0
+1
+0 0 90 84
+1
+end_operator
+begin_operator
+down f90 f86
+0
+1
+0 0 90 85
+1
+end_operator
+begin_operator
+down f90 f87
+0
+1
+0 0 90 86
+1
+end_operator
+begin_operator
+down f90 f88
+0
+1
+0 0 90 87
+1
+end_operator
+begin_operator
+down f90 f89
+0
+1
+0 0 90 88
+1
+end_operator
+begin_operator
+down f90 f9
+0
+1
+0 0 90 89
+1
+end_operator
+begin_operator
+down f91 f1
+0
+1
+0 0 91 0
+1
+end_operator
+begin_operator
+down f91 f10
+0
+1
+0 0 91 1
+1
+end_operator
+begin_operator
+down f91 f11
+0
+1
+0 0 91 3
+1
+end_operator
+begin_operator
+down f91 f12
+0
+1
+0 0 91 4
+1
+end_operator
+begin_operator
+down f91 f13
+0
+1
+0 0 91 5
+1
+end_operator
+begin_operator
+down f91 f14
+0
+1
+0 0 91 6
+1
+end_operator
+begin_operator
+down f91 f15
+0
+1
+0 0 91 7
+1
+end_operator
+begin_operator
+down f91 f16
+0
+1
+0 0 91 8
+1
+end_operator
+begin_operator
+down f91 f17
+0
+1
+0 0 91 9
+1
+end_operator
+begin_operator
+down f91 f18
+0
+1
+0 0 91 10
+1
+end_operator
+begin_operator
+down f91 f19
+0
+1
+0 0 91 11
+1
+end_operator
+begin_operator
+down f91 f2
+0
+1
+0 0 91 12
+1
+end_operator
+begin_operator
+down f91 f20
+0
+1
+0 0 91 13
+1
+end_operator
+begin_operator
+down f91 f21
+0
+1
+0 0 91 14
+1
+end_operator
+begin_operator
+down f91 f22
+0
+1
+0 0 91 15
+1
+end_operator
+begin_operator
+down f91 f23
+0
+1
+0 0 91 16
+1
+end_operator
+begin_operator
+down f91 f24
+0
+1
+0 0 91 17
+1
+end_operator
+begin_operator
+down f91 f25
+0
+1
+0 0 91 18
+1
+end_operator
+begin_operator
+down f91 f26
+0
+1
+0 0 91 19
+1
+end_operator
+begin_operator
+down f91 f27
+0
+1
+0 0 91 20
+1
+end_operator
+begin_operator
+down f91 f28
+0
+1
+0 0 91 21
+1
+end_operator
+begin_operator
+down f91 f29
+0
+1
+0 0 91 22
+1
+end_operator
+begin_operator
+down f91 f3
+0
+1
+0 0 91 23
+1
+end_operator
+begin_operator
+down f91 f30
+0
+1
+0 0 91 24
+1
+end_operator
+begin_operator
+down f91 f31
+0
+1
+0 0 91 25
+1
+end_operator
+begin_operator
+down f91 f32
+0
+1
+0 0 91 26
+1
+end_operator
+begin_operator
+down f91 f33
+0
+1
+0 0 91 27
+1
+end_operator
+begin_operator
+down f91 f34
+0
+1
+0 0 91 28
+1
+end_operator
+begin_operator
+down f91 f35
+0
+1
+0 0 91 29
+1
+end_operator
+begin_operator
+down f91 f36
+0
+1
+0 0 91 30
+1
+end_operator
+begin_operator
+down f91 f37
+0
+1
+0 0 91 31
+1
+end_operator
+begin_operator
+down f91 f38
+0
+1
+0 0 91 32
+1
+end_operator
+begin_operator
+down f91 f39
+0
+1
+0 0 91 33
+1
+end_operator
+begin_operator
+down f91 f4
+0
+1
+0 0 91 34
+1
+end_operator
+begin_operator
+down f91 f40
+0
+1
+0 0 91 35
+1
+end_operator
+begin_operator
+down f91 f41
+0
+1
+0 0 91 36
+1
+end_operator
+begin_operator
+down f91 f42
+0
+1
+0 0 91 37
+1
+end_operator
+begin_operator
+down f91 f43
+0
+1
+0 0 91 38
+1
+end_operator
+begin_operator
+down f91 f44
+0
+1
+0 0 91 39
+1
+end_operator
+begin_operator
+down f91 f45
+0
+1
+0 0 91 40
+1
+end_operator
+begin_operator
+down f91 f46
+0
+1
+0 0 91 41
+1
+end_operator
+begin_operator
+down f91 f47
+0
+1
+0 0 91 42
+1
+end_operator
+begin_operator
+down f91 f48
+0
+1
+0 0 91 43
+1
+end_operator
+begin_operator
+down f91 f49
+0
+1
+0 0 91 44
+1
+end_operator
+begin_operator
+down f91 f5
+0
+1
+0 0 91 45
+1
+end_operator
+begin_operator
+down f91 f50
+0
+1
+0 0 91 46
+1
+end_operator
+begin_operator
+down f91 f51
+0
+1
+0 0 91 47
+1
+end_operator
+begin_operator
+down f91 f52
+0
+1
+0 0 91 48
+1
+end_operator
+begin_operator
+down f91 f53
+0
+1
+0 0 91 49
+1
+end_operator
+begin_operator
+down f91 f54
+0
+1
+0 0 91 50
+1
+end_operator
+begin_operator
+down f91 f55
+0
+1
+0 0 91 51
+1
+end_operator
+begin_operator
+down f91 f56
+0
+1
+0 0 91 52
+1
+end_operator
+begin_operator
+down f91 f57
+0
+1
+0 0 91 53
+1
+end_operator
+begin_operator
+down f91 f58
+0
+1
+0 0 91 54
+1
+end_operator
+begin_operator
+down f91 f59
+0
+1
+0 0 91 55
+1
+end_operator
+begin_operator
+down f91 f6
+0
+1
+0 0 91 56
+1
+end_operator
+begin_operator
+down f91 f60
+0
+1
+0 0 91 57
+1
+end_operator
+begin_operator
+down f91 f61
+0
+1
+0 0 91 58
+1
+end_operator
+begin_operator
+down f91 f62
+0
+1
+0 0 91 59
+1
+end_operator
+begin_operator
+down f91 f63
+0
+1
+0 0 91 60
+1
+end_operator
+begin_operator
+down f91 f64
+0
+1
+0 0 91 61
+1
+end_operator
+begin_operator
+down f91 f65
+0
+1
+0 0 91 62
+1
+end_operator
+begin_operator
+down f91 f66
+0
+1
+0 0 91 63
+1
+end_operator
+begin_operator
+down f91 f67
+0
+1
+0 0 91 64
+1
+end_operator
+begin_operator
+down f91 f68
+0
+1
+0 0 91 65
+1
+end_operator
+begin_operator
+down f91 f69
+0
+1
+0 0 91 66
+1
+end_operator
+begin_operator
+down f91 f7
+0
+1
+0 0 91 67
+1
+end_operator
+begin_operator
+down f91 f70
+0
+1
+0 0 91 68
+1
+end_operator
+begin_operator
+down f91 f71
+0
+1
+0 0 91 69
+1
+end_operator
+begin_operator
+down f91 f72
+0
+1
+0 0 91 70
+1
+end_operator
+begin_operator
+down f91 f73
+0
+1
+0 0 91 71
+1
+end_operator
+begin_operator
+down f91 f74
+0
+1
+0 0 91 72
+1
+end_operator
+begin_operator
+down f91 f75
+0
+1
+0 0 91 73
+1
+end_operator
+begin_operator
+down f91 f76
+0
+1
+0 0 91 74
+1
+end_operator
+begin_operator
+down f91 f77
+0
+1
+0 0 91 75
+1
+end_operator
+begin_operator
+down f91 f78
+0
+1
+0 0 91 76
+1
+end_operator
+begin_operator
+down f91 f79
+0
+1
+0 0 91 77
+1
+end_operator
+begin_operator
+down f91 f8
+0
+1
+0 0 91 78
+1
+end_operator
+begin_operator
+down f91 f80
+0
+1
+0 0 91 79
+1
+end_operator
+begin_operator
+down f91 f81
+0
+1
+0 0 91 80
+1
+end_operator
+begin_operator
+down f91 f82
+0
+1
+0 0 91 81
+1
+end_operator
+begin_operator
+down f91 f83
+0
+1
+0 0 91 82
+1
+end_operator
+begin_operator
+down f91 f84
+0
+1
+0 0 91 83
+1
+end_operator
+begin_operator
+down f91 f85
+0
+1
+0 0 91 84
+1
+end_operator
+begin_operator
+down f91 f86
+0
+1
+0 0 91 85
+1
+end_operator
+begin_operator
+down f91 f87
+0
+1
+0 0 91 86
+1
+end_operator
+begin_operator
+down f91 f88
+0
+1
+0 0 91 87
+1
+end_operator
+begin_operator
+down f91 f89
+0
+1
+0 0 91 88
+1
+end_operator
+begin_operator
+down f91 f9
+0
+1
+0 0 91 89
+1
+end_operator
+begin_operator
+down f91 f90
+0
+1
+0 0 91 90
+1
+end_operator
+begin_operator
+down f92 f1
+0
+1
+0 0 92 0
+1
+end_operator
+begin_operator
+down f92 f10
+0
+1
+0 0 92 1
+1
+end_operator
+begin_operator
+down f92 f11
+0
+1
+0 0 92 3
+1
+end_operator
+begin_operator
+down f92 f12
+0
+1
+0 0 92 4
+1
+end_operator
+begin_operator
+down f92 f13
+0
+1
+0 0 92 5
+1
+end_operator
+begin_operator
+down f92 f14
+0
+1
+0 0 92 6
+1
+end_operator
+begin_operator
+down f92 f15
+0
+1
+0 0 92 7
+1
+end_operator
+begin_operator
+down f92 f16
+0
+1
+0 0 92 8
+1
+end_operator
+begin_operator
+down f92 f17
+0
+1
+0 0 92 9
+1
+end_operator
+begin_operator
+down f92 f18
+0
+1
+0 0 92 10
+1
+end_operator
+begin_operator
+down f92 f19
+0
+1
+0 0 92 11
+1
+end_operator
+begin_operator
+down f92 f2
+0
+1
+0 0 92 12
+1
+end_operator
+begin_operator
+down f92 f20
+0
+1
+0 0 92 13
+1
+end_operator
+begin_operator
+down f92 f21
+0
+1
+0 0 92 14
+1
+end_operator
+begin_operator
+down f92 f22
+0
+1
+0 0 92 15
+1
+end_operator
+begin_operator
+down f92 f23
+0
+1
+0 0 92 16
+1
+end_operator
+begin_operator
+down f92 f24
+0
+1
+0 0 92 17
+1
+end_operator
+begin_operator
+down f92 f25
+0
+1
+0 0 92 18
+1
+end_operator
+begin_operator
+down f92 f26
+0
+1
+0 0 92 19
+1
+end_operator
+begin_operator
+down f92 f27
+0
+1
+0 0 92 20
+1
+end_operator
+begin_operator
+down f92 f28
+0
+1
+0 0 92 21
+1
+end_operator
+begin_operator
+down f92 f29
+0
+1
+0 0 92 22
+1
+end_operator
+begin_operator
+down f92 f3
+0
+1
+0 0 92 23
+1
+end_operator
+begin_operator
+down f92 f30
+0
+1
+0 0 92 24
+1
+end_operator
+begin_operator
+down f92 f31
+0
+1
+0 0 92 25
+1
+end_operator
+begin_operator
+down f92 f32
+0
+1
+0 0 92 26
+1
+end_operator
+begin_operator
+down f92 f33
+0
+1
+0 0 92 27
+1
+end_operator
+begin_operator
+down f92 f34
+0
+1
+0 0 92 28
+1
+end_operator
+begin_operator
+down f92 f35
+0
+1
+0 0 92 29
+1
+end_operator
+begin_operator
+down f92 f36
+0
+1
+0 0 92 30
+1
+end_operator
+begin_operator
+down f92 f37
+0
+1
+0 0 92 31
+1
+end_operator
+begin_operator
+down f92 f38
+0
+1
+0 0 92 32
+1
+end_operator
+begin_operator
+down f92 f39
+0
+1
+0 0 92 33
+1
+end_operator
+begin_operator
+down f92 f4
+0
+1
+0 0 92 34
+1
+end_operator
+begin_operator
+down f92 f40
+0
+1
+0 0 92 35
+1
+end_operator
+begin_operator
+down f92 f41
+0
+1
+0 0 92 36
+1
+end_operator
+begin_operator
+down f92 f42
+0
+1
+0 0 92 37
+1
+end_operator
+begin_operator
+down f92 f43
+0
+1
+0 0 92 38
+1
+end_operator
+begin_operator
+down f92 f44
+0
+1
+0 0 92 39
+1
+end_operator
+begin_operator
+down f92 f45
+0
+1
+0 0 92 40
+1
+end_operator
+begin_operator
+down f92 f46
+0
+1
+0 0 92 41
+1
+end_operator
+begin_operator
+down f92 f47
+0
+1
+0 0 92 42
+1
+end_operator
+begin_operator
+down f92 f48
+0
+1
+0 0 92 43
+1
+end_operator
+begin_operator
+down f92 f49
+0
+1
+0 0 92 44
+1
+end_operator
+begin_operator
+down f92 f5
+0
+1
+0 0 92 45
+1
+end_operator
+begin_operator
+down f92 f50
+0
+1
+0 0 92 46
+1
+end_operator
+begin_operator
+down f92 f51
+0
+1
+0 0 92 47
+1
+end_operator
+begin_operator
+down f92 f52
+0
+1
+0 0 92 48
+1
+end_operator
+begin_operator
+down f92 f53
+0
+1
+0 0 92 49
+1
+end_operator
+begin_operator
+down f92 f54
+0
+1
+0 0 92 50
+1
+end_operator
+begin_operator
+down f92 f55
+0
+1
+0 0 92 51
+1
+end_operator
+begin_operator
+down f92 f56
+0
+1
+0 0 92 52
+1
+end_operator
+begin_operator
+down f92 f57
+0
+1
+0 0 92 53
+1
+end_operator
+begin_operator
+down f92 f58
+0
+1
+0 0 92 54
+1
+end_operator
+begin_operator
+down f92 f59
+0
+1
+0 0 92 55
+1
+end_operator
+begin_operator
+down f92 f6
+0
+1
+0 0 92 56
+1
+end_operator
+begin_operator
+down f92 f60
+0
+1
+0 0 92 57
+1
+end_operator
+begin_operator
+down f92 f61
+0
+1
+0 0 92 58
+1
+end_operator
+begin_operator
+down f92 f62
+0
+1
+0 0 92 59
+1
+end_operator
+begin_operator
+down f92 f63
+0
+1
+0 0 92 60
+1
+end_operator
+begin_operator
+down f92 f64
+0
+1
+0 0 92 61
+1
+end_operator
+begin_operator
+down f92 f65
+0
+1
+0 0 92 62
+1
+end_operator
+begin_operator
+down f92 f66
+0
+1
+0 0 92 63
+1
+end_operator
+begin_operator
+down f92 f67
+0
+1
+0 0 92 64
+1
+end_operator
+begin_operator
+down f92 f68
+0
+1
+0 0 92 65
+1
+end_operator
+begin_operator
+down f92 f69
+0
+1
+0 0 92 66
+1
+end_operator
+begin_operator
+down f92 f7
+0
+1
+0 0 92 67
+1
+end_operator
+begin_operator
+down f92 f70
+0
+1
+0 0 92 68
+1
+end_operator
+begin_operator
+down f92 f71
+0
+1
+0 0 92 69
+1
+end_operator
+begin_operator
+down f92 f72
+0
+1
+0 0 92 70
+1
+end_operator
+begin_operator
+down f92 f73
+0
+1
+0 0 92 71
+1
+end_operator
+begin_operator
+down f92 f74
+0
+1
+0 0 92 72
+1
+end_operator
+begin_operator
+down f92 f75
+0
+1
+0 0 92 73
+1
+end_operator
+begin_operator
+down f92 f76
+0
+1
+0 0 92 74
+1
+end_operator
+begin_operator
+down f92 f77
+0
+1
+0 0 92 75
+1
+end_operator
+begin_operator
+down f92 f78
+0
+1
+0 0 92 76
+1
+end_operator
+begin_operator
+down f92 f79
+0
+1
+0 0 92 77
+1
+end_operator
+begin_operator
+down f92 f8
+0
+1
+0 0 92 78
+1
+end_operator
+begin_operator
+down f92 f80
+0
+1
+0 0 92 79
+1
+end_operator
+begin_operator
+down f92 f81
+0
+1
+0 0 92 80
+1
+end_operator
+begin_operator
+down f92 f82
+0
+1
+0 0 92 81
+1
+end_operator
+begin_operator
+down f92 f83
+0
+1
+0 0 92 82
+1
+end_operator
+begin_operator
+down f92 f84
+0
+1
+0 0 92 83
+1
+end_operator
+begin_operator
+down f92 f85
+0
+1
+0 0 92 84
+1
+end_operator
+begin_operator
+down f92 f86
+0
+1
+0 0 92 85
+1
+end_operator
+begin_operator
+down f92 f87
+0
+1
+0 0 92 86
+1
+end_operator
+begin_operator
+down f92 f88
+0
+1
+0 0 92 87
+1
+end_operator
+begin_operator
+down f92 f89
+0
+1
+0 0 92 88
+1
+end_operator
+begin_operator
+down f92 f9
+0
+1
+0 0 92 89
+1
+end_operator
+begin_operator
+down f92 f90
+0
+1
+0 0 92 90
+1
+end_operator
+begin_operator
+down f92 f91
+0
+1
+0 0 92 91
+1
+end_operator
+begin_operator
+down f93 f1
+0
+1
+0 0 93 0
+1
+end_operator
+begin_operator
+down f93 f10
+0
+1
+0 0 93 1
+1
+end_operator
+begin_operator
+down f93 f11
+0
+1
+0 0 93 3
+1
+end_operator
+begin_operator
+down f93 f12
+0
+1
+0 0 93 4
+1
+end_operator
+begin_operator
+down f93 f13
+0
+1
+0 0 93 5
+1
+end_operator
+begin_operator
+down f93 f14
+0
+1
+0 0 93 6
+1
+end_operator
+begin_operator
+down f93 f15
+0
+1
+0 0 93 7
+1
+end_operator
+begin_operator
+down f93 f16
+0
+1
+0 0 93 8
+1
+end_operator
+begin_operator
+down f93 f17
+0
+1
+0 0 93 9
+1
+end_operator
+begin_operator
+down f93 f18
+0
+1
+0 0 93 10
+1
+end_operator
+begin_operator
+down f93 f19
+0
+1
+0 0 93 11
+1
+end_operator
+begin_operator
+down f93 f2
+0
+1
+0 0 93 12
+1
+end_operator
+begin_operator
+down f93 f20
+0
+1
+0 0 93 13
+1
+end_operator
+begin_operator
+down f93 f21
+0
+1
+0 0 93 14
+1
+end_operator
+begin_operator
+down f93 f22
+0
+1
+0 0 93 15
+1
+end_operator
+begin_operator
+down f93 f23
+0
+1
+0 0 93 16
+1
+end_operator
+begin_operator
+down f93 f24
+0
+1
+0 0 93 17
+1
+end_operator
+begin_operator
+down f93 f25
+0
+1
+0 0 93 18
+1
+end_operator
+begin_operator
+down f93 f26
+0
+1
+0 0 93 19
+1
+end_operator
+begin_operator
+down f93 f27
+0
+1
+0 0 93 20
+1
+end_operator
+begin_operator
+down f93 f28
+0
+1
+0 0 93 21
+1
+end_operator
+begin_operator
+down f93 f29
+0
+1
+0 0 93 22
+1
+end_operator
+begin_operator
+down f93 f3
+0
+1
+0 0 93 23
+1
+end_operator
+begin_operator
+down f93 f30
+0
+1
+0 0 93 24
+1
+end_operator
+begin_operator
+down f93 f31
+0
+1
+0 0 93 25
+1
+end_operator
+begin_operator
+down f93 f32
+0
+1
+0 0 93 26
+1
+end_operator
+begin_operator
+down f93 f33
+0
+1
+0 0 93 27
+1
+end_operator
+begin_operator
+down f93 f34
+0
+1
+0 0 93 28
+1
+end_operator
+begin_operator
+down f93 f35
+0
+1
+0 0 93 29
+1
+end_operator
+begin_operator
+down f93 f36
+0
+1
+0 0 93 30
+1
+end_operator
+begin_operator
+down f93 f37
+0
+1
+0 0 93 31
+1
+end_operator
+begin_operator
+down f93 f38
+0
+1
+0 0 93 32
+1
+end_operator
+begin_operator
+down f93 f39
+0
+1
+0 0 93 33
+1
+end_operator
+begin_operator
+down f93 f4
+0
+1
+0 0 93 34
+1
+end_operator
+begin_operator
+down f93 f40
+0
+1
+0 0 93 35
+1
+end_operator
+begin_operator
+down f93 f41
+0
+1
+0 0 93 36
+1
+end_operator
+begin_operator
+down f93 f42
+0
+1
+0 0 93 37
+1
+end_operator
+begin_operator
+down f93 f43
+0
+1
+0 0 93 38
+1
+end_operator
+begin_operator
+down f93 f44
+0
+1
+0 0 93 39
+1
+end_operator
+begin_operator
+down f93 f45
+0
+1
+0 0 93 40
+1
+end_operator
+begin_operator
+down f93 f46
+0
+1
+0 0 93 41
+1
+end_operator
+begin_operator
+down f93 f47
+0
+1
+0 0 93 42
+1
+end_operator
+begin_operator
+down f93 f48
+0
+1
+0 0 93 43
+1
+end_operator
+begin_operator
+down f93 f49
+0
+1
+0 0 93 44
+1
+end_operator
+begin_operator
+down f93 f5
+0
+1
+0 0 93 45
+1
+end_operator
+begin_operator
+down f93 f50
+0
+1
+0 0 93 46
+1
+end_operator
+begin_operator
+down f93 f51
+0
+1
+0 0 93 47
+1
+end_operator
+begin_operator
+down f93 f52
+0
+1
+0 0 93 48
+1
+end_operator
+begin_operator
+down f93 f53
+0
+1
+0 0 93 49
+1
+end_operator
+begin_operator
+down f93 f54
+0
+1
+0 0 93 50
+1
+end_operator
+begin_operator
+down f93 f55
+0
+1
+0 0 93 51
+1
+end_operator
+begin_operator
+down f93 f56
+0
+1
+0 0 93 52
+1
+end_operator
+begin_operator
+down f93 f57
+0
+1
+0 0 93 53
+1
+end_operator
+begin_operator
+down f93 f58
+0
+1
+0 0 93 54
+1
+end_operator
+begin_operator
+down f93 f59
+0
+1
+0 0 93 55
+1
+end_operator
+begin_operator
+down f93 f6
+0
+1
+0 0 93 56
+1
+end_operator
+begin_operator
+down f93 f60
+0
+1
+0 0 93 57
+1
+end_operator
+begin_operator
+down f93 f61
+0
+1
+0 0 93 58
+1
+end_operator
+begin_operator
+down f93 f62
+0
+1
+0 0 93 59
+1
+end_operator
+begin_operator
+down f93 f63
+0
+1
+0 0 93 60
+1
+end_operator
+begin_operator
+down f93 f64
+0
+1
+0 0 93 61
+1
+end_operator
+begin_operator
+down f93 f65
+0
+1
+0 0 93 62
+1
+end_operator
+begin_operator
+down f93 f66
+0
+1
+0 0 93 63
+1
+end_operator
+begin_operator
+down f93 f67
+0
+1
+0 0 93 64
+1
+end_operator
+begin_operator
+down f93 f68
+0
+1
+0 0 93 65
+1
+end_operator
+begin_operator
+down f93 f69
+0
+1
+0 0 93 66
+1
+end_operator
+begin_operator
+down f93 f7
+0
+1
+0 0 93 67
+1
+end_operator
+begin_operator
+down f93 f70
+0
+1
+0 0 93 68
+1
+end_operator
+begin_operator
+down f93 f71
+0
+1
+0 0 93 69
+1
+end_operator
+begin_operator
+down f93 f72
+0
+1
+0 0 93 70
+1
+end_operator
+begin_operator
+down f93 f73
+0
+1
+0 0 93 71
+1
+end_operator
+begin_operator
+down f93 f74
+0
+1
+0 0 93 72
+1
+end_operator
+begin_operator
+down f93 f75
+0
+1
+0 0 93 73
+1
+end_operator
+begin_operator
+down f93 f76
+0
+1
+0 0 93 74
+1
+end_operator
+begin_operator
+down f93 f77
+0
+1
+0 0 93 75
+1
+end_operator
+begin_operator
+down f93 f78
+0
+1
+0 0 93 76
+1
+end_operator
+begin_operator
+down f93 f79
+0
+1
+0 0 93 77
+1
+end_operator
+begin_operator
+down f93 f8
+0
+1
+0 0 93 78
+1
+end_operator
+begin_operator
+down f93 f80
+0
+1
+0 0 93 79
+1
+end_operator
+begin_operator
+down f93 f81
+0
+1
+0 0 93 80
+1
+end_operator
+begin_operator
+down f93 f82
+0
+1
+0 0 93 81
+1
+end_operator
+begin_operator
+down f93 f83
+0
+1
+0 0 93 82
+1
+end_operator
+begin_operator
+down f93 f84
+0
+1
+0 0 93 83
+1
+end_operator
+begin_operator
+down f93 f85
+0
+1
+0 0 93 84
+1
+end_operator
+begin_operator
+down f93 f86
+0
+1
+0 0 93 85
+1
+end_operator
+begin_operator
+down f93 f87
+0
+1
+0 0 93 86
+1
+end_operator
+begin_operator
+down f93 f88
+0
+1
+0 0 93 87
+1
+end_operator
+begin_operator
+down f93 f89
+0
+1
+0 0 93 88
+1
+end_operator
+begin_operator
+down f93 f9
+0
+1
+0 0 93 89
+1
+end_operator
+begin_operator
+down f93 f90
+0
+1
+0 0 93 90
+1
+end_operator
+begin_operator
+down f93 f91
+0
+1
+0 0 93 91
+1
+end_operator
+begin_operator
+down f93 f92
+0
+1
+0 0 93 92
+1
+end_operator
+begin_operator
+down f94 f1
+0
+1
+0 0 94 0
+1
+end_operator
+begin_operator
+down f94 f10
+0
+1
+0 0 94 1
+1
+end_operator
+begin_operator
+down f94 f11
+0
+1
+0 0 94 3
+1
+end_operator
+begin_operator
+down f94 f12
+0
+1
+0 0 94 4
+1
+end_operator
+begin_operator
+down f94 f13
+0
+1
+0 0 94 5
+1
+end_operator
+begin_operator
+down f94 f14
+0
+1
+0 0 94 6
+1
+end_operator
+begin_operator
+down f94 f15
+0
+1
+0 0 94 7
+1
+end_operator
+begin_operator
+down f94 f16
+0
+1
+0 0 94 8
+1
+end_operator
+begin_operator
+down f94 f17
+0
+1
+0 0 94 9
+1
+end_operator
+begin_operator
+down f94 f18
+0
+1
+0 0 94 10
+1
+end_operator
+begin_operator
+down f94 f19
+0
+1
+0 0 94 11
+1
+end_operator
+begin_operator
+down f94 f2
+0
+1
+0 0 94 12
+1
+end_operator
+begin_operator
+down f94 f20
+0
+1
+0 0 94 13
+1
+end_operator
+begin_operator
+down f94 f21
+0
+1
+0 0 94 14
+1
+end_operator
+begin_operator
+down f94 f22
+0
+1
+0 0 94 15
+1
+end_operator
+begin_operator
+down f94 f23
+0
+1
+0 0 94 16
+1
+end_operator
+begin_operator
+down f94 f24
+0
+1
+0 0 94 17
+1
+end_operator
+begin_operator
+down f94 f25
+0
+1
+0 0 94 18
+1
+end_operator
+begin_operator
+down f94 f26
+0
+1
+0 0 94 19
+1
+end_operator
+begin_operator
+down f94 f27
+0
+1
+0 0 94 20
+1
+end_operator
+begin_operator
+down f94 f28
+0
+1
+0 0 94 21
+1
+end_operator
+begin_operator
+down f94 f29
+0
+1
+0 0 94 22
+1
+end_operator
+begin_operator
+down f94 f3
+0
+1
+0 0 94 23
+1
+end_operator
+begin_operator
+down f94 f30
+0
+1
+0 0 94 24
+1
+end_operator
+begin_operator
+down f94 f31
+0
+1
+0 0 94 25
+1
+end_operator
+begin_operator
+down f94 f32
+0
+1
+0 0 94 26
+1
+end_operator
+begin_operator
+down f94 f33
+0
+1
+0 0 94 27
+1
+end_operator
+begin_operator
+down f94 f34
+0
+1
+0 0 94 28
+1
+end_operator
+begin_operator
+down f94 f35
+0
+1
+0 0 94 29
+1
+end_operator
+begin_operator
+down f94 f36
+0
+1
+0 0 94 30
+1
+end_operator
+begin_operator
+down f94 f37
+0
+1
+0 0 94 31
+1
+end_operator
+begin_operator
+down f94 f38
+0
+1
+0 0 94 32
+1
+end_operator
+begin_operator
+down f94 f39
+0
+1
+0 0 94 33
+1
+end_operator
+begin_operator
+down f94 f4
+0
+1
+0 0 94 34
+1
+end_operator
+begin_operator
+down f94 f40
+0
+1
+0 0 94 35
+1
+end_operator
+begin_operator
+down f94 f41
+0
+1
+0 0 94 36
+1
+end_operator
+begin_operator
+down f94 f42
+0
+1
+0 0 94 37
+1
+end_operator
+begin_operator
+down f94 f43
+0
+1
+0 0 94 38
+1
+end_operator
+begin_operator
+down f94 f44
+0
+1
+0 0 94 39
+1
+end_operator
+begin_operator
+down f94 f45
+0
+1
+0 0 94 40
+1
+end_operator
+begin_operator
+down f94 f46
+0
+1
+0 0 94 41
+1
+end_operator
+begin_operator
+down f94 f47
+0
+1
+0 0 94 42
+1
+end_operator
+begin_operator
+down f94 f48
+0
+1
+0 0 94 43
+1
+end_operator
+begin_operator
+down f94 f49
+0
+1
+0 0 94 44
+1
+end_operator
+begin_operator
+down f94 f5
+0
+1
+0 0 94 45
+1
+end_operator
+begin_operator
+down f94 f50
+0
+1
+0 0 94 46
+1
+end_operator
+begin_operator
+down f94 f51
+0
+1
+0 0 94 47
+1
+end_operator
+begin_operator
+down f94 f52
+0
+1
+0 0 94 48
+1
+end_operator
+begin_operator
+down f94 f53
+0
+1
+0 0 94 49
+1
+end_operator
+begin_operator
+down f94 f54
+0
+1
+0 0 94 50
+1
+end_operator
+begin_operator
+down f94 f55
+0
+1
+0 0 94 51
+1
+end_operator
+begin_operator
+down f94 f56
+0
+1
+0 0 94 52
+1
+end_operator
+begin_operator
+down f94 f57
+0
+1
+0 0 94 53
+1
+end_operator
+begin_operator
+down f94 f58
+0
+1
+0 0 94 54
+1
+end_operator
+begin_operator
+down f94 f59
+0
+1
+0 0 94 55
+1
+end_operator
+begin_operator
+down f94 f6
+0
+1
+0 0 94 56
+1
+end_operator
+begin_operator
+down f94 f60
+0
+1
+0 0 94 57
+1
+end_operator
+begin_operator
+down f94 f61
+0
+1
+0 0 94 58
+1
+end_operator
+begin_operator
+down f94 f62
+0
+1
+0 0 94 59
+1
+end_operator
+begin_operator
+down f94 f63
+0
+1
+0 0 94 60
+1
+end_operator
+begin_operator
+down f94 f64
+0
+1
+0 0 94 61
+1
+end_operator
+begin_operator
+down f94 f65
+0
+1
+0 0 94 62
+1
+end_operator
+begin_operator
+down f94 f66
+0
+1
+0 0 94 63
+1
+end_operator
+begin_operator
+down f94 f67
+0
+1
+0 0 94 64
+1
+end_operator
+begin_operator
+down f94 f68
+0
+1
+0 0 94 65
+1
+end_operator
+begin_operator
+down f94 f69
+0
+1
+0 0 94 66
+1
+end_operator
+begin_operator
+down f94 f7
+0
+1
+0 0 94 67
+1
+end_operator
+begin_operator
+down f94 f70
+0
+1
+0 0 94 68
+1
+end_operator
+begin_operator
+down f94 f71
+0
+1
+0 0 94 69
+1
+end_operator
+begin_operator
+down f94 f72
+0
+1
+0 0 94 70
+1
+end_operator
+begin_operator
+down f94 f73
+0
+1
+0 0 94 71
+1
+end_operator
+begin_operator
+down f94 f74
+0
+1
+0 0 94 72
+1
+end_operator
+begin_operator
+down f94 f75
+0
+1
+0 0 94 73
+1
+end_operator
+begin_operator
+down f94 f76
+0
+1
+0 0 94 74
+1
+end_operator
+begin_operator
+down f94 f77
+0
+1
+0 0 94 75
+1
+end_operator
+begin_operator
+down f94 f78
+0
+1
+0 0 94 76
+1
+end_operator
+begin_operator
+down f94 f79
+0
+1
+0 0 94 77
+1
+end_operator
+begin_operator
+down f94 f8
+0
+1
+0 0 94 78
+1
+end_operator
+begin_operator
+down f94 f80
+0
+1
+0 0 94 79
+1
+end_operator
+begin_operator
+down f94 f81
+0
+1
+0 0 94 80
+1
+end_operator
+begin_operator
+down f94 f82
+0
+1
+0 0 94 81
+1
+end_operator
+begin_operator
+down f94 f83
+0
+1
+0 0 94 82
+1
+end_operator
+begin_operator
+down f94 f84
+0
+1
+0 0 94 83
+1
+end_operator
+begin_operator
+down f94 f85
+0
+1
+0 0 94 84
+1
+end_operator
+begin_operator
+down f94 f86
+0
+1
+0 0 94 85
+1
+end_operator
+begin_operator
+down f94 f87
+0
+1
+0 0 94 86
+1
+end_operator
+begin_operator
+down f94 f88
+0
+1
+0 0 94 87
+1
+end_operator
+begin_operator
+down f94 f89
+0
+1
+0 0 94 88
+1
+end_operator
+begin_operator
+down f94 f9
+0
+1
+0 0 94 89
+1
+end_operator
+begin_operator
+down f94 f90
+0
+1
+0 0 94 90
+1
+end_operator
+begin_operator
+down f94 f91
+0
+1
+0 0 94 91
+1
+end_operator
+begin_operator
+down f94 f92
+0
+1
+0 0 94 92
+1
+end_operator
+begin_operator
+down f94 f93
+0
+1
+0 0 94 93
+1
+end_operator
+begin_operator
+down f95 f1
+0
+1
+0 0 95 0
+1
+end_operator
+begin_operator
+down f95 f10
+0
+1
+0 0 95 1
+1
+end_operator
+begin_operator
+down f95 f11
+0
+1
+0 0 95 3
+1
+end_operator
+begin_operator
+down f95 f12
+0
+1
+0 0 95 4
+1
+end_operator
+begin_operator
+down f95 f13
+0
+1
+0 0 95 5
+1
+end_operator
+begin_operator
+down f95 f14
+0
+1
+0 0 95 6
+1
+end_operator
+begin_operator
+down f95 f15
+0
+1
+0 0 95 7
+1
+end_operator
+begin_operator
+down f95 f16
+0
+1
+0 0 95 8
+1
+end_operator
+begin_operator
+down f95 f17
+0
+1
+0 0 95 9
+1
+end_operator
+begin_operator
+down f95 f18
+0
+1
+0 0 95 10
+1
+end_operator
+begin_operator
+down f95 f19
+0
+1
+0 0 95 11
+1
+end_operator
+begin_operator
+down f95 f2
+0
+1
+0 0 95 12
+1
+end_operator
+begin_operator
+down f95 f20
+0
+1
+0 0 95 13
+1
+end_operator
+begin_operator
+down f95 f21
+0
+1
+0 0 95 14
+1
+end_operator
+begin_operator
+down f95 f22
+0
+1
+0 0 95 15
+1
+end_operator
+begin_operator
+down f95 f23
+0
+1
+0 0 95 16
+1
+end_operator
+begin_operator
+down f95 f24
+0
+1
+0 0 95 17
+1
+end_operator
+begin_operator
+down f95 f25
+0
+1
+0 0 95 18
+1
+end_operator
+begin_operator
+down f95 f26
+0
+1
+0 0 95 19
+1
+end_operator
+begin_operator
+down f95 f27
+0
+1
+0 0 95 20
+1
+end_operator
+begin_operator
+down f95 f28
+0
+1
+0 0 95 21
+1
+end_operator
+begin_operator
+down f95 f29
+0
+1
+0 0 95 22
+1
+end_operator
+begin_operator
+down f95 f3
+0
+1
+0 0 95 23
+1
+end_operator
+begin_operator
+down f95 f30
+0
+1
+0 0 95 24
+1
+end_operator
+begin_operator
+down f95 f31
+0
+1
+0 0 95 25
+1
+end_operator
+begin_operator
+down f95 f32
+0
+1
+0 0 95 26
+1
+end_operator
+begin_operator
+down f95 f33
+0
+1
+0 0 95 27
+1
+end_operator
+begin_operator
+down f95 f34
+0
+1
+0 0 95 28
+1
+end_operator
+begin_operator
+down f95 f35
+0
+1
+0 0 95 29
+1
+end_operator
+begin_operator
+down f95 f36
+0
+1
+0 0 95 30
+1
+end_operator
+begin_operator
+down f95 f37
+0
+1
+0 0 95 31
+1
+end_operator
+begin_operator
+down f95 f38
+0
+1
+0 0 95 32
+1
+end_operator
+begin_operator
+down f95 f39
+0
+1
+0 0 95 33
+1
+end_operator
+begin_operator
+down f95 f4
+0
+1
+0 0 95 34
+1
+end_operator
+begin_operator
+down f95 f40
+0
+1
+0 0 95 35
+1
+end_operator
+begin_operator
+down f95 f41
+0
+1
+0 0 95 36
+1
+end_operator
+begin_operator
+down f95 f42
+0
+1
+0 0 95 37
+1
+end_operator
+begin_operator
+down f95 f43
+0
+1
+0 0 95 38
+1
+end_operator
+begin_operator
+down f95 f44
+0
+1
+0 0 95 39
+1
+end_operator
+begin_operator
+down f95 f45
+0
+1
+0 0 95 40
+1
+end_operator
+begin_operator
+down f95 f46
+0
+1
+0 0 95 41
+1
+end_operator
+begin_operator
+down f95 f47
+0
+1
+0 0 95 42
+1
+end_operator
+begin_operator
+down f95 f48
+0
+1
+0 0 95 43
+1
+end_operator
+begin_operator
+down f95 f49
+0
+1
+0 0 95 44
+1
+end_operator
+begin_operator
+down f95 f5
+0
+1
+0 0 95 45
+1
+end_operator
+begin_operator
+down f95 f50
+0
+1
+0 0 95 46
+1
+end_operator
+begin_operator
+down f95 f51
+0
+1
+0 0 95 47
+1
+end_operator
+begin_operator
+down f95 f52
+0
+1
+0 0 95 48
+1
+end_operator
+begin_operator
+down f95 f53
+0
+1
+0 0 95 49
+1
+end_operator
+begin_operator
+down f95 f54
+0
+1
+0 0 95 50
+1
+end_operator
+begin_operator
+down f95 f55
+0
+1
+0 0 95 51
+1
+end_operator
+begin_operator
+down f95 f56
+0
+1
+0 0 95 52
+1
+end_operator
+begin_operator
+down f95 f57
+0
+1
+0 0 95 53
+1
+end_operator
+begin_operator
+down f95 f58
+0
+1
+0 0 95 54
+1
+end_operator
+begin_operator
+down f95 f59
+0
+1
+0 0 95 55
+1
+end_operator
+begin_operator
+down f95 f6
+0
+1
+0 0 95 56
+1
+end_operator
+begin_operator
+down f95 f60
+0
+1
+0 0 95 57
+1
+end_operator
+begin_operator
+down f95 f61
+0
+1
+0 0 95 58
+1
+end_operator
+begin_operator
+down f95 f62
+0
+1
+0 0 95 59
+1
+end_operator
+begin_operator
+down f95 f63
+0
+1
+0 0 95 60
+1
+end_operator
+begin_operator
+down f95 f64
+0
+1
+0 0 95 61
+1
+end_operator
+begin_operator
+down f95 f65
+0
+1
+0 0 95 62
+1
+end_operator
+begin_operator
+down f95 f66
+0
+1
+0 0 95 63
+1
+end_operator
+begin_operator
+down f95 f67
+0
+1
+0 0 95 64
+1
+end_operator
+begin_operator
+down f95 f68
+0
+1
+0 0 95 65
+1
+end_operator
+begin_operator
+down f95 f69
+0
+1
+0 0 95 66
+1
+end_operator
+begin_operator
+down f95 f7
+0
+1
+0 0 95 67
+1
+end_operator
+begin_operator
+down f95 f70
+0
+1
+0 0 95 68
+1
+end_operator
+begin_operator
+down f95 f71
+0
+1
+0 0 95 69
+1
+end_operator
+begin_operator
+down f95 f72
+0
+1
+0 0 95 70
+1
+end_operator
+begin_operator
+down f95 f73
+0
+1
+0 0 95 71
+1
+end_operator
+begin_operator
+down f95 f74
+0
+1
+0 0 95 72
+1
+end_operator
+begin_operator
+down f95 f75
+0
+1
+0 0 95 73
+1
+end_operator
+begin_operator
+down f95 f76
+0
+1
+0 0 95 74
+1
+end_operator
+begin_operator
+down f95 f77
+0
+1
+0 0 95 75
+1
+end_operator
+begin_operator
+down f95 f78
+0
+1
+0 0 95 76
+1
+end_operator
+begin_operator
+down f95 f79
+0
+1
+0 0 95 77
+1
+end_operator
+begin_operator
+down f95 f8
+0
+1
+0 0 95 78
+1
+end_operator
+begin_operator
+down f95 f80
+0
+1
+0 0 95 79
+1
+end_operator
+begin_operator
+down f95 f81
+0
+1
+0 0 95 80
+1
+end_operator
+begin_operator
+down f95 f82
+0
+1
+0 0 95 81
+1
+end_operator
+begin_operator
+down f95 f83
+0
+1
+0 0 95 82
+1
+end_operator
+begin_operator
+down f95 f84
+0
+1
+0 0 95 83
+1
+end_operator
+begin_operator
+down f95 f85
+0
+1
+0 0 95 84
+1
+end_operator
+begin_operator
+down f95 f86
+0
+1
+0 0 95 85
+1
+end_operator
+begin_operator
+down f95 f87
+0
+1
+0 0 95 86
+1
+end_operator
+begin_operator
+down f95 f88
+0
+1
+0 0 95 87
+1
+end_operator
+begin_operator
+down f95 f89
+0
+1
+0 0 95 88
+1
+end_operator
+begin_operator
+down f95 f9
+0
+1
+0 0 95 89
+1
+end_operator
+begin_operator
+down f95 f90
+0
+1
+0 0 95 90
+1
+end_operator
+begin_operator
+down f95 f91
+0
+1
+0 0 95 91
+1
+end_operator
+begin_operator
+down f95 f92
+0
+1
+0 0 95 92
+1
+end_operator
+begin_operator
+down f95 f93
+0
+1
+0 0 95 93
+1
+end_operator
+begin_operator
+down f95 f94
+0
+1
+0 0 95 94
+1
+end_operator
+begin_operator
+down f96 f1
+0
+1
+0 0 96 0
+1
+end_operator
+begin_operator
+down f96 f10
+0
+1
+0 0 96 1
+1
+end_operator
+begin_operator
+down f96 f11
+0
+1
+0 0 96 3
+1
+end_operator
+begin_operator
+down f96 f12
+0
+1
+0 0 96 4
+1
+end_operator
+begin_operator
+down f96 f13
+0
+1
+0 0 96 5
+1
+end_operator
+begin_operator
+down f96 f14
+0
+1
+0 0 96 6
+1
+end_operator
+begin_operator
+down f96 f15
+0
+1
+0 0 96 7
+1
+end_operator
+begin_operator
+down f96 f16
+0
+1
+0 0 96 8
+1
+end_operator
+begin_operator
+down f96 f17
+0
+1
+0 0 96 9
+1
+end_operator
+begin_operator
+down f96 f18
+0
+1
+0 0 96 10
+1
+end_operator
+begin_operator
+down f96 f19
+0
+1
+0 0 96 11
+1
+end_operator
+begin_operator
+down f96 f2
+0
+1
+0 0 96 12
+1
+end_operator
+begin_operator
+down f96 f20
+0
+1
+0 0 96 13
+1
+end_operator
+begin_operator
+down f96 f21
+0
+1
+0 0 96 14
+1
+end_operator
+begin_operator
+down f96 f22
+0
+1
+0 0 96 15
+1
+end_operator
+begin_operator
+down f96 f23
+0
+1
+0 0 96 16
+1
+end_operator
+begin_operator
+down f96 f24
+0
+1
+0 0 96 17
+1
+end_operator
+begin_operator
+down f96 f25
+0
+1
+0 0 96 18
+1
+end_operator
+begin_operator
+down f96 f26
+0
+1
+0 0 96 19
+1
+end_operator
+begin_operator
+down f96 f27
+0
+1
+0 0 96 20
+1
+end_operator
+begin_operator
+down f96 f28
+0
+1
+0 0 96 21
+1
+end_operator
+begin_operator
+down f96 f29
+0
+1
+0 0 96 22
+1
+end_operator
+begin_operator
+down f96 f3
+0
+1
+0 0 96 23
+1
+end_operator
+begin_operator
+down f96 f30
+0
+1
+0 0 96 24
+1
+end_operator
+begin_operator
+down f96 f31
+0
+1
+0 0 96 25
+1
+end_operator
+begin_operator
+down f96 f32
+0
+1
+0 0 96 26
+1
+end_operator
+begin_operator
+down f96 f33
+0
+1
+0 0 96 27
+1
+end_operator
+begin_operator
+down f96 f34
+0
+1
+0 0 96 28
+1
+end_operator
+begin_operator
+down f96 f35
+0
+1
+0 0 96 29
+1
+end_operator
+begin_operator
+down f96 f36
+0
+1
+0 0 96 30
+1
+end_operator
+begin_operator
+down f96 f37
+0
+1
+0 0 96 31
+1
+end_operator
+begin_operator
+down f96 f38
+0
+1
+0 0 96 32
+1
+end_operator
+begin_operator
+down f96 f39
+0
+1
+0 0 96 33
+1
+end_operator
+begin_operator
+down f96 f4
+0
+1
+0 0 96 34
+1
+end_operator
+begin_operator
+down f96 f40
+0
+1
+0 0 96 35
+1
+end_operator
+begin_operator
+down f96 f41
+0
+1
+0 0 96 36
+1
+end_operator
+begin_operator
+down f96 f42
+0
+1
+0 0 96 37
+1
+end_operator
+begin_operator
+down f96 f43
+0
+1
+0 0 96 38
+1
+end_operator
+begin_operator
+down f96 f44
+0
+1
+0 0 96 39
+1
+end_operator
+begin_operator
+down f96 f45
+0
+1
+0 0 96 40
+1
+end_operator
+begin_operator
+down f96 f46
+0
+1
+0 0 96 41
+1
+end_operator
+begin_operator
+down f96 f47
+0
+1
+0 0 96 42
+1
+end_operator
+begin_operator
+down f96 f48
+0
+1
+0 0 96 43
+1
+end_operator
+begin_operator
+down f96 f49
+0
+1
+0 0 96 44
+1
+end_operator
+begin_operator
+down f96 f5
+0
+1
+0 0 96 45
+1
+end_operator
+begin_operator
+down f96 f50
+0
+1
+0 0 96 46
+1
+end_operator
+begin_operator
+down f96 f51
+0
+1
+0 0 96 47
+1
+end_operator
+begin_operator
+down f96 f52
+0
+1
+0 0 96 48
+1
+end_operator
+begin_operator
+down f96 f53
+0
+1
+0 0 96 49
+1
+end_operator
+begin_operator
+down f96 f54
+0
+1
+0 0 96 50
+1
+end_operator
+begin_operator
+down f96 f55
+0
+1
+0 0 96 51
+1
+end_operator
+begin_operator
+down f96 f56
+0
+1
+0 0 96 52
+1
+end_operator
+begin_operator
+down f96 f57
+0
+1
+0 0 96 53
+1
+end_operator
+begin_operator
+down f96 f58
+0
+1
+0 0 96 54
+1
+end_operator
+begin_operator
+down f96 f59
+0
+1
+0 0 96 55
+1
+end_operator
+begin_operator
+down f96 f6
+0
+1
+0 0 96 56
+1
+end_operator
+begin_operator
+down f96 f60
+0
+1
+0 0 96 57
+1
+end_operator
+begin_operator
+down f96 f61
+0
+1
+0 0 96 58
+1
+end_operator
+begin_operator
+down f96 f62
+0
+1
+0 0 96 59
+1
+end_operator
+begin_operator
+down f96 f63
+0
+1
+0 0 96 60
+1
+end_operator
+begin_operator
+down f96 f64
+0
+1
+0 0 96 61
+1
+end_operator
+begin_operator
+down f96 f65
+0
+1
+0 0 96 62
+1
+end_operator
+begin_operator
+down f96 f66
+0
+1
+0 0 96 63
+1
+end_operator
+begin_operator
+down f96 f67
+0
+1
+0 0 96 64
+1
+end_operator
+begin_operator
+down f96 f68
+0
+1
+0 0 96 65
+1
+end_operator
+begin_operator
+down f96 f69
+0
+1
+0 0 96 66
+1
+end_operator
+begin_operator
+down f96 f7
+0
+1
+0 0 96 67
+1
+end_operator
+begin_operator
+down f96 f70
+0
+1
+0 0 96 68
+1
+end_operator
+begin_operator
+down f96 f71
+0
+1
+0 0 96 69
+1
+end_operator
+begin_operator
+down f96 f72
+0
+1
+0 0 96 70
+1
+end_operator
+begin_operator
+down f96 f73
+0
+1
+0 0 96 71
+1
+end_operator
+begin_operator
+down f96 f74
+0
+1
+0 0 96 72
+1
+end_operator
+begin_operator
+down f96 f75
+0
+1
+0 0 96 73
+1
+end_operator
+begin_operator
+down f96 f76
+0
+1
+0 0 96 74
+1
+end_operator
+begin_operator
+down f96 f77
+0
+1
+0 0 96 75
+1
+end_operator
+begin_operator
+down f96 f78
+0
+1
+0 0 96 76
+1
+end_operator
+begin_operator
+down f96 f79
+0
+1
+0 0 96 77
+1
+end_operator
+begin_operator
+down f96 f8
+0
+1
+0 0 96 78
+1
+end_operator
+begin_operator
+down f96 f80
+0
+1
+0 0 96 79
+1
+end_operator
+begin_operator
+down f96 f81
+0
+1
+0 0 96 80
+1
+end_operator
+begin_operator
+down f96 f82
+0
+1
+0 0 96 81
+1
+end_operator
+begin_operator
+down f96 f83
+0
+1
+0 0 96 82
+1
+end_operator
+begin_operator
+down f96 f84
+0
+1
+0 0 96 83
+1
+end_operator
+begin_operator
+down f96 f85
+0
+1
+0 0 96 84
+1
+end_operator
+begin_operator
+down f96 f86
+0
+1
+0 0 96 85
+1
+end_operator
+begin_operator
+down f96 f87
+0
+1
+0 0 96 86
+1
+end_operator
+begin_operator
+down f96 f88
+0
+1
+0 0 96 87
+1
+end_operator
+begin_operator
+down f96 f89
+0
+1
+0 0 96 88
+1
+end_operator
+begin_operator
+down f96 f9
+0
+1
+0 0 96 89
+1
+end_operator
+begin_operator
+down f96 f90
+0
+1
+0 0 96 90
+1
+end_operator
+begin_operator
+down f96 f91
+0
+1
+0 0 96 91
+1
+end_operator
+begin_operator
+down f96 f92
+0
+1
+0 0 96 92
+1
+end_operator
+begin_operator
+down f96 f93
+0
+1
+0 0 96 93
+1
+end_operator
+begin_operator
+down f96 f94
+0
+1
+0 0 96 94
+1
+end_operator
+begin_operator
+down f96 f95
+0
+1
+0 0 96 95
+1
+end_operator
+begin_operator
+down f97 f1
+0
+1
+0 0 97 0
+1
+end_operator
+begin_operator
+down f97 f10
+0
+1
+0 0 97 1
+1
+end_operator
+begin_operator
+down f97 f11
+0
+1
+0 0 97 3
+1
+end_operator
+begin_operator
+down f97 f12
+0
+1
+0 0 97 4
+1
+end_operator
+begin_operator
+down f97 f13
+0
+1
+0 0 97 5
+1
+end_operator
+begin_operator
+down f97 f14
+0
+1
+0 0 97 6
+1
+end_operator
+begin_operator
+down f97 f15
+0
+1
+0 0 97 7
+1
+end_operator
+begin_operator
+down f97 f16
+0
+1
+0 0 97 8
+1
+end_operator
+begin_operator
+down f97 f17
+0
+1
+0 0 97 9
+1
+end_operator
+begin_operator
+down f97 f18
+0
+1
+0 0 97 10
+1
+end_operator
+begin_operator
+down f97 f19
+0
+1
+0 0 97 11
+1
+end_operator
+begin_operator
+down f97 f2
+0
+1
+0 0 97 12
+1
+end_operator
+begin_operator
+down f97 f20
+0
+1
+0 0 97 13
+1
+end_operator
+begin_operator
+down f97 f21
+0
+1
+0 0 97 14
+1
+end_operator
+begin_operator
+down f97 f22
+0
+1
+0 0 97 15
+1
+end_operator
+begin_operator
+down f97 f23
+0
+1
+0 0 97 16
+1
+end_operator
+begin_operator
+down f97 f24
+0
+1
+0 0 97 17
+1
+end_operator
+begin_operator
+down f97 f25
+0
+1
+0 0 97 18
+1
+end_operator
+begin_operator
+down f97 f26
+0
+1
+0 0 97 19
+1
+end_operator
+begin_operator
+down f97 f27
+0
+1
+0 0 97 20
+1
+end_operator
+begin_operator
+down f97 f28
+0
+1
+0 0 97 21
+1
+end_operator
+begin_operator
+down f97 f29
+0
+1
+0 0 97 22
+1
+end_operator
+begin_operator
+down f97 f3
+0
+1
+0 0 97 23
+1
+end_operator
+begin_operator
+down f97 f30
+0
+1
+0 0 97 24
+1
+end_operator
+begin_operator
+down f97 f31
+0
+1
+0 0 97 25
+1
+end_operator
+begin_operator
+down f97 f32
+0
+1
+0 0 97 26
+1
+end_operator
+begin_operator
+down f97 f33
+0
+1
+0 0 97 27
+1
+end_operator
+begin_operator
+down f97 f34
+0
+1
+0 0 97 28
+1
+end_operator
+begin_operator
+down f97 f35
+0
+1
+0 0 97 29
+1
+end_operator
+begin_operator
+down f97 f36
+0
+1
+0 0 97 30
+1
+end_operator
+begin_operator
+down f97 f37
+0
+1
+0 0 97 31
+1
+end_operator
+begin_operator
+down f97 f38
+0
+1
+0 0 97 32
+1
+end_operator
+begin_operator
+down f97 f39
+0
+1
+0 0 97 33
+1
+end_operator
+begin_operator
+down f97 f4
+0
+1
+0 0 97 34
+1
+end_operator
+begin_operator
+down f97 f40
+0
+1
+0 0 97 35
+1
+end_operator
+begin_operator
+down f97 f41
+0
+1
+0 0 97 36
+1
+end_operator
+begin_operator
+down f97 f42
+0
+1
+0 0 97 37
+1
+end_operator
+begin_operator
+down f97 f43
+0
+1
+0 0 97 38
+1
+end_operator
+begin_operator
+down f97 f44
+0
+1
+0 0 97 39
+1
+end_operator
+begin_operator
+down f97 f45
+0
+1
+0 0 97 40
+1
+end_operator
+begin_operator
+down f97 f46
+0
+1
+0 0 97 41
+1
+end_operator
+begin_operator
+down f97 f47
+0
+1
+0 0 97 42
+1
+end_operator
+begin_operator
+down f97 f48
+0
+1
+0 0 97 43
+1
+end_operator
+begin_operator
+down f97 f49
+0
+1
+0 0 97 44
+1
+end_operator
+begin_operator
+down f97 f5
+0
+1
+0 0 97 45
+1
+end_operator
+begin_operator
+down f97 f50
+0
+1
+0 0 97 46
+1
+end_operator
+begin_operator
+down f97 f51
+0
+1
+0 0 97 47
+1
+end_operator
+begin_operator
+down f97 f52
+0
+1
+0 0 97 48
+1
+end_operator
+begin_operator
+down f97 f53
+0
+1
+0 0 97 49
+1
+end_operator
+begin_operator
+down f97 f54
+0
+1
+0 0 97 50
+1
+end_operator
+begin_operator
+down f97 f55
+0
+1
+0 0 97 51
+1
+end_operator
+begin_operator
+down f97 f56
+0
+1
+0 0 97 52
+1
+end_operator
+begin_operator
+down f97 f57
+0
+1
+0 0 97 53
+1
+end_operator
+begin_operator
+down f97 f58
+0
+1
+0 0 97 54
+1
+end_operator
+begin_operator
+down f97 f59
+0
+1
+0 0 97 55
+1
+end_operator
+begin_operator
+down f97 f6
+0
+1
+0 0 97 56
+1
+end_operator
+begin_operator
+down f97 f60
+0
+1
+0 0 97 57
+1
+end_operator
+begin_operator
+down f97 f61
+0
+1
+0 0 97 58
+1
+end_operator
+begin_operator
+down f97 f62
+0
+1
+0 0 97 59
+1
+end_operator
+begin_operator
+down f97 f63
+0
+1
+0 0 97 60
+1
+end_operator
+begin_operator
+down f97 f64
+0
+1
+0 0 97 61
+1
+end_operator
+begin_operator
+down f97 f65
+0
+1
+0 0 97 62
+1
+end_operator
+begin_operator
+down f97 f66
+0
+1
+0 0 97 63
+1
+end_operator
+begin_operator
+down f97 f67
+0
+1
+0 0 97 64
+1
+end_operator
+begin_operator
+down f97 f68
+0
+1
+0 0 97 65
+1
+end_operator
+begin_operator
+down f97 f69
+0
+1
+0 0 97 66
+1
+end_operator
+begin_operator
+down f97 f7
+0
+1
+0 0 97 67
+1
+end_operator
+begin_operator
+down f97 f70
+0
+1
+0 0 97 68
+1
+end_operator
+begin_operator
+down f97 f71
+0
+1
+0 0 97 69
+1
+end_operator
+begin_operator
+down f97 f72
+0
+1
+0 0 97 70
+1
+end_operator
+begin_operator
+down f97 f73
+0
+1
+0 0 97 71
+1
+end_operator
+begin_operator
+down f97 f74
+0
+1
+0 0 97 72
+1
+end_operator
+begin_operator
+down f97 f75
+0
+1
+0 0 97 73
+1
+end_operator
+begin_operator
+down f97 f76
+0
+1
+0 0 97 74
+1
+end_operator
+begin_operator
+down f97 f77
+0
+1
+0 0 97 75
+1
+end_operator
+begin_operator
+down f97 f78
+0
+1
+0 0 97 76
+1
+end_operator
+begin_operator
+down f97 f79
+0
+1
+0 0 97 77
+1
+end_operator
+begin_operator
+down f97 f8
+0
+1
+0 0 97 78
+1
+end_operator
+begin_operator
+down f97 f80
+0
+1
+0 0 97 79
+1
+end_operator
+begin_operator
+down f97 f81
+0
+1
+0 0 97 80
+1
+end_operator
+begin_operator
+down f97 f82
+0
+1
+0 0 97 81
+1
+end_operator
+begin_operator
+down f97 f83
+0
+1
+0 0 97 82
+1
+end_operator
+begin_operator
+down f97 f84
+0
+1
+0 0 97 83
+1
+end_operator
+begin_operator
+down f97 f85
+0
+1
+0 0 97 84
+1
+end_operator
+begin_operator
+down f97 f86
+0
+1
+0 0 97 85
+1
+end_operator
+begin_operator
+down f97 f87
+0
+1
+0 0 97 86
+1
+end_operator
+begin_operator
+down f97 f88
+0
+1
+0 0 97 87
+1
+end_operator
+begin_operator
+down f97 f89
+0
+1
+0 0 97 88
+1
+end_operator
+begin_operator
+down f97 f9
+0
+1
+0 0 97 89
+1
+end_operator
+begin_operator
+down f97 f90
+0
+1
+0 0 97 90
+1
+end_operator
+begin_operator
+down f97 f91
+0
+1
+0 0 97 91
+1
+end_operator
+begin_operator
+down f97 f92
+0
+1
+0 0 97 92
+1
+end_operator
+begin_operator
+down f97 f93
+0
+1
+0 0 97 93
+1
+end_operator
+begin_operator
+down f97 f94
+0
+1
+0 0 97 94
+1
+end_operator
+begin_operator
+down f97 f95
+0
+1
+0 0 97 95
+1
+end_operator
+begin_operator
+down f97 f96
+0
+1
+0 0 97 96
+1
+end_operator
+begin_operator
+down f98 f1
+0
+1
+0 0 98 0
+1
+end_operator
+begin_operator
+down f98 f10
+0
+1
+0 0 98 1
+1
+end_operator
+begin_operator
+down f98 f11
+0
+1
+0 0 98 3
+1
+end_operator
+begin_operator
+down f98 f12
+0
+1
+0 0 98 4
+1
+end_operator
+begin_operator
+down f98 f13
+0
+1
+0 0 98 5
+1
+end_operator
+begin_operator
+down f98 f14
+0
+1
+0 0 98 6
+1
+end_operator
+begin_operator
+down f98 f15
+0
+1
+0 0 98 7
+1
+end_operator
+begin_operator
+down f98 f16
+0
+1
+0 0 98 8
+1
+end_operator
+begin_operator
+down f98 f17
+0
+1
+0 0 98 9
+1
+end_operator
+begin_operator
+down f98 f18
+0
+1
+0 0 98 10
+1
+end_operator
+begin_operator
+down f98 f19
+0
+1
+0 0 98 11
+1
+end_operator
+begin_operator
+down f98 f2
+0
+1
+0 0 98 12
+1
+end_operator
+begin_operator
+down f98 f20
+0
+1
+0 0 98 13
+1
+end_operator
+begin_operator
+down f98 f21
+0
+1
+0 0 98 14
+1
+end_operator
+begin_operator
+down f98 f22
+0
+1
+0 0 98 15
+1
+end_operator
+begin_operator
+down f98 f23
+0
+1
+0 0 98 16
+1
+end_operator
+begin_operator
+down f98 f24
+0
+1
+0 0 98 17
+1
+end_operator
+begin_operator
+down f98 f25
+0
+1
+0 0 98 18
+1
+end_operator
+begin_operator
+down f98 f26
+0
+1
+0 0 98 19
+1
+end_operator
+begin_operator
+down f98 f27
+0
+1
+0 0 98 20
+1
+end_operator
+begin_operator
+down f98 f28
+0
+1
+0 0 98 21
+1
+end_operator
+begin_operator
+down f98 f29
+0
+1
+0 0 98 22
+1
+end_operator
+begin_operator
+down f98 f3
+0
+1
+0 0 98 23
+1
+end_operator
+begin_operator
+down f98 f30
+0
+1
+0 0 98 24
+1
+end_operator
+begin_operator
+down f98 f31
+0
+1
+0 0 98 25
+1
+end_operator
+begin_operator
+down f98 f32
+0
+1
+0 0 98 26
+1
+end_operator
+begin_operator
+down f98 f33
+0
+1
+0 0 98 27
+1
+end_operator
+begin_operator
+down f98 f34
+0
+1
+0 0 98 28
+1
+end_operator
+begin_operator
+down f98 f35
+0
+1
+0 0 98 29
+1
+end_operator
+begin_operator
+down f98 f36
+0
+1
+0 0 98 30
+1
+end_operator
+begin_operator
+down f98 f37
+0
+1
+0 0 98 31
+1
+end_operator
+begin_operator
+down f98 f38
+0
+1
+0 0 98 32
+1
+end_operator
+begin_operator
+down f98 f39
+0
+1
+0 0 98 33
+1
+end_operator
+begin_operator
+down f98 f4
+0
+1
+0 0 98 34
+1
+end_operator
+begin_operator
+down f98 f40
+0
+1
+0 0 98 35
+1
+end_operator
+begin_operator
+down f98 f41
+0
+1
+0 0 98 36
+1
+end_operator
+begin_operator
+down f98 f42
+0
+1
+0 0 98 37
+1
+end_operator
+begin_operator
+down f98 f43
+0
+1
+0 0 98 38
+1
+end_operator
+begin_operator
+down f98 f44
+0
+1
+0 0 98 39
+1
+end_operator
+begin_operator
+down f98 f45
+0
+1
+0 0 98 40
+1
+end_operator
+begin_operator
+down f98 f46
+0
+1
+0 0 98 41
+1
+end_operator
+begin_operator
+down f98 f47
+0
+1
+0 0 98 42
+1
+end_operator
+begin_operator
+down f98 f48
+0
+1
+0 0 98 43
+1
+end_operator
+begin_operator
+down f98 f49
+0
+1
+0 0 98 44
+1
+end_operator
+begin_operator
+down f98 f5
+0
+1
+0 0 98 45
+1
+end_operator
+begin_operator
+down f98 f50
+0
+1
+0 0 98 46
+1
+end_operator
+begin_operator
+down f98 f51
+0
+1
+0 0 98 47
+1
+end_operator
+begin_operator
+down f98 f52
+0
+1
+0 0 98 48
+1
+end_operator
+begin_operator
+down f98 f53
+0
+1
+0 0 98 49
+1
+end_operator
+begin_operator
+down f98 f54
+0
+1
+0 0 98 50
+1
+end_operator
+begin_operator
+down f98 f55
+0
+1
+0 0 98 51
+1
+end_operator
+begin_operator
+down f98 f56
+0
+1
+0 0 98 52
+1
+end_operator
+begin_operator
+down f98 f57
+0
+1
+0 0 98 53
+1
+end_operator
+begin_operator
+down f98 f58
+0
+1
+0 0 98 54
+1
+end_operator
+begin_operator
+down f98 f59
+0
+1
+0 0 98 55
+1
+end_operator
+begin_operator
+down f98 f6
+0
+1
+0 0 98 56
+1
+end_operator
+begin_operator
+down f98 f60
+0
+1
+0 0 98 57
+1
+end_operator
+begin_operator
+down f98 f61
+0
+1
+0 0 98 58
+1
+end_operator
+begin_operator
+down f98 f62
+0
+1
+0 0 98 59
+1
+end_operator
+begin_operator
+down f98 f63
+0
+1
+0 0 98 60
+1
+end_operator
+begin_operator
+down f98 f64
+0
+1
+0 0 98 61
+1
+end_operator
+begin_operator
+down f98 f65
+0
+1
+0 0 98 62
+1
+end_operator
+begin_operator
+down f98 f66
+0
+1
+0 0 98 63
+1
+end_operator
+begin_operator
+down f98 f67
+0
+1
+0 0 98 64
+1
+end_operator
+begin_operator
+down f98 f68
+0
+1
+0 0 98 65
+1
+end_operator
+begin_operator
+down f98 f69
+0
+1
+0 0 98 66
+1
+end_operator
+begin_operator
+down f98 f7
+0
+1
+0 0 98 67
+1
+end_operator
+begin_operator
+down f98 f70
+0
+1
+0 0 98 68
+1
+end_operator
+begin_operator
+down f98 f71
+0
+1
+0 0 98 69
+1
+end_operator
+begin_operator
+down f98 f72
+0
+1
+0 0 98 70
+1
+end_operator
+begin_operator
+down f98 f73
+0
+1
+0 0 98 71
+1
+end_operator
+begin_operator
+down f98 f74
+0
+1
+0 0 98 72
+1
+end_operator
+begin_operator
+down f98 f75
+0
+1
+0 0 98 73
+1
+end_operator
+begin_operator
+down f98 f76
+0
+1
+0 0 98 74
+1
+end_operator
+begin_operator
+down f98 f77
+0
+1
+0 0 98 75
+1
+end_operator
+begin_operator
+down f98 f78
+0
+1
+0 0 98 76
+1
+end_operator
+begin_operator
+down f98 f79
+0
+1
+0 0 98 77
+1
+end_operator
+begin_operator
+down f98 f8
+0
+1
+0 0 98 78
+1
+end_operator
+begin_operator
+down f98 f80
+0
+1
+0 0 98 79
+1
+end_operator
+begin_operator
+down f98 f81
+0
+1
+0 0 98 80
+1
+end_operator
+begin_operator
+down f98 f82
+0
+1
+0 0 98 81
+1
+end_operator
+begin_operator
+down f98 f83
+0
+1
+0 0 98 82
+1
+end_operator
+begin_operator
+down f98 f84
+0
+1
+0 0 98 83
+1
+end_operator
+begin_operator
+down f98 f85
+0
+1
+0 0 98 84
+1
+end_operator
+begin_operator
+down f98 f86
+0
+1
+0 0 98 85
+1
+end_operator
+begin_operator
+down f98 f87
+0
+1
+0 0 98 86
+1
+end_operator
+begin_operator
+down f98 f88
+0
+1
+0 0 98 87
+1
+end_operator
+begin_operator
+down f98 f89
+0
+1
+0 0 98 88
+1
+end_operator
+begin_operator
+down f98 f9
+0
+1
+0 0 98 89
+1
+end_operator
+begin_operator
+down f98 f90
+0
+1
+0 0 98 90
+1
+end_operator
+begin_operator
+down f98 f91
+0
+1
+0 0 98 91
+1
+end_operator
+begin_operator
+down f98 f92
+0
+1
+0 0 98 92
+1
+end_operator
+begin_operator
+down f98 f93
+0
+1
+0 0 98 93
+1
+end_operator
+begin_operator
+down f98 f94
+0
+1
+0 0 98 94
+1
+end_operator
+begin_operator
+down f98 f95
+0
+1
+0 0 98 95
+1
+end_operator
+begin_operator
+down f98 f96
+0
+1
+0 0 98 96
+1
+end_operator
+begin_operator
+down f98 f97
+0
+1
+0 0 98 97
+1
+end_operator
+begin_operator
+down f99 f1
+0
+1
+0 0 99 0
+1
+end_operator
+begin_operator
+down f99 f10
+0
+1
+0 0 99 1
+1
+end_operator
+begin_operator
+down f99 f11
+0
+1
+0 0 99 3
+1
+end_operator
+begin_operator
+down f99 f12
+0
+1
+0 0 99 4
+1
+end_operator
+begin_operator
+down f99 f13
+0
+1
+0 0 99 5
+1
+end_operator
+begin_operator
+down f99 f14
+0
+1
+0 0 99 6
+1
+end_operator
+begin_operator
+down f99 f15
+0
+1
+0 0 99 7
+1
+end_operator
+begin_operator
+down f99 f16
+0
+1
+0 0 99 8
+1
+end_operator
+begin_operator
+down f99 f17
+0
+1
+0 0 99 9
+1
+end_operator
+begin_operator
+down f99 f18
+0
+1
+0 0 99 10
+1
+end_operator
+begin_operator
+down f99 f19
+0
+1
+0 0 99 11
+1
+end_operator
+begin_operator
+down f99 f2
+0
+1
+0 0 99 12
+1
+end_operator
+begin_operator
+down f99 f20
+0
+1
+0 0 99 13
+1
+end_operator
+begin_operator
+down f99 f21
+0
+1
+0 0 99 14
+1
+end_operator
+begin_operator
+down f99 f22
+0
+1
+0 0 99 15
+1
+end_operator
+begin_operator
+down f99 f23
+0
+1
+0 0 99 16
+1
+end_operator
+begin_operator
+down f99 f24
+0
+1
+0 0 99 17
+1
+end_operator
+begin_operator
+down f99 f25
+0
+1
+0 0 99 18
+1
+end_operator
+begin_operator
+down f99 f26
+0
+1
+0 0 99 19
+1
+end_operator
+begin_operator
+down f99 f27
+0
+1
+0 0 99 20
+1
+end_operator
+begin_operator
+down f99 f28
+0
+1
+0 0 99 21
+1
+end_operator
+begin_operator
+down f99 f29
+0
+1
+0 0 99 22
+1
+end_operator
+begin_operator
+down f99 f3
+0
+1
+0 0 99 23
+1
+end_operator
+begin_operator
+down f99 f30
+0
+1
+0 0 99 24
+1
+end_operator
+begin_operator
+down f99 f31
+0
+1
+0 0 99 25
+1
+end_operator
+begin_operator
+down f99 f32
+0
+1
+0 0 99 26
+1
+end_operator
+begin_operator
+down f99 f33
+0
+1
+0 0 99 27
+1
+end_operator
+begin_operator
+down f99 f34
+0
+1
+0 0 99 28
+1
+end_operator
+begin_operator
+down f99 f35
+0
+1
+0 0 99 29
+1
+end_operator
+begin_operator
+down f99 f36
+0
+1
+0 0 99 30
+1
+end_operator
+begin_operator
+down f99 f37
+0
+1
+0 0 99 31
+1
+end_operator
+begin_operator
+down f99 f38
+0
+1
+0 0 99 32
+1
+end_operator
+begin_operator
+down f99 f39
+0
+1
+0 0 99 33
+1
+end_operator
+begin_operator
+down f99 f4
+0
+1
+0 0 99 34
+1
+end_operator
+begin_operator
+down f99 f40
+0
+1
+0 0 99 35
+1
+end_operator
+begin_operator
+down f99 f41
+0
+1
+0 0 99 36
+1
+end_operator
+begin_operator
+down f99 f42
+0
+1
+0 0 99 37
+1
+end_operator
+begin_operator
+down f99 f43
+0
+1
+0 0 99 38
+1
+end_operator
+begin_operator
+down f99 f44
+0
+1
+0 0 99 39
+1
+end_operator
+begin_operator
+down f99 f45
+0
+1
+0 0 99 40
+1
+end_operator
+begin_operator
+down f99 f46
+0
+1
+0 0 99 41
+1
+end_operator
+begin_operator
+down f99 f47
+0
+1
+0 0 99 42
+1
+end_operator
+begin_operator
+down f99 f48
+0
+1
+0 0 99 43
+1
+end_operator
+begin_operator
+down f99 f49
+0
+1
+0 0 99 44
+1
+end_operator
+begin_operator
+down f99 f5
+0
+1
+0 0 99 45
+1
+end_operator
+begin_operator
+down f99 f50
+0
+1
+0 0 99 46
+1
+end_operator
+begin_operator
+down f99 f51
+0
+1
+0 0 99 47
+1
+end_operator
+begin_operator
+down f99 f52
+0
+1
+0 0 99 48
+1
+end_operator
+begin_operator
+down f99 f53
+0
+1
+0 0 99 49
+1
+end_operator
+begin_operator
+down f99 f54
+0
+1
+0 0 99 50
+1
+end_operator
+begin_operator
+down f99 f55
+0
+1
+0 0 99 51
+1
+end_operator
+begin_operator
+down f99 f56
+0
+1
+0 0 99 52
+1
+end_operator
+begin_operator
+down f99 f57
+0
+1
+0 0 99 53
+1
+end_operator
+begin_operator
+down f99 f58
+0
+1
+0 0 99 54
+1
+end_operator
+begin_operator
+down f99 f59
+0
+1
+0 0 99 55
+1
+end_operator
+begin_operator
+down f99 f6
+0
+1
+0 0 99 56
+1
+end_operator
+begin_operator
+down f99 f60
+0
+1
+0 0 99 57
+1
+end_operator
+begin_operator
+down f99 f61
+0
+1
+0 0 99 58
+1
+end_operator
+begin_operator
+down f99 f62
+0
+1
+0 0 99 59
+1
+end_operator
+begin_operator
+down f99 f63
+0
+1
+0 0 99 60
+1
+end_operator
+begin_operator
+down f99 f64
+0
+1
+0 0 99 61
+1
+end_operator
+begin_operator
+down f99 f65
+0
+1
+0 0 99 62
+1
+end_operator
+begin_operator
+down f99 f66
+0
+1
+0 0 99 63
+1
+end_operator
+begin_operator
+down f99 f67
+0
+1
+0 0 99 64
+1
+end_operator
+begin_operator
+down f99 f68
+0
+1
+0 0 99 65
+1
+end_operator
+begin_operator
+down f99 f69
+0
+1
+0 0 99 66
+1
+end_operator
+begin_operator
+down f99 f7
+0
+1
+0 0 99 67
+1
+end_operator
+begin_operator
+down f99 f70
+0
+1
+0 0 99 68
+1
+end_operator
+begin_operator
+down f99 f71
+0
+1
+0 0 99 69
+1
+end_operator
+begin_operator
+down f99 f72
+0
+1
+0 0 99 70
+1
+end_operator
+begin_operator
+down f99 f73
+0
+1
+0 0 99 71
+1
+end_operator
+begin_operator
+down f99 f74
+0
+1
+0 0 99 72
+1
+end_operator
+begin_operator
+down f99 f75
+0
+1
+0 0 99 73
+1
+end_operator
+begin_operator
+down f99 f76
+0
+1
+0 0 99 74
+1
+end_operator
+begin_operator
+down f99 f77
+0
+1
+0 0 99 75
+1
+end_operator
+begin_operator
+down f99 f78
+0
+1
+0 0 99 76
+1
+end_operator
+begin_operator
+down f99 f79
+0
+1
+0 0 99 77
+1
+end_operator
+begin_operator
+down f99 f8
+0
+1
+0 0 99 78
+1
+end_operator
+begin_operator
+down f99 f80
+0
+1
+0 0 99 79
+1
+end_operator
+begin_operator
+down f99 f81
+0
+1
+0 0 99 80
+1
+end_operator
+begin_operator
+down f99 f82
+0
+1
+0 0 99 81
+1
+end_operator
+begin_operator
+down f99 f83
+0
+1
+0 0 99 82
+1
+end_operator
+begin_operator
+down f99 f84
+0
+1
+0 0 99 83
+1
+end_operator
+begin_operator
+down f99 f85
+0
+1
+0 0 99 84
+1
+end_operator
+begin_operator
+down f99 f86
+0
+1
+0 0 99 85
+1
+end_operator
+begin_operator
+down f99 f87
+0
+1
+0 0 99 86
+1
+end_operator
+begin_operator
+down f99 f88
+0
+1
+0 0 99 87
+1
+end_operator
+begin_operator
+down f99 f89
+0
+1
+0 0 99 88
+1
+end_operator
+begin_operator
+down f99 f9
+0
+1
+0 0 99 89
+1
+end_operator
+begin_operator
+down f99 f90
+0
+1
+0 0 99 90
+1
+end_operator
+begin_operator
+down f99 f91
+0
+1
+0 0 99 91
+1
+end_operator
+begin_operator
+down f99 f92
+0
+1
+0 0 99 92
+1
+end_operator
+begin_operator
+down f99 f93
+0
+1
+0 0 99 93
+1
+end_operator
+begin_operator
+down f99 f94
+0
+1
+0 0 99 94
+1
+end_operator
+begin_operator
+down f99 f95
+0
+1
+0 0 99 95
+1
+end_operator
+begin_operator
+down f99 f96
+0
+1
+0 0 99 96
+1
+end_operator
+begin_operator
+down f99 f97
+0
+1
+0 0 99 97
+1
+end_operator
+begin_operator
+down f99 f98
+0
+1
+0 0 99 98
+1
+end_operator
+begin_operator
+up f1 f10
+0
+1
+0 0 0 1
+1
+end_operator
+begin_operator
+up f1 f100
+0
+1
+0 0 0 2
+1
+end_operator
+begin_operator
+up f1 f11
+0
+1
+0 0 0 3
+1
+end_operator
+begin_operator
+up f1 f12
+0
+1
+0 0 0 4
+1
+end_operator
+begin_operator
+up f1 f13
+0
+1
+0 0 0 5
+1
+end_operator
+begin_operator
+up f1 f14
+0
+1
+0 0 0 6
+1
+end_operator
+begin_operator
+up f1 f15
+0
+1
+0 0 0 7
+1
+end_operator
+begin_operator
+up f1 f16
+0
+1
+0 0 0 8
+1
+end_operator
+begin_operator
+up f1 f17
+0
+1
+0 0 0 9
+1
+end_operator
+begin_operator
+up f1 f18
+0
+1
+0 0 0 10
+1
+end_operator
+begin_operator
+up f1 f19
+0
+1
+0 0 0 11
+1
+end_operator
+begin_operator
+up f1 f2
+0
+1
+0 0 0 12
+1
+end_operator
+begin_operator
+up f1 f20
+0
+1
+0 0 0 13
+1
+end_operator
+begin_operator
+up f1 f21
+0
+1
+0 0 0 14
+1
+end_operator
+begin_operator
+up f1 f22
+0
+1
+0 0 0 15
+1
+end_operator
+begin_operator
+up f1 f23
+0
+1
+0 0 0 16
+1
+end_operator
+begin_operator
+up f1 f24
+0
+1
+0 0 0 17
+1
+end_operator
+begin_operator
+up f1 f25
+0
+1
+0 0 0 18
+1
+end_operator
+begin_operator
+up f1 f26
+0
+1
+0 0 0 19
+1
+end_operator
+begin_operator
+up f1 f27
+0
+1
+0 0 0 20
+1
+end_operator
+begin_operator
+up f1 f28
+0
+1
+0 0 0 21
+1
+end_operator
+begin_operator
+up f1 f29
+0
+1
+0 0 0 22
+1
+end_operator
+begin_operator
+up f1 f3
+0
+1
+0 0 0 23
+1
+end_operator
+begin_operator
+up f1 f30
+0
+1
+0 0 0 24
+1
+end_operator
+begin_operator
+up f1 f31
+0
+1
+0 0 0 25
+1
+end_operator
+begin_operator
+up f1 f32
+0
+1
+0 0 0 26
+1
+end_operator
+begin_operator
+up f1 f33
+0
+1
+0 0 0 27
+1
+end_operator
+begin_operator
+up f1 f34
+0
+1
+0 0 0 28
+1
+end_operator
+begin_operator
+up f1 f35
+0
+1
+0 0 0 29
+1
+end_operator
+begin_operator
+up f1 f36
+0
+1
+0 0 0 30
+1
+end_operator
+begin_operator
+up f1 f37
+0
+1
+0 0 0 31
+1
+end_operator
+begin_operator
+up f1 f38
+0
+1
+0 0 0 32
+1
+end_operator
+begin_operator
+up f1 f39
+0
+1
+0 0 0 33
+1
+end_operator
+begin_operator
+up f1 f4
+0
+1
+0 0 0 34
+1
+end_operator
+begin_operator
+up f1 f40
+0
+1
+0 0 0 35
+1
+end_operator
+begin_operator
+up f1 f41
+0
+1
+0 0 0 36
+1
+end_operator
+begin_operator
+up f1 f42
+0
+1
+0 0 0 37
+1
+end_operator
+begin_operator
+up f1 f43
+0
+1
+0 0 0 38
+1
+end_operator
+begin_operator
+up f1 f44
+0
+1
+0 0 0 39
+1
+end_operator
+begin_operator
+up f1 f45
+0
+1
+0 0 0 40
+1
+end_operator
+begin_operator
+up f1 f46
+0
+1
+0 0 0 41
+1
+end_operator
+begin_operator
+up f1 f47
+0
+1
+0 0 0 42
+1
+end_operator
+begin_operator
+up f1 f48
+0
+1
+0 0 0 43
+1
+end_operator
+begin_operator
+up f1 f49
+0
+1
+0 0 0 44
+1
+end_operator
+begin_operator
+up f1 f5
+0
+1
+0 0 0 45
+1
+end_operator
+begin_operator
+up f1 f50
+0
+1
+0 0 0 46
+1
+end_operator
+begin_operator
+up f1 f51
+0
+1
+0 0 0 47
+1
+end_operator
+begin_operator
+up f1 f52
+0
+1
+0 0 0 48
+1
+end_operator
+begin_operator
+up f1 f53
+0
+1
+0 0 0 49
+1
+end_operator
+begin_operator
+up f1 f54
+0
+1
+0 0 0 50
+1
+end_operator
+begin_operator
+up f1 f55
+0
+1
+0 0 0 51
+1
+end_operator
+begin_operator
+up f1 f56
+0
+1
+0 0 0 52
+1
+end_operator
+begin_operator
+up f1 f57
+0
+1
+0 0 0 53
+1
+end_operator
+begin_operator
+up f1 f58
+0
+1
+0 0 0 54
+1
+end_operator
+begin_operator
+up f1 f59
+0
+1
+0 0 0 55
+1
+end_operator
+begin_operator
+up f1 f6
+0
+1
+0 0 0 56
+1
+end_operator
+begin_operator
+up f1 f60
+0
+1
+0 0 0 57
+1
+end_operator
+begin_operator
+up f1 f61
+0
+1
+0 0 0 58
+1
+end_operator
+begin_operator
+up f1 f62
+0
+1
+0 0 0 59
+1
+end_operator
+begin_operator
+up f1 f63
+0
+1
+0 0 0 60
+1
+end_operator
+begin_operator
+up f1 f64
+0
+1
+0 0 0 61
+1
+end_operator
+begin_operator
+up f1 f65
+0
+1
+0 0 0 62
+1
+end_operator
+begin_operator
+up f1 f66
+0
+1
+0 0 0 63
+1
+end_operator
+begin_operator
+up f1 f67
+0
+1
+0 0 0 64
+1
+end_operator
+begin_operator
+up f1 f68
+0
+1
+0 0 0 65
+1
+end_operator
+begin_operator
+up f1 f69
+0
+1
+0 0 0 66
+1
+end_operator
+begin_operator
+up f1 f7
+0
+1
+0 0 0 67
+1
+end_operator
+begin_operator
+up f1 f70
+0
+1
+0 0 0 68
+1
+end_operator
+begin_operator
+up f1 f71
+0
+1
+0 0 0 69
+1
+end_operator
+begin_operator
+up f1 f72
+0
+1
+0 0 0 70
+1
+end_operator
+begin_operator
+up f1 f73
+0
+1
+0 0 0 71
+1
+end_operator
+begin_operator
+up f1 f74
+0
+1
+0 0 0 72
+1
+end_operator
+begin_operator
+up f1 f75
+0
+1
+0 0 0 73
+1
+end_operator
+begin_operator
+up f1 f76
+0
+1
+0 0 0 74
+1
+end_operator
+begin_operator
+up f1 f77
+0
+1
+0 0 0 75
+1
+end_operator
+begin_operator
+up f1 f78
+0
+1
+0 0 0 76
+1
+end_operator
+begin_operator
+up f1 f79
+0
+1
+0 0 0 77
+1
+end_operator
+begin_operator
+up f1 f8
+0
+1
+0 0 0 78
+1
+end_operator
+begin_operator
+up f1 f80
+0
+1
+0 0 0 79
+1
+end_operator
+begin_operator
+up f1 f81
+0
+1
+0 0 0 80
+1
+end_operator
+begin_operator
+up f1 f82
+0
+1
+0 0 0 81
+1
+end_operator
+begin_operator
+up f1 f83
+0
+1
+0 0 0 82
+1
+end_operator
+begin_operator
+up f1 f84
+0
+1
+0 0 0 83
+1
+end_operator
+begin_operator
+up f1 f85
+0
+1
+0 0 0 84
+1
+end_operator
+begin_operator
+up f1 f86
+0
+1
+0 0 0 85
+1
+end_operator
+begin_operator
+up f1 f87
+0
+1
+0 0 0 86
+1
+end_operator
+begin_operator
+up f1 f88
+0
+1
+0 0 0 87
+1
+end_operator
+begin_operator
+up f1 f89
+0
+1
+0 0 0 88
+1
+end_operator
+begin_operator
+up f1 f9
+0
+1
+0 0 0 89
+1
+end_operator
+begin_operator
+up f1 f90
+0
+1
+0 0 0 90
+1
+end_operator
+begin_operator
+up f1 f91
+0
+1
+0 0 0 91
+1
+end_operator
+begin_operator
+up f1 f92
+0
+1
+0 0 0 92
+1
+end_operator
+begin_operator
+up f1 f93
+0
+1
+0 0 0 93
+1
+end_operator
+begin_operator
+up f1 f94
+0
+1
+0 0 0 94
+1
+end_operator
+begin_operator
+up f1 f95
+0
+1
+0 0 0 95
+1
+end_operator
+begin_operator
+up f1 f96
+0
+1
+0 0 0 96
+1
+end_operator
+begin_operator
+up f1 f97
+0
+1
+0 0 0 97
+1
+end_operator
+begin_operator
+up f1 f98
+0
+1
+0 0 0 98
+1
+end_operator
+begin_operator
+up f1 f99
+0
+1
+0 0 0 99
+1
+end_operator
+begin_operator
+up f10 f100
+0
+1
+0 0 1 2
+1
+end_operator
+begin_operator
+up f10 f11
+0
+1
+0 0 1 3
+1
+end_operator
+begin_operator
+up f10 f12
+0
+1
+0 0 1 4
+1
+end_operator
+begin_operator
+up f10 f13
+0
+1
+0 0 1 5
+1
+end_operator
+begin_operator
+up f10 f14
+0
+1
+0 0 1 6
+1
+end_operator
+begin_operator
+up f10 f15
+0
+1
+0 0 1 7
+1
+end_operator
+begin_operator
+up f10 f16
+0
+1
+0 0 1 8
+1
+end_operator
+begin_operator
+up f10 f17
+0
+1
+0 0 1 9
+1
+end_operator
+begin_operator
+up f10 f18
+0
+1
+0 0 1 10
+1
+end_operator
+begin_operator
+up f10 f19
+0
+1
+0 0 1 11
+1
+end_operator
+begin_operator
+up f10 f20
+0
+1
+0 0 1 13
+1
+end_operator
+begin_operator
+up f10 f21
+0
+1
+0 0 1 14
+1
+end_operator
+begin_operator
+up f10 f22
+0
+1
+0 0 1 15
+1
+end_operator
+begin_operator
+up f10 f23
+0
+1
+0 0 1 16
+1
+end_operator
+begin_operator
+up f10 f24
+0
+1
+0 0 1 17
+1
+end_operator
+begin_operator
+up f10 f25
+0
+1
+0 0 1 18
+1
+end_operator
+begin_operator
+up f10 f26
+0
+1
+0 0 1 19
+1
+end_operator
+begin_operator
+up f10 f27
+0
+1
+0 0 1 20
+1
+end_operator
+begin_operator
+up f10 f28
+0
+1
+0 0 1 21
+1
+end_operator
+begin_operator
+up f10 f29
+0
+1
+0 0 1 22
+1
+end_operator
+begin_operator
+up f10 f30
+0
+1
+0 0 1 24
+1
+end_operator
+begin_operator
+up f10 f31
+0
+1
+0 0 1 25
+1
+end_operator
+begin_operator
+up f10 f32
+0
+1
+0 0 1 26
+1
+end_operator
+begin_operator
+up f10 f33
+0
+1
+0 0 1 27
+1
+end_operator
+begin_operator
+up f10 f34
+0
+1
+0 0 1 28
+1
+end_operator
+begin_operator
+up f10 f35
+0
+1
+0 0 1 29
+1
+end_operator
+begin_operator
+up f10 f36
+0
+1
+0 0 1 30
+1
+end_operator
+begin_operator
+up f10 f37
+0
+1
+0 0 1 31
+1
+end_operator
+begin_operator
+up f10 f38
+0
+1
+0 0 1 32
+1
+end_operator
+begin_operator
+up f10 f39
+0
+1
+0 0 1 33
+1
+end_operator
+begin_operator
+up f10 f40
+0
+1
+0 0 1 35
+1
+end_operator
+begin_operator
+up f10 f41
+0
+1
+0 0 1 36
+1
+end_operator
+begin_operator
+up f10 f42
+0
+1
+0 0 1 37
+1
+end_operator
+begin_operator
+up f10 f43
+0
+1
+0 0 1 38
+1
+end_operator
+begin_operator
+up f10 f44
+0
+1
+0 0 1 39
+1
+end_operator
+begin_operator
+up f10 f45
+0
+1
+0 0 1 40
+1
+end_operator
+begin_operator
+up f10 f46
+0
+1
+0 0 1 41
+1
+end_operator
+begin_operator
+up f10 f47
+0
+1
+0 0 1 42
+1
+end_operator
+begin_operator
+up f10 f48
+0
+1
+0 0 1 43
+1
+end_operator
+begin_operator
+up f10 f49
+0
+1
+0 0 1 44
+1
+end_operator
+begin_operator
+up f10 f50
+0
+1
+0 0 1 46
+1
+end_operator
+begin_operator
+up f10 f51
+0
+1
+0 0 1 47
+1
+end_operator
+begin_operator
+up f10 f52
+0
+1
+0 0 1 48
+1
+end_operator
+begin_operator
+up f10 f53
+0
+1
+0 0 1 49
+1
+end_operator
+begin_operator
+up f10 f54
+0
+1
+0 0 1 50
+1
+end_operator
+begin_operator
+up f10 f55
+0
+1
+0 0 1 51
+1
+end_operator
+begin_operator
+up f10 f56
+0
+1
+0 0 1 52
+1
+end_operator
+begin_operator
+up f10 f57
+0
+1
+0 0 1 53
+1
+end_operator
+begin_operator
+up f10 f58
+0
+1
+0 0 1 54
+1
+end_operator
+begin_operator
+up f10 f59
+0
+1
+0 0 1 55
+1
+end_operator
+begin_operator
+up f10 f60
+0
+1
+0 0 1 57
+1
+end_operator
+begin_operator
+up f10 f61
+0
+1
+0 0 1 58
+1
+end_operator
+begin_operator
+up f10 f62
+0
+1
+0 0 1 59
+1
+end_operator
+begin_operator
+up f10 f63
+0
+1
+0 0 1 60
+1
+end_operator
+begin_operator
+up f10 f64
+0
+1
+0 0 1 61
+1
+end_operator
+begin_operator
+up f10 f65
+0
+1
+0 0 1 62
+1
+end_operator
+begin_operator
+up f10 f66
+0
+1
+0 0 1 63
+1
+end_operator
+begin_operator
+up f10 f67
+0
+1
+0 0 1 64
+1
+end_operator
+begin_operator
+up f10 f68
+0
+1
+0 0 1 65
+1
+end_operator
+begin_operator
+up f10 f69
+0
+1
+0 0 1 66
+1
+end_operator
+begin_operator
+up f10 f70
+0
+1
+0 0 1 68
+1
+end_operator
+begin_operator
+up f10 f71
+0
+1
+0 0 1 69
+1
+end_operator
+begin_operator
+up f10 f72
+0
+1
+0 0 1 70
+1
+end_operator
+begin_operator
+up f10 f73
+0
+1
+0 0 1 71
+1
+end_operator
+begin_operator
+up f10 f74
+0
+1
+0 0 1 72
+1
+end_operator
+begin_operator
+up f10 f75
+0
+1
+0 0 1 73
+1
+end_operator
+begin_operator
+up f10 f76
+0
+1
+0 0 1 74
+1
+end_operator
+begin_operator
+up f10 f77
+0
+1
+0 0 1 75
+1
+end_operator
+begin_operator
+up f10 f78
+0
+1
+0 0 1 76
+1
+end_operator
+begin_operator
+up f10 f79
+0
+1
+0 0 1 77
+1
+end_operator
+begin_operator
+up f10 f80
+0
+1
+0 0 1 79
+1
+end_operator
+begin_operator
+up f10 f81
+0
+1
+0 0 1 80
+1
+end_operator
+begin_operator
+up f10 f82
+0
+1
+0 0 1 81
+1
+end_operator
+begin_operator
+up f10 f83
+0
+1
+0 0 1 82
+1
+end_operator
+begin_operator
+up f10 f84
+0
+1
+0 0 1 83
+1
+end_operator
+begin_operator
+up f10 f85
+0
+1
+0 0 1 84
+1
+end_operator
+begin_operator
+up f10 f86
+0
+1
+0 0 1 85
+1
+end_operator
+begin_operator
+up f10 f87
+0
+1
+0 0 1 86
+1
+end_operator
+begin_operator
+up f10 f88
+0
+1
+0 0 1 87
+1
+end_operator
+begin_operator
+up f10 f89
+0
+1
+0 0 1 88
+1
+end_operator
+begin_operator
+up f10 f90
+0
+1
+0 0 1 90
+1
+end_operator
+begin_operator
+up f10 f91
+0
+1
+0 0 1 91
+1
+end_operator
+begin_operator
+up f10 f92
+0
+1
+0 0 1 92
+1
+end_operator
+begin_operator
+up f10 f93
+0
+1
+0 0 1 93
+1
+end_operator
+begin_operator
+up f10 f94
+0
+1
+0 0 1 94
+1
+end_operator
+begin_operator
+up f10 f95
+0
+1
+0 0 1 95
+1
+end_operator
+begin_operator
+up f10 f96
+0
+1
+0 0 1 96
+1
+end_operator
+begin_operator
+up f10 f97
+0
+1
+0 0 1 97
+1
+end_operator
+begin_operator
+up f10 f98
+0
+1
+0 0 1 98
+1
+end_operator
+begin_operator
+up f10 f99
+0
+1
+0 0 1 99
+1
+end_operator
+begin_operator
+up f11 f100
+0
+1
+0 0 3 2
+1
+end_operator
+begin_operator
+up f11 f12
+0
+1
+0 0 3 4
+1
+end_operator
+begin_operator
+up f11 f13
+0
+1
+0 0 3 5
+1
+end_operator
+begin_operator
+up f11 f14
+0
+1
+0 0 3 6
+1
+end_operator
+begin_operator
+up f11 f15
+0
+1
+0 0 3 7
+1
+end_operator
+begin_operator
+up f11 f16
+0
+1
+0 0 3 8
+1
+end_operator
+begin_operator
+up f11 f17
+0
+1
+0 0 3 9
+1
+end_operator
+begin_operator
+up f11 f18
+0
+1
+0 0 3 10
+1
+end_operator
+begin_operator
+up f11 f19
+0
+1
+0 0 3 11
+1
+end_operator
+begin_operator
+up f11 f20
+0
+1
+0 0 3 13
+1
+end_operator
+begin_operator
+up f11 f21
+0
+1
+0 0 3 14
+1
+end_operator
+begin_operator
+up f11 f22
+0
+1
+0 0 3 15
+1
+end_operator
+begin_operator
+up f11 f23
+0
+1
+0 0 3 16
+1
+end_operator
+begin_operator
+up f11 f24
+0
+1
+0 0 3 17
+1
+end_operator
+begin_operator
+up f11 f25
+0
+1
+0 0 3 18
+1
+end_operator
+begin_operator
+up f11 f26
+0
+1
+0 0 3 19
+1
+end_operator
+begin_operator
+up f11 f27
+0
+1
+0 0 3 20
+1
+end_operator
+begin_operator
+up f11 f28
+0
+1
+0 0 3 21
+1
+end_operator
+begin_operator
+up f11 f29
+0
+1
+0 0 3 22
+1
+end_operator
+begin_operator
+up f11 f30
+0
+1
+0 0 3 24
+1
+end_operator
+begin_operator
+up f11 f31
+0
+1
+0 0 3 25
+1
+end_operator
+begin_operator
+up f11 f32
+0
+1
+0 0 3 26
+1
+end_operator
+begin_operator
+up f11 f33
+0
+1
+0 0 3 27
+1
+end_operator
+begin_operator
+up f11 f34
+0
+1
+0 0 3 28
+1
+end_operator
+begin_operator
+up f11 f35
+0
+1
+0 0 3 29
+1
+end_operator
+begin_operator
+up f11 f36
+0
+1
+0 0 3 30
+1
+end_operator
+begin_operator
+up f11 f37
+0
+1
+0 0 3 31
+1
+end_operator
+begin_operator
+up f11 f38
+0
+1
+0 0 3 32
+1
+end_operator
+begin_operator
+up f11 f39
+0
+1
+0 0 3 33
+1
+end_operator
+begin_operator
+up f11 f40
+0
+1
+0 0 3 35
+1
+end_operator
+begin_operator
+up f11 f41
+0
+1
+0 0 3 36
+1
+end_operator
+begin_operator
+up f11 f42
+0
+1
+0 0 3 37
+1
+end_operator
+begin_operator
+up f11 f43
+0
+1
+0 0 3 38
+1
+end_operator
+begin_operator
+up f11 f44
+0
+1
+0 0 3 39
+1
+end_operator
+begin_operator
+up f11 f45
+0
+1
+0 0 3 40
+1
+end_operator
+begin_operator
+up f11 f46
+0
+1
+0 0 3 41
+1
+end_operator
+begin_operator
+up f11 f47
+0
+1
+0 0 3 42
+1
+end_operator
+begin_operator
+up f11 f48
+0
+1
+0 0 3 43
+1
+end_operator
+begin_operator
+up f11 f49
+0
+1
+0 0 3 44
+1
+end_operator
+begin_operator
+up f11 f50
+0
+1
+0 0 3 46
+1
+end_operator
+begin_operator
+up f11 f51
+0
+1
+0 0 3 47
+1
+end_operator
+begin_operator
+up f11 f52
+0
+1
+0 0 3 48
+1
+end_operator
+begin_operator
+up f11 f53
+0
+1
+0 0 3 49
+1
+end_operator
+begin_operator
+up f11 f54
+0
+1
+0 0 3 50
+1
+end_operator
+begin_operator
+up f11 f55
+0
+1
+0 0 3 51
+1
+end_operator
+begin_operator
+up f11 f56
+0
+1
+0 0 3 52
+1
+end_operator
+begin_operator
+up f11 f57
+0
+1
+0 0 3 53
+1
+end_operator
+begin_operator
+up f11 f58
+0
+1
+0 0 3 54
+1
+end_operator
+begin_operator
+up f11 f59
+0
+1
+0 0 3 55
+1
+end_operator
+begin_operator
+up f11 f60
+0
+1
+0 0 3 57
+1
+end_operator
+begin_operator
+up f11 f61
+0
+1
+0 0 3 58
+1
+end_operator
+begin_operator
+up f11 f62
+0
+1
+0 0 3 59
+1
+end_operator
+begin_operator
+up f11 f63
+0
+1
+0 0 3 60
+1
+end_operator
+begin_operator
+up f11 f64
+0
+1
+0 0 3 61
+1
+end_operator
+begin_operator
+up f11 f65
+0
+1
+0 0 3 62
+1
+end_operator
+begin_operator
+up f11 f66
+0
+1
+0 0 3 63
+1
+end_operator
+begin_operator
+up f11 f67
+0
+1
+0 0 3 64
+1
+end_operator
+begin_operator
+up f11 f68
+0
+1
+0 0 3 65
+1
+end_operator
+begin_operator
+up f11 f69
+0
+1
+0 0 3 66
+1
+end_operator
+begin_operator
+up f11 f70
+0
+1
+0 0 3 68
+1
+end_operator
+begin_operator
+up f11 f71
+0
+1
+0 0 3 69
+1
+end_operator
+begin_operator
+up f11 f72
+0
+1
+0 0 3 70
+1
+end_operator
+begin_operator
+up f11 f73
+0
+1
+0 0 3 71
+1
+end_operator
+begin_operator
+up f11 f74
+0
+1
+0 0 3 72
+1
+end_operator
+begin_operator
+up f11 f75
+0
+1
+0 0 3 73
+1
+end_operator
+begin_operator
+up f11 f76
+0
+1
+0 0 3 74
+1
+end_operator
+begin_operator
+up f11 f77
+0
+1
+0 0 3 75
+1
+end_operator
+begin_operator
+up f11 f78
+0
+1
+0 0 3 76
+1
+end_operator
+begin_operator
+up f11 f79
+0
+1
+0 0 3 77
+1
+end_operator
+begin_operator
+up f11 f80
+0
+1
+0 0 3 79
+1
+end_operator
+begin_operator
+up f11 f81
+0
+1
+0 0 3 80
+1
+end_operator
+begin_operator
+up f11 f82
+0
+1
+0 0 3 81
+1
+end_operator
+begin_operator
+up f11 f83
+0
+1
+0 0 3 82
+1
+end_operator
+begin_operator
+up f11 f84
+0
+1
+0 0 3 83
+1
+end_operator
+begin_operator
+up f11 f85
+0
+1
+0 0 3 84
+1
+end_operator
+begin_operator
+up f11 f86
+0
+1
+0 0 3 85
+1
+end_operator
+begin_operator
+up f11 f87
+0
+1
+0 0 3 86
+1
+end_operator
+begin_operator
+up f11 f88
+0
+1
+0 0 3 87
+1
+end_operator
+begin_operator
+up f11 f89
+0
+1
+0 0 3 88
+1
+end_operator
+begin_operator
+up f11 f90
+0
+1
+0 0 3 90
+1
+end_operator
+begin_operator
+up f11 f91
+0
+1
+0 0 3 91
+1
+end_operator
+begin_operator
+up f11 f92
+0
+1
+0 0 3 92
+1
+end_operator
+begin_operator
+up f11 f93
+0
+1
+0 0 3 93
+1
+end_operator
+begin_operator
+up f11 f94
+0
+1
+0 0 3 94
+1
+end_operator
+begin_operator
+up f11 f95
+0
+1
+0 0 3 95
+1
+end_operator
+begin_operator
+up f11 f96
+0
+1
+0 0 3 96
+1
+end_operator
+begin_operator
+up f11 f97
+0
+1
+0 0 3 97
+1
+end_operator
+begin_operator
+up f11 f98
+0
+1
+0 0 3 98
+1
+end_operator
+begin_operator
+up f11 f99
+0
+1
+0 0 3 99
+1
+end_operator
+begin_operator
+up f12 f100
+0
+1
+0 0 4 2
+1
+end_operator
+begin_operator
+up f12 f13
+0
+1
+0 0 4 5
+1
+end_operator
+begin_operator
+up f12 f14
+0
+1
+0 0 4 6
+1
+end_operator
+begin_operator
+up f12 f15
+0
+1
+0 0 4 7
+1
+end_operator
+begin_operator
+up f12 f16
+0
+1
+0 0 4 8
+1
+end_operator
+begin_operator
+up f12 f17
+0
+1
+0 0 4 9
+1
+end_operator
+begin_operator
+up f12 f18
+0
+1
+0 0 4 10
+1
+end_operator
+begin_operator
+up f12 f19
+0
+1
+0 0 4 11
+1
+end_operator
+begin_operator
+up f12 f20
+0
+1
+0 0 4 13
+1
+end_operator
+begin_operator
+up f12 f21
+0
+1
+0 0 4 14
+1
+end_operator
+begin_operator
+up f12 f22
+0
+1
+0 0 4 15
+1
+end_operator
+begin_operator
+up f12 f23
+0
+1
+0 0 4 16
+1
+end_operator
+begin_operator
+up f12 f24
+0
+1
+0 0 4 17
+1
+end_operator
+begin_operator
+up f12 f25
+0
+1
+0 0 4 18
+1
+end_operator
+begin_operator
+up f12 f26
+0
+1
+0 0 4 19
+1
+end_operator
+begin_operator
+up f12 f27
+0
+1
+0 0 4 20
+1
+end_operator
+begin_operator
+up f12 f28
+0
+1
+0 0 4 21
+1
+end_operator
+begin_operator
+up f12 f29
+0
+1
+0 0 4 22
+1
+end_operator
+begin_operator
+up f12 f30
+0
+1
+0 0 4 24
+1
+end_operator
+begin_operator
+up f12 f31
+0
+1
+0 0 4 25
+1
+end_operator
+begin_operator
+up f12 f32
+0
+1
+0 0 4 26
+1
+end_operator
+begin_operator
+up f12 f33
+0
+1
+0 0 4 27
+1
+end_operator
+begin_operator
+up f12 f34
+0
+1
+0 0 4 28
+1
+end_operator
+begin_operator
+up f12 f35
+0
+1
+0 0 4 29
+1
+end_operator
+begin_operator
+up f12 f36
+0
+1
+0 0 4 30
+1
+end_operator
+begin_operator
+up f12 f37
+0
+1
+0 0 4 31
+1
+end_operator
+begin_operator
+up f12 f38
+0
+1
+0 0 4 32
+1
+end_operator
+begin_operator
+up f12 f39
+0
+1
+0 0 4 33
+1
+end_operator
+begin_operator
+up f12 f40
+0
+1
+0 0 4 35
+1
+end_operator
+begin_operator
+up f12 f41
+0
+1
+0 0 4 36
+1
+end_operator
+begin_operator
+up f12 f42
+0
+1
+0 0 4 37
+1
+end_operator
+begin_operator
+up f12 f43
+0
+1
+0 0 4 38
+1
+end_operator
+begin_operator
+up f12 f44
+0
+1
+0 0 4 39
+1
+end_operator
+begin_operator
+up f12 f45
+0
+1
+0 0 4 40
+1
+end_operator
+begin_operator
+up f12 f46
+0
+1
+0 0 4 41
+1
+end_operator
+begin_operator
+up f12 f47
+0
+1
+0 0 4 42
+1
+end_operator
+begin_operator
+up f12 f48
+0
+1
+0 0 4 43
+1
+end_operator
+begin_operator
+up f12 f49
+0
+1
+0 0 4 44
+1
+end_operator
+begin_operator
+up f12 f50
+0
+1
+0 0 4 46
+1
+end_operator
+begin_operator
+up f12 f51
+0
+1
+0 0 4 47
+1
+end_operator
+begin_operator
+up f12 f52
+0
+1
+0 0 4 48
+1
+end_operator
+begin_operator
+up f12 f53
+0
+1
+0 0 4 49
+1
+end_operator
+begin_operator
+up f12 f54
+0
+1
+0 0 4 50
+1
+end_operator
+begin_operator
+up f12 f55
+0
+1
+0 0 4 51
+1
+end_operator
+begin_operator
+up f12 f56
+0
+1
+0 0 4 52
+1
+end_operator
+begin_operator
+up f12 f57
+0
+1
+0 0 4 53
+1
+end_operator
+begin_operator
+up f12 f58
+0
+1
+0 0 4 54
+1
+end_operator
+begin_operator
+up f12 f59
+0
+1
+0 0 4 55
+1
+end_operator
+begin_operator
+up f12 f60
+0
+1
+0 0 4 57
+1
+end_operator
+begin_operator
+up f12 f61
+0
+1
+0 0 4 58
+1
+end_operator
+begin_operator
+up f12 f62
+0
+1
+0 0 4 59
+1
+end_operator
+begin_operator
+up f12 f63
+0
+1
+0 0 4 60
+1
+end_operator
+begin_operator
+up f12 f64
+0
+1
+0 0 4 61
+1
+end_operator
+begin_operator
+up f12 f65
+0
+1
+0 0 4 62
+1
+end_operator
+begin_operator
+up f12 f66
+0
+1
+0 0 4 63
+1
+end_operator
+begin_operator
+up f12 f67
+0
+1
+0 0 4 64
+1
+end_operator
+begin_operator
+up f12 f68
+0
+1
+0 0 4 65
+1
+end_operator
+begin_operator
+up f12 f69
+0
+1
+0 0 4 66
+1
+end_operator
+begin_operator
+up f12 f70
+0
+1
+0 0 4 68
+1
+end_operator
+begin_operator
+up f12 f71
+0
+1
+0 0 4 69
+1
+end_operator
+begin_operator
+up f12 f72
+0
+1
+0 0 4 70
+1
+end_operator
+begin_operator
+up f12 f73
+0
+1
+0 0 4 71
+1
+end_operator
+begin_operator
+up f12 f74
+0
+1
+0 0 4 72
+1
+end_operator
+begin_operator
+up f12 f75
+0
+1
+0 0 4 73
+1
+end_operator
+begin_operator
+up f12 f76
+0
+1
+0 0 4 74
+1
+end_operator
+begin_operator
+up f12 f77
+0
+1
+0 0 4 75
+1
+end_operator
+begin_operator
+up f12 f78
+0
+1
+0 0 4 76
+1
+end_operator
+begin_operator
+up f12 f79
+0
+1
+0 0 4 77
+1
+end_operator
+begin_operator
+up f12 f80
+0
+1
+0 0 4 79
+1
+end_operator
+begin_operator
+up f12 f81
+0
+1
+0 0 4 80
+1
+end_operator
+begin_operator
+up f12 f82
+0
+1
+0 0 4 81
+1
+end_operator
+begin_operator
+up f12 f83
+0
+1
+0 0 4 82
+1
+end_operator
+begin_operator
+up f12 f84
+0
+1
+0 0 4 83
+1
+end_operator
+begin_operator
+up f12 f85
+0
+1
+0 0 4 84
+1
+end_operator
+begin_operator
+up f12 f86
+0
+1
+0 0 4 85
+1
+end_operator
+begin_operator
+up f12 f87
+0
+1
+0 0 4 86
+1
+end_operator
+begin_operator
+up f12 f88
+0
+1
+0 0 4 87
+1
+end_operator
+begin_operator
+up f12 f89
+0
+1
+0 0 4 88
+1
+end_operator
+begin_operator
+up f12 f90
+0
+1
+0 0 4 90
+1
+end_operator
+begin_operator
+up f12 f91
+0
+1
+0 0 4 91
+1
+end_operator
+begin_operator
+up f12 f92
+0
+1
+0 0 4 92
+1
+end_operator
+begin_operator
+up f12 f93
+0
+1
+0 0 4 93
+1
+end_operator
+begin_operator
+up f12 f94
+0
+1
+0 0 4 94
+1
+end_operator
+begin_operator
+up f12 f95
+0
+1
+0 0 4 95
+1
+end_operator
+begin_operator
+up f12 f96
+0
+1
+0 0 4 96
+1
+end_operator
+begin_operator
+up f12 f97
+0
+1
+0 0 4 97
+1
+end_operator
+begin_operator
+up f12 f98
+0
+1
+0 0 4 98
+1
+end_operator
+begin_operator
+up f12 f99
+0
+1
+0 0 4 99
+1
+end_operator
+begin_operator
+up f13 f100
+0
+1
+0 0 5 2
+1
+end_operator
+begin_operator
+up f13 f14
+0
+1
+0 0 5 6
+1
+end_operator
+begin_operator
+up f13 f15
+0
+1
+0 0 5 7
+1
+end_operator
+begin_operator
+up f13 f16
+0
+1
+0 0 5 8
+1
+end_operator
+begin_operator
+up f13 f17
+0
+1
+0 0 5 9
+1
+end_operator
+begin_operator
+up f13 f18
+0
+1
+0 0 5 10
+1
+end_operator
+begin_operator
+up f13 f19
+0
+1
+0 0 5 11
+1
+end_operator
+begin_operator
+up f13 f20
+0
+1
+0 0 5 13
+1
+end_operator
+begin_operator
+up f13 f21
+0
+1
+0 0 5 14
+1
+end_operator
+begin_operator
+up f13 f22
+0
+1
+0 0 5 15
+1
+end_operator
+begin_operator
+up f13 f23
+0
+1
+0 0 5 16
+1
+end_operator
+begin_operator
+up f13 f24
+0
+1
+0 0 5 17
+1
+end_operator
+begin_operator
+up f13 f25
+0
+1
+0 0 5 18
+1
+end_operator
+begin_operator
+up f13 f26
+0
+1
+0 0 5 19
+1
+end_operator
+begin_operator
+up f13 f27
+0
+1
+0 0 5 20
+1
+end_operator
+begin_operator
+up f13 f28
+0
+1
+0 0 5 21
+1
+end_operator
+begin_operator
+up f13 f29
+0
+1
+0 0 5 22
+1
+end_operator
+begin_operator
+up f13 f30
+0
+1
+0 0 5 24
+1
+end_operator
+begin_operator
+up f13 f31
+0
+1
+0 0 5 25
+1
+end_operator
+begin_operator
+up f13 f32
+0
+1
+0 0 5 26
+1
+end_operator
+begin_operator
+up f13 f33
+0
+1
+0 0 5 27
+1
+end_operator
+begin_operator
+up f13 f34
+0
+1
+0 0 5 28
+1
+end_operator
+begin_operator
+up f13 f35
+0
+1
+0 0 5 29
+1
+end_operator
+begin_operator
+up f13 f36
+0
+1
+0 0 5 30
+1
+end_operator
+begin_operator
+up f13 f37
+0
+1
+0 0 5 31
+1
+end_operator
+begin_operator
+up f13 f38
+0
+1
+0 0 5 32
+1
+end_operator
+begin_operator
+up f13 f39
+0
+1
+0 0 5 33
+1
+end_operator
+begin_operator
+up f13 f40
+0
+1
+0 0 5 35
+1
+end_operator
+begin_operator
+up f13 f41
+0
+1
+0 0 5 36
+1
+end_operator
+begin_operator
+up f13 f42
+0
+1
+0 0 5 37
+1
+end_operator
+begin_operator
+up f13 f43
+0
+1
+0 0 5 38
+1
+end_operator
+begin_operator
+up f13 f44
+0
+1
+0 0 5 39
+1
+end_operator
+begin_operator
+up f13 f45
+0
+1
+0 0 5 40
+1
+end_operator
+begin_operator
+up f13 f46
+0
+1
+0 0 5 41
+1
+end_operator
+begin_operator
+up f13 f47
+0
+1
+0 0 5 42
+1
+end_operator
+begin_operator
+up f13 f48
+0
+1
+0 0 5 43
+1
+end_operator
+begin_operator
+up f13 f49
+0
+1
+0 0 5 44
+1
+end_operator
+begin_operator
+up f13 f50
+0
+1
+0 0 5 46
+1
+end_operator
+begin_operator
+up f13 f51
+0
+1
+0 0 5 47
+1
+end_operator
+begin_operator
+up f13 f52
+0
+1
+0 0 5 48
+1
+end_operator
+begin_operator
+up f13 f53
+0
+1
+0 0 5 49
+1
+end_operator
+begin_operator
+up f13 f54
+0
+1
+0 0 5 50
+1
+end_operator
+begin_operator
+up f13 f55
+0
+1
+0 0 5 51
+1
+end_operator
+begin_operator
+up f13 f56
+0
+1
+0 0 5 52
+1
+end_operator
+begin_operator
+up f13 f57
+0
+1
+0 0 5 53
+1
+end_operator
+begin_operator
+up f13 f58
+0
+1
+0 0 5 54
+1
+end_operator
+begin_operator
+up f13 f59
+0
+1
+0 0 5 55
+1
+end_operator
+begin_operator
+up f13 f60
+0
+1
+0 0 5 57
+1
+end_operator
+begin_operator
+up f13 f61
+0
+1
+0 0 5 58
+1
+end_operator
+begin_operator
+up f13 f62
+0
+1
+0 0 5 59
+1
+end_operator
+begin_operator
+up f13 f63
+0
+1
+0 0 5 60
+1
+end_operator
+begin_operator
+up f13 f64
+0
+1
+0 0 5 61
+1
+end_operator
+begin_operator
+up f13 f65
+0
+1
+0 0 5 62
+1
+end_operator
+begin_operator
+up f13 f66
+0
+1
+0 0 5 63
+1
+end_operator
+begin_operator
+up f13 f67
+0
+1
+0 0 5 64
+1
+end_operator
+begin_operator
+up f13 f68
+0
+1
+0 0 5 65
+1
+end_operator
+begin_operator
+up f13 f69
+0
+1
+0 0 5 66
+1
+end_operator
+begin_operator
+up f13 f70
+0
+1
+0 0 5 68
+1
+end_operator
+begin_operator
+up f13 f71
+0
+1
+0 0 5 69
+1
+end_operator
+begin_operator
+up f13 f72
+0
+1
+0 0 5 70
+1
+end_operator
+begin_operator
+up f13 f73
+0
+1
+0 0 5 71
+1
+end_operator
+begin_operator
+up f13 f74
+0
+1
+0 0 5 72
+1
+end_operator
+begin_operator
+up f13 f75
+0
+1
+0 0 5 73
+1
+end_operator
+begin_operator
+up f13 f76
+0
+1
+0 0 5 74
+1
+end_operator
+begin_operator
+up f13 f77
+0
+1
+0 0 5 75
+1
+end_operator
+begin_operator
+up f13 f78
+0
+1
+0 0 5 76
+1
+end_operator
+begin_operator
+up f13 f79
+0
+1
+0 0 5 77
+1
+end_operator
+begin_operator
+up f13 f80
+0
+1
+0 0 5 79
+1
+end_operator
+begin_operator
+up f13 f81
+0
+1
+0 0 5 80
+1
+end_operator
+begin_operator
+up f13 f82
+0
+1
+0 0 5 81
+1
+end_operator
+begin_operator
+up f13 f83
+0
+1
+0 0 5 82
+1
+end_operator
+begin_operator
+up f13 f84
+0
+1
+0 0 5 83
+1
+end_operator
+begin_operator
+up f13 f85
+0
+1
+0 0 5 84
+1
+end_operator
+begin_operator
+up f13 f86
+0
+1
+0 0 5 85
+1
+end_operator
+begin_operator
+up f13 f87
+0
+1
+0 0 5 86
+1
+end_operator
+begin_operator
+up f13 f88
+0
+1
+0 0 5 87
+1
+end_operator
+begin_operator
+up f13 f89
+0
+1
+0 0 5 88
+1
+end_operator
+begin_operator
+up f13 f90
+0
+1
+0 0 5 90
+1
+end_operator
+begin_operator
+up f13 f91
+0
+1
+0 0 5 91
+1
+end_operator
+begin_operator
+up f13 f92
+0
+1
+0 0 5 92
+1
+end_operator
+begin_operator
+up f13 f93
+0
+1
+0 0 5 93
+1
+end_operator
+begin_operator
+up f13 f94
+0
+1
+0 0 5 94
+1
+end_operator
+begin_operator
+up f13 f95
+0
+1
+0 0 5 95
+1
+end_operator
+begin_operator
+up f13 f96
+0
+1
+0 0 5 96
+1
+end_operator
+begin_operator
+up f13 f97
+0
+1
+0 0 5 97
+1
+end_operator
+begin_operator
+up f13 f98
+0
+1
+0 0 5 98
+1
+end_operator
+begin_operator
+up f13 f99
+0
+1
+0 0 5 99
+1
+end_operator
+begin_operator
+up f14 f100
+0
+1
+0 0 6 2
+1
+end_operator
+begin_operator
+up f14 f15
+0
+1
+0 0 6 7
+1
+end_operator
+begin_operator
+up f14 f16
+0
+1
+0 0 6 8
+1
+end_operator
+begin_operator
+up f14 f17
+0
+1
+0 0 6 9
+1
+end_operator
+begin_operator
+up f14 f18
+0
+1
+0 0 6 10
+1
+end_operator
+begin_operator
+up f14 f19
+0
+1
+0 0 6 11
+1
+end_operator
+begin_operator
+up f14 f20
+0
+1
+0 0 6 13
+1
+end_operator
+begin_operator
+up f14 f21
+0
+1
+0 0 6 14
+1
+end_operator
+begin_operator
+up f14 f22
+0
+1
+0 0 6 15
+1
+end_operator
+begin_operator
+up f14 f23
+0
+1
+0 0 6 16
+1
+end_operator
+begin_operator
+up f14 f24
+0
+1
+0 0 6 17
+1
+end_operator
+begin_operator
+up f14 f25
+0
+1
+0 0 6 18
+1
+end_operator
+begin_operator
+up f14 f26
+0
+1
+0 0 6 19
+1
+end_operator
+begin_operator
+up f14 f27
+0
+1
+0 0 6 20
+1
+end_operator
+begin_operator
+up f14 f28
+0
+1
+0 0 6 21
+1
+end_operator
+begin_operator
+up f14 f29
+0
+1
+0 0 6 22
+1
+end_operator
+begin_operator
+up f14 f30
+0
+1
+0 0 6 24
+1
+end_operator
+begin_operator
+up f14 f31
+0
+1
+0 0 6 25
+1
+end_operator
+begin_operator
+up f14 f32
+0
+1
+0 0 6 26
+1
+end_operator
+begin_operator
+up f14 f33
+0
+1
+0 0 6 27
+1
+end_operator
+begin_operator
+up f14 f34
+0
+1
+0 0 6 28
+1
+end_operator
+begin_operator
+up f14 f35
+0
+1
+0 0 6 29
+1
+end_operator
+begin_operator
+up f14 f36
+0
+1
+0 0 6 30
+1
+end_operator
+begin_operator
+up f14 f37
+0
+1
+0 0 6 31
+1
+end_operator
+begin_operator
+up f14 f38
+0
+1
+0 0 6 32
+1
+end_operator
+begin_operator
+up f14 f39
+0
+1
+0 0 6 33
+1
+end_operator
+begin_operator
+up f14 f40
+0
+1
+0 0 6 35
+1
+end_operator
+begin_operator
+up f14 f41
+0
+1
+0 0 6 36
+1
+end_operator
+begin_operator
+up f14 f42
+0
+1
+0 0 6 37
+1
+end_operator
+begin_operator
+up f14 f43
+0
+1
+0 0 6 38
+1
+end_operator
+begin_operator
+up f14 f44
+0
+1
+0 0 6 39
+1
+end_operator
+begin_operator
+up f14 f45
+0
+1
+0 0 6 40
+1
+end_operator
+begin_operator
+up f14 f46
+0
+1
+0 0 6 41
+1
+end_operator
+begin_operator
+up f14 f47
+0
+1
+0 0 6 42
+1
+end_operator
+begin_operator
+up f14 f48
+0
+1
+0 0 6 43
+1
+end_operator
+begin_operator
+up f14 f49
+0
+1
+0 0 6 44
+1
+end_operator
+begin_operator
+up f14 f50
+0
+1
+0 0 6 46
+1
+end_operator
+begin_operator
+up f14 f51
+0
+1
+0 0 6 47
+1
+end_operator
+begin_operator
+up f14 f52
+0
+1
+0 0 6 48
+1
+end_operator
+begin_operator
+up f14 f53
+0
+1
+0 0 6 49
+1
+end_operator
+begin_operator
+up f14 f54
+0
+1
+0 0 6 50
+1
+end_operator
+begin_operator
+up f14 f55
+0
+1
+0 0 6 51
+1
+end_operator
+begin_operator
+up f14 f56
+0
+1
+0 0 6 52
+1
+end_operator
+begin_operator
+up f14 f57
+0
+1
+0 0 6 53
+1
+end_operator
+begin_operator
+up f14 f58
+0
+1
+0 0 6 54
+1
+end_operator
+begin_operator
+up f14 f59
+0
+1
+0 0 6 55
+1
+end_operator
+begin_operator
+up f14 f60
+0
+1
+0 0 6 57
+1
+end_operator
+begin_operator
+up f14 f61
+0
+1
+0 0 6 58
+1
+end_operator
+begin_operator
+up f14 f62
+0
+1
+0 0 6 59
+1
+end_operator
+begin_operator
+up f14 f63
+0
+1
+0 0 6 60
+1
+end_operator
+begin_operator
+up f14 f64
+0
+1
+0 0 6 61
+1
+end_operator
+begin_operator
+up f14 f65
+0
+1
+0 0 6 62
+1
+end_operator
+begin_operator
+up f14 f66
+0
+1
+0 0 6 63
+1
+end_operator
+begin_operator
+up f14 f67
+0
+1
+0 0 6 64
+1
+end_operator
+begin_operator
+up f14 f68
+0
+1
+0 0 6 65
+1
+end_operator
+begin_operator
+up f14 f69
+0
+1
+0 0 6 66
+1
+end_operator
+begin_operator
+up f14 f70
+0
+1
+0 0 6 68
+1
+end_operator
+begin_operator
+up f14 f71
+0
+1
+0 0 6 69
+1
+end_operator
+begin_operator
+up f14 f72
+0
+1
+0 0 6 70
+1
+end_operator
+begin_operator
+up f14 f73
+0
+1
+0 0 6 71
+1
+end_operator
+begin_operator
+up f14 f74
+0
+1
+0 0 6 72
+1
+end_operator
+begin_operator
+up f14 f75
+0
+1
+0 0 6 73
+1
+end_operator
+begin_operator
+up f14 f76
+0
+1
+0 0 6 74
+1
+end_operator
+begin_operator
+up f14 f77
+0
+1
+0 0 6 75
+1
+end_operator
+begin_operator
+up f14 f78
+0
+1
+0 0 6 76
+1
+end_operator
+begin_operator
+up f14 f79
+0
+1
+0 0 6 77
+1
+end_operator
+begin_operator
+up f14 f80
+0
+1
+0 0 6 79
+1
+end_operator
+begin_operator
+up f14 f81
+0
+1
+0 0 6 80
+1
+end_operator
+begin_operator
+up f14 f82
+0
+1
+0 0 6 81
+1
+end_operator
+begin_operator
+up f14 f83
+0
+1
+0 0 6 82
+1
+end_operator
+begin_operator
+up f14 f84
+0
+1
+0 0 6 83
+1
+end_operator
+begin_operator
+up f14 f85
+0
+1
+0 0 6 84
+1
+end_operator
+begin_operator
+up f14 f86
+0
+1
+0 0 6 85
+1
+end_operator
+begin_operator
+up f14 f87
+0
+1
+0 0 6 86
+1
+end_operator
+begin_operator
+up f14 f88
+0
+1
+0 0 6 87
+1
+end_operator
+begin_operator
+up f14 f89
+0
+1
+0 0 6 88
+1
+end_operator
+begin_operator
+up f14 f90
+0
+1
+0 0 6 90
+1
+end_operator
+begin_operator
+up f14 f91
+0
+1
+0 0 6 91
+1
+end_operator
+begin_operator
+up f14 f92
+0
+1
+0 0 6 92
+1
+end_operator
+begin_operator
+up f14 f93
+0
+1
+0 0 6 93
+1
+end_operator
+begin_operator
+up f14 f94
+0
+1
+0 0 6 94
+1
+end_operator
+begin_operator
+up f14 f95
+0
+1
+0 0 6 95
+1
+end_operator
+begin_operator
+up f14 f96
+0
+1
+0 0 6 96
+1
+end_operator
+begin_operator
+up f14 f97
+0
+1
+0 0 6 97
+1
+end_operator
+begin_operator
+up f14 f98
+0
+1
+0 0 6 98
+1
+end_operator
+begin_operator
+up f14 f99
+0
+1
+0 0 6 99
+1
+end_operator
+begin_operator
+up f15 f100
+0
+1
+0 0 7 2
+1
+end_operator
+begin_operator
+up f15 f16
+0
+1
+0 0 7 8
+1
+end_operator
+begin_operator
+up f15 f17
+0
+1
+0 0 7 9
+1
+end_operator
+begin_operator
+up f15 f18
+0
+1
+0 0 7 10
+1
+end_operator
+begin_operator
+up f15 f19
+0
+1
+0 0 7 11
+1
+end_operator
+begin_operator
+up f15 f20
+0
+1
+0 0 7 13
+1
+end_operator
+begin_operator
+up f15 f21
+0
+1
+0 0 7 14
+1
+end_operator
+begin_operator
+up f15 f22
+0
+1
+0 0 7 15
+1
+end_operator
+begin_operator
+up f15 f23
+0
+1
+0 0 7 16
+1
+end_operator
+begin_operator
+up f15 f24
+0
+1
+0 0 7 17
+1
+end_operator
+begin_operator
+up f15 f25
+0
+1
+0 0 7 18
+1
+end_operator
+begin_operator
+up f15 f26
+0
+1
+0 0 7 19
+1
+end_operator
+begin_operator
+up f15 f27
+0
+1
+0 0 7 20
+1
+end_operator
+begin_operator
+up f15 f28
+0
+1
+0 0 7 21
+1
+end_operator
+begin_operator
+up f15 f29
+0
+1
+0 0 7 22
+1
+end_operator
+begin_operator
+up f15 f30
+0
+1
+0 0 7 24
+1
+end_operator
+begin_operator
+up f15 f31
+0
+1
+0 0 7 25
+1
+end_operator
+begin_operator
+up f15 f32
+0
+1
+0 0 7 26
+1
+end_operator
+begin_operator
+up f15 f33
+0
+1
+0 0 7 27
+1
+end_operator
+begin_operator
+up f15 f34
+0
+1
+0 0 7 28
+1
+end_operator
+begin_operator
+up f15 f35
+0
+1
+0 0 7 29
+1
+end_operator
+begin_operator
+up f15 f36
+0
+1
+0 0 7 30
+1
+end_operator
+begin_operator
+up f15 f37
+0
+1
+0 0 7 31
+1
+end_operator
+begin_operator
+up f15 f38
+0
+1
+0 0 7 32
+1
+end_operator
+begin_operator
+up f15 f39
+0
+1
+0 0 7 33
+1
+end_operator
+begin_operator
+up f15 f40
+0
+1
+0 0 7 35
+1
+end_operator
+begin_operator
+up f15 f41
+0
+1
+0 0 7 36
+1
+end_operator
+begin_operator
+up f15 f42
+0
+1
+0 0 7 37
+1
+end_operator
+begin_operator
+up f15 f43
+0
+1
+0 0 7 38
+1
+end_operator
+begin_operator
+up f15 f44
+0
+1
+0 0 7 39
+1
+end_operator
+begin_operator
+up f15 f45
+0
+1
+0 0 7 40
+1
+end_operator
+begin_operator
+up f15 f46
+0
+1
+0 0 7 41
+1
+end_operator
+begin_operator
+up f15 f47
+0
+1
+0 0 7 42
+1
+end_operator
+begin_operator
+up f15 f48
+0
+1
+0 0 7 43
+1
+end_operator
+begin_operator
+up f15 f49
+0
+1
+0 0 7 44
+1
+end_operator
+begin_operator
+up f15 f50
+0
+1
+0 0 7 46
+1
+end_operator
+begin_operator
+up f15 f51
+0
+1
+0 0 7 47
+1
+end_operator
+begin_operator
+up f15 f52
+0
+1
+0 0 7 48
+1
+end_operator
+begin_operator
+up f15 f53
+0
+1
+0 0 7 49
+1
+end_operator
+begin_operator
+up f15 f54
+0
+1
+0 0 7 50
+1
+end_operator
+begin_operator
+up f15 f55
+0
+1
+0 0 7 51
+1
+end_operator
+begin_operator
+up f15 f56
+0
+1
+0 0 7 52
+1
+end_operator
+begin_operator
+up f15 f57
+0
+1
+0 0 7 53
+1
+end_operator
+begin_operator
+up f15 f58
+0
+1
+0 0 7 54
+1
+end_operator
+begin_operator
+up f15 f59
+0
+1
+0 0 7 55
+1
+end_operator
+begin_operator
+up f15 f60
+0
+1
+0 0 7 57
+1
+end_operator
+begin_operator
+up f15 f61
+0
+1
+0 0 7 58
+1
+end_operator
+begin_operator
+up f15 f62
+0
+1
+0 0 7 59
+1
+end_operator
+begin_operator
+up f15 f63
+0
+1
+0 0 7 60
+1
+end_operator
+begin_operator
+up f15 f64
+0
+1
+0 0 7 61
+1
+end_operator
+begin_operator
+up f15 f65
+0
+1
+0 0 7 62
+1
+end_operator
+begin_operator
+up f15 f66
+0
+1
+0 0 7 63
+1
+end_operator
+begin_operator
+up f15 f67
+0
+1
+0 0 7 64
+1
+end_operator
+begin_operator
+up f15 f68
+0
+1
+0 0 7 65
+1
+end_operator
+begin_operator
+up f15 f69
+0
+1
+0 0 7 66
+1
+end_operator
+begin_operator
+up f15 f70
+0
+1
+0 0 7 68
+1
+end_operator
+begin_operator
+up f15 f71
+0
+1
+0 0 7 69
+1
+end_operator
+begin_operator
+up f15 f72
+0
+1
+0 0 7 70
+1
+end_operator
+begin_operator
+up f15 f73
+0
+1
+0 0 7 71
+1
+end_operator
+begin_operator
+up f15 f74
+0
+1
+0 0 7 72
+1
+end_operator
+begin_operator
+up f15 f75
+0
+1
+0 0 7 73
+1
+end_operator
+begin_operator
+up f15 f76
+0
+1
+0 0 7 74
+1
+end_operator
+begin_operator
+up f15 f77
+0
+1
+0 0 7 75
+1
+end_operator
+begin_operator
+up f15 f78
+0
+1
+0 0 7 76
+1
+end_operator
+begin_operator
+up f15 f79
+0
+1
+0 0 7 77
+1
+end_operator
+begin_operator
+up f15 f80
+0
+1
+0 0 7 79
+1
+end_operator
+begin_operator
+up f15 f81
+0
+1
+0 0 7 80
+1
+end_operator
+begin_operator
+up f15 f82
+0
+1
+0 0 7 81
+1
+end_operator
+begin_operator
+up f15 f83
+0
+1
+0 0 7 82
+1
+end_operator
+begin_operator
+up f15 f84
+0
+1
+0 0 7 83
+1
+end_operator
+begin_operator
+up f15 f85
+0
+1
+0 0 7 84
+1
+end_operator
+begin_operator
+up f15 f86
+0
+1
+0 0 7 85
+1
+end_operator
+begin_operator
+up f15 f87
+0
+1
+0 0 7 86
+1
+end_operator
+begin_operator
+up f15 f88
+0
+1
+0 0 7 87
+1
+end_operator
+begin_operator
+up f15 f89
+0
+1
+0 0 7 88
+1
+end_operator
+begin_operator
+up f15 f90
+0
+1
+0 0 7 90
+1
+end_operator
+begin_operator
+up f15 f91
+0
+1
+0 0 7 91
+1
+end_operator
+begin_operator
+up f15 f92
+0
+1
+0 0 7 92
+1
+end_operator
+begin_operator
+up f15 f93
+0
+1
+0 0 7 93
+1
+end_operator
+begin_operator
+up f15 f94
+0
+1
+0 0 7 94
+1
+end_operator
+begin_operator
+up f15 f95
+0
+1
+0 0 7 95
+1
+end_operator
+begin_operator
+up f15 f96
+0
+1
+0 0 7 96
+1
+end_operator
+begin_operator
+up f15 f97
+0
+1
+0 0 7 97
+1
+end_operator
+begin_operator
+up f15 f98
+0
+1
+0 0 7 98
+1
+end_operator
+begin_operator
+up f15 f99
+0
+1
+0 0 7 99
+1
+end_operator
+begin_operator
+up f16 f100
+0
+1
+0 0 8 2
+1
+end_operator
+begin_operator
+up f16 f17
+0
+1
+0 0 8 9
+1
+end_operator
+begin_operator
+up f16 f18
+0
+1
+0 0 8 10
+1
+end_operator
+begin_operator
+up f16 f19
+0
+1
+0 0 8 11
+1
+end_operator
+begin_operator
+up f16 f20
+0
+1
+0 0 8 13
+1
+end_operator
+begin_operator
+up f16 f21
+0
+1
+0 0 8 14
+1
+end_operator
+begin_operator
+up f16 f22
+0
+1
+0 0 8 15
+1
+end_operator
+begin_operator
+up f16 f23
+0
+1
+0 0 8 16
+1
+end_operator
+begin_operator
+up f16 f24
+0
+1
+0 0 8 17
+1
+end_operator
+begin_operator
+up f16 f25
+0
+1
+0 0 8 18
+1
+end_operator
+begin_operator
+up f16 f26
+0
+1
+0 0 8 19
+1
+end_operator
+begin_operator
+up f16 f27
+0
+1
+0 0 8 20
+1
+end_operator
+begin_operator
+up f16 f28
+0
+1
+0 0 8 21
+1
+end_operator
+begin_operator
+up f16 f29
+0
+1
+0 0 8 22
+1
+end_operator
+begin_operator
+up f16 f30
+0
+1
+0 0 8 24
+1
+end_operator
+begin_operator
+up f16 f31
+0
+1
+0 0 8 25
+1
+end_operator
+begin_operator
+up f16 f32
+0
+1
+0 0 8 26
+1
+end_operator
+begin_operator
+up f16 f33
+0
+1
+0 0 8 27
+1
+end_operator
+begin_operator
+up f16 f34
+0
+1
+0 0 8 28
+1
+end_operator
+begin_operator
+up f16 f35
+0
+1
+0 0 8 29
+1
+end_operator
+begin_operator
+up f16 f36
+0
+1
+0 0 8 30
+1
+end_operator
+begin_operator
+up f16 f37
+0
+1
+0 0 8 31
+1
+end_operator
+begin_operator
+up f16 f38
+0
+1
+0 0 8 32
+1
+end_operator
+begin_operator
+up f16 f39
+0
+1
+0 0 8 33
+1
+end_operator
+begin_operator
+up f16 f40
+0
+1
+0 0 8 35
+1
+end_operator
+begin_operator
+up f16 f41
+0
+1
+0 0 8 36
+1
+end_operator
+begin_operator
+up f16 f42
+0
+1
+0 0 8 37
+1
+end_operator
+begin_operator
+up f16 f43
+0
+1
+0 0 8 38
+1
+end_operator
+begin_operator
+up f16 f44
+0
+1
+0 0 8 39
+1
+end_operator
+begin_operator
+up f16 f45
+0
+1
+0 0 8 40
+1
+end_operator
+begin_operator
+up f16 f46
+0
+1
+0 0 8 41
+1
+end_operator
+begin_operator
+up f16 f47
+0
+1
+0 0 8 42
+1
+end_operator
+begin_operator
+up f16 f48
+0
+1
+0 0 8 43
+1
+end_operator
+begin_operator
+up f16 f49
+0
+1
+0 0 8 44
+1
+end_operator
+begin_operator
+up f16 f50
+0
+1
+0 0 8 46
+1
+end_operator
+begin_operator
+up f16 f51
+0
+1
+0 0 8 47
+1
+end_operator
+begin_operator
+up f16 f52
+0
+1
+0 0 8 48
+1
+end_operator
+begin_operator
+up f16 f53
+0
+1
+0 0 8 49
+1
+end_operator
+begin_operator
+up f16 f54
+0
+1
+0 0 8 50
+1
+end_operator
+begin_operator
+up f16 f55
+0
+1
+0 0 8 51
+1
+end_operator
+begin_operator
+up f16 f56
+0
+1
+0 0 8 52
+1
+end_operator
+begin_operator
+up f16 f57
+0
+1
+0 0 8 53
+1
+end_operator
+begin_operator
+up f16 f58
+0
+1
+0 0 8 54
+1
+end_operator
+begin_operator
+up f16 f59
+0
+1
+0 0 8 55
+1
+end_operator
+begin_operator
+up f16 f60
+0
+1
+0 0 8 57
+1
+end_operator
+begin_operator
+up f16 f61
+0
+1
+0 0 8 58
+1
+end_operator
+begin_operator
+up f16 f62
+0
+1
+0 0 8 59
+1
+end_operator
+begin_operator
+up f16 f63
+0
+1
+0 0 8 60
+1
+end_operator
+begin_operator
+up f16 f64
+0
+1
+0 0 8 61
+1
+end_operator
+begin_operator
+up f16 f65
+0
+1
+0 0 8 62
+1
+end_operator
+begin_operator
+up f16 f66
+0
+1
+0 0 8 63
+1
+end_operator
+begin_operator
+up f16 f67
+0
+1
+0 0 8 64
+1
+end_operator
+begin_operator
+up f16 f68
+0
+1
+0 0 8 65
+1
+end_operator
+begin_operator
+up f16 f69
+0
+1
+0 0 8 66
+1
+end_operator
+begin_operator
+up f16 f70
+0
+1
+0 0 8 68
+1
+end_operator
+begin_operator
+up f16 f71
+0
+1
+0 0 8 69
+1
+end_operator
+begin_operator
+up f16 f72
+0
+1
+0 0 8 70
+1
+end_operator
+begin_operator
+up f16 f73
+0
+1
+0 0 8 71
+1
+end_operator
+begin_operator
+up f16 f74
+0
+1
+0 0 8 72
+1
+end_operator
+begin_operator
+up f16 f75
+0
+1
+0 0 8 73
+1
+end_operator
+begin_operator
+up f16 f76
+0
+1
+0 0 8 74
+1
+end_operator
+begin_operator
+up f16 f77
+0
+1
+0 0 8 75
+1
+end_operator
+begin_operator
+up f16 f78
+0
+1
+0 0 8 76
+1
+end_operator
+begin_operator
+up f16 f79
+0
+1
+0 0 8 77
+1
+end_operator
+begin_operator
+up f16 f80
+0
+1
+0 0 8 79
+1
+end_operator
+begin_operator
+up f16 f81
+0
+1
+0 0 8 80
+1
+end_operator
+begin_operator
+up f16 f82
+0
+1
+0 0 8 81
+1
+end_operator
+begin_operator
+up f16 f83
+0
+1
+0 0 8 82
+1
+end_operator
+begin_operator
+up f16 f84
+0
+1
+0 0 8 83
+1
+end_operator
+begin_operator
+up f16 f85
+0
+1
+0 0 8 84
+1
+end_operator
+begin_operator
+up f16 f86
+0
+1
+0 0 8 85
+1
+end_operator
+begin_operator
+up f16 f87
+0
+1
+0 0 8 86
+1
+end_operator
+begin_operator
+up f16 f88
+0
+1
+0 0 8 87
+1
+end_operator
+begin_operator
+up f16 f89
+0
+1
+0 0 8 88
+1
+end_operator
+begin_operator
+up f16 f90
+0
+1
+0 0 8 90
+1
+end_operator
+begin_operator
+up f16 f91
+0
+1
+0 0 8 91
+1
+end_operator
+begin_operator
+up f16 f92
+0
+1
+0 0 8 92
+1
+end_operator
+begin_operator
+up f16 f93
+0
+1
+0 0 8 93
+1
+end_operator
+begin_operator
+up f16 f94
+0
+1
+0 0 8 94
+1
+end_operator
+begin_operator
+up f16 f95
+0
+1
+0 0 8 95
+1
+end_operator
+begin_operator
+up f16 f96
+0
+1
+0 0 8 96
+1
+end_operator
+begin_operator
+up f16 f97
+0
+1
+0 0 8 97
+1
+end_operator
+begin_operator
+up f16 f98
+0
+1
+0 0 8 98
+1
+end_operator
+begin_operator
+up f16 f99
+0
+1
+0 0 8 99
+1
+end_operator
+begin_operator
+up f17 f100
+0
+1
+0 0 9 2
+1
+end_operator
+begin_operator
+up f17 f18
+0
+1
+0 0 9 10
+1
+end_operator
+begin_operator
+up f17 f19
+0
+1
+0 0 9 11
+1
+end_operator
+begin_operator
+up f17 f20
+0
+1
+0 0 9 13
+1
+end_operator
+begin_operator
+up f17 f21
+0
+1
+0 0 9 14
+1
+end_operator
+begin_operator
+up f17 f22
+0
+1
+0 0 9 15
+1
+end_operator
+begin_operator
+up f17 f23
+0
+1
+0 0 9 16
+1
+end_operator
+begin_operator
+up f17 f24
+0
+1
+0 0 9 17
+1
+end_operator
+begin_operator
+up f17 f25
+0
+1
+0 0 9 18
+1
+end_operator
+begin_operator
+up f17 f26
+0
+1
+0 0 9 19
+1
+end_operator
+begin_operator
+up f17 f27
+0
+1
+0 0 9 20
+1
+end_operator
+begin_operator
+up f17 f28
+0
+1
+0 0 9 21
+1
+end_operator
+begin_operator
+up f17 f29
+0
+1
+0 0 9 22
+1
+end_operator
+begin_operator
+up f17 f30
+0
+1
+0 0 9 24
+1
+end_operator
+begin_operator
+up f17 f31
+0
+1
+0 0 9 25
+1
+end_operator
+begin_operator
+up f17 f32
+0
+1
+0 0 9 26
+1
+end_operator
+begin_operator
+up f17 f33
+0
+1
+0 0 9 27
+1
+end_operator
+begin_operator
+up f17 f34
+0
+1
+0 0 9 28
+1
+end_operator
+begin_operator
+up f17 f35
+0
+1
+0 0 9 29
+1
+end_operator
+begin_operator
+up f17 f36
+0
+1
+0 0 9 30
+1
+end_operator
+begin_operator
+up f17 f37
+0
+1
+0 0 9 31
+1
+end_operator
+begin_operator
+up f17 f38
+0
+1
+0 0 9 32
+1
+end_operator
+begin_operator
+up f17 f39
+0
+1
+0 0 9 33
+1
+end_operator
+begin_operator
+up f17 f40
+0
+1
+0 0 9 35
+1
+end_operator
+begin_operator
+up f17 f41
+0
+1
+0 0 9 36
+1
+end_operator
+begin_operator
+up f17 f42
+0
+1
+0 0 9 37
+1
+end_operator
+begin_operator
+up f17 f43
+0
+1
+0 0 9 38
+1
+end_operator
+begin_operator
+up f17 f44
+0
+1
+0 0 9 39
+1
+end_operator
+begin_operator
+up f17 f45
+0
+1
+0 0 9 40
+1
+end_operator
+begin_operator
+up f17 f46
+0
+1
+0 0 9 41
+1
+end_operator
+begin_operator
+up f17 f47
+0
+1
+0 0 9 42
+1
+end_operator
+begin_operator
+up f17 f48
+0
+1
+0 0 9 43
+1
+end_operator
+begin_operator
+up f17 f49
+0
+1
+0 0 9 44
+1
+end_operator
+begin_operator
+up f17 f50
+0
+1
+0 0 9 46
+1
+end_operator
+begin_operator
+up f17 f51
+0
+1
+0 0 9 47
+1
+end_operator
+begin_operator
+up f17 f52
+0
+1
+0 0 9 48
+1
+end_operator
+begin_operator
+up f17 f53
+0
+1
+0 0 9 49
+1
+end_operator
+begin_operator
+up f17 f54
+0
+1
+0 0 9 50
+1
+end_operator
+begin_operator
+up f17 f55
+0
+1
+0 0 9 51
+1
+end_operator
+begin_operator
+up f17 f56
+0
+1
+0 0 9 52
+1
+end_operator
+begin_operator
+up f17 f57
+0
+1
+0 0 9 53
+1
+end_operator
+begin_operator
+up f17 f58
+0
+1
+0 0 9 54
+1
+end_operator
+begin_operator
+up f17 f59
+0
+1
+0 0 9 55
+1
+end_operator
+begin_operator
+up f17 f60
+0
+1
+0 0 9 57
+1
+end_operator
+begin_operator
+up f17 f61
+0
+1
+0 0 9 58
+1
+end_operator
+begin_operator
+up f17 f62
+0
+1
+0 0 9 59
+1
+end_operator
+begin_operator
+up f17 f63
+0
+1
+0 0 9 60
+1
+end_operator
+begin_operator
+up f17 f64
+0
+1
+0 0 9 61
+1
+end_operator
+begin_operator
+up f17 f65
+0
+1
+0 0 9 62
+1
+end_operator
+begin_operator
+up f17 f66
+0
+1
+0 0 9 63
+1
+end_operator
+begin_operator
+up f17 f67
+0
+1
+0 0 9 64
+1
+end_operator
+begin_operator
+up f17 f68
+0
+1
+0 0 9 65
+1
+end_operator
+begin_operator
+up f17 f69
+0
+1
+0 0 9 66
+1
+end_operator
+begin_operator
+up f17 f70
+0
+1
+0 0 9 68
+1
+end_operator
+begin_operator
+up f17 f71
+0
+1
+0 0 9 69
+1
+end_operator
+begin_operator
+up f17 f72
+0
+1
+0 0 9 70
+1
+end_operator
+begin_operator
+up f17 f73
+0
+1
+0 0 9 71
+1
+end_operator
+begin_operator
+up f17 f74
+0
+1
+0 0 9 72
+1
+end_operator
+begin_operator
+up f17 f75
+0
+1
+0 0 9 73
+1
+end_operator
+begin_operator
+up f17 f76
+0
+1
+0 0 9 74
+1
+end_operator
+begin_operator
+up f17 f77
+0
+1
+0 0 9 75
+1
+end_operator
+begin_operator
+up f17 f78
+0
+1
+0 0 9 76
+1
+end_operator
+begin_operator
+up f17 f79
+0
+1
+0 0 9 77
+1
+end_operator
+begin_operator
+up f17 f80
+0
+1
+0 0 9 79
+1
+end_operator
+begin_operator
+up f17 f81
+0
+1
+0 0 9 80
+1
+end_operator
+begin_operator
+up f17 f82
+0
+1
+0 0 9 81
+1
+end_operator
+begin_operator
+up f17 f83
+0
+1
+0 0 9 82
+1
+end_operator
+begin_operator
+up f17 f84
+0
+1
+0 0 9 83
+1
+end_operator
+begin_operator
+up f17 f85
+0
+1
+0 0 9 84
+1
+end_operator
+begin_operator
+up f17 f86
+0
+1
+0 0 9 85
+1
+end_operator
+begin_operator
+up f17 f87
+0
+1
+0 0 9 86
+1
+end_operator
+begin_operator
+up f17 f88
+0
+1
+0 0 9 87
+1
+end_operator
+begin_operator
+up f17 f89
+0
+1
+0 0 9 88
+1
+end_operator
+begin_operator
+up f17 f90
+0
+1
+0 0 9 90
+1
+end_operator
+begin_operator
+up f17 f91
+0
+1
+0 0 9 91
+1
+end_operator
+begin_operator
+up f17 f92
+0
+1
+0 0 9 92
+1
+end_operator
+begin_operator
+up f17 f93
+0
+1
+0 0 9 93
+1
+end_operator
+begin_operator
+up f17 f94
+0
+1
+0 0 9 94
+1
+end_operator
+begin_operator
+up f17 f95
+0
+1
+0 0 9 95
+1
+end_operator
+begin_operator
+up f17 f96
+0
+1
+0 0 9 96
+1
+end_operator
+begin_operator
+up f17 f97
+0
+1
+0 0 9 97
+1
+end_operator
+begin_operator
+up f17 f98
+0
+1
+0 0 9 98
+1
+end_operator
+begin_operator
+up f17 f99
+0
+1
+0 0 9 99
+1
+end_operator
+begin_operator
+up f18 f100
+0
+1
+0 0 10 2
+1
+end_operator
+begin_operator
+up f18 f19
+0
+1
+0 0 10 11
+1
+end_operator
+begin_operator
+up f18 f20
+0
+1
+0 0 10 13
+1
+end_operator
+begin_operator
+up f18 f21
+0
+1
+0 0 10 14
+1
+end_operator
+begin_operator
+up f18 f22
+0
+1
+0 0 10 15
+1
+end_operator
+begin_operator
+up f18 f23
+0
+1
+0 0 10 16
+1
+end_operator
+begin_operator
+up f18 f24
+0
+1
+0 0 10 17
+1
+end_operator
+begin_operator
+up f18 f25
+0
+1
+0 0 10 18
+1
+end_operator
+begin_operator
+up f18 f26
+0
+1
+0 0 10 19
+1
+end_operator
+begin_operator
+up f18 f27
+0
+1
+0 0 10 20
+1
+end_operator
+begin_operator
+up f18 f28
+0
+1
+0 0 10 21
+1
+end_operator
+begin_operator
+up f18 f29
+0
+1
+0 0 10 22
+1
+end_operator
+begin_operator
+up f18 f30
+0
+1
+0 0 10 24
+1
+end_operator
+begin_operator
+up f18 f31
+0
+1
+0 0 10 25
+1
+end_operator
+begin_operator
+up f18 f32
+0
+1
+0 0 10 26
+1
+end_operator
+begin_operator
+up f18 f33
+0
+1
+0 0 10 27
+1
+end_operator
+begin_operator
+up f18 f34
+0
+1
+0 0 10 28
+1
+end_operator
+begin_operator
+up f18 f35
+0
+1
+0 0 10 29
+1
+end_operator
+begin_operator
+up f18 f36
+0
+1
+0 0 10 30
+1
+end_operator
+begin_operator
+up f18 f37
+0
+1
+0 0 10 31
+1
+end_operator
+begin_operator
+up f18 f38
+0
+1
+0 0 10 32
+1
+end_operator
+begin_operator
+up f18 f39
+0
+1
+0 0 10 33
+1
+end_operator
+begin_operator
+up f18 f40
+0
+1
+0 0 10 35
+1
+end_operator
+begin_operator
+up f18 f41
+0
+1
+0 0 10 36
+1
+end_operator
+begin_operator
+up f18 f42
+0
+1
+0 0 10 37
+1
+end_operator
+begin_operator
+up f18 f43
+0
+1
+0 0 10 38
+1
+end_operator
+begin_operator
+up f18 f44
+0
+1
+0 0 10 39
+1
+end_operator
+begin_operator
+up f18 f45
+0
+1
+0 0 10 40
+1
+end_operator
+begin_operator
+up f18 f46
+0
+1
+0 0 10 41
+1
+end_operator
+begin_operator
+up f18 f47
+0
+1
+0 0 10 42
+1
+end_operator
+begin_operator
+up f18 f48
+0
+1
+0 0 10 43
+1
+end_operator
+begin_operator
+up f18 f49
+0
+1
+0 0 10 44
+1
+end_operator
+begin_operator
+up f18 f50
+0
+1
+0 0 10 46
+1
+end_operator
+begin_operator
+up f18 f51
+0
+1
+0 0 10 47
+1
+end_operator
+begin_operator
+up f18 f52
+0
+1
+0 0 10 48
+1
+end_operator
+begin_operator
+up f18 f53
+0
+1
+0 0 10 49
+1
+end_operator
+begin_operator
+up f18 f54
+0
+1
+0 0 10 50
+1
+end_operator
+begin_operator
+up f18 f55
+0
+1
+0 0 10 51
+1
+end_operator
+begin_operator
+up f18 f56
+0
+1
+0 0 10 52
+1
+end_operator
+begin_operator
+up f18 f57
+0
+1
+0 0 10 53
+1
+end_operator
+begin_operator
+up f18 f58
+0
+1
+0 0 10 54
+1
+end_operator
+begin_operator
+up f18 f59
+0
+1
+0 0 10 55
+1
+end_operator
+begin_operator
+up f18 f60
+0
+1
+0 0 10 57
+1
+end_operator
+begin_operator
+up f18 f61
+0
+1
+0 0 10 58
+1
+end_operator
+begin_operator
+up f18 f62
+0
+1
+0 0 10 59
+1
+end_operator
+begin_operator
+up f18 f63
+0
+1
+0 0 10 60
+1
+end_operator
+begin_operator
+up f18 f64
+0
+1
+0 0 10 61
+1
+end_operator
+begin_operator
+up f18 f65
+0
+1
+0 0 10 62
+1
+end_operator
+begin_operator
+up f18 f66
+0
+1
+0 0 10 63
+1
+end_operator
+begin_operator
+up f18 f67
+0
+1
+0 0 10 64
+1
+end_operator
+begin_operator
+up f18 f68
+0
+1
+0 0 10 65
+1
+end_operator
+begin_operator
+up f18 f69
+0
+1
+0 0 10 66
+1
+end_operator
+begin_operator
+up f18 f70
+0
+1
+0 0 10 68
+1
+end_operator
+begin_operator
+up f18 f71
+0
+1
+0 0 10 69
+1
+end_operator
+begin_operator
+up f18 f72
+0
+1
+0 0 10 70
+1
+end_operator
+begin_operator
+up f18 f73
+0
+1
+0 0 10 71
+1
+end_operator
+begin_operator
+up f18 f74
+0
+1
+0 0 10 72
+1
+end_operator
+begin_operator
+up f18 f75
+0
+1
+0 0 10 73
+1
+end_operator
+begin_operator
+up f18 f76
+0
+1
+0 0 10 74
+1
+end_operator
+begin_operator
+up f18 f77
+0
+1
+0 0 10 75
+1
+end_operator
+begin_operator
+up f18 f78
+0
+1
+0 0 10 76
+1
+end_operator
+begin_operator
+up f18 f79
+0
+1
+0 0 10 77
+1
+end_operator
+begin_operator
+up f18 f80
+0
+1
+0 0 10 79
+1
+end_operator
+begin_operator
+up f18 f81
+0
+1
+0 0 10 80
+1
+end_operator
+begin_operator
+up f18 f82
+0
+1
+0 0 10 81
+1
+end_operator
+begin_operator
+up f18 f83
+0
+1
+0 0 10 82
+1
+end_operator
+begin_operator
+up f18 f84
+0
+1
+0 0 10 83
+1
+end_operator
+begin_operator
+up f18 f85
+0
+1
+0 0 10 84
+1
+end_operator
+begin_operator
+up f18 f86
+0
+1
+0 0 10 85
+1
+end_operator
+begin_operator
+up f18 f87
+0
+1
+0 0 10 86
+1
+end_operator
+begin_operator
+up f18 f88
+0
+1
+0 0 10 87
+1
+end_operator
+begin_operator
+up f18 f89
+0
+1
+0 0 10 88
+1
+end_operator
+begin_operator
+up f18 f90
+0
+1
+0 0 10 90
+1
+end_operator
+begin_operator
+up f18 f91
+0
+1
+0 0 10 91
+1
+end_operator
+begin_operator
+up f18 f92
+0
+1
+0 0 10 92
+1
+end_operator
+begin_operator
+up f18 f93
+0
+1
+0 0 10 93
+1
+end_operator
+begin_operator
+up f18 f94
+0
+1
+0 0 10 94
+1
+end_operator
+begin_operator
+up f18 f95
+0
+1
+0 0 10 95
+1
+end_operator
+begin_operator
+up f18 f96
+0
+1
+0 0 10 96
+1
+end_operator
+begin_operator
+up f18 f97
+0
+1
+0 0 10 97
+1
+end_operator
+begin_operator
+up f18 f98
+0
+1
+0 0 10 98
+1
+end_operator
+begin_operator
+up f18 f99
+0
+1
+0 0 10 99
+1
+end_operator
+begin_operator
+up f19 f100
+0
+1
+0 0 11 2
+1
+end_operator
+begin_operator
+up f19 f20
+0
+1
+0 0 11 13
+1
+end_operator
+begin_operator
+up f19 f21
+0
+1
+0 0 11 14
+1
+end_operator
+begin_operator
+up f19 f22
+0
+1
+0 0 11 15
+1
+end_operator
+begin_operator
+up f19 f23
+0
+1
+0 0 11 16
+1
+end_operator
+begin_operator
+up f19 f24
+0
+1
+0 0 11 17
+1
+end_operator
+begin_operator
+up f19 f25
+0
+1
+0 0 11 18
+1
+end_operator
+begin_operator
+up f19 f26
+0
+1
+0 0 11 19
+1
+end_operator
+begin_operator
+up f19 f27
+0
+1
+0 0 11 20
+1
+end_operator
+begin_operator
+up f19 f28
+0
+1
+0 0 11 21
+1
+end_operator
+begin_operator
+up f19 f29
+0
+1
+0 0 11 22
+1
+end_operator
+begin_operator
+up f19 f30
+0
+1
+0 0 11 24
+1
+end_operator
+begin_operator
+up f19 f31
+0
+1
+0 0 11 25
+1
+end_operator
+begin_operator
+up f19 f32
+0
+1
+0 0 11 26
+1
+end_operator
+begin_operator
+up f19 f33
+0
+1
+0 0 11 27
+1
+end_operator
+begin_operator
+up f19 f34
+0
+1
+0 0 11 28
+1
+end_operator
+begin_operator
+up f19 f35
+0
+1
+0 0 11 29
+1
+end_operator
+begin_operator
+up f19 f36
+0
+1
+0 0 11 30
+1
+end_operator
+begin_operator
+up f19 f37
+0
+1
+0 0 11 31
+1
+end_operator
+begin_operator
+up f19 f38
+0
+1
+0 0 11 32
+1
+end_operator
+begin_operator
+up f19 f39
+0
+1
+0 0 11 33
+1
+end_operator
+begin_operator
+up f19 f40
+0
+1
+0 0 11 35
+1
+end_operator
+begin_operator
+up f19 f41
+0
+1
+0 0 11 36
+1
+end_operator
+begin_operator
+up f19 f42
+0
+1
+0 0 11 37
+1
+end_operator
+begin_operator
+up f19 f43
+0
+1
+0 0 11 38
+1
+end_operator
+begin_operator
+up f19 f44
+0
+1
+0 0 11 39
+1
+end_operator
+begin_operator
+up f19 f45
+0
+1
+0 0 11 40
+1
+end_operator
+begin_operator
+up f19 f46
+0
+1
+0 0 11 41
+1
+end_operator
+begin_operator
+up f19 f47
+0
+1
+0 0 11 42
+1
+end_operator
+begin_operator
+up f19 f48
+0
+1
+0 0 11 43
+1
+end_operator
+begin_operator
+up f19 f49
+0
+1
+0 0 11 44
+1
+end_operator
+begin_operator
+up f19 f50
+0
+1
+0 0 11 46
+1
+end_operator
+begin_operator
+up f19 f51
+0
+1
+0 0 11 47
+1
+end_operator
+begin_operator
+up f19 f52
+0
+1
+0 0 11 48
+1
+end_operator
+begin_operator
+up f19 f53
+0
+1
+0 0 11 49
+1
+end_operator
+begin_operator
+up f19 f54
+0
+1
+0 0 11 50
+1
+end_operator
+begin_operator
+up f19 f55
+0
+1
+0 0 11 51
+1
+end_operator
+begin_operator
+up f19 f56
+0
+1
+0 0 11 52
+1
+end_operator
+begin_operator
+up f19 f57
+0
+1
+0 0 11 53
+1
+end_operator
+begin_operator
+up f19 f58
+0
+1
+0 0 11 54
+1
+end_operator
+begin_operator
+up f19 f59
+0
+1
+0 0 11 55
+1
+end_operator
+begin_operator
+up f19 f60
+0
+1
+0 0 11 57
+1
+end_operator
+begin_operator
+up f19 f61
+0
+1
+0 0 11 58
+1
+end_operator
+begin_operator
+up f19 f62
+0
+1
+0 0 11 59
+1
+end_operator
+begin_operator
+up f19 f63
+0
+1
+0 0 11 60
+1
+end_operator
+begin_operator
+up f19 f64
+0
+1
+0 0 11 61
+1
+end_operator
+begin_operator
+up f19 f65
+0
+1
+0 0 11 62
+1
+end_operator
+begin_operator
+up f19 f66
+0
+1
+0 0 11 63
+1
+end_operator
+begin_operator
+up f19 f67
+0
+1
+0 0 11 64
+1
+end_operator
+begin_operator
+up f19 f68
+0
+1
+0 0 11 65
+1
+end_operator
+begin_operator
+up f19 f69
+0
+1
+0 0 11 66
+1
+end_operator
+begin_operator
+up f19 f70
+0
+1
+0 0 11 68
+1
+end_operator
+begin_operator
+up f19 f71
+0
+1
+0 0 11 69
+1
+end_operator
+begin_operator
+up f19 f72
+0
+1
+0 0 11 70
+1
+end_operator
+begin_operator
+up f19 f73
+0
+1
+0 0 11 71
+1
+end_operator
+begin_operator
+up f19 f74
+0
+1
+0 0 11 72
+1
+end_operator
+begin_operator
+up f19 f75
+0
+1
+0 0 11 73
+1
+end_operator
+begin_operator
+up f19 f76
+0
+1
+0 0 11 74
+1
+end_operator
+begin_operator
+up f19 f77
+0
+1
+0 0 11 75
+1
+end_operator
+begin_operator
+up f19 f78
+0
+1
+0 0 11 76
+1
+end_operator
+begin_operator
+up f19 f79
+0
+1
+0 0 11 77
+1
+end_operator
+begin_operator
+up f19 f80
+0
+1
+0 0 11 79
+1
+end_operator
+begin_operator
+up f19 f81
+0
+1
+0 0 11 80
+1
+end_operator
+begin_operator
+up f19 f82
+0
+1
+0 0 11 81
+1
+end_operator
+begin_operator
+up f19 f83
+0
+1
+0 0 11 82
+1
+end_operator
+begin_operator
+up f19 f84
+0
+1
+0 0 11 83
+1
+end_operator
+begin_operator
+up f19 f85
+0
+1
+0 0 11 84
+1
+end_operator
+begin_operator
+up f19 f86
+0
+1
+0 0 11 85
+1
+end_operator
+begin_operator
+up f19 f87
+0
+1
+0 0 11 86
+1
+end_operator
+begin_operator
+up f19 f88
+0
+1
+0 0 11 87
+1
+end_operator
+begin_operator
+up f19 f89
+0
+1
+0 0 11 88
+1
+end_operator
+begin_operator
+up f19 f90
+0
+1
+0 0 11 90
+1
+end_operator
+begin_operator
+up f19 f91
+0
+1
+0 0 11 91
+1
+end_operator
+begin_operator
+up f19 f92
+0
+1
+0 0 11 92
+1
+end_operator
+begin_operator
+up f19 f93
+0
+1
+0 0 11 93
+1
+end_operator
+begin_operator
+up f19 f94
+0
+1
+0 0 11 94
+1
+end_operator
+begin_operator
+up f19 f95
+0
+1
+0 0 11 95
+1
+end_operator
+begin_operator
+up f19 f96
+0
+1
+0 0 11 96
+1
+end_operator
+begin_operator
+up f19 f97
+0
+1
+0 0 11 97
+1
+end_operator
+begin_operator
+up f19 f98
+0
+1
+0 0 11 98
+1
+end_operator
+begin_operator
+up f19 f99
+0
+1
+0 0 11 99
+1
+end_operator
+begin_operator
+up f2 f10
+0
+1
+0 0 12 1
+1
+end_operator
+begin_operator
+up f2 f100
+0
+1
+0 0 12 2
+1
+end_operator
+begin_operator
+up f2 f11
+0
+1
+0 0 12 3
+1
+end_operator
+begin_operator
+up f2 f12
+0
+1
+0 0 12 4
+1
+end_operator
+begin_operator
+up f2 f13
+0
+1
+0 0 12 5
+1
+end_operator
+begin_operator
+up f2 f14
+0
+1
+0 0 12 6
+1
+end_operator
+begin_operator
+up f2 f15
+0
+1
+0 0 12 7
+1
+end_operator
+begin_operator
+up f2 f16
+0
+1
+0 0 12 8
+1
+end_operator
+begin_operator
+up f2 f17
+0
+1
+0 0 12 9
+1
+end_operator
+begin_operator
+up f2 f18
+0
+1
+0 0 12 10
+1
+end_operator
+begin_operator
+up f2 f19
+0
+1
+0 0 12 11
+1
+end_operator
+begin_operator
+up f2 f20
+0
+1
+0 0 12 13
+1
+end_operator
+begin_operator
+up f2 f21
+0
+1
+0 0 12 14
+1
+end_operator
+begin_operator
+up f2 f22
+0
+1
+0 0 12 15
+1
+end_operator
+begin_operator
+up f2 f23
+0
+1
+0 0 12 16
+1
+end_operator
+begin_operator
+up f2 f24
+0
+1
+0 0 12 17
+1
+end_operator
+begin_operator
+up f2 f25
+0
+1
+0 0 12 18
+1
+end_operator
+begin_operator
+up f2 f26
+0
+1
+0 0 12 19
+1
+end_operator
+begin_operator
+up f2 f27
+0
+1
+0 0 12 20
+1
+end_operator
+begin_operator
+up f2 f28
+0
+1
+0 0 12 21
+1
+end_operator
+begin_operator
+up f2 f29
+0
+1
+0 0 12 22
+1
+end_operator
+begin_operator
+up f2 f3
+0
+1
+0 0 12 23
+1
+end_operator
+begin_operator
+up f2 f30
+0
+1
+0 0 12 24
+1
+end_operator
+begin_operator
+up f2 f31
+0
+1
+0 0 12 25
+1
+end_operator
+begin_operator
+up f2 f32
+0
+1
+0 0 12 26
+1
+end_operator
+begin_operator
+up f2 f33
+0
+1
+0 0 12 27
+1
+end_operator
+begin_operator
+up f2 f34
+0
+1
+0 0 12 28
+1
+end_operator
+begin_operator
+up f2 f35
+0
+1
+0 0 12 29
+1
+end_operator
+begin_operator
+up f2 f36
+0
+1
+0 0 12 30
+1
+end_operator
+begin_operator
+up f2 f37
+0
+1
+0 0 12 31
+1
+end_operator
+begin_operator
+up f2 f38
+0
+1
+0 0 12 32
+1
+end_operator
+begin_operator
+up f2 f39
+0
+1
+0 0 12 33
+1
+end_operator
+begin_operator
+up f2 f4
+0
+1
+0 0 12 34
+1
+end_operator
+begin_operator
+up f2 f40
+0
+1
+0 0 12 35
+1
+end_operator
+begin_operator
+up f2 f41
+0
+1
+0 0 12 36
+1
+end_operator
+begin_operator
+up f2 f42
+0
+1
+0 0 12 37
+1
+end_operator
+begin_operator
+up f2 f43
+0
+1
+0 0 12 38
+1
+end_operator
+begin_operator
+up f2 f44
+0
+1
+0 0 12 39
+1
+end_operator
+begin_operator
+up f2 f45
+0
+1
+0 0 12 40
+1
+end_operator
+begin_operator
+up f2 f46
+0
+1
+0 0 12 41
+1
+end_operator
+begin_operator
+up f2 f47
+0
+1
+0 0 12 42
+1
+end_operator
+begin_operator
+up f2 f48
+0
+1
+0 0 12 43
+1
+end_operator
+begin_operator
+up f2 f49
+0
+1
+0 0 12 44
+1
+end_operator
+begin_operator
+up f2 f5
+0
+1
+0 0 12 45
+1
+end_operator
+begin_operator
+up f2 f50
+0
+1
+0 0 12 46
+1
+end_operator
+begin_operator
+up f2 f51
+0
+1
+0 0 12 47
+1
+end_operator
+begin_operator
+up f2 f52
+0
+1
+0 0 12 48
+1
+end_operator
+begin_operator
+up f2 f53
+0
+1
+0 0 12 49
+1
+end_operator
+begin_operator
+up f2 f54
+0
+1
+0 0 12 50
+1
+end_operator
+begin_operator
+up f2 f55
+0
+1
+0 0 12 51
+1
+end_operator
+begin_operator
+up f2 f56
+0
+1
+0 0 12 52
+1
+end_operator
+begin_operator
+up f2 f57
+0
+1
+0 0 12 53
+1
+end_operator
+begin_operator
+up f2 f58
+0
+1
+0 0 12 54
+1
+end_operator
+begin_operator
+up f2 f59
+0
+1
+0 0 12 55
+1
+end_operator
+begin_operator
+up f2 f6
+0
+1
+0 0 12 56
+1
+end_operator
+begin_operator
+up f2 f60
+0
+1
+0 0 12 57
+1
+end_operator
+begin_operator
+up f2 f61
+0
+1
+0 0 12 58
+1
+end_operator
+begin_operator
+up f2 f62
+0
+1
+0 0 12 59
+1
+end_operator
+begin_operator
+up f2 f63
+0
+1
+0 0 12 60
+1
+end_operator
+begin_operator
+up f2 f64
+0
+1
+0 0 12 61
+1
+end_operator
+begin_operator
+up f2 f65
+0
+1
+0 0 12 62
+1
+end_operator
+begin_operator
+up f2 f66
+0
+1
+0 0 12 63
+1
+end_operator
+begin_operator
+up f2 f67
+0
+1
+0 0 12 64
+1
+end_operator
+begin_operator
+up f2 f68
+0
+1
+0 0 12 65
+1
+end_operator
+begin_operator
+up f2 f69
+0
+1
+0 0 12 66
+1
+end_operator
+begin_operator
+up f2 f7
+0
+1
+0 0 12 67
+1
+end_operator
+begin_operator
+up f2 f70
+0
+1
+0 0 12 68
+1
+end_operator
+begin_operator
+up f2 f71
+0
+1
+0 0 12 69
+1
+end_operator
+begin_operator
+up f2 f72
+0
+1
+0 0 12 70
+1
+end_operator
+begin_operator
+up f2 f73
+0
+1
+0 0 12 71
+1
+end_operator
+begin_operator
+up f2 f74
+0
+1
+0 0 12 72
+1
+end_operator
+begin_operator
+up f2 f75
+0
+1
+0 0 12 73
+1
+end_operator
+begin_operator
+up f2 f76
+0
+1
+0 0 12 74
+1
+end_operator
+begin_operator
+up f2 f77
+0
+1
+0 0 12 75
+1
+end_operator
+begin_operator
+up f2 f78
+0
+1
+0 0 12 76
+1
+end_operator
+begin_operator
+up f2 f79
+0
+1
+0 0 12 77
+1
+end_operator
+begin_operator
+up f2 f8
+0
+1
+0 0 12 78
+1
+end_operator
+begin_operator
+up f2 f80
+0
+1
+0 0 12 79
+1
+end_operator
+begin_operator
+up f2 f81
+0
+1
+0 0 12 80
+1
+end_operator
+begin_operator
+up f2 f82
+0
+1
+0 0 12 81
+1
+end_operator
+begin_operator
+up f2 f83
+0
+1
+0 0 12 82
+1
+end_operator
+begin_operator
+up f2 f84
+0
+1
+0 0 12 83
+1
+end_operator
+begin_operator
+up f2 f85
+0
+1
+0 0 12 84
+1
+end_operator
+begin_operator
+up f2 f86
+0
+1
+0 0 12 85
+1
+end_operator
+begin_operator
+up f2 f87
+0
+1
+0 0 12 86
+1
+end_operator
+begin_operator
+up f2 f88
+0
+1
+0 0 12 87
+1
+end_operator
+begin_operator
+up f2 f89
+0
+1
+0 0 12 88
+1
+end_operator
+begin_operator
+up f2 f9
+0
+1
+0 0 12 89
+1
+end_operator
+begin_operator
+up f2 f90
+0
+1
+0 0 12 90
+1
+end_operator
+begin_operator
+up f2 f91
+0
+1
+0 0 12 91
+1
+end_operator
+begin_operator
+up f2 f92
+0
+1
+0 0 12 92
+1
+end_operator
+begin_operator
+up f2 f93
+0
+1
+0 0 12 93
+1
+end_operator
+begin_operator
+up f2 f94
+0
+1
+0 0 12 94
+1
+end_operator
+begin_operator
+up f2 f95
+0
+1
+0 0 12 95
+1
+end_operator
+begin_operator
+up f2 f96
+0
+1
+0 0 12 96
+1
+end_operator
+begin_operator
+up f2 f97
+0
+1
+0 0 12 97
+1
+end_operator
+begin_operator
+up f2 f98
+0
+1
+0 0 12 98
+1
+end_operator
+begin_operator
+up f2 f99
+0
+1
+0 0 12 99
+1
+end_operator
+begin_operator
+up f20 f100
+0
+1
+0 0 13 2
+1
+end_operator
+begin_operator
+up f20 f21
+0
+1
+0 0 13 14
+1
+end_operator
+begin_operator
+up f20 f22
+0
+1
+0 0 13 15
+1
+end_operator
+begin_operator
+up f20 f23
+0
+1
+0 0 13 16
+1
+end_operator
+begin_operator
+up f20 f24
+0
+1
+0 0 13 17
+1
+end_operator
+begin_operator
+up f20 f25
+0
+1
+0 0 13 18
+1
+end_operator
+begin_operator
+up f20 f26
+0
+1
+0 0 13 19
+1
+end_operator
+begin_operator
+up f20 f27
+0
+1
+0 0 13 20
+1
+end_operator
+begin_operator
+up f20 f28
+0
+1
+0 0 13 21
+1
+end_operator
+begin_operator
+up f20 f29
+0
+1
+0 0 13 22
+1
+end_operator
+begin_operator
+up f20 f30
+0
+1
+0 0 13 24
+1
+end_operator
+begin_operator
+up f20 f31
+0
+1
+0 0 13 25
+1
+end_operator
+begin_operator
+up f20 f32
+0
+1
+0 0 13 26
+1
+end_operator
+begin_operator
+up f20 f33
+0
+1
+0 0 13 27
+1
+end_operator
+begin_operator
+up f20 f34
+0
+1
+0 0 13 28
+1
+end_operator
+begin_operator
+up f20 f35
+0
+1
+0 0 13 29
+1
+end_operator
+begin_operator
+up f20 f36
+0
+1
+0 0 13 30
+1
+end_operator
+begin_operator
+up f20 f37
+0
+1
+0 0 13 31
+1
+end_operator
+begin_operator
+up f20 f38
+0
+1
+0 0 13 32
+1
+end_operator
+begin_operator
+up f20 f39
+0
+1
+0 0 13 33
+1
+end_operator
+begin_operator
+up f20 f40
+0
+1
+0 0 13 35
+1
+end_operator
+begin_operator
+up f20 f41
+0
+1
+0 0 13 36
+1
+end_operator
+begin_operator
+up f20 f42
+0
+1
+0 0 13 37
+1
+end_operator
+begin_operator
+up f20 f43
+0
+1
+0 0 13 38
+1
+end_operator
+begin_operator
+up f20 f44
+0
+1
+0 0 13 39
+1
+end_operator
+begin_operator
+up f20 f45
+0
+1
+0 0 13 40
+1
+end_operator
+begin_operator
+up f20 f46
+0
+1
+0 0 13 41
+1
+end_operator
+begin_operator
+up f20 f47
+0
+1
+0 0 13 42
+1
+end_operator
+begin_operator
+up f20 f48
+0
+1
+0 0 13 43
+1
+end_operator
+begin_operator
+up f20 f49
+0
+1
+0 0 13 44
+1
+end_operator
+begin_operator
+up f20 f50
+0
+1
+0 0 13 46
+1
+end_operator
+begin_operator
+up f20 f51
+0
+1
+0 0 13 47
+1
+end_operator
+begin_operator
+up f20 f52
+0
+1
+0 0 13 48
+1
+end_operator
+begin_operator
+up f20 f53
+0
+1
+0 0 13 49
+1
+end_operator
+begin_operator
+up f20 f54
+0
+1
+0 0 13 50
+1
+end_operator
+begin_operator
+up f20 f55
+0
+1
+0 0 13 51
+1
+end_operator
+begin_operator
+up f20 f56
+0
+1
+0 0 13 52
+1
+end_operator
+begin_operator
+up f20 f57
+0
+1
+0 0 13 53
+1
+end_operator
+begin_operator
+up f20 f58
+0
+1
+0 0 13 54
+1
+end_operator
+begin_operator
+up f20 f59
+0
+1
+0 0 13 55
+1
+end_operator
+begin_operator
+up f20 f60
+0
+1
+0 0 13 57
+1
+end_operator
+begin_operator
+up f20 f61
+0
+1
+0 0 13 58
+1
+end_operator
+begin_operator
+up f20 f62
+0
+1
+0 0 13 59
+1
+end_operator
+begin_operator
+up f20 f63
+0
+1
+0 0 13 60
+1
+end_operator
+begin_operator
+up f20 f64
+0
+1
+0 0 13 61
+1
+end_operator
+begin_operator
+up f20 f65
+0
+1
+0 0 13 62
+1
+end_operator
+begin_operator
+up f20 f66
+0
+1
+0 0 13 63
+1
+end_operator
+begin_operator
+up f20 f67
+0
+1
+0 0 13 64
+1
+end_operator
+begin_operator
+up f20 f68
+0
+1
+0 0 13 65
+1
+end_operator
+begin_operator
+up f20 f69
+0
+1
+0 0 13 66
+1
+end_operator
+begin_operator
+up f20 f70
+0
+1
+0 0 13 68
+1
+end_operator
+begin_operator
+up f20 f71
+0
+1
+0 0 13 69
+1
+end_operator
+begin_operator
+up f20 f72
+0
+1
+0 0 13 70
+1
+end_operator
+begin_operator
+up f20 f73
+0
+1
+0 0 13 71
+1
+end_operator
+begin_operator
+up f20 f74
+0
+1
+0 0 13 72
+1
+end_operator
+begin_operator
+up f20 f75
+0
+1
+0 0 13 73
+1
+end_operator
+begin_operator
+up f20 f76
+0
+1
+0 0 13 74
+1
+end_operator
+begin_operator
+up f20 f77
+0
+1
+0 0 13 75
+1
+end_operator
+begin_operator
+up f20 f78
+0
+1
+0 0 13 76
+1
+end_operator
+begin_operator
+up f20 f79
+0
+1
+0 0 13 77
+1
+end_operator
+begin_operator
+up f20 f80
+0
+1
+0 0 13 79
+1
+end_operator
+begin_operator
+up f20 f81
+0
+1
+0 0 13 80
+1
+end_operator
+begin_operator
+up f20 f82
+0
+1
+0 0 13 81
+1
+end_operator
+begin_operator
+up f20 f83
+0
+1
+0 0 13 82
+1
+end_operator
+begin_operator
+up f20 f84
+0
+1
+0 0 13 83
+1
+end_operator
+begin_operator
+up f20 f85
+0
+1
+0 0 13 84
+1
+end_operator
+begin_operator
+up f20 f86
+0
+1
+0 0 13 85
+1
+end_operator
+begin_operator
+up f20 f87
+0
+1
+0 0 13 86
+1
+end_operator
+begin_operator
+up f20 f88
+0
+1
+0 0 13 87
+1
+end_operator
+begin_operator
+up f20 f89
+0
+1
+0 0 13 88
+1
+end_operator
+begin_operator
+up f20 f90
+0
+1
+0 0 13 90
+1
+end_operator
+begin_operator
+up f20 f91
+0
+1
+0 0 13 91
+1
+end_operator
+begin_operator
+up f20 f92
+0
+1
+0 0 13 92
+1
+end_operator
+begin_operator
+up f20 f93
+0
+1
+0 0 13 93
+1
+end_operator
+begin_operator
+up f20 f94
+0
+1
+0 0 13 94
+1
+end_operator
+begin_operator
+up f20 f95
+0
+1
+0 0 13 95
+1
+end_operator
+begin_operator
+up f20 f96
+0
+1
+0 0 13 96
+1
+end_operator
+begin_operator
+up f20 f97
+0
+1
+0 0 13 97
+1
+end_operator
+begin_operator
+up f20 f98
+0
+1
+0 0 13 98
+1
+end_operator
+begin_operator
+up f20 f99
+0
+1
+0 0 13 99
+1
+end_operator
+begin_operator
+up f21 f100
+0
+1
+0 0 14 2
+1
+end_operator
+begin_operator
+up f21 f22
+0
+1
+0 0 14 15
+1
+end_operator
+begin_operator
+up f21 f23
+0
+1
+0 0 14 16
+1
+end_operator
+begin_operator
+up f21 f24
+0
+1
+0 0 14 17
+1
+end_operator
+begin_operator
+up f21 f25
+0
+1
+0 0 14 18
+1
+end_operator
+begin_operator
+up f21 f26
+0
+1
+0 0 14 19
+1
+end_operator
+begin_operator
+up f21 f27
+0
+1
+0 0 14 20
+1
+end_operator
+begin_operator
+up f21 f28
+0
+1
+0 0 14 21
+1
+end_operator
+begin_operator
+up f21 f29
+0
+1
+0 0 14 22
+1
+end_operator
+begin_operator
+up f21 f30
+0
+1
+0 0 14 24
+1
+end_operator
+begin_operator
+up f21 f31
+0
+1
+0 0 14 25
+1
+end_operator
+begin_operator
+up f21 f32
+0
+1
+0 0 14 26
+1
+end_operator
+begin_operator
+up f21 f33
+0
+1
+0 0 14 27
+1
+end_operator
+begin_operator
+up f21 f34
+0
+1
+0 0 14 28
+1
+end_operator
+begin_operator
+up f21 f35
+0
+1
+0 0 14 29
+1
+end_operator
+begin_operator
+up f21 f36
+0
+1
+0 0 14 30
+1
+end_operator
+begin_operator
+up f21 f37
+0
+1
+0 0 14 31
+1
+end_operator
+begin_operator
+up f21 f38
+0
+1
+0 0 14 32
+1
+end_operator
+begin_operator
+up f21 f39
+0
+1
+0 0 14 33
+1
+end_operator
+begin_operator
+up f21 f40
+0
+1
+0 0 14 35
+1
+end_operator
+begin_operator
+up f21 f41
+0
+1
+0 0 14 36
+1
+end_operator
+begin_operator
+up f21 f42
+0
+1
+0 0 14 37
+1
+end_operator
+begin_operator
+up f21 f43
+0
+1
+0 0 14 38
+1
+end_operator
+begin_operator
+up f21 f44
+0
+1
+0 0 14 39
+1
+end_operator
+begin_operator
+up f21 f45
+0
+1
+0 0 14 40
+1
+end_operator
+begin_operator
+up f21 f46
+0
+1
+0 0 14 41
+1
+end_operator
+begin_operator
+up f21 f47
+0
+1
+0 0 14 42
+1
+end_operator
+begin_operator
+up f21 f48
+0
+1
+0 0 14 43
+1
+end_operator
+begin_operator
+up f21 f49
+0
+1
+0 0 14 44
+1
+end_operator
+begin_operator
+up f21 f50
+0
+1
+0 0 14 46
+1
+end_operator
+begin_operator
+up f21 f51
+0
+1
+0 0 14 47
+1
+end_operator
+begin_operator
+up f21 f52
+0
+1
+0 0 14 48
+1
+end_operator
+begin_operator
+up f21 f53
+0
+1
+0 0 14 49
+1
+end_operator
+begin_operator
+up f21 f54
+0
+1
+0 0 14 50
+1
+end_operator
+begin_operator
+up f21 f55
+0
+1
+0 0 14 51
+1
+end_operator
+begin_operator
+up f21 f56
+0
+1
+0 0 14 52
+1
+end_operator
+begin_operator
+up f21 f57
+0
+1
+0 0 14 53
+1
+end_operator
+begin_operator
+up f21 f58
+0
+1
+0 0 14 54
+1
+end_operator
+begin_operator
+up f21 f59
+0
+1
+0 0 14 55
+1
+end_operator
+begin_operator
+up f21 f60
+0
+1
+0 0 14 57
+1
+end_operator
+begin_operator
+up f21 f61
+0
+1
+0 0 14 58
+1
+end_operator
+begin_operator
+up f21 f62
+0
+1
+0 0 14 59
+1
+end_operator
+begin_operator
+up f21 f63
+0
+1
+0 0 14 60
+1
+end_operator
+begin_operator
+up f21 f64
+0
+1
+0 0 14 61
+1
+end_operator
+begin_operator
+up f21 f65
+0
+1
+0 0 14 62
+1
+end_operator
+begin_operator
+up f21 f66
+0
+1
+0 0 14 63
+1
+end_operator
+begin_operator
+up f21 f67
+0
+1
+0 0 14 64
+1
+end_operator
+begin_operator
+up f21 f68
+0
+1
+0 0 14 65
+1
+end_operator
+begin_operator
+up f21 f69
+0
+1
+0 0 14 66
+1
+end_operator
+begin_operator
+up f21 f70
+0
+1
+0 0 14 68
+1
+end_operator
+begin_operator
+up f21 f71
+0
+1
+0 0 14 69
+1
+end_operator
+begin_operator
+up f21 f72
+0
+1
+0 0 14 70
+1
+end_operator
+begin_operator
+up f21 f73
+0
+1
+0 0 14 71
+1
+end_operator
+begin_operator
+up f21 f74
+0
+1
+0 0 14 72
+1
+end_operator
+begin_operator
+up f21 f75
+0
+1
+0 0 14 73
+1
+end_operator
+begin_operator
+up f21 f76
+0
+1
+0 0 14 74
+1
+end_operator
+begin_operator
+up f21 f77
+0
+1
+0 0 14 75
+1
+end_operator
+begin_operator
+up f21 f78
+0
+1
+0 0 14 76
+1
+end_operator
+begin_operator
+up f21 f79
+0
+1
+0 0 14 77
+1
+end_operator
+begin_operator
+up f21 f80
+0
+1
+0 0 14 79
+1
+end_operator
+begin_operator
+up f21 f81
+0
+1
+0 0 14 80
+1
+end_operator
+begin_operator
+up f21 f82
+0
+1
+0 0 14 81
+1
+end_operator
+begin_operator
+up f21 f83
+0
+1
+0 0 14 82
+1
+end_operator
+begin_operator
+up f21 f84
+0
+1
+0 0 14 83
+1
+end_operator
+begin_operator
+up f21 f85
+0
+1
+0 0 14 84
+1
+end_operator
+begin_operator
+up f21 f86
+0
+1
+0 0 14 85
+1
+end_operator
+begin_operator
+up f21 f87
+0
+1
+0 0 14 86
+1
+end_operator
+begin_operator
+up f21 f88
+0
+1
+0 0 14 87
+1
+end_operator
+begin_operator
+up f21 f89
+0
+1
+0 0 14 88
+1
+end_operator
+begin_operator
+up f21 f90
+0
+1
+0 0 14 90
+1
+end_operator
+begin_operator
+up f21 f91
+0
+1
+0 0 14 91
+1
+end_operator
+begin_operator
+up f21 f92
+0
+1
+0 0 14 92
+1
+end_operator
+begin_operator
+up f21 f93
+0
+1
+0 0 14 93
+1
+end_operator
+begin_operator
+up f21 f94
+0
+1
+0 0 14 94
+1
+end_operator
+begin_operator
+up f21 f95
+0
+1
+0 0 14 95
+1
+end_operator
+begin_operator
+up f21 f96
+0
+1
+0 0 14 96
+1
+end_operator
+begin_operator
+up f21 f97
+0
+1
+0 0 14 97
+1
+end_operator
+begin_operator
+up f21 f98
+0
+1
+0 0 14 98
+1
+end_operator
+begin_operator
+up f21 f99
+0
+1
+0 0 14 99
+1
+end_operator
+begin_operator
+up f22 f100
+0
+1
+0 0 15 2
+1
+end_operator
+begin_operator
+up f22 f23
+0
+1
+0 0 15 16
+1
+end_operator
+begin_operator
+up f22 f24
+0
+1
+0 0 15 17
+1
+end_operator
+begin_operator
+up f22 f25
+0
+1
+0 0 15 18
+1
+end_operator
+begin_operator
+up f22 f26
+0
+1
+0 0 15 19
+1
+end_operator
+begin_operator
+up f22 f27
+0
+1
+0 0 15 20
+1
+end_operator
+begin_operator
+up f22 f28
+0
+1
+0 0 15 21
+1
+end_operator
+begin_operator
+up f22 f29
+0
+1
+0 0 15 22
+1
+end_operator
+begin_operator
+up f22 f30
+0
+1
+0 0 15 24
+1
+end_operator
+begin_operator
+up f22 f31
+0
+1
+0 0 15 25
+1
+end_operator
+begin_operator
+up f22 f32
+0
+1
+0 0 15 26
+1
+end_operator
+begin_operator
+up f22 f33
+0
+1
+0 0 15 27
+1
+end_operator
+begin_operator
+up f22 f34
+0
+1
+0 0 15 28
+1
+end_operator
+begin_operator
+up f22 f35
+0
+1
+0 0 15 29
+1
+end_operator
+begin_operator
+up f22 f36
+0
+1
+0 0 15 30
+1
+end_operator
+begin_operator
+up f22 f37
+0
+1
+0 0 15 31
+1
+end_operator
+begin_operator
+up f22 f38
+0
+1
+0 0 15 32
+1
+end_operator
+begin_operator
+up f22 f39
+0
+1
+0 0 15 33
+1
+end_operator
+begin_operator
+up f22 f40
+0
+1
+0 0 15 35
+1
+end_operator
+begin_operator
+up f22 f41
+0
+1
+0 0 15 36
+1
+end_operator
+begin_operator
+up f22 f42
+0
+1
+0 0 15 37
+1
+end_operator
+begin_operator
+up f22 f43
+0
+1
+0 0 15 38
+1
+end_operator
+begin_operator
+up f22 f44
+0
+1
+0 0 15 39
+1
+end_operator
+begin_operator
+up f22 f45
+0
+1
+0 0 15 40
+1
+end_operator
+begin_operator
+up f22 f46
+0
+1
+0 0 15 41
+1
+end_operator
+begin_operator
+up f22 f47
+0
+1
+0 0 15 42
+1
+end_operator
+begin_operator
+up f22 f48
+0
+1
+0 0 15 43
+1
+end_operator
+begin_operator
+up f22 f49
+0
+1
+0 0 15 44
+1
+end_operator
+begin_operator
+up f22 f50
+0
+1
+0 0 15 46
+1
+end_operator
+begin_operator
+up f22 f51
+0
+1
+0 0 15 47
+1
+end_operator
+begin_operator
+up f22 f52
+0
+1
+0 0 15 48
+1
+end_operator
+begin_operator
+up f22 f53
+0
+1
+0 0 15 49
+1
+end_operator
+begin_operator
+up f22 f54
+0
+1
+0 0 15 50
+1
+end_operator
+begin_operator
+up f22 f55
+0
+1
+0 0 15 51
+1
+end_operator
+begin_operator
+up f22 f56
+0
+1
+0 0 15 52
+1
+end_operator
+begin_operator
+up f22 f57
+0
+1
+0 0 15 53
+1
+end_operator
+begin_operator
+up f22 f58
+0
+1
+0 0 15 54
+1
+end_operator
+begin_operator
+up f22 f59
+0
+1
+0 0 15 55
+1
+end_operator
+begin_operator
+up f22 f60
+0
+1
+0 0 15 57
+1
+end_operator
+begin_operator
+up f22 f61
+0
+1
+0 0 15 58
+1
+end_operator
+begin_operator
+up f22 f62
+0
+1
+0 0 15 59
+1
+end_operator
+begin_operator
+up f22 f63
+0
+1
+0 0 15 60
+1
+end_operator
+begin_operator
+up f22 f64
+0
+1
+0 0 15 61
+1
+end_operator
+begin_operator
+up f22 f65
+0
+1
+0 0 15 62
+1
+end_operator
+begin_operator
+up f22 f66
+0
+1
+0 0 15 63
+1
+end_operator
+begin_operator
+up f22 f67
+0
+1
+0 0 15 64
+1
+end_operator
+begin_operator
+up f22 f68
+0
+1
+0 0 15 65
+1
+end_operator
+begin_operator
+up f22 f69
+0
+1
+0 0 15 66
+1
+end_operator
+begin_operator
+up f22 f70
+0
+1
+0 0 15 68
+1
+end_operator
+begin_operator
+up f22 f71
+0
+1
+0 0 15 69
+1
+end_operator
+begin_operator
+up f22 f72
+0
+1
+0 0 15 70
+1
+end_operator
+begin_operator
+up f22 f73
+0
+1
+0 0 15 71
+1
+end_operator
+begin_operator
+up f22 f74
+0
+1
+0 0 15 72
+1
+end_operator
+begin_operator
+up f22 f75
+0
+1
+0 0 15 73
+1
+end_operator
+begin_operator
+up f22 f76
+0
+1
+0 0 15 74
+1
+end_operator
+begin_operator
+up f22 f77
+0
+1
+0 0 15 75
+1
+end_operator
+begin_operator
+up f22 f78
+0
+1
+0 0 15 76
+1
+end_operator
+begin_operator
+up f22 f79
+0
+1
+0 0 15 77
+1
+end_operator
+begin_operator
+up f22 f80
+0
+1
+0 0 15 79
+1
+end_operator
+begin_operator
+up f22 f81
+0
+1
+0 0 15 80
+1
+end_operator
+begin_operator
+up f22 f82
+0
+1
+0 0 15 81
+1
+end_operator
+begin_operator
+up f22 f83
+0
+1
+0 0 15 82
+1
+end_operator
+begin_operator
+up f22 f84
+0
+1
+0 0 15 83
+1
+end_operator
+begin_operator
+up f22 f85
+0
+1
+0 0 15 84
+1
+end_operator
+begin_operator
+up f22 f86
+0
+1
+0 0 15 85
+1
+end_operator
+begin_operator
+up f22 f87
+0
+1
+0 0 15 86
+1
+end_operator
+begin_operator
+up f22 f88
+0
+1
+0 0 15 87
+1
+end_operator
+begin_operator
+up f22 f89
+0
+1
+0 0 15 88
+1
+end_operator
+begin_operator
+up f22 f90
+0
+1
+0 0 15 90
+1
+end_operator
+begin_operator
+up f22 f91
+0
+1
+0 0 15 91
+1
+end_operator
+begin_operator
+up f22 f92
+0
+1
+0 0 15 92
+1
+end_operator
+begin_operator
+up f22 f93
+0
+1
+0 0 15 93
+1
+end_operator
+begin_operator
+up f22 f94
+0
+1
+0 0 15 94
+1
+end_operator
+begin_operator
+up f22 f95
+0
+1
+0 0 15 95
+1
+end_operator
+begin_operator
+up f22 f96
+0
+1
+0 0 15 96
+1
+end_operator
+begin_operator
+up f22 f97
+0
+1
+0 0 15 97
+1
+end_operator
+begin_operator
+up f22 f98
+0
+1
+0 0 15 98
+1
+end_operator
+begin_operator
+up f22 f99
+0
+1
+0 0 15 99
+1
+end_operator
+begin_operator
+up f23 f100
+0
+1
+0 0 16 2
+1
+end_operator
+begin_operator
+up f23 f24
+0
+1
+0 0 16 17
+1
+end_operator
+begin_operator
+up f23 f25
+0
+1
+0 0 16 18
+1
+end_operator
+begin_operator
+up f23 f26
+0
+1
+0 0 16 19
+1
+end_operator
+begin_operator
+up f23 f27
+0
+1
+0 0 16 20
+1
+end_operator
+begin_operator
+up f23 f28
+0
+1
+0 0 16 21
+1
+end_operator
+begin_operator
+up f23 f29
+0
+1
+0 0 16 22
+1
+end_operator
+begin_operator
+up f23 f30
+0
+1
+0 0 16 24
+1
+end_operator
+begin_operator
+up f23 f31
+0
+1
+0 0 16 25
+1
+end_operator
+begin_operator
+up f23 f32
+0
+1
+0 0 16 26
+1
+end_operator
+begin_operator
+up f23 f33
+0
+1
+0 0 16 27
+1
+end_operator
+begin_operator
+up f23 f34
+0
+1
+0 0 16 28
+1
+end_operator
+begin_operator
+up f23 f35
+0
+1
+0 0 16 29
+1
+end_operator
+begin_operator
+up f23 f36
+0
+1
+0 0 16 30
+1
+end_operator
+begin_operator
+up f23 f37
+0
+1
+0 0 16 31
+1
+end_operator
+begin_operator
+up f23 f38
+0
+1
+0 0 16 32
+1
+end_operator
+begin_operator
+up f23 f39
+0
+1
+0 0 16 33
+1
+end_operator
+begin_operator
+up f23 f40
+0
+1
+0 0 16 35
+1
+end_operator
+begin_operator
+up f23 f41
+0
+1
+0 0 16 36
+1
+end_operator
+begin_operator
+up f23 f42
+0
+1
+0 0 16 37
+1
+end_operator
+begin_operator
+up f23 f43
+0
+1
+0 0 16 38
+1
+end_operator
+begin_operator
+up f23 f44
+0
+1
+0 0 16 39
+1
+end_operator
+begin_operator
+up f23 f45
+0
+1
+0 0 16 40
+1
+end_operator
+begin_operator
+up f23 f46
+0
+1
+0 0 16 41
+1
+end_operator
+begin_operator
+up f23 f47
+0
+1
+0 0 16 42
+1
+end_operator
+begin_operator
+up f23 f48
+0
+1
+0 0 16 43
+1
+end_operator
+begin_operator
+up f23 f49
+0
+1
+0 0 16 44
+1
+end_operator
+begin_operator
+up f23 f50
+0
+1
+0 0 16 46
+1
+end_operator
+begin_operator
+up f23 f51
+0
+1
+0 0 16 47
+1
+end_operator
+begin_operator
+up f23 f52
+0
+1
+0 0 16 48
+1
+end_operator
+begin_operator
+up f23 f53
+0
+1
+0 0 16 49
+1
+end_operator
+begin_operator
+up f23 f54
+0
+1
+0 0 16 50
+1
+end_operator
+begin_operator
+up f23 f55
+0
+1
+0 0 16 51
+1
+end_operator
+begin_operator
+up f23 f56
+0
+1
+0 0 16 52
+1
+end_operator
+begin_operator
+up f23 f57
+0
+1
+0 0 16 53
+1
+end_operator
+begin_operator
+up f23 f58
+0
+1
+0 0 16 54
+1
+end_operator
+begin_operator
+up f23 f59
+0
+1
+0 0 16 55
+1
+end_operator
+begin_operator
+up f23 f60
+0
+1
+0 0 16 57
+1
+end_operator
+begin_operator
+up f23 f61
+0
+1
+0 0 16 58
+1
+end_operator
+begin_operator
+up f23 f62
+0
+1
+0 0 16 59
+1
+end_operator
+begin_operator
+up f23 f63
+0
+1
+0 0 16 60
+1
+end_operator
+begin_operator
+up f23 f64
+0
+1
+0 0 16 61
+1
+end_operator
+begin_operator
+up f23 f65
+0
+1
+0 0 16 62
+1
+end_operator
+begin_operator
+up f23 f66
+0
+1
+0 0 16 63
+1
+end_operator
+begin_operator
+up f23 f67
+0
+1
+0 0 16 64
+1
+end_operator
+begin_operator
+up f23 f68
+0
+1
+0 0 16 65
+1
+end_operator
+begin_operator
+up f23 f69
+0
+1
+0 0 16 66
+1
+end_operator
+begin_operator
+up f23 f70
+0
+1
+0 0 16 68
+1
+end_operator
+begin_operator
+up f23 f71
+0
+1
+0 0 16 69
+1
+end_operator
+begin_operator
+up f23 f72
+0
+1
+0 0 16 70
+1
+end_operator
+begin_operator
+up f23 f73
+0
+1
+0 0 16 71
+1
+end_operator
+begin_operator
+up f23 f74
+0
+1
+0 0 16 72
+1
+end_operator
+begin_operator
+up f23 f75
+0
+1
+0 0 16 73
+1
+end_operator
+begin_operator
+up f23 f76
+0
+1
+0 0 16 74
+1
+end_operator
+begin_operator
+up f23 f77
+0
+1
+0 0 16 75
+1
+end_operator
+begin_operator
+up f23 f78
+0
+1
+0 0 16 76
+1
+end_operator
+begin_operator
+up f23 f79
+0
+1
+0 0 16 77
+1
+end_operator
+begin_operator
+up f23 f80
+0
+1
+0 0 16 79
+1
+end_operator
+begin_operator
+up f23 f81
+0
+1
+0 0 16 80
+1
+end_operator
+begin_operator
+up f23 f82
+0
+1
+0 0 16 81
+1
+end_operator
+begin_operator
+up f23 f83
+0
+1
+0 0 16 82
+1
+end_operator
+begin_operator
+up f23 f84
+0
+1
+0 0 16 83
+1
+end_operator
+begin_operator
+up f23 f85
+0
+1
+0 0 16 84
+1
+end_operator
+begin_operator
+up f23 f86
+0
+1
+0 0 16 85
+1
+end_operator
+begin_operator
+up f23 f87
+0
+1
+0 0 16 86
+1
+end_operator
+begin_operator
+up f23 f88
+0
+1
+0 0 16 87
+1
+end_operator
+begin_operator
+up f23 f89
+0
+1
+0 0 16 88
+1
+end_operator
+begin_operator
+up f23 f90
+0
+1
+0 0 16 90
+1
+end_operator
+begin_operator
+up f23 f91
+0
+1
+0 0 16 91
+1
+end_operator
+begin_operator
+up f23 f92
+0
+1
+0 0 16 92
+1
+end_operator
+begin_operator
+up f23 f93
+0
+1
+0 0 16 93
+1
+end_operator
+begin_operator
+up f23 f94
+0
+1
+0 0 16 94
+1
+end_operator
+begin_operator
+up f23 f95
+0
+1
+0 0 16 95
+1
+end_operator
+begin_operator
+up f23 f96
+0
+1
+0 0 16 96
+1
+end_operator
+begin_operator
+up f23 f97
+0
+1
+0 0 16 97
+1
+end_operator
+begin_operator
+up f23 f98
+0
+1
+0 0 16 98
+1
+end_operator
+begin_operator
+up f23 f99
+0
+1
+0 0 16 99
+1
+end_operator
+begin_operator
+up f24 f100
+0
+1
+0 0 17 2
+1
+end_operator
+begin_operator
+up f24 f25
+0
+1
+0 0 17 18
+1
+end_operator
+begin_operator
+up f24 f26
+0
+1
+0 0 17 19
+1
+end_operator
+begin_operator
+up f24 f27
+0
+1
+0 0 17 20
+1
+end_operator
+begin_operator
+up f24 f28
+0
+1
+0 0 17 21
+1
+end_operator
+begin_operator
+up f24 f29
+0
+1
+0 0 17 22
+1
+end_operator
+begin_operator
+up f24 f30
+0
+1
+0 0 17 24
+1
+end_operator
+begin_operator
+up f24 f31
+0
+1
+0 0 17 25
+1
+end_operator
+begin_operator
+up f24 f32
+0
+1
+0 0 17 26
+1
+end_operator
+begin_operator
+up f24 f33
+0
+1
+0 0 17 27
+1
+end_operator
+begin_operator
+up f24 f34
+0
+1
+0 0 17 28
+1
+end_operator
+begin_operator
+up f24 f35
+0
+1
+0 0 17 29
+1
+end_operator
+begin_operator
+up f24 f36
+0
+1
+0 0 17 30
+1
+end_operator
+begin_operator
+up f24 f37
+0
+1
+0 0 17 31
+1
+end_operator
+begin_operator
+up f24 f38
+0
+1
+0 0 17 32
+1
+end_operator
+begin_operator
+up f24 f39
+0
+1
+0 0 17 33
+1
+end_operator
+begin_operator
+up f24 f40
+0
+1
+0 0 17 35
+1
+end_operator
+begin_operator
+up f24 f41
+0
+1
+0 0 17 36
+1
+end_operator
+begin_operator
+up f24 f42
+0
+1
+0 0 17 37
+1
+end_operator
+begin_operator
+up f24 f43
+0
+1
+0 0 17 38
+1
+end_operator
+begin_operator
+up f24 f44
+0
+1
+0 0 17 39
+1
+end_operator
+begin_operator
+up f24 f45
+0
+1
+0 0 17 40
+1
+end_operator
+begin_operator
+up f24 f46
+0
+1
+0 0 17 41
+1
+end_operator
+begin_operator
+up f24 f47
+0
+1
+0 0 17 42
+1
+end_operator
+begin_operator
+up f24 f48
+0
+1
+0 0 17 43
+1
+end_operator
+begin_operator
+up f24 f49
+0
+1
+0 0 17 44
+1
+end_operator
+begin_operator
+up f24 f50
+0
+1
+0 0 17 46
+1
+end_operator
+begin_operator
+up f24 f51
+0
+1
+0 0 17 47
+1
+end_operator
+begin_operator
+up f24 f52
+0
+1
+0 0 17 48
+1
+end_operator
+begin_operator
+up f24 f53
+0
+1
+0 0 17 49
+1
+end_operator
+begin_operator
+up f24 f54
+0
+1
+0 0 17 50
+1
+end_operator
+begin_operator
+up f24 f55
+0
+1
+0 0 17 51
+1
+end_operator
+begin_operator
+up f24 f56
+0
+1
+0 0 17 52
+1
+end_operator
+begin_operator
+up f24 f57
+0
+1
+0 0 17 53
+1
+end_operator
+begin_operator
+up f24 f58
+0
+1
+0 0 17 54
+1
+end_operator
+begin_operator
+up f24 f59
+0
+1
+0 0 17 55
+1
+end_operator
+begin_operator
+up f24 f60
+0
+1
+0 0 17 57
+1
+end_operator
+begin_operator
+up f24 f61
+0
+1
+0 0 17 58
+1
+end_operator
+begin_operator
+up f24 f62
+0
+1
+0 0 17 59
+1
+end_operator
+begin_operator
+up f24 f63
+0
+1
+0 0 17 60
+1
+end_operator
+begin_operator
+up f24 f64
+0
+1
+0 0 17 61
+1
+end_operator
+begin_operator
+up f24 f65
+0
+1
+0 0 17 62
+1
+end_operator
+begin_operator
+up f24 f66
+0
+1
+0 0 17 63
+1
+end_operator
+begin_operator
+up f24 f67
+0
+1
+0 0 17 64
+1
+end_operator
+begin_operator
+up f24 f68
+0
+1
+0 0 17 65
+1
+end_operator
+begin_operator
+up f24 f69
+0
+1
+0 0 17 66
+1
+end_operator
+begin_operator
+up f24 f70
+0
+1
+0 0 17 68
+1
+end_operator
+begin_operator
+up f24 f71
+0
+1
+0 0 17 69
+1
+end_operator
+begin_operator
+up f24 f72
+0
+1
+0 0 17 70
+1
+end_operator
+begin_operator
+up f24 f73
+0
+1
+0 0 17 71
+1
+end_operator
+begin_operator
+up f24 f74
+0
+1
+0 0 17 72
+1
+end_operator
+begin_operator
+up f24 f75
+0
+1
+0 0 17 73
+1
+end_operator
+begin_operator
+up f24 f76
+0
+1
+0 0 17 74
+1
+end_operator
+begin_operator
+up f24 f77
+0
+1
+0 0 17 75
+1
+end_operator
+begin_operator
+up f24 f78
+0
+1
+0 0 17 76
+1
+end_operator
+begin_operator
+up f24 f79
+0
+1
+0 0 17 77
+1
+end_operator
+begin_operator
+up f24 f80
+0
+1
+0 0 17 79
+1
+end_operator
+begin_operator
+up f24 f81
+0
+1
+0 0 17 80
+1
+end_operator
+begin_operator
+up f24 f82
+0
+1
+0 0 17 81
+1
+end_operator
+begin_operator
+up f24 f83
+0
+1
+0 0 17 82
+1
+end_operator
+begin_operator
+up f24 f84
+0
+1
+0 0 17 83
+1
+end_operator
+begin_operator
+up f24 f85
+0
+1
+0 0 17 84
+1
+end_operator
+begin_operator
+up f24 f86
+0
+1
+0 0 17 85
+1
+end_operator
+begin_operator
+up f24 f87
+0
+1
+0 0 17 86
+1
+end_operator
+begin_operator
+up f24 f88
+0
+1
+0 0 17 87
+1
+end_operator
+begin_operator
+up f24 f89
+0
+1
+0 0 17 88
+1
+end_operator
+begin_operator
+up f24 f90
+0
+1
+0 0 17 90
+1
+end_operator
+begin_operator
+up f24 f91
+0
+1
+0 0 17 91
+1
+end_operator
+begin_operator
+up f24 f92
+0
+1
+0 0 17 92
+1
+end_operator
+begin_operator
+up f24 f93
+0
+1
+0 0 17 93
+1
+end_operator
+begin_operator
+up f24 f94
+0
+1
+0 0 17 94
+1
+end_operator
+begin_operator
+up f24 f95
+0
+1
+0 0 17 95
+1
+end_operator
+begin_operator
+up f24 f96
+0
+1
+0 0 17 96
+1
+end_operator
+begin_operator
+up f24 f97
+0
+1
+0 0 17 97
+1
+end_operator
+begin_operator
+up f24 f98
+0
+1
+0 0 17 98
+1
+end_operator
+begin_operator
+up f24 f99
+0
+1
+0 0 17 99
+1
+end_operator
+begin_operator
+up f25 f100
+0
+1
+0 0 18 2
+1
+end_operator
+begin_operator
+up f25 f26
+0
+1
+0 0 18 19
+1
+end_operator
+begin_operator
+up f25 f27
+0
+1
+0 0 18 20
+1
+end_operator
+begin_operator
+up f25 f28
+0
+1
+0 0 18 21
+1
+end_operator
+begin_operator
+up f25 f29
+0
+1
+0 0 18 22
+1
+end_operator
+begin_operator
+up f25 f30
+0
+1
+0 0 18 24
+1
+end_operator
+begin_operator
+up f25 f31
+0
+1
+0 0 18 25
+1
+end_operator
+begin_operator
+up f25 f32
+0
+1
+0 0 18 26
+1
+end_operator
+begin_operator
+up f25 f33
+0
+1
+0 0 18 27
+1
+end_operator
+begin_operator
+up f25 f34
+0
+1
+0 0 18 28
+1
+end_operator
+begin_operator
+up f25 f35
+0
+1
+0 0 18 29
+1
+end_operator
+begin_operator
+up f25 f36
+0
+1
+0 0 18 30
+1
+end_operator
+begin_operator
+up f25 f37
+0
+1
+0 0 18 31
+1
+end_operator
+begin_operator
+up f25 f38
+0
+1
+0 0 18 32
+1
+end_operator
+begin_operator
+up f25 f39
+0
+1
+0 0 18 33
+1
+end_operator
+begin_operator
+up f25 f40
+0
+1
+0 0 18 35
+1
+end_operator
+begin_operator
+up f25 f41
+0
+1
+0 0 18 36
+1
+end_operator
+begin_operator
+up f25 f42
+0
+1
+0 0 18 37
+1
+end_operator
+begin_operator
+up f25 f43
+0
+1
+0 0 18 38
+1
+end_operator
+begin_operator
+up f25 f44
+0
+1
+0 0 18 39
+1
+end_operator
+begin_operator
+up f25 f45
+0
+1
+0 0 18 40
+1
+end_operator
+begin_operator
+up f25 f46
+0
+1
+0 0 18 41
+1
+end_operator
+begin_operator
+up f25 f47
+0
+1
+0 0 18 42
+1
+end_operator
+begin_operator
+up f25 f48
+0
+1
+0 0 18 43
+1
+end_operator
+begin_operator
+up f25 f49
+0
+1
+0 0 18 44
+1
+end_operator
+begin_operator
+up f25 f50
+0
+1
+0 0 18 46
+1
+end_operator
+begin_operator
+up f25 f51
+0
+1
+0 0 18 47
+1
+end_operator
+begin_operator
+up f25 f52
+0
+1
+0 0 18 48
+1
+end_operator
+begin_operator
+up f25 f53
+0
+1
+0 0 18 49
+1
+end_operator
+begin_operator
+up f25 f54
+0
+1
+0 0 18 50
+1
+end_operator
+begin_operator
+up f25 f55
+0
+1
+0 0 18 51
+1
+end_operator
+begin_operator
+up f25 f56
+0
+1
+0 0 18 52
+1
+end_operator
+begin_operator
+up f25 f57
+0
+1
+0 0 18 53
+1
+end_operator
+begin_operator
+up f25 f58
+0
+1
+0 0 18 54
+1
+end_operator
+begin_operator
+up f25 f59
+0
+1
+0 0 18 55
+1
+end_operator
+begin_operator
+up f25 f60
+0
+1
+0 0 18 57
+1
+end_operator
+begin_operator
+up f25 f61
+0
+1
+0 0 18 58
+1
+end_operator
+begin_operator
+up f25 f62
+0
+1
+0 0 18 59
+1
+end_operator
+begin_operator
+up f25 f63
+0
+1
+0 0 18 60
+1
+end_operator
+begin_operator
+up f25 f64
+0
+1
+0 0 18 61
+1
+end_operator
+begin_operator
+up f25 f65
+0
+1
+0 0 18 62
+1
+end_operator
+begin_operator
+up f25 f66
+0
+1
+0 0 18 63
+1
+end_operator
+begin_operator
+up f25 f67
+0
+1
+0 0 18 64
+1
+end_operator
+begin_operator
+up f25 f68
+0
+1
+0 0 18 65
+1
+end_operator
+begin_operator
+up f25 f69
+0
+1
+0 0 18 66
+1
+end_operator
+begin_operator
+up f25 f70
+0
+1
+0 0 18 68
+1
+end_operator
+begin_operator
+up f25 f71
+0
+1
+0 0 18 69
+1
+end_operator
+begin_operator
+up f25 f72
+0
+1
+0 0 18 70
+1
+end_operator
+begin_operator
+up f25 f73
+0
+1
+0 0 18 71
+1
+end_operator
+begin_operator
+up f25 f74
+0
+1
+0 0 18 72
+1
+end_operator
+begin_operator
+up f25 f75
+0
+1
+0 0 18 73
+1
+end_operator
+begin_operator
+up f25 f76
+0
+1
+0 0 18 74
+1
+end_operator
+begin_operator
+up f25 f77
+0
+1
+0 0 18 75
+1
+end_operator
+begin_operator
+up f25 f78
+0
+1
+0 0 18 76
+1
+end_operator
+begin_operator
+up f25 f79
+0
+1
+0 0 18 77
+1
+end_operator
+begin_operator
+up f25 f80
+0
+1
+0 0 18 79
+1
+end_operator
+begin_operator
+up f25 f81
+0
+1
+0 0 18 80
+1
+end_operator
+begin_operator
+up f25 f82
+0
+1
+0 0 18 81
+1
+end_operator
+begin_operator
+up f25 f83
+0
+1
+0 0 18 82
+1
+end_operator
+begin_operator
+up f25 f84
+0
+1
+0 0 18 83
+1
+end_operator
+begin_operator
+up f25 f85
+0
+1
+0 0 18 84
+1
+end_operator
+begin_operator
+up f25 f86
+0
+1
+0 0 18 85
+1
+end_operator
+begin_operator
+up f25 f87
+0
+1
+0 0 18 86
+1
+end_operator
+begin_operator
+up f25 f88
+0
+1
+0 0 18 87
+1
+end_operator
+begin_operator
+up f25 f89
+0
+1
+0 0 18 88
+1
+end_operator
+begin_operator
+up f25 f90
+0
+1
+0 0 18 90
+1
+end_operator
+begin_operator
+up f25 f91
+0
+1
+0 0 18 91
+1
+end_operator
+begin_operator
+up f25 f92
+0
+1
+0 0 18 92
+1
+end_operator
+begin_operator
+up f25 f93
+0
+1
+0 0 18 93
+1
+end_operator
+begin_operator
+up f25 f94
+0
+1
+0 0 18 94
+1
+end_operator
+begin_operator
+up f25 f95
+0
+1
+0 0 18 95
+1
+end_operator
+begin_operator
+up f25 f96
+0
+1
+0 0 18 96
+1
+end_operator
+begin_operator
+up f25 f97
+0
+1
+0 0 18 97
+1
+end_operator
+begin_operator
+up f25 f98
+0
+1
+0 0 18 98
+1
+end_operator
+begin_operator
+up f25 f99
+0
+1
+0 0 18 99
+1
+end_operator
+begin_operator
+up f26 f100
+0
+1
+0 0 19 2
+1
+end_operator
+begin_operator
+up f26 f27
+0
+1
+0 0 19 20
+1
+end_operator
+begin_operator
+up f26 f28
+0
+1
+0 0 19 21
+1
+end_operator
+begin_operator
+up f26 f29
+0
+1
+0 0 19 22
+1
+end_operator
+begin_operator
+up f26 f30
+0
+1
+0 0 19 24
+1
+end_operator
+begin_operator
+up f26 f31
+0
+1
+0 0 19 25
+1
+end_operator
+begin_operator
+up f26 f32
+0
+1
+0 0 19 26
+1
+end_operator
+begin_operator
+up f26 f33
+0
+1
+0 0 19 27
+1
+end_operator
+begin_operator
+up f26 f34
+0
+1
+0 0 19 28
+1
+end_operator
+begin_operator
+up f26 f35
+0
+1
+0 0 19 29
+1
+end_operator
+begin_operator
+up f26 f36
+0
+1
+0 0 19 30
+1
+end_operator
+begin_operator
+up f26 f37
+0
+1
+0 0 19 31
+1
+end_operator
+begin_operator
+up f26 f38
+0
+1
+0 0 19 32
+1
+end_operator
+begin_operator
+up f26 f39
+0
+1
+0 0 19 33
+1
+end_operator
+begin_operator
+up f26 f40
+0
+1
+0 0 19 35
+1
+end_operator
+begin_operator
+up f26 f41
+0
+1
+0 0 19 36
+1
+end_operator
+begin_operator
+up f26 f42
+0
+1
+0 0 19 37
+1
+end_operator
+begin_operator
+up f26 f43
+0
+1
+0 0 19 38
+1
+end_operator
+begin_operator
+up f26 f44
+0
+1
+0 0 19 39
+1
+end_operator
+begin_operator
+up f26 f45
+0
+1
+0 0 19 40
+1
+end_operator
+begin_operator
+up f26 f46
+0
+1
+0 0 19 41
+1
+end_operator
+begin_operator
+up f26 f47
+0
+1
+0 0 19 42
+1
+end_operator
+begin_operator
+up f26 f48
+0
+1
+0 0 19 43
+1
+end_operator
+begin_operator
+up f26 f49
+0
+1
+0 0 19 44
+1
+end_operator
+begin_operator
+up f26 f50
+0
+1
+0 0 19 46
+1
+end_operator
+begin_operator
+up f26 f51
+0
+1
+0 0 19 47
+1
+end_operator
+begin_operator
+up f26 f52
+0
+1
+0 0 19 48
+1
+end_operator
+begin_operator
+up f26 f53
+0
+1
+0 0 19 49
+1
+end_operator
+begin_operator
+up f26 f54
+0
+1
+0 0 19 50
+1
+end_operator
+begin_operator
+up f26 f55
+0
+1
+0 0 19 51
+1
+end_operator
+begin_operator
+up f26 f56
+0
+1
+0 0 19 52
+1
+end_operator
+begin_operator
+up f26 f57
+0
+1
+0 0 19 53
+1
+end_operator
+begin_operator
+up f26 f58
+0
+1
+0 0 19 54
+1
+end_operator
+begin_operator
+up f26 f59
+0
+1
+0 0 19 55
+1
+end_operator
+begin_operator
+up f26 f60
+0
+1
+0 0 19 57
+1
+end_operator
+begin_operator
+up f26 f61
+0
+1
+0 0 19 58
+1
+end_operator
+begin_operator
+up f26 f62
+0
+1
+0 0 19 59
+1
+end_operator
+begin_operator
+up f26 f63
+0
+1
+0 0 19 60
+1
+end_operator
+begin_operator
+up f26 f64
+0
+1
+0 0 19 61
+1
+end_operator
+begin_operator
+up f26 f65
+0
+1
+0 0 19 62
+1
+end_operator
+begin_operator
+up f26 f66
+0
+1
+0 0 19 63
+1
+end_operator
+begin_operator
+up f26 f67
+0
+1
+0 0 19 64
+1
+end_operator
+begin_operator
+up f26 f68
+0
+1
+0 0 19 65
+1
+end_operator
+begin_operator
+up f26 f69
+0
+1
+0 0 19 66
+1
+end_operator
+begin_operator
+up f26 f70
+0
+1
+0 0 19 68
+1
+end_operator
+begin_operator
+up f26 f71
+0
+1
+0 0 19 69
+1
+end_operator
+begin_operator
+up f26 f72
+0
+1
+0 0 19 70
+1
+end_operator
+begin_operator
+up f26 f73
+0
+1
+0 0 19 71
+1
+end_operator
+begin_operator
+up f26 f74
+0
+1
+0 0 19 72
+1
+end_operator
+begin_operator
+up f26 f75
+0
+1
+0 0 19 73
+1
+end_operator
+begin_operator
+up f26 f76
+0
+1
+0 0 19 74
+1
+end_operator
+begin_operator
+up f26 f77
+0
+1
+0 0 19 75
+1
+end_operator
+begin_operator
+up f26 f78
+0
+1
+0 0 19 76
+1
+end_operator
+begin_operator
+up f26 f79
+0
+1
+0 0 19 77
+1
+end_operator
+begin_operator
+up f26 f80
+0
+1
+0 0 19 79
+1
+end_operator
+begin_operator
+up f26 f81
+0
+1
+0 0 19 80
+1
+end_operator
+begin_operator
+up f26 f82
+0
+1
+0 0 19 81
+1
+end_operator
+begin_operator
+up f26 f83
+0
+1
+0 0 19 82
+1
+end_operator
+begin_operator
+up f26 f84
+0
+1
+0 0 19 83
+1
+end_operator
+begin_operator
+up f26 f85
+0
+1
+0 0 19 84
+1
+end_operator
+begin_operator
+up f26 f86
+0
+1
+0 0 19 85
+1
+end_operator
+begin_operator
+up f26 f87
+0
+1
+0 0 19 86
+1
+end_operator
+begin_operator
+up f26 f88
+0
+1
+0 0 19 87
+1
+end_operator
+begin_operator
+up f26 f89
+0
+1
+0 0 19 88
+1
+end_operator
+begin_operator
+up f26 f90
+0
+1
+0 0 19 90
+1
+end_operator
+begin_operator
+up f26 f91
+0
+1
+0 0 19 91
+1
+end_operator
+begin_operator
+up f26 f92
+0
+1
+0 0 19 92
+1
+end_operator
+begin_operator
+up f26 f93
+0
+1
+0 0 19 93
+1
+end_operator
+begin_operator
+up f26 f94
+0
+1
+0 0 19 94
+1
+end_operator
+begin_operator
+up f26 f95
+0
+1
+0 0 19 95
+1
+end_operator
+begin_operator
+up f26 f96
+0
+1
+0 0 19 96
+1
+end_operator
+begin_operator
+up f26 f97
+0
+1
+0 0 19 97
+1
+end_operator
+begin_operator
+up f26 f98
+0
+1
+0 0 19 98
+1
+end_operator
+begin_operator
+up f26 f99
+0
+1
+0 0 19 99
+1
+end_operator
+begin_operator
+up f27 f100
+0
+1
+0 0 20 2
+1
+end_operator
+begin_operator
+up f27 f28
+0
+1
+0 0 20 21
+1
+end_operator
+begin_operator
+up f27 f29
+0
+1
+0 0 20 22
+1
+end_operator
+begin_operator
+up f27 f30
+0
+1
+0 0 20 24
+1
+end_operator
+begin_operator
+up f27 f31
+0
+1
+0 0 20 25
+1
+end_operator
+begin_operator
+up f27 f32
+0
+1
+0 0 20 26
+1
+end_operator
+begin_operator
+up f27 f33
+0
+1
+0 0 20 27
+1
+end_operator
+begin_operator
+up f27 f34
+0
+1
+0 0 20 28
+1
+end_operator
+begin_operator
+up f27 f35
+0
+1
+0 0 20 29
+1
+end_operator
+begin_operator
+up f27 f36
+0
+1
+0 0 20 30
+1
+end_operator
+begin_operator
+up f27 f37
+0
+1
+0 0 20 31
+1
+end_operator
+begin_operator
+up f27 f38
+0
+1
+0 0 20 32
+1
+end_operator
+begin_operator
+up f27 f39
+0
+1
+0 0 20 33
+1
+end_operator
+begin_operator
+up f27 f40
+0
+1
+0 0 20 35
+1
+end_operator
+begin_operator
+up f27 f41
+0
+1
+0 0 20 36
+1
+end_operator
+begin_operator
+up f27 f42
+0
+1
+0 0 20 37
+1
+end_operator
+begin_operator
+up f27 f43
+0
+1
+0 0 20 38
+1
+end_operator
+begin_operator
+up f27 f44
+0
+1
+0 0 20 39
+1
+end_operator
+begin_operator
+up f27 f45
+0
+1
+0 0 20 40
+1
+end_operator
+begin_operator
+up f27 f46
+0
+1
+0 0 20 41
+1
+end_operator
+begin_operator
+up f27 f47
+0
+1
+0 0 20 42
+1
+end_operator
+begin_operator
+up f27 f48
+0
+1
+0 0 20 43
+1
+end_operator
+begin_operator
+up f27 f49
+0
+1
+0 0 20 44
+1
+end_operator
+begin_operator
+up f27 f50
+0
+1
+0 0 20 46
+1
+end_operator
+begin_operator
+up f27 f51
+0
+1
+0 0 20 47
+1
+end_operator
+begin_operator
+up f27 f52
+0
+1
+0 0 20 48
+1
+end_operator
+begin_operator
+up f27 f53
+0
+1
+0 0 20 49
+1
+end_operator
+begin_operator
+up f27 f54
+0
+1
+0 0 20 50
+1
+end_operator
+begin_operator
+up f27 f55
+0
+1
+0 0 20 51
+1
+end_operator
+begin_operator
+up f27 f56
+0
+1
+0 0 20 52
+1
+end_operator
+begin_operator
+up f27 f57
+0
+1
+0 0 20 53
+1
+end_operator
+begin_operator
+up f27 f58
+0
+1
+0 0 20 54
+1
+end_operator
+begin_operator
+up f27 f59
+0
+1
+0 0 20 55
+1
+end_operator
+begin_operator
+up f27 f60
+0
+1
+0 0 20 57
+1
+end_operator
+begin_operator
+up f27 f61
+0
+1
+0 0 20 58
+1
+end_operator
+begin_operator
+up f27 f62
+0
+1
+0 0 20 59
+1
+end_operator
+begin_operator
+up f27 f63
+0
+1
+0 0 20 60
+1
+end_operator
+begin_operator
+up f27 f64
+0
+1
+0 0 20 61
+1
+end_operator
+begin_operator
+up f27 f65
+0
+1
+0 0 20 62
+1
+end_operator
+begin_operator
+up f27 f66
+0
+1
+0 0 20 63
+1
+end_operator
+begin_operator
+up f27 f67
+0
+1
+0 0 20 64
+1
+end_operator
+begin_operator
+up f27 f68
+0
+1
+0 0 20 65
+1
+end_operator
+begin_operator
+up f27 f69
+0
+1
+0 0 20 66
+1
+end_operator
+begin_operator
+up f27 f70
+0
+1
+0 0 20 68
+1
+end_operator
+begin_operator
+up f27 f71
+0
+1
+0 0 20 69
+1
+end_operator
+begin_operator
+up f27 f72
+0
+1
+0 0 20 70
+1
+end_operator
+begin_operator
+up f27 f73
+0
+1
+0 0 20 71
+1
+end_operator
+begin_operator
+up f27 f74
+0
+1
+0 0 20 72
+1
+end_operator
+begin_operator
+up f27 f75
+0
+1
+0 0 20 73
+1
+end_operator
+begin_operator
+up f27 f76
+0
+1
+0 0 20 74
+1
+end_operator
+begin_operator
+up f27 f77
+0
+1
+0 0 20 75
+1
+end_operator
+begin_operator
+up f27 f78
+0
+1
+0 0 20 76
+1
+end_operator
+begin_operator
+up f27 f79
+0
+1
+0 0 20 77
+1
+end_operator
+begin_operator
+up f27 f80
+0
+1
+0 0 20 79
+1
+end_operator
+begin_operator
+up f27 f81
+0
+1
+0 0 20 80
+1
+end_operator
+begin_operator
+up f27 f82
+0
+1
+0 0 20 81
+1
+end_operator
+begin_operator
+up f27 f83
+0
+1
+0 0 20 82
+1
+end_operator
+begin_operator
+up f27 f84
+0
+1
+0 0 20 83
+1
+end_operator
+begin_operator
+up f27 f85
+0
+1
+0 0 20 84
+1
+end_operator
+begin_operator
+up f27 f86
+0
+1
+0 0 20 85
+1
+end_operator
+begin_operator
+up f27 f87
+0
+1
+0 0 20 86
+1
+end_operator
+begin_operator
+up f27 f88
+0
+1
+0 0 20 87
+1
+end_operator
+begin_operator
+up f27 f89
+0
+1
+0 0 20 88
+1
+end_operator
+begin_operator
+up f27 f90
+0
+1
+0 0 20 90
+1
+end_operator
+begin_operator
+up f27 f91
+0
+1
+0 0 20 91
+1
+end_operator
+begin_operator
+up f27 f92
+0
+1
+0 0 20 92
+1
+end_operator
+begin_operator
+up f27 f93
+0
+1
+0 0 20 93
+1
+end_operator
+begin_operator
+up f27 f94
+0
+1
+0 0 20 94
+1
+end_operator
+begin_operator
+up f27 f95
+0
+1
+0 0 20 95
+1
+end_operator
+begin_operator
+up f27 f96
+0
+1
+0 0 20 96
+1
+end_operator
+begin_operator
+up f27 f97
+0
+1
+0 0 20 97
+1
+end_operator
+begin_operator
+up f27 f98
+0
+1
+0 0 20 98
+1
+end_operator
+begin_operator
+up f27 f99
+0
+1
+0 0 20 99
+1
+end_operator
+begin_operator
+up f28 f100
+0
+1
+0 0 21 2
+1
+end_operator
+begin_operator
+up f28 f29
+0
+1
+0 0 21 22
+1
+end_operator
+begin_operator
+up f28 f30
+0
+1
+0 0 21 24
+1
+end_operator
+begin_operator
+up f28 f31
+0
+1
+0 0 21 25
+1
+end_operator
+begin_operator
+up f28 f32
+0
+1
+0 0 21 26
+1
+end_operator
+begin_operator
+up f28 f33
+0
+1
+0 0 21 27
+1
+end_operator
+begin_operator
+up f28 f34
+0
+1
+0 0 21 28
+1
+end_operator
+begin_operator
+up f28 f35
+0
+1
+0 0 21 29
+1
+end_operator
+begin_operator
+up f28 f36
+0
+1
+0 0 21 30
+1
+end_operator
+begin_operator
+up f28 f37
+0
+1
+0 0 21 31
+1
+end_operator
+begin_operator
+up f28 f38
+0
+1
+0 0 21 32
+1
+end_operator
+begin_operator
+up f28 f39
+0
+1
+0 0 21 33
+1
+end_operator
+begin_operator
+up f28 f40
+0
+1
+0 0 21 35
+1
+end_operator
+begin_operator
+up f28 f41
+0
+1
+0 0 21 36
+1
+end_operator
+begin_operator
+up f28 f42
+0
+1
+0 0 21 37
+1
+end_operator
+begin_operator
+up f28 f43
+0
+1
+0 0 21 38
+1
+end_operator
+begin_operator
+up f28 f44
+0
+1
+0 0 21 39
+1
+end_operator
+begin_operator
+up f28 f45
+0
+1
+0 0 21 40
+1
+end_operator
+begin_operator
+up f28 f46
+0
+1
+0 0 21 41
+1
+end_operator
+begin_operator
+up f28 f47
+0
+1
+0 0 21 42
+1
+end_operator
+begin_operator
+up f28 f48
+0
+1
+0 0 21 43
+1
+end_operator
+begin_operator
+up f28 f49
+0
+1
+0 0 21 44
+1
+end_operator
+begin_operator
+up f28 f50
+0
+1
+0 0 21 46
+1
+end_operator
+begin_operator
+up f28 f51
+0
+1
+0 0 21 47
+1
+end_operator
+begin_operator
+up f28 f52
+0
+1
+0 0 21 48
+1
+end_operator
+begin_operator
+up f28 f53
+0
+1
+0 0 21 49
+1
+end_operator
+begin_operator
+up f28 f54
+0
+1
+0 0 21 50
+1
+end_operator
+begin_operator
+up f28 f55
+0
+1
+0 0 21 51
+1
+end_operator
+begin_operator
+up f28 f56
+0
+1
+0 0 21 52
+1
+end_operator
+begin_operator
+up f28 f57
+0
+1
+0 0 21 53
+1
+end_operator
+begin_operator
+up f28 f58
+0
+1
+0 0 21 54
+1
+end_operator
+begin_operator
+up f28 f59
+0
+1
+0 0 21 55
+1
+end_operator
+begin_operator
+up f28 f60
+0
+1
+0 0 21 57
+1
+end_operator
+begin_operator
+up f28 f61
+0
+1
+0 0 21 58
+1
+end_operator
+begin_operator
+up f28 f62
+0
+1
+0 0 21 59
+1
+end_operator
+begin_operator
+up f28 f63
+0
+1
+0 0 21 60
+1
+end_operator
+begin_operator
+up f28 f64
+0
+1
+0 0 21 61
+1
+end_operator
+begin_operator
+up f28 f65
+0
+1
+0 0 21 62
+1
+end_operator
+begin_operator
+up f28 f66
+0
+1
+0 0 21 63
+1
+end_operator
+begin_operator
+up f28 f67
+0
+1
+0 0 21 64
+1
+end_operator
+begin_operator
+up f28 f68
+0
+1
+0 0 21 65
+1
+end_operator
+begin_operator
+up f28 f69
+0
+1
+0 0 21 66
+1
+end_operator
+begin_operator
+up f28 f70
+0
+1
+0 0 21 68
+1
+end_operator
+begin_operator
+up f28 f71
+0
+1
+0 0 21 69
+1
+end_operator
+begin_operator
+up f28 f72
+0
+1
+0 0 21 70
+1
+end_operator
+begin_operator
+up f28 f73
+0
+1
+0 0 21 71
+1
+end_operator
+begin_operator
+up f28 f74
+0
+1
+0 0 21 72
+1
+end_operator
+begin_operator
+up f28 f75
+0
+1
+0 0 21 73
+1
+end_operator
+begin_operator
+up f28 f76
+0
+1
+0 0 21 74
+1
+end_operator
+begin_operator
+up f28 f77
+0
+1
+0 0 21 75
+1
+end_operator
+begin_operator
+up f28 f78
+0
+1
+0 0 21 76
+1
+end_operator
+begin_operator
+up f28 f79
+0
+1
+0 0 21 77
+1
+end_operator
+begin_operator
+up f28 f80
+0
+1
+0 0 21 79
+1
+end_operator
+begin_operator
+up f28 f81
+0
+1
+0 0 21 80
+1
+end_operator
+begin_operator
+up f28 f82
+0
+1
+0 0 21 81
+1
+end_operator
+begin_operator
+up f28 f83
+0
+1
+0 0 21 82
+1
+end_operator
+begin_operator
+up f28 f84
+0
+1
+0 0 21 83
+1
+end_operator
+begin_operator
+up f28 f85
+0
+1
+0 0 21 84
+1
+end_operator
+begin_operator
+up f28 f86
+0
+1
+0 0 21 85
+1
+end_operator
+begin_operator
+up f28 f87
+0
+1
+0 0 21 86
+1
+end_operator
+begin_operator
+up f28 f88
+0
+1
+0 0 21 87
+1
+end_operator
+begin_operator
+up f28 f89
+0
+1
+0 0 21 88
+1
+end_operator
+begin_operator
+up f28 f90
+0
+1
+0 0 21 90
+1
+end_operator
+begin_operator
+up f28 f91
+0
+1
+0 0 21 91
+1
+end_operator
+begin_operator
+up f28 f92
+0
+1
+0 0 21 92
+1
+end_operator
+begin_operator
+up f28 f93
+0
+1
+0 0 21 93
+1
+end_operator
+begin_operator
+up f28 f94
+0
+1
+0 0 21 94
+1
+end_operator
+begin_operator
+up f28 f95
+0
+1
+0 0 21 95
+1
+end_operator
+begin_operator
+up f28 f96
+0
+1
+0 0 21 96
+1
+end_operator
+begin_operator
+up f28 f97
+0
+1
+0 0 21 97
+1
+end_operator
+begin_operator
+up f28 f98
+0
+1
+0 0 21 98
+1
+end_operator
+begin_operator
+up f28 f99
+0
+1
+0 0 21 99
+1
+end_operator
+begin_operator
+up f29 f100
+0
+1
+0 0 22 2
+1
+end_operator
+begin_operator
+up f29 f30
+0
+1
+0 0 22 24
+1
+end_operator
+begin_operator
+up f29 f31
+0
+1
+0 0 22 25
+1
+end_operator
+begin_operator
+up f29 f32
+0
+1
+0 0 22 26
+1
+end_operator
+begin_operator
+up f29 f33
+0
+1
+0 0 22 27
+1
+end_operator
+begin_operator
+up f29 f34
+0
+1
+0 0 22 28
+1
+end_operator
+begin_operator
+up f29 f35
+0
+1
+0 0 22 29
+1
+end_operator
+begin_operator
+up f29 f36
+0
+1
+0 0 22 30
+1
+end_operator
+begin_operator
+up f29 f37
+0
+1
+0 0 22 31
+1
+end_operator
+begin_operator
+up f29 f38
+0
+1
+0 0 22 32
+1
+end_operator
+begin_operator
+up f29 f39
+0
+1
+0 0 22 33
+1
+end_operator
+begin_operator
+up f29 f40
+0
+1
+0 0 22 35
+1
+end_operator
+begin_operator
+up f29 f41
+0
+1
+0 0 22 36
+1
+end_operator
+begin_operator
+up f29 f42
+0
+1
+0 0 22 37
+1
+end_operator
+begin_operator
+up f29 f43
+0
+1
+0 0 22 38
+1
+end_operator
+begin_operator
+up f29 f44
+0
+1
+0 0 22 39
+1
+end_operator
+begin_operator
+up f29 f45
+0
+1
+0 0 22 40
+1
+end_operator
+begin_operator
+up f29 f46
+0
+1
+0 0 22 41
+1
+end_operator
+begin_operator
+up f29 f47
+0
+1
+0 0 22 42
+1
+end_operator
+begin_operator
+up f29 f48
+0
+1
+0 0 22 43
+1
+end_operator
+begin_operator
+up f29 f49
+0
+1
+0 0 22 44
+1
+end_operator
+begin_operator
+up f29 f50
+0
+1
+0 0 22 46
+1
+end_operator
+begin_operator
+up f29 f51
+0
+1
+0 0 22 47
+1
+end_operator
+begin_operator
+up f29 f52
+0
+1
+0 0 22 48
+1
+end_operator
+begin_operator
+up f29 f53
+0
+1
+0 0 22 49
+1
+end_operator
+begin_operator
+up f29 f54
+0
+1
+0 0 22 50
+1
+end_operator
+begin_operator
+up f29 f55
+0
+1
+0 0 22 51
+1
+end_operator
+begin_operator
+up f29 f56
+0
+1
+0 0 22 52
+1
+end_operator
+begin_operator
+up f29 f57
+0
+1
+0 0 22 53
+1
+end_operator
+begin_operator
+up f29 f58
+0
+1
+0 0 22 54
+1
+end_operator
+begin_operator
+up f29 f59
+0
+1
+0 0 22 55
+1
+end_operator
+begin_operator
+up f29 f60
+0
+1
+0 0 22 57
+1
+end_operator
+begin_operator
+up f29 f61
+0
+1
+0 0 22 58
+1
+end_operator
+begin_operator
+up f29 f62
+0
+1
+0 0 22 59
+1
+end_operator
+begin_operator
+up f29 f63
+0
+1
+0 0 22 60
+1
+end_operator
+begin_operator
+up f29 f64
+0
+1
+0 0 22 61
+1
+end_operator
+begin_operator
+up f29 f65
+0
+1
+0 0 22 62
+1
+end_operator
+begin_operator
+up f29 f66
+0
+1
+0 0 22 63
+1
+end_operator
+begin_operator
+up f29 f67
+0
+1
+0 0 22 64
+1
+end_operator
+begin_operator
+up f29 f68
+0
+1
+0 0 22 65
+1
+end_operator
+begin_operator
+up f29 f69
+0
+1
+0 0 22 66
+1
+end_operator
+begin_operator
+up f29 f70
+0
+1
+0 0 22 68
+1
+end_operator
+begin_operator
+up f29 f71
+0
+1
+0 0 22 69
+1
+end_operator
+begin_operator
+up f29 f72
+0
+1
+0 0 22 70
+1
+end_operator
+begin_operator
+up f29 f73
+0
+1
+0 0 22 71
+1
+end_operator
+begin_operator
+up f29 f74
+0
+1
+0 0 22 72
+1
+end_operator
+begin_operator
+up f29 f75
+0
+1
+0 0 22 73
+1
+end_operator
+begin_operator
+up f29 f76
+0
+1
+0 0 22 74
+1
+end_operator
+begin_operator
+up f29 f77
+0
+1
+0 0 22 75
+1
+end_operator
+begin_operator
+up f29 f78
+0
+1
+0 0 22 76
+1
+end_operator
+begin_operator
+up f29 f79
+0
+1
+0 0 22 77
+1
+end_operator
+begin_operator
+up f29 f80
+0
+1
+0 0 22 79
+1
+end_operator
+begin_operator
+up f29 f81
+0
+1
+0 0 22 80
+1
+end_operator
+begin_operator
+up f29 f82
+0
+1
+0 0 22 81
+1
+end_operator
+begin_operator
+up f29 f83
+0
+1
+0 0 22 82
+1
+end_operator
+begin_operator
+up f29 f84
+0
+1
+0 0 22 83
+1
+end_operator
+begin_operator
+up f29 f85
+0
+1
+0 0 22 84
+1
+end_operator
+begin_operator
+up f29 f86
+0
+1
+0 0 22 85
+1
+end_operator
+begin_operator
+up f29 f87
+0
+1
+0 0 22 86
+1
+end_operator
+begin_operator
+up f29 f88
+0
+1
+0 0 22 87
+1
+end_operator
+begin_operator
+up f29 f89
+0
+1
+0 0 22 88
+1
+end_operator
+begin_operator
+up f29 f90
+0
+1
+0 0 22 90
+1
+end_operator
+begin_operator
+up f29 f91
+0
+1
+0 0 22 91
+1
+end_operator
+begin_operator
+up f29 f92
+0
+1
+0 0 22 92
+1
+end_operator
+begin_operator
+up f29 f93
+0
+1
+0 0 22 93
+1
+end_operator
+begin_operator
+up f29 f94
+0
+1
+0 0 22 94
+1
+end_operator
+begin_operator
+up f29 f95
+0
+1
+0 0 22 95
+1
+end_operator
+begin_operator
+up f29 f96
+0
+1
+0 0 22 96
+1
+end_operator
+begin_operator
+up f29 f97
+0
+1
+0 0 22 97
+1
+end_operator
+begin_operator
+up f29 f98
+0
+1
+0 0 22 98
+1
+end_operator
+begin_operator
+up f29 f99
+0
+1
+0 0 22 99
+1
+end_operator
+begin_operator
+up f3 f10
+0
+1
+0 0 23 1
+1
+end_operator
+begin_operator
+up f3 f100
+0
+1
+0 0 23 2
+1
+end_operator
+begin_operator
+up f3 f11
+0
+1
+0 0 23 3
+1
+end_operator
+begin_operator
+up f3 f12
+0
+1
+0 0 23 4
+1
+end_operator
+begin_operator
+up f3 f13
+0
+1
+0 0 23 5
+1
+end_operator
+begin_operator
+up f3 f14
+0
+1
+0 0 23 6
+1
+end_operator
+begin_operator
+up f3 f15
+0
+1
+0 0 23 7
+1
+end_operator
+begin_operator
+up f3 f16
+0
+1
+0 0 23 8
+1
+end_operator
+begin_operator
+up f3 f17
+0
+1
+0 0 23 9
+1
+end_operator
+begin_operator
+up f3 f18
+0
+1
+0 0 23 10
+1
+end_operator
+begin_operator
+up f3 f19
+0
+1
+0 0 23 11
+1
+end_operator
+begin_operator
+up f3 f20
+0
+1
+0 0 23 13
+1
+end_operator
+begin_operator
+up f3 f21
+0
+1
+0 0 23 14
+1
+end_operator
+begin_operator
+up f3 f22
+0
+1
+0 0 23 15
+1
+end_operator
+begin_operator
+up f3 f23
+0
+1
+0 0 23 16
+1
+end_operator
+begin_operator
+up f3 f24
+0
+1
+0 0 23 17
+1
+end_operator
+begin_operator
+up f3 f25
+0
+1
+0 0 23 18
+1
+end_operator
+begin_operator
+up f3 f26
+0
+1
+0 0 23 19
+1
+end_operator
+begin_operator
+up f3 f27
+0
+1
+0 0 23 20
+1
+end_operator
+begin_operator
+up f3 f28
+0
+1
+0 0 23 21
+1
+end_operator
+begin_operator
+up f3 f29
+0
+1
+0 0 23 22
+1
+end_operator
+begin_operator
+up f3 f30
+0
+1
+0 0 23 24
+1
+end_operator
+begin_operator
+up f3 f31
+0
+1
+0 0 23 25
+1
+end_operator
+begin_operator
+up f3 f32
+0
+1
+0 0 23 26
+1
+end_operator
+begin_operator
+up f3 f33
+0
+1
+0 0 23 27
+1
+end_operator
+begin_operator
+up f3 f34
+0
+1
+0 0 23 28
+1
+end_operator
+begin_operator
+up f3 f35
+0
+1
+0 0 23 29
+1
+end_operator
+begin_operator
+up f3 f36
+0
+1
+0 0 23 30
+1
+end_operator
+begin_operator
+up f3 f37
+0
+1
+0 0 23 31
+1
+end_operator
+begin_operator
+up f3 f38
+0
+1
+0 0 23 32
+1
+end_operator
+begin_operator
+up f3 f39
+0
+1
+0 0 23 33
+1
+end_operator
+begin_operator
+up f3 f4
+0
+1
+0 0 23 34
+1
+end_operator
+begin_operator
+up f3 f40
+0
+1
+0 0 23 35
+1
+end_operator
+begin_operator
+up f3 f41
+0
+1
+0 0 23 36
+1
+end_operator
+begin_operator
+up f3 f42
+0
+1
+0 0 23 37
+1
+end_operator
+begin_operator
+up f3 f43
+0
+1
+0 0 23 38
+1
+end_operator
+begin_operator
+up f3 f44
+0
+1
+0 0 23 39
+1
+end_operator
+begin_operator
+up f3 f45
+0
+1
+0 0 23 40
+1
+end_operator
+begin_operator
+up f3 f46
+0
+1
+0 0 23 41
+1
+end_operator
+begin_operator
+up f3 f47
+0
+1
+0 0 23 42
+1
+end_operator
+begin_operator
+up f3 f48
+0
+1
+0 0 23 43
+1
+end_operator
+begin_operator
+up f3 f49
+0
+1
+0 0 23 44
+1
+end_operator
+begin_operator
+up f3 f5
+0
+1
+0 0 23 45
+1
+end_operator
+begin_operator
+up f3 f50
+0
+1
+0 0 23 46
+1
+end_operator
+begin_operator
+up f3 f51
+0
+1
+0 0 23 47
+1
+end_operator
+begin_operator
+up f3 f52
+0
+1
+0 0 23 48
+1
+end_operator
+begin_operator
+up f3 f53
+0
+1
+0 0 23 49
+1
+end_operator
+begin_operator
+up f3 f54
+0
+1
+0 0 23 50
+1
+end_operator
+begin_operator
+up f3 f55
+0
+1
+0 0 23 51
+1
+end_operator
+begin_operator
+up f3 f56
+0
+1
+0 0 23 52
+1
+end_operator
+begin_operator
+up f3 f57
+0
+1
+0 0 23 53
+1
+end_operator
+begin_operator
+up f3 f58
+0
+1
+0 0 23 54
+1
+end_operator
+begin_operator
+up f3 f59
+0
+1
+0 0 23 55
+1
+end_operator
+begin_operator
+up f3 f6
+0
+1
+0 0 23 56
+1
+end_operator
+begin_operator
+up f3 f60
+0
+1
+0 0 23 57
+1
+end_operator
+begin_operator
+up f3 f61
+0
+1
+0 0 23 58
+1
+end_operator
+begin_operator
+up f3 f62
+0
+1
+0 0 23 59
+1
+end_operator
+begin_operator
+up f3 f63
+0
+1
+0 0 23 60
+1
+end_operator
+begin_operator
+up f3 f64
+0
+1
+0 0 23 61
+1
+end_operator
+begin_operator
+up f3 f65
+0
+1
+0 0 23 62
+1
+end_operator
+begin_operator
+up f3 f66
+0
+1
+0 0 23 63
+1
+end_operator
+begin_operator
+up f3 f67
+0
+1
+0 0 23 64
+1
+end_operator
+begin_operator
+up f3 f68
+0
+1
+0 0 23 65
+1
+end_operator
+begin_operator
+up f3 f69
+0
+1
+0 0 23 66
+1
+end_operator
+begin_operator
+up f3 f7
+0
+1
+0 0 23 67
+1
+end_operator
+begin_operator
+up f3 f70
+0
+1
+0 0 23 68
+1
+end_operator
+begin_operator
+up f3 f71
+0
+1
+0 0 23 69
+1
+end_operator
+begin_operator
+up f3 f72
+0
+1
+0 0 23 70
+1
+end_operator
+begin_operator
+up f3 f73
+0
+1
+0 0 23 71
+1
+end_operator
+begin_operator
+up f3 f74
+0
+1
+0 0 23 72
+1
+end_operator
+begin_operator
+up f3 f75
+0
+1
+0 0 23 73
+1
+end_operator
+begin_operator
+up f3 f76
+0
+1
+0 0 23 74
+1
+end_operator
+begin_operator
+up f3 f77
+0
+1
+0 0 23 75
+1
+end_operator
+begin_operator
+up f3 f78
+0
+1
+0 0 23 76
+1
+end_operator
+begin_operator
+up f3 f79
+0
+1
+0 0 23 77
+1
+end_operator
+begin_operator
+up f3 f8
+0
+1
+0 0 23 78
+1
+end_operator
+begin_operator
+up f3 f80
+0
+1
+0 0 23 79
+1
+end_operator
+begin_operator
+up f3 f81
+0
+1
+0 0 23 80
+1
+end_operator
+begin_operator
+up f3 f82
+0
+1
+0 0 23 81
+1
+end_operator
+begin_operator
+up f3 f83
+0
+1
+0 0 23 82
+1
+end_operator
+begin_operator
+up f3 f84
+0
+1
+0 0 23 83
+1
+end_operator
+begin_operator
+up f3 f85
+0
+1
+0 0 23 84
+1
+end_operator
+begin_operator
+up f3 f86
+0
+1
+0 0 23 85
+1
+end_operator
+begin_operator
+up f3 f87
+0
+1
+0 0 23 86
+1
+end_operator
+begin_operator
+up f3 f88
+0
+1
+0 0 23 87
+1
+end_operator
+begin_operator
+up f3 f89
+0
+1
+0 0 23 88
+1
+end_operator
+begin_operator
+up f3 f9
+0
+1
+0 0 23 89
+1
+end_operator
+begin_operator
+up f3 f90
+0
+1
+0 0 23 90
+1
+end_operator
+begin_operator
+up f3 f91
+0
+1
+0 0 23 91
+1
+end_operator
+begin_operator
+up f3 f92
+0
+1
+0 0 23 92
+1
+end_operator
+begin_operator
+up f3 f93
+0
+1
+0 0 23 93
+1
+end_operator
+begin_operator
+up f3 f94
+0
+1
+0 0 23 94
+1
+end_operator
+begin_operator
+up f3 f95
+0
+1
+0 0 23 95
+1
+end_operator
+begin_operator
+up f3 f96
+0
+1
+0 0 23 96
+1
+end_operator
+begin_operator
+up f3 f97
+0
+1
+0 0 23 97
+1
+end_operator
+begin_operator
+up f3 f98
+0
+1
+0 0 23 98
+1
+end_operator
+begin_operator
+up f3 f99
+0
+1
+0 0 23 99
+1
+end_operator
+begin_operator
+up f30 f100
+0
+1
+0 0 24 2
+1
+end_operator
+begin_operator
+up f30 f31
+0
+1
+0 0 24 25
+1
+end_operator
+begin_operator
+up f30 f32
+0
+1
+0 0 24 26
+1
+end_operator
+begin_operator
+up f30 f33
+0
+1
+0 0 24 27
+1
+end_operator
+begin_operator
+up f30 f34
+0
+1
+0 0 24 28
+1
+end_operator
+begin_operator
+up f30 f35
+0
+1
+0 0 24 29
+1
+end_operator
+begin_operator
+up f30 f36
+0
+1
+0 0 24 30
+1
+end_operator
+begin_operator
+up f30 f37
+0
+1
+0 0 24 31
+1
+end_operator
+begin_operator
+up f30 f38
+0
+1
+0 0 24 32
+1
+end_operator
+begin_operator
+up f30 f39
+0
+1
+0 0 24 33
+1
+end_operator
+begin_operator
+up f30 f40
+0
+1
+0 0 24 35
+1
+end_operator
+begin_operator
+up f30 f41
+0
+1
+0 0 24 36
+1
+end_operator
+begin_operator
+up f30 f42
+0
+1
+0 0 24 37
+1
+end_operator
+begin_operator
+up f30 f43
+0
+1
+0 0 24 38
+1
+end_operator
+begin_operator
+up f30 f44
+0
+1
+0 0 24 39
+1
+end_operator
+begin_operator
+up f30 f45
+0
+1
+0 0 24 40
+1
+end_operator
+begin_operator
+up f30 f46
+0
+1
+0 0 24 41
+1
+end_operator
+begin_operator
+up f30 f47
+0
+1
+0 0 24 42
+1
+end_operator
+begin_operator
+up f30 f48
+0
+1
+0 0 24 43
+1
+end_operator
+begin_operator
+up f30 f49
+0
+1
+0 0 24 44
+1
+end_operator
+begin_operator
+up f30 f50
+0
+1
+0 0 24 46
+1
+end_operator
+begin_operator
+up f30 f51
+0
+1
+0 0 24 47
+1
+end_operator
+begin_operator
+up f30 f52
+0
+1
+0 0 24 48
+1
+end_operator
+begin_operator
+up f30 f53
+0
+1
+0 0 24 49
+1
+end_operator
+begin_operator
+up f30 f54
+0
+1
+0 0 24 50
+1
+end_operator
+begin_operator
+up f30 f55
+0
+1
+0 0 24 51
+1
+end_operator
+begin_operator
+up f30 f56
+0
+1
+0 0 24 52
+1
+end_operator
+begin_operator
+up f30 f57
+0
+1
+0 0 24 53
+1
+end_operator
+begin_operator
+up f30 f58
+0
+1
+0 0 24 54
+1
+end_operator
+begin_operator
+up f30 f59
+0
+1
+0 0 24 55
+1
+end_operator
+begin_operator
+up f30 f60
+0
+1
+0 0 24 57
+1
+end_operator
+begin_operator
+up f30 f61
+0
+1
+0 0 24 58
+1
+end_operator
+begin_operator
+up f30 f62
+0
+1
+0 0 24 59
+1
+end_operator
+begin_operator
+up f30 f63
+0
+1
+0 0 24 60
+1
+end_operator
+begin_operator
+up f30 f64
+0
+1
+0 0 24 61
+1
+end_operator
+begin_operator
+up f30 f65
+0
+1
+0 0 24 62
+1
+end_operator
+begin_operator
+up f30 f66
+0
+1
+0 0 24 63
+1
+end_operator
+begin_operator
+up f30 f67
+0
+1
+0 0 24 64
+1
+end_operator
+begin_operator
+up f30 f68
+0
+1
+0 0 24 65
+1
+end_operator
+begin_operator
+up f30 f69
+0
+1
+0 0 24 66
+1
+end_operator
+begin_operator
+up f30 f70
+0
+1
+0 0 24 68
+1
+end_operator
+begin_operator
+up f30 f71
+0
+1
+0 0 24 69
+1
+end_operator
+begin_operator
+up f30 f72
+0
+1
+0 0 24 70
+1
+end_operator
+begin_operator
+up f30 f73
+0
+1
+0 0 24 71
+1
+end_operator
+begin_operator
+up f30 f74
+0
+1
+0 0 24 72
+1
+end_operator
+begin_operator
+up f30 f75
+0
+1
+0 0 24 73
+1
+end_operator
+begin_operator
+up f30 f76
+0
+1
+0 0 24 74
+1
+end_operator
+begin_operator
+up f30 f77
+0
+1
+0 0 24 75
+1
+end_operator
+begin_operator
+up f30 f78
+0
+1
+0 0 24 76
+1
+end_operator
+begin_operator
+up f30 f79
+0
+1
+0 0 24 77
+1
+end_operator
+begin_operator
+up f30 f80
+0
+1
+0 0 24 79
+1
+end_operator
+begin_operator
+up f30 f81
+0
+1
+0 0 24 80
+1
+end_operator
+begin_operator
+up f30 f82
+0
+1
+0 0 24 81
+1
+end_operator
+begin_operator
+up f30 f83
+0
+1
+0 0 24 82
+1
+end_operator
+begin_operator
+up f30 f84
+0
+1
+0 0 24 83
+1
+end_operator
+begin_operator
+up f30 f85
+0
+1
+0 0 24 84
+1
+end_operator
+begin_operator
+up f30 f86
+0
+1
+0 0 24 85
+1
+end_operator
+begin_operator
+up f30 f87
+0
+1
+0 0 24 86
+1
+end_operator
+begin_operator
+up f30 f88
+0
+1
+0 0 24 87
+1
+end_operator
+begin_operator
+up f30 f89
+0
+1
+0 0 24 88
+1
+end_operator
+begin_operator
+up f30 f90
+0
+1
+0 0 24 90
+1
+end_operator
+begin_operator
+up f30 f91
+0
+1
+0 0 24 91
+1
+end_operator
+begin_operator
+up f30 f92
+0
+1
+0 0 24 92
+1
+end_operator
+begin_operator
+up f30 f93
+0
+1
+0 0 24 93
+1
+end_operator
+begin_operator
+up f30 f94
+0
+1
+0 0 24 94
+1
+end_operator
+begin_operator
+up f30 f95
+0
+1
+0 0 24 95
+1
+end_operator
+begin_operator
+up f30 f96
+0
+1
+0 0 24 96
+1
+end_operator
+begin_operator
+up f30 f97
+0
+1
+0 0 24 97
+1
+end_operator
+begin_operator
+up f30 f98
+0
+1
+0 0 24 98
+1
+end_operator
+begin_operator
+up f30 f99
+0
+1
+0 0 24 99
+1
+end_operator
+begin_operator
+up f31 f100
+0
+1
+0 0 25 2
+1
+end_operator
+begin_operator
+up f31 f32
+0
+1
+0 0 25 26
+1
+end_operator
+begin_operator
+up f31 f33
+0
+1
+0 0 25 27
+1
+end_operator
+begin_operator
+up f31 f34
+0
+1
+0 0 25 28
+1
+end_operator
+begin_operator
+up f31 f35
+0
+1
+0 0 25 29
+1
+end_operator
+begin_operator
+up f31 f36
+0
+1
+0 0 25 30
+1
+end_operator
+begin_operator
+up f31 f37
+0
+1
+0 0 25 31
+1
+end_operator
+begin_operator
+up f31 f38
+0
+1
+0 0 25 32
+1
+end_operator
+begin_operator
+up f31 f39
+0
+1
+0 0 25 33
+1
+end_operator
+begin_operator
+up f31 f40
+0
+1
+0 0 25 35
+1
+end_operator
+begin_operator
+up f31 f41
+0
+1
+0 0 25 36
+1
+end_operator
+begin_operator
+up f31 f42
+0
+1
+0 0 25 37
+1
+end_operator
+begin_operator
+up f31 f43
+0
+1
+0 0 25 38
+1
+end_operator
+begin_operator
+up f31 f44
+0
+1
+0 0 25 39
+1
+end_operator
+begin_operator
+up f31 f45
+0
+1
+0 0 25 40
+1
+end_operator
+begin_operator
+up f31 f46
+0
+1
+0 0 25 41
+1
+end_operator
+begin_operator
+up f31 f47
+0
+1
+0 0 25 42
+1
+end_operator
+begin_operator
+up f31 f48
+0
+1
+0 0 25 43
+1
+end_operator
+begin_operator
+up f31 f49
+0
+1
+0 0 25 44
+1
+end_operator
+begin_operator
+up f31 f50
+0
+1
+0 0 25 46
+1
+end_operator
+begin_operator
+up f31 f51
+0
+1
+0 0 25 47
+1
+end_operator
+begin_operator
+up f31 f52
+0
+1
+0 0 25 48
+1
+end_operator
+begin_operator
+up f31 f53
+0
+1
+0 0 25 49
+1
+end_operator
+begin_operator
+up f31 f54
+0
+1
+0 0 25 50
+1
+end_operator
+begin_operator
+up f31 f55
+0
+1
+0 0 25 51
+1
+end_operator
+begin_operator
+up f31 f56
+0
+1
+0 0 25 52
+1
+end_operator
+begin_operator
+up f31 f57
+0
+1
+0 0 25 53
+1
+end_operator
+begin_operator
+up f31 f58
+0
+1
+0 0 25 54
+1
+end_operator
+begin_operator
+up f31 f59
+0
+1
+0 0 25 55
+1
+end_operator
+begin_operator
+up f31 f60
+0
+1
+0 0 25 57
+1
+end_operator
+begin_operator
+up f31 f61
+0
+1
+0 0 25 58
+1
+end_operator
+begin_operator
+up f31 f62
+0
+1
+0 0 25 59
+1
+end_operator
+begin_operator
+up f31 f63
+0
+1
+0 0 25 60
+1
+end_operator
+begin_operator
+up f31 f64
+0
+1
+0 0 25 61
+1
+end_operator
+begin_operator
+up f31 f65
+0
+1
+0 0 25 62
+1
+end_operator
+begin_operator
+up f31 f66
+0
+1
+0 0 25 63
+1
+end_operator
+begin_operator
+up f31 f67
+0
+1
+0 0 25 64
+1
+end_operator
+begin_operator
+up f31 f68
+0
+1
+0 0 25 65
+1
+end_operator
+begin_operator
+up f31 f69
+0
+1
+0 0 25 66
+1
+end_operator
+begin_operator
+up f31 f70
+0
+1
+0 0 25 68
+1
+end_operator
+begin_operator
+up f31 f71
+0
+1
+0 0 25 69
+1
+end_operator
+begin_operator
+up f31 f72
+0
+1
+0 0 25 70
+1
+end_operator
+begin_operator
+up f31 f73
+0
+1
+0 0 25 71
+1
+end_operator
+begin_operator
+up f31 f74
+0
+1
+0 0 25 72
+1
+end_operator
+begin_operator
+up f31 f75
+0
+1
+0 0 25 73
+1
+end_operator
+begin_operator
+up f31 f76
+0
+1
+0 0 25 74
+1
+end_operator
+begin_operator
+up f31 f77
+0
+1
+0 0 25 75
+1
+end_operator
+begin_operator
+up f31 f78
+0
+1
+0 0 25 76
+1
+end_operator
+begin_operator
+up f31 f79
+0
+1
+0 0 25 77
+1
+end_operator
+begin_operator
+up f31 f80
+0
+1
+0 0 25 79
+1
+end_operator
+begin_operator
+up f31 f81
+0
+1
+0 0 25 80
+1
+end_operator
+begin_operator
+up f31 f82
+0
+1
+0 0 25 81
+1
+end_operator
+begin_operator
+up f31 f83
+0
+1
+0 0 25 82
+1
+end_operator
+begin_operator
+up f31 f84
+0
+1
+0 0 25 83
+1
+end_operator
+begin_operator
+up f31 f85
+0
+1
+0 0 25 84
+1
+end_operator
+begin_operator
+up f31 f86
+0
+1
+0 0 25 85
+1
+end_operator
+begin_operator
+up f31 f87
+0
+1
+0 0 25 86
+1
+end_operator
+begin_operator
+up f31 f88
+0
+1
+0 0 25 87
+1
+end_operator
+begin_operator
+up f31 f89
+0
+1
+0 0 25 88
+1
+end_operator
+begin_operator
+up f31 f90
+0
+1
+0 0 25 90
+1
+end_operator
+begin_operator
+up f31 f91
+0
+1
+0 0 25 91
+1
+end_operator
+begin_operator
+up f31 f92
+0
+1
+0 0 25 92
+1
+end_operator
+begin_operator
+up f31 f93
+0
+1
+0 0 25 93
+1
+end_operator
+begin_operator
+up f31 f94
+0
+1
+0 0 25 94
+1
+end_operator
+begin_operator
+up f31 f95
+0
+1
+0 0 25 95
+1
+end_operator
+begin_operator
+up f31 f96
+0
+1
+0 0 25 96
+1
+end_operator
+begin_operator
+up f31 f97
+0
+1
+0 0 25 97
+1
+end_operator
+begin_operator
+up f31 f98
+0
+1
+0 0 25 98
+1
+end_operator
+begin_operator
+up f31 f99
+0
+1
+0 0 25 99
+1
+end_operator
+begin_operator
+up f32 f100
+0
+1
+0 0 26 2
+1
+end_operator
+begin_operator
+up f32 f33
+0
+1
+0 0 26 27
+1
+end_operator
+begin_operator
+up f32 f34
+0
+1
+0 0 26 28
+1
+end_operator
+begin_operator
+up f32 f35
+0
+1
+0 0 26 29
+1
+end_operator
+begin_operator
+up f32 f36
+0
+1
+0 0 26 30
+1
+end_operator
+begin_operator
+up f32 f37
+0
+1
+0 0 26 31
+1
+end_operator
+begin_operator
+up f32 f38
+0
+1
+0 0 26 32
+1
+end_operator
+begin_operator
+up f32 f39
+0
+1
+0 0 26 33
+1
+end_operator
+begin_operator
+up f32 f40
+0
+1
+0 0 26 35
+1
+end_operator
+begin_operator
+up f32 f41
+0
+1
+0 0 26 36
+1
+end_operator
+begin_operator
+up f32 f42
+0
+1
+0 0 26 37
+1
+end_operator
+begin_operator
+up f32 f43
+0
+1
+0 0 26 38
+1
+end_operator
+begin_operator
+up f32 f44
+0
+1
+0 0 26 39
+1
+end_operator
+begin_operator
+up f32 f45
+0
+1
+0 0 26 40
+1
+end_operator
+begin_operator
+up f32 f46
+0
+1
+0 0 26 41
+1
+end_operator
+begin_operator
+up f32 f47
+0
+1
+0 0 26 42
+1
+end_operator
+begin_operator
+up f32 f48
+0
+1
+0 0 26 43
+1
+end_operator
+begin_operator
+up f32 f49
+0
+1
+0 0 26 44
+1
+end_operator
+begin_operator
+up f32 f50
+0
+1
+0 0 26 46
+1
+end_operator
+begin_operator
+up f32 f51
+0
+1
+0 0 26 47
+1
+end_operator
+begin_operator
+up f32 f52
+0
+1
+0 0 26 48
+1
+end_operator
+begin_operator
+up f32 f53
+0
+1
+0 0 26 49
+1
+end_operator
+begin_operator
+up f32 f54
+0
+1
+0 0 26 50
+1
+end_operator
+begin_operator
+up f32 f55
+0
+1
+0 0 26 51
+1
+end_operator
+begin_operator
+up f32 f56
+0
+1
+0 0 26 52
+1
+end_operator
+begin_operator
+up f32 f57
+0
+1
+0 0 26 53
+1
+end_operator
+begin_operator
+up f32 f58
+0
+1
+0 0 26 54
+1
+end_operator
+begin_operator
+up f32 f59
+0
+1
+0 0 26 55
+1
+end_operator
+begin_operator
+up f32 f60
+0
+1
+0 0 26 57
+1
+end_operator
+begin_operator
+up f32 f61
+0
+1
+0 0 26 58
+1
+end_operator
+begin_operator
+up f32 f62
+0
+1
+0 0 26 59
+1
+end_operator
+begin_operator
+up f32 f63
+0
+1
+0 0 26 60
+1
+end_operator
+begin_operator
+up f32 f64
+0
+1
+0 0 26 61
+1
+end_operator
+begin_operator
+up f32 f65
+0
+1
+0 0 26 62
+1
+end_operator
+begin_operator
+up f32 f66
+0
+1
+0 0 26 63
+1
+end_operator
+begin_operator
+up f32 f67
+0
+1
+0 0 26 64
+1
+end_operator
+begin_operator
+up f32 f68
+0
+1
+0 0 26 65
+1
+end_operator
+begin_operator
+up f32 f69
+0
+1
+0 0 26 66
+1
+end_operator
+begin_operator
+up f32 f70
+0
+1
+0 0 26 68
+1
+end_operator
+begin_operator
+up f32 f71
+0
+1
+0 0 26 69
+1
+end_operator
+begin_operator
+up f32 f72
+0
+1
+0 0 26 70
+1
+end_operator
+begin_operator
+up f32 f73
+0
+1
+0 0 26 71
+1
+end_operator
+begin_operator
+up f32 f74
+0
+1
+0 0 26 72
+1
+end_operator
+begin_operator
+up f32 f75
+0
+1
+0 0 26 73
+1
+end_operator
+begin_operator
+up f32 f76
+0
+1
+0 0 26 74
+1
+end_operator
+begin_operator
+up f32 f77
+0
+1
+0 0 26 75
+1
+end_operator
+begin_operator
+up f32 f78
+0
+1
+0 0 26 76
+1
+end_operator
+begin_operator
+up f32 f79
+0
+1
+0 0 26 77
+1
+end_operator
+begin_operator
+up f32 f80
+0
+1
+0 0 26 79
+1
+end_operator
+begin_operator
+up f32 f81
+0
+1
+0 0 26 80
+1
+end_operator
+begin_operator
+up f32 f82
+0
+1
+0 0 26 81
+1
+end_operator
+begin_operator
+up f32 f83
+0
+1
+0 0 26 82
+1
+end_operator
+begin_operator
+up f32 f84
+0
+1
+0 0 26 83
+1
+end_operator
+begin_operator
+up f32 f85
+0
+1
+0 0 26 84
+1
+end_operator
+begin_operator
+up f32 f86
+0
+1
+0 0 26 85
+1
+end_operator
+begin_operator
+up f32 f87
+0
+1
+0 0 26 86
+1
+end_operator
+begin_operator
+up f32 f88
+0
+1
+0 0 26 87
+1
+end_operator
+begin_operator
+up f32 f89
+0
+1
+0 0 26 88
+1
+end_operator
+begin_operator
+up f32 f90
+0
+1
+0 0 26 90
+1
+end_operator
+begin_operator
+up f32 f91
+0
+1
+0 0 26 91
+1
+end_operator
+begin_operator
+up f32 f92
+0
+1
+0 0 26 92
+1
+end_operator
+begin_operator
+up f32 f93
+0
+1
+0 0 26 93
+1
+end_operator
+begin_operator
+up f32 f94
+0
+1
+0 0 26 94
+1
+end_operator
+begin_operator
+up f32 f95
+0
+1
+0 0 26 95
+1
+end_operator
+begin_operator
+up f32 f96
+0
+1
+0 0 26 96
+1
+end_operator
+begin_operator
+up f32 f97
+0
+1
+0 0 26 97
+1
+end_operator
+begin_operator
+up f32 f98
+0
+1
+0 0 26 98
+1
+end_operator
+begin_operator
+up f32 f99
+0
+1
+0 0 26 99
+1
+end_operator
+begin_operator
+up f33 f100
+0
+1
+0 0 27 2
+1
+end_operator
+begin_operator
+up f33 f34
+0
+1
+0 0 27 28
+1
+end_operator
+begin_operator
+up f33 f35
+0
+1
+0 0 27 29
+1
+end_operator
+begin_operator
+up f33 f36
+0
+1
+0 0 27 30
+1
+end_operator
+begin_operator
+up f33 f37
+0
+1
+0 0 27 31
+1
+end_operator
+begin_operator
+up f33 f38
+0
+1
+0 0 27 32
+1
+end_operator
+begin_operator
+up f33 f39
+0
+1
+0 0 27 33
+1
+end_operator
+begin_operator
+up f33 f40
+0
+1
+0 0 27 35
+1
+end_operator
+begin_operator
+up f33 f41
+0
+1
+0 0 27 36
+1
+end_operator
+begin_operator
+up f33 f42
+0
+1
+0 0 27 37
+1
+end_operator
+begin_operator
+up f33 f43
+0
+1
+0 0 27 38
+1
+end_operator
+begin_operator
+up f33 f44
+0
+1
+0 0 27 39
+1
+end_operator
+begin_operator
+up f33 f45
+0
+1
+0 0 27 40
+1
+end_operator
+begin_operator
+up f33 f46
+0
+1
+0 0 27 41
+1
+end_operator
+begin_operator
+up f33 f47
+0
+1
+0 0 27 42
+1
+end_operator
+begin_operator
+up f33 f48
+0
+1
+0 0 27 43
+1
+end_operator
+begin_operator
+up f33 f49
+0
+1
+0 0 27 44
+1
+end_operator
+begin_operator
+up f33 f50
+0
+1
+0 0 27 46
+1
+end_operator
+begin_operator
+up f33 f51
+0
+1
+0 0 27 47
+1
+end_operator
+begin_operator
+up f33 f52
+0
+1
+0 0 27 48
+1
+end_operator
+begin_operator
+up f33 f53
+0
+1
+0 0 27 49
+1
+end_operator
+begin_operator
+up f33 f54
+0
+1
+0 0 27 50
+1
+end_operator
+begin_operator
+up f33 f55
+0
+1
+0 0 27 51
+1
+end_operator
+begin_operator
+up f33 f56
+0
+1
+0 0 27 52
+1
+end_operator
+begin_operator
+up f33 f57
+0
+1
+0 0 27 53
+1
+end_operator
+begin_operator
+up f33 f58
+0
+1
+0 0 27 54
+1
+end_operator
+begin_operator
+up f33 f59
+0
+1
+0 0 27 55
+1
+end_operator
+begin_operator
+up f33 f60
+0
+1
+0 0 27 57
+1
+end_operator
+begin_operator
+up f33 f61
+0
+1
+0 0 27 58
+1
+end_operator
+begin_operator
+up f33 f62
+0
+1
+0 0 27 59
+1
+end_operator
+begin_operator
+up f33 f63
+0
+1
+0 0 27 60
+1
+end_operator
+begin_operator
+up f33 f64
+0
+1
+0 0 27 61
+1
+end_operator
+begin_operator
+up f33 f65
+0
+1
+0 0 27 62
+1
+end_operator
+begin_operator
+up f33 f66
+0
+1
+0 0 27 63
+1
+end_operator
+begin_operator
+up f33 f67
+0
+1
+0 0 27 64
+1
+end_operator
+begin_operator
+up f33 f68
+0
+1
+0 0 27 65
+1
+end_operator
+begin_operator
+up f33 f69
+0
+1
+0 0 27 66
+1
+end_operator
+begin_operator
+up f33 f70
+0
+1
+0 0 27 68
+1
+end_operator
+begin_operator
+up f33 f71
+0
+1
+0 0 27 69
+1
+end_operator
+begin_operator
+up f33 f72
+0
+1
+0 0 27 70
+1
+end_operator
+begin_operator
+up f33 f73
+0
+1
+0 0 27 71
+1
+end_operator
+begin_operator
+up f33 f74
+0
+1
+0 0 27 72
+1
+end_operator
+begin_operator
+up f33 f75
+0
+1
+0 0 27 73
+1
+end_operator
+begin_operator
+up f33 f76
+0
+1
+0 0 27 74
+1
+end_operator
+begin_operator
+up f33 f77
+0
+1
+0 0 27 75
+1
+end_operator
+begin_operator
+up f33 f78
+0
+1
+0 0 27 76
+1
+end_operator
+begin_operator
+up f33 f79
+0
+1
+0 0 27 77
+1
+end_operator
+begin_operator
+up f33 f80
+0
+1
+0 0 27 79
+1
+end_operator
+begin_operator
+up f33 f81
+0
+1
+0 0 27 80
+1
+end_operator
+begin_operator
+up f33 f82
+0
+1
+0 0 27 81
+1
+end_operator
+begin_operator
+up f33 f83
+0
+1
+0 0 27 82
+1
+end_operator
+begin_operator
+up f33 f84
+0
+1
+0 0 27 83
+1
+end_operator
+begin_operator
+up f33 f85
+0
+1
+0 0 27 84
+1
+end_operator
+begin_operator
+up f33 f86
+0
+1
+0 0 27 85
+1
+end_operator
+begin_operator
+up f33 f87
+0
+1
+0 0 27 86
+1
+end_operator
+begin_operator
+up f33 f88
+0
+1
+0 0 27 87
+1
+end_operator
+begin_operator
+up f33 f89
+0
+1
+0 0 27 88
+1
+end_operator
+begin_operator
+up f33 f90
+0
+1
+0 0 27 90
+1
+end_operator
+begin_operator
+up f33 f91
+0
+1
+0 0 27 91
+1
+end_operator
+begin_operator
+up f33 f92
+0
+1
+0 0 27 92
+1
+end_operator
+begin_operator
+up f33 f93
+0
+1
+0 0 27 93
+1
+end_operator
+begin_operator
+up f33 f94
+0
+1
+0 0 27 94
+1
+end_operator
+begin_operator
+up f33 f95
+0
+1
+0 0 27 95
+1
+end_operator
+begin_operator
+up f33 f96
+0
+1
+0 0 27 96
+1
+end_operator
+begin_operator
+up f33 f97
+0
+1
+0 0 27 97
+1
+end_operator
+begin_operator
+up f33 f98
+0
+1
+0 0 27 98
+1
+end_operator
+begin_operator
+up f33 f99
+0
+1
+0 0 27 99
+1
+end_operator
+begin_operator
+up f34 f100
+0
+1
+0 0 28 2
+1
+end_operator
+begin_operator
+up f34 f35
+0
+1
+0 0 28 29
+1
+end_operator
+begin_operator
+up f34 f36
+0
+1
+0 0 28 30
+1
+end_operator
+begin_operator
+up f34 f37
+0
+1
+0 0 28 31
+1
+end_operator
+begin_operator
+up f34 f38
+0
+1
+0 0 28 32
+1
+end_operator
+begin_operator
+up f34 f39
+0
+1
+0 0 28 33
+1
+end_operator
+begin_operator
+up f34 f40
+0
+1
+0 0 28 35
+1
+end_operator
+begin_operator
+up f34 f41
+0
+1
+0 0 28 36
+1
+end_operator
+begin_operator
+up f34 f42
+0
+1
+0 0 28 37
+1
+end_operator
+begin_operator
+up f34 f43
+0
+1
+0 0 28 38
+1
+end_operator
+begin_operator
+up f34 f44
+0
+1
+0 0 28 39
+1
+end_operator
+begin_operator
+up f34 f45
+0
+1
+0 0 28 40
+1
+end_operator
+begin_operator
+up f34 f46
+0
+1
+0 0 28 41
+1
+end_operator
+begin_operator
+up f34 f47
+0
+1
+0 0 28 42
+1
+end_operator
+begin_operator
+up f34 f48
+0
+1
+0 0 28 43
+1
+end_operator
+begin_operator
+up f34 f49
+0
+1
+0 0 28 44
+1
+end_operator
+begin_operator
+up f34 f50
+0
+1
+0 0 28 46
+1
+end_operator
+begin_operator
+up f34 f51
+0
+1
+0 0 28 47
+1
+end_operator
+begin_operator
+up f34 f52
+0
+1
+0 0 28 48
+1
+end_operator
+begin_operator
+up f34 f53
+0
+1
+0 0 28 49
+1
+end_operator
+begin_operator
+up f34 f54
+0
+1
+0 0 28 50
+1
+end_operator
+begin_operator
+up f34 f55
+0
+1
+0 0 28 51
+1
+end_operator
+begin_operator
+up f34 f56
+0
+1
+0 0 28 52
+1
+end_operator
+begin_operator
+up f34 f57
+0
+1
+0 0 28 53
+1
+end_operator
+begin_operator
+up f34 f58
+0
+1
+0 0 28 54
+1
+end_operator
+begin_operator
+up f34 f59
+0
+1
+0 0 28 55
+1
+end_operator
+begin_operator
+up f34 f60
+0
+1
+0 0 28 57
+1
+end_operator
+begin_operator
+up f34 f61
+0
+1
+0 0 28 58
+1
+end_operator
+begin_operator
+up f34 f62
+0
+1
+0 0 28 59
+1
+end_operator
+begin_operator
+up f34 f63
+0
+1
+0 0 28 60
+1
+end_operator
+begin_operator
+up f34 f64
+0
+1
+0 0 28 61
+1
+end_operator
+begin_operator
+up f34 f65
+0
+1
+0 0 28 62
+1
+end_operator
+begin_operator
+up f34 f66
+0
+1
+0 0 28 63
+1
+end_operator
+begin_operator
+up f34 f67
+0
+1
+0 0 28 64
+1
+end_operator
+begin_operator
+up f34 f68
+0
+1
+0 0 28 65
+1
+end_operator
+begin_operator
+up f34 f69
+0
+1
+0 0 28 66
+1
+end_operator
+begin_operator
+up f34 f70
+0
+1
+0 0 28 68
+1
+end_operator
+begin_operator
+up f34 f71
+0
+1
+0 0 28 69
+1
+end_operator
+begin_operator
+up f34 f72
+0
+1
+0 0 28 70
+1
+end_operator
+begin_operator
+up f34 f73
+0
+1
+0 0 28 71
+1
+end_operator
+begin_operator
+up f34 f74
+0
+1
+0 0 28 72
+1
+end_operator
+begin_operator
+up f34 f75
+0
+1
+0 0 28 73
+1
+end_operator
+begin_operator
+up f34 f76
+0
+1
+0 0 28 74
+1
+end_operator
+begin_operator
+up f34 f77
+0
+1
+0 0 28 75
+1
+end_operator
+begin_operator
+up f34 f78
+0
+1
+0 0 28 76
+1
+end_operator
+begin_operator
+up f34 f79
+0
+1
+0 0 28 77
+1
+end_operator
+begin_operator
+up f34 f80
+0
+1
+0 0 28 79
+1
+end_operator
+begin_operator
+up f34 f81
+0
+1
+0 0 28 80
+1
+end_operator
+begin_operator
+up f34 f82
+0
+1
+0 0 28 81
+1
+end_operator
+begin_operator
+up f34 f83
+0
+1
+0 0 28 82
+1
+end_operator
+begin_operator
+up f34 f84
+0
+1
+0 0 28 83
+1
+end_operator
+begin_operator
+up f34 f85
+0
+1
+0 0 28 84
+1
+end_operator
+begin_operator
+up f34 f86
+0
+1
+0 0 28 85
+1
+end_operator
+begin_operator
+up f34 f87
+0
+1
+0 0 28 86
+1
+end_operator
+begin_operator
+up f34 f88
+0
+1
+0 0 28 87
+1
+end_operator
+begin_operator
+up f34 f89
+0
+1
+0 0 28 88
+1
+end_operator
+begin_operator
+up f34 f90
+0
+1
+0 0 28 90
+1
+end_operator
+begin_operator
+up f34 f91
+0
+1
+0 0 28 91
+1
+end_operator
+begin_operator
+up f34 f92
+0
+1
+0 0 28 92
+1
+end_operator
+begin_operator
+up f34 f93
+0
+1
+0 0 28 93
+1
+end_operator
+begin_operator
+up f34 f94
+0
+1
+0 0 28 94
+1
+end_operator
+begin_operator
+up f34 f95
+0
+1
+0 0 28 95
+1
+end_operator
+begin_operator
+up f34 f96
+0
+1
+0 0 28 96
+1
+end_operator
+begin_operator
+up f34 f97
+0
+1
+0 0 28 97
+1
+end_operator
+begin_operator
+up f34 f98
+0
+1
+0 0 28 98
+1
+end_operator
+begin_operator
+up f34 f99
+0
+1
+0 0 28 99
+1
+end_operator
+begin_operator
+up f35 f100
+0
+1
+0 0 29 2
+1
+end_operator
+begin_operator
+up f35 f36
+0
+1
+0 0 29 30
+1
+end_operator
+begin_operator
+up f35 f37
+0
+1
+0 0 29 31
+1
+end_operator
+begin_operator
+up f35 f38
+0
+1
+0 0 29 32
+1
+end_operator
+begin_operator
+up f35 f39
+0
+1
+0 0 29 33
+1
+end_operator
+begin_operator
+up f35 f40
+0
+1
+0 0 29 35
+1
+end_operator
+begin_operator
+up f35 f41
+0
+1
+0 0 29 36
+1
+end_operator
+begin_operator
+up f35 f42
+0
+1
+0 0 29 37
+1
+end_operator
+begin_operator
+up f35 f43
+0
+1
+0 0 29 38
+1
+end_operator
+begin_operator
+up f35 f44
+0
+1
+0 0 29 39
+1
+end_operator
+begin_operator
+up f35 f45
+0
+1
+0 0 29 40
+1
+end_operator
+begin_operator
+up f35 f46
+0
+1
+0 0 29 41
+1
+end_operator
+begin_operator
+up f35 f47
+0
+1
+0 0 29 42
+1
+end_operator
+begin_operator
+up f35 f48
+0
+1
+0 0 29 43
+1
+end_operator
+begin_operator
+up f35 f49
+0
+1
+0 0 29 44
+1
+end_operator
+begin_operator
+up f35 f50
+0
+1
+0 0 29 46
+1
+end_operator
+begin_operator
+up f35 f51
+0
+1
+0 0 29 47
+1
+end_operator
+begin_operator
+up f35 f52
+0
+1
+0 0 29 48
+1
+end_operator
+begin_operator
+up f35 f53
+0
+1
+0 0 29 49
+1
+end_operator
+begin_operator
+up f35 f54
+0
+1
+0 0 29 50
+1
+end_operator
+begin_operator
+up f35 f55
+0
+1
+0 0 29 51
+1
+end_operator
+begin_operator
+up f35 f56
+0
+1
+0 0 29 52
+1
+end_operator
+begin_operator
+up f35 f57
+0
+1
+0 0 29 53
+1
+end_operator
+begin_operator
+up f35 f58
+0
+1
+0 0 29 54
+1
+end_operator
+begin_operator
+up f35 f59
+0
+1
+0 0 29 55
+1
+end_operator
+begin_operator
+up f35 f60
+0
+1
+0 0 29 57
+1
+end_operator
+begin_operator
+up f35 f61
+0
+1
+0 0 29 58
+1
+end_operator
+begin_operator
+up f35 f62
+0
+1
+0 0 29 59
+1
+end_operator
+begin_operator
+up f35 f63
+0
+1
+0 0 29 60
+1
+end_operator
+begin_operator
+up f35 f64
+0
+1
+0 0 29 61
+1
+end_operator
+begin_operator
+up f35 f65
+0
+1
+0 0 29 62
+1
+end_operator
+begin_operator
+up f35 f66
+0
+1
+0 0 29 63
+1
+end_operator
+begin_operator
+up f35 f67
+0
+1
+0 0 29 64
+1
+end_operator
+begin_operator
+up f35 f68
+0
+1
+0 0 29 65
+1
+end_operator
+begin_operator
+up f35 f69
+0
+1
+0 0 29 66
+1
+end_operator
+begin_operator
+up f35 f70
+0
+1
+0 0 29 68
+1
+end_operator
+begin_operator
+up f35 f71
+0
+1
+0 0 29 69
+1
+end_operator
+begin_operator
+up f35 f72
+0
+1
+0 0 29 70
+1
+end_operator
+begin_operator
+up f35 f73
+0
+1
+0 0 29 71
+1
+end_operator
+begin_operator
+up f35 f74
+0
+1
+0 0 29 72
+1
+end_operator
+begin_operator
+up f35 f75
+0
+1
+0 0 29 73
+1
+end_operator
+begin_operator
+up f35 f76
+0
+1
+0 0 29 74
+1
+end_operator
+begin_operator
+up f35 f77
+0
+1
+0 0 29 75
+1
+end_operator
+begin_operator
+up f35 f78
+0
+1
+0 0 29 76
+1
+end_operator
+begin_operator
+up f35 f79
+0
+1
+0 0 29 77
+1
+end_operator
+begin_operator
+up f35 f80
+0
+1
+0 0 29 79
+1
+end_operator
+begin_operator
+up f35 f81
+0
+1
+0 0 29 80
+1
+end_operator
+begin_operator
+up f35 f82
+0
+1
+0 0 29 81
+1
+end_operator
+begin_operator
+up f35 f83
+0
+1
+0 0 29 82
+1
+end_operator
+begin_operator
+up f35 f84
+0
+1
+0 0 29 83
+1
+end_operator
+begin_operator
+up f35 f85
+0
+1
+0 0 29 84
+1
+end_operator
+begin_operator
+up f35 f86
+0
+1
+0 0 29 85
+1
+end_operator
+begin_operator
+up f35 f87
+0
+1
+0 0 29 86
+1
+end_operator
+begin_operator
+up f35 f88
+0
+1
+0 0 29 87
+1
+end_operator
+begin_operator
+up f35 f89
+0
+1
+0 0 29 88
+1
+end_operator
+begin_operator
+up f35 f90
+0
+1
+0 0 29 90
+1
+end_operator
+begin_operator
+up f35 f91
+0
+1
+0 0 29 91
+1
+end_operator
+begin_operator
+up f35 f92
+0
+1
+0 0 29 92
+1
+end_operator
+begin_operator
+up f35 f93
+0
+1
+0 0 29 93
+1
+end_operator
+begin_operator
+up f35 f94
+0
+1
+0 0 29 94
+1
+end_operator
+begin_operator
+up f35 f95
+0
+1
+0 0 29 95
+1
+end_operator
+begin_operator
+up f35 f96
+0
+1
+0 0 29 96
+1
+end_operator
+begin_operator
+up f35 f97
+0
+1
+0 0 29 97
+1
+end_operator
+begin_operator
+up f35 f98
+0
+1
+0 0 29 98
+1
+end_operator
+begin_operator
+up f35 f99
+0
+1
+0 0 29 99
+1
+end_operator
+begin_operator
+up f36 f100
+0
+1
+0 0 30 2
+1
+end_operator
+begin_operator
+up f36 f37
+0
+1
+0 0 30 31
+1
+end_operator
+begin_operator
+up f36 f38
+0
+1
+0 0 30 32
+1
+end_operator
+begin_operator
+up f36 f39
+0
+1
+0 0 30 33
+1
+end_operator
+begin_operator
+up f36 f40
+0
+1
+0 0 30 35
+1
+end_operator
+begin_operator
+up f36 f41
+0
+1
+0 0 30 36
+1
+end_operator
+begin_operator
+up f36 f42
+0
+1
+0 0 30 37
+1
+end_operator
+begin_operator
+up f36 f43
+0
+1
+0 0 30 38
+1
+end_operator
+begin_operator
+up f36 f44
+0
+1
+0 0 30 39
+1
+end_operator
+begin_operator
+up f36 f45
+0
+1
+0 0 30 40
+1
+end_operator
+begin_operator
+up f36 f46
+0
+1
+0 0 30 41
+1
+end_operator
+begin_operator
+up f36 f47
+0
+1
+0 0 30 42
+1
+end_operator
+begin_operator
+up f36 f48
+0
+1
+0 0 30 43
+1
+end_operator
+begin_operator
+up f36 f49
+0
+1
+0 0 30 44
+1
+end_operator
+begin_operator
+up f36 f50
+0
+1
+0 0 30 46
+1
+end_operator
+begin_operator
+up f36 f51
+0
+1
+0 0 30 47
+1
+end_operator
+begin_operator
+up f36 f52
+0
+1
+0 0 30 48
+1
+end_operator
+begin_operator
+up f36 f53
+0
+1
+0 0 30 49
+1
+end_operator
+begin_operator
+up f36 f54
+0
+1
+0 0 30 50
+1
+end_operator
+begin_operator
+up f36 f55
+0
+1
+0 0 30 51
+1
+end_operator
+begin_operator
+up f36 f56
+0
+1
+0 0 30 52
+1
+end_operator
+begin_operator
+up f36 f57
+0
+1
+0 0 30 53
+1
+end_operator
+begin_operator
+up f36 f58
+0
+1
+0 0 30 54
+1
+end_operator
+begin_operator
+up f36 f59
+0
+1
+0 0 30 55
+1
+end_operator
+begin_operator
+up f36 f60
+0
+1
+0 0 30 57
+1
+end_operator
+begin_operator
+up f36 f61
+0
+1
+0 0 30 58
+1
+end_operator
+begin_operator
+up f36 f62
+0
+1
+0 0 30 59
+1
+end_operator
+begin_operator
+up f36 f63
+0
+1
+0 0 30 60
+1
+end_operator
+begin_operator
+up f36 f64
+0
+1
+0 0 30 61
+1
+end_operator
+begin_operator
+up f36 f65
+0
+1
+0 0 30 62
+1
+end_operator
+begin_operator
+up f36 f66
+0
+1
+0 0 30 63
+1
+end_operator
+begin_operator
+up f36 f67
+0
+1
+0 0 30 64
+1
+end_operator
+begin_operator
+up f36 f68
+0
+1
+0 0 30 65
+1
+end_operator
+begin_operator
+up f36 f69
+0
+1
+0 0 30 66
+1
+end_operator
+begin_operator
+up f36 f70
+0
+1
+0 0 30 68
+1
+end_operator
+begin_operator
+up f36 f71
+0
+1
+0 0 30 69
+1
+end_operator
+begin_operator
+up f36 f72
+0
+1
+0 0 30 70
+1
+end_operator
+begin_operator
+up f36 f73
+0
+1
+0 0 30 71
+1
+end_operator
+begin_operator
+up f36 f74
+0
+1
+0 0 30 72
+1
+end_operator
+begin_operator
+up f36 f75
+0
+1
+0 0 30 73
+1
+end_operator
+begin_operator
+up f36 f76
+0
+1
+0 0 30 74
+1
+end_operator
+begin_operator
+up f36 f77
+0
+1
+0 0 30 75
+1
+end_operator
+begin_operator
+up f36 f78
+0
+1
+0 0 30 76
+1
+end_operator
+begin_operator
+up f36 f79
+0
+1
+0 0 30 77
+1
+end_operator
+begin_operator
+up f36 f80
+0
+1
+0 0 30 79
+1
+end_operator
+begin_operator
+up f36 f81
+0
+1
+0 0 30 80
+1
+end_operator
+begin_operator
+up f36 f82
+0
+1
+0 0 30 81
+1
+end_operator
+begin_operator
+up f36 f83
+0
+1
+0 0 30 82
+1
+end_operator
+begin_operator
+up f36 f84
+0
+1
+0 0 30 83
+1
+end_operator
+begin_operator
+up f36 f85
+0
+1
+0 0 30 84
+1
+end_operator
+begin_operator
+up f36 f86
+0
+1
+0 0 30 85
+1
+end_operator
+begin_operator
+up f36 f87
+0
+1
+0 0 30 86
+1
+end_operator
+begin_operator
+up f36 f88
+0
+1
+0 0 30 87
+1
+end_operator
+begin_operator
+up f36 f89
+0
+1
+0 0 30 88
+1
+end_operator
+begin_operator
+up f36 f90
+0
+1
+0 0 30 90
+1
+end_operator
+begin_operator
+up f36 f91
+0
+1
+0 0 30 91
+1
+end_operator
+begin_operator
+up f36 f92
+0
+1
+0 0 30 92
+1
+end_operator
+begin_operator
+up f36 f93
+0
+1
+0 0 30 93
+1
+end_operator
+begin_operator
+up f36 f94
+0
+1
+0 0 30 94
+1
+end_operator
+begin_operator
+up f36 f95
+0
+1
+0 0 30 95
+1
+end_operator
+begin_operator
+up f36 f96
+0
+1
+0 0 30 96
+1
+end_operator
+begin_operator
+up f36 f97
+0
+1
+0 0 30 97
+1
+end_operator
+begin_operator
+up f36 f98
+0
+1
+0 0 30 98
+1
+end_operator
+begin_operator
+up f36 f99
+0
+1
+0 0 30 99
+1
+end_operator
+begin_operator
+up f37 f100
+0
+1
+0 0 31 2
+1
+end_operator
+begin_operator
+up f37 f38
+0
+1
+0 0 31 32
+1
+end_operator
+begin_operator
+up f37 f39
+0
+1
+0 0 31 33
+1
+end_operator
+begin_operator
+up f37 f40
+0
+1
+0 0 31 35
+1
+end_operator
+begin_operator
+up f37 f41
+0
+1
+0 0 31 36
+1
+end_operator
+begin_operator
+up f37 f42
+0
+1
+0 0 31 37
+1
+end_operator
+begin_operator
+up f37 f43
+0
+1
+0 0 31 38
+1
+end_operator
+begin_operator
+up f37 f44
+0
+1
+0 0 31 39
+1
+end_operator
+begin_operator
+up f37 f45
+0
+1
+0 0 31 40
+1
+end_operator
+begin_operator
+up f37 f46
+0
+1
+0 0 31 41
+1
+end_operator
+begin_operator
+up f37 f47
+0
+1
+0 0 31 42
+1
+end_operator
+begin_operator
+up f37 f48
+0
+1
+0 0 31 43
+1
+end_operator
+begin_operator
+up f37 f49
+0
+1
+0 0 31 44
+1
+end_operator
+begin_operator
+up f37 f50
+0
+1
+0 0 31 46
+1
+end_operator
+begin_operator
+up f37 f51
+0
+1
+0 0 31 47
+1
+end_operator
+begin_operator
+up f37 f52
+0
+1
+0 0 31 48
+1
+end_operator
+begin_operator
+up f37 f53
+0
+1
+0 0 31 49
+1
+end_operator
+begin_operator
+up f37 f54
+0
+1
+0 0 31 50
+1
+end_operator
+begin_operator
+up f37 f55
+0
+1
+0 0 31 51
+1
+end_operator
+begin_operator
+up f37 f56
+0
+1
+0 0 31 52
+1
+end_operator
+begin_operator
+up f37 f57
+0
+1
+0 0 31 53
+1
+end_operator
+begin_operator
+up f37 f58
+0
+1
+0 0 31 54
+1
+end_operator
+begin_operator
+up f37 f59
+0
+1
+0 0 31 55
+1
+end_operator
+begin_operator
+up f37 f60
+0
+1
+0 0 31 57
+1
+end_operator
+begin_operator
+up f37 f61
+0
+1
+0 0 31 58
+1
+end_operator
+begin_operator
+up f37 f62
+0
+1
+0 0 31 59
+1
+end_operator
+begin_operator
+up f37 f63
+0
+1
+0 0 31 60
+1
+end_operator
+begin_operator
+up f37 f64
+0
+1
+0 0 31 61
+1
+end_operator
+begin_operator
+up f37 f65
+0
+1
+0 0 31 62
+1
+end_operator
+begin_operator
+up f37 f66
+0
+1
+0 0 31 63
+1
+end_operator
+begin_operator
+up f37 f67
+0
+1
+0 0 31 64
+1
+end_operator
+begin_operator
+up f37 f68
+0
+1
+0 0 31 65
+1
+end_operator
+begin_operator
+up f37 f69
+0
+1
+0 0 31 66
+1
+end_operator
+begin_operator
+up f37 f70
+0
+1
+0 0 31 68
+1
+end_operator
+begin_operator
+up f37 f71
+0
+1
+0 0 31 69
+1
+end_operator
+begin_operator
+up f37 f72
+0
+1
+0 0 31 70
+1
+end_operator
+begin_operator
+up f37 f73
+0
+1
+0 0 31 71
+1
+end_operator
+begin_operator
+up f37 f74
+0
+1
+0 0 31 72
+1
+end_operator
+begin_operator
+up f37 f75
+0
+1
+0 0 31 73
+1
+end_operator
+begin_operator
+up f37 f76
+0
+1
+0 0 31 74
+1
+end_operator
+begin_operator
+up f37 f77
+0
+1
+0 0 31 75
+1
+end_operator
+begin_operator
+up f37 f78
+0
+1
+0 0 31 76
+1
+end_operator
+begin_operator
+up f37 f79
+0
+1
+0 0 31 77
+1
+end_operator
+begin_operator
+up f37 f80
+0
+1
+0 0 31 79
+1
+end_operator
+begin_operator
+up f37 f81
+0
+1
+0 0 31 80
+1
+end_operator
+begin_operator
+up f37 f82
+0
+1
+0 0 31 81
+1
+end_operator
+begin_operator
+up f37 f83
+0
+1
+0 0 31 82
+1
+end_operator
+begin_operator
+up f37 f84
+0
+1
+0 0 31 83
+1
+end_operator
+begin_operator
+up f37 f85
+0
+1
+0 0 31 84
+1
+end_operator
+begin_operator
+up f37 f86
+0
+1
+0 0 31 85
+1
+end_operator
+begin_operator
+up f37 f87
+0
+1
+0 0 31 86
+1
+end_operator
+begin_operator
+up f37 f88
+0
+1
+0 0 31 87
+1
+end_operator
+begin_operator
+up f37 f89
+0
+1
+0 0 31 88
+1
+end_operator
+begin_operator
+up f37 f90
+0
+1
+0 0 31 90
+1
+end_operator
+begin_operator
+up f37 f91
+0
+1
+0 0 31 91
+1
+end_operator
+begin_operator
+up f37 f92
+0
+1
+0 0 31 92
+1
+end_operator
+begin_operator
+up f37 f93
+0
+1
+0 0 31 93
+1
+end_operator
+begin_operator
+up f37 f94
+0
+1
+0 0 31 94
+1
+end_operator
+begin_operator
+up f37 f95
+0
+1
+0 0 31 95
+1
+end_operator
+begin_operator
+up f37 f96
+0
+1
+0 0 31 96
+1
+end_operator
+begin_operator
+up f37 f97
+0
+1
+0 0 31 97
+1
+end_operator
+begin_operator
+up f37 f98
+0
+1
+0 0 31 98
+1
+end_operator
+begin_operator
+up f37 f99
+0
+1
+0 0 31 99
+1
+end_operator
+begin_operator
+up f38 f100
+0
+1
+0 0 32 2
+1
+end_operator
+begin_operator
+up f38 f39
+0
+1
+0 0 32 33
+1
+end_operator
+begin_operator
+up f38 f40
+0
+1
+0 0 32 35
+1
+end_operator
+begin_operator
+up f38 f41
+0
+1
+0 0 32 36
+1
+end_operator
+begin_operator
+up f38 f42
+0
+1
+0 0 32 37
+1
+end_operator
+begin_operator
+up f38 f43
+0
+1
+0 0 32 38
+1
+end_operator
+begin_operator
+up f38 f44
+0
+1
+0 0 32 39
+1
+end_operator
+begin_operator
+up f38 f45
+0
+1
+0 0 32 40
+1
+end_operator
+begin_operator
+up f38 f46
+0
+1
+0 0 32 41
+1
+end_operator
+begin_operator
+up f38 f47
+0
+1
+0 0 32 42
+1
+end_operator
+begin_operator
+up f38 f48
+0
+1
+0 0 32 43
+1
+end_operator
+begin_operator
+up f38 f49
+0
+1
+0 0 32 44
+1
+end_operator
+begin_operator
+up f38 f50
+0
+1
+0 0 32 46
+1
+end_operator
+begin_operator
+up f38 f51
+0
+1
+0 0 32 47
+1
+end_operator
+begin_operator
+up f38 f52
+0
+1
+0 0 32 48
+1
+end_operator
+begin_operator
+up f38 f53
+0
+1
+0 0 32 49
+1
+end_operator
+begin_operator
+up f38 f54
+0
+1
+0 0 32 50
+1
+end_operator
+begin_operator
+up f38 f55
+0
+1
+0 0 32 51
+1
+end_operator
+begin_operator
+up f38 f56
+0
+1
+0 0 32 52
+1
+end_operator
+begin_operator
+up f38 f57
+0
+1
+0 0 32 53
+1
+end_operator
+begin_operator
+up f38 f58
+0
+1
+0 0 32 54
+1
+end_operator
+begin_operator
+up f38 f59
+0
+1
+0 0 32 55
+1
+end_operator
+begin_operator
+up f38 f60
+0
+1
+0 0 32 57
+1
+end_operator
+begin_operator
+up f38 f61
+0
+1
+0 0 32 58
+1
+end_operator
+begin_operator
+up f38 f62
+0
+1
+0 0 32 59
+1
+end_operator
+begin_operator
+up f38 f63
+0
+1
+0 0 32 60
+1
+end_operator
+begin_operator
+up f38 f64
+0
+1
+0 0 32 61
+1
+end_operator
+begin_operator
+up f38 f65
+0
+1
+0 0 32 62
+1
+end_operator
+begin_operator
+up f38 f66
+0
+1
+0 0 32 63
+1
+end_operator
+begin_operator
+up f38 f67
+0
+1
+0 0 32 64
+1
+end_operator
+begin_operator
+up f38 f68
+0
+1
+0 0 32 65
+1
+end_operator
+begin_operator
+up f38 f69
+0
+1
+0 0 32 66
+1
+end_operator
+begin_operator
+up f38 f70
+0
+1
+0 0 32 68
+1
+end_operator
+begin_operator
+up f38 f71
+0
+1
+0 0 32 69
+1
+end_operator
+begin_operator
+up f38 f72
+0
+1
+0 0 32 70
+1
+end_operator
+begin_operator
+up f38 f73
+0
+1
+0 0 32 71
+1
+end_operator
+begin_operator
+up f38 f74
+0
+1
+0 0 32 72
+1
+end_operator
+begin_operator
+up f38 f75
+0
+1
+0 0 32 73
+1
+end_operator
+begin_operator
+up f38 f76
+0
+1
+0 0 32 74
+1
+end_operator
+begin_operator
+up f38 f77
+0
+1
+0 0 32 75
+1
+end_operator
+begin_operator
+up f38 f78
+0
+1
+0 0 32 76
+1
+end_operator
+begin_operator
+up f38 f79
+0
+1
+0 0 32 77
+1
+end_operator
+begin_operator
+up f38 f80
+0
+1
+0 0 32 79
+1
+end_operator
+begin_operator
+up f38 f81
+0
+1
+0 0 32 80
+1
+end_operator
+begin_operator
+up f38 f82
+0
+1
+0 0 32 81
+1
+end_operator
+begin_operator
+up f38 f83
+0
+1
+0 0 32 82
+1
+end_operator
+begin_operator
+up f38 f84
+0
+1
+0 0 32 83
+1
+end_operator
+begin_operator
+up f38 f85
+0
+1
+0 0 32 84
+1
+end_operator
+begin_operator
+up f38 f86
+0
+1
+0 0 32 85
+1
+end_operator
+begin_operator
+up f38 f87
+0
+1
+0 0 32 86
+1
+end_operator
+begin_operator
+up f38 f88
+0
+1
+0 0 32 87
+1
+end_operator
+begin_operator
+up f38 f89
+0
+1
+0 0 32 88
+1
+end_operator
+begin_operator
+up f38 f90
+0
+1
+0 0 32 90
+1
+end_operator
+begin_operator
+up f38 f91
+0
+1
+0 0 32 91
+1
+end_operator
+begin_operator
+up f38 f92
+0
+1
+0 0 32 92
+1
+end_operator
+begin_operator
+up f38 f93
+0
+1
+0 0 32 93
+1
+end_operator
+begin_operator
+up f38 f94
+0
+1
+0 0 32 94
+1
+end_operator
+begin_operator
+up f38 f95
+0
+1
+0 0 32 95
+1
+end_operator
+begin_operator
+up f38 f96
+0
+1
+0 0 32 96
+1
+end_operator
+begin_operator
+up f38 f97
+0
+1
+0 0 32 97
+1
+end_operator
+begin_operator
+up f38 f98
+0
+1
+0 0 32 98
+1
+end_operator
+begin_operator
+up f38 f99
+0
+1
+0 0 32 99
+1
+end_operator
+begin_operator
+up f39 f100
+0
+1
+0 0 33 2
+1
+end_operator
+begin_operator
+up f39 f40
+0
+1
+0 0 33 35
+1
+end_operator
+begin_operator
+up f39 f41
+0
+1
+0 0 33 36
+1
+end_operator
+begin_operator
+up f39 f42
+0
+1
+0 0 33 37
+1
+end_operator
+begin_operator
+up f39 f43
+0
+1
+0 0 33 38
+1
+end_operator
+begin_operator
+up f39 f44
+0
+1
+0 0 33 39
+1
+end_operator
+begin_operator
+up f39 f45
+0
+1
+0 0 33 40
+1
+end_operator
+begin_operator
+up f39 f46
+0
+1
+0 0 33 41
+1
+end_operator
+begin_operator
+up f39 f47
+0
+1
+0 0 33 42
+1
+end_operator
+begin_operator
+up f39 f48
+0
+1
+0 0 33 43
+1
+end_operator
+begin_operator
+up f39 f49
+0
+1
+0 0 33 44
+1
+end_operator
+begin_operator
+up f39 f50
+0
+1
+0 0 33 46
+1
+end_operator
+begin_operator
+up f39 f51
+0
+1
+0 0 33 47
+1
+end_operator
+begin_operator
+up f39 f52
+0
+1
+0 0 33 48
+1
+end_operator
+begin_operator
+up f39 f53
+0
+1
+0 0 33 49
+1
+end_operator
+begin_operator
+up f39 f54
+0
+1
+0 0 33 50
+1
+end_operator
+begin_operator
+up f39 f55
+0
+1
+0 0 33 51
+1
+end_operator
+begin_operator
+up f39 f56
+0
+1
+0 0 33 52
+1
+end_operator
+begin_operator
+up f39 f57
+0
+1
+0 0 33 53
+1
+end_operator
+begin_operator
+up f39 f58
+0
+1
+0 0 33 54
+1
+end_operator
+begin_operator
+up f39 f59
+0
+1
+0 0 33 55
+1
+end_operator
+begin_operator
+up f39 f60
+0
+1
+0 0 33 57
+1
+end_operator
+begin_operator
+up f39 f61
+0
+1
+0 0 33 58
+1
+end_operator
+begin_operator
+up f39 f62
+0
+1
+0 0 33 59
+1
+end_operator
+begin_operator
+up f39 f63
+0
+1
+0 0 33 60
+1
+end_operator
+begin_operator
+up f39 f64
+0
+1
+0 0 33 61
+1
+end_operator
+begin_operator
+up f39 f65
+0
+1
+0 0 33 62
+1
+end_operator
+begin_operator
+up f39 f66
+0
+1
+0 0 33 63
+1
+end_operator
+begin_operator
+up f39 f67
+0
+1
+0 0 33 64
+1
+end_operator
+begin_operator
+up f39 f68
+0
+1
+0 0 33 65
+1
+end_operator
+begin_operator
+up f39 f69
+0
+1
+0 0 33 66
+1
+end_operator
+begin_operator
+up f39 f70
+0
+1
+0 0 33 68
+1
+end_operator
+begin_operator
+up f39 f71
+0
+1
+0 0 33 69
+1
+end_operator
+begin_operator
+up f39 f72
+0
+1
+0 0 33 70
+1
+end_operator
+begin_operator
+up f39 f73
+0
+1
+0 0 33 71
+1
+end_operator
+begin_operator
+up f39 f74
+0
+1
+0 0 33 72
+1
+end_operator
+begin_operator
+up f39 f75
+0
+1
+0 0 33 73
+1
+end_operator
+begin_operator
+up f39 f76
+0
+1
+0 0 33 74
+1
+end_operator
+begin_operator
+up f39 f77
+0
+1
+0 0 33 75
+1
+end_operator
+begin_operator
+up f39 f78
+0
+1
+0 0 33 76
+1
+end_operator
+begin_operator
+up f39 f79
+0
+1
+0 0 33 77
+1
+end_operator
+begin_operator
+up f39 f80
+0
+1
+0 0 33 79
+1
+end_operator
+begin_operator
+up f39 f81
+0
+1
+0 0 33 80
+1
+end_operator
+begin_operator
+up f39 f82
+0
+1
+0 0 33 81
+1
+end_operator
+begin_operator
+up f39 f83
+0
+1
+0 0 33 82
+1
+end_operator
+begin_operator
+up f39 f84
+0
+1
+0 0 33 83
+1
+end_operator
+begin_operator
+up f39 f85
+0
+1
+0 0 33 84
+1
+end_operator
+begin_operator
+up f39 f86
+0
+1
+0 0 33 85
+1
+end_operator
+begin_operator
+up f39 f87
+0
+1
+0 0 33 86
+1
+end_operator
+begin_operator
+up f39 f88
+0
+1
+0 0 33 87
+1
+end_operator
+begin_operator
+up f39 f89
+0
+1
+0 0 33 88
+1
+end_operator
+begin_operator
+up f39 f90
+0
+1
+0 0 33 90
+1
+end_operator
+begin_operator
+up f39 f91
+0
+1
+0 0 33 91
+1
+end_operator
+begin_operator
+up f39 f92
+0
+1
+0 0 33 92
+1
+end_operator
+begin_operator
+up f39 f93
+0
+1
+0 0 33 93
+1
+end_operator
+begin_operator
+up f39 f94
+0
+1
+0 0 33 94
+1
+end_operator
+begin_operator
+up f39 f95
+0
+1
+0 0 33 95
+1
+end_operator
+begin_operator
+up f39 f96
+0
+1
+0 0 33 96
+1
+end_operator
+begin_operator
+up f39 f97
+0
+1
+0 0 33 97
+1
+end_operator
+begin_operator
+up f39 f98
+0
+1
+0 0 33 98
+1
+end_operator
+begin_operator
+up f39 f99
+0
+1
+0 0 33 99
+1
+end_operator
+begin_operator
+up f4 f10
+0
+1
+0 0 34 1
+1
+end_operator
+begin_operator
+up f4 f100
+0
+1
+0 0 34 2
+1
+end_operator
+begin_operator
+up f4 f11
+0
+1
+0 0 34 3
+1
+end_operator
+begin_operator
+up f4 f12
+0
+1
+0 0 34 4
+1
+end_operator
+begin_operator
+up f4 f13
+0
+1
+0 0 34 5
+1
+end_operator
+begin_operator
+up f4 f14
+0
+1
+0 0 34 6
+1
+end_operator
+begin_operator
+up f4 f15
+0
+1
+0 0 34 7
+1
+end_operator
+begin_operator
+up f4 f16
+0
+1
+0 0 34 8
+1
+end_operator
+begin_operator
+up f4 f17
+0
+1
+0 0 34 9
+1
+end_operator
+begin_operator
+up f4 f18
+0
+1
+0 0 34 10
+1
+end_operator
+begin_operator
+up f4 f19
+0
+1
+0 0 34 11
+1
+end_operator
+begin_operator
+up f4 f20
+0
+1
+0 0 34 13
+1
+end_operator
+begin_operator
+up f4 f21
+0
+1
+0 0 34 14
+1
+end_operator
+begin_operator
+up f4 f22
+0
+1
+0 0 34 15
+1
+end_operator
+begin_operator
+up f4 f23
+0
+1
+0 0 34 16
+1
+end_operator
+begin_operator
+up f4 f24
+0
+1
+0 0 34 17
+1
+end_operator
+begin_operator
+up f4 f25
+0
+1
+0 0 34 18
+1
+end_operator
+begin_operator
+up f4 f26
+0
+1
+0 0 34 19
+1
+end_operator
+begin_operator
+up f4 f27
+0
+1
+0 0 34 20
+1
+end_operator
+begin_operator
+up f4 f28
+0
+1
+0 0 34 21
+1
+end_operator
+begin_operator
+up f4 f29
+0
+1
+0 0 34 22
+1
+end_operator
+begin_operator
+up f4 f30
+0
+1
+0 0 34 24
+1
+end_operator
+begin_operator
+up f4 f31
+0
+1
+0 0 34 25
+1
+end_operator
+begin_operator
+up f4 f32
+0
+1
+0 0 34 26
+1
+end_operator
+begin_operator
+up f4 f33
+0
+1
+0 0 34 27
+1
+end_operator
+begin_operator
+up f4 f34
+0
+1
+0 0 34 28
+1
+end_operator
+begin_operator
+up f4 f35
+0
+1
+0 0 34 29
+1
+end_operator
+begin_operator
+up f4 f36
+0
+1
+0 0 34 30
+1
+end_operator
+begin_operator
+up f4 f37
+0
+1
+0 0 34 31
+1
+end_operator
+begin_operator
+up f4 f38
+0
+1
+0 0 34 32
+1
+end_operator
+begin_operator
+up f4 f39
+0
+1
+0 0 34 33
+1
+end_operator
+begin_operator
+up f4 f40
+0
+1
+0 0 34 35
+1
+end_operator
+begin_operator
+up f4 f41
+0
+1
+0 0 34 36
+1
+end_operator
+begin_operator
+up f4 f42
+0
+1
+0 0 34 37
+1
+end_operator
+begin_operator
+up f4 f43
+0
+1
+0 0 34 38
+1
+end_operator
+begin_operator
+up f4 f44
+0
+1
+0 0 34 39
+1
+end_operator
+begin_operator
+up f4 f45
+0
+1
+0 0 34 40
+1
+end_operator
+begin_operator
+up f4 f46
+0
+1
+0 0 34 41
+1
+end_operator
+begin_operator
+up f4 f47
+0
+1
+0 0 34 42
+1
+end_operator
+begin_operator
+up f4 f48
+0
+1
+0 0 34 43
+1
+end_operator
+begin_operator
+up f4 f49
+0
+1
+0 0 34 44
+1
+end_operator
+begin_operator
+up f4 f5
+0
+1
+0 0 34 45
+1
+end_operator
+begin_operator
+up f4 f50
+0
+1
+0 0 34 46
+1
+end_operator
+begin_operator
+up f4 f51
+0
+1
+0 0 34 47
+1
+end_operator
+begin_operator
+up f4 f52
+0
+1
+0 0 34 48
+1
+end_operator
+begin_operator
+up f4 f53
+0
+1
+0 0 34 49
+1
+end_operator
+begin_operator
+up f4 f54
+0
+1
+0 0 34 50
+1
+end_operator
+begin_operator
+up f4 f55
+0
+1
+0 0 34 51
+1
+end_operator
+begin_operator
+up f4 f56
+0
+1
+0 0 34 52
+1
+end_operator
+begin_operator
+up f4 f57
+0
+1
+0 0 34 53
+1
+end_operator
+begin_operator
+up f4 f58
+0
+1
+0 0 34 54
+1
+end_operator
+begin_operator
+up f4 f59
+0
+1
+0 0 34 55
+1
+end_operator
+begin_operator
+up f4 f6
+0
+1
+0 0 34 56
+1
+end_operator
+begin_operator
+up f4 f60
+0
+1
+0 0 34 57
+1
+end_operator
+begin_operator
+up f4 f61
+0
+1
+0 0 34 58
+1
+end_operator
+begin_operator
+up f4 f62
+0
+1
+0 0 34 59
+1
+end_operator
+begin_operator
+up f4 f63
+0
+1
+0 0 34 60
+1
+end_operator
+begin_operator
+up f4 f64
+0
+1
+0 0 34 61
+1
+end_operator
+begin_operator
+up f4 f65
+0
+1
+0 0 34 62
+1
+end_operator
+begin_operator
+up f4 f66
+0
+1
+0 0 34 63
+1
+end_operator
+begin_operator
+up f4 f67
+0
+1
+0 0 34 64
+1
+end_operator
+begin_operator
+up f4 f68
+0
+1
+0 0 34 65
+1
+end_operator
+begin_operator
+up f4 f69
+0
+1
+0 0 34 66
+1
+end_operator
+begin_operator
+up f4 f7
+0
+1
+0 0 34 67
+1
+end_operator
+begin_operator
+up f4 f70
+0
+1
+0 0 34 68
+1
+end_operator
+begin_operator
+up f4 f71
+0
+1
+0 0 34 69
+1
+end_operator
+begin_operator
+up f4 f72
+0
+1
+0 0 34 70
+1
+end_operator
+begin_operator
+up f4 f73
+0
+1
+0 0 34 71
+1
+end_operator
+begin_operator
+up f4 f74
+0
+1
+0 0 34 72
+1
+end_operator
+begin_operator
+up f4 f75
+0
+1
+0 0 34 73
+1
+end_operator
+begin_operator
+up f4 f76
+0
+1
+0 0 34 74
+1
+end_operator
+begin_operator
+up f4 f77
+0
+1
+0 0 34 75
+1
+end_operator
+begin_operator
+up f4 f78
+0
+1
+0 0 34 76
+1
+end_operator
+begin_operator
+up f4 f79
+0
+1
+0 0 34 77
+1
+end_operator
+begin_operator
+up f4 f8
+0
+1
+0 0 34 78
+1
+end_operator
+begin_operator
+up f4 f80
+0
+1
+0 0 34 79
+1
+end_operator
+begin_operator
+up f4 f81
+0
+1
+0 0 34 80
+1
+end_operator
+begin_operator
+up f4 f82
+0
+1
+0 0 34 81
+1
+end_operator
+begin_operator
+up f4 f83
+0
+1
+0 0 34 82
+1
+end_operator
+begin_operator
+up f4 f84
+0
+1
+0 0 34 83
+1
+end_operator
+begin_operator
+up f4 f85
+0
+1
+0 0 34 84
+1
+end_operator
+begin_operator
+up f4 f86
+0
+1
+0 0 34 85
+1
+end_operator
+begin_operator
+up f4 f87
+0
+1
+0 0 34 86
+1
+end_operator
+begin_operator
+up f4 f88
+0
+1
+0 0 34 87
+1
+end_operator
+begin_operator
+up f4 f89
+0
+1
+0 0 34 88
+1
+end_operator
+begin_operator
+up f4 f9
+0
+1
+0 0 34 89
+1
+end_operator
+begin_operator
+up f4 f90
+0
+1
+0 0 34 90
+1
+end_operator
+begin_operator
+up f4 f91
+0
+1
+0 0 34 91
+1
+end_operator
+begin_operator
+up f4 f92
+0
+1
+0 0 34 92
+1
+end_operator
+begin_operator
+up f4 f93
+0
+1
+0 0 34 93
+1
+end_operator
+begin_operator
+up f4 f94
+0
+1
+0 0 34 94
+1
+end_operator
+begin_operator
+up f4 f95
+0
+1
+0 0 34 95
+1
+end_operator
+begin_operator
+up f4 f96
+0
+1
+0 0 34 96
+1
+end_operator
+begin_operator
+up f4 f97
+0
+1
+0 0 34 97
+1
+end_operator
+begin_operator
+up f4 f98
+0
+1
+0 0 34 98
+1
+end_operator
+begin_operator
+up f4 f99
+0
+1
+0 0 34 99
+1
+end_operator
+begin_operator
+up f40 f100
+0
+1
+0 0 35 2
+1
+end_operator
+begin_operator
+up f40 f41
+0
+1
+0 0 35 36
+1
+end_operator
+begin_operator
+up f40 f42
+0
+1
+0 0 35 37
+1
+end_operator
+begin_operator
+up f40 f43
+0
+1
+0 0 35 38
+1
+end_operator
+begin_operator
+up f40 f44
+0
+1
+0 0 35 39
+1
+end_operator
+begin_operator
+up f40 f45
+0
+1
+0 0 35 40
+1
+end_operator
+begin_operator
+up f40 f46
+0
+1
+0 0 35 41
+1
+end_operator
+begin_operator
+up f40 f47
+0
+1
+0 0 35 42
+1
+end_operator
+begin_operator
+up f40 f48
+0
+1
+0 0 35 43
+1
+end_operator
+begin_operator
+up f40 f49
+0
+1
+0 0 35 44
+1
+end_operator
+begin_operator
+up f40 f50
+0
+1
+0 0 35 46
+1
+end_operator
+begin_operator
+up f40 f51
+0
+1
+0 0 35 47
+1
+end_operator
+begin_operator
+up f40 f52
+0
+1
+0 0 35 48
+1
+end_operator
+begin_operator
+up f40 f53
+0
+1
+0 0 35 49
+1
+end_operator
+begin_operator
+up f40 f54
+0
+1
+0 0 35 50
+1
+end_operator
+begin_operator
+up f40 f55
+0
+1
+0 0 35 51
+1
+end_operator
+begin_operator
+up f40 f56
+0
+1
+0 0 35 52
+1
+end_operator
+begin_operator
+up f40 f57
+0
+1
+0 0 35 53
+1
+end_operator
+begin_operator
+up f40 f58
+0
+1
+0 0 35 54
+1
+end_operator
+begin_operator
+up f40 f59
+0
+1
+0 0 35 55
+1
+end_operator
+begin_operator
+up f40 f60
+0
+1
+0 0 35 57
+1
+end_operator
+begin_operator
+up f40 f61
+0
+1
+0 0 35 58
+1
+end_operator
+begin_operator
+up f40 f62
+0
+1
+0 0 35 59
+1
+end_operator
+begin_operator
+up f40 f63
+0
+1
+0 0 35 60
+1
+end_operator
+begin_operator
+up f40 f64
+0
+1
+0 0 35 61
+1
+end_operator
+begin_operator
+up f40 f65
+0
+1
+0 0 35 62
+1
+end_operator
+begin_operator
+up f40 f66
+0
+1
+0 0 35 63
+1
+end_operator
+begin_operator
+up f40 f67
+0
+1
+0 0 35 64
+1
+end_operator
+begin_operator
+up f40 f68
+0
+1
+0 0 35 65
+1
+end_operator
+begin_operator
+up f40 f69
+0
+1
+0 0 35 66
+1
+end_operator
+begin_operator
+up f40 f70
+0
+1
+0 0 35 68
+1
+end_operator
+begin_operator
+up f40 f71
+0
+1
+0 0 35 69
+1
+end_operator
+begin_operator
+up f40 f72
+0
+1
+0 0 35 70
+1
+end_operator
+begin_operator
+up f40 f73
+0
+1
+0 0 35 71
+1
+end_operator
+begin_operator
+up f40 f74
+0
+1
+0 0 35 72
+1
+end_operator
+begin_operator
+up f40 f75
+0
+1
+0 0 35 73
+1
+end_operator
+begin_operator
+up f40 f76
+0
+1
+0 0 35 74
+1
+end_operator
+begin_operator
+up f40 f77
+0
+1
+0 0 35 75
+1
+end_operator
+begin_operator
+up f40 f78
+0
+1
+0 0 35 76
+1
+end_operator
+begin_operator
+up f40 f79
+0
+1
+0 0 35 77
+1
+end_operator
+begin_operator
+up f40 f80
+0
+1
+0 0 35 79
+1
+end_operator
+begin_operator
+up f40 f81
+0
+1
+0 0 35 80
+1
+end_operator
+begin_operator
+up f40 f82
+0
+1
+0 0 35 81
+1
+end_operator
+begin_operator
+up f40 f83
+0
+1
+0 0 35 82
+1
+end_operator
+begin_operator
+up f40 f84
+0
+1
+0 0 35 83
+1
+end_operator
+begin_operator
+up f40 f85
+0
+1
+0 0 35 84
+1
+end_operator
+begin_operator
+up f40 f86
+0
+1
+0 0 35 85
+1
+end_operator
+begin_operator
+up f40 f87
+0
+1
+0 0 35 86
+1
+end_operator
+begin_operator
+up f40 f88
+0
+1
+0 0 35 87
+1
+end_operator
+begin_operator
+up f40 f89
+0
+1
+0 0 35 88
+1
+end_operator
+begin_operator
+up f40 f90
+0
+1
+0 0 35 90
+1
+end_operator
+begin_operator
+up f40 f91
+0
+1
+0 0 35 91
+1
+end_operator
+begin_operator
+up f40 f92
+0
+1
+0 0 35 92
+1
+end_operator
+begin_operator
+up f40 f93
+0
+1
+0 0 35 93
+1
+end_operator
+begin_operator
+up f40 f94
+0
+1
+0 0 35 94
+1
+end_operator
+begin_operator
+up f40 f95
+0
+1
+0 0 35 95
+1
+end_operator
+begin_operator
+up f40 f96
+0
+1
+0 0 35 96
+1
+end_operator
+begin_operator
+up f40 f97
+0
+1
+0 0 35 97
+1
+end_operator
+begin_operator
+up f40 f98
+0
+1
+0 0 35 98
+1
+end_operator
+begin_operator
+up f40 f99
+0
+1
+0 0 35 99
+1
+end_operator
+begin_operator
+up f41 f100
+0
+1
+0 0 36 2
+1
+end_operator
+begin_operator
+up f41 f42
+0
+1
+0 0 36 37
+1
+end_operator
+begin_operator
+up f41 f43
+0
+1
+0 0 36 38
+1
+end_operator
+begin_operator
+up f41 f44
+0
+1
+0 0 36 39
+1
+end_operator
+begin_operator
+up f41 f45
+0
+1
+0 0 36 40
+1
+end_operator
+begin_operator
+up f41 f46
+0
+1
+0 0 36 41
+1
+end_operator
+begin_operator
+up f41 f47
+0
+1
+0 0 36 42
+1
+end_operator
+begin_operator
+up f41 f48
+0
+1
+0 0 36 43
+1
+end_operator
+begin_operator
+up f41 f49
+0
+1
+0 0 36 44
+1
+end_operator
+begin_operator
+up f41 f50
+0
+1
+0 0 36 46
+1
+end_operator
+begin_operator
+up f41 f51
+0
+1
+0 0 36 47
+1
+end_operator
+begin_operator
+up f41 f52
+0
+1
+0 0 36 48
+1
+end_operator
+begin_operator
+up f41 f53
+0
+1
+0 0 36 49
+1
+end_operator
+begin_operator
+up f41 f54
+0
+1
+0 0 36 50
+1
+end_operator
+begin_operator
+up f41 f55
+0
+1
+0 0 36 51
+1
+end_operator
+begin_operator
+up f41 f56
+0
+1
+0 0 36 52
+1
+end_operator
+begin_operator
+up f41 f57
+0
+1
+0 0 36 53
+1
+end_operator
+begin_operator
+up f41 f58
+0
+1
+0 0 36 54
+1
+end_operator
+begin_operator
+up f41 f59
+0
+1
+0 0 36 55
+1
+end_operator
+begin_operator
+up f41 f60
+0
+1
+0 0 36 57
+1
+end_operator
+begin_operator
+up f41 f61
+0
+1
+0 0 36 58
+1
+end_operator
+begin_operator
+up f41 f62
+0
+1
+0 0 36 59
+1
+end_operator
+begin_operator
+up f41 f63
+0
+1
+0 0 36 60
+1
+end_operator
+begin_operator
+up f41 f64
+0
+1
+0 0 36 61
+1
+end_operator
+begin_operator
+up f41 f65
+0
+1
+0 0 36 62
+1
+end_operator
+begin_operator
+up f41 f66
+0
+1
+0 0 36 63
+1
+end_operator
+begin_operator
+up f41 f67
+0
+1
+0 0 36 64
+1
+end_operator
+begin_operator
+up f41 f68
+0
+1
+0 0 36 65
+1
+end_operator
+begin_operator
+up f41 f69
+0
+1
+0 0 36 66
+1
+end_operator
+begin_operator
+up f41 f70
+0
+1
+0 0 36 68
+1
+end_operator
+begin_operator
+up f41 f71
+0
+1
+0 0 36 69
+1
+end_operator
+begin_operator
+up f41 f72
+0
+1
+0 0 36 70
+1
+end_operator
+begin_operator
+up f41 f73
+0
+1
+0 0 36 71
+1
+end_operator
+begin_operator
+up f41 f74
+0
+1
+0 0 36 72
+1
+end_operator
+begin_operator
+up f41 f75
+0
+1
+0 0 36 73
+1
+end_operator
+begin_operator
+up f41 f76
+0
+1
+0 0 36 74
+1
+end_operator
+begin_operator
+up f41 f77
+0
+1
+0 0 36 75
+1
+end_operator
+begin_operator
+up f41 f78
+0
+1
+0 0 36 76
+1
+end_operator
+begin_operator
+up f41 f79
+0
+1
+0 0 36 77
+1
+end_operator
+begin_operator
+up f41 f80
+0
+1
+0 0 36 79
+1
+end_operator
+begin_operator
+up f41 f81
+0
+1
+0 0 36 80
+1
+end_operator
+begin_operator
+up f41 f82
+0
+1
+0 0 36 81
+1
+end_operator
+begin_operator
+up f41 f83
+0
+1
+0 0 36 82
+1
+end_operator
+begin_operator
+up f41 f84
+0
+1
+0 0 36 83
+1
+end_operator
+begin_operator
+up f41 f85
+0
+1
+0 0 36 84
+1
+end_operator
+begin_operator
+up f41 f86
+0
+1
+0 0 36 85
+1
+end_operator
+begin_operator
+up f41 f87
+0
+1
+0 0 36 86
+1
+end_operator
+begin_operator
+up f41 f88
+0
+1
+0 0 36 87
+1
+end_operator
+begin_operator
+up f41 f89
+0
+1
+0 0 36 88
+1
+end_operator
+begin_operator
+up f41 f90
+0
+1
+0 0 36 90
+1
+end_operator
+begin_operator
+up f41 f91
+0
+1
+0 0 36 91
+1
+end_operator
+begin_operator
+up f41 f92
+0
+1
+0 0 36 92
+1
+end_operator
+begin_operator
+up f41 f93
+0
+1
+0 0 36 93
+1
+end_operator
+begin_operator
+up f41 f94
+0
+1
+0 0 36 94
+1
+end_operator
+begin_operator
+up f41 f95
+0
+1
+0 0 36 95
+1
+end_operator
+begin_operator
+up f41 f96
+0
+1
+0 0 36 96
+1
+end_operator
+begin_operator
+up f41 f97
+0
+1
+0 0 36 97
+1
+end_operator
+begin_operator
+up f41 f98
+0
+1
+0 0 36 98
+1
+end_operator
+begin_operator
+up f41 f99
+0
+1
+0 0 36 99
+1
+end_operator
+begin_operator
+up f42 f100
+0
+1
+0 0 37 2
+1
+end_operator
+begin_operator
+up f42 f43
+0
+1
+0 0 37 38
+1
+end_operator
+begin_operator
+up f42 f44
+0
+1
+0 0 37 39
+1
+end_operator
+begin_operator
+up f42 f45
+0
+1
+0 0 37 40
+1
+end_operator
+begin_operator
+up f42 f46
+0
+1
+0 0 37 41
+1
+end_operator
+begin_operator
+up f42 f47
+0
+1
+0 0 37 42
+1
+end_operator
+begin_operator
+up f42 f48
+0
+1
+0 0 37 43
+1
+end_operator
+begin_operator
+up f42 f49
+0
+1
+0 0 37 44
+1
+end_operator
+begin_operator
+up f42 f50
+0
+1
+0 0 37 46
+1
+end_operator
+begin_operator
+up f42 f51
+0
+1
+0 0 37 47
+1
+end_operator
+begin_operator
+up f42 f52
+0
+1
+0 0 37 48
+1
+end_operator
+begin_operator
+up f42 f53
+0
+1
+0 0 37 49
+1
+end_operator
+begin_operator
+up f42 f54
+0
+1
+0 0 37 50
+1
+end_operator
+begin_operator
+up f42 f55
+0
+1
+0 0 37 51
+1
+end_operator
+begin_operator
+up f42 f56
+0
+1
+0 0 37 52
+1
+end_operator
+begin_operator
+up f42 f57
+0
+1
+0 0 37 53
+1
+end_operator
+begin_operator
+up f42 f58
+0
+1
+0 0 37 54
+1
+end_operator
+begin_operator
+up f42 f59
+0
+1
+0 0 37 55
+1
+end_operator
+begin_operator
+up f42 f60
+0
+1
+0 0 37 57
+1
+end_operator
+begin_operator
+up f42 f61
+0
+1
+0 0 37 58
+1
+end_operator
+begin_operator
+up f42 f62
+0
+1
+0 0 37 59
+1
+end_operator
+begin_operator
+up f42 f63
+0
+1
+0 0 37 60
+1
+end_operator
+begin_operator
+up f42 f64
+0
+1
+0 0 37 61
+1
+end_operator
+begin_operator
+up f42 f65
+0
+1
+0 0 37 62
+1
+end_operator
+begin_operator
+up f42 f66
+0
+1
+0 0 37 63
+1
+end_operator
+begin_operator
+up f42 f67
+0
+1
+0 0 37 64
+1
+end_operator
+begin_operator
+up f42 f68
+0
+1
+0 0 37 65
+1
+end_operator
+begin_operator
+up f42 f69
+0
+1
+0 0 37 66
+1
+end_operator
+begin_operator
+up f42 f70
+0
+1
+0 0 37 68
+1
+end_operator
+begin_operator
+up f42 f71
+0
+1
+0 0 37 69
+1
+end_operator
+begin_operator
+up f42 f72
+0
+1
+0 0 37 70
+1
+end_operator
+begin_operator
+up f42 f73
+0
+1
+0 0 37 71
+1
+end_operator
+begin_operator
+up f42 f74
+0
+1
+0 0 37 72
+1
+end_operator
+begin_operator
+up f42 f75
+0
+1
+0 0 37 73
+1
+end_operator
+begin_operator
+up f42 f76
+0
+1
+0 0 37 74
+1
+end_operator
+begin_operator
+up f42 f77
+0
+1
+0 0 37 75
+1
+end_operator
+begin_operator
+up f42 f78
+0
+1
+0 0 37 76
+1
+end_operator
+begin_operator
+up f42 f79
+0
+1
+0 0 37 77
+1
+end_operator
+begin_operator
+up f42 f80
+0
+1
+0 0 37 79
+1
+end_operator
+begin_operator
+up f42 f81
+0
+1
+0 0 37 80
+1
+end_operator
+begin_operator
+up f42 f82
+0
+1
+0 0 37 81
+1
+end_operator
+begin_operator
+up f42 f83
+0
+1
+0 0 37 82
+1
+end_operator
+begin_operator
+up f42 f84
+0
+1
+0 0 37 83
+1
+end_operator
+begin_operator
+up f42 f85
+0
+1
+0 0 37 84
+1
+end_operator
+begin_operator
+up f42 f86
+0
+1
+0 0 37 85
+1
+end_operator
+begin_operator
+up f42 f87
+0
+1
+0 0 37 86
+1
+end_operator
+begin_operator
+up f42 f88
+0
+1
+0 0 37 87
+1
+end_operator
+begin_operator
+up f42 f89
+0
+1
+0 0 37 88
+1
+end_operator
+begin_operator
+up f42 f90
+0
+1
+0 0 37 90
+1
+end_operator
+begin_operator
+up f42 f91
+0
+1
+0 0 37 91
+1
+end_operator
+begin_operator
+up f42 f92
+0
+1
+0 0 37 92
+1
+end_operator
+begin_operator
+up f42 f93
+0
+1
+0 0 37 93
+1
+end_operator
+begin_operator
+up f42 f94
+0
+1
+0 0 37 94
+1
+end_operator
+begin_operator
+up f42 f95
+0
+1
+0 0 37 95
+1
+end_operator
+begin_operator
+up f42 f96
+0
+1
+0 0 37 96
+1
+end_operator
+begin_operator
+up f42 f97
+0
+1
+0 0 37 97
+1
+end_operator
+begin_operator
+up f42 f98
+0
+1
+0 0 37 98
+1
+end_operator
+begin_operator
+up f42 f99
+0
+1
+0 0 37 99
+1
+end_operator
+begin_operator
+up f43 f100
+0
+1
+0 0 38 2
+1
+end_operator
+begin_operator
+up f43 f44
+0
+1
+0 0 38 39
+1
+end_operator
+begin_operator
+up f43 f45
+0
+1
+0 0 38 40
+1
+end_operator
+begin_operator
+up f43 f46
+0
+1
+0 0 38 41
+1
+end_operator
+begin_operator
+up f43 f47
+0
+1
+0 0 38 42
+1
+end_operator
+begin_operator
+up f43 f48
+0
+1
+0 0 38 43
+1
+end_operator
+begin_operator
+up f43 f49
+0
+1
+0 0 38 44
+1
+end_operator
+begin_operator
+up f43 f50
+0
+1
+0 0 38 46
+1
+end_operator
+begin_operator
+up f43 f51
+0
+1
+0 0 38 47
+1
+end_operator
+begin_operator
+up f43 f52
+0
+1
+0 0 38 48
+1
+end_operator
+begin_operator
+up f43 f53
+0
+1
+0 0 38 49
+1
+end_operator
+begin_operator
+up f43 f54
+0
+1
+0 0 38 50
+1
+end_operator
+begin_operator
+up f43 f55
+0
+1
+0 0 38 51
+1
+end_operator
+begin_operator
+up f43 f56
+0
+1
+0 0 38 52
+1
+end_operator
+begin_operator
+up f43 f57
+0
+1
+0 0 38 53
+1
+end_operator
+begin_operator
+up f43 f58
+0
+1
+0 0 38 54
+1
+end_operator
+begin_operator
+up f43 f59
+0
+1
+0 0 38 55
+1
+end_operator
+begin_operator
+up f43 f60
+0
+1
+0 0 38 57
+1
+end_operator
+begin_operator
+up f43 f61
+0
+1
+0 0 38 58
+1
+end_operator
+begin_operator
+up f43 f62
+0
+1
+0 0 38 59
+1
+end_operator
+begin_operator
+up f43 f63
+0
+1
+0 0 38 60
+1
+end_operator
+begin_operator
+up f43 f64
+0
+1
+0 0 38 61
+1
+end_operator
+begin_operator
+up f43 f65
+0
+1
+0 0 38 62
+1
+end_operator
+begin_operator
+up f43 f66
+0
+1
+0 0 38 63
+1
+end_operator
+begin_operator
+up f43 f67
+0
+1
+0 0 38 64
+1
+end_operator
+begin_operator
+up f43 f68
+0
+1
+0 0 38 65
+1
+end_operator
+begin_operator
+up f43 f69
+0
+1
+0 0 38 66
+1
+end_operator
+begin_operator
+up f43 f70
+0
+1
+0 0 38 68
+1
+end_operator
+begin_operator
+up f43 f71
+0
+1
+0 0 38 69
+1
+end_operator
+begin_operator
+up f43 f72
+0
+1
+0 0 38 70
+1
+end_operator
+begin_operator
+up f43 f73
+0
+1
+0 0 38 71
+1
+end_operator
+begin_operator
+up f43 f74
+0
+1
+0 0 38 72
+1
+end_operator
+begin_operator
+up f43 f75
+0
+1
+0 0 38 73
+1
+end_operator
+begin_operator
+up f43 f76
+0
+1
+0 0 38 74
+1
+end_operator
+begin_operator
+up f43 f77
+0
+1
+0 0 38 75
+1
+end_operator
+begin_operator
+up f43 f78
+0
+1
+0 0 38 76
+1
+end_operator
+begin_operator
+up f43 f79
+0
+1
+0 0 38 77
+1
+end_operator
+begin_operator
+up f43 f80
+0
+1
+0 0 38 79
+1
+end_operator
+begin_operator
+up f43 f81
+0
+1
+0 0 38 80
+1
+end_operator
+begin_operator
+up f43 f82
+0
+1
+0 0 38 81
+1
+end_operator
+begin_operator
+up f43 f83
+0
+1
+0 0 38 82
+1
+end_operator
+begin_operator
+up f43 f84
+0
+1
+0 0 38 83
+1
+end_operator
+begin_operator
+up f43 f85
+0
+1
+0 0 38 84
+1
+end_operator
+begin_operator
+up f43 f86
+0
+1
+0 0 38 85
+1
+end_operator
+begin_operator
+up f43 f87
+0
+1
+0 0 38 86
+1
+end_operator
+begin_operator
+up f43 f88
+0
+1
+0 0 38 87
+1
+end_operator
+begin_operator
+up f43 f89
+0
+1
+0 0 38 88
+1
+end_operator
+begin_operator
+up f43 f90
+0
+1
+0 0 38 90
+1
+end_operator
+begin_operator
+up f43 f91
+0
+1
+0 0 38 91
+1
+end_operator
+begin_operator
+up f43 f92
+0
+1
+0 0 38 92
+1
+end_operator
+begin_operator
+up f43 f93
+0
+1
+0 0 38 93
+1
+end_operator
+begin_operator
+up f43 f94
+0
+1
+0 0 38 94
+1
+end_operator
+begin_operator
+up f43 f95
+0
+1
+0 0 38 95
+1
+end_operator
+begin_operator
+up f43 f96
+0
+1
+0 0 38 96
+1
+end_operator
+begin_operator
+up f43 f97
+0
+1
+0 0 38 97
+1
+end_operator
+begin_operator
+up f43 f98
+0
+1
+0 0 38 98
+1
+end_operator
+begin_operator
+up f43 f99
+0
+1
+0 0 38 99
+1
+end_operator
+begin_operator
+up f44 f100
+0
+1
+0 0 39 2
+1
+end_operator
+begin_operator
+up f44 f45
+0
+1
+0 0 39 40
+1
+end_operator
+begin_operator
+up f44 f46
+0
+1
+0 0 39 41
+1
+end_operator
+begin_operator
+up f44 f47
+0
+1
+0 0 39 42
+1
+end_operator
+begin_operator
+up f44 f48
+0
+1
+0 0 39 43
+1
+end_operator
+begin_operator
+up f44 f49
+0
+1
+0 0 39 44
+1
+end_operator
+begin_operator
+up f44 f50
+0
+1
+0 0 39 46
+1
+end_operator
+begin_operator
+up f44 f51
+0
+1
+0 0 39 47
+1
+end_operator
+begin_operator
+up f44 f52
+0
+1
+0 0 39 48
+1
+end_operator
+begin_operator
+up f44 f53
+0
+1
+0 0 39 49
+1
+end_operator
+begin_operator
+up f44 f54
+0
+1
+0 0 39 50
+1
+end_operator
+begin_operator
+up f44 f55
+0
+1
+0 0 39 51
+1
+end_operator
+begin_operator
+up f44 f56
+0
+1
+0 0 39 52
+1
+end_operator
+begin_operator
+up f44 f57
+0
+1
+0 0 39 53
+1
+end_operator
+begin_operator
+up f44 f58
+0
+1
+0 0 39 54
+1
+end_operator
+begin_operator
+up f44 f59
+0
+1
+0 0 39 55
+1
+end_operator
+begin_operator
+up f44 f60
+0
+1
+0 0 39 57
+1
+end_operator
+begin_operator
+up f44 f61
+0
+1
+0 0 39 58
+1
+end_operator
+begin_operator
+up f44 f62
+0
+1
+0 0 39 59
+1
+end_operator
+begin_operator
+up f44 f63
+0
+1
+0 0 39 60
+1
+end_operator
+begin_operator
+up f44 f64
+0
+1
+0 0 39 61
+1
+end_operator
+begin_operator
+up f44 f65
+0
+1
+0 0 39 62
+1
+end_operator
+begin_operator
+up f44 f66
+0
+1
+0 0 39 63
+1
+end_operator
+begin_operator
+up f44 f67
+0
+1
+0 0 39 64
+1
+end_operator
+begin_operator
+up f44 f68
+0
+1
+0 0 39 65
+1
+end_operator
+begin_operator
+up f44 f69
+0
+1
+0 0 39 66
+1
+end_operator
+begin_operator
+up f44 f70
+0
+1
+0 0 39 68
+1
+end_operator
+begin_operator
+up f44 f71
+0
+1
+0 0 39 69
+1
+end_operator
+begin_operator
+up f44 f72
+0
+1
+0 0 39 70
+1
+end_operator
+begin_operator
+up f44 f73
+0
+1
+0 0 39 71
+1
+end_operator
+begin_operator
+up f44 f74
+0
+1
+0 0 39 72
+1
+end_operator
+begin_operator
+up f44 f75
+0
+1
+0 0 39 73
+1
+end_operator
+begin_operator
+up f44 f76
+0
+1
+0 0 39 74
+1
+end_operator
+begin_operator
+up f44 f77
+0
+1
+0 0 39 75
+1
+end_operator
+begin_operator
+up f44 f78
+0
+1
+0 0 39 76
+1
+end_operator
+begin_operator
+up f44 f79
+0
+1
+0 0 39 77
+1
+end_operator
+begin_operator
+up f44 f80
+0
+1
+0 0 39 79
+1
+end_operator
+begin_operator
+up f44 f81
+0
+1
+0 0 39 80
+1
+end_operator
+begin_operator
+up f44 f82
+0
+1
+0 0 39 81
+1
+end_operator
+begin_operator
+up f44 f83
+0
+1
+0 0 39 82
+1
+end_operator
+begin_operator
+up f44 f84
+0
+1
+0 0 39 83
+1
+end_operator
+begin_operator
+up f44 f85
+0
+1
+0 0 39 84
+1
+end_operator
+begin_operator
+up f44 f86
+0
+1
+0 0 39 85
+1
+end_operator
+begin_operator
+up f44 f87
+0
+1
+0 0 39 86
+1
+end_operator
+begin_operator
+up f44 f88
+0
+1
+0 0 39 87
+1
+end_operator
+begin_operator
+up f44 f89
+0
+1
+0 0 39 88
+1
+end_operator
+begin_operator
+up f44 f90
+0
+1
+0 0 39 90
+1
+end_operator
+begin_operator
+up f44 f91
+0
+1
+0 0 39 91
+1
+end_operator
+begin_operator
+up f44 f92
+0
+1
+0 0 39 92
+1
+end_operator
+begin_operator
+up f44 f93
+0
+1
+0 0 39 93
+1
+end_operator
+begin_operator
+up f44 f94
+0
+1
+0 0 39 94
+1
+end_operator
+begin_operator
+up f44 f95
+0
+1
+0 0 39 95
+1
+end_operator
+begin_operator
+up f44 f96
+0
+1
+0 0 39 96
+1
+end_operator
+begin_operator
+up f44 f97
+0
+1
+0 0 39 97
+1
+end_operator
+begin_operator
+up f44 f98
+0
+1
+0 0 39 98
+1
+end_operator
+begin_operator
+up f44 f99
+0
+1
+0 0 39 99
+1
+end_operator
+begin_operator
+up f45 f100
+0
+1
+0 0 40 2
+1
+end_operator
+begin_operator
+up f45 f46
+0
+1
+0 0 40 41
+1
+end_operator
+begin_operator
+up f45 f47
+0
+1
+0 0 40 42
+1
+end_operator
+begin_operator
+up f45 f48
+0
+1
+0 0 40 43
+1
+end_operator
+begin_operator
+up f45 f49
+0
+1
+0 0 40 44
+1
+end_operator
+begin_operator
+up f45 f50
+0
+1
+0 0 40 46
+1
+end_operator
+begin_operator
+up f45 f51
+0
+1
+0 0 40 47
+1
+end_operator
+begin_operator
+up f45 f52
+0
+1
+0 0 40 48
+1
+end_operator
+begin_operator
+up f45 f53
+0
+1
+0 0 40 49
+1
+end_operator
+begin_operator
+up f45 f54
+0
+1
+0 0 40 50
+1
+end_operator
+begin_operator
+up f45 f55
+0
+1
+0 0 40 51
+1
+end_operator
+begin_operator
+up f45 f56
+0
+1
+0 0 40 52
+1
+end_operator
+begin_operator
+up f45 f57
+0
+1
+0 0 40 53
+1
+end_operator
+begin_operator
+up f45 f58
+0
+1
+0 0 40 54
+1
+end_operator
+begin_operator
+up f45 f59
+0
+1
+0 0 40 55
+1
+end_operator
+begin_operator
+up f45 f60
+0
+1
+0 0 40 57
+1
+end_operator
+begin_operator
+up f45 f61
+0
+1
+0 0 40 58
+1
+end_operator
+begin_operator
+up f45 f62
+0
+1
+0 0 40 59
+1
+end_operator
+begin_operator
+up f45 f63
+0
+1
+0 0 40 60
+1
+end_operator
+begin_operator
+up f45 f64
+0
+1
+0 0 40 61
+1
+end_operator
+begin_operator
+up f45 f65
+0
+1
+0 0 40 62
+1
+end_operator
+begin_operator
+up f45 f66
+0
+1
+0 0 40 63
+1
+end_operator
+begin_operator
+up f45 f67
+0
+1
+0 0 40 64
+1
+end_operator
+begin_operator
+up f45 f68
+0
+1
+0 0 40 65
+1
+end_operator
+begin_operator
+up f45 f69
+0
+1
+0 0 40 66
+1
+end_operator
+begin_operator
+up f45 f70
+0
+1
+0 0 40 68
+1
+end_operator
+begin_operator
+up f45 f71
+0
+1
+0 0 40 69
+1
+end_operator
+begin_operator
+up f45 f72
+0
+1
+0 0 40 70
+1
+end_operator
+begin_operator
+up f45 f73
+0
+1
+0 0 40 71
+1
+end_operator
+begin_operator
+up f45 f74
+0
+1
+0 0 40 72
+1
+end_operator
+begin_operator
+up f45 f75
+0
+1
+0 0 40 73
+1
+end_operator
+begin_operator
+up f45 f76
+0
+1
+0 0 40 74
+1
+end_operator
+begin_operator
+up f45 f77
+0
+1
+0 0 40 75
+1
+end_operator
+begin_operator
+up f45 f78
+0
+1
+0 0 40 76
+1
+end_operator
+begin_operator
+up f45 f79
+0
+1
+0 0 40 77
+1
+end_operator
+begin_operator
+up f45 f80
+0
+1
+0 0 40 79
+1
+end_operator
+begin_operator
+up f45 f81
+0
+1
+0 0 40 80
+1
+end_operator
+begin_operator
+up f45 f82
+0
+1
+0 0 40 81
+1
+end_operator
+begin_operator
+up f45 f83
+0
+1
+0 0 40 82
+1
+end_operator
+begin_operator
+up f45 f84
+0
+1
+0 0 40 83
+1
+end_operator
+begin_operator
+up f45 f85
+0
+1
+0 0 40 84
+1
+end_operator
+begin_operator
+up f45 f86
+0
+1
+0 0 40 85
+1
+end_operator
+begin_operator
+up f45 f87
+0
+1
+0 0 40 86
+1
+end_operator
+begin_operator
+up f45 f88
+0
+1
+0 0 40 87
+1
+end_operator
+begin_operator
+up f45 f89
+0
+1
+0 0 40 88
+1
+end_operator
+begin_operator
+up f45 f90
+0
+1
+0 0 40 90
+1
+end_operator
+begin_operator
+up f45 f91
+0
+1
+0 0 40 91
+1
+end_operator
+begin_operator
+up f45 f92
+0
+1
+0 0 40 92
+1
+end_operator
+begin_operator
+up f45 f93
+0
+1
+0 0 40 93
+1
+end_operator
+begin_operator
+up f45 f94
+0
+1
+0 0 40 94
+1
+end_operator
+begin_operator
+up f45 f95
+0
+1
+0 0 40 95
+1
+end_operator
+begin_operator
+up f45 f96
+0
+1
+0 0 40 96
+1
+end_operator
+begin_operator
+up f45 f97
+0
+1
+0 0 40 97
+1
+end_operator
+begin_operator
+up f45 f98
+0
+1
+0 0 40 98
+1
+end_operator
+begin_operator
+up f45 f99
+0
+1
+0 0 40 99
+1
+end_operator
+begin_operator
+up f46 f100
+0
+1
+0 0 41 2
+1
+end_operator
+begin_operator
+up f46 f47
+0
+1
+0 0 41 42
+1
+end_operator
+begin_operator
+up f46 f48
+0
+1
+0 0 41 43
+1
+end_operator
+begin_operator
+up f46 f49
+0
+1
+0 0 41 44
+1
+end_operator
+begin_operator
+up f46 f50
+0
+1
+0 0 41 46
+1
+end_operator
+begin_operator
+up f46 f51
+0
+1
+0 0 41 47
+1
+end_operator
+begin_operator
+up f46 f52
+0
+1
+0 0 41 48
+1
+end_operator
+begin_operator
+up f46 f53
+0
+1
+0 0 41 49
+1
+end_operator
+begin_operator
+up f46 f54
+0
+1
+0 0 41 50
+1
+end_operator
+begin_operator
+up f46 f55
+0
+1
+0 0 41 51
+1
+end_operator
+begin_operator
+up f46 f56
+0
+1
+0 0 41 52
+1
+end_operator
+begin_operator
+up f46 f57
+0
+1
+0 0 41 53
+1
+end_operator
+begin_operator
+up f46 f58
+0
+1
+0 0 41 54
+1
+end_operator
+begin_operator
+up f46 f59
+0
+1
+0 0 41 55
+1
+end_operator
+begin_operator
+up f46 f60
+0
+1
+0 0 41 57
+1
+end_operator
+begin_operator
+up f46 f61
+0
+1
+0 0 41 58
+1
+end_operator
+begin_operator
+up f46 f62
+0
+1
+0 0 41 59
+1
+end_operator
+begin_operator
+up f46 f63
+0
+1
+0 0 41 60
+1
+end_operator
+begin_operator
+up f46 f64
+0
+1
+0 0 41 61
+1
+end_operator
+begin_operator
+up f46 f65
+0
+1
+0 0 41 62
+1
+end_operator
+begin_operator
+up f46 f66
+0
+1
+0 0 41 63
+1
+end_operator
+begin_operator
+up f46 f67
+0
+1
+0 0 41 64
+1
+end_operator
+begin_operator
+up f46 f68
+0
+1
+0 0 41 65
+1
+end_operator
+begin_operator
+up f46 f69
+0
+1
+0 0 41 66
+1
+end_operator
+begin_operator
+up f46 f70
+0
+1
+0 0 41 68
+1
+end_operator
+begin_operator
+up f46 f71
+0
+1
+0 0 41 69
+1
+end_operator
+begin_operator
+up f46 f72
+0
+1
+0 0 41 70
+1
+end_operator
+begin_operator
+up f46 f73
+0
+1
+0 0 41 71
+1
+end_operator
+begin_operator
+up f46 f74
+0
+1
+0 0 41 72
+1
+end_operator
+begin_operator
+up f46 f75
+0
+1
+0 0 41 73
+1
+end_operator
+begin_operator
+up f46 f76
+0
+1
+0 0 41 74
+1
+end_operator
+begin_operator
+up f46 f77
+0
+1
+0 0 41 75
+1
+end_operator
+begin_operator
+up f46 f78
+0
+1
+0 0 41 76
+1
+end_operator
+begin_operator
+up f46 f79
+0
+1
+0 0 41 77
+1
+end_operator
+begin_operator
+up f46 f80
+0
+1
+0 0 41 79
+1
+end_operator
+begin_operator
+up f46 f81
+0
+1
+0 0 41 80
+1
+end_operator
+begin_operator
+up f46 f82
+0
+1
+0 0 41 81
+1
+end_operator
+begin_operator
+up f46 f83
+0
+1
+0 0 41 82
+1
+end_operator
+begin_operator
+up f46 f84
+0
+1
+0 0 41 83
+1
+end_operator
+begin_operator
+up f46 f85
+0
+1
+0 0 41 84
+1
+end_operator
+begin_operator
+up f46 f86
+0
+1
+0 0 41 85
+1
+end_operator
+begin_operator
+up f46 f87
+0
+1
+0 0 41 86
+1
+end_operator
+begin_operator
+up f46 f88
+0
+1
+0 0 41 87
+1
+end_operator
+begin_operator
+up f46 f89
+0
+1
+0 0 41 88
+1
+end_operator
+begin_operator
+up f46 f90
+0
+1
+0 0 41 90
+1
+end_operator
+begin_operator
+up f46 f91
+0
+1
+0 0 41 91
+1
+end_operator
+begin_operator
+up f46 f92
+0
+1
+0 0 41 92
+1
+end_operator
+begin_operator
+up f46 f93
+0
+1
+0 0 41 93
+1
+end_operator
+begin_operator
+up f46 f94
+0
+1
+0 0 41 94
+1
+end_operator
+begin_operator
+up f46 f95
+0
+1
+0 0 41 95
+1
+end_operator
+begin_operator
+up f46 f96
+0
+1
+0 0 41 96
+1
+end_operator
+begin_operator
+up f46 f97
+0
+1
+0 0 41 97
+1
+end_operator
+begin_operator
+up f46 f98
+0
+1
+0 0 41 98
+1
+end_operator
+begin_operator
+up f46 f99
+0
+1
+0 0 41 99
+1
+end_operator
+begin_operator
+up f47 f100
+0
+1
+0 0 42 2
+1
+end_operator
+begin_operator
+up f47 f48
+0
+1
+0 0 42 43
+1
+end_operator
+begin_operator
+up f47 f49
+0
+1
+0 0 42 44
+1
+end_operator
+begin_operator
+up f47 f50
+0
+1
+0 0 42 46
+1
+end_operator
+begin_operator
+up f47 f51
+0
+1
+0 0 42 47
+1
+end_operator
+begin_operator
+up f47 f52
+0
+1
+0 0 42 48
+1
+end_operator
+begin_operator
+up f47 f53
+0
+1
+0 0 42 49
+1
+end_operator
+begin_operator
+up f47 f54
+0
+1
+0 0 42 50
+1
+end_operator
+begin_operator
+up f47 f55
+0
+1
+0 0 42 51
+1
+end_operator
+begin_operator
+up f47 f56
+0
+1
+0 0 42 52
+1
+end_operator
+begin_operator
+up f47 f57
+0
+1
+0 0 42 53
+1
+end_operator
+begin_operator
+up f47 f58
+0
+1
+0 0 42 54
+1
+end_operator
+begin_operator
+up f47 f59
+0
+1
+0 0 42 55
+1
+end_operator
+begin_operator
+up f47 f60
+0
+1
+0 0 42 57
+1
+end_operator
+begin_operator
+up f47 f61
+0
+1
+0 0 42 58
+1
+end_operator
+begin_operator
+up f47 f62
+0
+1
+0 0 42 59
+1
+end_operator
+begin_operator
+up f47 f63
+0
+1
+0 0 42 60
+1
+end_operator
+begin_operator
+up f47 f64
+0
+1
+0 0 42 61
+1
+end_operator
+begin_operator
+up f47 f65
+0
+1
+0 0 42 62
+1
+end_operator
+begin_operator
+up f47 f66
+0
+1
+0 0 42 63
+1
+end_operator
+begin_operator
+up f47 f67
+0
+1
+0 0 42 64
+1
+end_operator
+begin_operator
+up f47 f68
+0
+1
+0 0 42 65
+1
+end_operator
+begin_operator
+up f47 f69
+0
+1
+0 0 42 66
+1
+end_operator
+begin_operator
+up f47 f70
+0
+1
+0 0 42 68
+1
+end_operator
+begin_operator
+up f47 f71
+0
+1
+0 0 42 69
+1
+end_operator
+begin_operator
+up f47 f72
+0
+1
+0 0 42 70
+1
+end_operator
+begin_operator
+up f47 f73
+0
+1
+0 0 42 71
+1
+end_operator
+begin_operator
+up f47 f74
+0
+1
+0 0 42 72
+1
+end_operator
+begin_operator
+up f47 f75
+0
+1
+0 0 42 73
+1
+end_operator
+begin_operator
+up f47 f76
+0
+1
+0 0 42 74
+1
+end_operator
+begin_operator
+up f47 f77
+0
+1
+0 0 42 75
+1
+end_operator
+begin_operator
+up f47 f78
+0
+1
+0 0 42 76
+1
+end_operator
+begin_operator
+up f47 f79
+0
+1
+0 0 42 77
+1
+end_operator
+begin_operator
+up f47 f80
+0
+1
+0 0 42 79
+1
+end_operator
+begin_operator
+up f47 f81
+0
+1
+0 0 42 80
+1
+end_operator
+begin_operator
+up f47 f82
+0
+1
+0 0 42 81
+1
+end_operator
+begin_operator
+up f47 f83
+0
+1
+0 0 42 82
+1
+end_operator
+begin_operator
+up f47 f84
+0
+1
+0 0 42 83
+1
+end_operator
+begin_operator
+up f47 f85
+0
+1
+0 0 42 84
+1
+end_operator
+begin_operator
+up f47 f86
+0
+1
+0 0 42 85
+1
+end_operator
+begin_operator
+up f47 f87
+0
+1
+0 0 42 86
+1
+end_operator
+begin_operator
+up f47 f88
+0
+1
+0 0 42 87
+1
+end_operator
+begin_operator
+up f47 f89
+0
+1
+0 0 42 88
+1
+end_operator
+begin_operator
+up f47 f90
+0
+1
+0 0 42 90
+1
+end_operator
+begin_operator
+up f47 f91
+0
+1
+0 0 42 91
+1
+end_operator
+begin_operator
+up f47 f92
+0
+1
+0 0 42 92
+1
+end_operator
+begin_operator
+up f47 f93
+0
+1
+0 0 42 93
+1
+end_operator
+begin_operator
+up f47 f94
+0
+1
+0 0 42 94
+1
+end_operator
+begin_operator
+up f47 f95
+0
+1
+0 0 42 95
+1
+end_operator
+begin_operator
+up f47 f96
+0
+1
+0 0 42 96
+1
+end_operator
+begin_operator
+up f47 f97
+0
+1
+0 0 42 97
+1
+end_operator
+begin_operator
+up f47 f98
+0
+1
+0 0 42 98
+1
+end_operator
+begin_operator
+up f47 f99
+0
+1
+0 0 42 99
+1
+end_operator
+begin_operator
+up f48 f100
+0
+1
+0 0 43 2
+1
+end_operator
+begin_operator
+up f48 f49
+0
+1
+0 0 43 44
+1
+end_operator
+begin_operator
+up f48 f50
+0
+1
+0 0 43 46
+1
+end_operator
+begin_operator
+up f48 f51
+0
+1
+0 0 43 47
+1
+end_operator
+begin_operator
+up f48 f52
+0
+1
+0 0 43 48
+1
+end_operator
+begin_operator
+up f48 f53
+0
+1
+0 0 43 49
+1
+end_operator
+begin_operator
+up f48 f54
+0
+1
+0 0 43 50
+1
+end_operator
+begin_operator
+up f48 f55
+0
+1
+0 0 43 51
+1
+end_operator
+begin_operator
+up f48 f56
+0
+1
+0 0 43 52
+1
+end_operator
+begin_operator
+up f48 f57
+0
+1
+0 0 43 53
+1
+end_operator
+begin_operator
+up f48 f58
+0
+1
+0 0 43 54
+1
+end_operator
+begin_operator
+up f48 f59
+0
+1
+0 0 43 55
+1
+end_operator
+begin_operator
+up f48 f60
+0
+1
+0 0 43 57
+1
+end_operator
+begin_operator
+up f48 f61
+0
+1
+0 0 43 58
+1
+end_operator
+begin_operator
+up f48 f62
+0
+1
+0 0 43 59
+1
+end_operator
+begin_operator
+up f48 f63
+0
+1
+0 0 43 60
+1
+end_operator
+begin_operator
+up f48 f64
+0
+1
+0 0 43 61
+1
+end_operator
+begin_operator
+up f48 f65
+0
+1
+0 0 43 62
+1
+end_operator
+begin_operator
+up f48 f66
+0
+1
+0 0 43 63
+1
+end_operator
+begin_operator
+up f48 f67
+0
+1
+0 0 43 64
+1
+end_operator
+begin_operator
+up f48 f68
+0
+1
+0 0 43 65
+1
+end_operator
+begin_operator
+up f48 f69
+0
+1
+0 0 43 66
+1
+end_operator
+begin_operator
+up f48 f70
+0
+1
+0 0 43 68
+1
+end_operator
+begin_operator
+up f48 f71
+0
+1
+0 0 43 69
+1
+end_operator
+begin_operator
+up f48 f72
+0
+1
+0 0 43 70
+1
+end_operator
+begin_operator
+up f48 f73
+0
+1
+0 0 43 71
+1
+end_operator
+begin_operator
+up f48 f74
+0
+1
+0 0 43 72
+1
+end_operator
+begin_operator
+up f48 f75
+0
+1
+0 0 43 73
+1
+end_operator
+begin_operator
+up f48 f76
+0
+1
+0 0 43 74
+1
+end_operator
+begin_operator
+up f48 f77
+0
+1
+0 0 43 75
+1
+end_operator
+begin_operator
+up f48 f78
+0
+1
+0 0 43 76
+1
+end_operator
+begin_operator
+up f48 f79
+0
+1
+0 0 43 77
+1
+end_operator
+begin_operator
+up f48 f80
+0
+1
+0 0 43 79
+1
+end_operator
+begin_operator
+up f48 f81
+0
+1
+0 0 43 80
+1
+end_operator
+begin_operator
+up f48 f82
+0
+1
+0 0 43 81
+1
+end_operator
+begin_operator
+up f48 f83
+0
+1
+0 0 43 82
+1
+end_operator
+begin_operator
+up f48 f84
+0
+1
+0 0 43 83
+1
+end_operator
+begin_operator
+up f48 f85
+0
+1
+0 0 43 84
+1
+end_operator
+begin_operator
+up f48 f86
+0
+1
+0 0 43 85
+1
+end_operator
+begin_operator
+up f48 f87
+0
+1
+0 0 43 86
+1
+end_operator
+begin_operator
+up f48 f88
+0
+1
+0 0 43 87
+1
+end_operator
+begin_operator
+up f48 f89
+0
+1
+0 0 43 88
+1
+end_operator
+begin_operator
+up f48 f90
+0
+1
+0 0 43 90
+1
+end_operator
+begin_operator
+up f48 f91
+0
+1
+0 0 43 91
+1
+end_operator
+begin_operator
+up f48 f92
+0
+1
+0 0 43 92
+1
+end_operator
+begin_operator
+up f48 f93
+0
+1
+0 0 43 93
+1
+end_operator
+begin_operator
+up f48 f94
+0
+1
+0 0 43 94
+1
+end_operator
+begin_operator
+up f48 f95
+0
+1
+0 0 43 95
+1
+end_operator
+begin_operator
+up f48 f96
+0
+1
+0 0 43 96
+1
+end_operator
+begin_operator
+up f48 f97
+0
+1
+0 0 43 97
+1
+end_operator
+begin_operator
+up f48 f98
+0
+1
+0 0 43 98
+1
+end_operator
+begin_operator
+up f48 f99
+0
+1
+0 0 43 99
+1
+end_operator
+begin_operator
+up f49 f100
+0
+1
+0 0 44 2
+1
+end_operator
+begin_operator
+up f49 f50
+0
+1
+0 0 44 46
+1
+end_operator
+begin_operator
+up f49 f51
+0
+1
+0 0 44 47
+1
+end_operator
+begin_operator
+up f49 f52
+0
+1
+0 0 44 48
+1
+end_operator
+begin_operator
+up f49 f53
+0
+1
+0 0 44 49
+1
+end_operator
+begin_operator
+up f49 f54
+0
+1
+0 0 44 50
+1
+end_operator
+begin_operator
+up f49 f55
+0
+1
+0 0 44 51
+1
+end_operator
+begin_operator
+up f49 f56
+0
+1
+0 0 44 52
+1
+end_operator
+begin_operator
+up f49 f57
+0
+1
+0 0 44 53
+1
+end_operator
+begin_operator
+up f49 f58
+0
+1
+0 0 44 54
+1
+end_operator
+begin_operator
+up f49 f59
+0
+1
+0 0 44 55
+1
+end_operator
+begin_operator
+up f49 f60
+0
+1
+0 0 44 57
+1
+end_operator
+begin_operator
+up f49 f61
+0
+1
+0 0 44 58
+1
+end_operator
+begin_operator
+up f49 f62
+0
+1
+0 0 44 59
+1
+end_operator
+begin_operator
+up f49 f63
+0
+1
+0 0 44 60
+1
+end_operator
+begin_operator
+up f49 f64
+0
+1
+0 0 44 61
+1
+end_operator
+begin_operator
+up f49 f65
+0
+1
+0 0 44 62
+1
+end_operator
+begin_operator
+up f49 f66
+0
+1
+0 0 44 63
+1
+end_operator
+begin_operator
+up f49 f67
+0
+1
+0 0 44 64
+1
+end_operator
+begin_operator
+up f49 f68
+0
+1
+0 0 44 65
+1
+end_operator
+begin_operator
+up f49 f69
+0
+1
+0 0 44 66
+1
+end_operator
+begin_operator
+up f49 f70
+0
+1
+0 0 44 68
+1
+end_operator
+begin_operator
+up f49 f71
+0
+1
+0 0 44 69
+1
+end_operator
+begin_operator
+up f49 f72
+0
+1
+0 0 44 70
+1
+end_operator
+begin_operator
+up f49 f73
+0
+1
+0 0 44 71
+1
+end_operator
+begin_operator
+up f49 f74
+0
+1
+0 0 44 72
+1
+end_operator
+begin_operator
+up f49 f75
+0
+1
+0 0 44 73
+1
+end_operator
+begin_operator
+up f49 f76
+0
+1
+0 0 44 74
+1
+end_operator
+begin_operator
+up f49 f77
+0
+1
+0 0 44 75
+1
+end_operator
+begin_operator
+up f49 f78
+0
+1
+0 0 44 76
+1
+end_operator
+begin_operator
+up f49 f79
+0
+1
+0 0 44 77
+1
+end_operator
+begin_operator
+up f49 f80
+0
+1
+0 0 44 79
+1
+end_operator
+begin_operator
+up f49 f81
+0
+1
+0 0 44 80
+1
+end_operator
+begin_operator
+up f49 f82
+0
+1
+0 0 44 81
+1
+end_operator
+begin_operator
+up f49 f83
+0
+1
+0 0 44 82
+1
+end_operator
+begin_operator
+up f49 f84
+0
+1
+0 0 44 83
+1
+end_operator
+begin_operator
+up f49 f85
+0
+1
+0 0 44 84
+1
+end_operator
+begin_operator
+up f49 f86
+0
+1
+0 0 44 85
+1
+end_operator
+begin_operator
+up f49 f87
+0
+1
+0 0 44 86
+1
+end_operator
+begin_operator
+up f49 f88
+0
+1
+0 0 44 87
+1
+end_operator
+begin_operator
+up f49 f89
+0
+1
+0 0 44 88
+1
+end_operator
+begin_operator
+up f49 f90
+0
+1
+0 0 44 90
+1
+end_operator
+begin_operator
+up f49 f91
+0
+1
+0 0 44 91
+1
+end_operator
+begin_operator
+up f49 f92
+0
+1
+0 0 44 92
+1
+end_operator
+begin_operator
+up f49 f93
+0
+1
+0 0 44 93
+1
+end_operator
+begin_operator
+up f49 f94
+0
+1
+0 0 44 94
+1
+end_operator
+begin_operator
+up f49 f95
+0
+1
+0 0 44 95
+1
+end_operator
+begin_operator
+up f49 f96
+0
+1
+0 0 44 96
+1
+end_operator
+begin_operator
+up f49 f97
+0
+1
+0 0 44 97
+1
+end_operator
+begin_operator
+up f49 f98
+0
+1
+0 0 44 98
+1
+end_operator
+begin_operator
+up f49 f99
+0
+1
+0 0 44 99
+1
+end_operator
+begin_operator
+up f5 f10
+0
+1
+0 0 45 1
+1
+end_operator
+begin_operator
+up f5 f100
+0
+1
+0 0 45 2
+1
+end_operator
+begin_operator
+up f5 f11
+0
+1
+0 0 45 3
+1
+end_operator
+begin_operator
+up f5 f12
+0
+1
+0 0 45 4
+1
+end_operator
+begin_operator
+up f5 f13
+0
+1
+0 0 45 5
+1
+end_operator
+begin_operator
+up f5 f14
+0
+1
+0 0 45 6
+1
+end_operator
+begin_operator
+up f5 f15
+0
+1
+0 0 45 7
+1
+end_operator
+begin_operator
+up f5 f16
+0
+1
+0 0 45 8
+1
+end_operator
+begin_operator
+up f5 f17
+0
+1
+0 0 45 9
+1
+end_operator
+begin_operator
+up f5 f18
+0
+1
+0 0 45 10
+1
+end_operator
+begin_operator
+up f5 f19
+0
+1
+0 0 45 11
+1
+end_operator
+begin_operator
+up f5 f20
+0
+1
+0 0 45 13
+1
+end_operator
+begin_operator
+up f5 f21
+0
+1
+0 0 45 14
+1
+end_operator
+begin_operator
+up f5 f22
+0
+1
+0 0 45 15
+1
+end_operator
+begin_operator
+up f5 f23
+0
+1
+0 0 45 16
+1
+end_operator
+begin_operator
+up f5 f24
+0
+1
+0 0 45 17
+1
+end_operator
+begin_operator
+up f5 f25
+0
+1
+0 0 45 18
+1
+end_operator
+begin_operator
+up f5 f26
+0
+1
+0 0 45 19
+1
+end_operator
+begin_operator
+up f5 f27
+0
+1
+0 0 45 20
+1
+end_operator
+begin_operator
+up f5 f28
+0
+1
+0 0 45 21
+1
+end_operator
+begin_operator
+up f5 f29
+0
+1
+0 0 45 22
+1
+end_operator
+begin_operator
+up f5 f30
+0
+1
+0 0 45 24
+1
+end_operator
+begin_operator
+up f5 f31
+0
+1
+0 0 45 25
+1
+end_operator
+begin_operator
+up f5 f32
+0
+1
+0 0 45 26
+1
+end_operator
+begin_operator
+up f5 f33
+0
+1
+0 0 45 27
+1
+end_operator
+begin_operator
+up f5 f34
+0
+1
+0 0 45 28
+1
+end_operator
+begin_operator
+up f5 f35
+0
+1
+0 0 45 29
+1
+end_operator
+begin_operator
+up f5 f36
+0
+1
+0 0 45 30
+1
+end_operator
+begin_operator
+up f5 f37
+0
+1
+0 0 45 31
+1
+end_operator
+begin_operator
+up f5 f38
+0
+1
+0 0 45 32
+1
+end_operator
+begin_operator
+up f5 f39
+0
+1
+0 0 45 33
+1
+end_operator
+begin_operator
+up f5 f40
+0
+1
+0 0 45 35
+1
+end_operator
+begin_operator
+up f5 f41
+0
+1
+0 0 45 36
+1
+end_operator
+begin_operator
+up f5 f42
+0
+1
+0 0 45 37
+1
+end_operator
+begin_operator
+up f5 f43
+0
+1
+0 0 45 38
+1
+end_operator
+begin_operator
+up f5 f44
+0
+1
+0 0 45 39
+1
+end_operator
+begin_operator
+up f5 f45
+0
+1
+0 0 45 40
+1
+end_operator
+begin_operator
+up f5 f46
+0
+1
+0 0 45 41
+1
+end_operator
+begin_operator
+up f5 f47
+0
+1
+0 0 45 42
+1
+end_operator
+begin_operator
+up f5 f48
+0
+1
+0 0 45 43
+1
+end_operator
+begin_operator
+up f5 f49
+0
+1
+0 0 45 44
+1
+end_operator
+begin_operator
+up f5 f50
+0
+1
+0 0 45 46
+1
+end_operator
+begin_operator
+up f5 f51
+0
+1
+0 0 45 47
+1
+end_operator
+begin_operator
+up f5 f52
+0
+1
+0 0 45 48
+1
+end_operator
+begin_operator
+up f5 f53
+0
+1
+0 0 45 49
+1
+end_operator
+begin_operator
+up f5 f54
+0
+1
+0 0 45 50
+1
+end_operator
+begin_operator
+up f5 f55
+0
+1
+0 0 45 51
+1
+end_operator
+begin_operator
+up f5 f56
+0
+1
+0 0 45 52
+1
+end_operator
+begin_operator
+up f5 f57
+0
+1
+0 0 45 53
+1
+end_operator
+begin_operator
+up f5 f58
+0
+1
+0 0 45 54
+1
+end_operator
+begin_operator
+up f5 f59
+0
+1
+0 0 45 55
+1
+end_operator
+begin_operator
+up f5 f6
+0
+1
+0 0 45 56
+1
+end_operator
+begin_operator
+up f5 f60
+0
+1
+0 0 45 57
+1
+end_operator
+begin_operator
+up f5 f61
+0
+1
+0 0 45 58
+1
+end_operator
+begin_operator
+up f5 f62
+0
+1
+0 0 45 59
+1
+end_operator
+begin_operator
+up f5 f63
+0
+1
+0 0 45 60
+1
+end_operator
+begin_operator
+up f5 f64
+0
+1
+0 0 45 61
+1
+end_operator
+begin_operator
+up f5 f65
+0
+1
+0 0 45 62
+1
+end_operator
+begin_operator
+up f5 f66
+0
+1
+0 0 45 63
+1
+end_operator
+begin_operator
+up f5 f67
+0
+1
+0 0 45 64
+1
+end_operator
+begin_operator
+up f5 f68
+0
+1
+0 0 45 65
+1
+end_operator
+begin_operator
+up f5 f69
+0
+1
+0 0 45 66
+1
+end_operator
+begin_operator
+up f5 f7
+0
+1
+0 0 45 67
+1
+end_operator
+begin_operator
+up f5 f70
+0
+1
+0 0 45 68
+1
+end_operator
+begin_operator
+up f5 f71
+0
+1
+0 0 45 69
+1
+end_operator
+begin_operator
+up f5 f72
+0
+1
+0 0 45 70
+1
+end_operator
+begin_operator
+up f5 f73
+0
+1
+0 0 45 71
+1
+end_operator
+begin_operator
+up f5 f74
+0
+1
+0 0 45 72
+1
+end_operator
+begin_operator
+up f5 f75
+0
+1
+0 0 45 73
+1
+end_operator
+begin_operator
+up f5 f76
+0
+1
+0 0 45 74
+1
+end_operator
+begin_operator
+up f5 f77
+0
+1
+0 0 45 75
+1
+end_operator
+begin_operator
+up f5 f78
+0
+1
+0 0 45 76
+1
+end_operator
+begin_operator
+up f5 f79
+0
+1
+0 0 45 77
+1
+end_operator
+begin_operator
+up f5 f8
+0
+1
+0 0 45 78
+1
+end_operator
+begin_operator
+up f5 f80
+0
+1
+0 0 45 79
+1
+end_operator
+begin_operator
+up f5 f81
+0
+1
+0 0 45 80
+1
+end_operator
+begin_operator
+up f5 f82
+0
+1
+0 0 45 81
+1
+end_operator
+begin_operator
+up f5 f83
+0
+1
+0 0 45 82
+1
+end_operator
+begin_operator
+up f5 f84
+0
+1
+0 0 45 83
+1
+end_operator
+begin_operator
+up f5 f85
+0
+1
+0 0 45 84
+1
+end_operator
+begin_operator
+up f5 f86
+0
+1
+0 0 45 85
+1
+end_operator
+begin_operator
+up f5 f87
+0
+1
+0 0 45 86
+1
+end_operator
+begin_operator
+up f5 f88
+0
+1
+0 0 45 87
+1
+end_operator
+begin_operator
+up f5 f89
+0
+1
+0 0 45 88
+1
+end_operator
+begin_operator
+up f5 f9
+0
+1
+0 0 45 89
+1
+end_operator
+begin_operator
+up f5 f90
+0
+1
+0 0 45 90
+1
+end_operator
+begin_operator
+up f5 f91
+0
+1
+0 0 45 91
+1
+end_operator
+begin_operator
+up f5 f92
+0
+1
+0 0 45 92
+1
+end_operator
+begin_operator
+up f5 f93
+0
+1
+0 0 45 93
+1
+end_operator
+begin_operator
+up f5 f94
+0
+1
+0 0 45 94
+1
+end_operator
+begin_operator
+up f5 f95
+0
+1
+0 0 45 95
+1
+end_operator
+begin_operator
+up f5 f96
+0
+1
+0 0 45 96
+1
+end_operator
+begin_operator
+up f5 f97
+0
+1
+0 0 45 97
+1
+end_operator
+begin_operator
+up f5 f98
+0
+1
+0 0 45 98
+1
+end_operator
+begin_operator
+up f5 f99
+0
+1
+0 0 45 99
+1
+end_operator
+begin_operator
+up f50 f100
+0
+1
+0 0 46 2
+1
+end_operator
+begin_operator
+up f50 f51
+0
+1
+0 0 46 47
+1
+end_operator
+begin_operator
+up f50 f52
+0
+1
+0 0 46 48
+1
+end_operator
+begin_operator
+up f50 f53
+0
+1
+0 0 46 49
+1
+end_operator
+begin_operator
+up f50 f54
+0
+1
+0 0 46 50
+1
+end_operator
+begin_operator
+up f50 f55
+0
+1
+0 0 46 51
+1
+end_operator
+begin_operator
+up f50 f56
+0
+1
+0 0 46 52
+1
+end_operator
+begin_operator
+up f50 f57
+0
+1
+0 0 46 53
+1
+end_operator
+begin_operator
+up f50 f58
+0
+1
+0 0 46 54
+1
+end_operator
+begin_operator
+up f50 f59
+0
+1
+0 0 46 55
+1
+end_operator
+begin_operator
+up f50 f60
+0
+1
+0 0 46 57
+1
+end_operator
+begin_operator
+up f50 f61
+0
+1
+0 0 46 58
+1
+end_operator
+begin_operator
+up f50 f62
+0
+1
+0 0 46 59
+1
+end_operator
+begin_operator
+up f50 f63
+0
+1
+0 0 46 60
+1
+end_operator
+begin_operator
+up f50 f64
+0
+1
+0 0 46 61
+1
+end_operator
+begin_operator
+up f50 f65
+0
+1
+0 0 46 62
+1
+end_operator
+begin_operator
+up f50 f66
+0
+1
+0 0 46 63
+1
+end_operator
+begin_operator
+up f50 f67
+0
+1
+0 0 46 64
+1
+end_operator
+begin_operator
+up f50 f68
+0
+1
+0 0 46 65
+1
+end_operator
+begin_operator
+up f50 f69
+0
+1
+0 0 46 66
+1
+end_operator
+begin_operator
+up f50 f70
+0
+1
+0 0 46 68
+1
+end_operator
+begin_operator
+up f50 f71
+0
+1
+0 0 46 69
+1
+end_operator
+begin_operator
+up f50 f72
+0
+1
+0 0 46 70
+1
+end_operator
+begin_operator
+up f50 f73
+0
+1
+0 0 46 71
+1
+end_operator
+begin_operator
+up f50 f74
+0
+1
+0 0 46 72
+1
+end_operator
+begin_operator
+up f50 f75
+0
+1
+0 0 46 73
+1
+end_operator
+begin_operator
+up f50 f76
+0
+1
+0 0 46 74
+1
+end_operator
+begin_operator
+up f50 f77
+0
+1
+0 0 46 75
+1
+end_operator
+begin_operator
+up f50 f78
+0
+1
+0 0 46 76
+1
+end_operator
+begin_operator
+up f50 f79
+0
+1
+0 0 46 77
+1
+end_operator
+begin_operator
+up f50 f80
+0
+1
+0 0 46 79
+1
+end_operator
+begin_operator
+up f50 f81
+0
+1
+0 0 46 80
+1
+end_operator
+begin_operator
+up f50 f82
+0
+1
+0 0 46 81
+1
+end_operator
+begin_operator
+up f50 f83
+0
+1
+0 0 46 82
+1
+end_operator
+begin_operator
+up f50 f84
+0
+1
+0 0 46 83
+1
+end_operator
+begin_operator
+up f50 f85
+0
+1
+0 0 46 84
+1
+end_operator
+begin_operator
+up f50 f86
+0
+1
+0 0 46 85
+1
+end_operator
+begin_operator
+up f50 f87
+0
+1
+0 0 46 86
+1
+end_operator
+begin_operator
+up f50 f88
+0
+1
+0 0 46 87
+1
+end_operator
+begin_operator
+up f50 f89
+0
+1
+0 0 46 88
+1
+end_operator
+begin_operator
+up f50 f90
+0
+1
+0 0 46 90
+1
+end_operator
+begin_operator
+up f50 f91
+0
+1
+0 0 46 91
+1
+end_operator
+begin_operator
+up f50 f92
+0
+1
+0 0 46 92
+1
+end_operator
+begin_operator
+up f50 f93
+0
+1
+0 0 46 93
+1
+end_operator
+begin_operator
+up f50 f94
+0
+1
+0 0 46 94
+1
+end_operator
+begin_operator
+up f50 f95
+0
+1
+0 0 46 95
+1
+end_operator
+begin_operator
+up f50 f96
+0
+1
+0 0 46 96
+1
+end_operator
+begin_operator
+up f50 f97
+0
+1
+0 0 46 97
+1
+end_operator
+begin_operator
+up f50 f98
+0
+1
+0 0 46 98
+1
+end_operator
+begin_operator
+up f50 f99
+0
+1
+0 0 46 99
+1
+end_operator
+begin_operator
+up f51 f100
+0
+1
+0 0 47 2
+1
+end_operator
+begin_operator
+up f51 f52
+0
+1
+0 0 47 48
+1
+end_operator
+begin_operator
+up f51 f53
+0
+1
+0 0 47 49
+1
+end_operator
+begin_operator
+up f51 f54
+0
+1
+0 0 47 50
+1
+end_operator
+begin_operator
+up f51 f55
+0
+1
+0 0 47 51
+1
+end_operator
+begin_operator
+up f51 f56
+0
+1
+0 0 47 52
+1
+end_operator
+begin_operator
+up f51 f57
+0
+1
+0 0 47 53
+1
+end_operator
+begin_operator
+up f51 f58
+0
+1
+0 0 47 54
+1
+end_operator
+begin_operator
+up f51 f59
+0
+1
+0 0 47 55
+1
+end_operator
+begin_operator
+up f51 f60
+0
+1
+0 0 47 57
+1
+end_operator
+begin_operator
+up f51 f61
+0
+1
+0 0 47 58
+1
+end_operator
+begin_operator
+up f51 f62
+0
+1
+0 0 47 59
+1
+end_operator
+begin_operator
+up f51 f63
+0
+1
+0 0 47 60
+1
+end_operator
+begin_operator
+up f51 f64
+0
+1
+0 0 47 61
+1
+end_operator
+begin_operator
+up f51 f65
+0
+1
+0 0 47 62
+1
+end_operator
+begin_operator
+up f51 f66
+0
+1
+0 0 47 63
+1
+end_operator
+begin_operator
+up f51 f67
+0
+1
+0 0 47 64
+1
+end_operator
+begin_operator
+up f51 f68
+0
+1
+0 0 47 65
+1
+end_operator
+begin_operator
+up f51 f69
+0
+1
+0 0 47 66
+1
+end_operator
+begin_operator
+up f51 f70
+0
+1
+0 0 47 68
+1
+end_operator
+begin_operator
+up f51 f71
+0
+1
+0 0 47 69
+1
+end_operator
+begin_operator
+up f51 f72
+0
+1
+0 0 47 70
+1
+end_operator
+begin_operator
+up f51 f73
+0
+1
+0 0 47 71
+1
+end_operator
+begin_operator
+up f51 f74
+0
+1
+0 0 47 72
+1
+end_operator
+begin_operator
+up f51 f75
+0
+1
+0 0 47 73
+1
+end_operator
+begin_operator
+up f51 f76
+0
+1
+0 0 47 74
+1
+end_operator
+begin_operator
+up f51 f77
+0
+1
+0 0 47 75
+1
+end_operator
+begin_operator
+up f51 f78
+0
+1
+0 0 47 76
+1
+end_operator
+begin_operator
+up f51 f79
+0
+1
+0 0 47 77
+1
+end_operator
+begin_operator
+up f51 f80
+0
+1
+0 0 47 79
+1
+end_operator
+begin_operator
+up f51 f81
+0
+1
+0 0 47 80
+1
+end_operator
+begin_operator
+up f51 f82
+0
+1
+0 0 47 81
+1
+end_operator
+begin_operator
+up f51 f83
+0
+1
+0 0 47 82
+1
+end_operator
+begin_operator
+up f51 f84
+0
+1
+0 0 47 83
+1
+end_operator
+begin_operator
+up f51 f85
+0
+1
+0 0 47 84
+1
+end_operator
+begin_operator
+up f51 f86
+0
+1
+0 0 47 85
+1
+end_operator
+begin_operator
+up f51 f87
+0
+1
+0 0 47 86
+1
+end_operator
+begin_operator
+up f51 f88
+0
+1
+0 0 47 87
+1
+end_operator
+begin_operator
+up f51 f89
+0
+1
+0 0 47 88
+1
+end_operator
+begin_operator
+up f51 f90
+0
+1
+0 0 47 90
+1
+end_operator
+begin_operator
+up f51 f91
+0
+1
+0 0 47 91
+1
+end_operator
+begin_operator
+up f51 f92
+0
+1
+0 0 47 92
+1
+end_operator
+begin_operator
+up f51 f93
+0
+1
+0 0 47 93
+1
+end_operator
+begin_operator
+up f51 f94
+0
+1
+0 0 47 94
+1
+end_operator
+begin_operator
+up f51 f95
+0
+1
+0 0 47 95
+1
+end_operator
+begin_operator
+up f51 f96
+0
+1
+0 0 47 96
+1
+end_operator
+begin_operator
+up f51 f97
+0
+1
+0 0 47 97
+1
+end_operator
+begin_operator
+up f51 f98
+0
+1
+0 0 47 98
+1
+end_operator
+begin_operator
+up f51 f99
+0
+1
+0 0 47 99
+1
+end_operator
+begin_operator
+up f52 f100
+0
+1
+0 0 48 2
+1
+end_operator
+begin_operator
+up f52 f53
+0
+1
+0 0 48 49
+1
+end_operator
+begin_operator
+up f52 f54
+0
+1
+0 0 48 50
+1
+end_operator
+begin_operator
+up f52 f55
+0
+1
+0 0 48 51
+1
+end_operator
+begin_operator
+up f52 f56
+0
+1
+0 0 48 52
+1
+end_operator
+begin_operator
+up f52 f57
+0
+1
+0 0 48 53
+1
+end_operator
+begin_operator
+up f52 f58
+0
+1
+0 0 48 54
+1
+end_operator
+begin_operator
+up f52 f59
+0
+1
+0 0 48 55
+1
+end_operator
+begin_operator
+up f52 f60
+0
+1
+0 0 48 57
+1
+end_operator
+begin_operator
+up f52 f61
+0
+1
+0 0 48 58
+1
+end_operator
+begin_operator
+up f52 f62
+0
+1
+0 0 48 59
+1
+end_operator
+begin_operator
+up f52 f63
+0
+1
+0 0 48 60
+1
+end_operator
+begin_operator
+up f52 f64
+0
+1
+0 0 48 61
+1
+end_operator
+begin_operator
+up f52 f65
+0
+1
+0 0 48 62
+1
+end_operator
+begin_operator
+up f52 f66
+0
+1
+0 0 48 63
+1
+end_operator
+begin_operator
+up f52 f67
+0
+1
+0 0 48 64
+1
+end_operator
+begin_operator
+up f52 f68
+0
+1
+0 0 48 65
+1
+end_operator
+begin_operator
+up f52 f69
+0
+1
+0 0 48 66
+1
+end_operator
+begin_operator
+up f52 f70
+0
+1
+0 0 48 68
+1
+end_operator
+begin_operator
+up f52 f71
+0
+1
+0 0 48 69
+1
+end_operator
+begin_operator
+up f52 f72
+0
+1
+0 0 48 70
+1
+end_operator
+begin_operator
+up f52 f73
+0
+1
+0 0 48 71
+1
+end_operator
+begin_operator
+up f52 f74
+0
+1
+0 0 48 72
+1
+end_operator
+begin_operator
+up f52 f75
+0
+1
+0 0 48 73
+1
+end_operator
+begin_operator
+up f52 f76
+0
+1
+0 0 48 74
+1
+end_operator
+begin_operator
+up f52 f77
+0
+1
+0 0 48 75
+1
+end_operator
+begin_operator
+up f52 f78
+0
+1
+0 0 48 76
+1
+end_operator
+begin_operator
+up f52 f79
+0
+1
+0 0 48 77
+1
+end_operator
+begin_operator
+up f52 f80
+0
+1
+0 0 48 79
+1
+end_operator
+begin_operator
+up f52 f81
+0
+1
+0 0 48 80
+1
+end_operator
+begin_operator
+up f52 f82
+0
+1
+0 0 48 81
+1
+end_operator
+begin_operator
+up f52 f83
+0
+1
+0 0 48 82
+1
+end_operator
+begin_operator
+up f52 f84
+0
+1
+0 0 48 83
+1
+end_operator
+begin_operator
+up f52 f85
+0
+1
+0 0 48 84
+1
+end_operator
+begin_operator
+up f52 f86
+0
+1
+0 0 48 85
+1
+end_operator
+begin_operator
+up f52 f87
+0
+1
+0 0 48 86
+1
+end_operator
+begin_operator
+up f52 f88
+0
+1
+0 0 48 87
+1
+end_operator
+begin_operator
+up f52 f89
+0
+1
+0 0 48 88
+1
+end_operator
+begin_operator
+up f52 f90
+0
+1
+0 0 48 90
+1
+end_operator
+begin_operator
+up f52 f91
+0
+1
+0 0 48 91
+1
+end_operator
+begin_operator
+up f52 f92
+0
+1
+0 0 48 92
+1
+end_operator
+begin_operator
+up f52 f93
+0
+1
+0 0 48 93
+1
+end_operator
+begin_operator
+up f52 f94
+0
+1
+0 0 48 94
+1
+end_operator
+begin_operator
+up f52 f95
+0
+1
+0 0 48 95
+1
+end_operator
+begin_operator
+up f52 f96
+0
+1
+0 0 48 96
+1
+end_operator
+begin_operator
+up f52 f97
+0
+1
+0 0 48 97
+1
+end_operator
+begin_operator
+up f52 f98
+0
+1
+0 0 48 98
+1
+end_operator
+begin_operator
+up f52 f99
+0
+1
+0 0 48 99
+1
+end_operator
+begin_operator
+up f53 f100
+0
+1
+0 0 49 2
+1
+end_operator
+begin_operator
+up f53 f54
+0
+1
+0 0 49 50
+1
+end_operator
+begin_operator
+up f53 f55
+0
+1
+0 0 49 51
+1
+end_operator
+begin_operator
+up f53 f56
+0
+1
+0 0 49 52
+1
+end_operator
+begin_operator
+up f53 f57
+0
+1
+0 0 49 53
+1
+end_operator
+begin_operator
+up f53 f58
+0
+1
+0 0 49 54
+1
+end_operator
+begin_operator
+up f53 f59
+0
+1
+0 0 49 55
+1
+end_operator
+begin_operator
+up f53 f60
+0
+1
+0 0 49 57
+1
+end_operator
+begin_operator
+up f53 f61
+0
+1
+0 0 49 58
+1
+end_operator
+begin_operator
+up f53 f62
+0
+1
+0 0 49 59
+1
+end_operator
+begin_operator
+up f53 f63
+0
+1
+0 0 49 60
+1
+end_operator
+begin_operator
+up f53 f64
+0
+1
+0 0 49 61
+1
+end_operator
+begin_operator
+up f53 f65
+0
+1
+0 0 49 62
+1
+end_operator
+begin_operator
+up f53 f66
+0
+1
+0 0 49 63
+1
+end_operator
+begin_operator
+up f53 f67
+0
+1
+0 0 49 64
+1
+end_operator
+begin_operator
+up f53 f68
+0
+1
+0 0 49 65
+1
+end_operator
+begin_operator
+up f53 f69
+0
+1
+0 0 49 66
+1
+end_operator
+begin_operator
+up f53 f70
+0
+1
+0 0 49 68
+1
+end_operator
+begin_operator
+up f53 f71
+0
+1
+0 0 49 69
+1
+end_operator
+begin_operator
+up f53 f72
+0
+1
+0 0 49 70
+1
+end_operator
+begin_operator
+up f53 f73
+0
+1
+0 0 49 71
+1
+end_operator
+begin_operator
+up f53 f74
+0
+1
+0 0 49 72
+1
+end_operator
+begin_operator
+up f53 f75
+0
+1
+0 0 49 73
+1
+end_operator
+begin_operator
+up f53 f76
+0
+1
+0 0 49 74
+1
+end_operator
+begin_operator
+up f53 f77
+0
+1
+0 0 49 75
+1
+end_operator
+begin_operator
+up f53 f78
+0
+1
+0 0 49 76
+1
+end_operator
+begin_operator
+up f53 f79
+0
+1
+0 0 49 77
+1
+end_operator
+begin_operator
+up f53 f80
+0
+1
+0 0 49 79
+1
+end_operator
+begin_operator
+up f53 f81
+0
+1
+0 0 49 80
+1
+end_operator
+begin_operator
+up f53 f82
+0
+1
+0 0 49 81
+1
+end_operator
+begin_operator
+up f53 f83
+0
+1
+0 0 49 82
+1
+end_operator
+begin_operator
+up f53 f84
+0
+1
+0 0 49 83
+1
+end_operator
+begin_operator
+up f53 f85
+0
+1
+0 0 49 84
+1
+end_operator
+begin_operator
+up f53 f86
+0
+1
+0 0 49 85
+1
+end_operator
+begin_operator
+up f53 f87
+0
+1
+0 0 49 86
+1
+end_operator
+begin_operator
+up f53 f88
+0
+1
+0 0 49 87
+1
+end_operator
+begin_operator
+up f53 f89
+0
+1
+0 0 49 88
+1
+end_operator
+begin_operator
+up f53 f90
+0
+1
+0 0 49 90
+1
+end_operator
+begin_operator
+up f53 f91
+0
+1
+0 0 49 91
+1
+end_operator
+begin_operator
+up f53 f92
+0
+1
+0 0 49 92
+1
+end_operator
+begin_operator
+up f53 f93
+0
+1
+0 0 49 93
+1
+end_operator
+begin_operator
+up f53 f94
+0
+1
+0 0 49 94
+1
+end_operator
+begin_operator
+up f53 f95
+0
+1
+0 0 49 95
+1
+end_operator
+begin_operator
+up f53 f96
+0
+1
+0 0 49 96
+1
+end_operator
+begin_operator
+up f53 f97
+0
+1
+0 0 49 97
+1
+end_operator
+begin_operator
+up f53 f98
+0
+1
+0 0 49 98
+1
+end_operator
+begin_operator
+up f53 f99
+0
+1
+0 0 49 99
+1
+end_operator
+begin_operator
+up f54 f100
+0
+1
+0 0 50 2
+1
+end_operator
+begin_operator
+up f54 f55
+0
+1
+0 0 50 51
+1
+end_operator
+begin_operator
+up f54 f56
+0
+1
+0 0 50 52
+1
+end_operator
+begin_operator
+up f54 f57
+0
+1
+0 0 50 53
+1
+end_operator
+begin_operator
+up f54 f58
+0
+1
+0 0 50 54
+1
+end_operator
+begin_operator
+up f54 f59
+0
+1
+0 0 50 55
+1
+end_operator
+begin_operator
+up f54 f60
+0
+1
+0 0 50 57
+1
+end_operator
+begin_operator
+up f54 f61
+0
+1
+0 0 50 58
+1
+end_operator
+begin_operator
+up f54 f62
+0
+1
+0 0 50 59
+1
+end_operator
+begin_operator
+up f54 f63
+0
+1
+0 0 50 60
+1
+end_operator
+begin_operator
+up f54 f64
+0
+1
+0 0 50 61
+1
+end_operator
+begin_operator
+up f54 f65
+0
+1
+0 0 50 62
+1
+end_operator
+begin_operator
+up f54 f66
+0
+1
+0 0 50 63
+1
+end_operator
+begin_operator
+up f54 f67
+0
+1
+0 0 50 64
+1
+end_operator
+begin_operator
+up f54 f68
+0
+1
+0 0 50 65
+1
+end_operator
+begin_operator
+up f54 f69
+0
+1
+0 0 50 66
+1
+end_operator
+begin_operator
+up f54 f70
+0
+1
+0 0 50 68
+1
+end_operator
+begin_operator
+up f54 f71
+0
+1
+0 0 50 69
+1
+end_operator
+begin_operator
+up f54 f72
+0
+1
+0 0 50 70
+1
+end_operator
+begin_operator
+up f54 f73
+0
+1
+0 0 50 71
+1
+end_operator
+begin_operator
+up f54 f74
+0
+1
+0 0 50 72
+1
+end_operator
+begin_operator
+up f54 f75
+0
+1
+0 0 50 73
+1
+end_operator
+begin_operator
+up f54 f76
+0
+1
+0 0 50 74
+1
+end_operator
+begin_operator
+up f54 f77
+0
+1
+0 0 50 75
+1
+end_operator
+begin_operator
+up f54 f78
+0
+1
+0 0 50 76
+1
+end_operator
+begin_operator
+up f54 f79
+0
+1
+0 0 50 77
+1
+end_operator
+begin_operator
+up f54 f80
+0
+1
+0 0 50 79
+1
+end_operator
+begin_operator
+up f54 f81
+0
+1
+0 0 50 80
+1
+end_operator
+begin_operator
+up f54 f82
+0
+1
+0 0 50 81
+1
+end_operator
+begin_operator
+up f54 f83
+0
+1
+0 0 50 82
+1
+end_operator
+begin_operator
+up f54 f84
+0
+1
+0 0 50 83
+1
+end_operator
+begin_operator
+up f54 f85
+0
+1
+0 0 50 84
+1
+end_operator
+begin_operator
+up f54 f86
+0
+1
+0 0 50 85
+1
+end_operator
+begin_operator
+up f54 f87
+0
+1
+0 0 50 86
+1
+end_operator
+begin_operator
+up f54 f88
+0
+1
+0 0 50 87
+1
+end_operator
+begin_operator
+up f54 f89
+0
+1
+0 0 50 88
+1
+end_operator
+begin_operator
+up f54 f90
+0
+1
+0 0 50 90
+1
+end_operator
+begin_operator
+up f54 f91
+0
+1
+0 0 50 91
+1
+end_operator
+begin_operator
+up f54 f92
+0
+1
+0 0 50 92
+1
+end_operator
+begin_operator
+up f54 f93
+0
+1
+0 0 50 93
+1
+end_operator
+begin_operator
+up f54 f94
+0
+1
+0 0 50 94
+1
+end_operator
+begin_operator
+up f54 f95
+0
+1
+0 0 50 95
+1
+end_operator
+begin_operator
+up f54 f96
+0
+1
+0 0 50 96
+1
+end_operator
+begin_operator
+up f54 f97
+0
+1
+0 0 50 97
+1
+end_operator
+begin_operator
+up f54 f98
+0
+1
+0 0 50 98
+1
+end_operator
+begin_operator
+up f54 f99
+0
+1
+0 0 50 99
+1
+end_operator
+begin_operator
+up f55 f100
+0
+1
+0 0 51 2
+1
+end_operator
+begin_operator
+up f55 f56
+0
+1
+0 0 51 52
+1
+end_operator
+begin_operator
+up f55 f57
+0
+1
+0 0 51 53
+1
+end_operator
+begin_operator
+up f55 f58
+0
+1
+0 0 51 54
+1
+end_operator
+begin_operator
+up f55 f59
+0
+1
+0 0 51 55
+1
+end_operator
+begin_operator
+up f55 f60
+0
+1
+0 0 51 57
+1
+end_operator
+begin_operator
+up f55 f61
+0
+1
+0 0 51 58
+1
+end_operator
+begin_operator
+up f55 f62
+0
+1
+0 0 51 59
+1
+end_operator
+begin_operator
+up f55 f63
+0
+1
+0 0 51 60
+1
+end_operator
+begin_operator
+up f55 f64
+0
+1
+0 0 51 61
+1
+end_operator
+begin_operator
+up f55 f65
+0
+1
+0 0 51 62
+1
+end_operator
+begin_operator
+up f55 f66
+0
+1
+0 0 51 63
+1
+end_operator
+begin_operator
+up f55 f67
+0
+1
+0 0 51 64
+1
+end_operator
+begin_operator
+up f55 f68
+0
+1
+0 0 51 65
+1
+end_operator
+begin_operator
+up f55 f69
+0
+1
+0 0 51 66
+1
+end_operator
+begin_operator
+up f55 f70
+0
+1
+0 0 51 68
+1
+end_operator
+begin_operator
+up f55 f71
+0
+1
+0 0 51 69
+1
+end_operator
+begin_operator
+up f55 f72
+0
+1
+0 0 51 70
+1
+end_operator
+begin_operator
+up f55 f73
+0
+1
+0 0 51 71
+1
+end_operator
+begin_operator
+up f55 f74
+0
+1
+0 0 51 72
+1
+end_operator
+begin_operator
+up f55 f75
+0
+1
+0 0 51 73
+1
+end_operator
+begin_operator
+up f55 f76
+0
+1
+0 0 51 74
+1
+end_operator
+begin_operator
+up f55 f77
+0
+1
+0 0 51 75
+1
+end_operator
+begin_operator
+up f55 f78
+0
+1
+0 0 51 76
+1
+end_operator
+begin_operator
+up f55 f79
+0
+1
+0 0 51 77
+1
+end_operator
+begin_operator
+up f55 f80
+0
+1
+0 0 51 79
+1
+end_operator
+begin_operator
+up f55 f81
+0
+1
+0 0 51 80
+1
+end_operator
+begin_operator
+up f55 f82
+0
+1
+0 0 51 81
+1
+end_operator
+begin_operator
+up f55 f83
+0
+1
+0 0 51 82
+1
+end_operator
+begin_operator
+up f55 f84
+0
+1
+0 0 51 83
+1
+end_operator
+begin_operator
+up f55 f85
+0
+1
+0 0 51 84
+1
+end_operator
+begin_operator
+up f55 f86
+0
+1
+0 0 51 85
+1
+end_operator
+begin_operator
+up f55 f87
+0
+1
+0 0 51 86
+1
+end_operator
+begin_operator
+up f55 f88
+0
+1
+0 0 51 87
+1
+end_operator
+begin_operator
+up f55 f89
+0
+1
+0 0 51 88
+1
+end_operator
+begin_operator
+up f55 f90
+0
+1
+0 0 51 90
+1
+end_operator
+begin_operator
+up f55 f91
+0
+1
+0 0 51 91
+1
+end_operator
+begin_operator
+up f55 f92
+0
+1
+0 0 51 92
+1
+end_operator
+begin_operator
+up f55 f93
+0
+1
+0 0 51 93
+1
+end_operator
+begin_operator
+up f55 f94
+0
+1
+0 0 51 94
+1
+end_operator
+begin_operator
+up f55 f95
+0
+1
+0 0 51 95
+1
+end_operator
+begin_operator
+up f55 f96
+0
+1
+0 0 51 96
+1
+end_operator
+begin_operator
+up f55 f97
+0
+1
+0 0 51 97
+1
+end_operator
+begin_operator
+up f55 f98
+0
+1
+0 0 51 98
+1
+end_operator
+begin_operator
+up f55 f99
+0
+1
+0 0 51 99
+1
+end_operator
+begin_operator
+up f56 f100
+0
+1
+0 0 52 2
+1
+end_operator
+begin_operator
+up f56 f57
+0
+1
+0 0 52 53
+1
+end_operator
+begin_operator
+up f56 f58
+0
+1
+0 0 52 54
+1
+end_operator
+begin_operator
+up f56 f59
+0
+1
+0 0 52 55
+1
+end_operator
+begin_operator
+up f56 f60
+0
+1
+0 0 52 57
+1
+end_operator
+begin_operator
+up f56 f61
+0
+1
+0 0 52 58
+1
+end_operator
+begin_operator
+up f56 f62
+0
+1
+0 0 52 59
+1
+end_operator
+begin_operator
+up f56 f63
+0
+1
+0 0 52 60
+1
+end_operator
+begin_operator
+up f56 f64
+0
+1
+0 0 52 61
+1
+end_operator
+begin_operator
+up f56 f65
+0
+1
+0 0 52 62
+1
+end_operator
+begin_operator
+up f56 f66
+0
+1
+0 0 52 63
+1
+end_operator
+begin_operator
+up f56 f67
+0
+1
+0 0 52 64
+1
+end_operator
+begin_operator
+up f56 f68
+0
+1
+0 0 52 65
+1
+end_operator
+begin_operator
+up f56 f69
+0
+1
+0 0 52 66
+1
+end_operator
+begin_operator
+up f56 f70
+0
+1
+0 0 52 68
+1
+end_operator
+begin_operator
+up f56 f71
+0
+1
+0 0 52 69
+1
+end_operator
+begin_operator
+up f56 f72
+0
+1
+0 0 52 70
+1
+end_operator
+begin_operator
+up f56 f73
+0
+1
+0 0 52 71
+1
+end_operator
+begin_operator
+up f56 f74
+0
+1
+0 0 52 72
+1
+end_operator
+begin_operator
+up f56 f75
+0
+1
+0 0 52 73
+1
+end_operator
+begin_operator
+up f56 f76
+0
+1
+0 0 52 74
+1
+end_operator
+begin_operator
+up f56 f77
+0
+1
+0 0 52 75
+1
+end_operator
+begin_operator
+up f56 f78
+0
+1
+0 0 52 76
+1
+end_operator
+begin_operator
+up f56 f79
+0
+1
+0 0 52 77
+1
+end_operator
+begin_operator
+up f56 f80
+0
+1
+0 0 52 79
+1
+end_operator
+begin_operator
+up f56 f81
+0
+1
+0 0 52 80
+1
+end_operator
+begin_operator
+up f56 f82
+0
+1
+0 0 52 81
+1
+end_operator
+begin_operator
+up f56 f83
+0
+1
+0 0 52 82
+1
+end_operator
+begin_operator
+up f56 f84
+0
+1
+0 0 52 83
+1
+end_operator
+begin_operator
+up f56 f85
+0
+1
+0 0 52 84
+1
+end_operator
+begin_operator
+up f56 f86
+0
+1
+0 0 52 85
+1
+end_operator
+begin_operator
+up f56 f87
+0
+1
+0 0 52 86
+1
+end_operator
+begin_operator
+up f56 f88
+0
+1
+0 0 52 87
+1
+end_operator
+begin_operator
+up f56 f89
+0
+1
+0 0 52 88
+1
+end_operator
+begin_operator
+up f56 f90
+0
+1
+0 0 52 90
+1
+end_operator
+begin_operator
+up f56 f91
+0
+1
+0 0 52 91
+1
+end_operator
+begin_operator
+up f56 f92
+0
+1
+0 0 52 92
+1
+end_operator
+begin_operator
+up f56 f93
+0
+1
+0 0 52 93
+1
+end_operator
+begin_operator
+up f56 f94
+0
+1
+0 0 52 94
+1
+end_operator
+begin_operator
+up f56 f95
+0
+1
+0 0 52 95
+1
+end_operator
+begin_operator
+up f56 f96
+0
+1
+0 0 52 96
+1
+end_operator
+begin_operator
+up f56 f97
+0
+1
+0 0 52 97
+1
+end_operator
+begin_operator
+up f56 f98
+0
+1
+0 0 52 98
+1
+end_operator
+begin_operator
+up f56 f99
+0
+1
+0 0 52 99
+1
+end_operator
+begin_operator
+up f57 f100
+0
+1
+0 0 53 2
+1
+end_operator
+begin_operator
+up f57 f58
+0
+1
+0 0 53 54
+1
+end_operator
+begin_operator
+up f57 f59
+0
+1
+0 0 53 55
+1
+end_operator
+begin_operator
+up f57 f60
+0
+1
+0 0 53 57
+1
+end_operator
+begin_operator
+up f57 f61
+0
+1
+0 0 53 58
+1
+end_operator
+begin_operator
+up f57 f62
+0
+1
+0 0 53 59
+1
+end_operator
+begin_operator
+up f57 f63
+0
+1
+0 0 53 60
+1
+end_operator
+begin_operator
+up f57 f64
+0
+1
+0 0 53 61
+1
+end_operator
+begin_operator
+up f57 f65
+0
+1
+0 0 53 62
+1
+end_operator
+begin_operator
+up f57 f66
+0
+1
+0 0 53 63
+1
+end_operator
+begin_operator
+up f57 f67
+0
+1
+0 0 53 64
+1
+end_operator
+begin_operator
+up f57 f68
+0
+1
+0 0 53 65
+1
+end_operator
+begin_operator
+up f57 f69
+0
+1
+0 0 53 66
+1
+end_operator
+begin_operator
+up f57 f70
+0
+1
+0 0 53 68
+1
+end_operator
+begin_operator
+up f57 f71
+0
+1
+0 0 53 69
+1
+end_operator
+begin_operator
+up f57 f72
+0
+1
+0 0 53 70
+1
+end_operator
+begin_operator
+up f57 f73
+0
+1
+0 0 53 71
+1
+end_operator
+begin_operator
+up f57 f74
+0
+1
+0 0 53 72
+1
+end_operator
+begin_operator
+up f57 f75
+0
+1
+0 0 53 73
+1
+end_operator
+begin_operator
+up f57 f76
+0
+1
+0 0 53 74
+1
+end_operator
+begin_operator
+up f57 f77
+0
+1
+0 0 53 75
+1
+end_operator
+begin_operator
+up f57 f78
+0
+1
+0 0 53 76
+1
+end_operator
+begin_operator
+up f57 f79
+0
+1
+0 0 53 77
+1
+end_operator
+begin_operator
+up f57 f80
+0
+1
+0 0 53 79
+1
+end_operator
+begin_operator
+up f57 f81
+0
+1
+0 0 53 80
+1
+end_operator
+begin_operator
+up f57 f82
+0
+1
+0 0 53 81
+1
+end_operator
+begin_operator
+up f57 f83
+0
+1
+0 0 53 82
+1
+end_operator
+begin_operator
+up f57 f84
+0
+1
+0 0 53 83
+1
+end_operator
+begin_operator
+up f57 f85
+0
+1
+0 0 53 84
+1
+end_operator
+begin_operator
+up f57 f86
+0
+1
+0 0 53 85
+1
+end_operator
+begin_operator
+up f57 f87
+0
+1
+0 0 53 86
+1
+end_operator
+begin_operator
+up f57 f88
+0
+1
+0 0 53 87
+1
+end_operator
+begin_operator
+up f57 f89
+0
+1
+0 0 53 88
+1
+end_operator
+begin_operator
+up f57 f90
+0
+1
+0 0 53 90
+1
+end_operator
+begin_operator
+up f57 f91
+0
+1
+0 0 53 91
+1
+end_operator
+begin_operator
+up f57 f92
+0
+1
+0 0 53 92
+1
+end_operator
+begin_operator
+up f57 f93
+0
+1
+0 0 53 93
+1
+end_operator
+begin_operator
+up f57 f94
+0
+1
+0 0 53 94
+1
+end_operator
+begin_operator
+up f57 f95
+0
+1
+0 0 53 95
+1
+end_operator
+begin_operator
+up f57 f96
+0
+1
+0 0 53 96
+1
+end_operator
+begin_operator
+up f57 f97
+0
+1
+0 0 53 97
+1
+end_operator
+begin_operator
+up f57 f98
+0
+1
+0 0 53 98
+1
+end_operator
+begin_operator
+up f57 f99
+0
+1
+0 0 53 99
+1
+end_operator
+begin_operator
+up f58 f100
+0
+1
+0 0 54 2
+1
+end_operator
+begin_operator
+up f58 f59
+0
+1
+0 0 54 55
+1
+end_operator
+begin_operator
+up f58 f60
+0
+1
+0 0 54 57
+1
+end_operator
+begin_operator
+up f58 f61
+0
+1
+0 0 54 58
+1
+end_operator
+begin_operator
+up f58 f62
+0
+1
+0 0 54 59
+1
+end_operator
+begin_operator
+up f58 f63
+0
+1
+0 0 54 60
+1
+end_operator
+begin_operator
+up f58 f64
+0
+1
+0 0 54 61
+1
+end_operator
+begin_operator
+up f58 f65
+0
+1
+0 0 54 62
+1
+end_operator
+begin_operator
+up f58 f66
+0
+1
+0 0 54 63
+1
+end_operator
+begin_operator
+up f58 f67
+0
+1
+0 0 54 64
+1
+end_operator
+begin_operator
+up f58 f68
+0
+1
+0 0 54 65
+1
+end_operator
+begin_operator
+up f58 f69
+0
+1
+0 0 54 66
+1
+end_operator
+begin_operator
+up f58 f70
+0
+1
+0 0 54 68
+1
+end_operator
+begin_operator
+up f58 f71
+0
+1
+0 0 54 69
+1
+end_operator
+begin_operator
+up f58 f72
+0
+1
+0 0 54 70
+1
+end_operator
+begin_operator
+up f58 f73
+0
+1
+0 0 54 71
+1
+end_operator
+begin_operator
+up f58 f74
+0
+1
+0 0 54 72
+1
+end_operator
+begin_operator
+up f58 f75
+0
+1
+0 0 54 73
+1
+end_operator
+begin_operator
+up f58 f76
+0
+1
+0 0 54 74
+1
+end_operator
+begin_operator
+up f58 f77
+0
+1
+0 0 54 75
+1
+end_operator
+begin_operator
+up f58 f78
+0
+1
+0 0 54 76
+1
+end_operator
+begin_operator
+up f58 f79
+0
+1
+0 0 54 77
+1
+end_operator
+begin_operator
+up f58 f80
+0
+1
+0 0 54 79
+1
+end_operator
+begin_operator
+up f58 f81
+0
+1
+0 0 54 80
+1
+end_operator
+begin_operator
+up f58 f82
+0
+1
+0 0 54 81
+1
+end_operator
+begin_operator
+up f58 f83
+0
+1
+0 0 54 82
+1
+end_operator
+begin_operator
+up f58 f84
+0
+1
+0 0 54 83
+1
+end_operator
+begin_operator
+up f58 f85
+0
+1
+0 0 54 84
+1
+end_operator
+begin_operator
+up f58 f86
+0
+1
+0 0 54 85
+1
+end_operator
+begin_operator
+up f58 f87
+0
+1
+0 0 54 86
+1
+end_operator
+begin_operator
+up f58 f88
+0
+1
+0 0 54 87
+1
+end_operator
+begin_operator
+up f58 f89
+0
+1
+0 0 54 88
+1
+end_operator
+begin_operator
+up f58 f90
+0
+1
+0 0 54 90
+1
+end_operator
+begin_operator
+up f58 f91
+0
+1
+0 0 54 91
+1
+end_operator
+begin_operator
+up f58 f92
+0
+1
+0 0 54 92
+1
+end_operator
+begin_operator
+up f58 f93
+0
+1
+0 0 54 93
+1
+end_operator
+begin_operator
+up f58 f94
+0
+1
+0 0 54 94
+1
+end_operator
+begin_operator
+up f58 f95
+0
+1
+0 0 54 95
+1
+end_operator
+begin_operator
+up f58 f96
+0
+1
+0 0 54 96
+1
+end_operator
+begin_operator
+up f58 f97
+0
+1
+0 0 54 97
+1
+end_operator
+begin_operator
+up f58 f98
+0
+1
+0 0 54 98
+1
+end_operator
+begin_operator
+up f58 f99
+0
+1
+0 0 54 99
+1
+end_operator
+begin_operator
+up f59 f100
+0
+1
+0 0 55 2
+1
+end_operator
+begin_operator
+up f59 f60
+0
+1
+0 0 55 57
+1
+end_operator
+begin_operator
+up f59 f61
+0
+1
+0 0 55 58
+1
+end_operator
+begin_operator
+up f59 f62
+0
+1
+0 0 55 59
+1
+end_operator
+begin_operator
+up f59 f63
+0
+1
+0 0 55 60
+1
+end_operator
+begin_operator
+up f59 f64
+0
+1
+0 0 55 61
+1
+end_operator
+begin_operator
+up f59 f65
+0
+1
+0 0 55 62
+1
+end_operator
+begin_operator
+up f59 f66
+0
+1
+0 0 55 63
+1
+end_operator
+begin_operator
+up f59 f67
+0
+1
+0 0 55 64
+1
+end_operator
+begin_operator
+up f59 f68
+0
+1
+0 0 55 65
+1
+end_operator
+begin_operator
+up f59 f69
+0
+1
+0 0 55 66
+1
+end_operator
+begin_operator
+up f59 f70
+0
+1
+0 0 55 68
+1
+end_operator
+begin_operator
+up f59 f71
+0
+1
+0 0 55 69
+1
+end_operator
+begin_operator
+up f59 f72
+0
+1
+0 0 55 70
+1
+end_operator
+begin_operator
+up f59 f73
+0
+1
+0 0 55 71
+1
+end_operator
+begin_operator
+up f59 f74
+0
+1
+0 0 55 72
+1
+end_operator
+begin_operator
+up f59 f75
+0
+1
+0 0 55 73
+1
+end_operator
+begin_operator
+up f59 f76
+0
+1
+0 0 55 74
+1
+end_operator
+begin_operator
+up f59 f77
+0
+1
+0 0 55 75
+1
+end_operator
+begin_operator
+up f59 f78
+0
+1
+0 0 55 76
+1
+end_operator
+begin_operator
+up f59 f79
+0
+1
+0 0 55 77
+1
+end_operator
+begin_operator
+up f59 f80
+0
+1
+0 0 55 79
+1
+end_operator
+begin_operator
+up f59 f81
+0
+1
+0 0 55 80
+1
+end_operator
+begin_operator
+up f59 f82
+0
+1
+0 0 55 81
+1
+end_operator
+begin_operator
+up f59 f83
+0
+1
+0 0 55 82
+1
+end_operator
+begin_operator
+up f59 f84
+0
+1
+0 0 55 83
+1
+end_operator
+begin_operator
+up f59 f85
+0
+1
+0 0 55 84
+1
+end_operator
+begin_operator
+up f59 f86
+0
+1
+0 0 55 85
+1
+end_operator
+begin_operator
+up f59 f87
+0
+1
+0 0 55 86
+1
+end_operator
+begin_operator
+up f59 f88
+0
+1
+0 0 55 87
+1
+end_operator
+begin_operator
+up f59 f89
+0
+1
+0 0 55 88
+1
+end_operator
+begin_operator
+up f59 f90
+0
+1
+0 0 55 90
+1
+end_operator
+begin_operator
+up f59 f91
+0
+1
+0 0 55 91
+1
+end_operator
+begin_operator
+up f59 f92
+0
+1
+0 0 55 92
+1
+end_operator
+begin_operator
+up f59 f93
+0
+1
+0 0 55 93
+1
+end_operator
+begin_operator
+up f59 f94
+0
+1
+0 0 55 94
+1
+end_operator
+begin_operator
+up f59 f95
+0
+1
+0 0 55 95
+1
+end_operator
+begin_operator
+up f59 f96
+0
+1
+0 0 55 96
+1
+end_operator
+begin_operator
+up f59 f97
+0
+1
+0 0 55 97
+1
+end_operator
+begin_operator
+up f59 f98
+0
+1
+0 0 55 98
+1
+end_operator
+begin_operator
+up f59 f99
+0
+1
+0 0 55 99
+1
+end_operator
+begin_operator
+up f6 f10
+0
+1
+0 0 56 1
+1
+end_operator
+begin_operator
+up f6 f100
+0
+1
+0 0 56 2
+1
+end_operator
+begin_operator
+up f6 f11
+0
+1
+0 0 56 3
+1
+end_operator
+begin_operator
+up f6 f12
+0
+1
+0 0 56 4
+1
+end_operator
+begin_operator
+up f6 f13
+0
+1
+0 0 56 5
+1
+end_operator
+begin_operator
+up f6 f14
+0
+1
+0 0 56 6
+1
+end_operator
+begin_operator
+up f6 f15
+0
+1
+0 0 56 7
+1
+end_operator
+begin_operator
+up f6 f16
+0
+1
+0 0 56 8
+1
+end_operator
+begin_operator
+up f6 f17
+0
+1
+0 0 56 9
+1
+end_operator
+begin_operator
+up f6 f18
+0
+1
+0 0 56 10
+1
+end_operator
+begin_operator
+up f6 f19
+0
+1
+0 0 56 11
+1
+end_operator
+begin_operator
+up f6 f20
+0
+1
+0 0 56 13
+1
+end_operator
+begin_operator
+up f6 f21
+0
+1
+0 0 56 14
+1
+end_operator
+begin_operator
+up f6 f22
+0
+1
+0 0 56 15
+1
+end_operator
+begin_operator
+up f6 f23
+0
+1
+0 0 56 16
+1
+end_operator
+begin_operator
+up f6 f24
+0
+1
+0 0 56 17
+1
+end_operator
+begin_operator
+up f6 f25
+0
+1
+0 0 56 18
+1
+end_operator
+begin_operator
+up f6 f26
+0
+1
+0 0 56 19
+1
+end_operator
+begin_operator
+up f6 f27
+0
+1
+0 0 56 20
+1
+end_operator
+begin_operator
+up f6 f28
+0
+1
+0 0 56 21
+1
+end_operator
+begin_operator
+up f6 f29
+0
+1
+0 0 56 22
+1
+end_operator
+begin_operator
+up f6 f30
+0
+1
+0 0 56 24
+1
+end_operator
+begin_operator
+up f6 f31
+0
+1
+0 0 56 25
+1
+end_operator
+begin_operator
+up f6 f32
+0
+1
+0 0 56 26
+1
+end_operator
+begin_operator
+up f6 f33
+0
+1
+0 0 56 27
+1
+end_operator
+begin_operator
+up f6 f34
+0
+1
+0 0 56 28
+1
+end_operator
+begin_operator
+up f6 f35
+0
+1
+0 0 56 29
+1
+end_operator
+begin_operator
+up f6 f36
+0
+1
+0 0 56 30
+1
+end_operator
+begin_operator
+up f6 f37
+0
+1
+0 0 56 31
+1
+end_operator
+begin_operator
+up f6 f38
+0
+1
+0 0 56 32
+1
+end_operator
+begin_operator
+up f6 f39
+0
+1
+0 0 56 33
+1
+end_operator
+begin_operator
+up f6 f40
+0
+1
+0 0 56 35
+1
+end_operator
+begin_operator
+up f6 f41
+0
+1
+0 0 56 36
+1
+end_operator
+begin_operator
+up f6 f42
+0
+1
+0 0 56 37
+1
+end_operator
+begin_operator
+up f6 f43
+0
+1
+0 0 56 38
+1
+end_operator
+begin_operator
+up f6 f44
+0
+1
+0 0 56 39
+1
+end_operator
+begin_operator
+up f6 f45
+0
+1
+0 0 56 40
+1
+end_operator
+begin_operator
+up f6 f46
+0
+1
+0 0 56 41
+1
+end_operator
+begin_operator
+up f6 f47
+0
+1
+0 0 56 42
+1
+end_operator
+begin_operator
+up f6 f48
+0
+1
+0 0 56 43
+1
+end_operator
+begin_operator
+up f6 f49
+0
+1
+0 0 56 44
+1
+end_operator
+begin_operator
+up f6 f50
+0
+1
+0 0 56 46
+1
+end_operator
+begin_operator
+up f6 f51
+0
+1
+0 0 56 47
+1
+end_operator
+begin_operator
+up f6 f52
+0
+1
+0 0 56 48
+1
+end_operator
+begin_operator
+up f6 f53
+0
+1
+0 0 56 49
+1
+end_operator
+begin_operator
+up f6 f54
+0
+1
+0 0 56 50
+1
+end_operator
+begin_operator
+up f6 f55
+0
+1
+0 0 56 51
+1
+end_operator
+begin_operator
+up f6 f56
+0
+1
+0 0 56 52
+1
+end_operator
+begin_operator
+up f6 f57
+0
+1
+0 0 56 53
+1
+end_operator
+begin_operator
+up f6 f58
+0
+1
+0 0 56 54
+1
+end_operator
+begin_operator
+up f6 f59
+0
+1
+0 0 56 55
+1
+end_operator
+begin_operator
+up f6 f60
+0
+1
+0 0 56 57
+1
+end_operator
+begin_operator
+up f6 f61
+0
+1
+0 0 56 58
+1
+end_operator
+begin_operator
+up f6 f62
+0
+1
+0 0 56 59
+1
+end_operator
+begin_operator
+up f6 f63
+0
+1
+0 0 56 60
+1
+end_operator
+begin_operator
+up f6 f64
+0
+1
+0 0 56 61
+1
+end_operator
+begin_operator
+up f6 f65
+0
+1
+0 0 56 62
+1
+end_operator
+begin_operator
+up f6 f66
+0
+1
+0 0 56 63
+1
+end_operator
+begin_operator
+up f6 f67
+0
+1
+0 0 56 64
+1
+end_operator
+begin_operator
+up f6 f68
+0
+1
+0 0 56 65
+1
+end_operator
+begin_operator
+up f6 f69
+0
+1
+0 0 56 66
+1
+end_operator
+begin_operator
+up f6 f7
+0
+1
+0 0 56 67
+1
+end_operator
+begin_operator
+up f6 f70
+0
+1
+0 0 56 68
+1
+end_operator
+begin_operator
+up f6 f71
+0
+1
+0 0 56 69
+1
+end_operator
+begin_operator
+up f6 f72
+0
+1
+0 0 56 70
+1
+end_operator
+begin_operator
+up f6 f73
+0
+1
+0 0 56 71
+1
+end_operator
+begin_operator
+up f6 f74
+0
+1
+0 0 56 72
+1
+end_operator
+begin_operator
+up f6 f75
+0
+1
+0 0 56 73
+1
+end_operator
+begin_operator
+up f6 f76
+0
+1
+0 0 56 74
+1
+end_operator
+begin_operator
+up f6 f77
+0
+1
+0 0 56 75
+1
+end_operator
+begin_operator
+up f6 f78
+0
+1
+0 0 56 76
+1
+end_operator
+begin_operator
+up f6 f79
+0
+1
+0 0 56 77
+1
+end_operator
+begin_operator
+up f6 f8
+0
+1
+0 0 56 78
+1
+end_operator
+begin_operator
+up f6 f80
+0
+1
+0 0 56 79
+1
+end_operator
+begin_operator
+up f6 f81
+0
+1
+0 0 56 80
+1
+end_operator
+begin_operator
+up f6 f82
+0
+1
+0 0 56 81
+1
+end_operator
+begin_operator
+up f6 f83
+0
+1
+0 0 56 82
+1
+end_operator
+begin_operator
+up f6 f84
+0
+1
+0 0 56 83
+1
+end_operator
+begin_operator
+up f6 f85
+0
+1
+0 0 56 84
+1
+end_operator
+begin_operator
+up f6 f86
+0
+1
+0 0 56 85
+1
+end_operator
+begin_operator
+up f6 f87
+0
+1
+0 0 56 86
+1
+end_operator
+begin_operator
+up f6 f88
+0
+1
+0 0 56 87
+1
+end_operator
+begin_operator
+up f6 f89
+0
+1
+0 0 56 88
+1
+end_operator
+begin_operator
+up f6 f9
+0
+1
+0 0 56 89
+1
+end_operator
+begin_operator
+up f6 f90
+0
+1
+0 0 56 90
+1
+end_operator
+begin_operator
+up f6 f91
+0
+1
+0 0 56 91
+1
+end_operator
+begin_operator
+up f6 f92
+0
+1
+0 0 56 92
+1
+end_operator
+begin_operator
+up f6 f93
+0
+1
+0 0 56 93
+1
+end_operator
+begin_operator
+up f6 f94
+0
+1
+0 0 56 94
+1
+end_operator
+begin_operator
+up f6 f95
+0
+1
+0 0 56 95
+1
+end_operator
+begin_operator
+up f6 f96
+0
+1
+0 0 56 96
+1
+end_operator
+begin_operator
+up f6 f97
+0
+1
+0 0 56 97
+1
+end_operator
+begin_operator
+up f6 f98
+0
+1
+0 0 56 98
+1
+end_operator
+begin_operator
+up f6 f99
+0
+1
+0 0 56 99
+1
+end_operator
+begin_operator
+up f60 f100
+0
+1
+0 0 57 2
+1
+end_operator
+begin_operator
+up f60 f61
+0
+1
+0 0 57 58
+1
+end_operator
+begin_operator
+up f60 f62
+0
+1
+0 0 57 59
+1
+end_operator
+begin_operator
+up f60 f63
+0
+1
+0 0 57 60
+1
+end_operator
+begin_operator
+up f60 f64
+0
+1
+0 0 57 61
+1
+end_operator
+begin_operator
+up f60 f65
+0
+1
+0 0 57 62
+1
+end_operator
+begin_operator
+up f60 f66
+0
+1
+0 0 57 63
+1
+end_operator
+begin_operator
+up f60 f67
+0
+1
+0 0 57 64
+1
+end_operator
+begin_operator
+up f60 f68
+0
+1
+0 0 57 65
+1
+end_operator
+begin_operator
+up f60 f69
+0
+1
+0 0 57 66
+1
+end_operator
+begin_operator
+up f60 f70
+0
+1
+0 0 57 68
+1
+end_operator
+begin_operator
+up f60 f71
+0
+1
+0 0 57 69
+1
+end_operator
+begin_operator
+up f60 f72
+0
+1
+0 0 57 70
+1
+end_operator
+begin_operator
+up f60 f73
+0
+1
+0 0 57 71
+1
+end_operator
+begin_operator
+up f60 f74
+0
+1
+0 0 57 72
+1
+end_operator
+begin_operator
+up f60 f75
+0
+1
+0 0 57 73
+1
+end_operator
+begin_operator
+up f60 f76
+0
+1
+0 0 57 74
+1
+end_operator
+begin_operator
+up f60 f77
+0
+1
+0 0 57 75
+1
+end_operator
+begin_operator
+up f60 f78
+0
+1
+0 0 57 76
+1
+end_operator
+begin_operator
+up f60 f79
+0
+1
+0 0 57 77
+1
+end_operator
+begin_operator
+up f60 f80
+0
+1
+0 0 57 79
+1
+end_operator
+begin_operator
+up f60 f81
+0
+1
+0 0 57 80
+1
+end_operator
+begin_operator
+up f60 f82
+0
+1
+0 0 57 81
+1
+end_operator
+begin_operator
+up f60 f83
+0
+1
+0 0 57 82
+1
+end_operator
+begin_operator
+up f60 f84
+0
+1
+0 0 57 83
+1
+end_operator
+begin_operator
+up f60 f85
+0
+1
+0 0 57 84
+1
+end_operator
+begin_operator
+up f60 f86
+0
+1
+0 0 57 85
+1
+end_operator
+begin_operator
+up f60 f87
+0
+1
+0 0 57 86
+1
+end_operator
+begin_operator
+up f60 f88
+0
+1
+0 0 57 87
+1
+end_operator
+begin_operator
+up f60 f89
+0
+1
+0 0 57 88
+1
+end_operator
+begin_operator
+up f60 f90
+0
+1
+0 0 57 90
+1
+end_operator
+begin_operator
+up f60 f91
+0
+1
+0 0 57 91
+1
+end_operator
+begin_operator
+up f60 f92
+0
+1
+0 0 57 92
+1
+end_operator
+begin_operator
+up f60 f93
+0
+1
+0 0 57 93
+1
+end_operator
+begin_operator
+up f60 f94
+0
+1
+0 0 57 94
+1
+end_operator
+begin_operator
+up f60 f95
+0
+1
+0 0 57 95
+1
+end_operator
+begin_operator
+up f60 f96
+0
+1
+0 0 57 96
+1
+end_operator
+begin_operator
+up f60 f97
+0
+1
+0 0 57 97
+1
+end_operator
+begin_operator
+up f60 f98
+0
+1
+0 0 57 98
+1
+end_operator
+begin_operator
+up f60 f99
+0
+1
+0 0 57 99
+1
+end_operator
+begin_operator
+up f61 f100
+0
+1
+0 0 58 2
+1
+end_operator
+begin_operator
+up f61 f62
+0
+1
+0 0 58 59
+1
+end_operator
+begin_operator
+up f61 f63
+0
+1
+0 0 58 60
+1
+end_operator
+begin_operator
+up f61 f64
+0
+1
+0 0 58 61
+1
+end_operator
+begin_operator
+up f61 f65
+0
+1
+0 0 58 62
+1
+end_operator
+begin_operator
+up f61 f66
+0
+1
+0 0 58 63
+1
+end_operator
+begin_operator
+up f61 f67
+0
+1
+0 0 58 64
+1
+end_operator
+begin_operator
+up f61 f68
+0
+1
+0 0 58 65
+1
+end_operator
+begin_operator
+up f61 f69
+0
+1
+0 0 58 66
+1
+end_operator
+begin_operator
+up f61 f70
+0
+1
+0 0 58 68
+1
+end_operator
+begin_operator
+up f61 f71
+0
+1
+0 0 58 69
+1
+end_operator
+begin_operator
+up f61 f72
+0
+1
+0 0 58 70
+1
+end_operator
+begin_operator
+up f61 f73
+0
+1
+0 0 58 71
+1
+end_operator
+begin_operator
+up f61 f74
+0
+1
+0 0 58 72
+1
+end_operator
+begin_operator
+up f61 f75
+0
+1
+0 0 58 73
+1
+end_operator
+begin_operator
+up f61 f76
+0
+1
+0 0 58 74
+1
+end_operator
+begin_operator
+up f61 f77
+0
+1
+0 0 58 75
+1
+end_operator
+begin_operator
+up f61 f78
+0
+1
+0 0 58 76
+1
+end_operator
+begin_operator
+up f61 f79
+0
+1
+0 0 58 77
+1
+end_operator
+begin_operator
+up f61 f80
+0
+1
+0 0 58 79
+1
+end_operator
+begin_operator
+up f61 f81
+0
+1
+0 0 58 80
+1
+end_operator
+begin_operator
+up f61 f82
+0
+1
+0 0 58 81
+1
+end_operator
+begin_operator
+up f61 f83
+0
+1
+0 0 58 82
+1
+end_operator
+begin_operator
+up f61 f84
+0
+1
+0 0 58 83
+1
+end_operator
+begin_operator
+up f61 f85
+0
+1
+0 0 58 84
+1
+end_operator
+begin_operator
+up f61 f86
+0
+1
+0 0 58 85
+1
+end_operator
+begin_operator
+up f61 f87
+0
+1
+0 0 58 86
+1
+end_operator
+begin_operator
+up f61 f88
+0
+1
+0 0 58 87
+1
+end_operator
+begin_operator
+up f61 f89
+0
+1
+0 0 58 88
+1
+end_operator
+begin_operator
+up f61 f90
+0
+1
+0 0 58 90
+1
+end_operator
+begin_operator
+up f61 f91
+0
+1
+0 0 58 91
+1
+end_operator
+begin_operator
+up f61 f92
+0
+1
+0 0 58 92
+1
+end_operator
+begin_operator
+up f61 f93
+0
+1
+0 0 58 93
+1
+end_operator
+begin_operator
+up f61 f94
+0
+1
+0 0 58 94
+1
+end_operator
+begin_operator
+up f61 f95
+0
+1
+0 0 58 95
+1
+end_operator
+begin_operator
+up f61 f96
+0
+1
+0 0 58 96
+1
+end_operator
+begin_operator
+up f61 f97
+0
+1
+0 0 58 97
+1
+end_operator
+begin_operator
+up f61 f98
+0
+1
+0 0 58 98
+1
+end_operator
+begin_operator
+up f61 f99
+0
+1
+0 0 58 99
+1
+end_operator
+begin_operator
+up f62 f100
+0
+1
+0 0 59 2
+1
+end_operator
+begin_operator
+up f62 f63
+0
+1
+0 0 59 60
+1
+end_operator
+begin_operator
+up f62 f64
+0
+1
+0 0 59 61
+1
+end_operator
+begin_operator
+up f62 f65
+0
+1
+0 0 59 62
+1
+end_operator
+begin_operator
+up f62 f66
+0
+1
+0 0 59 63
+1
+end_operator
+begin_operator
+up f62 f67
+0
+1
+0 0 59 64
+1
+end_operator
+begin_operator
+up f62 f68
+0
+1
+0 0 59 65
+1
+end_operator
+begin_operator
+up f62 f69
+0
+1
+0 0 59 66
+1
+end_operator
+begin_operator
+up f62 f70
+0
+1
+0 0 59 68
+1
+end_operator
+begin_operator
+up f62 f71
+0
+1
+0 0 59 69
+1
+end_operator
+begin_operator
+up f62 f72
+0
+1
+0 0 59 70
+1
+end_operator
+begin_operator
+up f62 f73
+0
+1
+0 0 59 71
+1
+end_operator
+begin_operator
+up f62 f74
+0
+1
+0 0 59 72
+1
+end_operator
+begin_operator
+up f62 f75
+0
+1
+0 0 59 73
+1
+end_operator
+begin_operator
+up f62 f76
+0
+1
+0 0 59 74
+1
+end_operator
+begin_operator
+up f62 f77
+0
+1
+0 0 59 75
+1
+end_operator
+begin_operator
+up f62 f78
+0
+1
+0 0 59 76
+1
+end_operator
+begin_operator
+up f62 f79
+0
+1
+0 0 59 77
+1
+end_operator
+begin_operator
+up f62 f80
+0
+1
+0 0 59 79
+1
+end_operator
+begin_operator
+up f62 f81
+0
+1
+0 0 59 80
+1
+end_operator
+begin_operator
+up f62 f82
+0
+1
+0 0 59 81
+1
+end_operator
+begin_operator
+up f62 f83
+0
+1
+0 0 59 82
+1
+end_operator
+begin_operator
+up f62 f84
+0
+1
+0 0 59 83
+1
+end_operator
+begin_operator
+up f62 f85
+0
+1
+0 0 59 84
+1
+end_operator
+begin_operator
+up f62 f86
+0
+1
+0 0 59 85
+1
+end_operator
+begin_operator
+up f62 f87
+0
+1
+0 0 59 86
+1
+end_operator
+begin_operator
+up f62 f88
+0
+1
+0 0 59 87
+1
+end_operator
+begin_operator
+up f62 f89
+0
+1
+0 0 59 88
+1
+end_operator
+begin_operator
+up f62 f90
+0
+1
+0 0 59 90
+1
+end_operator
+begin_operator
+up f62 f91
+0
+1
+0 0 59 91
+1
+end_operator
+begin_operator
+up f62 f92
+0
+1
+0 0 59 92
+1
+end_operator
+begin_operator
+up f62 f93
+0
+1
+0 0 59 93
+1
+end_operator
+begin_operator
+up f62 f94
+0
+1
+0 0 59 94
+1
+end_operator
+begin_operator
+up f62 f95
+0
+1
+0 0 59 95
+1
+end_operator
+begin_operator
+up f62 f96
+0
+1
+0 0 59 96
+1
+end_operator
+begin_operator
+up f62 f97
+0
+1
+0 0 59 97
+1
+end_operator
+begin_operator
+up f62 f98
+0
+1
+0 0 59 98
+1
+end_operator
+begin_operator
+up f62 f99
+0
+1
+0 0 59 99
+1
+end_operator
+begin_operator
+up f63 f100
+0
+1
+0 0 60 2
+1
+end_operator
+begin_operator
+up f63 f64
+0
+1
+0 0 60 61
+1
+end_operator
+begin_operator
+up f63 f65
+0
+1
+0 0 60 62
+1
+end_operator
+begin_operator
+up f63 f66
+0
+1
+0 0 60 63
+1
+end_operator
+begin_operator
+up f63 f67
+0
+1
+0 0 60 64
+1
+end_operator
+begin_operator
+up f63 f68
+0
+1
+0 0 60 65
+1
+end_operator
+begin_operator
+up f63 f69
+0
+1
+0 0 60 66
+1
+end_operator
+begin_operator
+up f63 f70
+0
+1
+0 0 60 68
+1
+end_operator
+begin_operator
+up f63 f71
+0
+1
+0 0 60 69
+1
+end_operator
+begin_operator
+up f63 f72
+0
+1
+0 0 60 70
+1
+end_operator
+begin_operator
+up f63 f73
+0
+1
+0 0 60 71
+1
+end_operator
+begin_operator
+up f63 f74
+0
+1
+0 0 60 72
+1
+end_operator
+begin_operator
+up f63 f75
+0
+1
+0 0 60 73
+1
+end_operator
+begin_operator
+up f63 f76
+0
+1
+0 0 60 74
+1
+end_operator
+begin_operator
+up f63 f77
+0
+1
+0 0 60 75
+1
+end_operator
+begin_operator
+up f63 f78
+0
+1
+0 0 60 76
+1
+end_operator
+begin_operator
+up f63 f79
+0
+1
+0 0 60 77
+1
+end_operator
+begin_operator
+up f63 f80
+0
+1
+0 0 60 79
+1
+end_operator
+begin_operator
+up f63 f81
+0
+1
+0 0 60 80
+1
+end_operator
+begin_operator
+up f63 f82
+0
+1
+0 0 60 81
+1
+end_operator
+begin_operator
+up f63 f83
+0
+1
+0 0 60 82
+1
+end_operator
+begin_operator
+up f63 f84
+0
+1
+0 0 60 83
+1
+end_operator
+begin_operator
+up f63 f85
+0
+1
+0 0 60 84
+1
+end_operator
+begin_operator
+up f63 f86
+0
+1
+0 0 60 85
+1
+end_operator
+begin_operator
+up f63 f87
+0
+1
+0 0 60 86
+1
+end_operator
+begin_operator
+up f63 f88
+0
+1
+0 0 60 87
+1
+end_operator
+begin_operator
+up f63 f89
+0
+1
+0 0 60 88
+1
+end_operator
+begin_operator
+up f63 f90
+0
+1
+0 0 60 90
+1
+end_operator
+begin_operator
+up f63 f91
+0
+1
+0 0 60 91
+1
+end_operator
+begin_operator
+up f63 f92
+0
+1
+0 0 60 92
+1
+end_operator
+begin_operator
+up f63 f93
+0
+1
+0 0 60 93
+1
+end_operator
+begin_operator
+up f63 f94
+0
+1
+0 0 60 94
+1
+end_operator
+begin_operator
+up f63 f95
+0
+1
+0 0 60 95
+1
+end_operator
+begin_operator
+up f63 f96
+0
+1
+0 0 60 96
+1
+end_operator
+begin_operator
+up f63 f97
+0
+1
+0 0 60 97
+1
+end_operator
+begin_operator
+up f63 f98
+0
+1
+0 0 60 98
+1
+end_operator
+begin_operator
+up f63 f99
+0
+1
+0 0 60 99
+1
+end_operator
+begin_operator
+up f64 f100
+0
+1
+0 0 61 2
+1
+end_operator
+begin_operator
+up f64 f65
+0
+1
+0 0 61 62
+1
+end_operator
+begin_operator
+up f64 f66
+0
+1
+0 0 61 63
+1
+end_operator
+begin_operator
+up f64 f67
+0
+1
+0 0 61 64
+1
+end_operator
+begin_operator
+up f64 f68
+0
+1
+0 0 61 65
+1
+end_operator
+begin_operator
+up f64 f69
+0
+1
+0 0 61 66
+1
+end_operator
+begin_operator
+up f64 f70
+0
+1
+0 0 61 68
+1
+end_operator
+begin_operator
+up f64 f71
+0
+1
+0 0 61 69
+1
+end_operator
+begin_operator
+up f64 f72
+0
+1
+0 0 61 70
+1
+end_operator
+begin_operator
+up f64 f73
+0
+1
+0 0 61 71
+1
+end_operator
+begin_operator
+up f64 f74
+0
+1
+0 0 61 72
+1
+end_operator
+begin_operator
+up f64 f75
+0
+1
+0 0 61 73
+1
+end_operator
+begin_operator
+up f64 f76
+0
+1
+0 0 61 74
+1
+end_operator
+begin_operator
+up f64 f77
+0
+1
+0 0 61 75
+1
+end_operator
+begin_operator
+up f64 f78
+0
+1
+0 0 61 76
+1
+end_operator
+begin_operator
+up f64 f79
+0
+1
+0 0 61 77
+1
+end_operator
+begin_operator
+up f64 f80
+0
+1
+0 0 61 79
+1
+end_operator
+begin_operator
+up f64 f81
+0
+1
+0 0 61 80
+1
+end_operator
+begin_operator
+up f64 f82
+0
+1
+0 0 61 81
+1
+end_operator
+begin_operator
+up f64 f83
+0
+1
+0 0 61 82
+1
+end_operator
+begin_operator
+up f64 f84
+0
+1
+0 0 61 83
+1
+end_operator
+begin_operator
+up f64 f85
+0
+1
+0 0 61 84
+1
+end_operator
+begin_operator
+up f64 f86
+0
+1
+0 0 61 85
+1
+end_operator
+begin_operator
+up f64 f87
+0
+1
+0 0 61 86
+1
+end_operator
+begin_operator
+up f64 f88
+0
+1
+0 0 61 87
+1
+end_operator
+begin_operator
+up f64 f89
+0
+1
+0 0 61 88
+1
+end_operator
+begin_operator
+up f64 f90
+0
+1
+0 0 61 90
+1
+end_operator
+begin_operator
+up f64 f91
+0
+1
+0 0 61 91
+1
+end_operator
+begin_operator
+up f64 f92
+0
+1
+0 0 61 92
+1
+end_operator
+begin_operator
+up f64 f93
+0
+1
+0 0 61 93
+1
+end_operator
+begin_operator
+up f64 f94
+0
+1
+0 0 61 94
+1
+end_operator
+begin_operator
+up f64 f95
+0
+1
+0 0 61 95
+1
+end_operator
+begin_operator
+up f64 f96
+0
+1
+0 0 61 96
+1
+end_operator
+begin_operator
+up f64 f97
+0
+1
+0 0 61 97
+1
+end_operator
+begin_operator
+up f64 f98
+0
+1
+0 0 61 98
+1
+end_operator
+begin_operator
+up f64 f99
+0
+1
+0 0 61 99
+1
+end_operator
+begin_operator
+up f65 f100
+0
+1
+0 0 62 2
+1
+end_operator
+begin_operator
+up f65 f66
+0
+1
+0 0 62 63
+1
+end_operator
+begin_operator
+up f65 f67
+0
+1
+0 0 62 64
+1
+end_operator
+begin_operator
+up f65 f68
+0
+1
+0 0 62 65
+1
+end_operator
+begin_operator
+up f65 f69
+0
+1
+0 0 62 66
+1
+end_operator
+begin_operator
+up f65 f70
+0
+1
+0 0 62 68
+1
+end_operator
+begin_operator
+up f65 f71
+0
+1
+0 0 62 69
+1
+end_operator
+begin_operator
+up f65 f72
+0
+1
+0 0 62 70
+1
+end_operator
+begin_operator
+up f65 f73
+0
+1
+0 0 62 71
+1
+end_operator
+begin_operator
+up f65 f74
+0
+1
+0 0 62 72
+1
+end_operator
+begin_operator
+up f65 f75
+0
+1
+0 0 62 73
+1
+end_operator
+begin_operator
+up f65 f76
+0
+1
+0 0 62 74
+1
+end_operator
+begin_operator
+up f65 f77
+0
+1
+0 0 62 75
+1
+end_operator
+begin_operator
+up f65 f78
+0
+1
+0 0 62 76
+1
+end_operator
+begin_operator
+up f65 f79
+0
+1
+0 0 62 77
+1
+end_operator
+begin_operator
+up f65 f80
+0
+1
+0 0 62 79
+1
+end_operator
+begin_operator
+up f65 f81
+0
+1
+0 0 62 80
+1
+end_operator
+begin_operator
+up f65 f82
+0
+1
+0 0 62 81
+1
+end_operator
+begin_operator
+up f65 f83
+0
+1
+0 0 62 82
+1
+end_operator
+begin_operator
+up f65 f84
+0
+1
+0 0 62 83
+1
+end_operator
+begin_operator
+up f65 f85
+0
+1
+0 0 62 84
+1
+end_operator
+begin_operator
+up f65 f86
+0
+1
+0 0 62 85
+1
+end_operator
+begin_operator
+up f65 f87
+0
+1
+0 0 62 86
+1
+end_operator
+begin_operator
+up f65 f88
+0
+1
+0 0 62 87
+1
+end_operator
+begin_operator
+up f65 f89
+0
+1
+0 0 62 88
+1
+end_operator
+begin_operator
+up f65 f90
+0
+1
+0 0 62 90
+1
+end_operator
+begin_operator
+up f65 f91
+0
+1
+0 0 62 91
+1
+end_operator
+begin_operator
+up f65 f92
+0
+1
+0 0 62 92
+1
+end_operator
+begin_operator
+up f65 f93
+0
+1
+0 0 62 93
+1
+end_operator
+begin_operator
+up f65 f94
+0
+1
+0 0 62 94
+1
+end_operator
+begin_operator
+up f65 f95
+0
+1
+0 0 62 95
+1
+end_operator
+begin_operator
+up f65 f96
+0
+1
+0 0 62 96
+1
+end_operator
+begin_operator
+up f65 f97
+0
+1
+0 0 62 97
+1
+end_operator
+begin_operator
+up f65 f98
+0
+1
+0 0 62 98
+1
+end_operator
+begin_operator
+up f65 f99
+0
+1
+0 0 62 99
+1
+end_operator
+begin_operator
+up f66 f100
+0
+1
+0 0 63 2
+1
+end_operator
+begin_operator
+up f66 f67
+0
+1
+0 0 63 64
+1
+end_operator
+begin_operator
+up f66 f68
+0
+1
+0 0 63 65
+1
+end_operator
+begin_operator
+up f66 f69
+0
+1
+0 0 63 66
+1
+end_operator
+begin_operator
+up f66 f70
+0
+1
+0 0 63 68
+1
+end_operator
+begin_operator
+up f66 f71
+0
+1
+0 0 63 69
+1
+end_operator
+begin_operator
+up f66 f72
+0
+1
+0 0 63 70
+1
+end_operator
+begin_operator
+up f66 f73
+0
+1
+0 0 63 71
+1
+end_operator
+begin_operator
+up f66 f74
+0
+1
+0 0 63 72
+1
+end_operator
+begin_operator
+up f66 f75
+0
+1
+0 0 63 73
+1
+end_operator
+begin_operator
+up f66 f76
+0
+1
+0 0 63 74
+1
+end_operator
+begin_operator
+up f66 f77
+0
+1
+0 0 63 75
+1
+end_operator
+begin_operator
+up f66 f78
+0
+1
+0 0 63 76
+1
+end_operator
+begin_operator
+up f66 f79
+0
+1
+0 0 63 77
+1
+end_operator
+begin_operator
+up f66 f80
+0
+1
+0 0 63 79
+1
+end_operator
+begin_operator
+up f66 f81
+0
+1
+0 0 63 80
+1
+end_operator
+begin_operator
+up f66 f82
+0
+1
+0 0 63 81
+1
+end_operator
+begin_operator
+up f66 f83
+0
+1
+0 0 63 82
+1
+end_operator
+begin_operator
+up f66 f84
+0
+1
+0 0 63 83
+1
+end_operator
+begin_operator
+up f66 f85
+0
+1
+0 0 63 84
+1
+end_operator
+begin_operator
+up f66 f86
+0
+1
+0 0 63 85
+1
+end_operator
+begin_operator
+up f66 f87
+0
+1
+0 0 63 86
+1
+end_operator
+begin_operator
+up f66 f88
+0
+1
+0 0 63 87
+1
+end_operator
+begin_operator
+up f66 f89
+0
+1
+0 0 63 88
+1
+end_operator
+begin_operator
+up f66 f90
+0
+1
+0 0 63 90
+1
+end_operator
+begin_operator
+up f66 f91
+0
+1
+0 0 63 91
+1
+end_operator
+begin_operator
+up f66 f92
+0
+1
+0 0 63 92
+1
+end_operator
+begin_operator
+up f66 f93
+0
+1
+0 0 63 93
+1
+end_operator
+begin_operator
+up f66 f94
+0
+1
+0 0 63 94
+1
+end_operator
+begin_operator
+up f66 f95
+0
+1
+0 0 63 95
+1
+end_operator
+begin_operator
+up f66 f96
+0
+1
+0 0 63 96
+1
+end_operator
+begin_operator
+up f66 f97
+0
+1
+0 0 63 97
+1
+end_operator
+begin_operator
+up f66 f98
+0
+1
+0 0 63 98
+1
+end_operator
+begin_operator
+up f66 f99
+0
+1
+0 0 63 99
+1
+end_operator
+begin_operator
+up f67 f100
+0
+1
+0 0 64 2
+1
+end_operator
+begin_operator
+up f67 f68
+0
+1
+0 0 64 65
+1
+end_operator
+begin_operator
+up f67 f69
+0
+1
+0 0 64 66
+1
+end_operator
+begin_operator
+up f67 f70
+0
+1
+0 0 64 68
+1
+end_operator
+begin_operator
+up f67 f71
+0
+1
+0 0 64 69
+1
+end_operator
+begin_operator
+up f67 f72
+0
+1
+0 0 64 70
+1
+end_operator
+begin_operator
+up f67 f73
+0
+1
+0 0 64 71
+1
+end_operator
+begin_operator
+up f67 f74
+0
+1
+0 0 64 72
+1
+end_operator
+begin_operator
+up f67 f75
+0
+1
+0 0 64 73
+1
+end_operator
+begin_operator
+up f67 f76
+0
+1
+0 0 64 74
+1
+end_operator
+begin_operator
+up f67 f77
+0
+1
+0 0 64 75
+1
+end_operator
+begin_operator
+up f67 f78
+0
+1
+0 0 64 76
+1
+end_operator
+begin_operator
+up f67 f79
+0
+1
+0 0 64 77
+1
+end_operator
+begin_operator
+up f67 f80
+0
+1
+0 0 64 79
+1
+end_operator
+begin_operator
+up f67 f81
+0
+1
+0 0 64 80
+1
+end_operator
+begin_operator
+up f67 f82
+0
+1
+0 0 64 81
+1
+end_operator
+begin_operator
+up f67 f83
+0
+1
+0 0 64 82
+1
+end_operator
+begin_operator
+up f67 f84
+0
+1
+0 0 64 83
+1
+end_operator
+begin_operator
+up f67 f85
+0
+1
+0 0 64 84
+1
+end_operator
+begin_operator
+up f67 f86
+0
+1
+0 0 64 85
+1
+end_operator
+begin_operator
+up f67 f87
+0
+1
+0 0 64 86
+1
+end_operator
+begin_operator
+up f67 f88
+0
+1
+0 0 64 87
+1
+end_operator
+begin_operator
+up f67 f89
+0
+1
+0 0 64 88
+1
+end_operator
+begin_operator
+up f67 f90
+0
+1
+0 0 64 90
+1
+end_operator
+begin_operator
+up f67 f91
+0
+1
+0 0 64 91
+1
+end_operator
+begin_operator
+up f67 f92
+0
+1
+0 0 64 92
+1
+end_operator
+begin_operator
+up f67 f93
+0
+1
+0 0 64 93
+1
+end_operator
+begin_operator
+up f67 f94
+0
+1
+0 0 64 94
+1
+end_operator
+begin_operator
+up f67 f95
+0
+1
+0 0 64 95
+1
+end_operator
+begin_operator
+up f67 f96
+0
+1
+0 0 64 96
+1
+end_operator
+begin_operator
+up f67 f97
+0
+1
+0 0 64 97
+1
+end_operator
+begin_operator
+up f67 f98
+0
+1
+0 0 64 98
+1
+end_operator
+begin_operator
+up f67 f99
+0
+1
+0 0 64 99
+1
+end_operator
+begin_operator
+up f68 f100
+0
+1
+0 0 65 2
+1
+end_operator
+begin_operator
+up f68 f69
+0
+1
+0 0 65 66
+1
+end_operator
+begin_operator
+up f68 f70
+0
+1
+0 0 65 68
+1
+end_operator
+begin_operator
+up f68 f71
+0
+1
+0 0 65 69
+1
+end_operator
+begin_operator
+up f68 f72
+0
+1
+0 0 65 70
+1
+end_operator
+begin_operator
+up f68 f73
+0
+1
+0 0 65 71
+1
+end_operator
+begin_operator
+up f68 f74
+0
+1
+0 0 65 72
+1
+end_operator
+begin_operator
+up f68 f75
+0
+1
+0 0 65 73
+1
+end_operator
+begin_operator
+up f68 f76
+0
+1
+0 0 65 74
+1
+end_operator
+begin_operator
+up f68 f77
+0
+1
+0 0 65 75
+1
+end_operator
+begin_operator
+up f68 f78
+0
+1
+0 0 65 76
+1
+end_operator
+begin_operator
+up f68 f79
+0
+1
+0 0 65 77
+1
+end_operator
+begin_operator
+up f68 f80
+0
+1
+0 0 65 79
+1
+end_operator
+begin_operator
+up f68 f81
+0
+1
+0 0 65 80
+1
+end_operator
+begin_operator
+up f68 f82
+0
+1
+0 0 65 81
+1
+end_operator
+begin_operator
+up f68 f83
+0
+1
+0 0 65 82
+1
+end_operator
+begin_operator
+up f68 f84
+0
+1
+0 0 65 83
+1
+end_operator
+begin_operator
+up f68 f85
+0
+1
+0 0 65 84
+1
+end_operator
+begin_operator
+up f68 f86
+0
+1
+0 0 65 85
+1
+end_operator
+begin_operator
+up f68 f87
+0
+1
+0 0 65 86
+1
+end_operator
+begin_operator
+up f68 f88
+0
+1
+0 0 65 87
+1
+end_operator
+begin_operator
+up f68 f89
+0
+1
+0 0 65 88
+1
+end_operator
+begin_operator
+up f68 f90
+0
+1
+0 0 65 90
+1
+end_operator
+begin_operator
+up f68 f91
+0
+1
+0 0 65 91
+1
+end_operator
+begin_operator
+up f68 f92
+0
+1
+0 0 65 92
+1
+end_operator
+begin_operator
+up f68 f93
+0
+1
+0 0 65 93
+1
+end_operator
+begin_operator
+up f68 f94
+0
+1
+0 0 65 94
+1
+end_operator
+begin_operator
+up f68 f95
+0
+1
+0 0 65 95
+1
+end_operator
+begin_operator
+up f68 f96
+0
+1
+0 0 65 96
+1
+end_operator
+begin_operator
+up f68 f97
+0
+1
+0 0 65 97
+1
+end_operator
+begin_operator
+up f68 f98
+0
+1
+0 0 65 98
+1
+end_operator
+begin_operator
+up f68 f99
+0
+1
+0 0 65 99
+1
+end_operator
+begin_operator
+up f69 f100
+0
+1
+0 0 66 2
+1
+end_operator
+begin_operator
+up f69 f70
+0
+1
+0 0 66 68
+1
+end_operator
+begin_operator
+up f69 f71
+0
+1
+0 0 66 69
+1
+end_operator
+begin_operator
+up f69 f72
+0
+1
+0 0 66 70
+1
+end_operator
+begin_operator
+up f69 f73
+0
+1
+0 0 66 71
+1
+end_operator
+begin_operator
+up f69 f74
+0
+1
+0 0 66 72
+1
+end_operator
+begin_operator
+up f69 f75
+0
+1
+0 0 66 73
+1
+end_operator
+begin_operator
+up f69 f76
+0
+1
+0 0 66 74
+1
+end_operator
+begin_operator
+up f69 f77
+0
+1
+0 0 66 75
+1
+end_operator
+begin_operator
+up f69 f78
+0
+1
+0 0 66 76
+1
+end_operator
+begin_operator
+up f69 f79
+0
+1
+0 0 66 77
+1
+end_operator
+begin_operator
+up f69 f80
+0
+1
+0 0 66 79
+1
+end_operator
+begin_operator
+up f69 f81
+0
+1
+0 0 66 80
+1
+end_operator
+begin_operator
+up f69 f82
+0
+1
+0 0 66 81
+1
+end_operator
+begin_operator
+up f69 f83
+0
+1
+0 0 66 82
+1
+end_operator
+begin_operator
+up f69 f84
+0
+1
+0 0 66 83
+1
+end_operator
+begin_operator
+up f69 f85
+0
+1
+0 0 66 84
+1
+end_operator
+begin_operator
+up f69 f86
+0
+1
+0 0 66 85
+1
+end_operator
+begin_operator
+up f69 f87
+0
+1
+0 0 66 86
+1
+end_operator
+begin_operator
+up f69 f88
+0
+1
+0 0 66 87
+1
+end_operator
+begin_operator
+up f69 f89
+0
+1
+0 0 66 88
+1
+end_operator
+begin_operator
+up f69 f90
+0
+1
+0 0 66 90
+1
+end_operator
+begin_operator
+up f69 f91
+0
+1
+0 0 66 91
+1
+end_operator
+begin_operator
+up f69 f92
+0
+1
+0 0 66 92
+1
+end_operator
+begin_operator
+up f69 f93
+0
+1
+0 0 66 93
+1
+end_operator
+begin_operator
+up f69 f94
+0
+1
+0 0 66 94
+1
+end_operator
+begin_operator
+up f69 f95
+0
+1
+0 0 66 95
+1
+end_operator
+begin_operator
+up f69 f96
+0
+1
+0 0 66 96
+1
+end_operator
+begin_operator
+up f69 f97
+0
+1
+0 0 66 97
+1
+end_operator
+begin_operator
+up f69 f98
+0
+1
+0 0 66 98
+1
+end_operator
+begin_operator
+up f69 f99
+0
+1
+0 0 66 99
+1
+end_operator
+begin_operator
+up f7 f10
+0
+1
+0 0 67 1
+1
+end_operator
+begin_operator
+up f7 f100
+0
+1
+0 0 67 2
+1
+end_operator
+begin_operator
+up f7 f11
+0
+1
+0 0 67 3
+1
+end_operator
+begin_operator
+up f7 f12
+0
+1
+0 0 67 4
+1
+end_operator
+begin_operator
+up f7 f13
+0
+1
+0 0 67 5
+1
+end_operator
+begin_operator
+up f7 f14
+0
+1
+0 0 67 6
+1
+end_operator
+begin_operator
+up f7 f15
+0
+1
+0 0 67 7
+1
+end_operator
+begin_operator
+up f7 f16
+0
+1
+0 0 67 8
+1
+end_operator
+begin_operator
+up f7 f17
+0
+1
+0 0 67 9
+1
+end_operator
+begin_operator
+up f7 f18
+0
+1
+0 0 67 10
+1
+end_operator
+begin_operator
+up f7 f19
+0
+1
+0 0 67 11
+1
+end_operator
+begin_operator
+up f7 f20
+0
+1
+0 0 67 13
+1
+end_operator
+begin_operator
+up f7 f21
+0
+1
+0 0 67 14
+1
+end_operator
+begin_operator
+up f7 f22
+0
+1
+0 0 67 15
+1
+end_operator
+begin_operator
+up f7 f23
+0
+1
+0 0 67 16
+1
+end_operator
+begin_operator
+up f7 f24
+0
+1
+0 0 67 17
+1
+end_operator
+begin_operator
+up f7 f25
+0
+1
+0 0 67 18
+1
+end_operator
+begin_operator
+up f7 f26
+0
+1
+0 0 67 19
+1
+end_operator
+begin_operator
+up f7 f27
+0
+1
+0 0 67 20
+1
+end_operator
+begin_operator
+up f7 f28
+0
+1
+0 0 67 21
+1
+end_operator
+begin_operator
+up f7 f29
+0
+1
+0 0 67 22
+1
+end_operator
+begin_operator
+up f7 f30
+0
+1
+0 0 67 24
+1
+end_operator
+begin_operator
+up f7 f31
+0
+1
+0 0 67 25
+1
+end_operator
+begin_operator
+up f7 f32
+0
+1
+0 0 67 26
+1
+end_operator
+begin_operator
+up f7 f33
+0
+1
+0 0 67 27
+1
+end_operator
+begin_operator
+up f7 f34
+0
+1
+0 0 67 28
+1
+end_operator
+begin_operator
+up f7 f35
+0
+1
+0 0 67 29
+1
+end_operator
+begin_operator
+up f7 f36
+0
+1
+0 0 67 30
+1
+end_operator
+begin_operator
+up f7 f37
+0
+1
+0 0 67 31
+1
+end_operator
+begin_operator
+up f7 f38
+0
+1
+0 0 67 32
+1
+end_operator
+begin_operator
+up f7 f39
+0
+1
+0 0 67 33
+1
+end_operator
+begin_operator
+up f7 f40
+0
+1
+0 0 67 35
+1
+end_operator
+begin_operator
+up f7 f41
+0
+1
+0 0 67 36
+1
+end_operator
+begin_operator
+up f7 f42
+0
+1
+0 0 67 37
+1
+end_operator
+begin_operator
+up f7 f43
+0
+1
+0 0 67 38
+1
+end_operator
+begin_operator
+up f7 f44
+0
+1
+0 0 67 39
+1
+end_operator
+begin_operator
+up f7 f45
+0
+1
+0 0 67 40
+1
+end_operator
+begin_operator
+up f7 f46
+0
+1
+0 0 67 41
+1
+end_operator
+begin_operator
+up f7 f47
+0
+1
+0 0 67 42
+1
+end_operator
+begin_operator
+up f7 f48
+0
+1
+0 0 67 43
+1
+end_operator
+begin_operator
+up f7 f49
+0
+1
+0 0 67 44
+1
+end_operator
+begin_operator
+up f7 f50
+0
+1
+0 0 67 46
+1
+end_operator
+begin_operator
+up f7 f51
+0
+1
+0 0 67 47
+1
+end_operator
+begin_operator
+up f7 f52
+0
+1
+0 0 67 48
+1
+end_operator
+begin_operator
+up f7 f53
+0
+1
+0 0 67 49
+1
+end_operator
+begin_operator
+up f7 f54
+0
+1
+0 0 67 50
+1
+end_operator
+begin_operator
+up f7 f55
+0
+1
+0 0 67 51
+1
+end_operator
+begin_operator
+up f7 f56
+0
+1
+0 0 67 52
+1
+end_operator
+begin_operator
+up f7 f57
+0
+1
+0 0 67 53
+1
+end_operator
+begin_operator
+up f7 f58
+0
+1
+0 0 67 54
+1
+end_operator
+begin_operator
+up f7 f59
+0
+1
+0 0 67 55
+1
+end_operator
+begin_operator
+up f7 f60
+0
+1
+0 0 67 57
+1
+end_operator
+begin_operator
+up f7 f61
+0
+1
+0 0 67 58
+1
+end_operator
+begin_operator
+up f7 f62
+0
+1
+0 0 67 59
+1
+end_operator
+begin_operator
+up f7 f63
+0
+1
+0 0 67 60
+1
+end_operator
+begin_operator
+up f7 f64
+0
+1
+0 0 67 61
+1
+end_operator
+begin_operator
+up f7 f65
+0
+1
+0 0 67 62
+1
+end_operator
+begin_operator
+up f7 f66
+0
+1
+0 0 67 63
+1
+end_operator
+begin_operator
+up f7 f67
+0
+1
+0 0 67 64
+1
+end_operator
+begin_operator
+up f7 f68
+0
+1
+0 0 67 65
+1
+end_operator
+begin_operator
+up f7 f69
+0
+1
+0 0 67 66
+1
+end_operator
+begin_operator
+up f7 f70
+0
+1
+0 0 67 68
+1
+end_operator
+begin_operator
+up f7 f71
+0
+1
+0 0 67 69
+1
+end_operator
+begin_operator
+up f7 f72
+0
+1
+0 0 67 70
+1
+end_operator
+begin_operator
+up f7 f73
+0
+1
+0 0 67 71
+1
+end_operator
+begin_operator
+up f7 f74
+0
+1
+0 0 67 72
+1
+end_operator
+begin_operator
+up f7 f75
+0
+1
+0 0 67 73
+1
+end_operator
+begin_operator
+up f7 f76
+0
+1
+0 0 67 74
+1
+end_operator
+begin_operator
+up f7 f77
+0
+1
+0 0 67 75
+1
+end_operator
+begin_operator
+up f7 f78
+0
+1
+0 0 67 76
+1
+end_operator
+begin_operator
+up f7 f79
+0
+1
+0 0 67 77
+1
+end_operator
+begin_operator
+up f7 f8
+0
+1
+0 0 67 78
+1
+end_operator
+begin_operator
+up f7 f80
+0
+1
+0 0 67 79
+1
+end_operator
+begin_operator
+up f7 f81
+0
+1
+0 0 67 80
+1
+end_operator
+begin_operator
+up f7 f82
+0
+1
+0 0 67 81
+1
+end_operator
+begin_operator
+up f7 f83
+0
+1
+0 0 67 82
+1
+end_operator
+begin_operator
+up f7 f84
+0
+1
+0 0 67 83
+1
+end_operator
+begin_operator
+up f7 f85
+0
+1
+0 0 67 84
+1
+end_operator
+begin_operator
+up f7 f86
+0
+1
+0 0 67 85
+1
+end_operator
+begin_operator
+up f7 f87
+0
+1
+0 0 67 86
+1
+end_operator
+begin_operator
+up f7 f88
+0
+1
+0 0 67 87
+1
+end_operator
+begin_operator
+up f7 f89
+0
+1
+0 0 67 88
+1
+end_operator
+begin_operator
+up f7 f9
+0
+1
+0 0 67 89
+1
+end_operator
+begin_operator
+up f7 f90
+0
+1
+0 0 67 90
+1
+end_operator
+begin_operator
+up f7 f91
+0
+1
+0 0 67 91
+1
+end_operator
+begin_operator
+up f7 f92
+0
+1
+0 0 67 92
+1
+end_operator
+begin_operator
+up f7 f93
+0
+1
+0 0 67 93
+1
+end_operator
+begin_operator
+up f7 f94
+0
+1
+0 0 67 94
+1
+end_operator
+begin_operator
+up f7 f95
+0
+1
+0 0 67 95
+1
+end_operator
+begin_operator
+up f7 f96
+0
+1
+0 0 67 96
+1
+end_operator
+begin_operator
+up f7 f97
+0
+1
+0 0 67 97
+1
+end_operator
+begin_operator
+up f7 f98
+0
+1
+0 0 67 98
+1
+end_operator
+begin_operator
+up f7 f99
+0
+1
+0 0 67 99
+1
+end_operator
+begin_operator
+up f70 f100
+0
+1
+0 0 68 2
+1
+end_operator
+begin_operator
+up f70 f71
+0
+1
+0 0 68 69
+1
+end_operator
+begin_operator
+up f70 f72
+0
+1
+0 0 68 70
+1
+end_operator
+begin_operator
+up f70 f73
+0
+1
+0 0 68 71
+1
+end_operator
+begin_operator
+up f70 f74
+0
+1
+0 0 68 72
+1
+end_operator
+begin_operator
+up f70 f75
+0
+1
+0 0 68 73
+1
+end_operator
+begin_operator
+up f70 f76
+0
+1
+0 0 68 74
+1
+end_operator
+begin_operator
+up f70 f77
+0
+1
+0 0 68 75
+1
+end_operator
+begin_operator
+up f70 f78
+0
+1
+0 0 68 76
+1
+end_operator
+begin_operator
+up f70 f79
+0
+1
+0 0 68 77
+1
+end_operator
+begin_operator
+up f70 f80
+0
+1
+0 0 68 79
+1
+end_operator
+begin_operator
+up f70 f81
+0
+1
+0 0 68 80
+1
+end_operator
+begin_operator
+up f70 f82
+0
+1
+0 0 68 81
+1
+end_operator
+begin_operator
+up f70 f83
+0
+1
+0 0 68 82
+1
+end_operator
+begin_operator
+up f70 f84
+0
+1
+0 0 68 83
+1
+end_operator
+begin_operator
+up f70 f85
+0
+1
+0 0 68 84
+1
+end_operator
+begin_operator
+up f70 f86
+0
+1
+0 0 68 85
+1
+end_operator
+begin_operator
+up f70 f87
+0
+1
+0 0 68 86
+1
+end_operator
+begin_operator
+up f70 f88
+0
+1
+0 0 68 87
+1
+end_operator
+begin_operator
+up f70 f89
+0
+1
+0 0 68 88
+1
+end_operator
+begin_operator
+up f70 f90
+0
+1
+0 0 68 90
+1
+end_operator
+begin_operator
+up f70 f91
+0
+1
+0 0 68 91
+1
+end_operator
+begin_operator
+up f70 f92
+0
+1
+0 0 68 92
+1
+end_operator
+begin_operator
+up f70 f93
+0
+1
+0 0 68 93
+1
+end_operator
+begin_operator
+up f70 f94
+0
+1
+0 0 68 94
+1
+end_operator
+begin_operator
+up f70 f95
+0
+1
+0 0 68 95
+1
+end_operator
+begin_operator
+up f70 f96
+0
+1
+0 0 68 96
+1
+end_operator
+begin_operator
+up f70 f97
+0
+1
+0 0 68 97
+1
+end_operator
+begin_operator
+up f70 f98
+0
+1
+0 0 68 98
+1
+end_operator
+begin_operator
+up f70 f99
+0
+1
+0 0 68 99
+1
+end_operator
+begin_operator
+up f71 f100
+0
+1
+0 0 69 2
+1
+end_operator
+begin_operator
+up f71 f72
+0
+1
+0 0 69 70
+1
+end_operator
+begin_operator
+up f71 f73
+0
+1
+0 0 69 71
+1
+end_operator
+begin_operator
+up f71 f74
+0
+1
+0 0 69 72
+1
+end_operator
+begin_operator
+up f71 f75
+0
+1
+0 0 69 73
+1
+end_operator
+begin_operator
+up f71 f76
+0
+1
+0 0 69 74
+1
+end_operator
+begin_operator
+up f71 f77
+0
+1
+0 0 69 75
+1
+end_operator
+begin_operator
+up f71 f78
+0
+1
+0 0 69 76
+1
+end_operator
+begin_operator
+up f71 f79
+0
+1
+0 0 69 77
+1
+end_operator
+begin_operator
+up f71 f80
+0
+1
+0 0 69 79
+1
+end_operator
+begin_operator
+up f71 f81
+0
+1
+0 0 69 80
+1
+end_operator
+begin_operator
+up f71 f82
+0
+1
+0 0 69 81
+1
+end_operator
+begin_operator
+up f71 f83
+0
+1
+0 0 69 82
+1
+end_operator
+begin_operator
+up f71 f84
+0
+1
+0 0 69 83
+1
+end_operator
+begin_operator
+up f71 f85
+0
+1
+0 0 69 84
+1
+end_operator
+begin_operator
+up f71 f86
+0
+1
+0 0 69 85
+1
+end_operator
+begin_operator
+up f71 f87
+0
+1
+0 0 69 86
+1
+end_operator
+begin_operator
+up f71 f88
+0
+1
+0 0 69 87
+1
+end_operator
+begin_operator
+up f71 f89
+0
+1
+0 0 69 88
+1
+end_operator
+begin_operator
+up f71 f90
+0
+1
+0 0 69 90
+1
+end_operator
+begin_operator
+up f71 f91
+0
+1
+0 0 69 91
+1
+end_operator
+begin_operator
+up f71 f92
+0
+1
+0 0 69 92
+1
+end_operator
+begin_operator
+up f71 f93
+0
+1
+0 0 69 93
+1
+end_operator
+begin_operator
+up f71 f94
+0
+1
+0 0 69 94
+1
+end_operator
+begin_operator
+up f71 f95
+0
+1
+0 0 69 95
+1
+end_operator
+begin_operator
+up f71 f96
+0
+1
+0 0 69 96
+1
+end_operator
+begin_operator
+up f71 f97
+0
+1
+0 0 69 97
+1
+end_operator
+begin_operator
+up f71 f98
+0
+1
+0 0 69 98
+1
+end_operator
+begin_operator
+up f71 f99
+0
+1
+0 0 69 99
+1
+end_operator
+begin_operator
+up f72 f100
+0
+1
+0 0 70 2
+1
+end_operator
+begin_operator
+up f72 f73
+0
+1
+0 0 70 71
+1
+end_operator
+begin_operator
+up f72 f74
+0
+1
+0 0 70 72
+1
+end_operator
+begin_operator
+up f72 f75
+0
+1
+0 0 70 73
+1
+end_operator
+begin_operator
+up f72 f76
+0
+1
+0 0 70 74
+1
+end_operator
+begin_operator
+up f72 f77
+0
+1
+0 0 70 75
+1
+end_operator
+begin_operator
+up f72 f78
+0
+1
+0 0 70 76
+1
+end_operator
+begin_operator
+up f72 f79
+0
+1
+0 0 70 77
+1
+end_operator
+begin_operator
+up f72 f80
+0
+1
+0 0 70 79
+1
+end_operator
+begin_operator
+up f72 f81
+0
+1
+0 0 70 80
+1
+end_operator
+begin_operator
+up f72 f82
+0
+1
+0 0 70 81
+1
+end_operator
+begin_operator
+up f72 f83
+0
+1
+0 0 70 82
+1
+end_operator
+begin_operator
+up f72 f84
+0
+1
+0 0 70 83
+1
+end_operator
+begin_operator
+up f72 f85
+0
+1
+0 0 70 84
+1
+end_operator
+begin_operator
+up f72 f86
+0
+1
+0 0 70 85
+1
+end_operator
+begin_operator
+up f72 f87
+0
+1
+0 0 70 86
+1
+end_operator
+begin_operator
+up f72 f88
+0
+1
+0 0 70 87
+1
+end_operator
+begin_operator
+up f72 f89
+0
+1
+0 0 70 88
+1
+end_operator
+begin_operator
+up f72 f90
+0
+1
+0 0 70 90
+1
+end_operator
+begin_operator
+up f72 f91
+0
+1
+0 0 70 91
+1
+end_operator
+begin_operator
+up f72 f92
+0
+1
+0 0 70 92
+1
+end_operator
+begin_operator
+up f72 f93
+0
+1
+0 0 70 93
+1
+end_operator
+begin_operator
+up f72 f94
+0
+1
+0 0 70 94
+1
+end_operator
+begin_operator
+up f72 f95
+0
+1
+0 0 70 95
+1
+end_operator
+begin_operator
+up f72 f96
+0
+1
+0 0 70 96
+1
+end_operator
+begin_operator
+up f72 f97
+0
+1
+0 0 70 97
+1
+end_operator
+begin_operator
+up f72 f98
+0
+1
+0 0 70 98
+1
+end_operator
+begin_operator
+up f72 f99
+0
+1
+0 0 70 99
+1
+end_operator
+begin_operator
+up f73 f100
+0
+1
+0 0 71 2
+1
+end_operator
+begin_operator
+up f73 f74
+0
+1
+0 0 71 72
+1
+end_operator
+begin_operator
+up f73 f75
+0
+1
+0 0 71 73
+1
+end_operator
+begin_operator
+up f73 f76
+0
+1
+0 0 71 74
+1
+end_operator
+begin_operator
+up f73 f77
+0
+1
+0 0 71 75
+1
+end_operator
+begin_operator
+up f73 f78
+0
+1
+0 0 71 76
+1
+end_operator
+begin_operator
+up f73 f79
+0
+1
+0 0 71 77
+1
+end_operator
+begin_operator
+up f73 f80
+0
+1
+0 0 71 79
+1
+end_operator
+begin_operator
+up f73 f81
+0
+1
+0 0 71 80
+1
+end_operator
+begin_operator
+up f73 f82
+0
+1
+0 0 71 81
+1
+end_operator
+begin_operator
+up f73 f83
+0
+1
+0 0 71 82
+1
+end_operator
+begin_operator
+up f73 f84
+0
+1
+0 0 71 83
+1
+end_operator
+begin_operator
+up f73 f85
+0
+1
+0 0 71 84
+1
+end_operator
+begin_operator
+up f73 f86
+0
+1
+0 0 71 85
+1
+end_operator
+begin_operator
+up f73 f87
+0
+1
+0 0 71 86
+1
+end_operator
+begin_operator
+up f73 f88
+0
+1
+0 0 71 87
+1
+end_operator
+begin_operator
+up f73 f89
+0
+1
+0 0 71 88
+1
+end_operator
+begin_operator
+up f73 f90
+0
+1
+0 0 71 90
+1
+end_operator
+begin_operator
+up f73 f91
+0
+1
+0 0 71 91
+1
+end_operator
+begin_operator
+up f73 f92
+0
+1
+0 0 71 92
+1
+end_operator
+begin_operator
+up f73 f93
+0
+1
+0 0 71 93
+1
+end_operator
+begin_operator
+up f73 f94
+0
+1
+0 0 71 94
+1
+end_operator
+begin_operator
+up f73 f95
+0
+1
+0 0 71 95
+1
+end_operator
+begin_operator
+up f73 f96
+0
+1
+0 0 71 96
+1
+end_operator
+begin_operator
+up f73 f97
+0
+1
+0 0 71 97
+1
+end_operator
+begin_operator
+up f73 f98
+0
+1
+0 0 71 98
+1
+end_operator
+begin_operator
+up f73 f99
+0
+1
+0 0 71 99
+1
+end_operator
+begin_operator
+up f74 f100
+0
+1
+0 0 72 2
+1
+end_operator
+begin_operator
+up f74 f75
+0
+1
+0 0 72 73
+1
+end_operator
+begin_operator
+up f74 f76
+0
+1
+0 0 72 74
+1
+end_operator
+begin_operator
+up f74 f77
+0
+1
+0 0 72 75
+1
+end_operator
+begin_operator
+up f74 f78
+0
+1
+0 0 72 76
+1
+end_operator
+begin_operator
+up f74 f79
+0
+1
+0 0 72 77
+1
+end_operator
+begin_operator
+up f74 f80
+0
+1
+0 0 72 79
+1
+end_operator
+begin_operator
+up f74 f81
+0
+1
+0 0 72 80
+1
+end_operator
+begin_operator
+up f74 f82
+0
+1
+0 0 72 81
+1
+end_operator
+begin_operator
+up f74 f83
+0
+1
+0 0 72 82
+1
+end_operator
+begin_operator
+up f74 f84
+0
+1
+0 0 72 83
+1
+end_operator
+begin_operator
+up f74 f85
+0
+1
+0 0 72 84
+1
+end_operator
+begin_operator
+up f74 f86
+0
+1
+0 0 72 85
+1
+end_operator
+begin_operator
+up f74 f87
+0
+1
+0 0 72 86
+1
+end_operator
+begin_operator
+up f74 f88
+0
+1
+0 0 72 87
+1
+end_operator
+begin_operator
+up f74 f89
+0
+1
+0 0 72 88
+1
+end_operator
+begin_operator
+up f74 f90
+0
+1
+0 0 72 90
+1
+end_operator
+begin_operator
+up f74 f91
+0
+1
+0 0 72 91
+1
+end_operator
+begin_operator
+up f74 f92
+0
+1
+0 0 72 92
+1
+end_operator
+begin_operator
+up f74 f93
+0
+1
+0 0 72 93
+1
+end_operator
+begin_operator
+up f74 f94
+0
+1
+0 0 72 94
+1
+end_operator
+begin_operator
+up f74 f95
+0
+1
+0 0 72 95
+1
+end_operator
+begin_operator
+up f74 f96
+0
+1
+0 0 72 96
+1
+end_operator
+begin_operator
+up f74 f97
+0
+1
+0 0 72 97
+1
+end_operator
+begin_operator
+up f74 f98
+0
+1
+0 0 72 98
+1
+end_operator
+begin_operator
+up f74 f99
+0
+1
+0 0 72 99
+1
+end_operator
+begin_operator
+up f75 f100
+0
+1
+0 0 73 2
+1
+end_operator
+begin_operator
+up f75 f76
+0
+1
+0 0 73 74
+1
+end_operator
+begin_operator
+up f75 f77
+0
+1
+0 0 73 75
+1
+end_operator
+begin_operator
+up f75 f78
+0
+1
+0 0 73 76
+1
+end_operator
+begin_operator
+up f75 f79
+0
+1
+0 0 73 77
+1
+end_operator
+begin_operator
+up f75 f80
+0
+1
+0 0 73 79
+1
+end_operator
+begin_operator
+up f75 f81
+0
+1
+0 0 73 80
+1
+end_operator
+begin_operator
+up f75 f82
+0
+1
+0 0 73 81
+1
+end_operator
+begin_operator
+up f75 f83
+0
+1
+0 0 73 82
+1
+end_operator
+begin_operator
+up f75 f84
+0
+1
+0 0 73 83
+1
+end_operator
+begin_operator
+up f75 f85
+0
+1
+0 0 73 84
+1
+end_operator
+begin_operator
+up f75 f86
+0
+1
+0 0 73 85
+1
+end_operator
+begin_operator
+up f75 f87
+0
+1
+0 0 73 86
+1
+end_operator
+begin_operator
+up f75 f88
+0
+1
+0 0 73 87
+1
+end_operator
+begin_operator
+up f75 f89
+0
+1
+0 0 73 88
+1
+end_operator
+begin_operator
+up f75 f90
+0
+1
+0 0 73 90
+1
+end_operator
+begin_operator
+up f75 f91
+0
+1
+0 0 73 91
+1
+end_operator
+begin_operator
+up f75 f92
+0
+1
+0 0 73 92
+1
+end_operator
+begin_operator
+up f75 f93
+0
+1
+0 0 73 93
+1
+end_operator
+begin_operator
+up f75 f94
+0
+1
+0 0 73 94
+1
+end_operator
+begin_operator
+up f75 f95
+0
+1
+0 0 73 95
+1
+end_operator
+begin_operator
+up f75 f96
+0
+1
+0 0 73 96
+1
+end_operator
+begin_operator
+up f75 f97
+0
+1
+0 0 73 97
+1
+end_operator
+begin_operator
+up f75 f98
+0
+1
+0 0 73 98
+1
+end_operator
+begin_operator
+up f75 f99
+0
+1
+0 0 73 99
+1
+end_operator
+begin_operator
+up f76 f100
+0
+1
+0 0 74 2
+1
+end_operator
+begin_operator
+up f76 f77
+0
+1
+0 0 74 75
+1
+end_operator
+begin_operator
+up f76 f78
+0
+1
+0 0 74 76
+1
+end_operator
+begin_operator
+up f76 f79
+0
+1
+0 0 74 77
+1
+end_operator
+begin_operator
+up f76 f80
+0
+1
+0 0 74 79
+1
+end_operator
+begin_operator
+up f76 f81
+0
+1
+0 0 74 80
+1
+end_operator
+begin_operator
+up f76 f82
+0
+1
+0 0 74 81
+1
+end_operator
+begin_operator
+up f76 f83
+0
+1
+0 0 74 82
+1
+end_operator
+begin_operator
+up f76 f84
+0
+1
+0 0 74 83
+1
+end_operator
+begin_operator
+up f76 f85
+0
+1
+0 0 74 84
+1
+end_operator
+begin_operator
+up f76 f86
+0
+1
+0 0 74 85
+1
+end_operator
+begin_operator
+up f76 f87
+0
+1
+0 0 74 86
+1
+end_operator
+begin_operator
+up f76 f88
+0
+1
+0 0 74 87
+1
+end_operator
+begin_operator
+up f76 f89
+0
+1
+0 0 74 88
+1
+end_operator
+begin_operator
+up f76 f90
+0
+1
+0 0 74 90
+1
+end_operator
+begin_operator
+up f76 f91
+0
+1
+0 0 74 91
+1
+end_operator
+begin_operator
+up f76 f92
+0
+1
+0 0 74 92
+1
+end_operator
+begin_operator
+up f76 f93
+0
+1
+0 0 74 93
+1
+end_operator
+begin_operator
+up f76 f94
+0
+1
+0 0 74 94
+1
+end_operator
+begin_operator
+up f76 f95
+0
+1
+0 0 74 95
+1
+end_operator
+begin_operator
+up f76 f96
+0
+1
+0 0 74 96
+1
+end_operator
+begin_operator
+up f76 f97
+0
+1
+0 0 74 97
+1
+end_operator
+begin_operator
+up f76 f98
+0
+1
+0 0 74 98
+1
+end_operator
+begin_operator
+up f76 f99
+0
+1
+0 0 74 99
+1
+end_operator
+begin_operator
+up f77 f100
+0
+1
+0 0 75 2
+1
+end_operator
+begin_operator
+up f77 f78
+0
+1
+0 0 75 76
+1
+end_operator
+begin_operator
+up f77 f79
+0
+1
+0 0 75 77
+1
+end_operator
+begin_operator
+up f77 f80
+0
+1
+0 0 75 79
+1
+end_operator
+begin_operator
+up f77 f81
+0
+1
+0 0 75 80
+1
+end_operator
+begin_operator
+up f77 f82
+0
+1
+0 0 75 81
+1
+end_operator
+begin_operator
+up f77 f83
+0
+1
+0 0 75 82
+1
+end_operator
+begin_operator
+up f77 f84
+0
+1
+0 0 75 83
+1
+end_operator
+begin_operator
+up f77 f85
+0
+1
+0 0 75 84
+1
+end_operator
+begin_operator
+up f77 f86
+0
+1
+0 0 75 85
+1
+end_operator
+begin_operator
+up f77 f87
+0
+1
+0 0 75 86
+1
+end_operator
+begin_operator
+up f77 f88
+0
+1
+0 0 75 87
+1
+end_operator
+begin_operator
+up f77 f89
+0
+1
+0 0 75 88
+1
+end_operator
+begin_operator
+up f77 f90
+0
+1
+0 0 75 90
+1
+end_operator
+begin_operator
+up f77 f91
+0
+1
+0 0 75 91
+1
+end_operator
+begin_operator
+up f77 f92
+0
+1
+0 0 75 92
+1
+end_operator
+begin_operator
+up f77 f93
+0
+1
+0 0 75 93
+1
+end_operator
+begin_operator
+up f77 f94
+0
+1
+0 0 75 94
+1
+end_operator
+begin_operator
+up f77 f95
+0
+1
+0 0 75 95
+1
+end_operator
+begin_operator
+up f77 f96
+0
+1
+0 0 75 96
+1
+end_operator
+begin_operator
+up f77 f97
+0
+1
+0 0 75 97
+1
+end_operator
+begin_operator
+up f77 f98
+0
+1
+0 0 75 98
+1
+end_operator
+begin_operator
+up f77 f99
+0
+1
+0 0 75 99
+1
+end_operator
+begin_operator
+up f78 f100
+0
+1
+0 0 76 2
+1
+end_operator
+begin_operator
+up f78 f79
+0
+1
+0 0 76 77
+1
+end_operator
+begin_operator
+up f78 f80
+0
+1
+0 0 76 79
+1
+end_operator
+begin_operator
+up f78 f81
+0
+1
+0 0 76 80
+1
+end_operator
+begin_operator
+up f78 f82
+0
+1
+0 0 76 81
+1
+end_operator
+begin_operator
+up f78 f83
+0
+1
+0 0 76 82
+1
+end_operator
+begin_operator
+up f78 f84
+0
+1
+0 0 76 83
+1
+end_operator
+begin_operator
+up f78 f85
+0
+1
+0 0 76 84
+1
+end_operator
+begin_operator
+up f78 f86
+0
+1
+0 0 76 85
+1
+end_operator
+begin_operator
+up f78 f87
+0
+1
+0 0 76 86
+1
+end_operator
+begin_operator
+up f78 f88
+0
+1
+0 0 76 87
+1
+end_operator
+begin_operator
+up f78 f89
+0
+1
+0 0 76 88
+1
+end_operator
+begin_operator
+up f78 f90
+0
+1
+0 0 76 90
+1
+end_operator
+begin_operator
+up f78 f91
+0
+1
+0 0 76 91
+1
+end_operator
+begin_operator
+up f78 f92
+0
+1
+0 0 76 92
+1
+end_operator
+begin_operator
+up f78 f93
+0
+1
+0 0 76 93
+1
+end_operator
+begin_operator
+up f78 f94
+0
+1
+0 0 76 94
+1
+end_operator
+begin_operator
+up f78 f95
+0
+1
+0 0 76 95
+1
+end_operator
+begin_operator
+up f78 f96
+0
+1
+0 0 76 96
+1
+end_operator
+begin_operator
+up f78 f97
+0
+1
+0 0 76 97
+1
+end_operator
+begin_operator
+up f78 f98
+0
+1
+0 0 76 98
+1
+end_operator
+begin_operator
+up f78 f99
+0
+1
+0 0 76 99
+1
+end_operator
+begin_operator
+up f79 f100
+0
+1
+0 0 77 2
+1
+end_operator
+begin_operator
+up f79 f80
+0
+1
+0 0 77 79
+1
+end_operator
+begin_operator
+up f79 f81
+0
+1
+0 0 77 80
+1
+end_operator
+begin_operator
+up f79 f82
+0
+1
+0 0 77 81
+1
+end_operator
+begin_operator
+up f79 f83
+0
+1
+0 0 77 82
+1
+end_operator
+begin_operator
+up f79 f84
+0
+1
+0 0 77 83
+1
+end_operator
+begin_operator
+up f79 f85
+0
+1
+0 0 77 84
+1
+end_operator
+begin_operator
+up f79 f86
+0
+1
+0 0 77 85
+1
+end_operator
+begin_operator
+up f79 f87
+0
+1
+0 0 77 86
+1
+end_operator
+begin_operator
+up f79 f88
+0
+1
+0 0 77 87
+1
+end_operator
+begin_operator
+up f79 f89
+0
+1
+0 0 77 88
+1
+end_operator
+begin_operator
+up f79 f90
+0
+1
+0 0 77 90
+1
+end_operator
+begin_operator
+up f79 f91
+0
+1
+0 0 77 91
+1
+end_operator
+begin_operator
+up f79 f92
+0
+1
+0 0 77 92
+1
+end_operator
+begin_operator
+up f79 f93
+0
+1
+0 0 77 93
+1
+end_operator
+begin_operator
+up f79 f94
+0
+1
+0 0 77 94
+1
+end_operator
+begin_operator
+up f79 f95
+0
+1
+0 0 77 95
+1
+end_operator
+begin_operator
+up f79 f96
+0
+1
+0 0 77 96
+1
+end_operator
+begin_operator
+up f79 f97
+0
+1
+0 0 77 97
+1
+end_operator
+begin_operator
+up f79 f98
+0
+1
+0 0 77 98
+1
+end_operator
+begin_operator
+up f79 f99
+0
+1
+0 0 77 99
+1
+end_operator
+begin_operator
+up f8 f10
+0
+1
+0 0 78 1
+1
+end_operator
+begin_operator
+up f8 f100
+0
+1
+0 0 78 2
+1
+end_operator
+begin_operator
+up f8 f11
+0
+1
+0 0 78 3
+1
+end_operator
+begin_operator
+up f8 f12
+0
+1
+0 0 78 4
+1
+end_operator
+begin_operator
+up f8 f13
+0
+1
+0 0 78 5
+1
+end_operator
+begin_operator
+up f8 f14
+0
+1
+0 0 78 6
+1
+end_operator
+begin_operator
+up f8 f15
+0
+1
+0 0 78 7
+1
+end_operator
+begin_operator
+up f8 f16
+0
+1
+0 0 78 8
+1
+end_operator
+begin_operator
+up f8 f17
+0
+1
+0 0 78 9
+1
+end_operator
+begin_operator
+up f8 f18
+0
+1
+0 0 78 10
+1
+end_operator
+begin_operator
+up f8 f19
+0
+1
+0 0 78 11
+1
+end_operator
+begin_operator
+up f8 f20
+0
+1
+0 0 78 13
+1
+end_operator
+begin_operator
+up f8 f21
+0
+1
+0 0 78 14
+1
+end_operator
+begin_operator
+up f8 f22
+0
+1
+0 0 78 15
+1
+end_operator
+begin_operator
+up f8 f23
+0
+1
+0 0 78 16
+1
+end_operator
+begin_operator
+up f8 f24
+0
+1
+0 0 78 17
+1
+end_operator
+begin_operator
+up f8 f25
+0
+1
+0 0 78 18
+1
+end_operator
+begin_operator
+up f8 f26
+0
+1
+0 0 78 19
+1
+end_operator
+begin_operator
+up f8 f27
+0
+1
+0 0 78 20
+1
+end_operator
+begin_operator
+up f8 f28
+0
+1
+0 0 78 21
+1
+end_operator
+begin_operator
+up f8 f29
+0
+1
+0 0 78 22
+1
+end_operator
+begin_operator
+up f8 f30
+0
+1
+0 0 78 24
+1
+end_operator
+begin_operator
+up f8 f31
+0
+1
+0 0 78 25
+1
+end_operator
+begin_operator
+up f8 f32
+0
+1
+0 0 78 26
+1
+end_operator
+begin_operator
+up f8 f33
+0
+1
+0 0 78 27
+1
+end_operator
+begin_operator
+up f8 f34
+0
+1
+0 0 78 28
+1
+end_operator
+begin_operator
+up f8 f35
+0
+1
+0 0 78 29
+1
+end_operator
+begin_operator
+up f8 f36
+0
+1
+0 0 78 30
+1
+end_operator
+begin_operator
+up f8 f37
+0
+1
+0 0 78 31
+1
+end_operator
+begin_operator
+up f8 f38
+0
+1
+0 0 78 32
+1
+end_operator
+begin_operator
+up f8 f39
+0
+1
+0 0 78 33
+1
+end_operator
+begin_operator
+up f8 f40
+0
+1
+0 0 78 35
+1
+end_operator
+begin_operator
+up f8 f41
+0
+1
+0 0 78 36
+1
+end_operator
+begin_operator
+up f8 f42
+0
+1
+0 0 78 37
+1
+end_operator
+begin_operator
+up f8 f43
+0
+1
+0 0 78 38
+1
+end_operator
+begin_operator
+up f8 f44
+0
+1
+0 0 78 39
+1
+end_operator
+begin_operator
+up f8 f45
+0
+1
+0 0 78 40
+1
+end_operator
+begin_operator
+up f8 f46
+0
+1
+0 0 78 41
+1
+end_operator
+begin_operator
+up f8 f47
+0
+1
+0 0 78 42
+1
+end_operator
+begin_operator
+up f8 f48
+0
+1
+0 0 78 43
+1
+end_operator
+begin_operator
+up f8 f49
+0
+1
+0 0 78 44
+1
+end_operator
+begin_operator
+up f8 f50
+0
+1
+0 0 78 46
+1
+end_operator
+begin_operator
+up f8 f51
+0
+1
+0 0 78 47
+1
+end_operator
+begin_operator
+up f8 f52
+0
+1
+0 0 78 48
+1
+end_operator
+begin_operator
+up f8 f53
+0
+1
+0 0 78 49
+1
+end_operator
+begin_operator
+up f8 f54
+0
+1
+0 0 78 50
+1
+end_operator
+begin_operator
+up f8 f55
+0
+1
+0 0 78 51
+1
+end_operator
+begin_operator
+up f8 f56
+0
+1
+0 0 78 52
+1
+end_operator
+begin_operator
+up f8 f57
+0
+1
+0 0 78 53
+1
+end_operator
+begin_operator
+up f8 f58
+0
+1
+0 0 78 54
+1
+end_operator
+begin_operator
+up f8 f59
+0
+1
+0 0 78 55
+1
+end_operator
+begin_operator
+up f8 f60
+0
+1
+0 0 78 57
+1
+end_operator
+begin_operator
+up f8 f61
+0
+1
+0 0 78 58
+1
+end_operator
+begin_operator
+up f8 f62
+0
+1
+0 0 78 59
+1
+end_operator
+begin_operator
+up f8 f63
+0
+1
+0 0 78 60
+1
+end_operator
+begin_operator
+up f8 f64
+0
+1
+0 0 78 61
+1
+end_operator
+begin_operator
+up f8 f65
+0
+1
+0 0 78 62
+1
+end_operator
+begin_operator
+up f8 f66
+0
+1
+0 0 78 63
+1
+end_operator
+begin_operator
+up f8 f67
+0
+1
+0 0 78 64
+1
+end_operator
+begin_operator
+up f8 f68
+0
+1
+0 0 78 65
+1
+end_operator
+begin_operator
+up f8 f69
+0
+1
+0 0 78 66
+1
+end_operator
+begin_operator
+up f8 f70
+0
+1
+0 0 78 68
+1
+end_operator
+begin_operator
+up f8 f71
+0
+1
+0 0 78 69
+1
+end_operator
+begin_operator
+up f8 f72
+0
+1
+0 0 78 70
+1
+end_operator
+begin_operator
+up f8 f73
+0
+1
+0 0 78 71
+1
+end_operator
+begin_operator
+up f8 f74
+0
+1
+0 0 78 72
+1
+end_operator
+begin_operator
+up f8 f75
+0
+1
+0 0 78 73
+1
+end_operator
+begin_operator
+up f8 f76
+0
+1
+0 0 78 74
+1
+end_operator
+begin_operator
+up f8 f77
+0
+1
+0 0 78 75
+1
+end_operator
+begin_operator
+up f8 f78
+0
+1
+0 0 78 76
+1
+end_operator
+begin_operator
+up f8 f79
+0
+1
+0 0 78 77
+1
+end_operator
+begin_operator
+up f8 f80
+0
+1
+0 0 78 79
+1
+end_operator
+begin_operator
+up f8 f81
+0
+1
+0 0 78 80
+1
+end_operator
+begin_operator
+up f8 f82
+0
+1
+0 0 78 81
+1
+end_operator
+begin_operator
+up f8 f83
+0
+1
+0 0 78 82
+1
+end_operator
+begin_operator
+up f8 f84
+0
+1
+0 0 78 83
+1
+end_operator
+begin_operator
+up f8 f85
+0
+1
+0 0 78 84
+1
+end_operator
+begin_operator
+up f8 f86
+0
+1
+0 0 78 85
+1
+end_operator
+begin_operator
+up f8 f87
+0
+1
+0 0 78 86
+1
+end_operator
+begin_operator
+up f8 f88
+0
+1
+0 0 78 87
+1
+end_operator
+begin_operator
+up f8 f89
+0
+1
+0 0 78 88
+1
+end_operator
+begin_operator
+up f8 f9
+0
+1
+0 0 78 89
+1
+end_operator
+begin_operator
+up f8 f90
+0
+1
+0 0 78 90
+1
+end_operator
+begin_operator
+up f8 f91
+0
+1
+0 0 78 91
+1
+end_operator
+begin_operator
+up f8 f92
+0
+1
+0 0 78 92
+1
+end_operator
+begin_operator
+up f8 f93
+0
+1
+0 0 78 93
+1
+end_operator
+begin_operator
+up f8 f94
+0
+1
+0 0 78 94
+1
+end_operator
+begin_operator
+up f8 f95
+0
+1
+0 0 78 95
+1
+end_operator
+begin_operator
+up f8 f96
+0
+1
+0 0 78 96
+1
+end_operator
+begin_operator
+up f8 f97
+0
+1
+0 0 78 97
+1
+end_operator
+begin_operator
+up f8 f98
+0
+1
+0 0 78 98
+1
+end_operator
+begin_operator
+up f8 f99
+0
+1
+0 0 78 99
+1
+end_operator
+begin_operator
+up f80 f100
+0
+1
+0 0 79 2
+1
+end_operator
+begin_operator
+up f80 f81
+0
+1
+0 0 79 80
+1
+end_operator
+begin_operator
+up f80 f82
+0
+1
+0 0 79 81
+1
+end_operator
+begin_operator
+up f80 f83
+0
+1
+0 0 79 82
+1
+end_operator
+begin_operator
+up f80 f84
+0
+1
+0 0 79 83
+1
+end_operator
+begin_operator
+up f80 f85
+0
+1
+0 0 79 84
+1
+end_operator
+begin_operator
+up f80 f86
+0
+1
+0 0 79 85
+1
+end_operator
+begin_operator
+up f80 f87
+0
+1
+0 0 79 86
+1
+end_operator
+begin_operator
+up f80 f88
+0
+1
+0 0 79 87
+1
+end_operator
+begin_operator
+up f80 f89
+0
+1
+0 0 79 88
+1
+end_operator
+begin_operator
+up f80 f90
+0
+1
+0 0 79 90
+1
+end_operator
+begin_operator
+up f80 f91
+0
+1
+0 0 79 91
+1
+end_operator
+begin_operator
+up f80 f92
+0
+1
+0 0 79 92
+1
+end_operator
+begin_operator
+up f80 f93
+0
+1
+0 0 79 93
+1
+end_operator
+begin_operator
+up f80 f94
+0
+1
+0 0 79 94
+1
+end_operator
+begin_operator
+up f80 f95
+0
+1
+0 0 79 95
+1
+end_operator
+begin_operator
+up f80 f96
+0
+1
+0 0 79 96
+1
+end_operator
+begin_operator
+up f80 f97
+0
+1
+0 0 79 97
+1
+end_operator
+begin_operator
+up f80 f98
+0
+1
+0 0 79 98
+1
+end_operator
+begin_operator
+up f80 f99
+0
+1
+0 0 79 99
+1
+end_operator
+begin_operator
+up f81 f100
+0
+1
+0 0 80 2
+1
+end_operator
+begin_operator
+up f81 f82
+0
+1
+0 0 80 81
+1
+end_operator
+begin_operator
+up f81 f83
+0
+1
+0 0 80 82
+1
+end_operator
+begin_operator
+up f81 f84
+0
+1
+0 0 80 83
+1
+end_operator
+begin_operator
+up f81 f85
+0
+1
+0 0 80 84
+1
+end_operator
+begin_operator
+up f81 f86
+0
+1
+0 0 80 85
+1
+end_operator
+begin_operator
+up f81 f87
+0
+1
+0 0 80 86
+1
+end_operator
+begin_operator
+up f81 f88
+0
+1
+0 0 80 87
+1
+end_operator
+begin_operator
+up f81 f89
+0
+1
+0 0 80 88
+1
+end_operator
+begin_operator
+up f81 f90
+0
+1
+0 0 80 90
+1
+end_operator
+begin_operator
+up f81 f91
+0
+1
+0 0 80 91
+1
+end_operator
+begin_operator
+up f81 f92
+0
+1
+0 0 80 92
+1
+end_operator
+begin_operator
+up f81 f93
+0
+1
+0 0 80 93
+1
+end_operator
+begin_operator
+up f81 f94
+0
+1
+0 0 80 94
+1
+end_operator
+begin_operator
+up f81 f95
+0
+1
+0 0 80 95
+1
+end_operator
+begin_operator
+up f81 f96
+0
+1
+0 0 80 96
+1
+end_operator
+begin_operator
+up f81 f97
+0
+1
+0 0 80 97
+1
+end_operator
+begin_operator
+up f81 f98
+0
+1
+0 0 80 98
+1
+end_operator
+begin_operator
+up f81 f99
+0
+1
+0 0 80 99
+1
+end_operator
+begin_operator
+up f82 f100
+0
+1
+0 0 81 2
+1
+end_operator
+begin_operator
+up f82 f83
+0
+1
+0 0 81 82
+1
+end_operator
+begin_operator
+up f82 f84
+0
+1
+0 0 81 83
+1
+end_operator
+begin_operator
+up f82 f85
+0
+1
+0 0 81 84
+1
+end_operator
+begin_operator
+up f82 f86
+0
+1
+0 0 81 85
+1
+end_operator
+begin_operator
+up f82 f87
+0
+1
+0 0 81 86
+1
+end_operator
+begin_operator
+up f82 f88
+0
+1
+0 0 81 87
+1
+end_operator
+begin_operator
+up f82 f89
+0
+1
+0 0 81 88
+1
+end_operator
+begin_operator
+up f82 f90
+0
+1
+0 0 81 90
+1
+end_operator
+begin_operator
+up f82 f91
+0
+1
+0 0 81 91
+1
+end_operator
+begin_operator
+up f82 f92
+0
+1
+0 0 81 92
+1
+end_operator
+begin_operator
+up f82 f93
+0
+1
+0 0 81 93
+1
+end_operator
+begin_operator
+up f82 f94
+0
+1
+0 0 81 94
+1
+end_operator
+begin_operator
+up f82 f95
+0
+1
+0 0 81 95
+1
+end_operator
+begin_operator
+up f82 f96
+0
+1
+0 0 81 96
+1
+end_operator
+begin_operator
+up f82 f97
+0
+1
+0 0 81 97
+1
+end_operator
+begin_operator
+up f82 f98
+0
+1
+0 0 81 98
+1
+end_operator
+begin_operator
+up f82 f99
+0
+1
+0 0 81 99
+1
+end_operator
+begin_operator
+up f83 f100
+0
+1
+0 0 82 2
+1
+end_operator
+begin_operator
+up f83 f84
+0
+1
+0 0 82 83
+1
+end_operator
+begin_operator
+up f83 f85
+0
+1
+0 0 82 84
+1
+end_operator
+begin_operator
+up f83 f86
+0
+1
+0 0 82 85
+1
+end_operator
+begin_operator
+up f83 f87
+0
+1
+0 0 82 86
+1
+end_operator
+begin_operator
+up f83 f88
+0
+1
+0 0 82 87
+1
+end_operator
+begin_operator
+up f83 f89
+0
+1
+0 0 82 88
+1
+end_operator
+begin_operator
+up f83 f90
+0
+1
+0 0 82 90
+1
+end_operator
+begin_operator
+up f83 f91
+0
+1
+0 0 82 91
+1
+end_operator
+begin_operator
+up f83 f92
+0
+1
+0 0 82 92
+1
+end_operator
+begin_operator
+up f83 f93
+0
+1
+0 0 82 93
+1
+end_operator
+begin_operator
+up f83 f94
+0
+1
+0 0 82 94
+1
+end_operator
+begin_operator
+up f83 f95
+0
+1
+0 0 82 95
+1
+end_operator
+begin_operator
+up f83 f96
+0
+1
+0 0 82 96
+1
+end_operator
+begin_operator
+up f83 f97
+0
+1
+0 0 82 97
+1
+end_operator
+begin_operator
+up f83 f98
+0
+1
+0 0 82 98
+1
+end_operator
+begin_operator
+up f83 f99
+0
+1
+0 0 82 99
+1
+end_operator
+begin_operator
+up f84 f100
+0
+1
+0 0 83 2
+1
+end_operator
+begin_operator
+up f84 f85
+0
+1
+0 0 83 84
+1
+end_operator
+begin_operator
+up f84 f86
+0
+1
+0 0 83 85
+1
+end_operator
+begin_operator
+up f84 f87
+0
+1
+0 0 83 86
+1
+end_operator
+begin_operator
+up f84 f88
+0
+1
+0 0 83 87
+1
+end_operator
+begin_operator
+up f84 f89
+0
+1
+0 0 83 88
+1
+end_operator
+begin_operator
+up f84 f90
+0
+1
+0 0 83 90
+1
+end_operator
+begin_operator
+up f84 f91
+0
+1
+0 0 83 91
+1
+end_operator
+begin_operator
+up f84 f92
+0
+1
+0 0 83 92
+1
+end_operator
+begin_operator
+up f84 f93
+0
+1
+0 0 83 93
+1
+end_operator
+begin_operator
+up f84 f94
+0
+1
+0 0 83 94
+1
+end_operator
+begin_operator
+up f84 f95
+0
+1
+0 0 83 95
+1
+end_operator
+begin_operator
+up f84 f96
+0
+1
+0 0 83 96
+1
+end_operator
+begin_operator
+up f84 f97
+0
+1
+0 0 83 97
+1
+end_operator
+begin_operator
+up f84 f98
+0
+1
+0 0 83 98
+1
+end_operator
+begin_operator
+up f84 f99
+0
+1
+0 0 83 99
+1
+end_operator
+begin_operator
+up f85 f100
+0
+1
+0 0 84 2
+1
+end_operator
+begin_operator
+up f85 f86
+0
+1
+0 0 84 85
+1
+end_operator
+begin_operator
+up f85 f87
+0
+1
+0 0 84 86
+1
+end_operator
+begin_operator
+up f85 f88
+0
+1
+0 0 84 87
+1
+end_operator
+begin_operator
+up f85 f89
+0
+1
+0 0 84 88
+1
+end_operator
+begin_operator
+up f85 f90
+0
+1
+0 0 84 90
+1
+end_operator
+begin_operator
+up f85 f91
+0
+1
+0 0 84 91
+1
+end_operator
+begin_operator
+up f85 f92
+0
+1
+0 0 84 92
+1
+end_operator
+begin_operator
+up f85 f93
+0
+1
+0 0 84 93
+1
+end_operator
+begin_operator
+up f85 f94
+0
+1
+0 0 84 94
+1
+end_operator
+begin_operator
+up f85 f95
+0
+1
+0 0 84 95
+1
+end_operator
+begin_operator
+up f85 f96
+0
+1
+0 0 84 96
+1
+end_operator
+begin_operator
+up f85 f97
+0
+1
+0 0 84 97
+1
+end_operator
+begin_operator
+up f85 f98
+0
+1
+0 0 84 98
+1
+end_operator
+begin_operator
+up f85 f99
+0
+1
+0 0 84 99
+1
+end_operator
+begin_operator
+up f86 f100
+0
+1
+0 0 85 2
+1
+end_operator
+begin_operator
+up f86 f87
+0
+1
+0 0 85 86
+1
+end_operator
+begin_operator
+up f86 f88
+0
+1
+0 0 85 87
+1
+end_operator
+begin_operator
+up f86 f89
+0
+1
+0 0 85 88
+1
+end_operator
+begin_operator
+up f86 f90
+0
+1
+0 0 85 90
+1
+end_operator
+begin_operator
+up f86 f91
+0
+1
+0 0 85 91
+1
+end_operator
+begin_operator
+up f86 f92
+0
+1
+0 0 85 92
+1
+end_operator
+begin_operator
+up f86 f93
+0
+1
+0 0 85 93
+1
+end_operator
+begin_operator
+up f86 f94
+0
+1
+0 0 85 94
+1
+end_operator
+begin_operator
+up f86 f95
+0
+1
+0 0 85 95
+1
+end_operator
+begin_operator
+up f86 f96
+0
+1
+0 0 85 96
+1
+end_operator
+begin_operator
+up f86 f97
+0
+1
+0 0 85 97
+1
+end_operator
+begin_operator
+up f86 f98
+0
+1
+0 0 85 98
+1
+end_operator
+begin_operator
+up f86 f99
+0
+1
+0 0 85 99
+1
+end_operator
+begin_operator
+up f87 f100
+0
+1
+0 0 86 2
+1
+end_operator
+begin_operator
+up f87 f88
+0
+1
+0 0 86 87
+1
+end_operator
+begin_operator
+up f87 f89
+0
+1
+0 0 86 88
+1
+end_operator
+begin_operator
+up f87 f90
+0
+1
+0 0 86 90
+1
+end_operator
+begin_operator
+up f87 f91
+0
+1
+0 0 86 91
+1
+end_operator
+begin_operator
+up f87 f92
+0
+1
+0 0 86 92
+1
+end_operator
+begin_operator
+up f87 f93
+0
+1
+0 0 86 93
+1
+end_operator
+begin_operator
+up f87 f94
+0
+1
+0 0 86 94
+1
+end_operator
+begin_operator
+up f87 f95
+0
+1
+0 0 86 95
+1
+end_operator
+begin_operator
+up f87 f96
+0
+1
+0 0 86 96
+1
+end_operator
+begin_operator
+up f87 f97
+0
+1
+0 0 86 97
+1
+end_operator
+begin_operator
+up f87 f98
+0
+1
+0 0 86 98
+1
+end_operator
+begin_operator
+up f87 f99
+0
+1
+0 0 86 99
+1
+end_operator
+begin_operator
+up f88 f100
+0
+1
+0 0 87 2
+1
+end_operator
+begin_operator
+up f88 f89
+0
+1
+0 0 87 88
+1
+end_operator
+begin_operator
+up f88 f90
+0
+1
+0 0 87 90
+1
+end_operator
+begin_operator
+up f88 f91
+0
+1
+0 0 87 91
+1
+end_operator
+begin_operator
+up f88 f92
+0
+1
+0 0 87 92
+1
+end_operator
+begin_operator
+up f88 f93
+0
+1
+0 0 87 93
+1
+end_operator
+begin_operator
+up f88 f94
+0
+1
+0 0 87 94
+1
+end_operator
+begin_operator
+up f88 f95
+0
+1
+0 0 87 95
+1
+end_operator
+begin_operator
+up f88 f96
+0
+1
+0 0 87 96
+1
+end_operator
+begin_operator
+up f88 f97
+0
+1
+0 0 87 97
+1
+end_operator
+begin_operator
+up f88 f98
+0
+1
+0 0 87 98
+1
+end_operator
+begin_operator
+up f88 f99
+0
+1
+0 0 87 99
+1
+end_operator
+begin_operator
+up f89 f100
+0
+1
+0 0 88 2
+1
+end_operator
+begin_operator
+up f89 f90
+0
+1
+0 0 88 90
+1
+end_operator
+begin_operator
+up f89 f91
+0
+1
+0 0 88 91
+1
+end_operator
+begin_operator
+up f89 f92
+0
+1
+0 0 88 92
+1
+end_operator
+begin_operator
+up f89 f93
+0
+1
+0 0 88 93
+1
+end_operator
+begin_operator
+up f89 f94
+0
+1
+0 0 88 94
+1
+end_operator
+begin_operator
+up f89 f95
+0
+1
+0 0 88 95
+1
+end_operator
+begin_operator
+up f89 f96
+0
+1
+0 0 88 96
+1
+end_operator
+begin_operator
+up f89 f97
+0
+1
+0 0 88 97
+1
+end_operator
+begin_operator
+up f89 f98
+0
+1
+0 0 88 98
+1
+end_operator
+begin_operator
+up f89 f99
+0
+1
+0 0 88 99
+1
+end_operator
+begin_operator
+up f9 f10
+0
+1
+0 0 89 1
+1
+end_operator
+begin_operator
+up f9 f100
+0
+1
+0 0 89 2
+1
+end_operator
+begin_operator
+up f9 f11
+0
+1
+0 0 89 3
+1
+end_operator
+begin_operator
+up f9 f12
+0
+1
+0 0 89 4
+1
+end_operator
+begin_operator
+up f9 f13
+0
+1
+0 0 89 5
+1
+end_operator
+begin_operator
+up f9 f14
+0
+1
+0 0 89 6
+1
+end_operator
+begin_operator
+up f9 f15
+0
+1
+0 0 89 7
+1
+end_operator
+begin_operator
+up f9 f16
+0
+1
+0 0 89 8
+1
+end_operator
+begin_operator
+up f9 f17
+0
+1
+0 0 89 9
+1
+end_operator
+begin_operator
+up f9 f18
+0
+1
+0 0 89 10
+1
+end_operator
+begin_operator
+up f9 f19
+0
+1
+0 0 89 11
+1
+end_operator
+begin_operator
+up f9 f20
+0
+1
+0 0 89 13
+1
+end_operator
+begin_operator
+up f9 f21
+0
+1
+0 0 89 14
+1
+end_operator
+begin_operator
+up f9 f22
+0
+1
+0 0 89 15
+1
+end_operator
+begin_operator
+up f9 f23
+0
+1
+0 0 89 16
+1
+end_operator
+begin_operator
+up f9 f24
+0
+1
+0 0 89 17
+1
+end_operator
+begin_operator
+up f9 f25
+0
+1
+0 0 89 18
+1
+end_operator
+begin_operator
+up f9 f26
+0
+1
+0 0 89 19
+1
+end_operator
+begin_operator
+up f9 f27
+0
+1
+0 0 89 20
+1
+end_operator
+begin_operator
+up f9 f28
+0
+1
+0 0 89 21
+1
+end_operator
+begin_operator
+up f9 f29
+0
+1
+0 0 89 22
+1
+end_operator
+begin_operator
+up f9 f30
+0
+1
+0 0 89 24
+1
+end_operator
+begin_operator
+up f9 f31
+0
+1
+0 0 89 25
+1
+end_operator
+begin_operator
+up f9 f32
+0
+1
+0 0 89 26
+1
+end_operator
+begin_operator
+up f9 f33
+0
+1
+0 0 89 27
+1
+end_operator
+begin_operator
+up f9 f34
+0
+1
+0 0 89 28
+1
+end_operator
+begin_operator
+up f9 f35
+0
+1
+0 0 89 29
+1
+end_operator
+begin_operator
+up f9 f36
+0
+1
+0 0 89 30
+1
+end_operator
+begin_operator
+up f9 f37
+0
+1
+0 0 89 31
+1
+end_operator
+begin_operator
+up f9 f38
+0
+1
+0 0 89 32
+1
+end_operator
+begin_operator
+up f9 f39
+0
+1
+0 0 89 33
+1
+end_operator
+begin_operator
+up f9 f40
+0
+1
+0 0 89 35
+1
+end_operator
+begin_operator
+up f9 f41
+0
+1
+0 0 89 36
+1
+end_operator
+begin_operator
+up f9 f42
+0
+1
+0 0 89 37
+1
+end_operator
+begin_operator
+up f9 f43
+0
+1
+0 0 89 38
+1
+end_operator
+begin_operator
+up f9 f44
+0
+1
+0 0 89 39
+1
+end_operator
+begin_operator
+up f9 f45
+0
+1
+0 0 89 40
+1
+end_operator
+begin_operator
+up f9 f46
+0
+1
+0 0 89 41
+1
+end_operator
+begin_operator
+up f9 f47
+0
+1
+0 0 89 42
+1
+end_operator
+begin_operator
+up f9 f48
+0
+1
+0 0 89 43
+1
+end_operator
+begin_operator
+up f9 f49
+0
+1
+0 0 89 44
+1
+end_operator
+begin_operator
+up f9 f50
+0
+1
+0 0 89 46
+1
+end_operator
+begin_operator
+up f9 f51
+0
+1
+0 0 89 47
+1
+end_operator
+begin_operator
+up f9 f52
+0
+1
+0 0 89 48
+1
+end_operator
+begin_operator
+up f9 f53
+0
+1
+0 0 89 49
+1
+end_operator
+begin_operator
+up f9 f54
+0
+1
+0 0 89 50
+1
+end_operator
+begin_operator
+up f9 f55
+0
+1
+0 0 89 51
+1
+end_operator
+begin_operator
+up f9 f56
+0
+1
+0 0 89 52
+1
+end_operator
+begin_operator
+up f9 f57
+0
+1
+0 0 89 53
+1
+end_operator
+begin_operator
+up f9 f58
+0
+1
+0 0 89 54
+1
+end_operator
+begin_operator
+up f9 f59
+0
+1
+0 0 89 55
+1
+end_operator
+begin_operator
+up f9 f60
+0
+1
+0 0 89 57
+1
+end_operator
+begin_operator
+up f9 f61
+0
+1
+0 0 89 58
+1
+end_operator
+begin_operator
+up f9 f62
+0
+1
+0 0 89 59
+1
+end_operator
+begin_operator
+up f9 f63
+0
+1
+0 0 89 60
+1
+end_operator
+begin_operator
+up f9 f64
+0
+1
+0 0 89 61
+1
+end_operator
+begin_operator
+up f9 f65
+0
+1
+0 0 89 62
+1
+end_operator
+begin_operator
+up f9 f66
+0
+1
+0 0 89 63
+1
+end_operator
+begin_operator
+up f9 f67
+0
+1
+0 0 89 64
+1
+end_operator
+begin_operator
+up f9 f68
+0
+1
+0 0 89 65
+1
+end_operator
+begin_operator
+up f9 f69
+0
+1
+0 0 89 66
+1
+end_operator
+begin_operator
+up f9 f70
+0
+1
+0 0 89 68
+1
+end_operator
+begin_operator
+up f9 f71
+0
+1
+0 0 89 69
+1
+end_operator
+begin_operator
+up f9 f72
+0
+1
+0 0 89 70
+1
+end_operator
+begin_operator
+up f9 f73
+0
+1
+0 0 89 71
+1
+end_operator
+begin_operator
+up f9 f74
+0
+1
+0 0 89 72
+1
+end_operator
+begin_operator
+up f9 f75
+0
+1
+0 0 89 73
+1
+end_operator
+begin_operator
+up f9 f76
+0
+1
+0 0 89 74
+1
+end_operator
+begin_operator
+up f9 f77
+0
+1
+0 0 89 75
+1
+end_operator
+begin_operator
+up f9 f78
+0
+1
+0 0 89 76
+1
+end_operator
+begin_operator
+up f9 f79
+0
+1
+0 0 89 77
+1
+end_operator
+begin_operator
+up f9 f80
+0
+1
+0 0 89 79
+1
+end_operator
+begin_operator
+up f9 f81
+0
+1
+0 0 89 80
+1
+end_operator
+begin_operator
+up f9 f82
+0
+1
+0 0 89 81
+1
+end_operator
+begin_operator
+up f9 f83
+0
+1
+0 0 89 82
+1
+end_operator
+begin_operator
+up f9 f84
+0
+1
+0 0 89 83
+1
+end_operator
+begin_operator
+up f9 f85
+0
+1
+0 0 89 84
+1
+end_operator
+begin_operator
+up f9 f86
+0
+1
+0 0 89 85
+1
+end_operator
+begin_operator
+up f9 f87
+0
+1
+0 0 89 86
+1
+end_operator
+begin_operator
+up f9 f88
+0
+1
+0 0 89 87
+1
+end_operator
+begin_operator
+up f9 f89
+0
+1
+0 0 89 88
+1
+end_operator
+begin_operator
+up f9 f90
+0
+1
+0 0 89 90
+1
+end_operator
+begin_operator
+up f9 f91
+0
+1
+0 0 89 91
+1
+end_operator
+begin_operator
+up f9 f92
+0
+1
+0 0 89 92
+1
+end_operator
+begin_operator
+up f9 f93
+0
+1
+0 0 89 93
+1
+end_operator
+begin_operator
+up f9 f94
+0
+1
+0 0 89 94
+1
+end_operator
+begin_operator
+up f9 f95
+0
+1
+0 0 89 95
+1
+end_operator
+begin_operator
+up f9 f96
+0
+1
+0 0 89 96
+1
+end_operator
+begin_operator
+up f9 f97
+0
+1
+0 0 89 97
+1
+end_operator
+begin_operator
+up f9 f98
+0
+1
+0 0 89 98
+1
+end_operator
+begin_operator
+up f9 f99
+0
+1
+0 0 89 99
+1
+end_operator
+begin_operator
+up f90 f100
+0
+1
+0 0 90 2
+1
+end_operator
+begin_operator
+up f90 f91
+0
+1
+0 0 90 91
+1
+end_operator
+begin_operator
+up f90 f92
+0
+1
+0 0 90 92
+1
+end_operator
+begin_operator
+up f90 f93
+0
+1
+0 0 90 93
+1
+end_operator
+begin_operator
+up f90 f94
+0
+1
+0 0 90 94
+1
+end_operator
+begin_operator
+up f90 f95
+0
+1
+0 0 90 95
+1
+end_operator
+begin_operator
+up f90 f96
+0
+1
+0 0 90 96
+1
+end_operator
+begin_operator
+up f90 f97
+0
+1
+0 0 90 97
+1
+end_operator
+begin_operator
+up f90 f98
+0
+1
+0 0 90 98
+1
+end_operator
+begin_operator
+up f90 f99
+0
+1
+0 0 90 99
+1
+end_operator
+begin_operator
+up f91 f100
+0
+1
+0 0 91 2
+1
+end_operator
+begin_operator
+up f91 f92
+0
+1
+0 0 91 92
+1
+end_operator
+begin_operator
+up f91 f93
+0
+1
+0 0 91 93
+1
+end_operator
+begin_operator
+up f91 f94
+0
+1
+0 0 91 94
+1
+end_operator
+begin_operator
+up f91 f95
+0
+1
+0 0 91 95
+1
+end_operator
+begin_operator
+up f91 f96
+0
+1
+0 0 91 96
+1
+end_operator
+begin_operator
+up f91 f97
+0
+1
+0 0 91 97
+1
+end_operator
+begin_operator
+up f91 f98
+0
+1
+0 0 91 98
+1
+end_operator
+begin_operator
+up f91 f99
+0
+1
+0 0 91 99
+1
+end_operator
+begin_operator
+up f92 f100
+0
+1
+0 0 92 2
+1
+end_operator
+begin_operator
+up f92 f93
+0
+1
+0 0 92 93
+1
+end_operator
+begin_operator
+up f92 f94
+0
+1
+0 0 92 94
+1
+end_operator
+begin_operator
+up f92 f95
+0
+1
+0 0 92 95
+1
+end_operator
+begin_operator
+up f92 f96
+0
+1
+0 0 92 96
+1
+end_operator
+begin_operator
+up f92 f97
+0
+1
+0 0 92 97
+1
+end_operator
+begin_operator
+up f92 f98
+0
+1
+0 0 92 98
+1
+end_operator
+begin_operator
+up f92 f99
+0
+1
+0 0 92 99
+1
+end_operator
+begin_operator
+up f93 f100
+0
+1
+0 0 93 2
+1
+end_operator
+begin_operator
+up f93 f94
+0
+1
+0 0 93 94
+1
+end_operator
+begin_operator
+up f93 f95
+0
+1
+0 0 93 95
+1
+end_operator
+begin_operator
+up f93 f96
+0
+1
+0 0 93 96
+1
+end_operator
+begin_operator
+up f93 f97
+0
+1
+0 0 93 97
+1
+end_operator
+begin_operator
+up f93 f98
+0
+1
+0 0 93 98
+1
+end_operator
+begin_operator
+up f93 f99
+0
+1
+0 0 93 99
+1
+end_operator
+begin_operator
+up f94 f100
+0
+1
+0 0 94 2
+1
+end_operator
+begin_operator
+up f94 f95
+0
+1
+0 0 94 95
+1
+end_operator
+begin_operator
+up f94 f96
+0
+1
+0 0 94 96
+1
+end_operator
+begin_operator
+up f94 f97
+0
+1
+0 0 94 97
+1
+end_operator
+begin_operator
+up f94 f98
+0
+1
+0 0 94 98
+1
+end_operator
+begin_operator
+up f94 f99
+0
+1
+0 0 94 99
+1
+end_operator
+begin_operator
+up f95 f100
+0
+1
+0 0 95 2
+1
+end_operator
+begin_operator
+up f95 f96
+0
+1
+0 0 95 96
+1
+end_operator
+begin_operator
+up f95 f97
+0
+1
+0 0 95 97
+1
+end_operator
+begin_operator
+up f95 f98
+0
+1
+0 0 95 98
+1
+end_operator
+begin_operator
+up f95 f99
+0
+1
+0 0 95 99
+1
+end_operator
+begin_operator
+up f96 f100
+0
+1
+0 0 96 2
+1
+end_operator
+begin_operator
+up f96 f97
+0
+1
+0 0 96 97
+1
+end_operator
+begin_operator
+up f96 f98
+0
+1
+0 0 96 98
+1
+end_operator
+begin_operator
+up f96 f99
+0
+1
+0 0 96 99
+1
+end_operator
+begin_operator
+up f97 f100
+0
+1
+0 0 97 2
+1
+end_operator
+begin_operator
+up f97 f98
+0
+1
+0 0 97 98
+1
+end_operator
+begin_operator
+up f97 f99
+0
+1
+0 0 97 99
+1
+end_operator
+begin_operator
+up f98 f100
+0
+1
+0 0 98 2
+1
+end_operator
+begin_operator
+up f98 f99
+0
+1
+0 0 98 99
+1
+end_operator
+begin_operator
+up f99 f100
+0
+1
+0 0 99 2
+1
+end_operator
+0
