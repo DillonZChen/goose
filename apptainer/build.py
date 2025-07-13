@@ -39,12 +39,12 @@ def main():
     else:
         print(f"Intermediate image {INTERMEDIATE_SIF_0} exists. Skipping intermediate build 0.")
 
-    # Build intermediate image 1
-    if not os.path.exists(INTERMEDIATE_SIF_1):
-        print(f"Building intermediate image: {INTERMEDIATE_SIF_1}")
-        subprocess.call(["apptainer", "build", INTERMEDIATE_SIF_1, INTERMEDIATE_DEF_1], cwd=ROOT_DIR)
-    else:
-        print(f"Intermediate image {INTERMEDIATE_SIF_1} exists. Skipping intermediate build 1.")
+    # # Build intermediate image 1
+    # if not os.path.exists(INTERMEDIATE_SIF_1):
+    #     print(f"Building intermediate image: {INTERMEDIATE_SIF_1}")
+    #     subprocess.call(["apptainer", "build", INTERMEDIATE_SIF_1, INTERMEDIATE_DEF_1], cwd=ROOT_DIR)
+    # else:
+    #     print(f"Intermediate image {INTERMEDIATE_SIF_1} exists. Skipping intermediate build 1.")
 
     # Build final image
     subprocess.call(["apptainer", "build", SIF, DEF], cwd=ROOT_DIR)

@@ -1,5 +1,5 @@
 Bootstrap: localimage
-From: apptainer/goose-base.sif
+From: apptainer/docker-ubuntu22_04.sif
 
 %files
     enums /goose/
@@ -11,6 +11,28 @@ From: apptainer/goose-base.sif
     *.py /goose/
     build /goose/
     requirements.txt /goose/
+
+%post
+    # Move into repo and build
+    cd /goose
+
+    # Python dependencies
+    pip3 install -r requirements.txt
+
+    # Clear build directories
+    rm -rf wlplan/build
+    rm -rf planning/ext/*/builds
+    rm -rf planning/ext/succgen/build
+
+    # Build all components
+    ./build
+
+    # Clean up
+    apt-get clean
+    rm -rf __pycache__/
+    rm -rf /var/lib/apt/lists/*
+    rm -rf wlplan/
+
 
 %runscript
     #!/bin/bash
