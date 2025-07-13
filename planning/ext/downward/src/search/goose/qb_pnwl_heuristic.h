@@ -3,7 +3,7 @@
 
 #include "qb_heuristic.h"
 
-#include "../ext/wlplan/include/feature_generator/feature_generator_loader.hpp"
+#include "../ext/wlplan/include/feature_generator/feature_generators/wl.hpp"
 #include "../ext/wlplan/include/planning/predicate.hpp"
 #include "wl_utils.hpp"
 
@@ -12,7 +12,7 @@
 namespace qb_heuristic {
   class QbPnWlHeuristic : public QbHeuristic {
    protected:
-    std::shared_ptr<feature_generator::Features> model;
+    std::shared_ptr<feature_generator::WLFeatures> model;
     wl_utils::DownwardToWlplanAtomMapper fd_fact_to_wlplan_atom;
     std::map<std::pair<int, int>, int> feat_to_lowest_h;
     std::map<FactPair, int> fact_pair_to_lowest_h;

@@ -63,13 +63,11 @@ namespace qb_heuristic {
 
     // WL part
     planning::State wl_state = wl_utils::to_wlplan_state(state, fd_fact_to_wlplan_atom);
-    model->collect(wl_state);
-    std::vector<double> embed = model->embed_state(wl_state);  // TODO optimise this
-    for (int i = 0; i < (int)embed.size(); i++) {
-      if (embed[i] == 0) {  // feature not present, their values do not matter
+    std::unordered_map<int, int> features = model->collect_embed(wl_state);
+    for (const std::pair<const int, int> &feat : features) {
+      if (feat.second == 0) {  // feature not present, their values do not matter
         continue;
       }
-      std::pair<int, int> feat = std::make_pair(i, (int)embed[i]);
       bool in_map = feat_to_lowest_h.count(feat) > 0;
       if (!in_map || h < feat_to_lowest_h[feat]) {
         feat_to_lowest_h[feat] = h;
@@ -78,7 +76,7 @@ namespace qb_heuristic {
         non_h += 1;
       }
     }
-
+    
     // PN part
     for (const FactProxy &fact : state) {
       FactPair pair = fact.get_pair();

@@ -10,7 +10,7 @@
 
 #include "../datalog/grounder/weighted_grounder.h"
 
-#include "../ext/wlplan/include/feature_generator/feature_generator_loader.hpp"
+#include "../ext/wlplan/include/feature_generator/feature_generators/wl.hpp"
 #include "../ext/wlplan/include/planning/predicate.hpp"
 
 #include <map>
@@ -20,7 +20,7 @@
 class QbWlHeuristic : public QbHeuristic {
 protected:
     std::unordered_map<int, planning::Predicate> pwl_index_to_predicate;
-    std::shared_ptr<feature_generator::Features> model;
+    std::shared_ptr<feature_generator::WLFeatures> model;
     std::map<std::pair<int, int>, int> feat_to_lowest_h;
 
 public:
