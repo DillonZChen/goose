@@ -44,17 +44,17 @@ def run_downward_standalone(domain_path: str, problem_path: str, opts) -> None:
     ADD = "add()"
     FF = "ff()"
 
-    QBWLGC = 'qbwl(h="gc")'
-    QBWLADD = 'qbwl(h="add")'
-    QBWLFF = 'qbwl(h="ff")'
+    QBWLGC = f"qbwl(eval={GC})"
+    QBWLADD = f"qbwl(eval={ADD})"
+    QBWLFF = f"qbwl(eval={FF})"
 
-    QBPNGC = 'qbpn(h="gc")'
-    QBPNADD = 'qbpn(h="add")'
-    QBPNFF = 'qbpn(h="ff")'
+    QBPNGC = f"qbpn(eval={GC})"
+    QBPNADD = f"qbpn(eval={ADD})"
+    QBPNFF = f"qbpn(eval={FF})"
 
-    QBPNWLGC = 'qbpnwl(h="gc")'
-    QBPNWLADD = 'qbpnwl(h="add")'
-    QBPNWLFF = 'qbpnwl(h="ff")'
+    QBPNWLGC = f"qbpnwl(eval={GC})"
+    QBPNWLADD = f"qbpnwl(eval={ADD})"
+    QBPNWLFF = f"qbpnwl(eval={FF})"
 
     match opts.planner:
         case Planner.DOWNWARD_BLIND:

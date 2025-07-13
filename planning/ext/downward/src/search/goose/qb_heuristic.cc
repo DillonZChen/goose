@@ -11,7 +11,9 @@ namespace qb_heuristic {
                            bool cache_estimates,
                            const std::string &description,
                            utils::Verbosity verbosity,
-                           const std::shared_ptr<Heuristic> &heuristic)
+                           const std::shared_ptr<Evaluator> base_heuristic)
       : Heuristic(transform, cache_estimates, description, verbosity),
-        original_heuristic(heuristic) {}
-}  // namespace goal_count_heuristic
+        base_heuristic(base_heuristic),
+        log(utils::get_log_for_verbosity(verbosity)),
+        statistics(log) {}
+}  // namespace qb_heuristic

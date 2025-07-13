@@ -14,7 +14,6 @@ namespace qb_heuristic {
    protected:
     std::shared_ptr<feature_generator::WLFeatures> model;
     wl_utils::DownwardToWlplanAtomMapper fd_fact_to_wlplan_atom;
-    std::map<std::pair<int, int>, int> feat_to_lowest_h;
 
     virtual int compute_heuristic(const State &ancestor_state) override;
 
@@ -23,7 +22,7 @@ namespace qb_heuristic {
                            bool cache_estimates,
                            const std::string &description,
                            utils::Verbosity verbosity,
-                           const std::shared_ptr<Heuristic> &heuristic);
+                           const std::shared_ptr<Evaluator> base_heuristic);
   };
 }  // namespace qb_heuristic
 

@@ -8,8 +8,6 @@
 namespace qb_heuristic {
   class QbPnHeuristic : public QbHeuristic {
    protected:
-    std::map<FactPair, int> fact_pair_to_lowest_h;
-
     virtual int compute_heuristic(const State &ancestor_state) override;
 
    public:
@@ -17,7 +15,7 @@ namespace qb_heuristic {
                            bool cache_estimates,
                            const std::string &description,
                            utils::Verbosity verbosity,
-                           const std::shared_ptr<Heuristic> &heuristic);
+                           const std::shared_ptr<Evaluator> base_heuristic);
   };
 }  // namespace qb_heuristic
 

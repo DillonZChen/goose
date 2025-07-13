@@ -15,8 +15,8 @@ namespace qb_heuristic {
                                bool cache_estimates,
                                const std::string &description,
                                utils::Verbosity verbosity,
-                               const std::shared_ptr<Heuristic> &heuristic)
-      : QbHeuristic(transform, cache_estimates, description, verbosity, heuristic) {
+                               const std::shared_ptr<Evaluator> base_heuristic)
+      : QbHeuristic(transform, cache_estimates, description, verbosity, base_heuristic) {
     // Construct predicates
     std::cout << "Collecting predicates..." << std::endl;
     std::map<FactPair, wl_utils::PredArgsString> fd_fact_to_pred_args =
@@ -54,10 +54,10 @@ namespace qb_heuristic {
   }
 
   int QbWlHeuristic::compute_heuristic(const State &ancestor_state) {
-    int h = original_heuristic->compute_heuristic(ancestor_state);
-    if (h == DEAD_END) {
+    EvaluationContext eval_context(ancestor_state, 0, false, &statistics);
+    int h = eval_context.get_evaluator_value_or_infinity(base_heuristic.get());
+    if (h == EvaluationResult::INFTY)
       return DEAD_END;
-    }
 
     int nov_h = 0;
     int non_h = 0;
@@ -87,7 +87,7 @@ namespace qb_heuristic {
     QbWlHeuristicFeature() : TypedFeature("qbwl") {
       document_title("Goal count heuristic");
 
-      add_option<std::string>("h", "base heuristic to use, choose from {gc, add, ff}", "ff");
+      add_option<shared_ptr<Evaluator>>("eval", "Heuristic for novelty calculation");
       add_heuristic_options_to_feature(*this, "qbwl");
 
       document_language_support("action costs", "ignored by design");
@@ -102,39 +102,11 @@ namespace qb_heuristic {
 
     virtual shared_ptr<QbWlHeuristic> create_component(const plugins::Options &opts,
                                                        const utils::Context &) const override {
-
-      std::string base_h_name = opts.get<std::string>("h");
-      std::cout << "Initialising base heuristic h=" << base_h_name << std::endl;
-      std::shared_ptr<Heuristic> heuristic;
-      if (base_h_name == "gc") {
-        heuristic = plugins::make_shared_from_arg_tuples<goal_count_heuristic::GoalCountHeuristic>(
-            get_heuristic_arguments_from_options(opts));
-      } else if (base_h_name == "add") {
-        heuristic = std::make_shared<additive_heuristic::AdditiveHeuristic>(
-            tasks::AxiomHandlingType::APPROXIMATE_NEGATIVE,
-            opts.get<shared_ptr<AbstractTask>>("transform"),
-            true,
-            "add",
-            utils::Verbosity::SILENT);
-      } else if (base_h_name == "ff") {
-        heuristic = std::make_shared<ff_heuristic::FFHeuristic>(
-            tasks::AxiomHandlingType::APPROXIMATE_NEGATIVE,
-            opts.get<shared_ptr<AbstractTask>>("transform"),
-            true,
-            "ff",
-            utils::Verbosity::SILENT);
-      } else {
-        cerr << "Unknown base heuristic: " << base_h_name << endl;
-        exit(1);
-      }
-      std::cout << "Base heuristic initialised" << std::endl;
-
       return std::make_shared<QbWlHeuristic>(opts.get<shared_ptr<AbstractTask>>("transform"),
                                              opts.get<bool>("cache_estimates"),
                                              opts.get<std::string>("description"),
                                              opts.get<utils::Verbosity>("verbosity"),
-
-                                             heuristic);
+                                             opts.get<shared_ptr<Evaluator>>("eval"));
     }
   };
 

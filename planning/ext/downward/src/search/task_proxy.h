@@ -166,6 +166,10 @@ public:
         return fact;
     }
 
+    std::pair<int, int> get_int_pair() const {
+        return std::make_pair(fact.var, fact.value);
+    }
+
     std::string get_name() const {
         return task->get_fact_name(fact);
     }
