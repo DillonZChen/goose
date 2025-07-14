@@ -20,31 +20,22 @@ def main():
         raise EnvironmentError(f"Apptainer is not installed. Please install it with `sudo apt install apptainer`.")
 
     suffix = "-cuda" if args.cuda else ""
-    INTERMEDIATE_DEF_0 = f"{CUR_DIR}/docker-ubuntu22_04{suffix}.def"
-    INTERMEDIATE_SIF_0 = f"{CUR_DIR}/docker-ubuntu22_04{suffix}.sif"
-    INTERMEDIATE_DEF_1 = f"{CUR_DIR}/goose-base{suffix}.def"
-    INTERMEDIATE_SIF_1 = f"{CUR_DIR}/goose-base{suffix}.sif"
+    INTERMEDIATE_DEF = f"{CUR_DIR}/docker-ubuntu22_04{suffix}.def"
+    INTERMEDIATE_SIF = f"{CUR_DIR}/docker-ubuntu22_04{suffix}.sif"
     DEF = f"{CUR_DIR}/goose{suffix}.def"
     SIF = f"{ROOT_DIR}/goose{suffix}.sif"
 
     # Check if remove intermediate image
-    if args.clear_cache and os.path.exists(INTERMEDIATE_SIF_1):
-        print(f"Removing intermediate image: {INTERMEDIATE_SIF_1}")
-        os.remove(INTERMEDIATE_SIF_1)
+    if args.clear_cache and os.path.exists(INTERMEDIATE_SIF):
+        print(f"Removing intermediate image: {INTERMEDIATE_SIF}")
+        os.remove(INTERMEDIATE_SIF)
 
     # Build intermediate image 0
-    if not os.path.exists(INTERMEDIATE_SIF_0):
-        print(f"Building intermediate image: {INTERMEDIATE_SIF_0}")
-        subprocess.call(["apptainer", "build", INTERMEDIATE_SIF_0, INTERMEDIATE_DEF_0], cwd=ROOT_DIR)
+    if not os.path.exists(INTERMEDIATE_SIF):
+        print(f"Building intermediate image: {INTERMEDIATE_SIF}")
+        subprocess.call(["apptainer", "build", INTERMEDIATE_SIF, INTERMEDIATE_DEF], cwd=ROOT_DIR)
     else:
-        print(f"Intermediate image {INTERMEDIATE_SIF_0} exists. Skipping intermediate build 0.")
-
-    # # Build intermediate image 1
-    # if not os.path.exists(INTERMEDIATE_SIF_1):
-    #     print(f"Building intermediate image: {INTERMEDIATE_SIF_1}")
-    #     subprocess.call(["apptainer", "build", INTERMEDIATE_SIF_1, INTERMEDIATE_DEF_1], cwd=ROOT_DIR)
-    # else:
-    #     print(f"Intermediate image {INTERMEDIATE_SIF_1} exists. Skipping intermediate build 1.")
+        print(f"Intermediate image {INTERMEDIATE_SIF} exists. Skipping intermediate build.")
 
     # Build final image
     subprocess.call(["apptainer", "build", SIF, DEF], cwd=ROOT_DIR)

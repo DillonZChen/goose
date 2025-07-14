@@ -70,10 +70,6 @@ for planner in $PLANNERS; do
     if [[ "$arg" = "fresh" ]]; then
         rm -r builds
     fi
-    if [[ -f "compile.sh" ]]; then
-        ./compile.sh # numeric-downward
-    else
-        python3 build.py
-    fi
+    ./build
     cd -
 done
