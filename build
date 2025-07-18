@@ -24,7 +24,7 @@ wlplan | succgen | planners | downward | numeric-downward | powerlifted | all)
 esac
 
 # Planners
-PLANNERS_DIR="planning/ext"
+PLANNERS_DIR="goose/planning/ext"
 if [[ "$arg" = "downward" ]]; then
     PLANNERS="downward"
 elif [[ "$arg" = "numeric-downward" ]]; then
