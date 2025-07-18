@@ -2,7 +2,8 @@ Bootstrap: localimage
 From: apptainer/docker-ubuntu22_04.sif
 
 %files
-    goose/ /goose/
+    goose /goose/
+    wlplan /goose/
 
     *.py /goose/
     build /goose/
