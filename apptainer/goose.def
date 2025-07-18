@@ -2,11 +2,7 @@ Bootstrap: localimage
 From: apptainer/docker-ubuntu22_04.sif
 
 %files
-    enums /goose/
-    learning /goose/
-    planning /goose/
-    util /goose/
-    wlplan /goose/
+    goose/ /goose/
 
     *.py /goose/
     build /goose/
@@ -37,8 +33,10 @@ From: apptainer/docker-ubuntu22_04.sif
 %runscript
     #!/bin/bash
 
+    USAGE="Usage: ./goose.sif <train|plan> <args>"
+
     if [ "$#" -lt 1 ]; then
-        echo "Usage: ./goose.sif <train|plan> <args>"
+        echo "$USAGE"
         exit 1
     fi
 
@@ -50,7 +48,7 @@ From: apptainer/docker-ubuntu22_04.sif
     elif [ "$command" = "train" ]; then
         python3.10 /goose/train.py "$@"
     else
-        echo "Usage: ./goose.sif <train|plan> <args>"
+        echo "$USAGE"
         exit 1
     fi
 

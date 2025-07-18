@@ -2,11 +2,7 @@ Bootstrap: localimage
 From: apptainer/docker-ubuntu22_04.sif
 
 %files
-    enums /goose/
-    learning /goose/
-    planning /goose/
-    util /goose/
-    wlplan /goose/
+    goose/ /goose/
 
     *.py /goose/
     build /goose/
@@ -17,22 +13,20 @@ From: apptainer/docker-ubuntu22_04.sif
     cd /goose
 
     # Python dependencies
-    pip3 install -r requirements.txt
+    pip install -r requirements.txt
 
     # Torch dependencies
-    pip3 install torch --index-url https://download.pytorch.org/whl/cu121
-    pip3 install torch_geometric
-    pip3 install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv -f https://data.pyg.org/whl/torch-2.4.0+cu121.html
+    pip install torch --index-url https://download.pytorch.org/whl/cu121
+    pip install torch_geometric
+    pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv -f https://data.pyg.org/whl/torch-2.4.0+cu121.html
 
     # Clear build directories
     rm -rf wlplan/build
     rm -rf planning/ext/*/builds
     rm -rf planning/ext/succgen/build
 
-    # Build necessary components
-    ./build wlplan
-    ./build succgen
-    ./build fd
+    # Build all components
+    ./build
 
     # Clean up
     apt-get clean
@@ -44,8 +38,10 @@ From: apptainer/docker-ubuntu22_04.sif
 %runscript
     #!/bin/bash
 
+    USAGE="Usage: ./goose.sif <train|plan> <args>"
+
     if [ "$#" -lt 1 ]; then
-        echo "Usage: ./goose.sif <train|plan> <args>"
+        echo "$USAGE"
         exit 1
     fi
 
@@ -57,7 +53,7 @@ From: apptainer/docker-ubuntu22_04.sif
     elif [ "$command" = "train" ]; then
         python3.10 /goose/train.py "$@"
     else
-        echo "Usage: ./goose.sif <train|plan> <args>"
+        echo "$USAGE"
         exit 1
     fi
 
