@@ -6,8 +6,9 @@ import pytest
 
 root = Path(__file__).parent.parent
 sys.path.insert(0, str(root))
-sys.path.insert(0, str(root / "util"))
-sys.path.insert(0, str(root / "enums"))
+sys.path.insert(0, str(root / "goose"))
+sys.path.insert(0, str(root / "goose" / "util"))
+sys.path.insert(0, str(root / "goose" / "enums"))
 
 
 def pytest_addoption(parser):

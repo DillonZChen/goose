@@ -1,7 +1,7 @@
 import pytest
 from test_utils import execute_command, get_command_prefix, get_domain_pddl, get_problem_pddl
 
-from enums.planner import Planner
+from goose.enums.planner import Planner
 
 
 BENCHMARK_GROUP = "ipc23lt"

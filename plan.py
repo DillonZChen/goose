@@ -8,17 +8,17 @@ import random
 import sys
 import zipfile
 
-from enums.mode import Mode
-from enums.planner import Planner
-from enums.policy_type import PolicyType
-from enums.serialisation import namespace_from_serialisable
-from enums.state_representation import StateRepresentation
-from planning.policy.wlf_policy import WlfPolicyExecutor
-from planning.search.downward import run_downward_fdr, run_downward_pddl, run_downward_standalone
-from planning.search.numeric_downward import run_numeric_downward
-from planning.search.powerlifted import run_powerlifted, run_powerlifted_standalone
-from util.filesystem import file_exists
-from util.logging import init_logger, log_opts
+from goose.enums.mode import Mode
+from goose.enums.planner import Planner
+from goose.enums.policy_type import PolicyType
+from goose.enums.serialisation import namespace_from_serialisable
+from goose.enums.state_representation import StateRepresentation
+from goose.planning.policy.wlf_policy import WlfPolicyExecutor
+from goose.planning.search.downward import run_downward_fdr, run_downward_pddl, run_downward_standalone
+from goose.planning.search.numeric_downward import run_numeric_downward
+from goose.planning.search.powerlifted import run_powerlifted, run_powerlifted_standalone
+from goose.util.filesystem import file_exists
+from goose.util.logging import init_logger, log_opts
 
 
 _DESCRIPTION = """GOOSE planner script.
@@ -217,7 +217,7 @@ def main():
                                 + "Please install them to use GNN architectures. Exiting."
                             )
                             sys.exit(1)
-                        from planning.policy.gnn_policy import GnnPolicyExecutor
+                        from goose.planning.policy.gnn_policy import GnnPolicyExecutor
 
                         policy = GnnPolicyExecutor(**kwargs)
                     case _:

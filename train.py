@@ -13,23 +13,23 @@ import numpy as np
 import termcolor as tc
 import toml
 
-from enums.mode import Mode
-from enums.policy_type import PolicyType
-from enums.serialisation import namespace_from_serialisable, namespace_to_serialisable
-from enums.state_representation import StateRepresentation
-from learning.dataset import get_domain_file_from_opts, get_domain_from_opts, get_training_dir_from_opts
-from learning.dataset.dataset_factory import get_dataset
-from learning.dataset.state_to_vec import embed_data
-from learning.predictor.linear_model.predictor_factory import (
+from goose.enums.mode import Mode
+from goose.enums.policy_type import PolicyType
+from goose.enums.serialisation import namespace_from_serialisable, namespace_to_serialisable
+from goose.enums.state_representation import StateRepresentation
+from goose.learning.dataset import get_domain_file_from_opts, get_domain_from_opts, get_training_dir_from_opts
+from goose.learning.dataset.dataset_factory import get_dataset
+from goose.learning.dataset.state_to_vec import embed_data
+from goose.learning.predictor.linear_model.predictor_factory import (
     get_available_predictors,
     get_predictor,
     is_unitary_classifier,
 )
-from util.distinguish_test import distinguish
-from util.filesystem import get_path_error_msg
-from util.logging import init_logger, log_opts
-from util.pca_visualise import visualise
-from util.timer import TimerContextManager
+from goose.util.distinguish_test import distinguish
+from goose.util.filesystem import get_path_error_msg
+from goose.util.logging import init_logger, log_opts
+from goose.util.pca_visualise import visualise
+from goose.util.timer import TimerContextManager
 from wlplan.feature_generator import (
     get_available_feature_algorithms,
     get_available_pruning_methods,
@@ -418,10 +418,10 @@ def train_gnn(opts: argparse.Namespace) -> None:
         )
         sys.exit(1)
 
-    from learning.predictor.neural_network.gnn import RGNN
-    from learning.predictor.neural_network.optimise import optimise_weights
-    from learning.predictor.neural_network.serialise import save_gnn_weights
-    from learning.pyg import get_data_loaders
+    from goose.learning.predictor.neural_network.gnn import RGNN
+    from goose.learning.predictor.neural_network.optimise import optimise_weights
+    from goose.learning.predictor.neural_network.serialise import save_gnn_weights
+    from goose.learning.pyg import get_data_loaders
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     logging.info(f"Detected {tc.colored(device, 'blue')}")

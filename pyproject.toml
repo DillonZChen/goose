@@ -7,7 +7,7 @@ dynamic = ["version"]
 
 [tool.black]
 line-length = 119
-extend-exclude = "/(build|venv|.venv|planning/ext/downward|planning/ext/numeric-downward|planning/ext/powerlifted|wlplan|benchmarks)/"
+extend-exclude = "/(build|venv|.venv|goose/planning/ext/downward|goose/planning/ext/numeric-downward|goose/planning/ext/powerlifted|wlplan|benchmarks)/"
 
 [tool.isort]
 profile = "black"
@@ -16,9 +16,9 @@ skip = [
     "build/",
     "venv/",
     ".venv/",
-    "planning/ext/downward/",
-    "planning/ext/numeric-downward/",
-    "planning/ext/powerlifted/",
+    "goose/planning/ext/downward/",
+    "goose/planning/ext/numeric-downward/",
+    "goose/planning/ext/powerlifted/",
     "wlplan/",
     "benchmarks/",
 ]
