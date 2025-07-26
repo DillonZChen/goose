@@ -163,7 +163,7 @@ e.g. with numeric Childsnack
 ## References
 GOOSE has been published in various venues. Please refer to the [releases](https://github.com/DillonZChen/goose/releases) page to find the latest version to use or code from a specific publication. The relevant publications so far for this repository are listed as follows.
 
-- Dillon Z. Chen. **Weisfeiler-Leman Features for Planning and Search: A 1,000,000 Sample Size Hyperparameter Study**. ECAI 2025.
+- Dillon Z. Chen. **Weisfeiler-Leman Features for Planning: A 1,000,000 Sample Size Hyperparameter Study**. ECAI 2025.
 - Dillon Z. Chen and Sylvie Thiébaux. **Graph Learning for Numeric Planning**. NeurIPS 2024.
 - Dillon Z. Chen and Felipe Trevizan and Sylvie Thiébaux. **Return to Tradition: Learning Reliable Heuristics with Classical Machine Learning**. ICAPS 2024.
 - Dillon Z. Chen and Sylvie Thiébaux and Felipe Trevizan. **Learning Domain-Independent Heuristics for Grounded and Lifted Planning**. AAAI 2024.
