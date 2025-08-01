@@ -92,7 +92,7 @@ namespace qb_heuristic {
 
       add_option<shared_ptr<Evaluator>>("eval", "Heuristic for novelty calculation");
       add_option<int>("l", "Number of wl iterations", "2");
-      add_option<std::string>("g", "Graph representation", "'ilg'");
+      add_option<std::string>("g", "Graph representation", "ilg");
       add_heuristic_options_to_feature(*this, "qbwl");
 
       document_language_support("action costs", "ignored by design");

@@ -12,7 +12,7 @@ DOMAIN_PROBLEMS = [
     ("ferry", "0_01"),
 ]
 PLANNER_CONFIGS = [
-    ("downward", "--search eager_greedy([qbpnwl(eval=ff())])"),
+    ("downward", '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2)])'),
     ("powerlifted", "-s gbfs -e qbpnwlff"),
 ]
 
