@@ -10,7 +10,9 @@ from fixtures import get_data_input_argument
 
 
 def get_command_prefix(request: pytest.FixtureRequest, script: str) -> str:
-    """Use apptainer or local script as specified by the command line option."""
+    """Use apptainer or local script as specified by the command line option
+    e.g. ./goose.sif plan.py or python3 plan.py
+    """
     if request.config.getoption("--apptainer"):
         assert os.path.exists("./goose.sif"), "Apptainer image 'goose.sif' not found. Please build it first."
         return f"./goose.sif {script}"
@@ -110,14 +112,13 @@ def plan(
     script = get_command_prefix(request, script="plan")
 
     if not fdr_input:
-        domain_pddl = get_domain_pddl(benchmark_group, domain_name)
-        problem_pddl = get_problem_pddl(benchmark_group, domain_name, problem_name)
-        inputs = f"{domain_pddl} {problem_pddl}"
+        input1 = get_domain_pddl(benchmark_group, domain_name)
+        input2 = get_problem_pddl(benchmark_group, domain_name, problem_name)
     else:
-        problem_fdr = f"benchmarks/fdr-{benchmark_group}/{domain_name}/testing/p{problem_name}.sas"
-        inputs = f"{problem_fdr}"
+        input1 = "sas"
+        input2 = f"benchmarks/fdr-{benchmark_group}/{domain_name}/testing/p{problem_name}.sas"
 
-    cmd = f"{script} {inputs} {model_path} --timeout {timeout}"
+    cmd = f"{script} {input1} {input2} {model_path} --timeout {timeout}"
     if planner is not None:
         cmd += f" --planner {planner}"
 

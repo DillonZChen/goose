@@ -3,12 +3,10 @@ from goose.util.paths import PLANNERS_DIR
 from goose.util.shell import execute_cmd
 
 
-def run_powerlifted(domain_path: str, problem_path: str, wlf_params_path: str, opts) -> None:
+def run_powerlifted(domain_path: str, problem_path: str, config: list[str], opts) -> None:
     cmd = [
         "python3",
         f"{PLANNERS_DIR}/powerlifted/powerlifted.py",
-        "-s",
-        "gbfs",
         "-d",
         domain_path,
         "-i",
@@ -17,15 +15,12 @@ def run_powerlifted(domain_path: str, problem_path: str, wlf_params_path: str, o
         "clique_kckp",  # supports negative preconditions
         "--time-limit",
         opts.timeout,
-        "-e",
-        "wlgoose",
-        "-m",
-        wlf_params_path,
         "--translator-output-file",
         opts.intermediate_file,
         "--plan-file",
         opts.plan_file,
     ]
+    cmd += config
     execute_cmd(cmd)
 
 

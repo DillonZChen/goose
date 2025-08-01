@@ -3,8 +3,7 @@ from goose.util.paths import PLANNERS_DIR
 from goose.util.shell import execute_cmd
 
 
-def run_downward_pddl(domain_path: str, problem_path: str, wlf_params_path: str, opts) -> None:
-    h_goose = f'wlgoose(model_file="{wlf_params_path}")'
+def run_downward_pddl(domain_path: str, problem_path: str, config: list[str], opts) -> None:
     cmd = [
         "python3",
         f"{PLANNERS_DIR}/downward/fast-downward.py",
@@ -16,14 +15,14 @@ def run_downward_pddl(domain_path: str, problem_path: str, wlf_params_path: str,
         opts.timeout,
         domain_path,
         problem_path,
-        "--search",
-        f"eager_greedy([{h_goose}])",
+        # "--search",
+        # f"eager_greedy([{h_goose}])",
     ]
+    cmd += config
     execute_cmd(cmd)
 
 
-def run_downward_fdr(sas_path: str, wlf_params_path: str, opts) -> None:
-    h_goose = f'wlgoose(model_file="{wlf_params_path}")'
+def run_downward_fdr(sas_path: str, config: list[str], opts) -> None:
     cmd = [
         "python3",
         f"{PLANNERS_DIR}/downward/fast-downward.py",
@@ -32,9 +31,10 @@ def run_downward_fdr(sas_path: str, wlf_params_path: str, opts) -> None:
         "--search-time-limit",
         opts.timeout,
         sas_path,
-        "--search",
-        f"eager_greedy([{h_goose}])",
+        # "--search",
+        # f"{h_goose}])",
     ]
+    cmd += config
     execute_cmd(cmd)
 
 
