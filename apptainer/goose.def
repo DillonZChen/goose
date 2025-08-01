@@ -18,8 +18,8 @@ From: apptainer/docker-ubuntu22_04.sif
 
     # Clear build directories
     rm -rf wlplan/build
-    rm -rf planning/ext/*/builds
-    rm -rf planning/ext/succgen/build
+    rm -rf goose/planning/ext/*/builds
+    rm -rf goose/planning/ext/succgen/build
 
     # Build all components
     ./build
