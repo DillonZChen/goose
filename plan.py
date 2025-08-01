@@ -33,7 +33,7 @@ _EPILOG = """example usages:
 ./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2)])'
 
 # Plan with FDR input, Downward, and novelty heuristic
-./plan.py sas benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas --planner downward '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2)])'
+./plan.py sas benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas --planner downward-fdr '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2)])'
 
 # Plan with PDDL input, Powerlifted, and novelty heuristic
 ./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner powerlifted '-s gbfs -e qbpnwlff'
