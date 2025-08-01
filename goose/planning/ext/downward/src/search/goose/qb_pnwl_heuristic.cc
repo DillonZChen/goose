@@ -16,8 +16,8 @@ namespace qb_heuristic {
                                    const std::string &description,
                                    utils::Verbosity verbosity,
                                    const std::shared_ptr<Evaluator> base_heuristic,
-                                    int wl_iterations,
-                                    const std::string &graph_representation)
+                                   int wl_iterations,
+                                   const std::string &graph_representation)
       : QbHeuristic(transform, cache_estimates, description, verbosity, base_heuristic) {
     // Construct predicates
     std::cout << "Collecting predicates..." << std::endl;
@@ -48,7 +48,8 @@ namespace qb_heuristic {
 
     // Set up WLF generator
     std::cout << "Initialising WLF generator..." << std::endl;
-    model = std::make_shared<feature_generator::WLFeatures>(domain, graph_representation, wl_iterations, "none", true);
+    model = std::make_shared<feature_generator::WLFeatures>(
+        domain, graph_representation, wl_iterations, "none", true);
     model->set_problem(problem);
     model->be_quiet();
 
