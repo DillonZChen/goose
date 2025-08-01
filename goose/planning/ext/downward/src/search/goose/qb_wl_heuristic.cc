@@ -15,7 +15,9 @@ namespace qb_heuristic {
                                bool cache_estimates,
                                const std::string &description,
                                utils::Verbosity verbosity,
-                               const std::shared_ptr<Evaluator> base_heuristic)
+                               const std::shared_ptr<Evaluator> base_heuristic,
+                               int wl_iterations,
+                               const std::string &graph_representation)
       : QbHeuristic(transform, cache_estimates, description, verbosity, base_heuristic) {
     // Construct predicates
     std::cout << "Collecting predicates..." << std::endl;
@@ -46,7 +48,8 @@ namespace qb_heuristic {
 
     // Set up WLF generator
     std::cout << "Initialising WLF generator..." << std::endl;
-    model = std::make_shared<feature_generator::WLFeatures>(domain, "ilg", 2, "none", true);
+    model = std::make_shared<feature_generator::WLFeatures>(
+        domain, graph_representation, wl_iterations, "none", true);
     model->set_problem(problem);
     model->be_quiet();
 
@@ -88,6 +91,8 @@ namespace qb_heuristic {
       document_title("Goal count heuristic");
 
       add_option<shared_ptr<Evaluator>>("eval", "Heuristic for novelty calculation");
+      add_option<int>("l", "Number of wl iterations", "2");
+      add_option<std::string>("g", "Graph representation", "ilg");
       add_heuristic_options_to_feature(*this, "qbwl");
 
       document_language_support("action costs", "ignored by design");
@@ -106,7 +111,9 @@ namespace qb_heuristic {
                                              opts.get<bool>("cache_estimates"),
                                              opts.get<std::string>("description"),
                                              opts.get<utils::Verbosity>("verbosity"),
-                                             opts.get<shared_ptr<Evaluator>>("eval"));
+                                             opts.get<shared_ptr<Evaluator>>("eval"),
+                                             opts.get<int>("l"),
+                                             opts.get<std::string>("g"));
     }
   };
 

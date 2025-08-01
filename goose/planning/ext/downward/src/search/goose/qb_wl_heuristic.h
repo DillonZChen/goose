@@ -22,7 +22,9 @@ namespace qb_heuristic {
                            bool cache_estimates,
                            const std::string &description,
                            utils::Verbosity verbosity,
-                           const std::shared_ptr<Evaluator> base_heuristic);
+                           const std::shared_ptr<Evaluator> base_heuristic,
+                           int wl_iterations,
+                           const std::string &graph_representation);
   };
 }  // namespace qb_heuristic
 
