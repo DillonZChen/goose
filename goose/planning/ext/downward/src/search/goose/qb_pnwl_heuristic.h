@@ -1,7 +1,7 @@
 #ifndef GOOSE_QB_PNWL_HEURISTIC_H
 #define GOOSE_QB_PNWL_HEURISTIC_H
 
-#include "../ext/wlplan/include/feature_generator/feature_generators/wl.hpp"
+#include "../ext/wlplan/include/feature_generator/features.hpp"
 #include "../ext/wlplan/include/planning/predicate.hpp"
 #include "qb_heuristic.h"
 #include "wl_utils.hpp"
@@ -11,7 +11,7 @@
 namespace qb_heuristic {
   class QbPnWlHeuristic : public QbHeuristic {
    protected:
-    std::shared_ptr<feature_generator::WLFeatures> model;
+    std::shared_ptr<feature_generator::Features> model;
     wl_utils::DownwardToWlplanAtomMapper fd_fact_to_wlplan_atom;
 
     virtual int compute_heuristic(const State &ancestor_state) override;
@@ -23,7 +23,8 @@ namespace qb_heuristic {
                              utils::Verbosity verbosity,
                              const std::shared_ptr<Evaluator> base_heuristic,
                              int wl_iterations,
-                             const std::string &graph_representation);
+                             const std::string &graph_representation,
+                             const std::string &wl_algorithm);
   };
 }  // namespace qb_heuristic
 

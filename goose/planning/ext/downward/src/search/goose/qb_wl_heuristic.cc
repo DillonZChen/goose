@@ -1,5 +1,7 @@
 #include "qb_wl_heuristic.h"
 
+#include "../ext/wlplan/include/feature_generator/feature_generators/iwl.hpp"
+#include "../ext/wlplan/include/feature_generator/feature_generators/lwl2.hpp"
 #include "../ext/wlplan/include/feature_generator/feature_generators/wl.hpp"
 #include "../heuristics/additive_heuristic.h"
 #include "../heuristics/ff_heuristic.h"
@@ -17,7 +19,8 @@ namespace qb_heuristic {
                                utils::Verbosity verbosity,
                                const std::shared_ptr<Evaluator> base_heuristic,
                                int wl_iterations,
-                               const std::string &graph_representation)
+                               const std::string &graph_representation,
+                               const std::string &wl_algorithm)
       : QbHeuristic(transform, cache_estimates, description, verbosity, base_heuristic) {
     // Construct predicates
     std::cout << "Collecting predicates..." << std::endl;
@@ -48,12 +51,23 @@ namespace qb_heuristic {
 
     // Set up WLF generator
     std::cout << "Initialising WLF generator..." << std::endl;
-    model = std::make_shared<feature_generator::WLFeatures>(
-        domain, graph_representation, wl_iterations, "none", true);
+    if (wl_algorithm == "wl") {
+      model = std::make_shared<feature_generator::WLFeatures>(
+          domain, graph_representation, wl_iterations, "none", true);
+    } else if (wl_algorithm == "lwl2") {
+      model = std::make_shared<feature_generator::LWL2Features>(
+          domain, graph_representation, wl_iterations, "none", true);
+    } else if (wl_algorithm == "iwl") {
+      model = std::make_shared<feature_generator::IWLFeatures>(
+          domain, graph_representation, wl_iterations, "none", true);
+    } else {
+      std::cerr << "Unknown WL algorithm: " << wl_algorithm << std::endl;
+      exit(1);
+    }
     model->set_problem(problem);
     model->be_quiet();
 
-    std::cout << "WL Novelty Heuristic intialised!" << std::endl;
+    std::cout << "WL Novelty Heuristic initialised!" << std::endl;
   }
 
   int QbWlHeuristic::compute_heuristic(const State &ancestor_state) {
@@ -93,6 +107,7 @@ namespace qb_heuristic {
       add_option<shared_ptr<Evaluator>>("eval", "Heuristic for novelty calculation");
       add_option<int>("l", "Number of wl iterations", "2");
       add_option<std::string>("g", "Graph representation", "ilg");
+      add_option<std::string>("w", "WL algorithm", "wl");
       add_heuristic_options_to_feature(*this, "qbwl");
 
       document_language_support("action costs", "ignored by design");
@@ -113,7 +128,8 @@ namespace qb_heuristic {
                                              opts.get<utils::Verbosity>("verbosity"),
                                              opts.get<shared_ptr<Evaluator>>("eval"),
                                              opts.get<int>("l"),
-                                             opts.get<std::string>("g"));
+                                             opts.get<std::string>("g"),
+                                             opts.get<std::string>("w"));
     }
   };
 
