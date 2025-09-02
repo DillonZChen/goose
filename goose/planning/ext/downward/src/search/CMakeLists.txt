@@ -858,34 +858,34 @@ create_fast_downward_library(
 #         variable_order_finder
 # )
 
-# create_fast_downward_library(
-#     NAME landmarks
-#     HELP "Plugin containing the code to reason with landmarks"
-#     SOURCES
-#         landmarks/exploration
-#         landmarks/landmark
-#         landmarks/landmark_cost_partitioning_algorithms
-#         landmarks/landmark_cost_partitioning_heuristic
-#         landmarks/landmark_factory
-#         landmarks/landmark_factory_h_m
-#         landmarks/landmark_factory_reasonable_orders_hps
-#         landmarks/landmark_factory_merged
-#         landmarks/landmark_factory_relaxation
-#         landmarks/landmark_factory_rpg_exhaust
-#         landmarks/landmark_factory_rpg_sasp
-#         landmarks/landmark_factory_zhu_givan
-#         landmarks/landmark_graph
-#         landmarks/landmark_heuristic
-#         landmarks/landmark_status_manager
-#         landmarks/landmark_sum_heuristic
-#         landmarks/util
-#     DEPENDS
-#         default_value_axioms_task
-#         lp_solver
-#         priority_queues
-#         successor_generator
-#         task_properties
-# )
+create_fast_downward_library(
+    NAME landmarks
+    HELP "Plugin containing the code to reason with landmarks"
+    SOURCES
+        landmarks/exploration
+        landmarks/landmark
+        landmarks/landmark_cost_partitioning_algorithms
+        landmarks/landmark_cost_partitioning_heuristic
+        landmarks/landmark_factory
+        landmarks/landmark_factory_h_m
+        landmarks/landmark_factory_reasonable_orders_hps
+        landmarks/landmark_factory_merged
+        landmarks/landmark_factory_relaxation
+        landmarks/landmark_factory_rpg_exhaust
+        landmarks/landmark_factory_rpg_sasp
+        landmarks/landmark_factory_zhu_givan
+        landmarks/landmark_graph
+        landmarks/landmark_heuristic
+        landmarks/landmark_status_manager
+        landmarks/landmark_sum_heuristic
+        landmarks/util
+    DEPENDS
+        default_value_axioms_task
+        lp_solver
+        priority_queues
+        successor_generator
+        task_properties
+)
 
 # create_fast_downward_library(
 #     NAME operator_counting

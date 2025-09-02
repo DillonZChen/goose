@@ -30,10 +30,10 @@ _EPILOG = """example usages:
 ./plan.py sas benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas blocksworld.model
 
 # Plan with PDDL input, Downward, and novelty heuristic
-./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2)])'
+./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2,w="wl")])'
 
 # Plan with FDR input, Downward, and novelty heuristic
-./plan.py sas benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas --planner downward-fdr '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2)])'
+./plan.py sas benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas --planner downward '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2,w="wl")])'
 
 # Plan with PDDL input, Powerlifted, and novelty heuristic
 ./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner powerlifted '-s gbfs -e qbpnwlff'
@@ -164,7 +164,7 @@ def main():
     # Parse additional planning configs
     if model_path is None:
         config = input3.split(" ")
-    elif opts.planner in [Planner.DOWNWARD, Planner.DOWNWARD_FDR]:
+    elif opts.planner == Planner.DOWNWARD:
         config = ["--search", f'eager_greedy([wlgoose(model_file="{params_path}")])']
     elif opts.planner == Planner.NUMERIC_DOWNWARD:
         config = [
@@ -180,9 +180,10 @@ def main():
 
     match opts.planner:
         case Planner.DOWNWARD:
-            run_downward_pddl(domain_path=input1, problem_path=input2, config=config, opts=opts)
-        case Planner.DOWNWARD_FDR:
-            run_downward_fdr(sas_path=input2, config=config, opts=opts)
+            if is_fdr_input:
+                run_downward_fdr(sas_path=input2, config=config, opts=opts)
+            else:
+                run_downward_pddl(domain_path=input1, problem_path=input2, config=config, opts=opts)
         case Planner.NUMERIC_DOWNWARD:
             run_numeric_downward(domain_path=input1, problem_path=input2, config=config, opts=opts)
         case Planner.POWERLIFTED:
