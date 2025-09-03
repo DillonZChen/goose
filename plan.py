@@ -135,7 +135,7 @@ def main():
         if PolicyType.is_not_search(train_opts.policy_type):
             set_planner(Planner.POLICY)
         elif is_fdr_input:
-            set_planner(Planner.DOWNWARD_FDR)
+            set_planner(Planner.DOWNWARD)
         elif is_pddl_input:
             match train_opts.state_representation:
                 case StateRepresentation.DOWNWARD:

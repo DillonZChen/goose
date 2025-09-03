@@ -3,7 +3,7 @@ From: apptainer/docker-ubuntu22_04.sif
 
 %files
     goose /goose/
-    wlplan /goose/
+    ext /goose/
 
     *.py /goose/
     build /goose/
@@ -17,12 +17,10 @@ From: apptainer/docker-ubuntu22_04.sif
     pip install -r requirements.txt
 
     # Clear build directories
-    rm -rf wlplan/build
-    rm -rf goose/planning/ext/*/builds
-    rm -rf goose/planning/ext/succgen/build
+    ./build clean
 
     # Build all components
-    ./build
+    ./build all
 
     # Clean up
     apt-get clean

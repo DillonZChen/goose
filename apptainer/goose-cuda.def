@@ -3,7 +3,7 @@ From: apptainer/docker-ubuntu22_04.sif
 
 %files
     goose /goose/
-    wlplan /goose/
+    ext /goose/
 
     *.py /goose/
     build /goose/
@@ -22,12 +22,10 @@ From: apptainer/docker-ubuntu22_04.sif
     pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv -f https://data.pyg.org/whl/torch-2.4.0+cu121.html
 
     # Clear build directories
-    rm -rf wlplan/build
-    rm -rf goose/planning/ext/*/builds
-    rm -rf goose/planning/ext/succgen/build
+    ./build clean
 
     # Build all components
-    ./build
+    ./build all
 
     # Clean up
     apt-get clean

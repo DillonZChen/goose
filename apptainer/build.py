@@ -27,15 +27,15 @@ def main():
 
     # Check if remove intermediate image
     if args.clear_cache and os.path.exists(INTERMEDIATE_SIF):
-        print(f"Removing intermediate image: {INTERMEDIATE_SIF}")
+        print(f"Removing intermediate image: {INTERMEDIATE_SIF}", flush=True)
         os.remove(INTERMEDIATE_SIF)
 
     # Build intermediate image 0
     if not os.path.exists(INTERMEDIATE_SIF):
-        print(f"Building intermediate image: {INTERMEDIATE_SIF}")
+        print(f"Building intermediate image: {INTERMEDIATE_SIF}", flush=True)
         subprocess.call(["apptainer", "build", INTERMEDIATE_SIF, INTERMEDIATE_DEF], cwd=ROOT_DIR)
     else:
-        print(f"Intermediate image {INTERMEDIATE_SIF} exists. Skipping intermediate build.")
+        print(f"Intermediate image {INTERMEDIATE_SIF} exists. Skipping intermediate build.", flush=True)
 
     # Build final image
     subprocess.call(["apptainer", "build", SIF, DEF], cwd=ROOT_DIR)

@@ -1,5 +1,5 @@
 [submodule "wlplan"]
-	path = wlplan
+	path = ext/wlplan
 	url = https://github.com/DillonZChen/wlplan
 [submodule "benchmarks"]
 	path = benchmarks

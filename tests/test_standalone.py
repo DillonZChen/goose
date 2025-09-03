@@ -1,8 +1,6 @@
 import pytest
 from test_utils import execute_command, get_command_prefix, get_domain_pddl, get_problem_pddl
 
-from goose.enums.planner import Planner
-
 
 BENCHMARK_GROUP = "ipc23lt"
 CONFIG_NAME = "classic"
@@ -12,7 +10,12 @@ DOMAIN_PROBLEMS = [
     ("ferry", "0_01"),
 ]
 PLANNER_CONFIGS = [
-    ("downward", '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2)])'),
+    ("downward", '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2,w="wl")])'),
+    ("downward", '--search eager_greedy([qbpnwl(eval=ff(),g="ploig",l=2,w="wl")])'),
+    ("downward", '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2,w="lwl2")])'),
+    ("downward", '--search eager_greedy([qbpnwl(eval=ff(),g="ploig",l=2,w="lwl2")])'),
+    ("downward", '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2,w="iwl")])'),
+    ("downward", '--search eager_greedy([qbpnwl(eval=ff(),g="ploig",l=2,w="iwl")])'),
     ("powerlifted", "-s gbfs -e qbpnwlff"),
 ]
 
