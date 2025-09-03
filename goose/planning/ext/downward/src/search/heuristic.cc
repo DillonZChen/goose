@@ -78,7 +78,7 @@ EvaluationResult Heuristic::compute_result(EvaluationContext &eval_context) {
         result.set_count_evaluation(true);
     }
 
-    assert(heuristic == DEAD_END || heuristic >= 0);
+    // assert(heuristic == DEAD_END || heuristic >= 0);  // allow negatives for goose
 
     if (heuristic == DEAD_END) {
         /*
