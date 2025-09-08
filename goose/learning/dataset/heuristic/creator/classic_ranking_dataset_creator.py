@@ -1,9 +1,9 @@
 import pymimir
-
 import wlplan
+from wlplan.data import ProblemDataset
+
 from goose.learning.dataset.heuristic.container.ranking_dataset import RankingDataset, RankingGroup
 from goose.learning.dataset.heuristic.creator.classic_dataset_creator import ClassicDatasetCreator
-from wlplan.data import ProblemDataset
 
 
 class ClassicRankingDatasetFromPlans(ClassicDatasetCreator):

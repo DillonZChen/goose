@@ -7,21 +7,12 @@ dynamic = ["version"]
 
 [tool.black]
 line-length = 119
-extend-exclude = "/(build|venv|.venv|goose/planning/ext/downward|goose/planning/ext/numeric-downward|goose/planning/ext/powerlifted|wlplan|benchmarks)/"
+extend-exclude = "/(venv|.venv|ext|benchmarks)/"
 
 [tool.isort]
 profile = "black"
 line_length = 119
-skip = [
-    "build/",
-    "venv/",
-    ".venv/",
-    "goose/planning/ext/downward/",
-    "goose/planning/ext/numeric-downward/",
-    "goose/planning/ext/powerlifted/",
-    "wlplan/",
-    "benchmarks/",
-]
+skip = ["venv/", ".venv/", "ext/", "benchmarks/"]
 indent = 4
 lines_after_imports = 2
 multi_line_output = 3

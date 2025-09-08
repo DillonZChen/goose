@@ -3,10 +3,10 @@ from typing import Any
 
 import numpy as np
 from tqdm import tqdm
-
-from goose.learning.predictor.linear_model.predictor_factory import is_rank_predictor
 from wlplan.data import DomainDataset
 from wlplan.feature_generator import Features
+
+from goose.learning.predictor.linear_model.predictor_factory import is_rank_predictor
 
 
 def embed_data(domain_dataset: DomainDataset, labels: Any, wlf_generator: Features, opts: Namespace):

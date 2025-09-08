@@ -6,6 +6,8 @@ from typing import Any, Optional
 
 import pymimir
 from tqdm import tqdm
+from wlplan.data import DomainDataset, ProblemDataset
+from wlplan.planning import Action, Atom, State, parse_domain, parse_problem
 
 from goose.learning.dataset import get_domain_file_from_opts, get_training_dir_from_opts
 from goose.learning.dataset.policy.dataset_containers import (
@@ -16,8 +18,6 @@ from goose.learning.dataset.policy.dataset_containers import (
 )
 from goose.planning.solution import get_plan
 from goose.util.statistics import log_quartiles
-from wlplan.data import DomainDataset, ProblemDataset
-from wlplan.planning import Action, Atom, State, parse_domain, parse_problem
 
 
 def log_dataset_statistics(dataset: LabelledDataset) -> None:

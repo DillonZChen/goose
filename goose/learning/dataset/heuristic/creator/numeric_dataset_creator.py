@@ -3,11 +3,12 @@ from abc import abstractmethod
 
 import wlplan
 import wlplan.planning
+from wlplan.planning import Atom, State
+
 from goose.enums.state_representation import StateRepresentation
 from goose.learning.dataset.heuristic.container.base_dataset import Dataset
 from goose.learning.dataset.heuristic.creator.dataset_creator import DatasetCreator
 from goose.planning.util import call_numeric_downward
-from wlplan.planning import Atom, State
 
 
 class NumericDatasetCreator(DatasetCreator):
@@ -72,12 +73,7 @@ class NumericDatasetCreator(DatasetCreator):
         }
 
         config = f"plan_trace_successors(plan_path={plan_file})"
-        output = call_numeric_downward(
-            self.domain_pddl,
-            problem_pddl,
-            config=config,
-            hash_prefix=self._hash_prefix,
-        )
+        output = call_numeric_downward(self.domain_pddl, problem_pddl, config=config)
 
         output = output[output.find("__START_HERE__") + len("__START_HERE__") :]
         output = output[: output.find("__END_HERE__")]

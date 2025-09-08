@@ -3,13 +3,13 @@ import logging
 from abc import abstractmethod
 
 import pymimir
-
 import wlplan
+from wlplan.planning import Predicate, State
+
 from goose.enums.state_representation import StateRepresentation
 from goose.learning.dataset.heuristic.container.base_dataset import Dataset
 from goose.learning.dataset.heuristic.creator.dataset_creator import DatasetCreator
 from goose.planning.util import get_downward_translation_atoms
-from wlplan.planning import Predicate, State
 
 
 class ClassicDatasetCreator(DatasetCreator):
@@ -42,11 +42,7 @@ class ClassicDatasetCreator(DatasetCreator):
 
     def _update_atoms_to_keep(self, problem_pddl: str):
         if self.state_representation == StateRepresentation.DOWNWARD:
-            self.atoms_to_keep = get_downward_translation_atoms(
-                self.domain_pddl,
-                problem_pddl,
-                hash_prefix=self._hash_prefix,
-            )
+            self.atoms_to_keep = get_downward_translation_atoms(self.domain_pddl, problem_pddl)
         else:
             self.atoms_to_keep = None
 

@@ -1,4 +1,4 @@
-exclude: ^(goose/planning/ext/|wlplan/|benchmarks/)
+exclude: ^(ext/|benchmarks/)
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v5.0.0

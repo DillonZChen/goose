@@ -2,6 +2,8 @@ import logging
 from argparse import Namespace
 from typing import Any
 
+from wlplan.data import DomainDataset
+
 from goose.enums.policy_type import PolicyType
 from goose.enums.state_representation import StateRepresentation
 from goose.learning.dataset import get_domain_file_from_opts
@@ -16,7 +18,6 @@ from goose.learning.dataset.heuristic.creator.numeric_ranking_dataset_creator im
 from goose.learning.dataset.policy.dataset_labeller import DatasetLabeller
 from goose.learning.predictor.linear_model.predictor_factory import is_rank_predictor
 from goose.planning.util import is_domain_numeric
-from wlplan.data import DomainDataset
 
 
 def get_dataset(opts: Namespace) -> tuple[DomainDataset, Any]:

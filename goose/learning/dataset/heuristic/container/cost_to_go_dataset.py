@@ -1,6 +1,7 @@
-from goose.learning.dataset.heuristic.container.base_dataset import Dataset
 from wlplan.data import ProblemDataset
 from wlplan.planning import Domain
+
+from goose.learning.dataset.heuristic.container.base_dataset import Dataset
 
 
 class CostToGoDataset(Dataset):

@@ -2,12 +2,12 @@ import argparse
 
 import torch
 from typing_extensions import override
+from wlplan.graph_generator import Graph
 
 from goose.learning.predictor.neural_network.gnn import RGNN
 from goose.learning.predictor.neural_network.serialise import load_gnn_weights
 from goose.learning.pyg import wlplan_graph_to_pyg
 from goose.planning.policy.policy import PolicyExecutor
-from wlplan.graph_generator import Graph
 
 
 class GnnPolicyExecutor(PolicyExecutor):

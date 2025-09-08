@@ -1,7 +1,8 @@
 import wlplan
+from wlplan.data import ProblemDataset
+
 from goose.learning.dataset.heuristic.container.base_dataset import Dataset
 from goose.learning.dataset.heuristic.container.cost_to_go_dataset import CostToGoDataset
-from wlplan.data import ProblemDataset
 
 from .numeric_dataset_creator import NumericDatasetCreator
 

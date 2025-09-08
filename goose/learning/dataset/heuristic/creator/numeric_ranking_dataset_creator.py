@@ -1,7 +1,8 @@
 import wlplan
+from wlplan.data import ProblemDataset
+
 from goose.learning.dataset.heuristic.container.base_dataset import Dataset
 from goose.learning.dataset.heuristic.container.ranking_dataset import RankingDataset, RankingGroup
-from wlplan.data import ProblemDataset
 
 from .numeric_dataset_creator import NumericDatasetCreator
 

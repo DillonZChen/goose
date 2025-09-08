@@ -1,10 +1,10 @@
 import argparse
 
 from typing_extensions import override
-
-from goose.planning.policy.policy import PolicyExecutor
 from wlplan.feature_generator import load_feature_generator
 from wlplan.graph_generator import Graph
+
+from goose.planning.policy.policy import PolicyExecutor
 
 
 class WlfPolicyExecutor(PolicyExecutor):

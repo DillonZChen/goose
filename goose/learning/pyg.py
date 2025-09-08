@@ -7,7 +7,6 @@ from sklearn.model_selection import train_test_split
 from torch import Tensor
 from torch_geometric.data import Data
 from torch_geometric.loader import DataLoader
-
 from wlplan.data import DomainDataset
 from wlplan.graph_generator import Graph, GraphGenerator
 from wlplan.planning import Action, Problem, State

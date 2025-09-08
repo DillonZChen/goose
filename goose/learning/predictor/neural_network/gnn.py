@@ -7,12 +7,7 @@ import torch.nn.functional as F
 from torch import Tensor
 from torch.nn import Linear, ReLU, Sequential
 from torch.nn.modules.module import Module
-from torch_geometric.nn import (
-    MessagePassing,
-    global_add_pool,
-    global_max_pool,
-    global_mean_pool,
-)
+from torch_geometric.nn import MessagePassing, global_add_pool, global_max_pool, global_mean_pool
 
 
 def construct_mlp(in_features: int, out_features: int, n_hid: int) -> torch.nn.Module:

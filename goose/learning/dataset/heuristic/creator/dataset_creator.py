@@ -29,10 +29,6 @@ class DatasetCreator:
 
         self._wlplan_domain = wlplan.planning.parse_domain(self.domain_pddl)
 
-        # hack to prevent tmp files from being overwritten by parallel jobs
-        # TODO can replace this with `tempfile` package
-        self._hash_prefix = str(hash(repr(opts)))
-
         # number of data to collect
         self._num_data = opts.num_data
 
