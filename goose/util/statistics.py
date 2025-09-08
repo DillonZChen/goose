@@ -1,8 +1,7 @@
 import logging
 
 import numpy as np
-
-from goose.util.logging import mat_to_str
+from tabulate import tabulate
 
 
 def log_quartiles(array: np.array, description: str) -> None:
@@ -13,5 +12,5 @@ def log_quartiles(array: np.array, description: str) -> None:
     q2 = np.percentile(array, 50)
     q3 = np.percentile(array, 75)
     mat = [["n_data", n_data], ["q1", q1], ["q2", q2], ["q3", q3], ["min", min_val], ["max", max_val]]
-    mat = mat_to_str(mat, rjust=[True, True])
+    mat = tabulate(mat)
     logging.info(f"{description}\n{mat}")

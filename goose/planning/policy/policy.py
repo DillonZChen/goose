@@ -17,13 +17,13 @@ from succgen.planning.effects import AssignEffect, DecreaseEffect, Effects, Incr
 from succgen.planning.lifted_expressions import to_lifted_expr
 from succgen.planning.state import SGState
 from succgen.planning.task import SGTask
-from succgen.sgutil.logging import mat_to_str
 from succgen.sgutil.managers import TimerContextManager
 from succgen.sqlite_applicable_action_generator import SQLiteApplicableActionGenerator
-
-from goose.enums.policy_type import PolicyType
+from tabulate import tabulate
 from wlplan.graph_generator import Graph, init_graph_generator
 from wlplan.planning import Action, Atom, State, to_wlplan_domain, to_wlplan_problem
+
+from goose.enums.policy_type import PolicyType
 
 
 class PolicyExecutor(ABC):
@@ -304,6 +304,6 @@ class PolicyExecutor(ABC):
             dividers,
         ]
 
-        logging.info(f"Planner statistics:\n" + mat_to_str(stats, rjust=[False, True, True]))
+        logging.info(f"Planner statistics:\n" + tabulate(stats))
         if self._debug:
             self._aag.dump_profiling()

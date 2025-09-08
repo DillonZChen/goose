@@ -2,9 +2,9 @@ import argparse
 import os
 from abc import abstractmethod
 
+import wlplan
 from tqdm import tqdm
 
-import wlplan
 from goose.learning.dataset import (
     get_domain_file_from_opts,
     get_training_dir_from_opts,
@@ -30,6 +30,7 @@ class DatasetCreator:
         self._wlplan_domain = wlplan.planning.parse_domain(self.domain_pddl)
 
         # hack to prevent tmp files from being overwritten by parallel jobs
+        # TODO can replace this with `tempfile` package
         self._hash_prefix = str(hash(repr(opts)))
 
         # number of data to collect

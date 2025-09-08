@@ -17,26 +17,27 @@ from goose.planning.policy.wlf_policy import WlfPolicyExecutor
 from goose.planning.search.downward import run_downward_fdr, run_downward_pddl
 from goose.planning.search.numeric_downward import run_numeric_downward
 from goose.planning.search.powerlifted import run_powerlifted
-from goose.util.logging import init_logger, log_opts
+from goose.util.logging import fmt_cmd, init_logger, log_opts
 
 
 _DESCRIPTION = """GOOSE planner script"""
 
-_EPILOG = """example usages:
-# Plan with PDDL input and trained Blocksworld model
-./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl blocksworld.model
+_EPILOG = f"""example usages:
 
-# Plan with FDR input and trained Blocksworld model
-./plan.py sas benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas blocksworld.model
+plan with PDDL input and trained Blocksworld model
+{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl blocksworld.model")}
 
-# Plan with PDDL input, Downward, and novelty heuristic
-./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2,w="wl")])'
+plan with FDR input and trained Blocksworld model
+{fmt_cmd("./plan.py sas benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas blocksworld.model")}
 
-# Plan with FDR input, Downward, and novelty heuristic
-./plan.py sas benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas --planner downward '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2,w="wl")])'
+plan with PDDL input, Downward, and novelty heuristic
+{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward '--search eager_greedy([qbpnwl(eval=ff(),g=\"ilg\",l=2,w=\"wl\")])'")}
 
-# Plan with PDDL input, Powerlifted, and novelty heuristic
-./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner powerlifted '-s gbfs -e qbpnwlff'
+plan with FDR input, Downward, and novelty heuristic
+{fmt_cmd("./plan.py sas benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas --planner downward '--search eager_greedy([qbpnwl(eval=ff(),g=\"ilg\",l=2,w=\"wl\")])'")}
+
+plan with PDDL input, Powerlifted, and novelty heuristic
+{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner powerlifted '-s gbfs -e qbpnwlff'")}
 """
 
 

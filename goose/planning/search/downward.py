@@ -1,12 +1,12 @@
 from goose.enums.planner import Planner
-from goose.util.paths import PLANNERS_DIR
+from goose.util.paths import DOWNWARD_SCRIPT
 from goose.util.shell import execute_cmd
 
 
 def run_downward_pddl(domain_path: str, problem_path: str, config: list[str], opts) -> None:
     cmd = [
         "python3",
-        f"{PLANNERS_DIR}/downward/fast-downward.py",
+        DOWNWARD_SCRIPT,
         "--sas-file",
         opts.intermediate_file,
         "--plan-file",
@@ -25,7 +25,7 @@ def run_downward_pddl(domain_path: str, problem_path: str, config: list[str], op
 def run_downward_fdr(sas_path: str, config: list[str], opts) -> None:
     cmd = [
         "python3",
-        f"{PLANNERS_DIR}/downward/fast-downward.py",
+        DOWNWARD_SCRIPT,
         "--plan-file",
         opts.plan_file,
         "--search-time-limit",
@@ -88,7 +88,7 @@ def run_downward_standalone(domain_path: str, problem_path: str, opts) -> None:
     heuristics = ", ".join(heuristics)
     cmd = [
         "python3",
-        f"{PLANNERS_DIR}/downward/fast-downward.py",
+        DOWNWARD_SCRIPT,
         "--sas-file",
         opts.intermediate_file,
         "--plan-file",

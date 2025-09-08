@@ -12,6 +12,12 @@ from typing import Any, Callable, Dict
 import numpy as np
 import termcolor as tc
 import toml
+from wlplan.feature_generator import (
+    get_available_feature_algorithms,
+    get_available_pruning_methods,
+    init_feature_generator,
+)
+from wlplan.graph_generator import init_graph_generator
 
 from goose.enums.mode import Mode
 from goose.enums.policy_type import PolicyType
@@ -27,15 +33,9 @@ from goose.learning.predictor.linear_model.predictor_factory import (
 )
 from goose.util.distinguish_test import distinguish
 from goose.util.filesystem import get_path_error_msg
-from goose.util.logging import init_logger, log_opts
+from goose.util.logging import fmt_cmd, init_logger, log_opts
 from goose.util.pca_visualise import visualise
 from goose.util.timer import TimerContextManager
-from wlplan.feature_generator import (
-    get_available_feature_algorithms,
-    get_available_pruning_methods,
-    init_feature_generator,
-)
-from wlplan.graph_generator import init_graph_generator
 
 
 _DESCRIPTION = """GOOSE trainer script.
@@ -43,19 +43,19 @@ _DESCRIPTION = """GOOSE trainer script.
   GNN models are used to learn action policies as reactive controllers.
 """
 
-_EPILOG = """example usages:
+_EPILOG = f"""example usages:
 
-# Train and save a classical Blocksworld model
-./train.py benchmarks/ipc23lt/blocksworld/ configurations/classic.toml -s blocksworld.model
+train and save a classical Blocksworld model
+{fmt_cmd('./train.py benchmarks/ipc23lt/blocksworld/ configurations/classic.toml -s blocksworld.model')}
 
-# Train and save a numeric Childsnack model
-./train.py benchmarks/neurips24/childsnack/ configurations/numeric.toml -s numeric_childsnack.model
+train and save a numeric Childsnack model
+{fmt_cmd('./train.py benchmarks/neurips24/childsnack/ configurations/numeric.toml -s numeric_childsnack.model')}
 
-# Run a distinguishability test
-./train.py benchmarks/ipc23lt/blocksworld/ --distinguish-test
+run a distinguishability test
+{fmt_cmd('./train.py benchmarks/ipc23lt/blocksworld/ --distinguish-test')}
 
-# Save a PCA visualisation of features to file
-./train.py benchmarks/ipc23lt/blocksworld/ --visualise-pca blocksworld_pca.png
+save a PCA visualisation of features to file
+{fmt_cmd('./train.py benchmarks/ipc23lt/blocksworld/ --visualise-pca blocksworld_pca.png')}
 """
 
 _DEFAULT_WLF_VALS = {

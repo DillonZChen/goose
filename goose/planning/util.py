@@ -16,7 +16,7 @@ def is_domain_numeric(domain_pddl: str) -> bool:
 
 
 def get_downward_translation_atoms(domain_pddl: str, problem_pddl: str, hash_prefix: str):
-    script = f"{PLANNERS_DIR}/downward/fast-downward.py"
+    script = f"{PLANNERS_DIR}/scorpion/fast-downward.py"
     sas_file = str(hash(domain_pddl)) + "_" + str(hash(problem_pddl))
     sas_file = sas_file.replace("-", "0") + ".sas"
     sas_file = hash_prefix.replace("-", "0") + "_" + sas_file
