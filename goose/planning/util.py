@@ -1,4 +1,3 @@
-import datetime
 import logging
 import os
 import re
@@ -16,6 +15,18 @@ def is_domain_numeric(domain_pddl: str) -> bool:
 
 
 def get_downward_translation_atoms(domain_pddl: str, problem_pddl: str) -> set[str]:
+    """Calls Downward translator to get ground atoms.
+
+    Parameters
+    ----------
+
+    domain_pddl : str
+        The domain PDDL file.
+
+    problem_pddl : str
+        The problem PDDL file.
+
+    """
 
     script = f"{PLANNERS_DIR}/scorpion/fast-downward.py"
 
