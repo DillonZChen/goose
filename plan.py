@@ -14,7 +14,7 @@ from goose.enums.policy_type import PolicyType
 from goose.enums.serialisation import namespace_from_serialisable
 from goose.enums.state_representation import StateRepresentation
 from goose.planning.policy.wlf_policy import WlfPolicyExecutor
-from goose.planning.search.downward import run_downward_fdr, run_downward_pddl
+from goose.planning.search.downward import run_downward
 from goose.planning.search.numeric_downward import run_numeric_downward
 from goose.planning.search.powerlifted import run_powerlifted
 from goose.util.logging import fmt_cmd, init_logger, log_opts
@@ -38,6 +38,12 @@ plan with FDR input and WL novelty heuristic in Downward
 
 plan with WL novelty heuristic in Powerlifted
 {fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner powerlifted --config '-s gbfs -e qbpnwlff'")}
+
+plan with LAMA
+{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner lama")}
+
+plan with NOLAN
+{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner nolan")}
 """
 
 
@@ -110,6 +116,7 @@ def main():
         logging.info("Detected FDR input.")
 
     # Load from model path if model specified
+    train_opts = None
     if model_path is not None:
         if not os.path.exists(model_path):
             raise ValueError(f"Model file does not exist at {model_path}")
@@ -120,10 +127,9 @@ def main():
         train_opts = json.load(open(opts_path, "r"))
         train_opts = argparse.Namespace(**train_opts)
         train_opts = namespace_from_serialisable(train_opts)
-    else:
+    elif config is not None:
         if not os.path.exists(config) and opts.planner is None:
             raise ValueError(f"--config specified but no value specified for --planner")
-        train_opts = None
 
     # Check planner validity and automatically detect planner if not specified but model is specified
     def set_planner(planner: Planner):
@@ -157,8 +163,8 @@ def main():
         log_opts(desc="train", opts=train_opts)
 
     # Parse additional planning configs
-    if model_path is None:
-        config = config.split(" ")
+    if config is None:
+        config = []
     elif opts.planner == Planner.DOWNWARD:
         config = ["--search", f'eager_greedy([wlgoose(model_file="{params_path}")])']
     elif opts.planner == Planner.NUMERIC_DOWNWARD:
@@ -173,54 +179,54 @@ def main():
     else:
         raise ValueError()
 
-    match opts.planner:
-        case Planner.DOWNWARD:
-            if is_pddl_input:
-                run_downward_pddl(domain_path=input1, problem_path=input2, config=config, opts=opts)
-            else:
-                run_downward_fdr(sas_path=input1, config=config, opts=opts)
-        case Planner.NUMERIC_DOWNWARD:
-            run_numeric_downward(domain_path=input1, problem_path=input2, config=config, opts=opts)
-        case Planner.POWERLIFTED:
-            run_powerlifted(domain_path=input1, problem_path=input2, config=config, opts=opts)
-        case Planner.POLICY:
-            kwargs = {
-                "domain_path": input1,
-                "problem_path": input2,
-                "params_path": params_path,
-                "train_opts": train_opts,
-                "debug": opts.debug,
-                "bound": opts.bound,
-            }
+    if Planner.is_downward_alias(opts.planner):
+        run_downward(input1=input1, input2=input2, config=config, alias=opts.planner, opts=opts)
+    else:
+        match opts.planner:
+            case Planner.DOWNWARD:
+                run_downward(input1=input1, input2=input2, config=config, opts=opts)
+            case Planner.NUMERIC_DOWNWARD:
+                run_numeric_downward(domain_path=input1, problem_path=input2, config=config, opts=opts)
+            case Planner.POWERLIFTED:
+                run_powerlifted(domain_path=input1, problem_path=input2, config=config, opts=opts)
+            case Planner.POLICY:
+                kwargs = {
+                    "domain_path": input1,
+                    "problem_path": input2,
+                    "params_path": params_path,
+                    "train_opts": train_opts,
+                    "debug": opts.debug,
+                    "bound": opts.bound,
+                }
 
-            match train_opts.mode:
-                case Mode.WLF:
-                    policy = WlfPolicyExecutor(**kwargs)
-                case Mode.GNN:
-                    # Torch and Pytorch Geometric imports done here to avoid unnecessary imports when not using GNN
-                    try:
-                        import torch
-                        import torch_geometric
-                    except ModuleNotFoundError:
-                        logging.info(
-                            "The current environment does not have PyTorch and PyTorch Geometric installed. "
-                            + "Please install them to use GNN architectures. Exiting."
-                        )
-                        sys.exit(1)
-                    from goose.planning.policy.gnn_policy import GnnPolicyExecutor
+                match train_opts.mode:
+                    case Mode.WLF:
+                        policy = WlfPolicyExecutor(**kwargs)
+                    case Mode.GNN:
+                        # Torch and Pytorch Geometric imports done here to avoid unnecessary imports when not using GNN
+                        try:
+                            import torch
+                            import torch_geometric
+                        except ModuleNotFoundError:
+                            logging.info(
+                                "The current environment does not have PyTorch and PyTorch Geometric installed. "
+                                + "Please install them to use GNN architectures. Exiting."
+                            )
+                            sys.exit(1)
+                        from goose.planning.policy.gnn_policy import GnnPolicyExecutor
 
-                    policy = GnnPolicyExecutor(**kwargs)
-                case _:
-                    raise ValueError(f"Unknown value {train_opts.mode=}")
+                        policy = GnnPolicyExecutor(**kwargs)
+                    case _:
+                        raise ValueError(f"Unknown value {train_opts.mode=}")
 
-            random.seed(opts.random_seed)
-            plan = policy.execute()
-            policy.dump_stats()
-            if plan is not None:
-                with open(opts.plan_file, "w") as f:
-                    f.write("\n".join(plan))
-        case _:
-            raise ValueError(f"Unknown value {opts.planner=}")
+                random.seed(opts.random_seed)
+                plan = policy.execute()
+                policy.dump_stats()
+                if plan is not None:
+                    with open(opts.plan_file, "w") as f:
+                        f.write("\n".join(plan))
+            case _:
+                raise ValueError(f"Unknown value {opts.planner=}")
 
     if os.path.exists(opts.intermediate_file):
         os.remove(opts.intermediate_file)
