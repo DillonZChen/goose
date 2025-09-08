@@ -24,24 +24,22 @@ _DESCRIPTION = """GOOSE planner script"""
 
 _EPILOG = f"""example usages:
 
-plan with PDDL input and trained Blocksworld model
-{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl blocksworld.model")}
+plan with trained Blocksworld model
+{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --model blocksworld.model")}
 
 plan with FDR input and trained Blocksworld model
-{fmt_cmd("./plan.py sas benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas blocksworld.model")}
+{fmt_cmd("./plan.py benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas --model blocksworld.model")}
 
-plan with PDDL input, Downward, and novelty heuristic
-{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward '--search eager_greedy([qbpnwl(eval=ff(),g=\"ilg\",l=2,w=\"wl\")])'")}
+plan with WL novelty heuristic in Downward
+{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward --config '--search eager_greedy([qbpnwl(eval=ff(),g=\"ilg\",l=2,w=\"wl\")])'")}
 
-plan with FDR input, Downward, and novelty heuristic
-{fmt_cmd("./plan.py sas benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas --planner downward '--search eager_greedy([qbpnwl(eval=ff(),g=\"ilg\",l=2,w=\"wl\")])'")}
+plan with FDR input and WL novelty heuristic in Downward
+{fmt_cmd("./plan.py benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas --planner downward --config '--search eager_greedy([qbpnwl(eval=ff(),g=\"ilg\",l=2,w=\"wl\")])'")}
 
-plan with PDDL input, Powerlifted, and novelty heuristic
-{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner powerlifted '-s gbfs -e qbpnwlff'")}
+plan with WL novelty heuristic in Powerlifted
+{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner powerlifted --config '-s gbfs -e qbpnwlff'")}
 """
 
-
-_SAS_MAGIC = "sas"
 
 # fmt: off
 def get_planning_parser():
@@ -52,11 +50,15 @@ def get_planning_parser():
     )
 
     parser.add_argument("input1", type=str,
-                        help=f"Path to `.pddl` domain file or `{_SAS_MAGIC}`.")
-    parser.add_argument("input2", type=str,
-                        help="Path to `.pddl` or `.sas` problem file.")
-    parser.add_argument("input3", type=str,
-                        help="Path to model file or standalone planner config args in commas.")
+                        help=f"Path to PDDL domain file or SAS problem file.")
+    parser.add_argument("input2", type=str, nargs="?",
+                        help=f"Path to PDDL problem file or nothing if using SAS input.")
+
+    cgroup = parser.add_mutually_exclusive_group()
+    cgroup.add_argument("-m", "--model", type=str,
+                        help="Path to model file.")
+    cgroup.add_argument("-c", "--config", type=str,
+                        help="Standalone planner config args specified in quotes.")
 
     # Planning options
     parser.add_argument("--planner", type=Planner.parse,
@@ -98,22 +100,19 @@ def main():
     # Check input validity
     input1 = opts.input1
     input2 = opts.input2
-    input3 = opts.input3
+    model_path = opts.model
+    config = opts.config
 
-    is_fdr_input = input1 == _SAS_MAGIC
-    is_pddl_input = input1.endswith(".pddl") and input2.endswith(".pddl")
-    model_path = None
-    if is_fdr_input:
-        logging.info("Detected FDR input.")
-    elif is_pddl_input:
+    is_pddl_input = input2 is not None
+    if is_pddl_input:
         logging.info("Detected PDDL input.")
     else:
-        raise ValueError(f"Got unexpected combination of input arguments\n{input1=}\n{input2=}\n{input3=}")
+        logging.info("Detected FDR input.")
 
     # Load from model path if model specified
-    if os.path.exists(input3):
-        model_path = input3
-        logging.info(f"Model detected at {model_path}.")
+    if model_path is not None:
+        if not os.path.exists(model_path):
+            raise ValueError(f"Model file does not exist at {model_path}")
         with zipfile.ZipFile(model_path, "r") as zf:
             zf.extractall()
         params_path = f"{model_path}.params"
@@ -122,9 +121,8 @@ def main():
         train_opts = argparse.Namespace(**train_opts)
         train_opts = namespace_from_serialisable(train_opts)
     else:
-        logging.info(f"No file exists at {input3=}. Assuming standalone planner config.")
-        if not os.path.exists(input3) and opts.planner is None:
-            raise ValueError(f"Expected a value for --planner")
+        if not os.path.exists(config) and opts.planner is None:
+            raise ValueError(f"--config specified but no value specified for --planner")
         train_opts = None
 
     # Check planner validity and automatically detect planner if not specified but model is specified
@@ -135,9 +133,7 @@ def main():
     if opts.planner == Planner.NONE and train_opts is not None:
         if PolicyType.is_not_search(train_opts.policy_type):
             set_planner(Planner.POLICY)
-        elif is_fdr_input:
-            set_planner(Planner.DOWNWARD)
-        elif is_pddl_input:
+        else:
             match train_opts.state_representation:
                 case StateRepresentation.DOWNWARD:
                     set_planner(Planner.DOWNWARD)
@@ -147,10 +143,8 @@ def main():
                     set_planner(Planner.POWERLIFTED)
                 case _:
                     raise ValueError(f"Unknown value {train_opts.state_representation=}")
-        else:
-            raise ValueError(f"Unknown input type with {input1=} and {input2=}. Cannot automatically set planner.")
 
-    if is_fdr_input and not Planner.supports_fdr(opts.planner):
+    if not is_pddl_input and not Planner.supports_fdr(opts.planner):
         raise ValueError(f"{opts.planner=} does not support FDR input.")
     if is_pddl_input and not Planner.supports_pddl(opts.planner):
         raise ValueError(f"{opts.planner=} does not support PDDL input.")
@@ -164,7 +158,7 @@ def main():
 
     # Parse additional planning configs
     if model_path is None:
-        config = input3.split(" ")
+        config = config.split(" ")
     elif opts.planner == Planner.DOWNWARD:
         config = ["--search", f'eager_greedy([wlgoose(model_file="{params_path}")])']
     elif opts.planner == Planner.NUMERIC_DOWNWARD:
@@ -181,10 +175,10 @@ def main():
 
     match opts.planner:
         case Planner.DOWNWARD:
-            if is_fdr_input:
-                run_downward_fdr(sas_path=input2, config=config, opts=opts)
-            else:
+            if is_pddl_input:
                 run_downward_pddl(domain_path=input1, problem_path=input2, config=config, opts=opts)
+            else:
+                run_downward_fdr(sas_path=input1, config=config, opts=opts)
         case Planner.NUMERIC_DOWNWARD:
             run_numeric_downward(domain_path=input1, problem_path=input2, config=config, opts=opts)
         case Planner.POWERLIFTED:

@@ -28,6 +28,6 @@ def test_standalone_downward(
     script = get_command_prefix(request, script="plan")
     domain_pddl = get_domain_pddl(BENCHMARK_GROUP, domain_name)
     problem_pddl = get_problem_pddl(BENCHMARK_GROUP, domain_name, problem_name)
-    cmd = f"{script} {domain_pddl} {problem_pddl} '{config}' --planner '{planner}'"
+    cmd = f"{script} {domain_pddl} {problem_pddl} --config '{config}' --planner '{planner}'"
 
     execute_command(cmd)

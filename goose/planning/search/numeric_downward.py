@@ -18,8 +18,6 @@ def run_numeric_downward(domain_path: str, problem_path: str, config: str, opts)
         opts.timeout,
         domain_path,
         problem_path,
-        # "--search",
-        # f"eager_greedy({h_goose})",
     ]
     cmd += config
     execute_cmd(cmd)

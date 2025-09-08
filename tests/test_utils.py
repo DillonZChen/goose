@@ -115,10 +115,10 @@ def plan(
         input1 = get_domain_pddl(benchmark_group, domain_name)
         input2 = get_problem_pddl(benchmark_group, domain_name, problem_name)
     else:
-        input1 = "sas"
-        input2 = f"benchmarks/fdr-{benchmark_group}/{domain_name}/testing/p{problem_name}.sas"
+        input1 = f"benchmarks/fdr-{benchmark_group}/{domain_name}/testing/p{problem_name}.sas"
+        input2 = ""
 
-    cmd = f"{script} {input1} {input2} {model_path} --timeout {timeout}"
+    cmd = f"{script} {input1} {input2} --model {model_path} --timeout {timeout}"
     if planner is not None:
         cmd += f" --planner {planner}"
 
