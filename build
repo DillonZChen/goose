@@ -26,10 +26,8 @@ esac
 # Clean
 if [[ "$arg" = "clean" ]]; then
     set -x
-    rm -rf ext/wlplan/build
+    rm -rf ext/*/build
     rm -rf ext/planners/*/builds
-    rm -rf ext/planners/succgen/build
-
     exit 0
 fi
 
@@ -60,7 +58,7 @@ fi
 
 # Install Python succgen interface
 if [[ "$arg" = "all" || "$arg" = "succgen" ]]; then
-    cd succgen/
+    cd ext/succgen/
     sh install.sh
     cd -
 fi
