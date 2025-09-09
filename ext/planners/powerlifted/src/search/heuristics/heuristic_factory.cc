@@ -59,30 +59,30 @@ Heuristic *HeuristicFactory::create(const Options &opt, const Task &task)
             std::make_shared<FFHeuristic>(task, DatalogTransformationOptions());
         return new QbWlHeuristic(opt, task, h);
     }
-    else if (boost::iequals(method, "qbpngc")) {
+    else if (boost::iequals(method, "qbatgc")) {
         std::shared_ptr<Heuristic> h = std::make_shared<Goalcount>();
         return new QbPnHeuristic(opt, task, h);
     }
-    else if (boost::iequals(method, "qbpnadd")) {
+    else if (boost::iequals(method, "qbatadd")) {
         std::shared_ptr<Heuristic> h =
             std::make_shared<AdditiveHeuristic>(task, DatalogTransformationOptions());
         return new QbPnHeuristic(opt, task, h);
     }
-    else if (boost::iequals(method, "qbpnff")) {
+    else if (boost::iequals(method, "qbatff")) {
         std::shared_ptr<Heuristic> h =
             std::make_shared<FFHeuristic>(task, DatalogTransformationOptions());
         return new QbPnHeuristic(opt, task, h);
     }
-    else if (boost::iequals(method, "qbpnwlgc")) {
+    else if (boost::iequals(method, "qbatwlgc")) {
         std::shared_ptr<Heuristic> h = std::make_shared<Goalcount>();
         return new QbPnWlHeuristic(opt, task, h);
     }
-    else if (boost::iequals(method, "qbpnwladd")) {
+    else if (boost::iequals(method, "qbatwladd")) {
         std::shared_ptr<Heuristic> h =
             std::make_shared<AdditiveHeuristic>(task, DatalogTransformationOptions());
         return new QbPnWlHeuristic(opt, task, h);
     }
-    else if (boost::iequals(method, "qbpnwlff")) {
+    else if (boost::iequals(method, "qbatwlff")) {
         std::shared_ptr<Heuristic> h =
             std::make_shared<FFHeuristic>(task, DatalogTransformationOptions());
         return new QbPnWlHeuristic(opt, task, h);

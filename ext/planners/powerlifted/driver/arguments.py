@@ -38,12 +38,12 @@ EVALUATOR_CHOICES = [
     "qbwlgc",
     "qbwladd",
     "qbwlff",
-    "qbpngc",
-    "qbpnadd",
-    "qbpnff",
-    "qbpnwlgc",
-    "qbpnwladd",
-    "qbpnwlff",
+    "qbatgc",
+    "qbatadd",
+    "qbatff",
+    "qbatwlgc",
+    "qbatwladd",
+    "qbatwlff",
 ]
 
 SUCCESSOR_GENERATOR_CHOICES = [

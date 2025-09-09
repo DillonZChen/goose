@@ -10,13 +10,13 @@ DOMAIN_PROBLEMS = [
     ("ferry", "0_01"),
 ]
 PLANNER_CONFIGS = [
-    ("downward", '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2,w="wl")])'),
-    ("downward", '--search eager_greedy([qbpnwl(eval=ff(),g="ploig",l=2,w="wl")])'),
-    ("downward", '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2,w="lwl2")])'),
-    ("downward", '--search eager_greedy([qbpnwl(eval=ff(),g="ploig",l=2,w="lwl2")])'),
-    ("downward", '--search eager_greedy([qbpnwl(eval=ff(),g="ilg",l=2,w="iwl")])'),
-    ("downward", '--search eager_greedy([qbpnwl(eval=ff(),g="ploig",l=2,w="iwl")])'),
-    ("powerlifted", "-s gbfs -e qbpnwlff"),
+    ("downward", '--search eager_greedy([qbatwl(eval=ff(),g="ilg",l=2,w="wl")])'),
+    ("downward", '--search eager_greedy([qbatwl(eval=ff(),g="ploig",l=2,w="wl")])'),
+    ("downward", '--search eager_greedy([qbatwl(eval=ff(),g="ilg",l=2,w="lwl2")])'),
+    ("downward", '--search eager_greedy([qbatwl(eval=ff(),g="ploig",l=2,w="lwl2")])'),
+    ("downward", '--search eager_greedy([qbatwl(eval=ff(),g="ilg",l=2,w="iwl")])'),
+    ("downward", '--search eager_greedy([qbatwl(eval=ff(),g="ploig",l=2,w="iwl")])'),
+    ("powerlifted", "-s gbfs -e qbatwlff"),
 ]
 
 
