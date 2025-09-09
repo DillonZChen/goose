@@ -78,7 +78,7 @@ for planner in $PLANNERS; do
     if [[ "$arg" = "fresh" ]]; then
         rm -r builds
     fi
-    if [[ "$arg" = "numeric-downward" ]]; then
+    if [[ "$planner" = "numeric-downward" ]]; then
         cd src/search/bliss-0.73
         make clean
         make
