@@ -40,7 +40,7 @@ elif [[ "$arg" = "numeric-downward" ]]; then
 elif [[ "$arg" = "powerlifted" ]]; then
     PLANNERS="powerlifted"
 elif [[ "$arg" = "planners" || "$arg" = "all" ]]; then
-    PLANNERS="downward numeric-downward powerlifted"
+    PLANNERS="scorpion numeric-downward powerlifted"
 else
     PLANNERS=""
 fi
