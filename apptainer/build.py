@@ -40,6 +40,10 @@ def main():
     # Build final image
     subprocess.call(["apptainer", "build", SIF, DEF], cwd=ROOT_DIR)
 
+    # Assert build succeeded
+    if not os.path.exists(SIF):
+        raise RuntimeError(f"Failed to build image: {SIF}")
+
 
 if __name__ == "__main__":
     main()

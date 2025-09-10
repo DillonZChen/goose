@@ -1,6 +1,7 @@
 #!/bin/bash
 
 USAGE_DESCRIPTION="Usage $0 [wlplan|succgen|planners|scorpion|numeric-downward|powerlifted|clean|all]"
+ROOT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 # Check number of arguments
 if [[ $# -eq 0 ]]; then
@@ -82,10 +83,10 @@ for planner in $PLANNERS; do
         cd src/search/bliss-0.73
         make clean
         make
-        cd -
+        cd ../../..
         python3 build.py -j8 release64
     else
         python3 build.py
     fi
-    cd -
+    cd $ROOT_DIR
 done
