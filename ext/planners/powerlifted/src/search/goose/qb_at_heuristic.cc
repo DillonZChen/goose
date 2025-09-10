@@ -1,11 +1,11 @@
-#include "qb_pn_heuristic.h"
+#include "qb_at_heuristic.h"
 #include "wl_utils.h"
 
 #include <cassert>
 
 using namespace std;
 
-QbPnHeuristic::QbPnHeuristic(const Options &opts,
+QbAtHeuristic::QbAtHeuristic(const Options &opts,
                              const Task &task,
                              std::shared_ptr<Heuristic> heuristic)
     : QbHeuristic(opts, task, heuristic)
@@ -18,7 +18,7 @@ QbPnHeuristic::QbPnHeuristic(const Options &opts,
     }
 }
 
-int QbPnHeuristic::compute_heuristic(const DBState &s, const Task &task)
+int QbAtHeuristic::compute_heuristic(const DBState &s, const Task &task)
 {
     cached_heuristic = original_heuristic->compute_heuristic(s, task);
     if (cached_heuristic == UNSOLVABLE_STATE) {
@@ -63,7 +63,7 @@ int QbPnHeuristic::compute_heuristic(const DBState &s, const Task &task)
     return h;
 }
 
-void QbPnHeuristic::print_statistics()
+void QbAtHeuristic::print_statistics()
 {
     int size = nullary_mapping.size();
     for (const auto &entry : atom_to_lowest_h) {

@@ -1,5 +1,5 @@
-#ifndef SEARCH_QB_PNWL_HEURISTIC_H_
-#define SEARCH_QB_PNWL_HEURISTIC_H_
+#ifndef SEARCH_QB_ATWL_HEURISTIC_H_
+#define SEARCH_QB_ATWL_HEURISTIC_H_
 
 #include "../heuristics/datalog_transformation_options.h"
 #include "qb_heuristic.h"
@@ -18,7 +18,7 @@
 #include <memory>
 
 
-class QbPnWlHeuristic : public QbHeuristic {
+class QbAtWlHeuristic : public QbHeuristic {
 protected:
     std::unordered_map<int, planning::Predicate> pwl_index_to_predicate;
     std::shared_ptr<feature_generator::WLFeatures> model;
@@ -28,11 +28,11 @@ protected:
     std::vector<NoveltySet> atom_to_lowest_h;  // atom_to_lowest_h[relation][tuple] = lowest_h
 
 public:
-    QbPnWlHeuristic(const Options &opts, const Task &task, std::shared_ptr<Heuristic> heuristic);
+    QbAtWlHeuristic(const Options &opts, const Task &task, std::shared_ptr<Heuristic> heuristic);
 
     void print_statistics() override;
 
     int compute_heuristic(const DBState &s, const Task &task) override;
 };
 
-#endif  // SEARCH_QB_PNWL_HEURISTIC_H_
+#endif  // SEARCH_QB_ATWL_HEURISTIC_H_

@@ -1,11 +1,11 @@
-#include "qb_pnwl_heuristic.h"
+#include "qb_atwl_heuristic.h"
 #include "wl_utils.h"
 
 #include "../ext/wlplan/include/feature_generator/feature_generators/wl.hpp"
 
 using namespace std;
 
-QbPnWlHeuristic::QbPnWlHeuristic(const Options &opts,
+QbAtWlHeuristic::QbAtWlHeuristic(const Options &opts,
                                  const Task &task,
                                  std::shared_ptr<Heuristic> heuristic)
     : QbHeuristic(opts, task, heuristic)
@@ -25,7 +25,7 @@ QbPnWlHeuristic::QbPnWlHeuristic(const Options &opts,
     }
 }
 
-int QbPnWlHeuristic::compute_heuristic(const DBState &s, const Task &task)
+int QbAtWlHeuristic::compute_heuristic(const DBState &s, const Task &task)
 {
     cached_heuristic = original_heuristic->compute_heuristic(s, task);
 
@@ -86,7 +86,7 @@ int QbPnWlHeuristic::compute_heuristic(const DBState &s, const Task &task)
     return h;
 }
 
-void QbPnWlHeuristic::print_statistics()
+void QbAtWlHeuristic::print_statistics()
 {
     std::cout << "Number of collected features: " << feat_to_lowest_h.size() << std::endl;
 }

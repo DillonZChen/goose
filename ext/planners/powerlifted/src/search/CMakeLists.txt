@@ -138,8 +138,8 @@ add_executable(search
         goose/wl_utils.h goose/wl_utils.cc
         goose/qb_heuristic.h goose/qb_heuristic.cc
         goose/qb_wl_heuristic.h goose/qb_wl_heuristic.cc
-        goose/qb_pn_heuristic.h goose/qb_pn_heuristic.cc
-        goose/qb_pnwl_heuristic.h goose/qb_pnwl_heuristic.cc
+        goose/qb_at_heuristic.h goose/qb_at_heuristic.cc
+        goose/qb_atwl_heuristic.h goose/qb_atwl_heuristic.cc
         goose/dqqbs.h goose/dqqbs.cc)
 
 target_link_libraries(search PRIVATE wlplan)

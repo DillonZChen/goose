@@ -1,8 +1,8 @@
 #include "heuristic_factory.h"
 
 #include "../goose/qb_wl_heuristic.h"
-#include "../goose/qb_pn_heuristic.h"
-#include "../goose/qb_pnwl_heuristic.h"
+#include "../goose/qb_at_heuristic.h"
+#include "../goose/qb_atwl_heuristic.h"
 #include "../goose/wlgoose_heuristic.h"
 #include "add_heuristic.h"
 #include "blind_heuristic.h"
@@ -61,31 +61,31 @@ Heuristic *HeuristicFactory::create(const Options &opt, const Task &task)
     }
     else if (boost::iequals(method, "qbatgc")) {
         std::shared_ptr<Heuristic> h = std::make_shared<Goalcount>();
-        return new QbPnHeuristic(opt, task, h);
+        return new QbAtHeuristic(opt, task, h);
     }
     else if (boost::iequals(method, "qbatadd")) {
         std::shared_ptr<Heuristic> h =
             std::make_shared<AdditiveHeuristic>(task, DatalogTransformationOptions());
-        return new QbPnHeuristic(opt, task, h);
+        return new QbAtHeuristic(opt, task, h);
     }
     else if (boost::iequals(method, "qbatff")) {
         std::shared_ptr<Heuristic> h =
             std::make_shared<FFHeuristic>(task, DatalogTransformationOptions());
-        return new QbPnHeuristic(opt, task, h);
+        return new QbAtHeuristic(opt, task, h);
     }
     else if (boost::iequals(method, "qbatwlgc")) {
         std::shared_ptr<Heuristic> h = std::make_shared<Goalcount>();
-        return new QbPnWlHeuristic(opt, task, h);
+        return new QbAtWlHeuristic(opt, task, h);
     }
     else if (boost::iequals(method, "qbatwladd")) {
         std::shared_ptr<Heuristic> h =
             std::make_shared<AdditiveHeuristic>(task, DatalogTransformationOptions());
-        return new QbPnWlHeuristic(opt, task, h);
+        return new QbAtWlHeuristic(opt, task, h);
     }
     else if (boost::iequals(method, "qbatwlff")) {
         std::shared_ptr<Heuristic> h =
             std::make_shared<FFHeuristic>(task, DatalogTransformationOptions());
-        return new QbPnWlHeuristic(opt, task, h);
+        return new QbAtWlHeuristic(opt, task, h);
     }
     else {
         std::cerr << "Invalid heuristic \"" << method << "\"" << std::endl;
