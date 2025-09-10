@@ -6,7 +6,9 @@ class Planner(ParseableEnum):
     DOWNWARD = "downward"
     SCORPION = "scorpion"
     LAMA = "lama"
+    LAMA_F = "lama-first"
     NOLAN = "nolan"
+    NOLAN_G = "nolan-goose"
     NUMERIC_DOWNWARD = "numeric-downward"
     POWERLIFTED = "powerlifted"
     POLICY = "policy"
@@ -16,7 +18,9 @@ class Planner(ParseableEnum):
         return planner in {
             Planner.SCORPION,
             Planner.LAMA,
+            Planner.LAMA_F,
             Planner.NOLAN,
+            Planner.NOLAN_G,
         }
 
     @staticmethod

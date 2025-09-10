@@ -40,7 +40,7 @@ plan with QB(at;wl) heuristic in Powerlifted
 {fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner powerlifted --config '-s gbfs -e qbatwlff'")}
 
 plan with LAMA
-{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner lama")}
+{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner lama-first")}
 
 plan with NOLAN
 {fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner nolan")}
@@ -177,7 +177,7 @@ def main():
     elif opts.planner == Planner.POLICY:
         pass
     else:
-        raise ValueError()
+        config = []
 
     if Planner.is_downward_alias(opts.planner):
         run_downward(input1=input1, input2=input2, config=config, alias=opts.planner, opts=opts)
