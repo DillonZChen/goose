@@ -30,13 +30,13 @@ plan with trained Blocksworld model
 plan with FDR input and trained Blocksworld model
 {fmt_cmd("./plan.py benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas --model blocksworld.model")}
 
-plan with WL novelty heuristic in Downward
-{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward --config '--search eager_greedy([qbatwl(eval=ff(),g=\"ilg\",l=2,w=\"wl\")])'")}
+plan with QB(at;wl) heuristic in Downward
+{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward --config '--search eager_greedy([qbatwl(eval=ff())])'")}
 
-plan with FDR input and WL novelty heuristic in Downward
-{fmt_cmd("./plan.py benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas --planner downward --config '--search eager_greedy([qbatwl(eval=ff(),g=\"ilg\",l=2,w=\"wl\")])'")}
+plan with PN(at;wl) heuristic in Downward
+{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward --config '--search eager_greedy([pnatwl(width=2,evals=[ff()])])'")}
 
-plan with WL novelty heuristic in Powerlifted
+plan with QB(at;wl) heuristic in Powerlifted
 {fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner powerlifted --config '-s gbfs -e qbatwlff'")}
 
 plan with LAMA
@@ -163,8 +163,8 @@ def main():
         log_opts(desc="train", opts=train_opts)
 
     # Parse additional planning configs
-    if config is None:
-        config = []
+    if config is not None:
+        config = config.split()
     elif opts.planner == Planner.DOWNWARD:
         config = ["--search", f'eager_greedy([wlgoose(model_file="{params_path}")])']
     elif opts.planner == Planner.NUMERIC_DOWNWARD:

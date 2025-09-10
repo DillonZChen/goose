@@ -26,6 +26,7 @@ class Planner(ParseableEnum):
     @staticmethod
     def supports_pddl(planner: "Planner") -> bool:
         return Planner.is_downward_alias(planner) or planner in {
+            Planner.DOWNWARD,
             Planner.NUMERIC_DOWNWARD,
             Planner.POWERLIFTED,
             Planner.POLICY,

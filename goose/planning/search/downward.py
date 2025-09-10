@@ -6,7 +6,11 @@ from goose.util.shell import execute_cmd
 
 
 def run_downward(
-    input1: str, input2: Optional[str], config: Optional[list[str]], opts: Namespace, alias: Optional[str]
+    input1: str,
+    input2: Optional[str],
+    config: Optional[list[str]],
+    opts: Namespace,
+    alias: Optional[str] = None,
 ) -> None:
     cmd = ["python3", DOWNWARD_SCRIPT, "--plan-file", opts.plan_file, "--search-time-limit", opts.timeout]
 
