@@ -31,10 +31,10 @@ plan with FDR input and trained Blocksworld model
 {fmt_cmd("./plan.py benchmarks/fdr-ipc23lt/blocksworld/testing/p0_01.sas --model blocksworld.model")}
 
 plan with QB(at;wl) heuristic in Downward
-{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward --config '--search eager_greedy([qbatwl(eval=ff())])'")}
+{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward --config '--search eager_greedy([qb(eval=ff(),feats=[atomgen(),wlfgen()])])'")}
 
 plan with PN(at;wl) heuristic in Downward
-{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward --config '--search eager_greedy([pnatwl(width=2,evals=[ff()])])'")}
+{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward --config '--search eager_greedy([pn(width=2,evals=[ff()],feats=[atomgen(),wlfgen()])])'")}
 
 plan with QB(at;wl) heuristic in Powerlifted
 {fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner powerlifted --config '-s gbfs -e qbatwlff'")}
