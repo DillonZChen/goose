@@ -15,8 +15,6 @@
 #include <memory>
 
 
-using namespace wlplan;
-
 class QbAtHeuristic : public QbHeuristic {
 protected:
     std::map<int, int> nullary_mapping;

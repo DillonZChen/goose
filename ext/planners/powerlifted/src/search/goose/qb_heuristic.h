@@ -14,9 +14,6 @@
 #include <memory>
 
 
-using namespace wlplan;
-
-
 class QbHeuristic : public Heuristic {
 protected:
     std::shared_ptr<Heuristic> original_heuristic;
