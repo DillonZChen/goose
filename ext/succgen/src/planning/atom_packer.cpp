@@ -2,6 +2,7 @@
 
 // Code from Powerlifted
 
+namespace wlplan {
 namespace planning {
   AtomPacker::AtomPacker() { i = 0; }
   int AtomPacker::pack(const int predicate_index, const std::vector<int> &instantiation) {
@@ -15,3 +16,4 @@ namespace planning {
   }
 
 }  // namespace planning
+} // namespace wlplan

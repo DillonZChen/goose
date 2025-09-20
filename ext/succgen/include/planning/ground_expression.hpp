@@ -9,6 +9,7 @@
 #include <set>
 #include <vector>
 
+namespace wlplan {
 namespace planning {
 
   class GroundBooleanExpression {
@@ -250,5 +251,6 @@ namespace planning {
   };
 
 }  // namespace planning
+} // namespace wlplan
 
 #endif  // PLANNING_GROUND_EXPRESSION_HPP

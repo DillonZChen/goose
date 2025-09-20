@@ -8,6 +8,7 @@
 #include <set>
 #include <vector>
 
+namespace wlplan {
 namespace planning {
   class VisitedStorage {
     StateStorer states_;
@@ -36,5 +37,6 @@ namespace planning {
   };
 
 }  // namespace planning
+} // namespace wlplan
 
 #endif  // PLANNING_VISITED_STORAGE_HPP

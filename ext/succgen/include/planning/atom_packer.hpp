@@ -10,6 +10,7 @@
 #include <map>
 #include <vector>
 
+namespace wlplan {
 namespace planning {
 
   using GroundAtom = std::vector<int>;
@@ -29,5 +30,6 @@ namespace planning {
     std::pair<int, std::vector<int>> unpack(const int index) { return index_to_atom.at(index); }
   };
 }  // namespace planning
+} // namespace wlplan
 
 #endif  // PLANNING_ATOM_PACKER_HPP
