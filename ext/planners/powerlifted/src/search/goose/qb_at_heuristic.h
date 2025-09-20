@@ -2,8 +2,8 @@
 #define SEARCH_QB_AT_HEURISTIC_H_
 
 #include "../heuristics/datalog_transformation_options.h"
-#include "qb_heuristic.h"
 #include "../novelty/standard_novelty.h"
+#include "qb_heuristic.h"
 
 #include "../action.h"
 #include "../options.h"
@@ -14,6 +14,8 @@
 #include <map>
 #include <memory>
 
+
+using namespace wlplan;
 
 class QbAtHeuristic : public QbHeuristic {
 protected:

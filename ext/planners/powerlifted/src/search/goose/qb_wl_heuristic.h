@@ -17,6 +17,9 @@
 #include <memory>
 
 
+using namespace wlplan;
+
+
 class QbWlHeuristic : public QbHeuristic {
 protected:
     std::unordered_map<int, planning::Predicate> pwl_index_to_predicate;

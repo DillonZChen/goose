@@ -11,6 +11,9 @@
 
 #include <memory>
 
+
+using namespace wlplan;
+
 namespace wl_utils {
 planning::Domain get_wlplan_domain(const Task &task);
 planning::Problem get_wlplan_problem(const planning::Domain &domain, const Task &task);
