@@ -7,7 +7,6 @@
 #include <set>
 #include <vector>
 
-namespace wlplan {
 namespace planning {
 
   class LiftedExpression {
@@ -155,6 +154,5 @@ namespace planning {
   };
 
 }  // namespace planning
-} // namespace wlplan
 
 #endif  // PLANNING_LIFTED_EXPRESSION_HPP

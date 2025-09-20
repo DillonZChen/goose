@@ -8,7 +8,6 @@
 #include <vector>
 #include <memory>
 
-namespace wlplan {
 namespace planning {
 
   class SGGoal {
@@ -22,6 +21,5 @@ namespace planning {
     bool satisfied_by(const SGState &state);
   };
 }  // namespace planning
-} // namespace wlplan
 
 #endif  // PLANNING_Goal_HPP

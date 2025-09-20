@@ -9,7 +9,6 @@
 #include <set>
 #include <vector>
 
-namespace wlplan {
 namespace planning {
 
   class NumericEffect {
@@ -53,6 +52,5 @@ namespace planning {
   };
 
 }  // namespace planning
-} // namespace wlplan
 
 #endif  // PLANNING_NUMERIC_EFFECT_HPP

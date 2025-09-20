@@ -2,7 +2,6 @@
 
 #include <algorithm>
 
-namespace wlplan {
 namespace planning {
   unsigned StateHash::operator()(const SGState &s) const {
     // Start with a hash seed
@@ -66,4 +65,3 @@ namespace planning {
 
   bool SGState::operator==(const SGState &other) const { return (atoms == other.atoms) && (values == other.values); }
 }  // namespace planning
-} // namespace wlplan

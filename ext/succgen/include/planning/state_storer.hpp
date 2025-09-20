@@ -7,7 +7,6 @@
 #include <unordered_set>
 #include <vector>
 
-namespace wlplan {
 namespace planning {
   class StateStorer {
     std::unordered_set<SGState, StateHash> states;
@@ -20,6 +19,5 @@ namespace planning {
   };
 
 }  // namespace planning
-} // namespace wlplan
 
 #endif  // PLANNING_STATE_STORER_HPP

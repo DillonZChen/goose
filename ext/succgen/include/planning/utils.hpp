@@ -8,7 +8,6 @@
 #include <set>
 #include <vector>
 
-namespace wlplan {
 namespace planning {
 
   using Atoms = std::set<int>;
@@ -36,6 +35,5 @@ namespace planning {
   };
 
 }  // namespace planning
-} // namespace wlplan
 
 #endif  // PLANNING_UTILS_HPP

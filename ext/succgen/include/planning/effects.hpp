@@ -7,7 +7,6 @@
 #include <set>
 #include <vector>
 
-namespace wlplan {
 namespace planning {
 
   using Atom = std::pair<int, std::vector<int>>;
@@ -24,6 +23,5 @@ namespace planning {
   };
 
 }  // namespace planning
-} // namespace wlplan
 
 #endif  // PLANNING_ACTION_HPP

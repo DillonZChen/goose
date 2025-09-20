@@ -6,7 +6,6 @@
 #include <set>
 #include <vector>
 
-namespace wlplan {
 namespace planning {
   struct Node {
     const SGState state;
@@ -15,6 +14,5 @@ namespace planning {
     const int parent_s_id;
   };
 }  // namespace planning
-} // namespace wlplan
 
 #endif  // PLANNING_NODE_HPP

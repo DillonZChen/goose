@@ -2,7 +2,6 @@
 
 #include <algorithm>
 
-namespace wlplan {
 namespace planning {
   SGGoal::SGGoal(const Atoms &pos_goals, const Atoms &neg_goals, const std::vector<std::shared_ptr<GroundBooleanExpression>> &numeric_goals)
       : pos_goals(pos_goals), neg_goals(neg_goals), numeric_goals(numeric_goals) {}
@@ -26,4 +25,3 @@ namespace planning {
     return true;
   }
 }  // namespace planning
-} // namespace wlplan

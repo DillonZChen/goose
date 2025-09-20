@@ -13,6 +13,7 @@
 #include <pybind11/embed.h>
 
 namespace py = pybind11;
+using namespace wlplan;
 
 namespace wlgoose_heuristic {
   std::pair<std::string, std::vector<std::string>> fd_fact_to_pred_args(std::string &name);

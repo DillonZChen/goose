@@ -8,7 +8,6 @@
 #include <set>
 #include <vector>
 
-namespace wlplan {
 namespace planning {
 
   class SGState {
@@ -38,6 +37,5 @@ namespace planning {
   };
 
 }  // namespace planning
-} // namespace wlplan
 
 #endif  // PLANNING_STATE_HPP

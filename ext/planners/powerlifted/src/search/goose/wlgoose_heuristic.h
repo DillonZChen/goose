@@ -16,6 +16,8 @@
 #include <memory>
 
 
+using namespace wlplan;
+
 class WlGooseHeuristic : public Heuristic {
 protected:
     std::unordered_map<int, planning::Predicate> pwl_index_to_predicate;
