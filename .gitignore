@@ -7,6 +7,8 @@ logs/
 .tmp/
 sas_plan
 
+callgrind.out.*
+
 *.png
 *.jpg
 *.model
