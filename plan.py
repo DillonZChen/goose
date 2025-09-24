@@ -34,7 +34,7 @@ plan with QB(at;wl) heuristic in Downward
 {fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward --config '--search eager_greedy([qb(eval=ff(),feats=[atomgen(),wlfgen()])])'")}
 
 plan with PN(at;wl) heuristic in Downward
-{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward --config '--search eager_greedy([pn(width=2,evals=[ff()],feats=[atomgen(),wlfgen()])])'")}
+{fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner downward --config '--evaluator hff=ff(transform=adapt_costs(one)) --search eager(alt([tiebreaking([pn(width=1,max_variables_for_width2=infinity,consider_only_novel_states=false,evals=[hff],feats=[atomgen(),wlfgen()]),hff,g()])]))'")}
 
 plan with QB(at;wl) heuristic in Powerlifted
 {fmt_cmd("./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_01.pddl --planner powerlifted --config '-s gbfs -e qbatwlff'")}
