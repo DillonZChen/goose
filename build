@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USAGE_DESCRIPTION="Usage $0 [wlplan|succgen|planners|scorpion|powerlifted|clean|all]"
+USAGE_DESCRIPTION="Usage $0 [wlplan|succgen|planners|scorpion|numeric-downward|powerlifted|clean|all]"
 ROOT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 # Check number of arguments
@@ -15,7 +15,7 @@ fi
 
 # Check argument validity
 case "$arg" in
-wlplan | succgen | planners | scorpion | powerlifted | clean | all)
+wlplan | succgen | planners | scorpion | numeric-downward | powerlifted | clean | all)
     # Valid argument, continue
     ;;
 *)
@@ -41,7 +41,7 @@ elif [[ "$arg" = "numeric-downward" ]]; then
 elif [[ "$arg" = "powerlifted" ]]; then
     PLANNERS="powerlifted"
 elif [[ "$arg" = "planners" || "$arg" = "all" ]]; then
-    PLANNERS="scorpion powerlifted"
+    PLANNERS="scorpion numeric-downward powerlifted"
 else
     PLANNERS=""
 fi
@@ -80,10 +80,6 @@ for planner in $PLANNERS; do
         rm -r builds
     fi
     if [[ "$planner" = "numeric-downward" ]]; then
-        cd src/search/bliss-0.73
-        make clean
-        make
-        cd ../../..
         python3 build.py -j8 release64
     else
         python3 build.py
