@@ -13,7 +13,7 @@ import numpy as np
 import termcolor as tc
 import toml
 from wlplan.feature_generator import (
-    get_available_feature_algorithms,
+    get_available_feature_generators,
     get_available_pruning_methods,
     init_feature_generator,
 )
@@ -116,7 +116,7 @@ def get_learning_parser():
     wlf_group = parser.add_argument_group("wlf options")
     wlf_group.add_argument("-f", "--features", type=str,
                         default=None,
-                        choices=get_available_feature_algorithms(),
+                        choices=get_available_feature_generators(),
                         help=f"Feature generator to use. " + \
                             f"(default: {_DEFAULT_WLF_VALS['features']})")
     wlf_group.add_argument("-fp", "--feature-pruning", type=str,
