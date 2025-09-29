@@ -21,12 +21,11 @@ set(Python3_FIND_VIRTUALENV ONLY)
 find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
 find_package(pybind11 REQUIRED)
 add_executable(downward ${PLANNER_SOURCES})
-target_link_libraries(downward PRIVATE pybind11::embed)
 
 # Add wlplan
 list(APPEND CMAKE_PREFIX_PATH "ext/wlplan")
 find_package(wlplan REQUIRED)
-target_link_libraries(downward PRIVATE wlplan)
+target_link_libraries(downward pybind11::embed wlplan)
 
 ## == Includes ==
 
