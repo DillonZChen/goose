@@ -8,7 +8,9 @@ import subprocess
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--cuda", action="store_true", help="Build CUDA version.")
+    mutex = parser.add_mutually_exclusive_group(required=False)
+    mutex.add_argument("--scorp", action="store_true", help="Scorpion version.")
+    mutex.add_argument("--cuda", action="store_true", help="Build CUDA version.")
     parser.add_argument("--clear-cache", action="store_true", help="Remove intermediate build 1.")
     args = parser.parse_args()
 
@@ -22,6 +24,7 @@ def main():
     suffix = "-cuda" if args.cuda else ""
     INTERMEDIATE_DEF = f"{CUR_DIR}/docker-ubuntu22_04{suffix}.def"
     INTERMEDIATE_SIF = f"{CUR_DIR}/docker-ubuntu22_04{suffix}.sif"
+    suffix = "-scorp" if args.scorp else suffix
     DEF = f"{CUR_DIR}/goose{suffix}.def"
     SIF = f"{ROOT_DIR}/goose{suffix}.sif"
 

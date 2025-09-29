@@ -1,0 +1,59 @@
+Bootstrap: localimage
+From: apptainer/docker-ubuntu22_04.sif
+
+%files
+    goose /goose/
+    ext /goose/
+
+    *.py /goose/
+    build /goose/
+    requirements.txt /goose/
+
+%post
+    # Move into repo and build
+    cd /goose
+
+    # Python dependencies
+    pip install -r requirements.txt
+
+    # Clear build directories
+    ./build clean
+
+    # Build only scorpion
+    ./build wlplan
+    ./build succgen
+    ./build scorpion
+
+    # Clean up
+    apt-get clean
+    rm -rf __pycache__/
+    rm -rf /var/lib/apt/lists/*
+    rm -rf wlplan/
+
+
+%runscript
+    #!/bin/bash
+
+    USAGE="Usage: ./goose.sif <train|plan> <args>"
+
+    if [ "$#" -lt 1 ]; then
+        echo "$USAGE"
+        exit 1
+    fi
+
+    command=$1
+    shift
+
+    if [ "$command" = "plan" ]; then
+        python3.10 /goose/plan.py "$@"
+    elif [ "$command" = "train" ]; then
+        python3.10 /goose/train.py "$@"
+    else
+        echo "$USAGE"
+        exit 1
+    fi
+
+%labels
+    Name        goose
+    Description GOOSE: Graphs Optimised fOr Search Evaluation.
+    Authors     Dillon Chen <dillon.chen1@gmail.com>
