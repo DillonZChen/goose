@@ -291,21 +291,21 @@ fast_downward_plugin(
         heuristics/wlgoose_heuristic.cc
 )
 
-# fast_downward_plugin(
-#     NAME RELAXATION_HEURISTIC
-#     HELP "The base class for relaxation heuristics"
-#     SOURCES
-#         heuristics/relaxation_heuristic.cc
-#     DEPENDENCY_ONLY
-# )
+fast_downward_plugin(
+    NAME RELAXATION_HEURISTIC
+    HELP "The base class for relaxation heuristics"
+    SOURCES
+        heuristics/relaxation_heuristic.cc
+    DEPENDENCY_ONLY
+)
 
-# fast_downward_plugin(
-#     NAME ADDITIVE_HEURISTIC
-#     HELP "The additive heuristic"
-#     SOURCES
-#         heuristics/additive_heuristic.cc
-#     DEPENDS RELAXATION_HEURISTIC
-# )
+fast_downward_plugin(
+    NAME ADDITIVE_HEURISTIC
+    HELP "The additive heuristic"
+    SOURCES
+        heuristics/additive_heuristic.cc
+    DEPENDS RELAXATION_HEURISTIC
+)
 
 fast_downward_plugin(
     NAME BLIND_SEARCH_HEURISTIC
@@ -314,13 +314,13 @@ fast_downward_plugin(
         heuristics/blind_search_heuristic.cc
 )
 
-# fast_downward_plugin(
-#     NAME CONTEXT_ENHANCED_ADDITIVE_HEURISTIC
-#     HELP "The context-enhanced additive heuristic"
-#     SOURCES
-#         heuristics/cea_heuristic.cc
-#     DEPENDS DOMAIN_TRANSITION_GRAPH
-# )
+fast_downward_plugin(
+    NAME CONTEXT_ENHANCED_ADDITIVE_HEURISTIC
+    HELP "The context-enhanced additive heuristic"
+    SOURCES
+        heuristics/cea_heuristic.cc
+    DEPENDS DOMAIN_TRANSITION_GRAPH
+)
 
 # fast_downward_plugin(
 #     NAME CG_HEURISTIC
@@ -330,51 +330,51 @@ fast_downward_plugin(
 #     DEPENDS DOMAIN_TRANSITION_GRAPH
 # )
 
-# fast_downward_plugin(
-#     NAME DOMAIN_TRANSITION_GRAPH
-#     HELP "DTGs used by cg and cea heuristic"
-#     SOURCES
-#         domain_transition_graph.cc
-#     DEPENDENCY_ONLY
-# )
+fast_downward_plugin(
+    NAME DOMAIN_TRANSITION_GRAPH
+    HELP "DTGs used by cg and cea heuristic"
+    SOURCES
+        domain_transition_graph.cc
+    DEPENDENCY_ONLY
+)
 
-# fast_downward_plugin(
-#     NAME FF_HEURISTIC
-#     HELP "The FF heuristic (an implementation of the RPG heuristic)"
-#     SOURCES
-#         heuristics/ff_heuristic.cc
-#     DEPENDS ADDITIVE_HEURISTIC
-# )
+fast_downward_plugin(
+    NAME FF_HEURISTIC
+    HELP "The FF heuristic (an implementation of the RPG heuristic)"
+    SOURCES
+        heuristics/ff_heuristic.cc
+    DEPENDS ADDITIVE_HEURISTIC
+)
 
-# fast_downward_plugin(
-#     NAME GOAL_COUNT_HEURISTIC
-#     HELP "The goal-counting heuristic"
-#     SOURCES
-#         heuristics/goal_count_heuristic.cc
-# )
+fast_downward_plugin(
+    NAME GOAL_COUNT_HEURISTIC
+    HELP "The goal-counting heuristic"
+    SOURCES
+        heuristics/goal_count_heuristic.cc
+)
 
-# fast_downward_plugin(
-#     NAME HM_HEURISTIC
-#     HELP "The h^m heuristic"
-#     SOURCES
-#         heuristics/hm_heuristic.cc
-# )
+fast_downward_plugin(
+    NAME HM_HEURISTIC
+    HELP "The h^m heuristic"
+    SOURCES
+        heuristics/hm_heuristic.cc
+)
 
-# fast_downward_plugin(
-#     NAME LANDMARK_CUT_HEURISTIC
-#     HELP "The LM-cut heuristic"
-#     SOURCES
-#         heuristics/lm_cut_heuristic.cc
-#         heuristics/lm_cut_landmarks.cc
-# )
+fast_downward_plugin(
+    NAME LANDMARK_CUT_HEURISTIC
+    HELP "The LM-cut heuristic"
+    SOURCES
+        heuristics/lm_cut_heuristic.cc
+        heuristics/lm_cut_landmarks.cc
+)
 
-# fast_downward_plugin(
-#     NAME MAX_HEURISTIC
-#     HELP "The Max heuristic"
-#     SOURCES
-#         heuristics/max_heuristic.cc
-#     DEPENDS RELAXATION_HEURISTIC
-# )
+fast_downward_plugin(
+    NAME MAX_HEURISTIC
+    HELP "The Max heuristic"
+    SOURCES
+        heuristics/max_heuristic.cc
+    DEPENDS RELAXATION_HEURISTIC
+)
 
 fast_downward_plugin(
     NAME CORE_TASKS
@@ -526,28 +526,28 @@ fast_downward_plugin(
 #    DEPENDS LP_SOLVER
 # )
 
-# fast_downward_plugin(
-#     NAME NUMERIC_OPERATOR_COUNTING_FAST_DOWNWARD
-#     HELP "Heuristics for the Numeric variant NFD"
-#     SOURCES
-#         # numeric_operator_counting/delete_relaxation.cc
-#         #numeric_operator_counting/delete_test.cc
-#         # numeric_operator_counting/numeric_state_equation_constraints.cc
-# 	    # numeric_operator_counting/invariant_constraints.cc
-#         numeric_operator_counting/numeric_helper.cc
-#   	    # numeric_operator_counting/h_lm_numeric.cc
-#   	    # numeric_operator_counting/lm_cut_numeric_constraints.cc
-#     # DEPENDS LP_SOLVER
-# )
+fast_downward_plugin(
+    NAME NUMERIC_OPERATOR_COUNTING_FAST_DOWNWARD
+    HELP "Heuristics for the Numeric variant NFD"
+    SOURCES
+        # numeric_operator_counting/delete_relaxation.cc
+        #numeric_operator_counting/delete_test.cc
+        # numeric_operator_counting/numeric_state_equation_constraints.cc
+	    # numeric_operator_counting/invariant_constraints.cc
+        numeric_operator_counting/numeric_helper.cc
+  	    # numeric_operator_counting/h_lm_numeric.cc
+  	    # numeric_operator_counting/lm_cut_numeric_constraints.cc
+    # DEPENDS LP_SOLVER
+)
 
-# fast_downward_plugin(
-#     NAME NUMERIC_LANDMARKS_DOWNWARD
-#     HELP "Landmarks for the Numeric variant NFD"
-#     SOURCES
-#         # numeric_landmarks/landmark_factory_scala.cc
-#         numeric_landmarks/numeric_lm_cut_landmarks.cc
-#         numeric_landmarks/lm_cut_numeric_heuristic.cc
-# )
+fast_downward_plugin(
+    NAME NUMERIC_LANDMARKS_DOWNWARD
+    HELP "Landmarks for the Numeric variant NFD"
+    SOURCES
+        # numeric_landmarks/landmark_factory_scala.cc
+        numeric_landmarks/numeric_lm_cut_landmarks.cc
+        numeric_landmarks/lm_cut_numeric_heuristic.cc
+)
 
 # fast_downward_plugin(
 #     NAME OPERATOR_COUNTING
@@ -622,24 +622,24 @@ fast_downward_plugin(
 #     DEPENDS LP_SOLVER
 # )
 
-# fast_downward_plugin(
-#     NAME SYMMETRIES
-#     HELP "Plugin containing the code for symmetry breaking"
-#     SOURCES
-#         search_engines/dks_eager_search.cc
-#         search_engines/orbit_eager_search.cc
-#         symmetries/graph_creator.cc
-#         symmetries/group.cc
-#         symmetries/permutation.cc
-# )
+fast_downward_plugin(
+    NAME SYMMETRIES
+    HELP "Plugin containing the code for symmetry breaking"
+    SOURCES
+        search_engines/dks_eager_search.cc
+        search_engines/orbit_eager_search.cc
+        symmetries/graph_creator.cc
+        symmetries/group.cc
+        symmetries/permutation.cc
+)
 
-# fast_downward_plugin(
-#     NAME NUMERIC_BOUND
-#     HELP "Bounds for numeric variables and effects"
-#     SOURCES
-#     numeric_landmarks/numeric_bound.cc
-# 	numeric_landmarks/bound_test.cc
-# )
+fast_downward_plugin(
+    NAME NUMERIC_BOUND
+    HELP "Bounds for numeric variables and effects"
+    SOURCES
+    numeric_landmarks/numeric_bound.cc
+	numeric_landmarks/bound_test.cc
+)
 
 fast_downward_add_plugin_sources(PLANNER_SOURCES)
 
