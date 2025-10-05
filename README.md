@@ -7,10 +7,7 @@
 <span style="font-weight:normal">**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation</span>
 =============================================================================================================
 
-GOOSE is a planning system that leverages graph learning. GOOSE currently supports the following planning variants:
-- [classical planning](https://github.com/aibasel/downward)
-- [lifted planning](https://github.com/abcorrea/powerlifted)
-- [numeric planning](https://github.com/Kurorororo/numeric-fast-downward) (non-temporal PDDL2.1)
+GOOSE is a PDDL planning system that leverages graph learning. A description of the GOOSE framework is available at [https://dillonzchen.github.io/goose]([dillonzchen.github.io/goose](https://dillonzchen.github.io/goose)).
 
 The main branch and recent releases currently do not support **Graph Neural Networks** (GNNs). This is because we showed in our [ICAPS-24 paper](https://arxiv.org/abs/2403.16508) that GNNs are inefficient and not effective for learning value functions for heuristic search. Nevertheless, GNNs can still be accessed from the following branches and the corresponding planning modes they support.
 - `icaps24`: lifted planning
@@ -51,7 +48,6 @@ See further below for more information on how to train and plan with GOOSE for d
     - [Planning](#planning)
     - [Recommended configurations](#recommended-configurations)
   - [Abbreviations](#abbreviations)
-  - [References](#references)
 
 
 ## Setup
@@ -154,40 +150,3 @@ e.g. with numeric Childsnack
 - IPC23LT: International Planning Competition 2023 Learning Track
 - PDDL: Planning Domain Definition Language
 - WLF: Weisfeiler-Leman Feature
-
-
-## References
-GOOSE has been published in various venues. Please refer to the [releases](https://github.com/DillonZChen/goose/releases) page to find the latest version to use or code from a specific publication. The relevant publications so far for this repository are listed as follows.
-
-- Dillon Z. Chen and Sylvie Thiébaux. **Graph Learning for Numeric Planning**. NeurIPS 2024.
-
-```
-@inproceedings{chen.thiebaux.neurips2024,
-    author       = {Dillon Z. Chen and Sylvie Thi{\'{e}}baux},
-    title        = {Graph Learning for Numeric Planning},
-    booktitle    = {NeurIPS},
-    year         = {2024}
-}
-```
-
-- Dillon Z. Chen and Felipe Trevizan and Sylvie Thiébaux. **Return to Tradition: Learning Reliable Heuristics with Classical Machine Learning**. ICAPS 2024.
-
-```
-@inproceedings{chen.etal.icaps2024,
-    author       = {Dillon Z. Chen and Felipe W. Trevizan and Sylvie Thi{\'{e}}baux},
-    title        = {Return to Tradition: Learning Reliable Heuristics with Classical Machine Learning},
-    booktitle    = {{ICAPS}},
-    year         = {2024}
-}
-```
-
-- Dillon Z. Chen and Sylvie Thiébaux and Felipe Trevizan. **Learning Domain-Independent Heuristics for Grounded and Lifted Planning**. AAAI 2024.
-
-```
-@inproceedings{chen.etal.aaai2024,
-    author       = {Dillon Z. Chen and Sylvie Thi{\'{e}}baux and Felipe W. Trevizan},
-    title        = {Learning Domain-Independent Heuristics for Grounded and Lifted Planning},
-    booktitle    = {{AAAI}},
-    year         = {2024}
-}
-```
