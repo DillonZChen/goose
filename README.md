@@ -7,7 +7,7 @@
 <span style="font-weight:normal">**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation</span>
 =============================================================================================================
 
-GOOSE is a PDDL planning system that leverages graph learning. A high level description of the GOOSE framework [here]([[dillonzchen.github.io/goose](https://dillonzchen.github.io/goose)](https://dillonzchen.github.io/goose)).
+GOOSE is a PDDL planning system that leverages graph learning. A high level description of the GOOSE framework [here](https://dillonzchen.github.io/goose).
 
 The main branch and recent releases currently do not support **Graph Neural Networks** (GNNs). This is because we showed in our [ICAPS-24 paper](https://arxiv.org/abs/2403.16508) that GNNs are inefficient and not effective for learning value functions for heuristic search. Nevertheless, GNNs can still be accessed from the following branches and the corresponding planning modes they support.
 - `icaps24`: lifted planning
