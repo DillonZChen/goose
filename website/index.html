@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1KBKW25L49"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-1KBKW25L49');
+    </script>
+    <title> Learning Heuristics for Planning and Search </title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/DillonZChen/goose/main/goose.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://dillonzchen.github.io/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+</head>
+
+<body>
+    <div class="container">
+        <hr>
+        <br>
+        <div style="text-align: center;">
+            <img src="https://raw.githubusercontent.com/DillonZChen/goose/main/goose.png"
+                style="height: 200px; border-radius: 50%;">
+            <h1> GOOSE: Learning Heuristics for Planning and Search </h1>
+            <p style="font-size: larger;"> Dillon Z. Chen </p>
+
+            <button onclick="window.open('https://arxiv.org/abs/2410.24080', '_blank')" class="Modern-Button">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" height="1em"
+                    width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z">
+                    </path>
+                </svg>
+                <span style="margin-left: 5px;">Paper</span>
+            </button>
+
+            <button onclick="window.open('https://github.com/DillonZChen/goose', '_blank')" class="Modern-Button">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em"
+                    width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z">
+                    </path>
+                </svg>
+                <span style="margin-left: 5px;">Code</span>
+            </button>
+
+        </div>
+
+        <hr>
+
+        <!-- -------------------------------------------------------------------------------- -->
+        <h2> Abstract </h2>
+        <p>
+            Automated planning is a long-standing field in artificial intelligence concerned with finding a sequence of
+            actions to progress an initial state in a given world model into a desired goal state. A dominant approach
+            for
+            solving these problems is heuristic search, where a search algorithm explores the vast space of possible
+            states guided
+            by a heuristic function, <em>h(s)</em>, which estimates the cost of reaching the goal from any given state
+            <em>s</em>. The
+            performance of these planners is critically dependent on the quality of this heuristic.
+        </p>
+
+        <p>
+            GOOSE (<u><b>G</b></u>raphs <u><b>O</b></u>ptimised f<u><b>O</b></u>r <u><b>S</b></u>earch
+            <u><b>E</b></u>valuation) is a planning system that learns state-of-the-art heuristics
+            from small, easy-to-solve training problems to new, unseen problems with different initial states, goals,
+            and greater number of objects. GOOSE is a cumulation of papers published at AAAI, ICAPS, NeurIPS, and ECAI
+            (see <a class="link" href="#references">References</a> for
+            more details). It leverages 3 key insights and techniques for learning
+            heuristics with powerful generalisation.
+        <ol>
+            <li>We leverage <span class="Emph">graph learning</span> for handling inputs of arbitrary size,
+                as is the case for planning problems.</li>
+            <li>We employ <span class="Emph">classical, statistical machine learning</span>, which we show theoretically
+                and empirically to be
+                vastly superior than deep learning in terms of sample complexity, training speed, and planning
+                performance</li>
+            <li>We learn heuristics from <span class="Emph">ranking states</span> rather than predicting optimal
+                heuristic values</li>
+        </ol>
+        </p>
+
+        <hr>
+
+        <!-- -------------------------------------------------------------------------------- -->
+        <h2> Problem </h2>
+        We are given a set of training planning problems <em>T</em> from the same domain exhibiting a small number of
+        objects <em>N</em>.
+        Our objective is to learn via supervision a heuristic function <em>h(s)</em> that can be used for search to
+        solve new problems that
+        <ol type="a">
+            <li>do not exist in <em>T</em>, and</li>
+            <li>exhibit a number of objects greater than <em>N</em>, possibly by several orders of magnitude.</li>
+        </ol>
+
+        <hr>
+
+        <!-- -------------------------------------------------------------------------------- -->
+        <h2> Method </h2>
+        <p>
+            GOOSE represents planning problems as graphs, followed by embedding the arbitrarily sized graphs into fixed
+            sized Euclidean vectors, which are finally used to learn a linear heuristic function.
+        </p>
+
+        <div class="Figure">
+            <img src="pipeline.svg" style="max-width: 100%; height: auto; display: block;">
+            <p class="caption" style="font-size: 0.95rem; color: #666; margin-top: 8px;">
+                Figure 1 — The GOOSE pipeline.
+            </p>
+        </div>
+
+        <h3> (1) Graph Representation </h3>
+        <p>
+            GOOSE represents planning problems which consist of an initial state, a goal state, a set of objects, and a
+            set
+            of actions as a graph where nodes encode objects and facts, and edge the relations between objects and
+            facts.
+            Node colours and edge labels are used to encode predicate, goal, and relation information. Notably, actions
+            are
+            not encoded in the graph as their semantics are learned from training.
+            During search, each state can be viewed as a new planning problem with the same goal and actions but a
+            different initial state.
+            Formally, this graph representation is referred to the <em>Instance Learning Graph (ILG)</em> defined in <a
+                class="link" href="https://arxiv.org/abs/2403.16508">Definition 3.1 of this paper</a>.
+        </p>
+
+        <h3> (2) Feature Embedding </h3>
+        <p>
+            The resulting graph of each planning problem and state is then embedded into a Euclidean vector via the
+            Weisfeiler-Leman (WL) algorithm.
+            The <a class="link" href="https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test">WL
+                algorithm</a> was originally used as an incomplete graph isomorphism test but has been later used to
+            generate <a class="link" href="https://jmlr.csail.mit.edu/papers/v12/shervashidze11a.html">graph kernels</a>
+            and benchmark graph neural network (GNN) expressivity.
+            The WL algorithm iteratively refines node colours by aggregating the colours of neighbouring nodes, and
+            after a fixed number of iterations, the histogram of node colours is used as the graph embedding.
+        </p>
+
+        <h3> (3) Optimisation </h3>
+        <p>
+            Finally, GOOSE learns a linear heuristic function <em>h(s) = w · f(s)</em> where <em>f(s)</em> is the
+            WL embedding of the ILG of state <em>s</em> and <em>w</em> is a weight vector learned from training.
+            Originally, GOOSE learned <em>w</em> via predicting optimal heuristic values using Gaussian Process
+            Regression and Support Vector Regression. Later, we leverage the insight that <a class="link"
+                href="https://arxiv.org/abs/1608.01302">heuristic functions in search can be viewed as ranking
+                functions</a>.
+            Later versions of GOOSE learn heuristics framed as a state rankings with Linear Programs and Support Vector
+            Machines.
+        </p>
+
+        <hr>
+
+        <!-- -------------------------------------------------------------------------------- -->
+        <h2> Results </h2>
+        In our experiments, GOOSE heuristics are trained on planning problems of up to <span class="Emph">few
+            dozen objects</span> and tested on unseen problems of up to <span class="Emph">several hundreds of
+            objects</span>.
+        The learned heuristics (WL) are compared against the <em>h<sup>FF</sup></em> domain-independent heuristic and
+        heuristic learned with GNNs in greedy best first search.
+
+        <div class="Figure">
+            <img src="dataset.svg"
+                style="width: 50%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+            <p class="caption" style="font-size: 0.95rem; color: #666; margin-top: 8px;">
+                Figure 2 — Sizes of benchmark training and testing problems on various planning domains.
+            </p>
+        </div>
+
+        <h3> WL heuristics outperform deep learning heuristics for training</h3>
+        Notably, WL heuristics are trained in a matter of seconds optimally with CPUs, while GNNs may take many more
+        seconds or minutes to converge to a suboptimal solution on GPUs.
+        In some cases, WL heuristics are over 900 times faster to train than GNN heuristics.
+        Furthermore, WL heuristics exhibit much smaller models and its features are interpretable (cf. <a class="link"
+            href="https://arxiv.org/abs/2403.16508">page 8 of this paper</a>) in contrast to deep learning
+        models.
+
+        <div class="Figure">
+            <img src="training.svg" style="width: 100%; height: auto; display: block;">
+            <p class="caption" style="font-size: 0.95rem; color: #666; margin-top: 8px;">
+                Figure 3 — Time to train after data preprocessing in log scale (left;↓) and number of learnable
+                parameters (right;↓) of GNN and WL models on various planning domains.
+            </p>
+        </div>
+
+        <h3> WL heuristics outperform deep learning heuristics for planning</h3>
+        WL heuristics also outperform GNN heuristic when used for planning and search, again where GNNs also have access
+        to GPUs.
+        The state spaces of planning problems generally grow exponentially with the number of objects, and yet WL
+        heuristics manage to solve almost 20% more problems than GNN heuristics within the same time limit.
+        Furthermore, WL heuristics achieve highly competitive performance against the domain-independent and
+        state-of-the-art
+        <em>h<sup>FF</sup></em> heuristic.
+
+        <div class="Figure">
+            <img src="testing.svg"
+                style="width: 50%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+            <p class="caption" style="font-size: 0.95rem; color: #666; margin-top: 8px;">
+                Figure 4 — Cumulative number (↑) of problems solved over time.
+            </p>
+        </div>
+
+        <hr>
+
+        <!-- -------------------------------------------------------------------------------- -->
+        <h2 id="references"> References </h2>
+        Below are relevant papers on GOOSE published at major AI and ML conferences in chronological order.
+        <br>
+        <br>
+
+        <ul style="display: contents">
+            <li>
+                Dillon Z. Chen, Sylvie Thiébaux, and Felipe Trevizan. <a style="font-weight: bold" class="link"
+                    href="https://arxiv.org/abs/2312.11143">Learning Domain-Independent Heuristics for Grounded and
+                    Lifted Planning</a>. In <em>38th AAAI Conference on Artificial Intelligence</em>, 2024.
+
+                <u>
+                    <p>TL;DR: This paper introduced expressivity results for learning domain-independent heuristics
+                        using
+                        GNNs and introduced the GOOSE framework</p>
+                </u>
+            </li>
+            <li>
+                Dillon Z. Chen, Felipe Trevizan, and Sylvie Thiébaux. <a style="font-weight: bold" class="link"
+                    href="https://arxiv.org/abs/2403.16508">Return to Tradition: Learning Reliable Heuristics with
+                    Classical Machine Learning</a>. In <em>34th International Conference on Automated Planning and
+                    Scheduling (ICAPS)</em>,, 2024.
+
+                <u>
+                    <p>TL;DR: This paper introduced the ILG representation and the key insight of using WL embeddings
+                        with
+                        classical, statistical machine learning for learning powerful heuristics</p>
+                </u>
+            </li>
+            <li>
+                Dillon Z. Chen and Sylvie Thiébaux. <a style="font-weight: bold" class="link"
+                    href="https://arxiv.org/abs/2410.24080">Graph
+                    Learning for Numeric Planning</a>. In <em>38th Conference on Neural Information Processing Systems
+                    (NeurIPS)</em>, 2024.
+
+                <u>
+                    <p>TL;DR: This paper extended GOOSE and the WL algorithm for handling numeric planning problems and
+                        learning rankings using Linear Programming</p>
+                </u>
+            </li>
+            <li>
+                Dillon Z. Chen. <a style="font-weight: bold" class="link"
+                    href="https://arxiv.org/abs/2508.18515">Weisfeiler-Leman Features for
+                    Planning: A 1,000,000 Sample Size Hyperparameter Study</a>. In <em>28th European Conference on
+                    Artificial Intelligence (ECAI)</em>, 2025.
+
+                <u>
+                    <p>TL;DR: This paper studied the effects of various WL algorithm hyperparameters</p>
+                </u>
+            </li>
+            <li>
+                Mingyu Hao, Dillon Z. Chen, Felipe Trevizan, and Sylvie Thiébaux. <a style="font-weight: bold"
+                    class="link" href="https://hal.science/hal-05226780v1">Effective Data Generation and Feature
+                    Selection in Learning for Planning</a>. In <em>28th European Conference on
+                    Artificial Intelligence (ECAI)</em>, 2025.
+
+                <u>
+                    <p>TL;DR: This paper introduced algorithms for generating better training data at no additional cost
+                        and
+                        feature pruning techniques.</p>
+                </u>
+            </li>
+        </ul>
+
+        <!-- -------------------------------------------------------------------------------- -->
+        <br>
+        <hr>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            © 2025 Dillon Z. Chen. All rights reserved.
+        </div>
+        <!-- -------------------------------------------------------------------------------- -->
+    </div>
+
+    <script src="/background.js"></script>
+    <script src="/quotes.js"></script>
+    <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101325995);</script>
+    <script async src="//static.getclicky.com/js"></script>
+</body>
+
+</html>

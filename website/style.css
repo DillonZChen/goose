@@ -1,0 +1,71 @@
+body {
+  text-align: justify;
+}
+
+.Modern-Button {
+  /* Basic Styling */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7.5px 15px;
+  border: 2px solid transparent; /* Border for visual continuity and hover */
+  border-radius: 4px; /* Less rounded, sharp corners */
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 0px 10px;
+
+  /* Color Palette (Example: Accent Green/Black) */
+  background-color: #28a745; /* Primary green color */
+  color: #ffffff;
+
+  /* Animation */
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+/* Hover State - Accent change for clear feedback */
+.Modern-Button:hover {
+  background-color: #218838; /* Slightly darker green */
+}
+
+/* Active State - Provides a 'pressed' look */
+.Modern-Button:active {
+  background-color: #1e7e34;
+  transform: scale(0.99);
+}
+
+/* A common sleek variant: Outline Button */
+.Modern-Button.Outline {
+  background-color: transparent;
+  color: #28a745; /* Text color matches the primary color */
+  border-color: #28a745; /* Primary color border */
+}
+
+.Modern-Button.Outline:hover {
+  background-color: #28a745; /* Fills with color on hover */
+  color: #ffffff; /* Text turns white */
+}
+
+.Emph {
+    font-weight: bold;
+    color: #28a745; /* Accent color for emphasis */
+}
+
+ol li {
+  margin-bottom: 0.5em; /* Adjust this value as needed */
+}
+
+/* Reset the line-height *within* the list item text itself.
+  'normal' is typically equal to 1.2 or 1.2em, which is standard.
+  You could also explicitly use 'line-height: 1.2;' or similar.
+*/
+ol li {
+  line-height: normal; /* Ensures normal spacing for text *inside* the li */
+}
+
+.Figure {
+    text-align: center;
+    margin-top: 20px;
+}

@@ -1,0 +1,33 @@
+name: Deploy Documentation to GitHub Pages
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    pages:
+        runs-on: ubuntu-latest
+        permissions:
+            pages: write
+            id-token: write
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.12"
+
+            - name: Display Python version
+              run: python -c "import sys; print(sys.version)"
+
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  path: website/
+
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
