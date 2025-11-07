@@ -28,7 +28,7 @@ apptainer pull goose.sif oras://ghcr.io/dillonzchen/goose:latest
 git submodule update --init --recursive benchmarks
 
 # (3) Plan with pretrained weights
-./goose.sif plan benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_30.pddl pretrained_models/ipc23lt-blocksworld.model
+./goose.sif plan benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p0_30.pddl -m pretrained_models/ipc23lt-blocksworld.model
 ```
 
 In step 3, `blocksworld` can be replaced with any other IPC23LT domain.
@@ -131,7 +131,7 @@ e.g. with Blocksworld
     ./train.py benchmarks/ipc23lt/blocksworld configurations/classic.toml -s blocksworld.model
 
     # Planning
-    ./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_01.pddl blocksworld.model
+    ./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_01.pddl -m blocksworld.model
 
 For **numeric** planning, train with the `configurations/numeric.toml` configuration file.
 e.g. with numeric Childsnack
@@ -140,7 +140,7 @@ e.g. with numeric Childsnack
     ./train.py benchmarks/neurips24/childsnack configurations/numeric.toml -s numeric_childsnack.model
 
     # Planning
-    ./plan.py benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model
+    ./plan.py benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl -m numeric_childsnack.model
 
 
 ## Abbreviations
