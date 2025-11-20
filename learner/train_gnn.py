@@ -101,7 +101,7 @@ if __name__ == "__main__":
     criterion = MSELoss()
     optimiser = torch.optim.Adam(model.parameters(), lr=lr)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-        optimiser, mode="min", verbose=True, factor=reduction, patience=patience
+        optimiser, mode="min", factor=reduction, patience=patience
     )
 
     # train val pipeline
