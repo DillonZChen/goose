@@ -577,7 +577,8 @@ def pddl_to_sas(task):
         implied_facts = {}
 
     with timers.timing("Building mutex information", block=True):
-        if options.use_partial_encoding:
+        # if options.use_partial_encoding:
+        if False:
             mutex_key = build_mutex_key(strips_to_sas, mutex_groups)
             # mutex key represents the same information as mutex_groups but in
             # FDR representation from strips_to_sas dictionary.
@@ -601,7 +602,8 @@ def pddl_to_sas(task):
     print("%d implied preconditions added" %
           added_implied_precondition_counter)
 
-    if options.filter_unreachable_facts:
+    # if options.filter_unreachable_facts:
+    if False:
         with timers.timing("Detecting unreachable propositions", block=True):
             try:
                 simplify.filter_unreachable_propositions(sas_task)
@@ -610,7 +612,8 @@ def pddl_to_sas(task):
             except simplify.TriviallySolvable:
                 return solvable_sas_task("Simplified to empty goal")
 
-    if options.reorder_variables or options.filter_unimportant_vars:
+    # if options.reorder_variables or options.filter_unimportant_vars:
+    if False:
         with timers.timing("Reordering and filtering variables", block=True):
             variable_order.find_and_apply_variable_order(
                 sas_task, options.reorder_variables,

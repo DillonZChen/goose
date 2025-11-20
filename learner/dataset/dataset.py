@@ -9,9 +9,11 @@ from sklearn.model_selection import train_test_split
 from representation import REPRESENTATIONS
 from util.stats import get_stats
 
-_DOWNWARD = "./../planners/downward/fast-downward.py"
-_POWERLIFTED = "./../planners/powerlifted/powerlifted.py"
-_BENCHMARKS_DIR = "../dataset"  # assume script called from learner directory
+CUR_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = f"{CUR_DIR}/../.."
+_DOWNWARD = f"{ROOT_DIR}/planners/downward/fast-downward.py"
+_POWERLIFTED = f"{ROOT_DIR}/planners/powerlifted/powerlifted.py"
+_BENCHMARKS_DIR = f"{ROOT_DIR}/dataset"  # assume script called from learner directory
 
 _MAX_Y = 64
 
