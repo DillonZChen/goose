@@ -12,6 +12,8 @@ def parse_args():
     parser.add_argument("problem_file")
     parser.add_argument("model_file")
     
+    parser.add_argument("-o", "--output_file", default=None)
+    
     # gpu device (if exists)
     parser.add_argument("--device", type=int, default=0)
 
@@ -38,3 +40,6 @@ if __name__ == "__main__":
     
     embedding = model.embeddings(graph)
     
+    if args.output_file is not None:
+        torch.save(embedding, args.output_file)
+        print(f"Saved embedding to {args.output_file}")
