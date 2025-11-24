@@ -30,12 +30,17 @@ def get_plan_info(domain_pddl, problem_pddl, plan_file, args):
 
     states = []
     actions = []
-
-    with open(plan_file, "r") as f:
-        for line in f.readlines():
-            if ";" in line:
-                continue
-            actions.append(line.replace("\n", ""))
+    
+    if plan_file is not None:
+        with open(plan_file, "r") as f:
+            for line in f.readlines():
+                if ";" in line:
+                    continue
+                actions.append(line.replace("\n", ""))
+    else:
+        plan_file = ".tmp_plan_file"
+        with open(plan_file, "w") as f:
+            f.write(";")
 
     aux_garbage = repr(hash((domain_pddl, problem_pddl, plan_file, repr(args))))
     aux_garbage = aux_garbage.replace("-", "n")

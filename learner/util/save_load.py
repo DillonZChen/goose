@@ -69,9 +69,9 @@ def load_model(path, print_args=False):
         print(f"Model not found at {path}")
         exit(-1)
     if torch.cuda.is_available():
-        model_state_dict, args = torch.load(path)
+        model_state_dict, args = torch.load(path, weights_only=False)
     else:
-        model_state_dict, args = torch.load(path, map_location=torch.device("cpu"))
+        model_state_dict, args = torch.load(path, map_location=torch.device("cpu"), weights_only=False)
     model = Model(params=arg_to_params(args))
     model.load_state_dict_into_gnn(model_state_dict)
     print("Model loaded!")

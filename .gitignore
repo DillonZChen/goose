@@ -3,5 +3,7 @@
 *.sif
 *.vscode*
 *.dt
+*.model
 .stignore
 venv
+.tmp*

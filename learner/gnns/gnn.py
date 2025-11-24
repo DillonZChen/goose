@@ -41,7 +41,8 @@ class RGNNLayer(Module):
         super(RGNNLayer, self).__init__()
         self.convs = torch.nn.ModuleList()
         for _ in range(n_edge_labels):
-            self.convs.append(LinearConv(in_features, out_features, aggr=aggr).jittable())
+            self.convs.append(LinearConv(in_features, out_features, aggr=aggr))
+            # self.convs.append(LinearConv(in_features, out_features, aggr=aggr).jittable())
         self.root = Linear(in_features, out_features, bias=True)
         return
 
