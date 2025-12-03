@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 USAGE_DESCRIPTION="Usage $0 [wlplan|succgen|planners|scorpion|numeric-downward|powerlifted|clean|all]"
 ROOT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
@@ -52,6 +54,13 @@ set -e
 # Install Python wlplan interface
 if [[ "$arg" = "all" || "$arg" = "wlplan" ]]; then
     cd ext/wlplan/
+
+    if [ -z "$(ls -A .)" ]; then
+        echo "The wlplan submodule is not initialised. Please run:"
+        echo "git submodule update --init --recursive"
+        exit 1
+    fi
+
     mkdir -p _wlplan/
     pip install . -v
     cd -
