@@ -4,7 +4,7 @@ graph_representation = "nilg"
 iterations = 1
 
 features = "ccwl"
-optimisation = "rank-lp"
+optimisation = "rank-svm"
 feature_pruning = "none"
 hash = "set"
 
