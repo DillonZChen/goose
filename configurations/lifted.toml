@@ -9,4 +9,4 @@ feature_pruning = "a-m"
 hash = "set"
 
 data_pruning = "equivalent-weighted"
-state_representation = "downward"
+state_representation = "all"

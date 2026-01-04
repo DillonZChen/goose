@@ -35,19 +35,23 @@ In step 3, `blocksworld` can be replaced with any other IPC23LT domain.
 See further below for more information on how to train and plan with GOOSE for different settings.
 
 
-## Table of contents
+## Table of Contents
 - [**GOOSE**: **G**raphs **O**ptimised f**O**r **S**earch **E**valuation](#goose-graphs-optimised-for-search-evaluation)
   - [Quick Start on Existing Benchmarks](#quick-start-on-existing-benchmarks)
-  - [Table of contents](#table-of-contents)
+  - [Table of Contents](#table-of-contents)
   - [Setup](#setup)
-    - [(1) Download Apptainer image](#1-download-apptainer-image)
-    - [(2) Build Apptainer image](#2-build-apptainer-image)
-    - [(3) Manual compilation](#3-manual-compilation)
+    - [Download Apptainer Image](#download-apptainer-image)
+    - [Build Apptainer Image](#build-apptainer-image)
+    - [Manual Compilation](#manual-compilation)
   - [Usage](#usage)
     - [Training](#training)
     - [Planning](#planning)
-    - [Recommended configurations](#recommended-configurations)
+    - [Recommended Configurations](#recommended-configurations)
+      - [Classical Planning](#classical-planning)
+      - [Lifted Planning](#lifted-planning)
+      - [Numeric Planning](#numeric-planning)
   - [Abbreviations](#abbreviations)
+  - [Reference](#reference)
 
 
 ## Setup
@@ -60,20 +64,20 @@ git submodule update --init --recursive
 
 Then there are 3 possible ways to install GOOSE.
 
-### (1) Download Apptainer image
+### Download Apptainer Image
 Download the image from the internet
 
     apptainer pull goose.sif oras://ghcr.io/dillonzchen/goose:latest
 
 
-### (2) Build Apptainer image
+### Build Apptainer Image
 Install [Apptainer](https://apptainer.org/) and then build the image
 
     sudo apt-get install apptainer
     python3 apptainer/build.py
 
 
-### (3) Manual compilation
+### Manual Compilation
 You will first need the usual cpp packages
 
     sudo apt-get install build-essential g++ cmake libboost-all-dev
@@ -120,10 +124,11 @@ Call `goose.sif plan -h` or `python3 plan.py -h` for more detailed instructions.
 
 e.g.
 
-    ./plan.py benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl numeric_childsnack.model
+    ./plan.py benchmarks/neurips24/childsnack/domain.pddl benchmarks/neurips24/childsnack/testing/p2_30.pddl -m numeric_childsnack.model
 
 
-### Recommended configurations
+### Recommended Configurations
+#### Classical Planning
 For **classical** planning, train with the `configurations/classic.toml` configuration file.
 e.g. with Blocksworld
 
@@ -133,6 +138,17 @@ e.g. with Blocksworld
     # Planning
     ./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_01.pddl -m blocksworld.model
 
+#### Lifted Planning
+For **lifted** planning, train with the `configurations/lifted.toml` configuration file.
+e.g. with Blocksworld
+
+    # Training
+    ./train.py benchmarks/ipc23lt/blocksworld configurations/lifted.toml -s blocksworld-lifted.model
+
+    # Planning
+    ./plan.py benchmarks/ipc23lt/blocksworld/domain.pddl benchmarks/ipc23lt/blocksworld/testing/p1_01.pddl -m blocksworld-lifted.model
+
+#### Numeric Planning
 For **numeric** planning, train with the `configurations/numeric.toml` configuration file.
 e.g. with numeric Childsnack
 
@@ -150,3 +166,24 @@ e.g. with numeric Childsnack
 - IPC23LT: International Planning Competition 2023 Learning Track
 - PDDL: Planning Domain Definition Language
 - WLF: Weisfeiler-Leman Feature
+
+
+## Reference
+If you use the code for your research paper, cite
+```
+@inproceedings{chen-trevizan-thiebaux-icaps2024,
+  author       = {Dillon Z. Chen and
+                  Felipe W. Trevizan and
+                  Sylvie Thi{\'{e}}baux},
+  editor       = {Sara Bernardini and
+                  Christian Muise},
+  title        = {Return to Tradition: Learning Reliable Heuristics with Classical Machine
+                  Learning},
+  booktitle    = {Proceedings of the Thirty-Fourth International Conference on Automated
+                  Planning and Scheduling, {ICAPS} 2024, Banff, Alberta, Canada, June
+                  1-6, 2024},
+  pages        = {68--76},
+  publisher    = {{AAAI} Press},
+  year         = {2024},
+}
+```

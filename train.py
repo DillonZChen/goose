@@ -185,7 +185,7 @@ def get_learning_parser():
                         default=StateRepresentation.DOWNWARD,
                         choices=StateRepresentation.choices(),
                         help=f"Intended facts to keep e.g. Fast Downward *downward* grounds the task and prunes away statics as well as some unreachable facts. " + \
-                             f"(default: fd)")
+                             f"(default: downward)")
 
     # Experiment options
     parser.add_argument("-r", "--random-seed", type=int,
