@@ -1,3 +1,53 @@
+@font-face {
+    font-family: defFont;
+    src: url(/assets/fonts/Nunito-Regular.ttf);
+}
+
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: defFont;
+    margin: 1%;
+}
+
+.container {
+    padding-left: 0%;
+    padding-right: 0%;
+    max-width: 888px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.link {
+    color: #0055ff;
+    text-decoration: none;
+    /* remove underline */
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/* For selected publications */
+.flex-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    height: 100%;
+    margin: 0;
+}
+
+.bibtexnumber {
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    text-align: right;
+}
+
 body {
   text-align: justify;
 }
