@@ -1,9 +1,9 @@
-[submodule "wlplan"]
-	path = ext/wlplan
-	url = https://github.com/DillonZChen/wlplan
 [submodule "benchmarks"]
 	path = benchmarks
 	url = https://github.com/DillonZChen/goose-dataset.git
 [submodule "ext/planners/scorpion"]
 	path = ext/planners/scorpion
 	url = https://github.com/DillonZChen/scorp-goose.git
+[submodule "ext/wlplan"]
+	path = ext/wlplan
+	url = https://github.com/DillonZChen/wlplan.git
